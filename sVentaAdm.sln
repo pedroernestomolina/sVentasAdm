@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibControles", "LibControles\LibControles.csproj", "{A5A4936C-22D5-4862-953E-8296C3820A63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModVentaAdm", "ModVentaAdm\ModVentaAdm.csproj", "{C535B8D1-86C3-47B1-BE9F-AE716AEF2187}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5A4936C-22D5-4862-953E-8296C3820A63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5A4936C-22D5-4862-953E-8296C3820A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5A4936C-22D5-4862-953E-8296C3820A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5A4936C-22D5-4862-953E-8296C3820A63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C535B8D1-86C3-47B1-BE9F-AE716AEF2187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C535B8D1-86C3-47B1-BE9F-AE716AEF2187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C535B8D1-86C3-47B1-BE9F-AE716AEF2187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C535B8D1-86C3-47B1-BE9F-AE716AEF2187}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
