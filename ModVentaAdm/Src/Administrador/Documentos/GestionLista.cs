@@ -56,7 +56,7 @@ namespace ModVentaAdm.Src.Administrador.Documentos
         public void setLista(List<OOB.Documento.Lista.Ficha> list)
         {
             _bl.Clear();
-            foreach (var doc in list.OrderByDescending(o=>o.FechaEmision).ThenByDescending(o=>o.DocNombre).ThenByDescending(o=>o.DocNumero).ToList())
+            foreach (var doc in list)
             {
                 _bl.Add(new data(doc));
             }

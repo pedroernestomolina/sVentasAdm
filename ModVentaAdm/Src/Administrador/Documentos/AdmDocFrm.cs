@@ -244,7 +244,6 @@ namespace ModVentaAdm.Src.Administrador.Documentos
         {
             Buscar();
         }
-
         private void Buscar()
         {
             _controlador.Buscar();

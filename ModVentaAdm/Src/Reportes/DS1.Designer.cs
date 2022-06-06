@@ -3543,6 +3543,10 @@ namespace ModVentaAdm.Src.Reportes {
             
             private global::System.Data.DataColumn columnventaDivisa;
             
+            private global::System.Data.DataColumn columnutilidadPorct;
+            
+            private global::System.Data.DataColumn columnutilidad;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public UtilidadProductoDataTable() {
@@ -3626,6 +3630,22 @@ namespace ModVentaAdm.Src.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn utilidadPorctColumn {
+                get {
+                    return this.columnutilidadPorct;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn utilidadColumn {
+                get {
+                    return this.columnutilidad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3661,7 +3681,7 @@ namespace ModVentaAdm.Src.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UtilidadProductoRow AddUtilidadProductoRow(string producto, decimal cantUnd, decimal costo, decimal venta, decimal costoDivisa, decimal ventaDivisa) {
+            public UtilidadProductoRow AddUtilidadProductoRow(string producto, decimal cantUnd, decimal costo, decimal venta, decimal costoDivisa, decimal ventaDivisa, decimal utilidadPorct, decimal utilidad) {
                 UtilidadProductoRow rowUtilidadProductoRow = ((UtilidadProductoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         producto,
@@ -3669,7 +3689,9 @@ namespace ModVentaAdm.Src.Reportes {
                         costo,
                         venta,
                         costoDivisa,
-                        ventaDivisa};
+                        ventaDivisa,
+                        utilidadPorct,
+                        utilidad};
                 rowUtilidadProductoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowUtilidadProductoRow);
                 return rowUtilidadProductoRow;
@@ -3698,6 +3720,8 @@ namespace ModVentaAdm.Src.Reportes {
                 this.columnventa = base.Columns["venta"];
                 this.columncostoDivisa = base.Columns["costoDivisa"];
                 this.columnventaDivisa = base.Columns["ventaDivisa"];
+                this.columnutilidadPorct = base.Columns["utilidadPorct"];
+                this.columnutilidad = base.Columns["utilidad"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3715,6 +3739,10 @@ namespace ModVentaAdm.Src.Reportes {
                 base.Columns.Add(this.columncostoDivisa);
                 this.columnventaDivisa = new global::System.Data.DataColumn("ventaDivisa", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnventaDivisa);
+                this.columnutilidadPorct = new global::System.Data.DataColumn("utilidadPorct", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnutilidadPorct);
+                this.columnutilidad = new global::System.Data.DataColumn("utilidad", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnutilidad);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6954,6 +6982,38 @@ namespace ModVentaAdm.Src.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal utilidadPorct {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableUtilidadProducto.utilidadPorctColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'utilidadPorct\' in table \'UtilidadProducto\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableUtilidadProducto.utilidadPorctColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal utilidad {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableUtilidadProducto.utilidadColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'utilidad\' in table \'UtilidadProducto\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableUtilidadProducto.utilidadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsproductoNull() {
                 return this.IsNull(this.tableUtilidadProducto.productoColumn);
             }
@@ -7022,6 +7082,30 @@ namespace ModVentaAdm.Src.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetventaDivisaNull() {
                 this[this.tableUtilidadProducto.ventaDivisaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsutilidadPorctNull() {
+                return this.IsNull(this.tableUtilidadProducto.utilidadPorctColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetutilidadPorctNull() {
+                this[this.tableUtilidadProducto.utilidadPorctColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsutilidadNull() {
+                return this.IsNull(this.tableUtilidadProducto.utilidadColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetutilidadNull() {
+                this[this.tableUtilidadProducto.utilidadColumn] = global::System.Convert.DBNull;
             }
         }
         

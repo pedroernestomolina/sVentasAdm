@@ -86,7 +86,15 @@ namespace ModVentaAdm.Src.Administrador.Documentos
                 Helpers.Msg.Error(rt1.Mensaje);
                 return;
             }
-            _gLista.setLista(rt1.ListaD);
+            var rt2 = Sistema.MyData.Configuracion_CantDocVisualizar();
+            if (rt2.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(rt2.Mensaje);
+                return;
+            }
+            var _cntDocVisualizar = rt2.Entidad;
+            var _lst = rt1.ListaD.OrderByDescending(o=>o.FechaEmision).ThenByDescending(o=>o.DocNombre).ThenByDescending(o=>o.DocNumero).ToList();
+            _gLista.setLista(_lst.Take(_cntDocVisualizar).ToList());
         }
 
         public void AnularItem()
@@ -227,8 +235,17 @@ namespace ModVentaAdm.Src.Administrador.Documentos
             if (!GetItemActual.IsAnulado) { return; }
 
             var autoSistDoc="";
-            switch (GetItemActual .DocTipo)
+            switch (GetItemActual.DocTipo)
             {
+                case data.enumTipoDoc.Factura:
+                    autoSistDoc = Sistema.Id_SistDocumento_Factura;
+                    break;
+                case data.enumTipoDoc.NotaCredito:
+                    autoSistDoc = Sistema.Id_SistDocumento_NotaCredito;
+                    break;
+                case data.enumTipoDoc.NotaEntrega:
+                    autoSistDoc = Sistema.Id_SistDocumento_NotaEntrega;
+                    break;
                 case data.enumTipoDoc.Presupuesto:
                     autoSistDoc = Sistema.Id_SistDocumento_Presupuesto;
                     break;

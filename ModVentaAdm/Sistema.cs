@@ -19,8 +19,12 @@ namespace ModVentaAdm
         public static OOB.Sistema.Empresa.Entidad.Ficha DatosEmpresa;
         public static string EquipoEstacion;
         public static string IdEquipo;
+
+        public static string Id_SistDocumento_Factura     = "0000000001";
+        public static string Id_SistDocumento_NotaCredito = "0000000003";
+        public static string Id_SistDocumento_NotaEntrega = "0000000004";
         public static string Id_SistDocumento_Presupuesto = "0000000005";
-        public static string Id_SistDocumento_Pedido = "0000000006";
+        public static string Id_SistDocumento_Pedido      = "0000000006";
 
     }
 

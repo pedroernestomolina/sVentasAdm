@@ -13,7 +13,8 @@ namespace ModVentaAdm.Data.Prov
     public partial class DataPrv : IData
     {
 
-        public OOB.Resultado.FichaEntidad<OOB.Configuracion.BusquedaCliente.Entidad.Ficha> Configuracion_BusquedaCliente()
+        public OOB.Resultado.FichaEntidad<OOB.Configuracion.BusquedaCliente.Entidad.Ficha> 
+            Configuracion_BusquedaCliente()
         {
             var rt = new OOB.Resultado.FichaEntidad<OOB.Configuracion.BusquedaCliente.Entidad.Ficha>();
 
@@ -33,8 +34,8 @@ namespace ModVentaAdm.Data.Prov
 
             return rt;
         }
-
-        public OOB.Resultado.FichaEntidad<decimal> Configuracion_FactorDivisa()
+        public OOB.Resultado.FichaEntidad<decimal> 
+            Configuracion_FactorDivisa()
         {
             var rt = new OOB.Resultado.FichaEntidad<decimal>();
 
@@ -58,8 +59,8 @@ namespace ModVentaAdm.Data.Prov
 
             return rt;
         }
-
-        public OOB.Resultado.FichaEntidad<OOB.Configuracion.BusquedaProducto.Enumerado.EnumPreferenciaBusqueda> Configuracion_BusquedaPreferenciaProducto()
+        public OOB.Resultado.FichaEntidad<OOB.Configuracion.BusquedaProducto.Enumerado.EnumPreferenciaBusqueda> 
+            Configuracion_BusquedaPreferenciaProducto()
         {
             var rt = new OOB.Resultado.FichaEntidad<OOB.Configuracion.BusquedaProducto.Enumerado.EnumPreferenciaBusqueda>();
 
@@ -74,8 +75,8 @@ namespace ModVentaAdm.Data.Prov
             rt.Entidad = (OOB.Configuracion.BusquedaProducto.Enumerado.EnumPreferenciaBusqueda)r01.Entidad;
             return rt;
         }
-
-        public OOB.Resultado.FichaEntidad<bool> Configuracion_RupturaPorExistencia()
+        public OOB.Resultado.FichaEntidad<bool> 
+            Configuracion_RupturaPorExistencia()
         {
             var rt = new OOB.Resultado.FichaEntidad<bool>();
 
@@ -87,6 +88,30 @@ namespace ModVentaAdm.Data.Prov
                 return rt;
             }
             rt.Entidad = r01.Entidad == "SI";
+
+            return rt;
+        }
+        public OOB.Resultado.FichaEntidad<int> 
+            Configuracion_CantDocVisualizar()
+        {
+            var rt = new OOB.Resultado.FichaEntidad<int>();
+
+            var r01 = MyData.ConfiguracionAdm_CantDocVisualizar();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            var cnf = r01.Entidad;
+            var m1 = 1000;
+            if (cnf.Trim() != "")
+            {
+                var style = NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands;
+                var culture = CultureInfo.CreateSpecificCulture("es-ES");
+                int.TryParse(cnf, style, culture, out m1);
+            }
+            rt.Entidad = m1;
 
             return rt;
         }

@@ -57,6 +57,8 @@ namespace ModVentaAdm.Src.Reportes.Modo.Utilidad.Producto
                 rt["venta"] = it.venta;
                 rt["costoDivisa"] = it.costoDivisa;
                 rt["ventaDivisa"] = it.ventaDivisa;
+                rt["utilidadPorct"] = (1 - (it.costoDivisa / it.ventaDivisa)) * 100;
+                    //(it.ventaDivisa/it.costoDivisa -1)*100;
                 ds.Tables["UtilidadProducto"].Rows.Add(rt);
             }
 

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C78B98E8-6642-4567-88A5-01AFE6AA2E34}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServicePos</RootNamespace>
+    <AssemblyName>ServicePos</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interfaces\IAuditoria.cs" />
+    <Compile Include="Interfaces\ICliente.cs" />
+    <Compile Include="Interfaces\IClienteGrupo.cs" />
+    <Compile Include="Interfaces\IClienteZona.cs" />
+    <Compile Include="Interfaces\ICobrador.cs" />
+    <Compile Include="Interfaces\IConcepto.cs" />
+    <Compile Include="Interfaces\IConfiguracion.cs" />
+    <Compile Include="Interfaces\IConfiguracionAdm.cs" />
+    <Compile Include="Interfaces\IDeposito.cs" />
+    <Compile Include="Interfaces\IDocumento.cs" />
+    <Compile Include="Interfaces\IDocumentoAdm.cs" />
+    <Compile Include="Interfaces\IFiscal.cs" />
+    <Compile Include="Interfaces\IJornada.cs" />
+    <Compile Include="Interfaces\IMedioPago.cs" />
+    <Compile Include="Interfaces\IPendiente.cs" />
+    <Compile Include="Interfaces\IPermiso.cs" />
+    <Compile Include="Interfaces\IProducto.cs" />
+    <Compile Include="Interfaces\IProductoAdm.cs" />
+    <Compile Include="Interfaces\IReportePos.cs" />
+    <Compile Include="Interfaces\IReportesAdm.cs" />
+    <Compile Include="Interfaces\IReportesCli.cs" />
+    <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="Interfaces\ISistema.cs" />
+    <Compile Include="Interfaces\ISucursal.cs" />
+    <Compile Include="Interfaces\ITransporte.cs" />
+    <Compile Include="Interfaces\IUsuario.cs" />
+    <Compile Include="Interfaces\IVendedor.cs" />
+    <Compile Include="Interfaces\IVenta.cs" />
+    <Compile Include="Interfaces\IVentaAdm.cs" />
+    <Compile Include="MyService\Auditoria.cs" />
+    <Compile Include="MyService\Cliente.cs" />
+    <Compile Include="MyService\ClienteGrupo.cs" />
+    <Compile Include="MyService\ClienteZona.cs" />
+    <Compile Include="MyService\Cobrador.cs" />
+    <Compile Include="MyService\Concepto.cs" />
+    <Compile Include="MyService\Configuracion.cs" />
+    <Compile Include="MyService\ConfiguracionAdm.cs" />
+    <Compile Include="MyService\Deposito.cs" />
+    <Compile Include="MyService\Documento.cs" />
+    <Compile Include="MyService\DocumentoAdm.cs" />
+    <Compile Include="MyService\Fiscal.cs" />
+    <Compile Include="MyService\Jornada.cs" />
+    <Compile Include="MyService\MedioPago.cs" />
+    <Compile Include="MyService\Pendiente.cs" />
+    <Compile Include="MyService\Permiso.cs" />
+    <Compile Include="MyService\Producto.cs" />
+    <Compile Include="MyService\ProductoAdm.cs" />
+    <Compile Include="MyService\ReportePos.cs" />
+    <Compile Include="MyService\ReportesAdm.cs" />
+    <Compile Include="MyService\ReportesCli.cs" />
+    <Compile Include="MyService\Service.cs" />
+    <Compile Include="MyService\Sistema.cs" />
+    <Compile Include="MyService\Sucursal.cs" />
+    <Compile Include="MyService\Transporte.cs" />
+    <Compile Include="MyService\Usuario.cs" />
+    <Compile Include="MyService\Vendedor.cs" />
+    <Compile Include="MyService\Venta.cs" />
+    <Compile Include="MyService\VentaAdm.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DtoLibPos\DtoLibPos.csproj">
+      <Project>{2002b4d6-37aa-4eb9-b261-8f0f34b375e5}</Project>
+      <Name>DtoLibPos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DtoLib\DtoLib.csproj">
+      <Project>{317543d0-b357-4bba-8ba1-84fa25f4efa6}</Project>
+      <Name>DtoLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IPos\IPos.csproj">
+      <Project>{e491ec14-4dbf-4162-a312-643a53119503}</Project>
+      <Name>IPos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProvPos\ProvPos.csproj">
+      <Project>{ff479448-5a9f-46c9-9c66-e231085fb1eb}</Project>
+      <Name>ProvPos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

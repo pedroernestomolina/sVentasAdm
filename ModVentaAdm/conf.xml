@@ -2,7 +2,7 @@
 <Configuracion>
   <Servidor>
     <Instancia>localhost</Instancia>
-    <Catalogo>pita</Catalogo>
+    <Catalogo>mscala</Catalogo>
   </Servidor>
   <IdEquipo>01</IdEquipo>
 </Configuracion>

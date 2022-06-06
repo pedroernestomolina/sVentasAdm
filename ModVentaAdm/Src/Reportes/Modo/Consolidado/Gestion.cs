@@ -39,10 +39,10 @@ namespace ModVentaAdm.Src.Reportes.Modo.Consolidado
                 Helpers.Msg.Error(r01.Mensaje);
                 return;
             }
-            Imprimir(r01.ListaD);
+            Imprimir(r01.ListaD, data.GetFiltros());
         }
 
-        private void Imprimir(List<OOB.Reportes.Consolidado.Ficha> list)
+        private void Imprimir(List<OOB.Reportes.Consolidado.Ficha> list, string filt)
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"Reportes\Consolidado.rdlc";
             var ds = new DS();
@@ -67,7 +67,7 @@ namespace ModVentaAdm.Src.Reportes.Modo.Consolidado
             {
                 DataRow rt = ds.Tables["Consolidado"].NewRow();
                 rt["fecha"] = it.fecha.Date;
-                rt["sucursal"] = it.nombreSuc+Environment.NewLine+it.codigoSuc;
+                rt["sucursal"] = "(Cod: " + it.codigoSuc.Trim() + ") " + it.nombreSuc;
                 rt["caja"] = it.caja.ToString().Trim().PadLeft(2,'0');
                 rt["docNombre"] = it.docNombre.Trim();
                 rt["inicio"] = it.inicio;
@@ -84,6 +84,7 @@ namespace ModVentaAdm.Src.Reportes.Modo.Consolidado
             //pmt.Add(new ReportParameter("EMPRESA_NOMBRE", Sistema.Negocio.Nombre));
             //pmt.Add(new ReportParameter("EMPRESA_DIRECCION", Sistema.Negocio.DireccionFiscal));
             //pmt.Add(new ReportParameter("DOCUMENTO", ficha.documentoModo));
+            pmt.Add(new ReportParameter("FILTRO", filt));
             Rds.Add(new ReportDataSource("Consolidado", ds.Tables["Consolidado"]));
 
             var frp = new ReporteFrm();

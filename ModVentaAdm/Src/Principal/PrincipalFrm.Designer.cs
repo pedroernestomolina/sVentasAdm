@@ -83,6 +83,7 @@
             this.MENU_REPORTES_GENERAL_POR_GRUPO = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_GENERAL_POR_PRODUCTO = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_UTILIDAD_POR_VENTAS = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_UTILIDAD_POR_UTILIDAD = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
@@ -105,7 +106,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO = new System.Windows.Forms.ToolStripMenuItem();
+            this.cxCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -170,11 +171,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(672, 1);
+            this.panel2.Location = new System.Drawing.Point(671, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(211, 52);
+            this.panel2.Size = new System.Drawing.Size(212, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -185,7 +186,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(207, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(208, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -394,7 +395,7 @@
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
-            this.panel20.Size = new System.Drawing.Size(116, 52);
+            this.panel20.Size = new System.Drawing.Size(115, 52);
             this.panel20.TabIndex = 3;
             // 
             // tableLayoutPanel8
@@ -410,7 +411,7 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(112, 48);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(111, 48);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // panel21
@@ -421,7 +422,7 @@
             this.panel21.Margin = new System.Windows.Forms.Padding(1);
             this.panel21.Name = "panel21";
             this.panel21.Padding = new System.Windows.Forms.Padding(2);
-            this.panel21.Size = new System.Drawing.Size(102, 46);
+            this.panel21.Size = new System.Drawing.Size(101, 46);
             this.panel21.TabIndex = 0;
             // 
             // L_HORA
@@ -431,7 +432,7 @@
             this.L_HORA.ForeColor = System.Drawing.Color.Black;
             this.L_HORA.Location = new System.Drawing.Point(2, 2);
             this.L_HORA.Name = "L_HORA";
-            this.L_HORA.Size = new System.Drawing.Size(98, 42);
+            this.L_HORA.Size = new System.Drawing.Size(97, 42);
             this.L_HORA.TabIndex = 6;
             this.L_HORA.Text = "Hoy";
             this.L_HORA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -443,6 +444,7 @@
             this.archivoToolStripMenuItem,
             this.maestrosToolStripMenuItem,
             this.documentosToolStripMenuItem,
+            this.cxCToolStripMenuItem,
             this.reportesToolStripMenuItem,
             this.fiscalToolStripMenuItem,
             this.configuracionToolStripMenuItem});
@@ -681,6 +683,14 @@
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(256, 6);
             // 
+            // MENU_REPORTES_UTILIDAD_CONSOLIDADO
+            // 
+            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO.Image = global::ModVentaAdm.Properties.Resources.bt_imprimir_3;
+            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO.Name = "MENU_REPORTES_UTILIDAD_CONSOLIDADO";
+            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO.Size = new System.Drawing.Size(259, 22);
+            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO.Text = "Utilidad Consolidado";
+            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO.Click += new System.EventHandler(this.MENU_REPORTES_UTILIDAD_CONSOLIDADO_Click);
+            // 
             // MENU_REPORTES_UTILIDAD_POR_VENTAS
             // 
             this.MENU_REPORTES_UTILIDAD_POR_VENTAS.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_UTILIDAD_POR_VENTAS.Image")));
@@ -715,6 +725,7 @@
             this.fiscalToolStripMenuItem.Name = "fiscalToolStripMenuItem";
             this.fiscalToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.fiscalToolStripMenuItem.Text = "Fiscal";
+            this.fiscalToolStripMenuItem.Visible = false;
             // 
             // configuracionToolStripMenuItem
             // 
@@ -723,12 +734,13 @@
             this.configuracionToolStripMenuItem.Name = "configuracionToolStripMenuItem";
             this.configuracionToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.configuracionToolStripMenuItem.Text = "Configuración";
+            this.configuracionToolStripMenuItem.Visible = false;
             // 
             // MENU_CONFIGURACION_SISTEMA
             // 
             this.MENU_CONFIGURACION_SISTEMA.Image = global::ModVentaAdm.Properties.Resources.bt_configuracion;
             this.MENU_CONFIGURACION_SISTEMA.Name = "MENU_CONFIGURACION_SISTEMA";
-            this.MENU_CONFIGURACION_SISTEMA.Size = new System.Drawing.Size(115, 22);
+            this.MENU_CONFIGURACION_SISTEMA.Size = new System.Drawing.Size(152, 22);
             this.MENU_CONFIGURACION_SISTEMA.Text = "Sistema";
             this.MENU_CONFIGURACION_SISTEMA.Click += new System.EventHandler(this.MENU_CONFIGURACION_SISTEMA_Click);
             // 
@@ -926,13 +938,11 @@
             this.panel10.Size = new System.Drawing.Size(111, 350);
             this.panel10.TabIndex = 0;
             // 
-            // MENU_REPORTES_UTILIDAD_CONSOLIDADO
+            // cxCToolStripMenuItem
             // 
-            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO.Image = global::ModVentaAdm.Properties.Resources.bt_imprimir_3;
-            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO.Name = "MENU_REPORTES_UTILIDAD_CONSOLIDADO";
-            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO.Size = new System.Drawing.Size(259, 22);
-            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO.Text = "Utilidad Consolidado";
-            this.MENU_REPORTES_UTILIDAD_CONSOLIDADO.Click += new System.EventHandler(this.MENU_REPORTES_UTILIDAD_CONSOLIDADO_Click);
+            this.cxCToolStripMenuItem.Name = "cxCToolStripMenuItem";
+            this.cxCToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.cxCToolStripMenuItem.Text = "CxC";
             // 
             // PrincipalFrm
             // 
@@ -1059,5 +1069,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem fiscalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_UTILIDAD_CONSOLIDADO;
+        private System.Windows.Forms.ToolStripMenuItem cxCToolStripMenuItem;
     }
 }

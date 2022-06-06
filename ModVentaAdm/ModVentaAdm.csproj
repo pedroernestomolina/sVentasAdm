@@ -35,12 +35,6 @@
     <ApplicationIcon>Src\Imagenes\TOOLS.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DtoLib">
-      <HintPath>..\..\..\..\Proyectos FoxSystem\CompraVentaService\ServicePos\bin\Debug\DtoLib.dll</HintPath>
-    </Reference>
-    <Reference Include="DtoLibPos">
-      <HintPath>..\..\..\..\Proyectos FoxSystem\CompraVentaService\ServicePos\bin\Debug\DtoLibPos.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -58,9 +52,6 @@
     <Reference Include="MySql.Data.Entity.EF6, Version=6.8.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.8.1\Assemblies\v4.5\MySql.Data.Entity.EF6.dll</HintPath>
-    </Reference>
-    <Reference Include="ServicePos">
-      <HintPath>..\..\..\..\Proyectos FoxSystem\CompraVentaService\ServicePos\bin\Debug\ServicePos.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -760,7 +751,6 @@
     </None>
     <None Include="Src\Reportes\DS.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Src\Reportes\DS.xss">
@@ -773,6 +763,7 @@
   <ItemGroup>
     <Content Include="conf.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
@@ -863,9 +854,21 @@
     <Content Include="Src\Imagenes\warehouse.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DtoLibPos\DtoLibPos.csproj">
+      <Project>{2002b4d6-37aa-4eb9-b261-8f0f34b375e5}</Project>
+      <Name>DtoLibPos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DtoLib\DtoLib.csproj">
+      <Project>{317543d0-b357-4bba-8ba1-84fa25f4efa6}</Project>
+      <Name>DtoLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibControles\LibControles.csproj">
       <Project>{a5a4936c-22d5-4862-953e-8296c3820a63}</Project>
       <Name>LibControles</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServicePos\ServicePos.csproj">
+      <Project>{c78b98e8-6642-4567-88a5-01afe6aa2e34}</Project>
+      <Name>ServicePos</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
