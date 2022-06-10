@@ -301,6 +301,10 @@ namespace ModVentaAdm.Src.Principal
             Reporte(new Reportes.Modo.Utilidad.Producto.Gestion());
         }
 
+        public void ToolsCxC()
+        {
+        }
+
     }
 
 }

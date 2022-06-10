@@ -272,6 +272,15 @@ namespace ModVentaAdm.Src.Principal
         {
             _controlador.MaestroClientes();
         }
+
+        private void TSM_CXC_TOOLS_Click(object sender, EventArgs e)
+        {
+            ToolsCxC();
+        }
+        private void ToolsCxC()
+        {
+            _controlador.ToolsCxC();
+        }
      
     }
 
