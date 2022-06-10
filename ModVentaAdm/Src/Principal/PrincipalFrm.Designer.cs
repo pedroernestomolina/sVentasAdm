@@ -102,7 +102,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.L_HERRAMIENTA = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.L_VERSION = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -176,11 +176,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(665, 1);
+            this.panel2.Location = new System.Drawing.Point(664, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(218, 52);
+            this.panel2.Size = new System.Drawing.Size(219, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -191,7 +191,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(214, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(215, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -206,7 +206,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(344, 52);
+            this.panel7.Size = new System.Drawing.Size(343, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -225,7 +225,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(340, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(339, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -236,7 +236,7 @@
             this.panel13.Margin = new System.Windows.Forms.Padding(1);
             this.panel13.Name = "panel13";
             this.panel13.Padding = new System.Windows.Forms.Padding(2);
-            this.panel13.Size = new System.Drawing.Size(79, 22);
+            this.panel13.Size = new System.Drawing.Size(78, 22);
             this.panel13.TabIndex = 2;
             // 
             // label5
@@ -246,7 +246,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(2, 2);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 18);
+            this.label5.Size = new System.Drawing.Size(74, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -255,7 +255,7 @@
             // 
             this.panel14.Controls.Add(this.L_FECHA);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(82, 1);
+            this.panel14.Location = new System.Drawing.Point(81, 1);
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
@@ -282,7 +282,7 @@
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(2);
-            this.panel15.Size = new System.Drawing.Size(79, 22);
+            this.panel15.Size = new System.Drawing.Size(78, 22);
             this.panel15.TabIndex = 2;
             // 
             // label3
@@ -292,7 +292,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(2, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 18);
+            this.label3.Size = new System.Drawing.Size(74, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Ruta BD:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -301,7 +301,7 @@
             // 
             this.panel16.Controls.Add(this.L_HOST);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(82, 25);
+            this.panel16.Location = new System.Drawing.Point(81, 25);
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
@@ -324,7 +324,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(347, 1);
+            this.panel17.Location = new System.Drawing.Point(346, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -396,7 +396,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(549, 1);
+            this.panel20.Location = new System.Drawing.Point(548, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -645,7 +645,7 @@
             this.toolStripMenuItem15,
             this.MENU_REPORTES_RESUMEN});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.ventasToolStripMenuItem.Text = "Ventas";
             // 
             // MENU_REPORTES_LIBRO_VENTA
@@ -764,7 +764,7 @@
             // cxCToolStripMenuItem1
             // 
             this.cxCToolStripMenuItem1.Name = "cxCToolStripMenuItem1";
-            this.cxCToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cxCToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
             this.cxCToolStripMenuItem1.Text = "CxC";
             // 
             // fiscalToolStripMenuItem
@@ -851,35 +851,35 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.label1);
+            this.panel5.Controls.Add(this.L_HERRAMIENTA);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(1, 1);
             this.panel5.Margin = new System.Windows.Forms.Padding(1);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(2);
-            this.panel5.Size = new System.Drawing.Size(200, 29);
+            this.panel5.Size = new System.Drawing.Size(250, 29);
             this.panel5.TabIndex = 0;
             // 
-            // label1
+            // L_HERRAMIENTA
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(2, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Tools De Venta";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.L_HERRAMIENTA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_HERRAMIENTA.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_HERRAMIENTA.Location = new System.Drawing.Point(2, 2);
+            this.L_HERRAMIENTA.Name = "L_HERRAMIENTA";
+            this.L_HERRAMIENTA.Size = new System.Drawing.Size(246, 25);
+            this.L_HERRAMIENTA.TabIndex = 2;
+            this.L_HERRAMIENTA.Text = "Tool Ventas Adm.";
+            this.L_HERRAMIENTA.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.L_VERSION);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(203, 1);
+            this.panel6.Location = new System.Drawing.Point(253, 1);
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(2);
-            this.panel6.Size = new System.Drawing.Size(177, 29);
+            this.panel6.Size = new System.Drawing.Size(127, 29);
             this.panel6.TabIndex = 1;
             // 
             // L_VERSION
@@ -888,7 +888,7 @@
             this.L_VERSION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_VERSION.Location = new System.Drawing.Point(2, 2);
             this.L_VERSION.Name = "L_VERSION";
-            this.L_VERSION.Size = new System.Drawing.Size(173, 25);
+            this.L_VERSION.Size = new System.Drawing.Size(123, 25);
             this.L_VERSION.TabIndex = 0;
             this.L_VERSION.Text = "Ver 1.0.0.0";
             this.L_VERSION.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -996,7 +996,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "PrincipalFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tools De Venta";
+            this.Text = "Tool Ventas Adm.";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1045,7 +1045,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label L_HERRAMIENTA;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label L_VERSION;
         private System.Windows.Forms.Panel panel8;

@@ -37,11 +37,13 @@ namespace ModVentaAdm.Src.Principal
         private void Form1_Load(object sender, EventArgs e)
         {
             timer.Start();
+            L_HERRAMIENTA.Text = _controlador.GetNombreHerramienta;
             L_VERSION.Text = _controlador.Version;
             L_HOST.Text = _controlador.Host;
             L_USUARIO.Text = _controlador.Usuario;
             L_FECHA.Text = "";
             L_HORA.Text = "";
+            this.Text = _controlador.GetNombreHerramienta;
         }
 
         public void setControlador(Gestion ctr)

@@ -12,13 +12,13 @@ namespace ModVentaAdm
     public class Gestion
     {
 
-        private Src.Identificacion.Gestion _gestionIdentifica;
+        private Src.Identificacion.ILogin _gLogin ;
         private Src.Principal.Gestion _gestionPrincipal;
         
 
         public Gestion()
         {
-            _gestionIdentifica = new Src.Identificacion.Gestion();
+            _gLogin= new Src.Identificacion.Login();
             _gestionPrincipal = new Src.Principal.Gestion();
         }
 
@@ -30,11 +30,10 @@ namespace ModVentaAdm
                 Sistema.MyData = new DataPrv(Sistema.Instancia, Sistema.BaseDatos);
                 Sistema.EquipoEstacion = Environment.MachineName;
 
-                _gestionIdentifica.Inicializa();
-                _gestionIdentifica.Inicia();
-                if (_gestionIdentifica.IsOk)
+                _gLogin.Inicializa();
+                _gLogin.Inicia();
+                if (_gLogin.IsOk)
                 {
-
                     _gestionPrincipal.Inicializa();
                     _gestionPrincipal.Inicia();
                 }

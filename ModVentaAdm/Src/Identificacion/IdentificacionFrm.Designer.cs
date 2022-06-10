@@ -34,7 +34,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.L_HERRAMIENTA = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -139,7 +139,7 @@
             // panel6
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel6, 2);
-            this.panel6.Controls.Add(this.label4);
+            this.panel6.Controls.Add(this.L_HERRAMIENTA);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(1, 1);
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
@@ -148,17 +148,17 @@
             this.panel6.Size = new System.Drawing.Size(220, 46);
             this.panel6.TabIndex = 1;
             // 
-            // label4
+            // L_HERRAMIENTA
             // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Orange;
-            this.label4.Location = new System.Drawing.Point(2, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(216, 42);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Tools Ventas Adm";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_HERRAMIENTA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_HERRAMIENTA.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_HERRAMIENTA.ForeColor = System.Drawing.Color.Orange;
+            this.L_HERRAMIENTA.Location = new System.Drawing.Point(2, 2);
+            this.L_HERRAMIENTA.Name = "L_HERRAMIENTA";
+            this.L_HERRAMIENTA.Size = new System.Drawing.Size(216, 42);
+            this.L_HERRAMIENTA.TabIndex = 4;
+            this.L_HERRAMIENTA.Text = "Tool Ventas Adm.";
+            this.L_HERRAMIENTA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
@@ -497,7 +497,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button BT_SALIR;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label L_HERRAMIENTA;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;

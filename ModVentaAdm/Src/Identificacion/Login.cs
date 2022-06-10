@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ModVentaAdm.Src.Identificacion
 {
     
-    public class Gestion
+    public class Login: ILogin
     {
 
 
@@ -18,9 +18,10 @@ namespace ModVentaAdm.Src.Identificacion
 
 
         public bool IsOk { get { return _isOk; } }
+        public string GetNombreHerramienta { get { return Sistema.NombreHerramienta; } }
 
         
-        public Gestion()
+        public Login()
         {
             Inicializa();
         }

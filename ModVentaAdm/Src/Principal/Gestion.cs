@@ -30,6 +30,7 @@ namespace ModVentaAdm.Src.Principal
         public string Version { get { return "Ver. " + Application.ProductVersion; } }
         public string Host { get { return Sistema.Instancia + "/" + Sistema.BaseDatos; } }
         public string Usuario { get { return Sistema.Usuario.codigo + Environment.NewLine + Sistema.Usuario.nombre; } }
+        public string GetNombreHerramienta { get { return Sistema.NombreHerramienta; } }
 
 
         public Gestion()

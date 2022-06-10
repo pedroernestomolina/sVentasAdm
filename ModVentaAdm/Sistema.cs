@@ -21,6 +21,7 @@ namespace ModVentaAdm
         public static string EquipoEstacion;
         public static string IdEquipo;
 
+        public static string NombreHerramienta            = "Tool Ventas Adm.";
         public static string Id_SistDocumento_Factura     = "0000000001";
         public static string Id_SistDocumento_NotaCredito = "0000000003";
         public static string Id_SistDocumento_NotaEntrega = "0000000004";

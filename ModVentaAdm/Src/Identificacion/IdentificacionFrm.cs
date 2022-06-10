@@ -15,7 +15,7 @@ namespace ModVentaAdm.Src.Identificacion
     public partial class IdentificacionFrm : Form
     {
 
-        private Gestion _controlador;
+        private ILogin _controlador;
 
 
         public IdentificacionFrm()
@@ -56,10 +56,11 @@ namespace ModVentaAdm.Src.Identificacion
 
         private void IdentificacionFrm_Load(object sender, EventArgs e)
         {
+            L_HERRAMIENTA.Text = _controlador.GetNombreHerramienta;
             Limpiar();
         }
 
-        public void setControlador(Gestion ctr)
+        public void setControlador(ILogin ctr)
         {
             _controlador = ctr;
         }
