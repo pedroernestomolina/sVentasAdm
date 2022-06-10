@@ -11,10 +11,16 @@ namespace ModVentaAdm.Data.Infra
     public interface IClienteGrupo
     {
 
-        OOB.Resultado.Lista<OOB.Maestro.Grupo.Entidad.Ficha> ClienteGrupo_GetLista(OOB.Maestro.Grupo.Lista.Filtro filtro);
-        OOB.Resultado.FichaEntidad<OOB.Maestro.Grupo.Entidad.Ficha> ClienteGrupo_GetFichaById(string id);
-        OOB.Resultado.FichaAuto ClienteGrupo_Agregar(OOB.Maestro.Grupo.Agregar.Ficha ficha);
-        OOB.Resultado.Ficha ClienteGrupo_Editar(OOB.Maestro.Grupo.Editar.Ficha ficha);
+
+        OOB.Resultado.Lista<OOB.Maestro.Grupo.Entidad.Ficha> 
+            ClienteGrupo_GetLista(OOB.Maestro.Grupo.Lista.Filtro filtro);
+        OOB.Resultado.FichaEntidad<OOB.Maestro.Grupo.Entidad.Ficha> 
+            ClienteGrupo_GetFichaById(string id);
+        OOB.Resultado.FichaAuto 
+            ClienteGrupo_Agregar(OOB.Maestro.Grupo.Agregar.Ficha ficha);
+        OOB.Resultado.Ficha 
+            ClienteGrupo_Editar(OOB.Maestro.Grupo.Editar.Ficha ficha);
+
 
     }
 

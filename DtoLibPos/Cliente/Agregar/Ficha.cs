@@ -11,6 +11,7 @@ namespace DtoLibPos.Cliente.Agregar
     public class Ficha
     {
 
+        public string codigoSucursalRegistro { get; set; }
         public string codigo { get; set; }
         public string nombre{ get; set; }
         public string ciRif { get; set; }
@@ -75,6 +76,7 @@ namespace DtoLibPos.Cliente.Agregar
 
         public Ficha()
         {
+            codigoSucursalRegistro = "";
             codigo = "";
             nombre = "";
             ciRif = "";

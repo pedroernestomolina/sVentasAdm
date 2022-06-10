@@ -2064,7 +2064,7 @@
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(85, 23);
             this.label26.TabIndex = 2;
-            this.label26.Text = "Lìmite:";
+            this.label26.Text = "Lìmite($):";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel68

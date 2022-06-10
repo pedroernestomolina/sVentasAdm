@@ -12,7 +12,9 @@ namespace ProvPos
     public partial class Provider: IPos.IProvider
     {
 
-        public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha> Sistema_TipoDocumento_GetFichaById(string id)
+
+        public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha> 
+            Sistema_TipoDocumento_GetFichaById(string id)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha>();
 
@@ -47,8 +49,38 @@ namespace ProvPos
 
             return result;
         }
+        public DtoLib.ResultadoLista<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha> 
+            Sistema_TipoDocumento_GetLista()
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha>();
 
-        public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha> Sistema_Serie_GetFichaById(string id)
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+
+                    var sql = @"SELECT auto as autoId, tipo, codigo, nombre, signo, siglas
+                                FROM sistema_documentos 
+                                WHERE 1=1 and tipo='Ventas'";
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha>(sql).ToList();
+                    result.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return result;
+        }
+
+
+        public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha> 
+            Sistema_Serie_GetFichaById(string id)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha>();
 
@@ -83,8 +115,8 @@ namespace ProvPos
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha> Sistema_Serie_GetFichaByNombre(string nombre)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha> 
+            Sistema_Serie_GetFichaByNombre(string nombre)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha>();
 
@@ -119,8 +151,34 @@ namespace ProvPos
 
             return result;
         }
+        public DtoLib.ResultadoLista<DtoLibPos.Sistema.Serie.Entidad.Ficha> 
+            Sistema_Serie_GetLista()
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibPos.Sistema.Serie.Entidad.Ficha>();
 
-        public DtoLib.ResultadoEntidad<string> Sistema_ClaveAcceso_GetByIdNivel(int id)
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql = @"SELECT auto, serie, control 
+                                FROM empresa_series_fiscales 
+                                WHERE 1=1";
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.Sistema.Serie.Entidad.Ficha>(sql).ToList();
+                    result.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return result;
+        }
+
+
+        public DtoLib.ResultadoEntidad<string> 
+            Sistema_ClaveAcceso_GetByIdNivel(int id)
         {
             var result = new DtoLib.ResultadoEntidad<string>();
 
@@ -170,59 +228,9 @@ namespace ProvPos
             return result;
         }
 
-        public DtoLib.ResultadoLista<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha> Sistema_TipoDocumento_GetLista()
-        {
-            var result = new DtoLib.ResultadoLista<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha>();
-
-            try
-            {
-                using (var cnn = new PosEntities(_cnPos.ConnectionString))
-                {
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
-
-                    var sql = @"SELECT auto as autoId, tipo, codigo, nombre, signo, siglas
-                                FROM sistema_documentos 
-                                WHERE 1=1 and tipo='Ventas'";
-                    var lst= cnn.Database.SqlQuery<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha>(sql).ToList();
-                    result.Lista= lst;
-                }
-            }
-            catch (Exception e)
-            {
-                result.Mensaje = e.Message;
-                result.Result = DtoLib.Enumerados.EnumResult.isError;
-            }
-
-            return result;
-        }
-
-        public DtoLib.ResultadoLista<DtoLibPos.Sistema.Serie.Entidad.Ficha> Sistema_Serie_GetLista()
-        {
-            var result = new DtoLib.ResultadoLista<DtoLibPos.Sistema.Serie.Entidad.Ficha>();
-
-            try
-            {
-                using (var cnn = new PosEntities(_cnPos.ConnectionString))
-                {
-                    var sql = @"SELECT auto, serie, control 
-                                FROM empresa_series_fiscales 
-                                WHERE 1=1";
-                    var lst= cnn.Database.SqlQuery<DtoLibPos.Sistema.Serie.Entidad.Ficha>(sql).ToList();
-                    result.Lista = lst;
-                }
-            }
-            catch (Exception e)
-            {
-                result.Mensaje = e.Message;
-                result.Result = DtoLib.Enumerados.EnumResult.isError;
-            }
-
-            return result;
-        }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Empresa.Ficha> Sistema_Empresa_GetFicha()
+        
+        public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Empresa.Ficha> 
+            Sistema_Empresa_GetFicha()
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Empresa.Ficha>();
 
@@ -246,7 +254,9 @@ namespace ProvPos
             return result;
         }
 
-        public DtoLib.ResultadoLista<DtoLibPos.Sistema.Estado.Entidad.Ficha> Sistema_Estado_GetLista()
+
+        public DtoLib.ResultadoLista<DtoLibPos.Sistema.Estado.Entidad.Ficha> 
+            Sistema_Estado_GetLista()
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.Sistema.Estado.Entidad.Ficha>();
 
@@ -269,6 +279,36 @@ namespace ProvPos
 
             return result;
         }
+
+
+        public DtoLib.ResultadoEntidad<string> 
+            Sistema_GetCodigoSucursal()
+        {
+            var result = new DtoLib.ResultadoEntidad<string>();
+
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql = @"SELECT codigo_empresa 
+                                FROM sistema";
+                    var ent = cnn.Database.SqlQuery<string>(sql).FirstOrDefault();
+                    if (ent == null) 
+                    {
+                        result.Entidad = "";
+                    }
+                    result.Entidad = ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return result;
+        }
+
 
     }
 

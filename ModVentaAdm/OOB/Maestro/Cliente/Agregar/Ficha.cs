@@ -11,6 +11,7 @@ namespace ModVentaAdm.OOB.Maestro.Cliente.Agregar
     public class Ficha
     {
 
+        public string codigoSucursalRegistro { get; set; }  //identifica que sucursal registró el cliente
         public string codigo { get; set; }
         public string nombre { get; set; }
         public string ciRif { get; set; }
@@ -75,6 +76,7 @@ namespace ModVentaAdm.OOB.Maestro.Cliente.Agregar
 
         public Ficha()
         {
+            codigoSucursalRegistro = "";
             codigo = "";
             nombre = "";
             ciRif = "";

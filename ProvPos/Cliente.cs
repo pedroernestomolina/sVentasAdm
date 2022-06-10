@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,9 @@ namespace ProvPos
     public partial class Provider: IPos.IProvider
     {
 
-        public DtoLib.ResultadoLista<DtoLibPos.Cliente.Lista.Ficha> Cliente_GetLista(DtoLibPos.Cliente.Lista.Filtro filtro)
+
+        public DtoLib.ResultadoLista<DtoLibPos.Cliente.Lista.Ficha> 
+            Cliente_GetLista(DtoLibPos.Cliente.Lista.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.Cliente.Lista.Ficha>();
 
@@ -100,8 +103,8 @@ namespace ProvPos
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Entidad.Ficha> Cliente_GetFichaById(string id)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Entidad.Ficha> 
+            Cliente_GetFichaById(string id)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Entidad.Ficha>();
 
@@ -169,8 +172,8 @@ namespace ProvPos
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Entidad.Ficha> Cliente_GetFichaByCiRif(string ciRif)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Entidad.Ficha> 
+            Cliente_GetFichaByCiRif(string ciRif)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Entidad.Ficha>();
 
@@ -238,7 +241,117 @@ namespace ProvPos
             return result;
         }
 
-        public DtoLib.ResultadoAuto Cliente_Agregar(DtoLibPos.Cliente.Agregar.Ficha ficha)
+
+        public DtoLib.ResultadoLista<DtoLibPos.Cliente.Documento.Ficha> 
+            Cliente_Documento_GetLista(DtoLibPos.Cliente.Documento.Filtro filtro)
+        {
+            var rt = new DtoLib.ResultadoLista<DtoLibPos.Cliente.Documento.Ficha>();
+
+            try
+            {
+                using (var cnn= new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql_1 = @"SELECT v.auto as id, v.fecha, v.documento, v.total as monto, 
+                                    v.monto_divisa as montoDivisa, v.factor_cambio as tasaDivisa, 
+                                    v.estatus_anulado as estatus, v.tipo as codTipoDoc, v.serie, 
+                                    v.signo, v.documento_nombre as nombreTipoDoc  ";
+                    var sql_2 = " FROM ventas as v";
+                    var sql_3 = " where 1=1  ";
+                    var sql_4 = "";
+
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+
+                    if (filtro.autoCliente !="")
+                    {
+                        p1.ParameterName = "@p1";
+                        p1.Value = filtro.autoCliente;
+                        sql_3 += " and v.auto_cliente=@p1  ";
+                    }
+                    if (filtro.desde.HasValue)
+                    {
+                        p2.ParameterName = "@p2";
+                        p2.Value = filtro.desde;
+                        sql_3 += " and v.fecha>=@p2 ";
+                    }
+                    if (filtro.hasta.HasValue)
+                    {
+                        p3.ParameterName = "@p3";
+                        p3.Value = filtro.hasta;
+                        sql_3 += " and v.fecha<=@p3 ";
+                    }
+                    if (filtro.tipoDoc!= "")
+                    {
+                        p4.ParameterName = "@p4";
+                        p4.Value = filtro.tipoDoc;
+                        sql_3 += " and v.tipo=@p4 ";
+                    }
+
+                    var sql = sql_1 + sql_2 + sql_3 + sql_4;
+                    var list = cnn.Database.SqlQuery<DtoLibPos.Cliente.Documento.Ficha>(sql, p1, p2, p3, p4).ToList();
+                    rt.Lista = list;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return rt;
+        }
+        public DtoLib.ResultadoLista<DtoLibPos.Cliente.Articulos.Ficha> 
+            Cliente_ArticuloVenta_GetLista(DtoLibPos.Cliente.Articulos.Filtro filtro)
+        {
+            var rt = new DtoLib.ResultadoLista<DtoLibPos.Cliente.Articulos.Ficha>();
+
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql_1 = @"SELECT p.codigo as codigoPrd, p.nombre as nombrePrd, v.fecha, v.documento, 
+                            vd.cantidad, vd.cantidad_und as cantUnd, vd.empaque, vd.estatus_anulado as estatus, 
+                            vd.contenido_empaque as contenidoEmp, v.tipo as codTipoDoc, v.serie, v.factor_cambio as tasaCambio, 
+                            vd.precio_und as precioUnd, v.signo, v.documento_nombre as nombreTipoDoc ";
+
+                    var sql_2 = @" FROM ventas_detalle as vd 
+                                join productos as p on vd.auto_producto=p.auto 
+                                join ventas as v on vd.auto_documento=v.auto ";
+
+                    var sql_3 = " where v.auto_cliente=@p1 and v.fecha>=@p2 and v.fecha<=@p3 and v.tipo in ('01','04') ";
+                    var sql_4 = "";
+
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+
+                    p1.ParameterName = "@p1";
+                    p1.Value = filtro.autoCliente;
+                    p2.ParameterName = "@p2";
+                    p2.Value = filtro.desde;
+                    p3.ParameterName = "@p3";
+                    p3.Value = filtro.hasta;
+
+                    var sql = sql_1 + sql_2 + sql_3 + sql_4;
+                    var list = cnn.Database.SqlQuery<DtoLibPos.Cliente.Articulos.Ficha>(sql, p1, p2, p3, p4).ToList();
+                    rt.Lista = list;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return rt;
+        }
+
+
+        public DtoLib.ResultadoAuto
+            Cliente_Agregar(DtoLibPos.Cliente.Agregar.Ficha ficha)
         {
             var result = new DtoLib.ResultadoAuto();
 
@@ -256,11 +369,11 @@ namespace ProvPos
                             return result;
                         }
 
+                        var _largo = 10 - ficha.codigoSucursalRegistro.Trim().Length;
                         var fechaSistema = ctx.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
                         var cntCliente = ctx.Database.SqlQuery<int>("select a_clientes from sistema_contadores").FirstOrDefault();
-                        var AutoCliente = cntCliente.ToString().Trim().PadLeft(10, '0');
+                        var AutoCliente = ficha.codigoSucursalRegistro+cntCliente.ToString().Trim().PadLeft(_largo, '0');
                         var fechaNula = new DateTime(2000, 01, 01);
-
                         var ent = new clientes()
                         {
                             auto = AutoCliente,
@@ -328,9 +441,9 @@ namespace ProvPos
                             telefono2 = ficha.telefono2,
                             fax = ficha.fax,
                             celular = ficha.celular,
-                            abc=ficha.abc,
-                            fecha_clasificacion=fechaNula,
-                            monto_clasificacion=ficha.montoClasificacion,
+                            abc = ficha.abc,
+                            fecha_clasificacion = fechaNula,
+                            monto_clasificacion = ficha.montoClasificacion,
                         };
                         ctx.clientes.Add(ent);
                         ctx.SaveChanges();
@@ -340,43 +453,14 @@ namespace ProvPos
                     }
                 }
             }
-            catch (DbEntityValidationException e)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                var msg = "";
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        msg += ve.ErrorMessage;
-                    }
-                }
-                result.Mensaje = msg;
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
-                var dbUpdateEx = ex as System.Data.Entity.Infrastructure.DbUpdateException;
-                var sqlEx = dbUpdateEx.InnerException;
-                if (sqlEx != null)
-                {
-                    var exx = (MySql.Data.MySqlClient.MySqlException)sqlEx.InnerException;
-                    if (exx != null)
-                    {
-                        if (exx.Number == 1452)
-                        {
-                            result.Mensaje = "PROBLEMA DE CLAVE FORANEA" + Environment.NewLine + exx.Message;
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
-                        }
-                        else 
-                        {
-                            result.Mensaje = exx.Message;
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
-                        }
-                    }
-                }
-                result.Mensaje = ex.Message;
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
@@ -386,114 +470,8 @@ namespace ProvPos
             }
             return result;
         }
-
-        public DtoLib.ResultadoLista<DtoLibPos.Cliente.Documento.Ficha> Cliente_Documento_GetLista(DtoLibPos.Cliente.Documento.Filtro filtro)
-        {
-            var rt = new DtoLib.ResultadoLista<DtoLibPos.Cliente.Documento.Ficha>();
-
-            try
-            {
-                using (var cnn= new PosEntities(_cnPos.ConnectionString))
-                {
-                    var sql_1 = @"SELECT v.auto as id, v.fecha, v.documento, v.total as monto, 
-                                    v.monto_divisa as montoDivisa, v.factor_cambio as tasaDivisa, 
-                                    v.estatus_anulado as estatus, v.tipo as codTipoDoc, v.serie, 
-                                    v.signo, v.documento_nombre as nombreTipoDoc  ";
-                    var sql_2 = " FROM ventas as v";
-                    var sql_3 = " where 1=1  ";
-                    var sql_4 = "";
-
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
-
-                    if (filtro.autoCliente !="")
-                    {
-                        p1.ParameterName = "@p1";
-                        p1.Value = filtro.autoCliente;
-                        sql_3 += " and v.auto_cliente=@p1  ";
-                    }
-                    if (filtro.desde.HasValue)
-                    {
-                        p2.ParameterName = "@p2";
-                        p2.Value = filtro.desde;
-                        sql_3 += " and v.fecha>=@p2 ";
-                    }
-                    if (filtro.hasta.HasValue)
-                    {
-                        p3.ParameterName = "@p3";
-                        p3.Value = filtro.hasta;
-                        sql_3 += " and v.fecha<=@p3 ";
-                    }
-                    if (filtro.tipoDoc!= "")
-                    {
-                        p4.ParameterName = "@p4";
-                        p4.Value = filtro.tipoDoc;
-                        sql_3 += " and v.tipo=@p4 ";
-                    }
-
-                    var sql = sql_1 + sql_2 + sql_3 + sql_4;
-                    var list = cnn.Database.SqlQuery<DtoLibPos.Cliente.Documento.Ficha>(sql, p1, p2, p3, p4).ToList();
-                    rt.Lista = list;
-                }
-            }
-            catch (Exception e)
-            {
-                rt.Mensaje = e.Message;
-                rt.Result = DtoLib.Enumerados.EnumResult.isError;
-            }
-
-            return rt;
-        }
-
-        public DtoLib.ResultadoLista<DtoLibPos.Cliente.Articulos.Ficha> Cliente_ArticuloVenta_GetLista(DtoLibPos.Cliente.Articulos.Filtro filtro)
-        {
-            var rt = new DtoLib.ResultadoLista<DtoLibPos.Cliente.Articulos.Ficha>();
-
-            try
-            {
-                using (var cnn = new PosEntities(_cnPos.ConnectionString))
-                {
-                    var sql_1 = @"SELECT p.codigo as codigoPrd, p.nombre as nombrePrd, v.fecha, v.documento, 
-                            vd.cantidad, vd.cantidad_und as cantUnd, vd.empaque, vd.estatus_anulado as estatus, 
-                            vd.contenido_empaque as contenidoEmp, v.tipo as codTipoDoc, v.serie, v.factor_cambio as tasaCambio, 
-                            vd.precio_und as precioUnd, v.signo, v.documento_nombre as nombreTipoDoc ";
-
-                    var sql_2 = @" FROM ventas_detalle as vd 
-                                join productos as p on vd.auto_producto=p.auto 
-                                join ventas as v on vd.auto_documento=v.auto ";
-
-                    var sql_3 = " where v.auto_cliente=@p1 and v.fecha>=@p2 and v.fecha<=@p3 and v.tipo in ('01','04') ";
-                    var sql_4 = "";
-
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
-
-                    p1.ParameterName = "@p1";
-                    p1.Value = filtro.autoCliente;
-                    p2.ParameterName = "@p2";
-                    p2.Value = filtro.desde;
-                    p3.ParameterName = "@p3";
-                    p3.Value = filtro.hasta;
-
-                    var sql = sql_1 + sql_2 + sql_3 + sql_4;
-                    var list = cnn.Database.SqlQuery<DtoLibPos.Cliente.Articulos.Ficha>(sql, p1, p2, p3, p4).ToList();
-                    rt.Lista = list;
-                }
-            }
-            catch (Exception e)
-            {
-                rt.Mensaje = e.Message;
-                rt.Result = DtoLib.Enumerados.EnumResult.isError;
-            }
-
-            return rt;
-        }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Editar.ObtenerData.Ficha> Cliente_Editar_GetFicha(string autoId)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Editar.ObtenerData.Ficha> 
+            Cliente_Editar_GetFicha(string autoId)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Editar.ObtenerData.Ficha>();
 
@@ -543,6 +521,16 @@ namespace ProvPos
                     result.Entidad = nr;
                 }
             }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
             catch (Exception e)
             {
                 result.Mensaje = e.Message;
@@ -551,8 +539,8 @@ namespace ProvPos
 
             return result;
         }
-
-        public DtoLib.Resultado Cliente_Editar(DtoLibPos.Cliente.Editar.Actualizar.Ficha ficha)
+        public DtoLib.Resultado 
+            Cliente_Editar(DtoLibPos.Cliente.Editar.Actualizar.Ficha ficha)
         {
             var result = new DtoLib.Resultado();
 
@@ -653,7 +641,9 @@ namespace ProvPos
             return result;
         }
 
-        public DtoLib.Resultado Cliente_Inactivar(DtoLibPos.Cliente.EstatusActivarInactivar.Ficha ficha)
+
+        public DtoLib.Resultado 
+            Cliente_Inactivar(DtoLibPos.Cliente.EstatusActivarInactivar.Ficha ficha)
         {
             var result = new DtoLib.Resultado();
 
@@ -726,8 +716,8 @@ namespace ProvPos
             }
             return result;
         }
-
-        public DtoLib.Resultado Cliente_Activar(DtoLibPos.Cliente.EstatusActivarInactivar.Ficha ficha)
+        public DtoLib.Resultado 
+            Cliente_Activar(DtoLibPos.Cliente.EstatusActivarInactivar.Ficha ficha)
         {
             var result = new DtoLib.Resultado();
 
@@ -804,7 +794,8 @@ namespace ProvPos
 
         //
 
-        public DtoLib.Resultado Cliente_Agregar_Validar(DtoLibPos.Cliente.Agregar.FichaValidar ficha)
+        public DtoLib.Resultado 
+            Cliente_Agregar_Validar(DtoLibPos.Cliente.Agregar.FichaValidar ficha)
         {
             var rt = new DtoLib.Resultado();
 
@@ -842,8 +833,8 @@ namespace ProvPos
 
             return rt;
         }
-
-        public DtoLib.Resultado Cliente_Editar_Validar(DtoLibPos.Cliente.Editar.Actualizar.FichaValidar ficha)
+        public DtoLib.Resultado 
+            Cliente_Editar_Validar(DtoLibPos.Cliente.Editar.Actualizar.FichaValidar ficha)
         {
             var rt = new DtoLib.Resultado();
 
@@ -895,8 +886,8 @@ namespace ProvPos
 
             return rt;
         }
-
-        public DtoLib.Resultado Cliente_EstatusActivar_Validar(string autoId)
+        public DtoLib.Resultado 
+            Cliente_EstatusActivar_Validar(string autoId)
         {
             var rt = new DtoLib.Resultado();
 
@@ -927,8 +918,8 @@ namespace ProvPos
 
             return rt;
         }
-
-        public DtoLib.Resultado Cliente_EstatusInactivar_Validar(string autoId)
+        public DtoLib.Resultado 
+            Cliente_EstatusInactivar_Validar(string autoId)
         {
             var rt = new DtoLib.Resultado();
 
@@ -959,6 +950,7 @@ namespace ProvPos
 
             return rt;
         }
+
 
     }
 

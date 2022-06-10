@@ -12,7 +12,8 @@ namespace ModVentaAdm.Data.Prov
     public partial class DataPrv : IData
     {
 
-        public OOB.Resultado.Lista<OOB.Maestro.Zona.Entidad.Ficha> ClienteZona_GetLista(OOB.Maestro.Zona.Lista.Filtro filtro)
+        public OOB.Resultado.Lista<OOB.Maestro.Zona.Entidad.Ficha> 
+            ClienteZona_GetLista(OOB.Maestro.Zona.Lista.Filtro filtro)
         {
             var result = new OOB.Resultado.Lista<OOB.Maestro.Zona.Entidad.Ficha>();
 
@@ -48,8 +49,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
-        public OOB.Resultado.FichaEntidad<OOB.Maestro.Zona.Entidad.Ficha> ClienteZona_GetFichaById(string id)
+        public OOB.Resultado.FichaEntidad<OOB.Maestro.Zona.Entidad.Ficha> 
+            ClienteZona_GetFichaById(string id)
         {
             var result = new OOB.Resultado.FichaEntidad<OOB.Maestro.Zona.Entidad.Ficha>();
 
@@ -71,13 +72,14 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
-        public OOB.Resultado.FichaAuto ClienteZona_Agregar(OOB.Maestro.Zona.Agregar.Ficha ficha)
+        public OOB.Resultado.FichaAuto
+            ClienteZona_Agregar(OOB.Maestro.Zona.Agregar.Ficha ficha)
         {
             var rt = new OOB.Resultado.FichaAuto();
 
             var fichaDTO = new DtoLibPos.ClienteZona.Agregar.Ficha()
             {
+                codigoSucursalRegistro = ficha.codigoSucursalRegistro,
                 nombre = ficha.nombre,
                 codigo = ficha.codigo,
             };
@@ -92,8 +94,8 @@ namespace ModVentaAdm.Data.Prov
 
             return rt;
         }
-
-        public OOB.Resultado.Ficha ClienteZona_Editar(OOB.Maestro.Zona.Editar.Ficha ficha)
+        public OOB.Resultado.Ficha 
+            ClienteZona_Editar(OOB.Maestro.Zona.Editar.Ficha ficha)
         {
             var rt = new OOB.Resultado.Ficha();
 

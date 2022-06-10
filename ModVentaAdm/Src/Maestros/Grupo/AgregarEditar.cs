@@ -72,6 +72,7 @@ namespace ModVentaAdm.Src.Maestros.Grupo
                     {
                         var xficha = new OOB.Maestro.Grupo.Agregar.Ficha()
                         {
+                            codigoSucursalRegistro = Sistema.Sucursal.codigo,
                             nombre = Nombre,
                             codigo = Codigo,
                         };

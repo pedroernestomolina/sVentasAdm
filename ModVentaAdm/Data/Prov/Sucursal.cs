@@ -12,7 +12,9 @@ namespace ModVentaAdm.Data.Prov
     public partial class DataPrv: IData
     {
 
-        public OOB.Resultado.FichaEntidad<OOB.Sucursal.Entidad.Ficha> Sucursal_GetFichaById(string id)
+
+        public OOB.Resultado.FichaEntidad<OOB.Sucursal.Entidad.Ficha> 
+            Sucursal_GetFichaById(string id)
         {
             var result = new OOB.Resultado.FichaEntidad<OOB.Sucursal.Entidad.Ficha>();
 
@@ -40,8 +42,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
-        public OOB.Resultado.Lista<OOB.Sucursal.Entidad.Ficha> Sucursal_GetLista()
+        public OOB.Resultado.Lista<OOB.Sucursal.Entidad.Ficha> 
+            Sucursal_GetLista()
         {
             var result = new OOB.Resultado.Lista<OOB.Sucursal.Entidad.Ficha>();
 
@@ -75,6 +77,23 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
+        public OOB.Resultado.FichaEntidad<string> 
+            Sucursal_GetId_ByCodigo(string codigoSuc)
+        {
+            var result = new OOB.Resultado.FichaEntidad<string>();
+
+            var r01 = MyData.Sucursal_GetId_ByCodigo(codigoSuc);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                result.Mensaje = r01.Mensaje;
+                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return result;
+            }
+            result.Entidad = r01.Entidad;
+
+            return result;
+        }
+
 
     }
 

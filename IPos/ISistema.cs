@@ -11,18 +11,34 @@ namespace IPos
     public interface ISistema
     {
 
-        DtoLib.ResultadoEntidad<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha> Sistema_TipoDocumento_GetFichaById(string id);
-        DtoLib.ResultadoLista<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha> Sistema_TipoDocumento_GetLista();
+        DtoLib.ResultadoEntidad<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha> 
+            Sistema_TipoDocumento_GetFichaById(string id);
+        DtoLib.ResultadoLista<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha> 
+            Sistema_TipoDocumento_GetLista();
 
-        DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha> Sistema_Serie_GetFichaById(string id);
-        DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha> Sistema_Serie_GetFichaByNombre(string nombre);
-        DtoLib.ResultadoLista<DtoLibPos.Sistema.Serie.Entidad.Ficha> Sistema_Serie_GetLista();
 
-        DtoLib.ResultadoEntidad<string> Sistema_ClaveAcceso_GetByIdNivel(int id);
+        DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha> 
+            Sistema_Serie_GetFichaById(string id);
+        DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha> 
+            Sistema_Serie_GetFichaByNombre(string nombre);
+        DtoLib.ResultadoLista<DtoLibPos.Sistema.Serie.Entidad.Ficha> 
+            Sistema_Serie_GetLista();
 
-        DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Empresa.Ficha> Sistema_Empresa_GetFicha();
 
-        DtoLib.ResultadoLista<DtoLibPos.Sistema.Estado.Entidad.Ficha> Sistema_Estado_GetLista();
+        DtoLib.ResultadoEntidad<string> 
+            Sistema_ClaveAcceso_GetByIdNivel(int id);
+
+
+        DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Empresa.Ficha> 
+            Sistema_Empresa_GetFicha();
+
+
+        DtoLib.ResultadoLista<DtoLibPos.Sistema.Estado.Entidad.Ficha> 
+            Sistema_Estado_GetLista();
+
+
+        DtoLib.ResultadoEntidad<string> 
+            Sistema_GetCodigoSucursal();
 
     }
 

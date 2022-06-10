@@ -12,7 +12,8 @@ namespace ModVentaAdm.Data.Prov
     public partial class DataPrv : IData
     {
 
-        public OOB.Resultado.FichaEntidad<OOB.Sistema.Empresa.Entidad.Ficha> Sistema_Empresa_GetFicha()
+        public OOB.Resultado.FichaEntidad<OOB.Sistema.Empresa.Entidad.Ficha> 
+            Sistema_Empresa_GetFicha()
         {
             var result = new OOB.Resultado.FichaEntidad<OOB.Sistema.Empresa.Entidad.Ficha>();
 
@@ -34,8 +35,36 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
+        public OOB.Resultado.FichaEntidad<OOB.Sistema.TipoDocumento.Entidad.Ficha>
+            Sistema_TipoDocumento_GetFichaById(string id)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Sistema.TipoDocumento.Entidad.Ficha>();
 
-        public OOB.Resultado.Lista<OOB.Sistema.Vendedor.Entidad.Ficha> Sistema_Vendedor_GetLista()
+            var r01 = MyData.Sistema_TipoDocumento_GetFichaById(id);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                result.Mensaje = r01.Mensaje;
+                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return result;
+            }
+
+            var ent = r01.Entidad;
+            result.Entidad = new OOB.Sistema.TipoDocumento.Entidad.Ficha()
+            {
+                id = ent.autoId,
+                codigo = ent.codigo,
+                descripcion = ent.nombre,
+                siglas = ent.siglas,
+                signo = ent.signo,
+                tipo = ent.tipo,
+            };
+
+            return result;
+        }
+        
+
+        public OOB.Resultado.Lista<OOB.Sistema.Vendedor.Entidad.Ficha> 
+            Sistema_Vendedor_GetLista()
         {
             var result = new OOB.Resultado.Lista<OOB.Sistema.Vendedor.Entidad.Ficha>();
 
@@ -69,7 +98,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-        public OOB.Resultado.Lista<OOB.Sistema.Cobrador.Entidad.Ficha> Sistema_Cobrador_GetLista()
+        public OOB.Resultado.Lista<OOB.Sistema.Cobrador.Entidad.Ficha> 
+            Sistema_Cobrador_GetLista()
         {
             var result = new OOB.Resultado.Lista<OOB.Sistema.Cobrador.Entidad.Ficha>();
 
@@ -103,7 +133,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-        public OOB.Resultado.Lista<OOB.Sistema.Estado.Entidad.Ficha> Sistema_Estado_GetLista()
+        public OOB.Resultado.Lista<OOB.Sistema.Estado.Entidad.Ficha> 
+            Sistema_Estado_GetLista()
         {
             var result = new OOB.Resultado.Lista<OOB.Sistema.Estado.Entidad.Ficha>();
 
@@ -135,7 +166,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-        public OOB.Resultado.Lista<OOB.Sistema.Transporte.Entidad.Ficha> Sistema_Transporte_GetLista()
+        public OOB.Resultado.Lista<OOB.Sistema.Transporte.Entidad.Ficha> 
+            Sistema_Transporte_GetLista()
         {
             var result = new OOB.Resultado.Lista<OOB.Sistema.Transporte.Entidad.Ficha>();
 
@@ -169,7 +201,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-        public OOB.Resultado.Lista<OOB.Sistema.Deposito.Entidad.Ficha> Deposito_GetLista(OOB.Sistema.Deposito.Lista.Filtro filtro)
+        public OOB.Resultado.Lista<OOB.Sistema.Deposito.Entidad.Ficha> 
+            Deposito_GetLista(OOB.Sistema.Deposito.Lista.Filtro filtro)
         {
             var result = new OOB.Resultado.Lista<OOB.Sistema.Deposito.Entidad.Ficha>();
 
@@ -204,34 +237,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
-        public OOB.Resultado.FichaEntidad<OOB.Sistema.TipoDocumento.Entidad.Ficha> Sistema_TipoDocumento_GetFichaById(string id)
-        {
-            var result = new OOB.Resultado.FichaEntidad<OOB.Sistema.TipoDocumento.Entidad.Ficha>();
-
-            var r01 = MyData.Sistema_TipoDocumento_GetFichaById(id);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                result.Mensaje = r01.Mensaje;
-                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return result;
-            }
-
-            var ent = r01.Entidad;
-            result.Entidad = new OOB.Sistema.TipoDocumento.Entidad.Ficha()
-            {
-                id = ent.autoId,
-                codigo = ent.codigo,
-                descripcion = ent.nombre,
-                siglas = ent.siglas,
-                signo = ent.signo,
-                tipo = ent.tipo,
-            };
-
-            return result;
-        }
-
-        public OOB.Resultado.Lista<OOB.Sistema.Fiscal.Entidad.Ficha> Sistema_TasaFiscal_GetLista()
+        public OOB.Resultado.Lista<OOB.Sistema.Fiscal.Entidad.Ficha>
+            Sistema_TasaFiscal_GetLista()
         {
             var result = new OOB.Resultado.Lista<OOB.Sistema.Fiscal.Entidad.Ficha>();
 
@@ -244,9 +251,9 @@ namespace ModVentaAdm.Data.Prov
             }
 
             var lst = new List<OOB.Sistema.Fiscal.Entidad.Ficha>();
-            if (r01.Lista != null) 
+            if (r01.Lista != null)
             {
-                if (r01.Lista.Count > 0) 
+                if (r01.Lista.Count > 0)
                 {
                     lst = r01.Lista.Select(s =>
                     {
@@ -263,6 +270,24 @@ namespace ModVentaAdm.Data.Prov
             result.ListaD = lst;
 
             return result;
+        }
+
+
+        public OOB.Resultado.FichaEntidad<string> 
+            Sistema_GetCodigoSucursal()
+        {
+            var rt = new OOB.Resultado.FichaEntidad<string>();
+
+            var r01 = MyData.Sistema_GetCodigoSucursal();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            rt.Entidad = r01.Entidad;
+
+            return rt;
         }
 
     }

@@ -72,6 +72,7 @@ namespace ModVentaAdm.Src.Maestros.Zona
                     {
                         var xficha = new OOB.Maestro.Zona.Agregar.Ficha()
                         {
+                            codigoSucursalRegistro = Sistema.Sucursal.codigo,
                             nombre = Nombre,
                             codigo = Codigo,
                         };

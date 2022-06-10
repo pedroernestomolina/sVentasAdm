@@ -12,7 +12,9 @@ namespace ModVentaAdm.Data.Prov
     public partial class DataPrv : IData
     {
 
-        public OOB.Resultado.Lista<OOB.Maestro.Grupo.Entidad.Ficha> ClienteGrupo_GetLista(OOB.Maestro.Grupo.Lista.Filtro filtro)
+
+        public OOB.Resultado.Lista<OOB.Maestro.Grupo.Entidad.Ficha> 
+            ClienteGrupo_GetLista(OOB.Maestro.Grupo.Lista.Filtro filtro)
         {
             var result = new OOB.Resultado.Lista<OOB.Maestro.Grupo.Entidad.Ficha>();
 
@@ -48,8 +50,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
-        public OOB.Resultado.FichaEntidad<OOB.Maestro.Grupo.Entidad.Ficha> ClienteGrupo_GetFichaById(string id)
+        public OOB.Resultado.FichaEntidad<OOB.Maestro.Grupo.Entidad.Ficha> 
+            ClienteGrupo_GetFichaById(string id)
         {
             var result = new OOB.Resultado.FichaEntidad<OOB.Maestro.Grupo.Entidad.Ficha>();
 
@@ -71,13 +73,14 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
-        public OOB.Resultado.FichaAuto ClienteGrupo_Agregar(OOB.Maestro.Grupo.Agregar.Ficha ficha)
+        public OOB.Resultado.FichaAuto 
+            ClienteGrupo_Agregar(OOB.Maestro.Grupo.Agregar.Ficha ficha)
         {
             var rt = new OOB.Resultado.FichaAuto();
 
             var fichaDTO = new DtoLibPos.ClienteGrupo.Agregar.Ficha()
             {
+                codigoSucursalRegistro = ficha.codigoSucursalRegistro,
                 nombre = ficha.nombre,
                 codigo = ficha.codigo,
             };
@@ -92,8 +95,8 @@ namespace ModVentaAdm.Data.Prov
 
             return rt;
         }
-
-        public OOB.Resultado.Ficha ClienteGrupo_Editar(OOB.Maestro.Grupo.Editar.Ficha ficha)
+        public OOB.Resultado.Ficha 
+            ClienteGrupo_Editar(OOB.Maestro.Grupo.Editar.Ficha ficha)
         {
             var rt = new OOB.Resultado.Ficha();
 
@@ -113,6 +116,7 @@ namespace ModVentaAdm.Data.Prov
 
             return rt;
         }
+
 
     }
 

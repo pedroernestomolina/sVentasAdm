@@ -102,19 +102,23 @@ namespace ModVentaAdm.Src.Cliente.Administrador
                 cadena = _filtrar.cadena,
                 metodoBusqueda = (OOB.Maestro.Cliente.Lista.Enumerados.enumMetodoBusqueda)_filtrar.MetodoBusqueda,
             };
-            var r01 = Sistema.MyData.Cliente_GetLista(filtroOOB);
-            if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            if (filtroOOB.IsOK())
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
+                var r01 = Sistema.MyData.Cliente_GetLista(filtroOOB);
+                if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r01.Mensaje);
+                    return;
+                }
+                _gestionLista.setLista(r01.ListaD);
+                _filtrar.Limpiar();
+                asignaMetodoBusqueda(_metodoBusqPred);
             }
-            _gestionLista.setLista(r01.ListaD);
-            _filtrar.Limpiar();
-            asignaMetodoBusqueda(_metodoBusqPred);
         }
 
         public void Inicializa()
         {
+            _gestionLista.Inicializa();
             _filtrar.Limpiar();
         }
 

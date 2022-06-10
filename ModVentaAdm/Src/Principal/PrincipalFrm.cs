@@ -134,16 +134,6 @@ namespace ModVentaAdm.Src.Principal
             _controlador.Reporte_GeneralPorGrupo();
         }
 
-        private void MENU_MAESTRO_CLIENTES_Click(object sender, EventArgs e)
-        {
-            MaestroClientes();
-        }
-
-        private void MaestroClientes()
-        {
-            _controlador.MaestroClientes();
-        }
-
         private void MENU_REPORTES_RESUMEN_Click(object sender, EventArgs e)
         {
             Reporte_Resumen();
@@ -272,6 +262,15 @@ namespace ModVentaAdm.Src.Principal
             _controlador.UtilidadConsolidado();
         }
 
+        private void MENU_MAESTRO_CLIENTES_Click(object sender, EventArgs e)
+        {
+            MaestroClientes();
+        }
+        private void MaestroClientes()
+        {
+            _controlador.MaestroClientes();
+        }
+     
     }
 
 }

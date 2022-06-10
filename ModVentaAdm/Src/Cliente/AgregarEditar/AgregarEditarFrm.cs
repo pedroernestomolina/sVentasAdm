@@ -106,7 +106,7 @@ namespace ModVentaAdm.Src.Cliente.AgregarEditar
             TB_CARGO.Text = _controlador.Cargo.ToString("n2");
             TB_DIAS_CREDITO.Text = _controlador.DiasCredito.ToString("n0");
             TB_LIMITE_DOC.Text = _controlador.LimiteDoc.ToString("n0");
-            TB_LIMITE_CREDITO.Text = _controlador.LimiteCredito.ToString("n2");
+            TB_LIMITE_CREDITO.Text = _controlador.LimiteCredito.ToString();
 
             if (_controlador.IsModoAgregar)
             {

@@ -17,7 +17,9 @@ namespace ProvPos
     public partial class Provider: IPos.IProvider
     {
 
-        public DtoLib.ResultadoLista<DtoLibPos.ClienteGrupo.Lista.Ficha> ClienteGrupo_GetLista(DtoLibPos.ClienteGrupo.Lista.Filtro filtro)
+
+        public DtoLib.ResultadoLista<DtoLibPos.ClienteGrupo.Lista.Ficha> 
+            ClienteGrupo_GetLista(DtoLibPos.ClienteGrupo.Lista.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.ClienteGrupo.Lista.Ficha>();
 
@@ -44,8 +46,8 @@ namespace ProvPos
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.ClienteGrupo.Entidad.Ficha> ClienteGrupo_GetFichaById(string id)
+        public DtoLib.ResultadoEntidad<DtoLibPos.ClienteGrupo.Entidad.Ficha> 
+            ClienteGrupo_GetFichaById(string id)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.ClienteGrupo.Entidad.Ficha>();
 
@@ -78,8 +80,8 @@ namespace ProvPos
 
             return result;
         }
-
-        public DtoLib.ResultadoAuto ClienteGrupo_Agregar(DtoLibPos.ClienteGrupo.Agregar.Ficha ficha)
+        public DtoLib.ResultadoAuto 
+            ClienteGrupo_Agregar(DtoLibPos.ClienteGrupo.Agregar.Ficha ficha)
         {
             var result = new DtoLib.ResultadoAuto();
 
@@ -97,10 +99,11 @@ namespace ProvPos
                             return result;
                         }
 
+                        var _largo = 10 - ficha.codigoSucursalRegistro.Trim().Length;
                         var fechaNula = new DateTime(2000, 01, 01);
                         var fechaSistema = ctx.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
                         var cntGrupo = ctx.Database.SqlQuery<int>("select a_clientes_grupo from sistema_contadores").FirstOrDefault();
-                        var autoGrupo = cntGrupo.ToString().Trim().PadLeft(10, '0');
+                        var autoGrupo = ficha.codigoSucursalRegistro + cntGrupo.ToString().Trim().PadLeft(_largo, '0');
 
                         var ent = new clientes_grupo()
                         {
@@ -116,37 +119,14 @@ namespace ProvPos
                     }
                 }
             }
-            catch (DbUpdateException ex)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                var dbUpdateEx = ex as DbUpdateException;
-                var sqlEx = dbUpdateEx.InnerException;
-                if (sqlEx != null)
-                {
-                    var exx = (MySql.Data.MySqlClient.MySqlException)sqlEx.InnerException;
-                    if (exx != null)
-                    {
-                        if (exx.Number == 1062)
-                        {
-                            result.Mensaje = "CAMPO DUPLICADO"+Environment.NewLine+exx.Message;
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
-                        }
-                    }
-                }
-                result.Mensaje = ex.Message;
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-            catch (DbEntityValidationException dbEx)
+            catch (DbUpdateException ex)
             {
-                var msg = "";
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        msg += string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage) + Environment.NewLine;
-                    }
-                }
-                result.Mensaje = msg;
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
@@ -157,8 +137,8 @@ namespace ProvPos
 
             return result;
         }
-
-        public DtoLib.Resultado ClienteGrupo_Editar(DtoLibPos.ClienteGrupo.Editar.Ficha ficha)
+        public DtoLib.Resultado 
+            ClienteGrupo_Editar(DtoLibPos.ClienteGrupo.Editar.Ficha ficha)
         {
             var result = new DtoLib.Resultado();
 
@@ -224,6 +204,7 @@ namespace ProvPos
 
             return result;
         }
+
 
     }
 

@@ -696,7 +696,7 @@ namespace ModVentaAdm.Src.Cliente.AgregarEditar.Editar
                 idAuto = _autoIdEditar,
                 idGrupo = IdGrupo,
                 idEstado = IdEstado,
-                idZona = IdEstado,
+                idZona = IdZona,
                 idVendedor = IdVendedor,
                 idCobrador = IdCobrador,
                 tarifa = _tarifa,

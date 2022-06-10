@@ -90,7 +90,6 @@ namespace ModVentaAdm.Src.Cliente.Administrador
         {
             Buscar();
         }
-
         private void Buscar()
         {
             _controlador.ActivarBusqueda();

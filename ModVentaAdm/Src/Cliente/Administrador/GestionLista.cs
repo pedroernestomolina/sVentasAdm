@@ -106,6 +106,13 @@ namespace ModVentaAdm.Src.Cliente.Administrador
             }
         }
 
+        public void Inicializa()
+        {
+            _item = null;
+            _lst.Clear();
+            _bs.CurrencyManager.Refresh();
+        }
+
     }
 
 }

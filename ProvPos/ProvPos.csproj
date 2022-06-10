@@ -69,6 +69,7 @@
     <Compile Include="Documento.cs" />
     <Compile Include="DocumentoAdm.cs" />
     <Compile Include="Fiscal.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Jornada.cs" />
     <Compile Include="MedioPago.cs" />
     <Compile Include="ModuloAdm.cs" />

@@ -12,19 +12,26 @@ namespace ServicePos.MyService
     public partial class Service : IService
     {
 
-        public DtoLib.ResultadoLista<DtoLibPos.Sucursal.Lista.Ficha> Sucursal_GetLista(DtoLibPos.Sucursal.Lista.Filtro filtro)
+
+        public DtoLib.ResultadoLista<DtoLibPos.Sucursal.Lista.Ficha> 
+            Sucursal_GetLista(DtoLibPos.Sucursal.Lista.Filtro filtro)
         {
             return ServiceProv.Sucursal_GetLista(filtro);
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha> Sucursal_GetFichaById(string id)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha> 
+            Sucursal_GetFichaById(string id)
         {
             return ServiceProv.Sucursal_GetFichaById(id);
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha> Sucursal_GetFicha_ByCodigo(string codigo)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha> 
+            Sucursal_GetFicha_ByCodigo(string codigo)
         {
             return ServiceProv.Sucursal_GetFicha_ByCodigo(codigo);
+        }
+        public DtoLib.ResultadoEntidad<string> 
+            Sucursal_GetId_ByCodigo(string codigoSuc)
+        {
+            return ServiceProv.Sucursal_GetId_ByCodigo(codigoSuc);
         }
 
     }

@@ -11,8 +11,14 @@ namespace ModVentaAdm.Data.Infra
     public interface ISucursal
     {
 
-        OOB.Resultado.FichaEntidad<OOB.Sucursal.Entidad.Ficha> Sucursal_GetFichaById(string id);
-        OOB.Resultado.Lista<OOB.Sucursal.Entidad.Ficha> Sucursal_GetLista();
+
+        OOB.Resultado.FichaEntidad<OOB.Sucursal.Entidad.Ficha> 
+            Sucursal_GetFichaById(string id);
+        OOB.Resultado.Lista<OOB.Sucursal.Entidad.Ficha> 
+            Sucursal_GetLista();
+        OOB.Resultado.FichaEntidad<string>
+            Sucursal_GetId_ByCodigo(string codigoSuc);
+
 
     }
 

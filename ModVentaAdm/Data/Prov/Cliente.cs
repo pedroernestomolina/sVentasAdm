@@ -12,7 +12,9 @@ namespace ModVentaAdm.Data.Prov
     public partial class DataPrv : IData
     {
 
-        public OOB.Resultado.Lista<OOB.Maestro.Cliente.Entidad.Ficha> Cliente_GetLista(OOB.Maestro.Cliente.Lista.Filtro filtro)
+
+        public OOB.Resultado.Lista<OOB.Maestro.Cliente.Entidad.Ficha> 
+            Cliente_GetLista(OOB.Maestro.Cliente.Lista.Filtro filtro)
         {
             var rt = new OOB.Resultado.Lista<OOB.Maestro.Cliente.Entidad.Ficha>();
 
@@ -53,11 +55,73 @@ namespace ModVentaAdm.Data.Prov
             return rt;
         }
 
-        public OOB.Resultado.Lista<OOB.Maestro.Cliente.Documento.Ficha> Cliente_Documentos_GetLista(OOB.Maestro.Cliente.Documento.Filtro filtro)
+        public OOB.Resultado.FichaEntidad<OOB.Maestro.Cliente.Entidad.Ficha> 
+            Cliente_GetFicha(string autoCliente)
+        {
+            var rt = new OOB.Resultado.FichaEntidad<OOB.Maestro.Cliente.Entidad.Ficha>();
+
+            var r01 = MyData.Cliente_GetFichaById(autoCliente);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return rt;
+            }
+
+            var s = r01.Entidad;
+            var nr = new OOB.Maestro.Cliente.Entidad.Ficha()
+            {
+                id = s.id,
+                idGrupo = s.idGrupo,
+                idEstado = s.idEstado,
+                idZona = s.idZona,
+                idVendedor = s.idVendedor,
+                idCobrador = s.idCobrador,
+                tarifa = s.tarifa,
+                categoria = s.categoria,
+                nivel = s.nivel,
+                ciRif = s.ciRif,
+                codigo = s.codigo,
+                razonSocial = s.razonSocial,
+                dirFiscal = s.dirFiscal,
+                dirDespacho = s.dirDespacho,
+                pais = s.pais,
+                contacto = s.contacto,
+                telefono1 = s.telefono1,
+                telefono2 = s.telefono2,
+                email = s.email,
+                celular = s.celular,
+                fax = s.fax,
+                webSite = s.webSite,
+                codPostal = s.codPostal,
+                estatusCredito = s.estatusCredito,
+                dscto = s.dscto,
+                cargo = s.cargo,
+                limiteDoc = s.limiteDoc,
+                diasCredito = s.diasCredito,
+                limiteCredito = s.limiteCredito,
+                estatus = s.estatus,
+                cobrador = s.cobrador,
+                denFiscal = s.denFiscal,
+                estado = s.estado,
+                fechaAlta = s.fechaAlta,
+                fechaBaja = s.fechaBaja,
+                grupo = s.grupo,
+                vendedor = s.vendedor,
+                zona = s.zona,
+            };
+            rt.Entidad = nr;
+
+            return rt;
+        }
+
+
+        public OOB.Resultado.Lista<OOB.Maestro.Cliente.Documento.Ficha>
+            Cliente_Documentos_GetLista(OOB.Maestro.Cliente.Documento.Filtro filtro)
         {
             var rt = new OOB.Resultado.Lista<OOB.Maestro.Cliente.Documento.Ficha>();
             var xtipo = "";
-            switch(filtro.tipoDoc)
+            switch (filtro.tipoDoc)
             {
                 case OOB.Maestro.Cliente.Documento.Enumerados.enumTipoDoc.Factura:
                     xtipo = "01";
@@ -123,66 +187,8 @@ namespace ModVentaAdm.Data.Prov
             return rt;
         }
 
-        public OOB.Resultado.FichaEntidad<OOB.Maestro.Cliente.Entidad.Ficha> Cliente_GetFicha(string autoCliente)
-        {
-            var rt = new OOB.Resultado.FichaEntidad<OOB.Maestro.Cliente.Entidad.Ficha>();
-
-            var r01 = MyData.Cliente_GetFichaById(autoCliente);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            var s = r01.Entidad;
-            var nr = new OOB.Maestro.Cliente.Entidad.Ficha()
-            {
-                id = s.id,
-                idGrupo = s.idGrupo,
-                idEstado = s.idEstado,
-                idZona = s.idZona,
-                idVendedor = s.idVendedor,
-                idCobrador = s.idCobrador,
-                tarifa = s.tarifa,
-                categoria = s.categoria,
-                nivel = s.nivel,
-                ciRif = s.ciRif,
-                codigo = s.codigo,
-                razonSocial = s.razonSocial,
-                dirFiscal = s.dirFiscal,
-                dirDespacho = s.dirDespacho,
-                pais = s.pais,
-                contacto = s.contacto,
-                telefono1 = s.telefono1,
-                telefono2 = s.telefono2,
-                email = s.email,
-                celular = s.celular,
-                fax = s.fax,
-                webSite = s.webSite,
-                codPostal = s.codPostal,
-                estatusCredito = s.estatusCredito,
-                dscto = s.dscto,
-                cargo = s.cargo,
-                limiteDoc = s.limiteDoc,
-                diasCredito = s.diasCredito,
-                limiteCredito = s.limiteCredito,
-                estatus = s.estatus,
-                cobrador = s.cobrador,
-                denFiscal = s.denFiscal,
-                estado = s.estado,
-                fechaAlta = s.fechaAlta,
-                fechaBaja = s.fechaBaja,
-                grupo = s.grupo,
-                vendedor = s.vendedor,
-                zona = s.zona,
-            };
-            rt.Entidad = nr;
-
-            return rt;
-        }
-
-        public OOB.Resultado.Lista<OOB.Maestro.Cliente.Articulos.Ficha> Cliente_ArticulosVenta_GetLista(OOB.Maestro.Cliente.Articulos.Filtro filtro)
+        public OOB.Resultado.Lista<OOB.Maestro.Cliente.Articulos.Ficha> 
+            Cliente_ArticulosVenta_GetLista(OOB.Maestro.Cliente.Articulos.Filtro filtro)
         {
             var rt = new OOB.Resultado.Lista<OOB.Maestro.Cliente.Articulos.Ficha>();
 
@@ -234,12 +240,15 @@ namespace ModVentaAdm.Data.Prov
             return rt;
         }
 
-        public OOB.Resultado.FichaAuto Cliente_Agregar(OOB.Maestro.Cliente.Agregar.Ficha ficha)
+
+        public OOB.Resultado.FichaAuto 
+            Cliente_Agregar(OOB.Maestro.Cliente.Agregar.Ficha ficha)
         {
             var result = new OOB.Resultado.FichaAuto();
 
             var fichaDTO = new DtoLibPos.Cliente.Agregar.Ficha()
             {
+                codigoSucursalRegistro = ficha.codigoSucursalRegistro,
                 codigo = ficha.codigo,
                 nombre = "",
                 ciRif = ficha.ciRif,
@@ -315,8 +324,8 @@ namespace ModVentaAdm.Data.Prov
             result.Auto = r01.Auto;
             return result;
         }
-
-        public OOB.Resultado.FichaEntidad<OOB.Maestro.Cliente.Editar.ObtenerData.Ficha> Cliente_Editar_GetFicha(string autoCli)
+        public OOB.Resultado.FichaEntidad<OOB.Maestro.Cliente.Editar.ObtenerData.Ficha> 
+            Cliente_Editar_GetFicha(string autoCli)
         {
             var rt = new OOB.Resultado.FichaEntidad<OOB.Maestro.Cliente.Editar.ObtenerData.Ficha>();
 
@@ -364,8 +373,8 @@ namespace ModVentaAdm.Data.Prov
 
             return rt;
         }
-
-        public OOB.Resultado.Ficha Cliente_Editar(OOB.Maestro.Cliente.Editar.Actualizar.Ficha ficha)
+        public OOB.Resultado.Ficha 
+            Cliente_Editar(OOB.Maestro.Cliente.Editar.Actualizar.Ficha ficha)
         {
             var result = new OOB.Resultado.Ficha();
 
@@ -411,8 +420,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
-        public OOB.Resultado.Ficha Cliente_Activar(OOB.Maestro.Cliente.EstatusActivarInactivar.Ficha ficha)
+        public OOB.Resultado.Ficha 
+            Cliente_Activar(OOB.Maestro.Cliente.EstatusActivarInactivar.Ficha ficha)
         {
             var result = new OOB.Resultado.Ficha();
 
@@ -430,8 +439,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
-        public OOB.Resultado.Ficha Cliente_Inactivar(OOB.Maestro.Cliente.EstatusActivarInactivar.Ficha ficha)
+        public OOB.Resultado.Ficha 
+            Cliente_Inactivar(OOB.Maestro.Cliente.EstatusActivarInactivar.Ficha ficha)
         {
             var result = new OOB.Resultado.Ficha();
 
@@ -449,6 +458,7 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
+
 
     }
 

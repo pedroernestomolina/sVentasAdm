@@ -21,6 +21,18 @@ namespace ModVentaAdm.OOB.Maestro.Cliente.Lista
             metodoBusqueda = Enumerados.enumMetodoBusqueda.SinDefinir;
         }
 
+        public bool IsOK()
+        {
+            var rt=false;
+
+            if (cadena.Trim() != "") 
+            {
+                rt = true;
+            }
+
+            return rt;
+        }
+
     }
 
 }

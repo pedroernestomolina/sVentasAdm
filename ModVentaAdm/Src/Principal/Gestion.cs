@@ -77,6 +77,25 @@ namespace ModVentaAdm.Src.Principal
                 return false;
             }
             Sistema.DatosEmpresa = r01.Entidad;
+            var r02 = Sistema.MyData.Sistema_GetCodigoSucursal();
+            if (r02.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r02.Mensaje);
+                return false;
+            }
+            var r03 = Sistema.MyData.Sucursal_GetId_ByCodigo(r02.Entidad);
+            if (r03.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r03.Mensaje);
+                return false;
+            }
+            var r04= Sistema.MyData.Sucursal_GetFichaById(r03.Entidad);
+            if (r04.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r04.Mensaje);
+                return false;
+            }
+            Sistema.Sucursal = r04.Entidad;
 
             return rt;
         }

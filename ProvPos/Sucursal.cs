@@ -12,7 +12,8 @@ namespace ProvPos
     public partial class Provider: IPos.IProvider
     {
 
-        public DtoLib.ResultadoLista<DtoLibPos.Sucursal.Lista.Ficha> Sucursal_GetLista(DtoLibPos.Sucursal.Lista.Filtro filtro)
+        public DtoLib.ResultadoLista<DtoLibPos.Sucursal.Lista.Ficha> 
+            Sucursal_GetLista(DtoLibPos.Sucursal.Lista.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.Sucursal.Lista.Ficha>();
 
@@ -38,8 +39,8 @@ namespace ProvPos
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha> Sucursal_GetFichaById(string id)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha> 
+            Sucursal_GetFichaById(string id)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha>();
 
@@ -85,8 +86,8 @@ namespace ProvPos
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha> Sucursal_GetFicha_ByCodigo(string codigo)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha> 
+            Sucursal_GetFicha_ByCodigo(string codigo)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha>();
 
@@ -122,6 +123,33 @@ namespace ProvPos
                         estatusVentaMayor = ent.estatus_facturar_mayor
                     };
                     result.Entidad = nr;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return result;
+        }
+        public DtoLib.ResultadoEntidad<string> 
+            Sucursal_GetId_ByCodigo(string codigoSuc)
+        {
+            var result = new DtoLib.ResultadoEntidad<string>();
+
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var ent = cnn.empresa_sucursal.FirstOrDefault(f => f.codigo.Trim().ToUpper() == codigoSuc.Trim().ToUpper());
+                    if (ent == null)
+                    {
+                        result.Result = DtoLib.Enumerados.EnumResult.isError;
+                        result.Mensaje = "[ CODIGO ] SUCURSAL NO ENCONTRADO";
+                        return result;
+                    }
+                    result.Entidad = ent.auto;
                 }
             }
             catch (Exception e)
