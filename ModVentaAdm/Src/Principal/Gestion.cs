@@ -23,6 +23,7 @@ namespace ModVentaAdm.Src.Principal
         private Documentos.Generar.Factura.Gestion _gestionFact;
         private Documentos.Generar.Pedido.Gestion _gestionPedido;
         private Configuracion.Gestion _gConfiguracion;
+        private CxC.Tools.PanelPrincipal.ITools _gToolsCxC;
 
 
         public string BD_Ruta { get { return Sistema.Instancia; } }
@@ -49,6 +50,8 @@ namespace ModVentaAdm.Src.Principal
             _gGenDoc.setGestionBuscarProducto(new Documentos.Generar.BuscarProducto.Gestion());
             _gGenDoc.setGestionItems(new Documentos.Generar.Items.Gestion());
             _gConfiguracion = new Configuracion.Gestion();
+            //
+            _gToolsCxC = new CxC.Tools.PanelPrincipal.Tools();
         }
 
 
@@ -303,6 +306,8 @@ namespace ModVentaAdm.Src.Principal
 
         public void ToolsCxC()
         {
+            _gToolsCxC.Inicializa();
+            _gToolsCxC.Inicia();
         }
 
     }

@@ -72,6 +72,7 @@
     <Compile Include="Data\Infra\IClienteGrupo.cs" />
     <Compile Include="Data\Infra\IClienteZona.cs" />
     <Compile Include="Data\Infra\IConfiguracion.cs" />
+    <Compile Include="Data\Infra\ICxC.cs" />
     <Compile Include="Data\Infra\IData.cs" />
     <Compile Include="Data\Infra\IDocumento.cs" />
     <Compile Include="Data\Infra\IPermiso.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Data\Prov\ClienteGrupo.cs" />
     <Compile Include="Data\Prov\ClienteZona.cs" />
     <Compile Include="Data\Prov\Configuracion.cs" />
+    <Compile Include="Data\Prov\CxC.cs" />
     <Compile Include="Data\Prov\DataPrv.cs" />
     <Compile Include="Data\Prov\Documento.cs" />
     <Compile Include="Data\Prov\Permiso.cs" />
@@ -126,6 +128,8 @@
     <Compile Include="OOB\Configuracion\BusquedaCliente\Entidad\Enumerado.cs" />
     <Compile Include="OOB\Configuracion\BusquedaCliente\Entidad\Ficha.cs" />
     <Compile Include="OOB\Configuracion\BusquedaProducto\Enumerado.cs" />
+    <Compile Include="OOB\CxC\Tools\CtasPendiente\Ficha.cs" />
+    <Compile Include="OOB\CxC\Tools\CtasPendiente\Filtro.cs" />
     <Compile Include="OOB\Documento\Agregar\BaseFicha.cs" />
     <Compile Include="OOB\Documento\Agregar\BaseFichaDetalle.cs" />
     <Compile Include="OOB\Documento\Agregar\BaseFichaItemDepositoBloquear.cs" />
@@ -356,6 +360,17 @@
       <DependentUpon>ConfiguracionFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Src\Configuracion\Gestion.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\dataPanel.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\ITools.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\ILista.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\Lista.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Tools.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\ToolsFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\ToolsFrm.Designer.cs">
+      <DependentUpon>ToolsFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Src\Documentos\Generar\AgregarEditarItem\AgregarEditarItemFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -617,6 +632,9 @@
     <EmbeddedResource Include="Src\Configuracion\ConfiguracionFrm.resx">
       <DependentUpon>ConfiguracionFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\ToolsFrm.resx">
+      <DependentUpon>ToolsFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Src\Documentos\Generar\AgregarEditarItem\AgregarEditarItemFrm.resx">
       <DependentUpon>AgregarEditarItemFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -767,11 +785,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\bt_agregar_nuevo.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
     <Content Include="Src\Imagenes\aydai-logistica.jpg" />
     <Content Include="Src\Imagenes\bt_abrir_doc.png" />
+    <Content Include="Src\Imagenes\bt_agregar_nuevo.png" />
     <Content Include="Src\Imagenes\bt_alerta.png" />
     <Content Include="Src\Imagenes\bt_asignar.png" />
     <Content Include="Src\Imagenes\bt_bombillo.png" />
@@ -873,6 +893,7 @@
       <Name>ServicePos</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

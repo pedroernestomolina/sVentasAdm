@@ -65,6 +65,7 @@
     <Compile Include="Concepto.cs" />
     <Compile Include="Configuracion.cs" />
     <Compile Include="ConfiguracionAdm.cs" />
+    <Compile Include="CxC.cs" />
     <Compile Include="Deposito.cs" />
     <Compile Include="Documento.cs" />
     <Compile Include="DocumentoAdm.cs" />

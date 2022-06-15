@@ -113,6 +113,16 @@ namespace ModVentaAdm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_agregar_nuevo {
+            get {
+                object obj = ResourceManager.GetObject("bt_agregar_nuevo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_alerta {
             get {
                 object obj = ResourceManager.GetObject("bt_alerta", resourceCulture);
