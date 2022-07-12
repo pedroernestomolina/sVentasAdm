@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace ModVentaAdm.Src.Documentos.Generar.BuscarCliente
 {
 
-    public class Gestion
+    public class Gestion: IBuscar
     {
 
 
@@ -26,6 +26,7 @@ namespace ModVentaAdm.Src.Documentos.Generar.BuscarCliente
         public Cliente.Buscar.Busqueda.Enumerados.enumMetodoBusqueda MetodoBusqueda { get { return _buscar.MetodoBusqueda; } }
         public Cliente.Buscar.Items.data ItemSeleccionado { get { return _itemSeleccionado; } }
         public bool ItemSeleccionadoIsOk { get { return _itemSeleccionadoIsOk; } }
+        public string IdItemSeleccionado { get { return _itemSeleccionado == null ? "" : _itemSeleccionado.Id; } }
 
 
         public Gestion()
@@ -159,6 +160,7 @@ namespace ModVentaAdm.Src.Documentos.Generar.BuscarCliente
             }
             _items.AgregarFicha(r01.Entidad);
         }
+
 
     }
 

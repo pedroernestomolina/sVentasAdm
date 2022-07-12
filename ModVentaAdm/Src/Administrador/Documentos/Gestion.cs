@@ -101,7 +101,16 @@ namespace ModVentaAdm.Src.Administrador.Documentos
         {
             if (GetItemActual != null)
             {
-                if (GetItemActual.IsAnulado) { return; }
+                if (GetItemActual.IsAnulado) 
+                {
+                    Helpers.Msg.Error("DOCUMENTO YA SE ENCUENTRA ANULADO, VERIFIQUE POR FAVOR");
+                    return;
+                }
+                if (!GetItemActual.IsDocVentaAdministrativo) 
+                {
+                    Helpers.Msg.Error("DOCUMENTO NO ES DE TIPO VENTA ADMINISTRATIVA, VERIFIQUE POR FAVOR");
+                    return;
+                }
 
                 var r00 = Sistema.MyData.Permiso_Adm_AnularDocumento(Sistema.Usuario.idGrupo);
                 if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)

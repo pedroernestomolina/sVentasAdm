@@ -604,11 +604,26 @@ namespace ProvPos
                     var p7 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p8 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p9 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var sql_1 = @"select v.auto as id, v.documento as docNumero, v.control, v.fecha as fechaEmision, 
-                                v.hora as horaEmision, v.razon_social as nombreRazonSocial, v.ci_Rif as cirif, 
-                                v.total as monto, v.estatus_Anulado as estatus, v.renglones, v.serie, v.monto_divisa as montoDivisa, 
-                                v.tipo as docCodigo, v.signo as docSigno, v.documento_nombre as docNombre, v.aplica as docAplica, 
-                                v.codigo_sucursal as sucursalCod, v.situacion as docSituacion, es.nombre as sucursalDesc
+                    var sql_1 = @"select v.auto as id, 
+                                v.documento as docNumero, 
+                                v.control, 
+                                v.fecha as fechaEmision, 
+                                v.hora as horaEmision, 
+                                v.razon_social as nombreRazonSocial, 
+                                v.ci_Rif as cirif, 
+                                v.total as monto, 
+                                v.estatus_Anulado as estatus, 
+                                v.renglones, 
+                                v.serie, 
+                                v.monto_divisa as montoDivisa, 
+                                v.tipo as docCodigo, 
+                                v.signo as docSigno,    
+                                v.documento_nombre as docNombre, 
+                                v.aplica as docAplica, 
+                                v.codigo_sucursal as sucursalCod, 
+                                v.situacion as docSituacion,    
+                                es.nombre as sucursalDesc,
+                                v.clave as claveSistema
                                 FROM ventas as v ";
                     var sql_2 = " join empresa_sucursal as es on v.codigo_sucursal=es.codigo ";
                     var sql_3 = " where 1=1 ";

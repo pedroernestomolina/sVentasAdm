@@ -19,6 +19,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.ListaCtasPend
 
         void Inicializa();
         void setListaCtasPend(List<data> lst);
+        List<data> ListaItems { get; }
+        data ItemActual { get; }
+
 
     }
 

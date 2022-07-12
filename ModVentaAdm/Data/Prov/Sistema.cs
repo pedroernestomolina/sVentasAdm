@@ -98,6 +98,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
+
+
         public OOB.Resultado.Lista<OOB.Sistema.Cobrador.Entidad.Ficha> 
             Sistema_Cobrador_GetLista()
         {
@@ -133,6 +135,31 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
+        public OOB.Resultado.FichaEntidad<OOB.Sistema.Cobrador.Entidad.Ficha> 
+            Sistema_Cobrador_GetFicha_ById(string id)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Sistema.Cobrador.Entidad.Ficha>();
+
+            var r01 = MyData.Cobrador_GetFichaById(id);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                result.Mensaje = r01.Mensaje;
+                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return result;
+            }
+            var s=r01.Entidad;
+            var nr = new OOB.Sistema.Cobrador.Entidad.Ficha()
+            {
+                id = s.id,
+                codigo = s.codigo,
+                nombre = s.nombre,
+            };
+            result.Entidad = nr;
+
+            return result;
+        }
+
+
         public OOB.Resultado.Lista<OOB.Sistema.Estado.Entidad.Ficha> 
             Sistema_Estado_GetLista()
         {
@@ -288,6 +315,63 @@ namespace ModVentaAdm.Data.Prov
             rt.Entidad = r01.Entidad;
 
             return rt;
+        }
+
+
+        public OOB.Resultado.Lista<OOB.Sistema.MedioCobro.Entidad.Ficha> 
+            Sistema_MedioCobro_GetLista()
+        {
+            var result = new OOB.Resultado.Lista<OOB.Sistema.MedioCobro.Entidad.Ficha>();
+
+            var r01 = MyData.MedioPago_GetLista(new DtoLibPos.MedioPago.Lista.Filtro());
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                result.Mensaje = r01.Mensaje;
+                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return result;
+            }
+            var lst = new List<OOB.Sistema.MedioCobro.Entidad.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Sistema.MedioCobro.Entidad.Ficha()
+                        {
+                            id = s.id,
+                            codigo = s.codigo,
+                            nombre = s.nombre,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.ListaD = lst;
+
+            return result;
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Sistema.MedioCobro.Entidad.Ficha> 
+            Sistema_MedioCobro_GetFicha_ById(string id)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Sistema.MedioCobro.Entidad.Ficha>();
+
+            var r01 = MyData.MedioPago_GetFichaById(id);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                result.Mensaje = r01.Mensaje;
+                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return result;
+            }
+            var s = r01.Entidad;
+            result.Entidad = new OOB.Sistema.MedioCobro.Entidad.Ficha()
+            {
+                id = s.id,
+                codigo = s.codigo,
+                nombre = s.nombre,
+            };
+
+            return result;
         }
 
     }

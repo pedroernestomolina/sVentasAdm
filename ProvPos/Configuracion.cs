@@ -13,7 +13,8 @@ namespace ProvPos
     public partial class Provider : IPos.IProvider
     {
 
-        public DtoLib.ResultadoEntidad<string> Configuracion_FactorDivisa()
+        public DtoLib.ResultadoEntidad<string> 
+            Configuracion_FactorDivisa()
         {
             var result = new DtoLib.ResultadoEntidad<string>();
 
@@ -28,7 +29,6 @@ namespace ProvPos
                         result.Result = DtoLib.Enumerados.EnumResult.isError;
                         return result;
                     }
-
                     //var m1 = 0.0m;
                     //var cnf = ent.usuario;
                     //if (cnf.Trim() != "")
@@ -38,7 +38,6 @@ namespace ProvPos
                     //    var culture = CultureInfo.CreateSpecificCulture("en-EN");
                     //    Decimal.TryParse(cnf, style, culture, out m1);
                     //}
-
                     result.Entidad = ent.usuario;
                 }
             }
@@ -51,7 +50,8 @@ namespace ProvPos
             return result;
         }
 
-        public DtoLib.Resultado Configuracion_Pos_Inicializar()
+        public DtoLib.Resultado 
+            Configuracion_Pos_Inicializar()
         {
             var result = new DtoLib.Resultado();
 

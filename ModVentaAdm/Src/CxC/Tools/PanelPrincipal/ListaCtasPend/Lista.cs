@@ -19,6 +19,8 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.ListaCtasPend
 
 
         public BindingSource CtasPendGetSource { get { return _bs; } }
+        public List<data> ListaItems { get { return _bl.ToList(); } }
+        public data ItemActual { get { return (data)_bs.Current; } }
         public decimal MontoPendientePorCobrar { get { return _bl.Sum(s => s.montoResta); } }
 
 

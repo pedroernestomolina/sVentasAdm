@@ -86,6 +86,7 @@ namespace ModVentaAdm.Src.Administrador
                 return tp;
             }
         }
+        public bool IsDocVentaAdministrativo { get { return doc.ClaveSistema.Trim().ToUpper() == "03"; } }
 
 
         public data()

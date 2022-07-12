@@ -128,8 +128,19 @@
     <Compile Include="OOB\Configuracion\BusquedaCliente\Entidad\Enumerado.cs" />
     <Compile Include="OOB\Configuracion\BusquedaCliente\Entidad\Ficha.cs" />
     <Compile Include="OOB\Configuracion\BusquedaProducto\Enumerado.cs" />
-    <Compile Include="OOB\CxC\Tools\CtasPendiente\Ficha.cs" />
-    <Compile Include="OOB\CxC\Tools\CtasPendiente\Filtro.cs" />
+    <Compile Include="OOB\CxC\AgregarNotaAdm\Ficha.cs" />
+    <Compile Include="OOB\CxC\AgreggarCta\Ficha.cs" />
+    <Compile Include="OOB\CxC\DocumentosPend\Ficha.cs" />
+    <Compile Include="OOB\CxC\DocumentosPend\Filtro.cs" />
+    <Compile Include="OOB\CxC\GestionCobro\Ficha.cs" />
+    <Compile Include="OOB\CxC\GestionCobro\FichaCliente.cs" />
+    <Compile Include="OOB\CxC\GestionCobro\FichaCobro.cs" />
+    <Compile Include="OOB\CxC\GestionCobro\FichaDocumento.cs" />
+    <Compile Include="OOB\CxC\GestionCobro\FichaMetodoPago.cs" />
+    <Compile Include="OOB\CxC\GestionCobro\FichaNotaAdm.cs" />
+    <Compile Include="OOB\CxC\GestionCobro\FichaRecibo.cs" />
+    <Compile Include="OOB\CxC\Tools\CtasPendiente\Lista\Ficha.cs" />
+    <Compile Include="OOB\CxC\Tools\CtasPendiente\Lista\Filtro.cs" />
     <Compile Include="OOB\Documento\Agregar\BaseFicha.cs" />
     <Compile Include="OOB\Documento\Agregar\BaseFichaDetalle.cs" />
     <Compile Include="OOB\Documento\Agregar\BaseFichaItemDepositoBloquear.cs" />
@@ -214,6 +225,7 @@
     <Compile Include="OOB\Sistema\Empresa\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\Estado\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\Fiscal\Entidad\Ficha.cs" />
+    <Compile Include="OOB\Sistema\MedioCobro\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\TipoDocumento\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\Transporte\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\Vendedor\Entidad\Ficha.cs" />
@@ -347,6 +359,7 @@
       <DependentUpon>ListaFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Src\Cliente\Visualizar\Gestion.cs" />
+    <Compile Include="Src\Cliente\Visualizar\IVisualizar.cs" />
     <Compile Include="Src\Cliente\Visualizar\VisualizaFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -360,6 +373,88 @@
       <DependentUpon>ConfiguracionFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Src\Configuracion\Gestion.cs" />
+    <Compile Include="Src\CxC\Tools\AgregarCta\Agregar.cs" />
+    <Compile Include="Src\CxC\Tools\AgregarCta\AgregarCtaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\AgregarCta\AgregarCtaFrm.Designer.cs">
+      <DependentUpon>AgregarCtaFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\AgregarCta\dataAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\AgregarCta\IAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\AgregarNotaAdm\Agregar.cs" />
+    <Compile Include="Src\CxC\Tools\AgregarNotaAdm\AgregarNotaAdmFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\AgregarNotaAdm\AgregarNotaAdmFrm.Designer.cs">
+      <DependentUpon>AgregarNotaAdmFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\AgregarNotaAdm\Credito\AgregarNotaCreditoAdm.cs" />
+    <Compile Include="Src\CxC\Tools\AgregarNotaAdm\dataAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\AgregarNotaAdm\Debito\AgregarNotaDebitoAdm.cs" />
+    <Compile Include="Src\CxC\Tools\AgregarNotaAdm\IAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\AgregarNotaAdm\IAgregarTipoNotaAdm.cs" />
+    <Compile Include="Src\CxC\Tools\DocumentosPend\DocPend.cs" />
+    <Compile Include="Src\CxC\Tools\DocumentosPend\DocumentosPendFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\DocumentosPend\DocumentosPendFrm.Designer.cs">
+      <DependentUpon>DocumentosPendFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\DocumentosPend\IDocPend.cs" />
+    <Compile Include="Src\CxC\Tools\DocumentosPend\ListaDocPend\data.cs" />
+    <Compile Include="Src\CxC\Tools\DocumentosPend\ListaDocPend\ILista.cs" />
+    <Compile Include="Src\CxC\Tools\DocumentosPend\ListaDocPend\Lista.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\DetalleCobro\Detalle.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\DetalleCobro\DetalleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\GestionPago\DetalleCobro\DetalleFrm.Designer.cs">
+      <DependentUpon>DetalleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\GestionPago\DetalleCobro\IDetalle.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\GestionPagoFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\GestionPago\GestionPagoFrm.Designer.cs">
+      <DependentUpon>GestionPagoFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\GestionPago\GestionPago.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\IGestionPago.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\ListaGestionPago\data.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\ListaGestionPago\ILista.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\ListaGestionPago\Lista.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\data.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MedCobro.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\IMedCobro.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MediosCobroFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MediosCobroFrm.designer.cs">
+      <DependentUpon>MediosCobroFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\Agregar\IMetAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\Agregar\MetAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\dataItem.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\Editar\IMetEditar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\Editar\MetEditar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\IMetodo.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\IMetodoAgregarEditar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\MetCobroFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\MetCobroFrm.Designer.cs">
+      <DependentUpon>MetCobroFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\Metodo.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MontoAbonar\MontoAbonarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\GestionPago\MontoAbonar\MontoAbonarFrm.designer.cs">
+      <DependentUpon>MontoAbonarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\GestionPago\MontoAbonar\MontoAbonar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPago\MontoAbonar\IMontoAbonar.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\dataPanel.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\ITools.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\ILista.cs" />
@@ -371,6 +466,15 @@
     <Compile Include="Src\CxC\Tools\PanelPrincipal\ToolsFrm.Designer.cs">
       <DependentUpon>ToolsFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Src\CxC\Tools\Reportes\DS_CxC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_CxC.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\Reportes\ListaCtaPend\RepCtaPend.cs" />
+    <Compile Include="Src\CxC\Tools\Reportes\ListaCtaPend\IRepCtaPend.cs" />
+    <Compile Include="Src\CxC\Tools\Reportes\ListaDocPend\IRepDocPend.cs" />
+    <Compile Include="Src\CxC\Tools\Reportes\ListaDocPend\RepDocPend.cs" />
     <Compile Include="Src\Documentos\Generar\AgregarEditarItem\AgregarEditarItemFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -388,6 +492,7 @@
       <DependentUpon>BuscarClienteFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Src\Documentos\Generar\BuscarCliente\Gestion.cs" />
+    <Compile Include="Src\Documentos\Generar\BuscarCliente\IBuscar.cs" />
     <Compile Include="Src\Documentos\Generar\BuscarProducto\BuscarProductoFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -459,6 +564,11 @@
     <Compile Include="Src\Documentos\Generar\remision.cs" />
     <Compile Include="Src\Documentos\Generar\Remision\Gestion.cs" />
     <Compile Include="Src\Documentos\Generar\Remision\tipoDoc.cs" />
+    <Compile Include="Src\Gestion\ficha.cs" />
+    <Compile Include="Src\Gestion\fichaSeleccion.cs" />
+    <Compile Include="Src\Gestion\HndCombo\IOpcion.cs" />
+    <Compile Include="Src\Gestion\HndCombo\Opcion.cs" />
+    <Compile Include="Src\Gestion\IAbandonar.cs" />
     <Compile Include="Src\Identificacion\Login.cs" />
     <Compile Include="Src\Identificacion\IdentificacionFrm.cs">
       <SubType>Form</SubType>
@@ -468,6 +578,8 @@
     </Compile>
     <Compile Include="Src\Identificacion\ILogin.cs" />
     <Compile Include="Src\IGestion.cs" />
+    <Compile Include="Src\Gestion\IProcesar.cs" />
+    <Compile Include="Src\IReporte.cs" />
     <Compile Include="Src\Maestros\data.cs" />
     <Compile Include="Src\Maestros\Gestion.cs" />
     <Compile Include="Src\Maestros\GestionLista.cs" />
@@ -632,8 +744,38 @@
     <EmbeddedResource Include="Src\Configuracion\ConfiguracionFrm.resx">
       <DependentUpon>ConfiguracionFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\AgregarCta\AgregarCtaFrm.resx">
+      <DependentUpon>AgregarCtaFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\AgregarNotaAdm\AgregarNotaAdmFrm.resx">
+      <DependentUpon>AgregarNotaAdmFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\DocumentosPend\DocumentosPendFrm.resx">
+      <DependentUpon>DocumentosPendFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\GestionPago\DetalleCobro\DetalleFrm.resx">
+      <DependentUpon>DetalleFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\GestionPago\GestionPagoFrm.resx">
+      <DependentUpon>GestionPagoFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\GestionPago\MediosCobro\MediosCobroFrm.resx">
+      <DependentUpon>MediosCobroFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\GestionPago\MediosCobro\MetodoCobro\MetCobroFrm.resx">
+      <DependentUpon>MetCobroFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\GestionPago\MontoAbonar\MontoAbonarFrm.resx">
+      <DependentUpon>MontoAbonarFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\ToolsFrm.resx">
       <DependentUpon>ToolsFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\Reportes\ListaCtaPend.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\Reportes\ListaDocPend.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Documentos\Generar\AgregarEditarItem\AgregarEditarItemFrm.resx">
       <DependentUpon>AgregarEditarItemFrm.cs</DependentUpon>
@@ -755,6 +897,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Src\CxC\Tools\Reportes\DS_CxC.xsc">
+      <DependentUpon>DS_CxC.xsd</DependentUpon>
+    </None>
+    <None Include="Src\CxC\Tools\Reportes\DS_CxC.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_CxC.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Src\CxC\Tools\Reportes\DS_CxC.xss">
+      <DependentUpon>DS_CxC.xsd</DependentUpon>
+    </None>
     <None Include="Src\ReportesCliente\DS_CLI.xsc">
       <DependentUpon>DS_CLI.xsd</DependentUpon>
     </None>
@@ -786,6 +939,10 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="Resources\bt_agregar_nuevo.png" />
+    <None Include="Resources\bt_cobranza.png" />
+    <None Include="Resources\bt_billetera_24.png" />
+    <None Include="Resources\bt_billetera_48.png" />
+    <None Include="Resources\bt_borrador_32.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -794,10 +951,14 @@
     <Content Include="Src\Imagenes\bt_agregar_nuevo.png" />
     <Content Include="Src\Imagenes\bt_alerta.png" />
     <Content Include="Src\Imagenes\bt_asignar.png" />
+    <Content Include="Src\Imagenes\bt_billetera_24.png" />
+    <Content Include="Src\Imagenes\bt_billetera_48.png" />
     <Content Include="Src\Imagenes\bt_bombillo.png" />
+    <Content Include="Src\Imagenes\bt_borrador_32.png" />
     <Content Include="Src\Imagenes\bt_borrar.png" />
     <Content Include="Src\Imagenes\bt_buscar.png" />
     <Content Include="Src\Imagenes\bt_campana.png" />
+    <Content Include="Src\Imagenes\bt_cobranza.png" />
     <Content Include="Src\Imagenes\bt_compra.png" />
     <Content Include="Src\Imagenes\bt_configuracion.png" />
     <Content Include="Src\Imagenes\bt_consulta.png" />

@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace DtoLibPos.CxC.Tools.CtasPendiente
+namespace ModVentaAdm.Src.Gestion
 {
-
-    public class Filtro
+    
+    public interface IProcesar
     {
 
+        bool ProcesarIsOK { get; }
+        void Procesar();
 
     }
 

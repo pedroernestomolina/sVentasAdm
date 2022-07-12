@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_CxC" targetNamespace="http://tempuri.org/DS_CxC.xsd" xmlns:mstns="http://tempuri.org/DS_CxC.xsd" xmlns="http://tempuri.org/DS_CxC.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_CxC" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_CxC" msprop:Generator_UserDSName="DS_CxC">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ListaCtaPend" msprop:Generator_TableClassName="ListaCtaPendDataTable" msprop:Generator_TableVarName="tableListaCtaPend" msprop:Generator_RowChangedName="ListaCtaPendRowChanged" msprop:Generator_TablePropName="ListaCtaPend" msprop:Generator_RowDeletingName="ListaCtaPendRowDeleting" msprop:Generator_RowChangingName="ListaCtaPendRowChanging" msprop:Generator_RowEvHandlerName="ListaCtaPendRowChangeEventHandler" msprop:Generator_RowDeletedName="ListaCtaPendRowDeleted" msprop:Generator_RowClassName="ListaCtaPendRow" msprop:Generator_UserTableName="ListaCtaPend" msprop:Generator_RowEvArgName="ListaCtaPendRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cirif" msprop:Generator_ColumnVarNameInTable="columncirif" msprop:Generator_ColumnPropNameInRow="cirif" msprop:Generator_ColumnPropNameInTable="cirifColumn" msprop:Generator_UserColumnName="cirif" type="xs:string" minOccurs="0" />
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="importe" msprop:Generator_ColumnVarNameInTable="columnimporte" msprop:Generator_ColumnPropNameInRow="importe" msprop:Generator_ColumnPropNameInTable="importeColumn" msprop:Generator_UserColumnName="importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="acumulado" msprop:Generator_ColumnVarNameInTable="columnacumulado" msprop:Generator_ColumnPropNameInRow="acumulado" msprop:Generator_ColumnPropNameInTable="acumuladoColumn" msprop:Generator_UserColumnName="acumulado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="resta" msprop:Generator_ColumnVarNameInTable="columnresta" msprop:Generator_ColumnPropNameInRow="resta" msprop:Generator_ColumnPropNameInTable="restaColumn" msprop:Generator_UserColumnName="resta" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cntDocPend" msprop:Generator_ColumnVarNameInTable="columncntDocPend" msprop:Generator_ColumnPropNameInRow="cntDocPend" msprop:Generator_ColumnPropNameInTable="cntDocPendColumn" msprop:Generator_UserColumnName="cntDocPend" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cntFactPend" msprop:Generator_ColumnVarNameInTable="columncntFactPend" msprop:Generator_ColumnPropNameInRow="cntFactPend" msprop:Generator_ColumnPropNameInTable="cntFactPendColumn" msprop:Generator_UserColumnName="cntFactPend" type="xs:decimal" minOccurs="0" />
+              <xs:element name="limiteFactPend" msprop:Generator_ColumnVarNameInTable="columnlimiteFactPend" msprop:Generator_ColumnPropNameInRow="limiteFactPend" msprop:Generator_ColumnPropNameInTable="limiteFactPendColumn" msprop:Generator_UserColumnName="limiteFactPend" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoLimiteCredito" msprop:Generator_ColumnVarNameInTable="columnmontoLimiteCredito" msprop:Generator_ColumnPropNameInRow="montoLimiteCredito" msprop:Generator_ColumnPropNameInTable="montoLimiteCreditoColumn" msprop:Generator_UserColumnName="montoLimiteCredito" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListaDocPend" msprop:Generator_TableClassName="ListaDocPendDataTable" msprop:Generator_TableVarName="tableListaDocPend" msprop:Generator_TablePropName="ListaDocPend" msprop:Generator_RowDeletingName="ListaDocPendRowDeleting" msprop:Generator_RowChangingName="ListaDocPendRowChanging" msprop:Generator_RowEvHandlerName="ListaDocPendRowChangeEventHandler" msprop:Generator_RowDeletedName="ListaDocPendRowDeleted" msprop:Generator_UserTableName="ListaDocPend" msprop:Generator_RowChangedName="ListaDocPendRowChanged" msprop:Generator_RowEvArgName="ListaDocPendRowChangeEvent" msprop:Generator_RowClassName="ListaDocPendRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="documento" msprop:Generator_ColumnVarNameInTable="columndocumento" msprop:Generator_ColumnPropNameInRow="documento" msprop:Generator_ColumnPropNameInTable="documentoColumn" msprop:Generator_UserColumnName="documento" type="xs:string" minOccurs="0" />
+              <xs:element name="tipo" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_UserColumnName="tipo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

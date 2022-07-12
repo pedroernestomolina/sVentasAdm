@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace DtoLibPos.CxC.Tools.CtasPendiente
+namespace DtoLibPos.CxC.Tools.CtasPendiente.Lista
 {
     
     public class Ficha

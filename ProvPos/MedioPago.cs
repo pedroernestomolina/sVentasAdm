@@ -12,7 +12,8 @@ namespace ProvPos
     public partial class Provider: IPos.IProvider
     {
 
-        public DtoLib.ResultadoLista<DtoLibPos.MedioPago.Lista.Ficha> MedioPago_GetLista(DtoLibPos.MedioPago.Lista.Filtro filtro)
+        public DtoLib.ResultadoLista<DtoLibPos.MedioPago.Lista.Ficha> 
+            MedioPago_GetLista(DtoLibPos.MedioPago.Lista.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.MedioPago.Lista.Ficha>();
 
@@ -20,12 +21,10 @@ namespace ProvPos
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
                 {
-                    var sql_1 = " select auto as id, codigo, nombre ";
-                    var sql_2 = " from empresa_medios ";
-                    var sql_3 = " where 1=1 and estatus_cobro=1 ";
-                    var sql_4 = "";
-
-                    var sql = sql_1 + sql_2 + sql_3 + sql_4;
+                    var sql_1 = @"select auto as id, codigo, nombre 
+                                    from empresa_medios 
+                                    where estatus_cobro=1 ";
+                    var sql = sql_1;
                     var list = cnn.Database.SqlQuery<DtoLibPos.MedioPago.Lista.Ficha>(sql).ToList();
                     result.Lista = list;
                 }
@@ -38,8 +37,8 @@ namespace ProvPos
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibPos.MedioPago.Entidad.Ficha> MedioPago_GetFichaById(string id)
+        public DtoLib.ResultadoEntidad<DtoLibPos.MedioPago.Entidad.Ficha> 
+            MedioPago_GetFichaById(string id)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.MedioPago.Entidad.Ficha>();
 

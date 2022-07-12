@@ -23,10 +23,14 @@ namespace ModVentaAdm
 
         public static string NombreHerramienta            = "Tool Ventas Adm.";
         public static string Id_SistDocumento_Factura     = "0000000001";
+        public static string Id_SistDocumento_NotaDebito  = "0000000002";
         public static string Id_SistDocumento_NotaCredito = "0000000003";
         public static string Id_SistDocumento_NotaEntrega = "0000000004";
         public static string Id_SistDocumento_Presupuesto = "0000000005";
         public static string Id_SistDocumento_Pedido      = "0000000006";
+
+        public static string Id_SistemaDocumento_NOTA_DEBITO_ADMINISTRATIVA_POC_COBRAR  = "0000000009";
+        public static string Id_SistemaDocumento_NOTA_CREDITO_ADMINISTRATIVA_POC_COBRAR = "0000000010";
 
     }
 

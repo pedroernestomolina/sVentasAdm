@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.OOB.CxC.Tools.CtasPendiente
+namespace ModVentaAdm.OOB.CxC.Tools.CtasPendiente.Lista
 {
     
     public class Ficha

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ModVentaAdm.Src.Cliente.Visualizar
 {
     
-    public class Gestion
+    public class Gestion: IVisualizar
     {
 
 

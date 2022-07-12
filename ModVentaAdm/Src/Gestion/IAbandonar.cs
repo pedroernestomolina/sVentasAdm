@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.OOB.CxC.Tools.CtasPendiente
+namespace ModVentaAdm.Src.Gestion
 {
 
-    public class Filtro
+    public interface IAbandonar
     {
+
+        bool AbandonarIsOK { get; }
+        void AbandonarFicha();
 
     }
 

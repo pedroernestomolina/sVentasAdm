@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="PosModel.clientes" Width="1.5" PointX="9" PointY="31.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PosModel.clientes_grupo" Width="1.5" PointX="6.75" PointY="29.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PosModel.clientes_zonas" Width="1.5" PointX="6.75" PointY="32.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PosModel.cxc" Width="1.5" PointX="11.25" PointY="36.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PosModel.cxc_recibos" Width="1.5" PointX="13.5" PointY="43.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PosModel.empresa_cobradores" Width="1.5" PointX="6.75" PointY="34.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PosModel.empresa_departamentos" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
@@ -45,12 +44,9 @@
         <AssociationConnector Association="PosModel.clientes_ibfk_2" ManuallyRouted="false" />
         <AssociationConnector Association="PosModel.clientes_ibfk_3" ManuallyRouted="false" />
         <AssociationConnector Association="PosModel.clientes_ibfk_5" ManuallyRouted="false" />
-        <AssociationConnector Association="PosModel.cxc_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="PosModel.cxc_recibos_ibfk_2" ManuallyRouted="false" />
         <AssociationConnector Association="PosModel.ventas_detalle_ibfk_6" ManuallyRouted="false" />
         <AssociationConnector Association="PosModel.ventas_ibfk_5" ManuallyRouted="false" />
-        <AssociationConnector Association="PosModel.cxc_ibfk_3" ManuallyRouted="false" />
-        <AssociationConnector Association="PosModel.cxc_recibos_ibfk_4" ManuallyRouted="false" />
         <AssociationConnector Association="PosModel.cxc_recibos_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="PosModel.cxc_recibos_ibfk_3" ManuallyRouted="false" />
         <AssociationConnector Association="PosModel.productos_ibfk_1" ManuallyRouted="false" />
@@ -79,6 +75,10 @@
         <AssociationConnector Association="PosModel.ventas_detalle_ibfk_9" ManuallyRouted="false" />
         <AssociationConnector Association="PosModel.ventas_ibfk_6" ManuallyRouted="false" />
         <AssociationConnector Association="PosModel.ventas_detalle_ibfk_8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PosModel.cxc" Width="1.5" PointX="15.75" PointY="34.75" />
+        <AssociationConnector Association="PosModel.cxc_ibfk_1" />
+        <AssociationConnector Association="PosModel.cxc_ibfk_3" />
+        <AssociationConnector Association="PosModel.cxc_recibos_ibfk_4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

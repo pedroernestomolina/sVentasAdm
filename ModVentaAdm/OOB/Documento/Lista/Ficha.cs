@@ -74,8 +74,11 @@ namespace ModVentaAdm.OOB.Documento.Lista
             DocSituacion = "";
             SucursalCod = "";
             SucursalDesc = "";
+            ClaveSistema = "";
         }
 
+
+        public string ClaveSistema { get; set; }
 
     }
 

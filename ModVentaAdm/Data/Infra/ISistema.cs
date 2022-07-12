@@ -19,8 +19,12 @@ namespace ModVentaAdm.Data.Infra
 
         OOB.Resultado.Lista<OOB.Sistema.Vendedor.Entidad.Ficha> 
             Sistema_Vendedor_GetLista();
+
+        OOB.Resultado.FichaEntidad<OOB.Sistema.Cobrador.Entidad.Ficha>
+            Sistema_Cobrador_GetFicha_ById(string id);
         OOB.Resultado.Lista<OOB.Sistema.Cobrador.Entidad.Ficha> 
             Sistema_Cobrador_GetLista();
+
         OOB.Resultado.Lista<OOB.Sistema.Estado.Entidad.Ficha> 
             Sistema_Estado_GetLista();
         OOB.Resultado.Lista<OOB.Sistema.Transporte.Entidad.Ficha> 
@@ -29,6 +33,12 @@ namespace ModVentaAdm.Data.Infra
             Deposito_GetLista(OOB.Sistema.Deposito.Lista.Filtro filtro);
         OOB.Resultado.Lista<OOB.Sistema.Fiscal.Entidad.Ficha> 
             Sistema_TasaFiscal_GetLista();
+
+
+        OOB.Resultado.Lista<OOB.Sistema.MedioCobro.Entidad.Ficha>
+            Sistema_MedioCobro_GetLista();
+        OOB.Resultado.FichaEntidad<OOB.Sistema.MedioCobro.Entidad.Ficha>
+            Sistema_MedioCobro_GetFicha_ById(string id);
 
 
         OOB.Resultado.FichaEntidad<string>

@@ -30,6 +30,7 @@ namespace DtoLibPos.Documento.Lista
         public string SucursalCod { get; set; }
         public string SucursalDesc { get; set; }
         public string DocSituacion { get; set; }
+        public string ClaveSistema { get; set; }
 
 
         public Ficha()
@@ -53,6 +54,7 @@ namespace DtoLibPos.Documento.Lista
             DocSituacion = "";
             SucursalCod = "";
             SucursalDesc = "";
+            ClaveSistema = "";
         }
 
     }

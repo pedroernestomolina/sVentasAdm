@@ -143,9 +143,39 @@ namespace ModVentaAdm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_billetera_24 {
+            get {
+                object obj = ResourceManager.GetObject("bt_billetera_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_billetera_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_billetera_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_bombillo {
             get {
                 object obj = ResourceManager.GetObject("bt_bombillo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_borrador_32 {
+            get {
+                object obj = ResourceManager.GetObject("bt_borrador_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +206,16 @@ namespace ModVentaAdm.Properties {
         internal static System.Drawing.Bitmap bt_campana {
             get {
                 object obj = ResourceManager.GetObject("bt_campana", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_cobranza {
+            get {
+                object obj = ResourceManager.GetObject("bt_cobranza", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

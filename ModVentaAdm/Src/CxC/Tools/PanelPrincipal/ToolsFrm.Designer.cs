@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.MenuP = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_ARCHIVO_SALIR = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,18 +56,26 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.BT_CORRECTOR = new System.Windows.Forms.Button();
+            this.BT_VER_DETALLES_CTA = new System.Windows.Forms.Button();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.BT_IMPRIMIR = new System.Windows.Forms.Button();
+            this.BT_REPORTE_CTAS = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BT_AGREGAR_CTA = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.BT_AGREGAR_NCR_ADM = new System.Windows.Forms.Button();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.BT_AGREGAR_NDB_ADM = new System.Windows.Forms.Button();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.BT_GESTION_PAGO = new System.Windows.Forms.Button();
             this.P_PIE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_SALIDA = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.MenuP.SuspendLayout();
             this.P_PRINCIPAL.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -89,6 +98,11 @@
             this.panel15.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel17.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.panel20.SuspendLayout();
+            this.panel21.SuspendLayout();
             this.P_PIE.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -159,8 +173,8 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.18111F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.81889F));
             this.tableLayoutPanel3.Controls.Add(this.panel5, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel14, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -179,7 +193,7 @@
             this.panel5.Location = new System.Drawing.Point(1, 1);
             this.panel5.Margin = new System.Windows.Forms.Padding(1);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(870, 637);
+            this.panel5.Size = new System.Drawing.Size(841, 637);
             this.panel5.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -197,7 +211,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(870, 637);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(841, 637);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // panel6
@@ -208,7 +222,7 @@
             this.panel6.Location = new System.Drawing.Point(1, 1);
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(868, 40);
+            this.panel6.Size = new System.Drawing.Size(839, 40);
             this.panel6.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -226,7 +240,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(868, 40);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(839, 40);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // panel8
@@ -237,7 +251,7 @@
             this.panel8.Margin = new System.Windows.Forms.Padding(1);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(2);
-            this.panel8.Size = new System.Drawing.Size(432, 38);
+            this.panel8.Size = new System.Drawing.Size(417, 38);
             this.panel8.TabIndex = 0;
             // 
             // label1
@@ -246,7 +260,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(2, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(428, 34);
+            this.label1.Size = new System.Drawing.Size(413, 34);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tools Ctas Pendientes x Cobrar";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -254,22 +268,22 @@
             // panel9
             // 
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(435, 1);
+            this.panel9.Location = new System.Drawing.Point(420, 1);
             this.panel9.Margin = new System.Windows.Forms.Padding(1);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(2);
-            this.panel9.Size = new System.Drawing.Size(258, 38);
+            this.panel9.Size = new System.Drawing.Size(249, 38);
             this.panel9.TabIndex = 1;
             // 
             // panel10
             // 
             this.panel10.Controls.Add(this.BT_BUSCAR);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(695, 1);
+            this.panel10.Location = new System.Drawing.Point(671, 1);
             this.panel10.Margin = new System.Windows.Forms.Padding(1);
             this.panel10.Name = "panel10";
             this.panel10.Padding = new System.Windows.Forms.Padding(2);
-            this.panel10.Size = new System.Drawing.Size(172, 38);
+            this.panel10.Size = new System.Drawing.Size(167, 38);
             this.panel10.TabIndex = 2;
             // 
             // BT_BUSCAR
@@ -278,7 +292,7 @@
             this.BT_BUSCAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BT_BUSCAR.Location = new System.Drawing.Point(2, 2);
             this.BT_BUSCAR.Name = "BT_BUSCAR";
-            this.BT_BUSCAR.Size = new System.Drawing.Size(168, 34);
+            this.BT_BUSCAR.Size = new System.Drawing.Size(163, 34);
             this.BT_BUSCAR.TabIndex = 0;
             this.BT_BUSCAR.Text = "Buscar";
             this.BT_BUSCAR.UseVisualStyleBackColor = true;
@@ -292,7 +306,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(868, 558);
+            this.panel7.Size = new System.Drawing.Size(839, 558);
             this.panel7.TabIndex = 1;
             // 
             // DGV_1
@@ -301,7 +315,7 @@
             this.DGV_1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGV_1.Location = new System.Drawing.Point(2, 2);
             this.DGV_1.Name = "DGV_1";
-            this.DGV_1.Size = new System.Drawing.Size(864, 554);
+            this.DGV_1.Size = new System.Drawing.Size(835, 554);
             this.DGV_1.TabIndex = 0;
             // 
             // panel11
@@ -312,7 +326,7 @@
             this.panel11.Location = new System.Drawing.Point(1, 603);
             this.panel11.Margin = new System.Windows.Forms.Padding(1);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(868, 33);
+            this.panel11.Size = new System.Drawing.Size(839, 33);
             this.panel11.TabIndex = 2;
             // 
             // tableLayoutPanel6
@@ -328,7 +342,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(868, 33);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(839, 33);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel12
@@ -338,7 +352,7 @@
             this.panel12.Location = new System.Drawing.Point(1, 1);
             this.panel12.Margin = new System.Windows.Forms.Padding(1);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(692, 31);
+            this.panel12.Size = new System.Drawing.Size(669, 31);
             this.panel12.TabIndex = 0;
             // 
             // label2
@@ -348,7 +362,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(692, 31);
+            this.label2.Size = new System.Drawing.Size(669, 31);
             this.label2.TabIndex = 1;
             this.label2.Text = "Total Monto x Cobrar:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -357,10 +371,10 @@
             // 
             this.panel13.Controls.Add(this.L_MONTO_PENDIENTE);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(695, 1);
+            this.panel13.Location = new System.Drawing.Point(672, 1);
             this.panel13.Margin = new System.Windows.Forms.Padding(1);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(172, 31);
+            this.panel13.Size = new System.Drawing.Size(166, 31);
             this.panel13.TabIndex = 1;
             // 
             // L_MONTO_PENDIENTE
@@ -370,7 +384,7 @@
             this.L_MONTO_PENDIENTE.ForeColor = System.Drawing.Color.White;
             this.L_MONTO_PENDIENTE.Location = new System.Drawing.Point(0, 0);
             this.L_MONTO_PENDIENTE.Name = "L_MONTO_PENDIENTE";
-            this.L_MONTO_PENDIENTE.Size = new System.Drawing.Size(172, 31);
+            this.L_MONTO_PENDIENTE.Size = new System.Drawing.Size(166, 31);
             this.L_MONTO_PENDIENTE.TabIndex = 2;
             this.L_MONTO_PENDIENTE.Text = "99999999,99";
             this.L_MONTO_PENDIENTE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -379,21 +393,22 @@
             // 
             this.panel14.Controls.Add(this.tableLayoutPanel7);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(873, 1);
+            this.panel14.Location = new System.Drawing.Point(844, 1);
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(153, 637);
+            this.panel14.Size = new System.Drawing.Size(182, 637);
             this.panel14.TabIndex = 1;
             // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
             this.tableLayoutPanel7.Controls.Add(this.panel15, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel16, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel17, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.panel18, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.panel21, 0, 3);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
@@ -407,90 +422,192 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(153, 637);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(182, 637);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // panel15
             // 
-            this.panel15.Controls.Add(this.BT_CORRECTOR);
+            this.panel15.Controls.Add(this.BT_VER_DETALLES_CTA);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(1, 1);
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(2);
-            this.panel15.Size = new System.Drawing.Size(74, 77);
+            this.panel15.Size = new System.Drawing.Size(78, 77);
             this.panel15.TabIndex = 0;
             // 
-            // BT_CORRECTOR
+            // BT_VER_DETALLES_CTA
             // 
-            this.BT_CORRECTOR.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_lista;
-            this.BT_CORRECTOR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BT_CORRECTOR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_CORRECTOR.FlatAppearance.BorderSize = 0;
-            this.BT_CORRECTOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_CORRECTOR.Location = new System.Drawing.Point(2, 2);
-            this.BT_CORRECTOR.Name = "BT_CORRECTOR";
-            this.BT_CORRECTOR.Size = new System.Drawing.Size(70, 73);
-            this.BT_CORRECTOR.TabIndex = 2;
-            this.BT_CORRECTOR.UseVisualStyleBackColor = true;
+            this.BT_VER_DETALLES_CTA.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_lista;
+            this.BT_VER_DETALLES_CTA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BT_VER_DETALLES_CTA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_VER_DETALLES_CTA.FlatAppearance.BorderSize = 0;
+            this.BT_VER_DETALLES_CTA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_VER_DETALLES_CTA.Location = new System.Drawing.Point(2, 2);
+            this.BT_VER_DETALLES_CTA.Name = "BT_VER_DETALLES_CTA";
+            this.BT_VER_DETALLES_CTA.Size = new System.Drawing.Size(74, 73);
+            this.BT_VER_DETALLES_CTA.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.BT_VER_DETALLES_CTA, "VISUALIZAR DOCUMENTOS PENDIENTES POR COBRAR");
+            this.BT_VER_DETALLES_CTA.UseVisualStyleBackColor = true;
+            this.BT_VER_DETALLES_CTA.Click += new System.EventHandler(this.BT_VER_DETALLES_CTA_Click);
             // 
             // panel16
             // 
-            this.panel16.Controls.Add(this.BT_IMPRIMIR);
+            this.panel16.Controls.Add(this.BT_REPORTE_CTAS);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(77, 1);
+            this.panel16.Location = new System.Drawing.Point(81, 1);
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(75, 77);
+            this.panel16.Size = new System.Drawing.Size(100, 77);
             this.panel16.TabIndex = 1;
             // 
-            // BT_IMPRIMIR
+            // BT_REPORTE_CTAS
             // 
-            this.BT_IMPRIMIR.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_imprimir_2;
-            this.BT_IMPRIMIR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BT_IMPRIMIR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_IMPRIMIR.FlatAppearance.BorderSize = 0;
-            this.BT_IMPRIMIR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_IMPRIMIR.Location = new System.Drawing.Point(2, 2);
-            this.BT_IMPRIMIR.Name = "BT_IMPRIMIR";
-            this.BT_IMPRIMIR.Size = new System.Drawing.Size(71, 73);
-            this.BT_IMPRIMIR.TabIndex = 2;
-            this.BT_IMPRIMIR.UseVisualStyleBackColor = true;
+            this.BT_REPORTE_CTAS.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_imprimir_2;
+            this.BT_REPORTE_CTAS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BT_REPORTE_CTAS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_REPORTE_CTAS.FlatAppearance.BorderSize = 0;
+            this.BT_REPORTE_CTAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_REPORTE_CTAS.Location = new System.Drawing.Point(2, 2);
+            this.BT_REPORTE_CTAS.Name = "BT_REPORTE_CTAS";
+            this.BT_REPORTE_CTAS.Size = new System.Drawing.Size(96, 73);
+            this.BT_REPORTE_CTAS.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.BT_REPORTE_CTAS, "REPORTE DE CTAS PENDIENTES POR COBRAR");
+            this.BT_REPORTE_CTAS.UseVisualStyleBackColor = true;
+            this.BT_REPORTE_CTAS.Click += new System.EventHandler(this.BT_REPORTE_CTAS_Click);
             // 
             // panel17
             // 
-            this.panel17.Controls.Add(this.button1);
+            this.panel17.Controls.Add(this.BT_AGREGAR_CTA);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel17.Location = new System.Drawing.Point(1, 80);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Padding = new System.Windows.Forms.Padding(2);
-            this.panel17.Size = new System.Drawing.Size(74, 77);
+            this.tableLayoutPanel7.SetRowSpan(this.panel17, 2);
+            this.panel17.Size = new System.Drawing.Size(78, 156);
             this.panel17.TabIndex = 2;
             // 
-            // button1
+            // BT_AGREGAR_CTA
             // 
-            this.button1.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_agregar_nuevo;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 73);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BT_AGREGAR_CTA.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_agregar_nuevo;
+            this.BT_AGREGAR_CTA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BT_AGREGAR_CTA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_AGREGAR_CTA.FlatAppearance.BorderSize = 0;
+            this.BT_AGREGAR_CTA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_AGREGAR_CTA.Location = new System.Drawing.Point(2, 2);
+            this.BT_AGREGAR_CTA.Name = "BT_AGREGAR_CTA";
+            this.BT_AGREGAR_CTA.Size = new System.Drawing.Size(74, 152);
+            this.BT_AGREGAR_CTA.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.BT_AGREGAR_CTA, "AGREGAR DOCUMENTO POR COBRAR");
+            this.BT_AGREGAR_CTA.UseVisualStyleBackColor = true;
+            this.BT_AGREGAR_CTA.Click += new System.EventHandler(this.BT_AGREGAR_CTA_Click);
             // 
             // panel18
             // 
+            this.panel18.Controls.Add(this.tableLayoutPanel8);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(77, 80);
+            this.panel18.Location = new System.Drawing.Point(81, 80);
             this.panel18.Margin = new System.Windows.Forms.Padding(1);
             this.panel18.Name = "panel18";
             this.panel18.Padding = new System.Windows.Forms.Padding(2);
-            this.panel18.Size = new System.Drawing.Size(75, 77);
+            this.tableLayoutPanel7.SetRowSpan(this.panel18, 2);
+            this.panel18.Size = new System.Drawing.Size(100, 156);
             this.panel18.TabIndex = 3;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.panel19, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.panel20, 0, 1);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(96, 152);
+            this.tableLayoutPanel8.TabIndex = 0;
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.BT_AGREGAR_NCR_ADM);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel19.Location = new System.Drawing.Point(1, 1);
+            this.panel19.Margin = new System.Windows.Forms.Padding(1);
+            this.panel19.Name = "panel19";
+            this.panel19.Padding = new System.Windows.Forms.Padding(2);
+            this.panel19.Size = new System.Drawing.Size(94, 74);
+            this.panel19.TabIndex = 0;
+            // 
+            // BT_AGREGAR_NCR_ADM
+            // 
+            this.BT_AGREGAR_NCR_ADM.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_AGREGAR_NCR_ADM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_AGREGAR_NCR_ADM.Location = new System.Drawing.Point(2, 2);
+            this.BT_AGREGAR_NCR_ADM.Name = "BT_AGREGAR_NCR_ADM";
+            this.BT_AGREGAR_NCR_ADM.Size = new System.Drawing.Size(90, 70);
+            this.BT_AGREGAR_NCR_ADM.TabIndex = 0;
+            this.BT_AGREGAR_NCR_ADM.Text = "NCR/ADM";
+            this.toolTip1.SetToolTip(this.BT_AGREGAR_NCR_ADM, "ACREGAR NOTA DE CREDITO ADMINISTRATIVA POR COBRAR");
+            this.BT_AGREGAR_NCR_ADM.UseVisualStyleBackColor = true;
+            this.BT_AGREGAR_NCR_ADM.Click += new System.EventHandler(this.BT_AGREGAR_NCR_ADM_Click);
+            // 
+            // panel20
+            // 
+            this.panel20.Controls.Add(this.BT_AGREGAR_NDB_ADM);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel20.Location = new System.Drawing.Point(1, 77);
+            this.panel20.Margin = new System.Windows.Forms.Padding(1);
+            this.panel20.Name = "panel20";
+            this.panel20.Padding = new System.Windows.Forms.Padding(2);
+            this.panel20.Size = new System.Drawing.Size(94, 74);
+            this.panel20.TabIndex = 1;
+            // 
+            // BT_AGREGAR_NDB_ADM
+            // 
+            this.BT_AGREGAR_NDB_ADM.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_AGREGAR_NDB_ADM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_AGREGAR_NDB_ADM.Location = new System.Drawing.Point(2, 2);
+            this.BT_AGREGAR_NDB_ADM.Name = "BT_AGREGAR_NDB_ADM";
+            this.BT_AGREGAR_NDB_ADM.Size = new System.Drawing.Size(90, 70);
+            this.BT_AGREGAR_NDB_ADM.TabIndex = 0;
+            this.BT_AGREGAR_NDB_ADM.Text = "NDB/ADM";
+            this.toolTip1.SetToolTip(this.BT_AGREGAR_NDB_ADM, "AGREGAR NOTA DE DEBITO ADMINISTRATIVA POR COBRAR");
+            this.BT_AGREGAR_NDB_ADM.UseVisualStyleBackColor = true;
+            this.BT_AGREGAR_NDB_ADM.Click += new System.EventHandler(this.BT_AGREGAR_NDB_ADM_Click);
+            // 
+            // panel21
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.panel21, 2);
+            this.panel21.Controls.Add(this.BT_GESTION_PAGO);
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel21.Location = new System.Drawing.Point(1, 238);
+            this.panel21.Margin = new System.Windows.Forms.Padding(1);
+            this.panel21.Name = "panel21";
+            this.panel21.Padding = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel7.SetRowSpan(this.panel21, 2);
+            this.panel21.Size = new System.Drawing.Size(180, 156);
+            this.panel21.TabIndex = 4;
+            // 
+            // BT_GESTION_PAGO
+            // 
+            this.BT_GESTION_PAGO.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_cobranza;
+            this.BT_GESTION_PAGO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BT_GESTION_PAGO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_GESTION_PAGO.FlatAppearance.BorderSize = 0;
+            this.BT_GESTION_PAGO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_GESTION_PAGO.Location = new System.Drawing.Point(2, 2);
+            this.BT_GESTION_PAGO.Name = "BT_GESTION_PAGO";
+            this.BT_GESTION_PAGO.Size = new System.Drawing.Size(176, 152);
+            this.BT_GESTION_PAGO.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.BT_GESTION_PAGO, "GESTION DE PAGO");
+            this.BT_GESTION_PAGO.UseVisualStyleBackColor = true;
+            this.BT_GESTION_PAGO.Click += new System.EventHandler(this.BT_GESTION_PAGO_Click);
             // 
             // P_PIE
             // 
@@ -606,6 +723,11 @@
             this.panel15.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.panel20.ResumeLayout(false);
+            this.panel21.ResumeLayout(false);
             this.P_PIE.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -652,9 +774,17 @@
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Button BT_CORRECTOR;
-        private System.Windows.Forms.Button BT_IMPRIMIR;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BT_VER_DETALLES_CTA;
+        private System.Windows.Forms.Button BT_REPORTE_CTAS;
+        private System.Windows.Forms.Button BT_AGREGAR_CTA;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Button BT_AGREGAR_NCR_ADM;
+        private System.Windows.Forms.Button BT_AGREGAR_NDB_ADM;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Button BT_GESTION_PAGO;
+        private System.Windows.Forms.ToolTip toolTip1;
 
     }
 }

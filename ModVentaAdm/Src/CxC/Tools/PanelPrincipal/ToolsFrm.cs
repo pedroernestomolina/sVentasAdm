@@ -182,6 +182,73 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             L_MONTO_PENDIENTE.Text = _controlador.GetMontoPendientePorCobrar.ToString("n2");
         }
 
+        private void BT_VER_DETALLES_CTA_Click(object sender, EventArgs e)
+        {
+            DocDetallesPend();
+        }
+        private void DocDetallesPend()
+        {
+            _controlador.DocDetallesPend();
+        }
+
+        private void BT_REPORTE_CTAS_Click(object sender, EventArgs e)
+        {
+            ListadoCtasPend();
+        }
+        private void ListadoCtasPend()
+        {
+            _controlador.ListadoCtasPend();
+        }
+
+        private void BT_AGREGAR_CTA_Click(object sender, EventArgs e)
+        {
+            AgregarCta();
+        }
+        private void AgregarCta()
+        {
+            _controlador.AgregarCta();
+            if (_controlador.AgregarCtaIsOk) 
+            {
+                ActualizarDataPanel();
+            }
+        }
+
+        private void BT_AGREGAR_NCR_ADM_Click(object sender, EventArgs e)
+        {
+            AgregarNCrAdm();
+        }
+        private void AgregarNCrAdm()
+        {
+            _controlador.AgregarNCrAdm();
+            if (_controlador.AgregarNCrAdmIsOk)
+            {
+                ActualizarDataPanel();
+            }
+        }
+
+        private void BT_AGREGAR_NDB_ADM_Click(object sender, EventArgs e)
+        {
+            AgregarNDbAdm();
+        }
+        private void AgregarNDbAdm()
+        {
+            _controlador.AgregarNDbAdm();
+            if (_controlador.AgregarNDbAdmIsOk)
+            {
+                ActualizarDataPanel();
+            }
+        }
+
+        private void BT_GESTION_PAGO_Click(object sender, EventArgs e)
+        {
+            GestionPago();
+        }
+        private void GestionPago()
+        {
+            _controlador.GestionPago();
+            BuscarCtasPendientes();
+        }
+
     }
 
 }

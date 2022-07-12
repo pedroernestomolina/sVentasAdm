@@ -19,6 +19,19 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
 
 
         void BuscarCtasPendientes();
+        void AgregarCta();
+        void AgregarNCrAdm();
+        void AgregarNDbAdm();
+        bool AgregarCtaIsOk { get; }
+        bool AgregarNCrAdmIsOk { get; }
+        bool AgregarNDbAdmIsOk { get; }
+
+
+        void ListadoCtasPend();
+        void DocDetallesPend();
+
+
+        void GestionPago();
 
     }
 

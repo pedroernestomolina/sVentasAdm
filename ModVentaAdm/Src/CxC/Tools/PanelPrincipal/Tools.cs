@@ -15,7 +15,14 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
 
 
         private ListaCtasPend.ILista _gListaCtasPend;
-
+        private AgregarCta.IAgregar _gAgregar;
+        private Reportes.ListaCtaPend.IRepCtaPend _gRepCtaPend;
+        private DocumentosPend.IDocPend _gDocPend;
+        private AgregarNotaAdm.IAgregar _gAgregarNotaAdm;
+        private AgregarNotaAdm.IAgregarTipoNotaAdm _gAgregarNotaCreditoAdm;
+        private AgregarNotaAdm.IAgregarTipoNotaAdm _gAgregarNotaDebitoAdm;
+        private GestionPago.IGestionPago _gGestionPago;
+        
 
         public decimal GetMontoPendientePorCobrar { get { return _gListaCtasPend.MontoPendientePorCobrar; } }
         public BindingSource CtasPendGetSource { get { return _gListaCtasPend.CtasPendGetSource; } }     
@@ -24,6 +31,13 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         public Tools() 
         {
             _gListaCtasPend = new ListaCtasPend.Lista();
+            _gAgregar = new AgregarCta.Agregar();
+            _gRepCtaPend = new Reportes.ListaCtaPend.RepCtaPend();
+            _gDocPend = new DocumentosPend.DocPend();
+            _gAgregarNotaAdm = new AgregarNotaAdm.Agregar();
+            _gAgregarNotaCreditoAdm = new AgregarNotaAdm.Credito.AgregarNotaCreditoAdm();
+            _gAgregarNotaDebitoAdm = new AgregarNotaAdm.Debito.AgregarNotaDebitoAdm();
+            _gGestionPago = new GestionPago.GestionPago();
         }
 
         ToolsFrm frm;
@@ -66,13 +80,19 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
 
         public void BuscarCtasPendientes()
         {
-            var filtroOOb = new OOB.CxC.Tools.CtasPendiente.Filtro()
+            var filtroOOb = new OOB.CxC.Tools.CtasPendiente.Lista.Filtro()
             {
+                codSucursal=Sistema.Sucursal.codigo,
             };
             var r01 = Sistema.MyData.CxC_Tool_CtasPendiente_GetLista(filtroOOb);
             if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError) 
             {
                 Helpers.Msg.Error(r01.Mensaje);
+                return;
+            }
+            if (r01.ListaD.Count == 0) 
+            {
+                Helpers.Msg.Alerta("NO HAY CUENTAS PENDIENTES");
                 return;
             }
             var lst = new List<ListaCtasPend.data>();
@@ -93,6 +113,75 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 lst.Add(nr);
             }
             _gListaCtasPend.setListaCtasPend(lst);
+        }
+
+
+        public bool AgregarCtaIsOk { get { return _gAgregar.AgregarIsOk; } }
+        public void AgregarCta()
+        {
+            _gAgregar.Inicializa();
+            _gAgregar.Inicia();
+            if (_gAgregar.AgregarIsOk) 
+            {
+                BuscarCtasPendientes();
+            }
+        }
+
+
+        public void ListadoCtasPend()
+        {
+            _gRepCtaPend.setListaDoc(_gListaCtasPend.ListaItems);
+            _gRepCtaPend.Generar();
+        }
+
+
+        public void DocDetallesPend()
+        {
+            if (_gListaCtasPend.ItemActual != null)
+            {
+                var _item = _gListaCtasPend.ItemActual;
+                _gDocPend.Inicializa();
+                _gDocPend.setIdCliente(_item.idCliente);
+                _gDocPend.Inicia();
+            }
+        }
+
+        public bool AgregarNCrAdmIsOk { get { return _gAgregarNotaAdm.AgregarIsOk; } }
+        public void AgregarNCrAdm()
+        {
+            _gAgregarNotaCreditoAdm.Inicializa();
+            _gAgregarNotaAdm.Inicializa();
+            _gAgregarNotaAdm.setTipoNota(_gAgregarNotaCreditoAdm);
+            _gAgregarNotaAdm.Inicia();
+            if (_gAgregarNotaAdm.AgregarIsOk)
+            {
+                BuscarCtasPendientes();
+            }
+        }
+
+        public bool AgregarNDbAdmIsOk { get { return _gAgregarNotaAdm.AgregarIsOk; } }
+        public void AgregarNDbAdm()
+        {
+            _gAgregarNotaDebitoAdm.Inicializa();
+            _gAgregarNotaAdm.Inicializa();
+            _gAgregarNotaAdm.setTipoNota(_gAgregarNotaDebitoAdm);
+            _gAgregarNotaAdm.Inicia();
+            if (_gAgregarNotaAdm.AgregarIsOk)
+            {
+                BuscarCtasPendientes();
+            }
+        }
+
+        public void GestionPago()
+        {
+            if (_gListaCtasPend.ItemActual != null)
+            {
+                var _item = _gListaCtasPend.ItemActual;
+                _gGestionPago.Inicializa();
+                _gGestionPago.setIdCliente(_item.idCliente);
+                _gGestionPago.Inicia();
+            }
+
         }
 
     }

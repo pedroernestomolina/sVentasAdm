@@ -12,7 +12,8 @@ namespace ModVentaAdm.Data.Prov
     public partial class DataPrv : IData
     {
 
-        public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> Documento_Get_Lista(OOB.Documento.Lista.Filtro filtro)
+        public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> 
+            Documento_Get_Lista(OOB.Documento.Lista.Filtro filtro)
         {
             var result = new OOB.Resultado.Lista<OOB.Documento.Lista.Ficha>();
 
@@ -76,6 +77,7 @@ namespace ModVentaAdm.Data.Prov
                             DocSituacion = s.DocSituacion,
                             SucursalCod = s.SucursalCod,
                             SucursalDesc = s.SucursalDesc,
+                            ClaveSistema= s.ClaveSistema,
                         };
                         return nr;
                     }).ToList();
@@ -85,7 +87,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-        public OOB.Resultado.FichaEntidad<OOB.Documento.Entidad.Ficha> Documento_GetById(string idAuto)
+        public OOB.Resultado.FichaEntidad<OOB.Documento.Entidad.Ficha> 
+            Documento_GetById(string idAuto)
         {
             var result = new OOB.Resultado.FichaEntidad<OOB.Documento.Entidad.Ficha>();
 
