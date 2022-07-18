@@ -9,8 +9,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
 {
-    
-    public class Tools: ITools
+
+    public class Tools : ITools
     {
 
 
@@ -22,13 +22,13 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         private AgregarNotaAdm.IAgregarTipoNotaAdm _gAgregarNotaCreditoAdm;
         private AgregarNotaAdm.IAgregarTipoNotaAdm _gAgregarNotaDebitoAdm;
         private GestionPago.IGestionPago _gGestionPago;
-        
+
 
         public decimal GetMontoPendientePorCobrar { get { return _gListaCtasPend.MontoPendientePorCobrar; } }
-        public BindingSource CtasPendGetSource { get { return _gListaCtasPend.CtasPendGetSource; } }     
-        
+        public BindingSource CtasPendGetSource { get { return _gListaCtasPend.CtasPendGetSource; } }
 
-        public Tools() 
+
+        public Tools()
         {
             _gListaCtasPend = new ListaCtasPend.Lista();
             _gAgregar = new AgregarCta.Agregar();
@@ -48,9 +48,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         }
         public void Inicia()
         {
-            if (CargarData()) 
+            if (CargarData())
             {
-                if (frm == null) 
+                if (frm == null)
                 {
                     frm = new ToolsFrm();
                     frm.setControlador(this);
@@ -72,7 +72,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             _abandonarIsOk = false;
             var xmsg = "Abandonar / Cerrar Ficha ?";
             var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (msg == DialogResult.Yes) 
+            if (msg == DialogResult.Yes)
             {
                 _abandonarIsOk = true;
             }
@@ -82,21 +82,21 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         {
             var filtroOOb = new OOB.CxC.Tools.CtasPendiente.Lista.Filtro()
             {
-                codSucursal=Sistema.Sucursal.codigo,
+                codSucursal = Sistema.Sucursal.codigo,
             };
             var r01 = Sistema.MyData.CxC_Tool_CtasPendiente_GetLista(filtroOOb);
-            if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError) 
+            if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r01.Mensaje);
                 return;
             }
-            if (r01.ListaD.Count == 0) 
+            if (r01.ListaD.Count == 0)
             {
                 Helpers.Msg.Alerta("NO HAY CUENTAS PENDIENTES");
                 return;
             }
             var lst = new List<ListaCtasPend.data>();
-            foreach (var rg in r01.ListaD.OrderBy(o=>o.nombreRazonSocial).ToList()) 
+            foreach (var rg in r01.ListaD.OrderBy(o => o.nombreRazonSocial).ToList())
             {
                 var nr = new ListaCtasPend.data()
                 {
@@ -119,19 +119,36 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         public bool AgregarCtaIsOk { get { return _gAgregar.AgregarIsOk; } }
         public void AgregarCta()
         {
-            _gAgregar.Inicializa();
-            _gAgregar.Inicia();
-            if (_gAgregar.AgregarIsOk) 
+            var r00 = Sistema.MyData.Permiso_CxC_Tools_AgregarDoc(Sistema.Usuario.idGrupo);
+            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
             {
-                BuscarCtasPendientes();
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+            {
+                _gAgregar.Inicializa();
+                _gAgregar.Inicia();
+                if (_gAgregar.AgregarIsOk)
+                {
+                    BuscarCtasPendientes();
+                }
             }
         }
 
-
         public void ListadoCtasPend()
         {
-            _gRepCtaPend.setListaDoc(_gListaCtasPend.ListaItems);
-            _gRepCtaPend.Generar();
+            var r00 = Sistema.MyData.Permiso_CxC_Tools_ReporteCtasPend(Sistema.Usuario.idGrupo);
+            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+            {
+                _gRepCtaPend.setListaDoc(_gListaCtasPend.ListaItems);
+                _gRepCtaPend.Generar();
+            }
         }
 
 
@@ -139,36 +156,63 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         {
             if (_gListaCtasPend.ItemActual != null)
             {
-                var _item = _gListaCtasPend.ItemActual;
-                _gDocPend.Inicializa();
-                _gDocPend.setIdCliente(_item.idCliente);
-                _gDocPend.Inicia();
+                var r00 = Sistema.MyData.Permiso_CxC_Tools_VisualizarDocPend(Sistema.Usuario.idGrupo);
+                if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r00.Mensaje);
+                    return;
+                }
+                if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+                {
+                    var _item = _gListaCtasPend.ItemActual;
+                    _gDocPend.Inicializa();
+                    _gDocPend.setIdCliente(_item.idCliente);
+                    _gDocPend.Inicia();
+                }
             }
         }
 
         public bool AgregarNCrAdmIsOk { get { return _gAgregarNotaAdm.AgregarIsOk; } }
         public void AgregarNCrAdm()
         {
-            _gAgregarNotaCreditoAdm.Inicializa();
-            _gAgregarNotaAdm.Inicializa();
-            _gAgregarNotaAdm.setTipoNota(_gAgregarNotaCreditoAdm);
-            _gAgregarNotaAdm.Inicia();
-            if (_gAgregarNotaAdm.AgregarIsOk)
+            var r00 = Sistema.MyData.Permiso_CxC_Tools_AgregarDocAdm_NCR(Sistema.Usuario.idGrupo);
+            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
             {
-                BuscarCtasPendientes();
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+            {
+                _gAgregarNotaCreditoAdm.Inicializa();
+                _gAgregarNotaAdm.Inicializa();
+                _gAgregarNotaAdm.setTipoNota(_gAgregarNotaCreditoAdm);
+                _gAgregarNotaAdm.Inicia();
+                if (_gAgregarNotaAdm.AgregarIsOk)
+                {
+                    BuscarCtasPendientes();
+                }
             }
         }
 
         public bool AgregarNDbAdmIsOk { get { return _gAgregarNotaAdm.AgregarIsOk; } }
         public void AgregarNDbAdm()
         {
-            _gAgregarNotaDebitoAdm.Inicializa();
-            _gAgregarNotaAdm.Inicializa();
-            _gAgregarNotaAdm.setTipoNota(_gAgregarNotaDebitoAdm);
-            _gAgregarNotaAdm.Inicia();
-            if (_gAgregarNotaAdm.AgregarIsOk)
+            var r00 = Sistema.MyData.Permiso_CxC_Tools_AgregarDocAdm_NDB(Sistema.Usuario.idGrupo);
+            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
             {
-                BuscarCtasPendientes();
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+            {
+                _gAgregarNotaDebitoAdm.Inicializa();
+                _gAgregarNotaAdm.Inicializa();
+                _gAgregarNotaAdm.setTipoNota(_gAgregarNotaDebitoAdm);
+                _gAgregarNotaAdm.Inicia();
+                if (_gAgregarNotaAdm.AgregarIsOk)
+                {
+                    BuscarCtasPendientes();
+                }
             }
         }
 
@@ -176,12 +220,20 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         {
             if (_gListaCtasPend.ItemActual != null)
             {
-                var _item = _gListaCtasPend.ItemActual;
-                _gGestionPago.Inicializa();
-                _gGestionPago.setIdCliente(_item.idCliente);
-                _gGestionPago.Inicia();
+                var r00 = Sistema.MyData.Permiso_CxC_Tools_GestionCobro(Sistema.Usuario.idGrupo);
+                if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r00.Mensaje);
+                    return;
+                }
+                if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+                {
+                    var _item = _gListaCtasPend.ItemActual;
+                    _gGestionPago.Inicializa();
+                    _gGestionPago.setIdCliente(_item.idCliente);
+                    _gGestionPago.Inicia();
+                }
             }
-
         }
 
     }

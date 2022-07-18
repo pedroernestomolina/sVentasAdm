@@ -36,13 +36,18 @@ namespace ModVentaAdm.Data.Prov
                 {
                     lst = r01.Lista.Select(s =>
                     {
+                        var _cntFactPend = 0;
+                        if (s.cntFactPend.HasValue) 
+                        {
+                            _cntFactPend = s.cntFactPend.Value;
+                        }
                         var nr = new OOB.CxC.Tools.CtasPendiente.Lista.Ficha()
                         {
                             idCliente = s.idCliente,
                             acumulado = s.acumulado,
                             ciRif = s.ciRif,
                             cntDocPend = s.cntDocPend,
-                            cntFactPend = s.cntFactPend,
+                            cntFactPend = _cntFactPend,
                             importe = s.importe,
                             limiteFactPend = s.limiteFactPend,
                             limiteMontoCredito = s.limiteMontoCredito,

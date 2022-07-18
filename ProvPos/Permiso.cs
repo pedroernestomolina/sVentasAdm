@@ -12,6 +12,7 @@ namespace ProvPos
     public partial class Provider: IPos.IProvider
     {
 
+
         public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_IngresarPos(string idGrupoUsu)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>();
@@ -526,6 +527,7 @@ namespace ProvPos
         }
         //
 
+
         public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_ClienteZona(string idGrupoUsu)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>();
@@ -624,165 +626,75 @@ namespace ProvPos
         }
         //
 
-        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente(string idGrupoUsu)
+
+        //MOUDLO CLIENTES ADM
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_Cliente(string idGrupoUsu)
         {
-            var result = new DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>();
-
-            try
-            {
-                using (var cnn = new PosEntities(_cnPos.ConnectionString))
-                {
-                    var sql = "select estatus, seguridad from usuarios_grupo_permisos where codigo_grupo=@p1 and codigo_funcion='0101000000'";
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                    p1.ParameterName = "@p1";
-                    p1.Value = idGrupoUsu;
-
-                    var permiso = cnn.Database.SqlQuery<DtoLibPos.Permiso.Entidad.Ficha>(sql, p1).FirstOrDefault();
-                    if (permiso == null)
-                    {
-                        result.Mensaje = "PERMISO NO ENCONTRADO";
-                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                        result.Entidad = null;
-                        return result;
-                    }
-                    result.Entidad = permiso;
-                }
-            }
-            catch (Exception e)
-            {
-                result.Mensaje = e.Message;
-                result.Result = DtoLib.Enumerados.EnumResult.isError;
-            }
-
-            return result;
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0101000000");
         }
-        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_Agregar(string idGrupoUsu)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Agregar(string idGrupoUsu)
         {
-            var result = new DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>();
-
-            try
-            {
-                using (var cnn = new PosEntities(_cnPos.ConnectionString))
-                {
-                    var sql = "select estatus, seguridad from usuarios_grupo_permisos where codigo_grupo=@p1 and codigo_funcion='0101010000'";
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                    p1.ParameterName = "@p1";
-                    p1.Value = idGrupoUsu;
-
-                    var permiso = cnn.Database.SqlQuery<DtoLibPos.Permiso.Entidad.Ficha>(sql, p1).FirstOrDefault();
-                    if (permiso == null)
-                    {
-                        result.Mensaje = "PERMISO NO ENCONTRADO";
-                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                        result.Entidad = null;
-                        return result;
-                    }
-                    result.Entidad = permiso;
-                }
-            }
-            catch (Exception e)
-            {
-                result.Mensaje = e.Message;
-                result.Result = DtoLib.Enumerados.EnumResult.isError;
-            }
-
-            return result;
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0101010000");
         }
-        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_Editar(string idGrupoUsu)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Editar(string idGrupoUsu)
         {
-            var result = new DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>();
-
-            try
-            {
-                using (var cnn = new PosEntities(_cnPos.ConnectionString))
-                {
-                    var sql = "select estatus, seguridad from usuarios_grupo_permisos where codigo_grupo=@p1 and codigo_funcion='0101020000'";
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                    p1.ParameterName = "@p1";
-                    p1.Value = idGrupoUsu;
-
-                    var permiso = cnn.Database.SqlQuery<DtoLibPos.Permiso.Entidad.Ficha>(sql, p1).FirstOrDefault();
-                    if (permiso == null)
-                    {
-                        result.Mensaje = "PERMISO NO ENCONTRADO";
-                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                        result.Entidad = null;
-                        return result;
-                    }
-                    result.Entidad = permiso;
-                }
-            }
-            catch (Exception e)
-            {
-                result.Mensaje = e.Message;
-                result.Result = DtoLib.Enumerados.EnumResult.isError;
-            }
-
-            return result;
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0101020000");
         }
-        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_Reportes(string idGrupoUsu)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Reportes(string idGrupoUsu)
         {
-            var result = new DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>();
-
-            try
-            {
-                using (var cnn = new PosEntities(_cnPos.ConnectionString))
-                {
-                    var sql = "select estatus, seguridad from usuarios_grupo_permisos where codigo_grupo=@p1 and codigo_funcion='0199000000'";
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                    p1.ParameterName = "@p1";
-                    p1.Value = idGrupoUsu;
-
-                    var permiso = cnn.Database.SqlQuery<DtoLibPos.Permiso.Entidad.Ficha>(sql, p1).FirstOrDefault();
-                    if (permiso == null)
-                    {
-                        result.Mensaje = "PERMISO NO ENCONTRADO";
-                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                        result.Entidad = null;
-                        return result;
-                    }
-                    result.Entidad = permiso;
-                }
-            }
-            catch (Exception e)
-            {
-                result.Mensaje = e.Message;
-                result.Result = DtoLib.Enumerados.EnumResult.isError;
-            }
-
-            return result;
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0199000000");
         }
-        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_ActivarInactivar(string idGrupoUsu)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_ActivarInactivar(string idGrupoUsu)
         {
-            var result = new DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>();
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0101050000");
+        }
 
-            try
-            {
-                using (var cnn = new PosEntities(_cnPos.ConnectionString))
-                {
-                    var sql = "select estatus, seguridad from usuarios_grupo_permisos where codigo_grupo=@p1 and codigo_funcion='0101050000'";
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                    p1.ParameterName = "@p1";
-                    p1.Value = idGrupoUsu;
 
-                    var permiso = cnn.Database.SqlQuery<DtoLibPos.Permiso.Entidad.Ficha>(sql, p1).FirstOrDefault();
-                    if (permiso == null)
-                    {
-                        result.Mensaje = "PERMISO NO ENCONTRADO";
-                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                        result.Entidad = null;
-                        return result;
-                    }
-                    result.Entidad = permiso;
-                }
-            }
-            catch (Exception e)
-            {
-                result.Mensaje = e.Message;
-                result.Result = DtoLib.Enumerados.EnumResult.isError;
-            }
-
-            return result;
+        //MOUDLO CXC
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC(string idGrupoUsu)
+        {
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0410000000");
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools(string idGrupoUsu)
+        {
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0410000000");
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_AgregarDoc(string idGrupoUsu)
+        {
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0410000000");
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_AgregarDocAdm_NCR(string idGrupoUsu)
+        {
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0410000000");
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_AgregarDocAdm_NDB(string idGrupoUsu)
+        {
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0410000000");
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_CxC_Tools_GestionCobro(string idGrupoUsu)
+        {
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0410000000");
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_VisualizarDocPend(string idGrupoUsu)
+        {
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0410000000");
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_ReporteCtasPend(string idGrupoUsu)
+        {
+            return Helpers.SolicitarPermiso(_cnPos.ConnectionString, idGrupoUsu, "0410000000");
         }
 
     }

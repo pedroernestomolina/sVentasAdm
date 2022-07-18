@@ -20,7 +20,6 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
         private Reportes.ListaDocPend.IRepDocPend _gRepDocPend;
 
 
-
         public BindingSource DocPendGetSource { get { return _gListaDoc.DocPendGetSource; } }
         public ListaDocPend.data ItemActual { get { return _gListaDoc.ItemActual; } }
         public bool AbandonarIsOK { get { return _abandonarIsOK; } }
@@ -146,6 +145,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
         public void ReporteDocPend()
         {
             _gRepDocPend.setListaDoc(_gListaDoc.ListaItems);
+            ((Reportes.ListaDocPend.RepDocPend)_gRepDocPend).setCliente(_cliente);
             _gRepDocPend.Generar();
         }
 

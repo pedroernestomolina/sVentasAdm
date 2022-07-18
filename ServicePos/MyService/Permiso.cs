@@ -98,27 +98,76 @@ namespace ServicePos.MyService
         {
             return ServiceProv.Permiso_ClienteZona_Editar(idGrupoUsu);
         }
-        //
 
-        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente(string idGrupoUsu)
+
+        // CLIENTE ADM
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_Cliente(string idGrupoUsu)
         {
             return ServiceProv.Permiso_Cliente (idGrupoUsu);
         }
-        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_Agregar(string idGrupoUsu)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Agregar(string idGrupoUsu)
         {
             return ServiceProv.Permiso_Cliente_Agregar(idGrupoUsu);
         }
-        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_Editar(string idGrupoUsu)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Editar(string idGrupoUsu)
         {
             return ServiceProv.Permiso_Cliente_Editar(idGrupoUsu);
         }
-        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_Reportes(string idGrupoUsu)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Reportes(string idGrupoUsu)
         {
             return ServiceProv.Permiso_Cliente_Reportes(idGrupoUsu);
         }
-        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_ActivarInactivar(string idGrupoUsu)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_ActivarInactivar(string idGrupoUsu)
         {
             return ServiceProv.Permiso_Cliente_ActivarInactivar(idGrupoUsu);
+        }
+
+
+        // CXC
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC(string idGrupoUsu)
+        {
+            return ServiceProv.Permiso_CxC(idGrupoUsu);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_CxC_Tools(string idGrupoUsu)
+        {
+            return ServiceProv.Permiso_CxC_Tools(idGrupoUsu);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_CxC_Tools_AgregarDoc(string idGrupoUsu)
+        {
+            return ServiceProv.Permiso_CxC_Tools_AgregarDoc(idGrupoUsu);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_AgregarDocAdm_NCR(string idGrupoUsu)
+        {
+            return ServiceProv.Permiso_CxC_Tools_AgregarDocAdm_NCR(idGrupoUsu);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_AgregarDocAdm_NDB(string idGrupoUsu)
+        {
+            return ServiceProv.Permiso_CxC_Tools_AgregarDocAdm_NDB(idGrupoUsu);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_GestionCobro(string idGrupoUsu)
+        {
+            return ServiceProv.Permiso_CxC_Tools_GestionCobro(idGrupoUsu);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_VisualizarDocPend(string idGrupoUsu)
+        {
+            return ServiceProv.Permiso_CxC_Tools_VisualizarDocPend(idGrupoUsu);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_ReporteCtasPend(string idGrupoUsu)
+        {
+            return ServiceProv.Permiso_CxC_Tools_ReporteCtasPend(idGrupoUsu);
         }
 
     }

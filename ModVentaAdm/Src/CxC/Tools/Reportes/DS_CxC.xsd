@@ -32,6 +32,22 @@
             <xs:sequence>
               <xs:element name="documento" msprop:Generator_ColumnVarNameInTable="columndocumento" msprop:Generator_ColumnPropNameInRow="documento" msprop:Generator_ColumnPropNameInTable="documentoColumn" msprop:Generator_UserColumnName="documento" type="xs:string" minOccurs="0" />
               <xs:element name="tipo" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_UserColumnName="tipo" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaEmision" msprop:Generator_ColumnVarNameInTable="columnfechaEmision" msprop:Generator_ColumnPropNameInRow="fechaEmision" msprop:Generator_ColumnPropNameInTable="fechaEmisionColumn" msprop:Generator_UserColumnName="fechaEmision" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="fechaVence" msprop:Generator_ColumnVarNameInTable="columnfechaVence" msprop:Generator_ColumnPropNameInRow="fechaVence" msprop:Generator_ColumnPropNameInTable="fechaVenceColumn" msprop:Generator_UserColumnName="fechaVence" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="diasVencida" msprop:Generator_ColumnVarNameInTable="columndiasVencida" msprop:Generator_ColumnPropNameInRow="diasVencida" msprop:Generator_ColumnPropNameInTable="diasVencidaColumn" msprop:Generator_UserColumnName="diasVencida" type="xs:string" minOccurs="0" />
+              <xs:element name="importe" msprop:Generator_ColumnVarNameInTable="columnimporte" msprop:Generator_ColumnPropNameInRow="importe" msprop:Generator_ColumnPropNameInTable="importeColumn" msprop:Generator_UserColumnName="importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tasa" msprop:Generator_ColumnVarNameInTable="columntasa" msprop:Generator_ColumnPropNameInRow="tasa" msprop:Generator_ColumnPropNameInTable="tasaColumn" msprop:Generator_UserColumnName="tasa" type="xs:decimal" minOccurs="0" />
+              <xs:element name="abonado" msprop:Generator_ColumnVarNameInTable="columnabonado" msprop:Generator_ColumnPropNameInRow="abonado" msprop:Generator_ColumnPropNameInTable="abonadoColumn" msprop:Generator_UserColumnName="abonado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="resta" msprop:Generator_ColumnVarNameInTable="columnresta" msprop:Generator_ColumnPropNameInRow="resta" msprop:Generator_ColumnPropNameInTable="restaColumn" msprop:Generator_UserColumnName="resta" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ListaDocPendEnc" msprop:Generator_TableClassName="ListaDocPendEncDataTable" msprop:Generator_TableVarName="tableListaDocPendEnc" msprop:Generator_TablePropName="ListaDocPendEnc" msprop:Generator_RowDeletingName="ListaDocPendEncRowDeleting" msprop:Generator_RowChangingName="ListaDocPendEncRowChanging" msprop:Generator_RowEvHandlerName="ListaDocPendEncRowChangeEventHandler" msprop:Generator_RowDeletedName="ListaDocPendEncRowDeleted" msprop:Generator_UserTableName="ListaDocPendEnc" msprop:Generator_RowChangedName="ListaDocPendEncRowChanged" msprop:Generator_RowEvArgName="ListaDocPendEncRowChangeEvent" msprop:Generator_RowClassName="ListaDocPendEncRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cl_nombre" msprop:Generator_ColumnVarNameInTable="columncl_nombre" msprop:Generator_ColumnPropNameInRow="cl_nombre" msprop:Generator_ColumnPropNameInTable="cl_nombreColumn" msprop:Generator_UserColumnName="cl_nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="cl_cirif" msprop:Generator_ColumnVarNameInTable="columncl_cirif" msprop:Generator_ColumnPropNameInRow="cl_cirif" msprop:Generator_ColumnPropNameInTable="cl_cirifColumn" msprop:Generator_UserColumnName="cl_cirif" type="xs:string" minOccurs="0" />
+              <xs:element name="cl_codigo" msprop:Generator_ColumnVarNameInTable="columncl_codigo" msprop:Generator_ColumnPropNameInRow="cl_codigo" msprop:Generator_ColumnPropNameInTable="cl_codigoColumn" msprop:Generator_UserColumnName="cl_codigo" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

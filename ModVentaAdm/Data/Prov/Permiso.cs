@@ -219,117 +219,6 @@ namespace ModVentaAdm.Data.Prov
         }
         //
 
-        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> Permiso_Cliente(string idGrupoUsu)
-        {
-            var rt = new OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha>();
-
-            var r01 = MyData.Permiso_Cliente(idGrupoUsu);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            var s = r01.Entidad;
-            var nr = new OOB.Permiso.Entidad.Ficha()
-            {
-                estatus = s.estatus,
-                seguridad = s.seguridad,
-            };
-            rt.Entidad = nr;
-
-            return rt;
-        }
-        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> Permiso_Cliente_Agregar(string idGrupoUsu)
-        {
-            var rt = new OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha>();
-
-            var r01 = MyData.Permiso_Cliente_Agregar(idGrupoUsu);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            var s = r01.Entidad;
-            var nr = new OOB.Permiso.Entidad.Ficha()
-            {
-                estatus = s.estatus,
-                seguridad = s.seguridad,
-            };
-            rt.Entidad = nr;
-
-            return rt;
-        }
-        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> Permiso_Cliente_Editar(string idGrupoUsu)
-        {
-            var rt = new OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha>();
-
-            var r01 = MyData.Permiso_Cliente_Editar(idGrupoUsu);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            var s = r01.Entidad;
-            var nr = new OOB.Permiso.Entidad.Ficha()
-            {
-                estatus = s.estatus,
-                seguridad = s.seguridad,
-            };
-            rt.Entidad = nr;
-
-            return rt;
-        }
-        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> Permiso_Cliente_Reportes(string idGrupoUsu)
-        {
-            var rt = new OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha>();
-
-            var r01 = MyData.Permiso_Cliente_Reportes(idGrupoUsu);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            var s = r01.Entidad;
-            var nr = new OOB.Permiso.Entidad.Ficha()
-            {
-                estatus = s.estatus,
-                seguridad = s.seguridad,
-            };
-            rt.Entidad = nr;
-
-            return rt;
-        }
-        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> Permiso_Cliente_ActivarInactivar(string idGrupoUsu)
-        {
-            var rt = new OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha>();
-
-            var r01 = MyData.Permiso_Cliente_ActivarInactivar(idGrupoUsu);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            var s = r01.Entidad;
-            var nr = new OOB.Permiso.Entidad.Ficha()
-            {
-                estatus = s.estatus,
-                seguridad = s.seguridad,
-            };
-            rt.Entidad = nr;
-
-            return rt;
-        }
-        //
 
         public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> Permiso_Adm_AnularDocumento(string idGrupoUsu)
         {
@@ -488,6 +377,78 @@ namespace ModVentaAdm.Data.Prov
             rt.Entidad = nr;
 
             return rt;
+        }
+
+
+
+        // CLIENTE ADM
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_Cliente(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_Cliente, idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Agregar(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_Cliente_Agregar, idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Editar(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_Cliente_Editar, idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Reportes(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_Cliente_Reportes, idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha>
+            Permiso_Cliente_ActivarInactivar(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_Cliente_ActivarInactivar, idGrupoUsu);
+        }
+
+
+        // CXC
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_CxC(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_CxC,idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_CxC_Tools, idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_AgregarDoc(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_CxC_Tools_AgregarDoc, idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_AgregarDocAdm_NCR(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_CxC_Tools_AgregarDocAdm_NCR, idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_AgregarDocAdm_NDB(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_CxC_Tools_AgregarDocAdm_NDB, idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_GestionCobro(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_CxC_Tools_GestionCobro, idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_VisualizarDocPend(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_CxC_Tools_VisualizarDocPend, idGrupoUsu);
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Permiso.Entidad.Ficha> 
+            Permiso_CxC_Tools_ReporteCtasPend(string idGrupoUsu)
+        {
+            return Helpers.PermisoRt(MyData.Permiso_CxC_Tools_ReporteCtasPend, idGrupoUsu);
         }
 
     }

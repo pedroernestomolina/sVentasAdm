@@ -28,6 +28,8 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
         
         private ListaDocPendDataTable tableListaDocPend;
         
+        private ListaDocPendEncDataTable tableListaDocPendEnc;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -61,6 +63,9 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
                 }
                 if ((ds.Tables["ListaDocPend"] != null)) {
                     base.Tables.Add(new ListaDocPendDataTable(ds.Tables["ListaDocPend"]));
+                }
+                if ((ds.Tables["ListaDocPendEnc"] != null)) {
+                    base.Tables.Add(new ListaDocPendEncDataTable(ds.Tables["ListaDocPendEnc"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -97,6 +102,16 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
         public ListaDocPendDataTable ListaDocPend {
             get {
                 return this.tableListaDocPend;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ListaDocPendEncDataTable ListaDocPendEnc {
+            get {
+                return this.tableListaDocPendEnc;
             }
         }
         
@@ -173,6 +188,9 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
                 if ((ds.Tables["ListaDocPend"] != null)) {
                     base.Tables.Add(new ListaDocPendDataTable(ds.Tables["ListaDocPend"]));
                 }
+                if ((ds.Tables["ListaDocPendEnc"] != null)) {
+                    base.Tables.Add(new ListaDocPendEncDataTable(ds.Tables["ListaDocPendEnc"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -218,6 +236,12 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
                     this.tableListaDocPend.InitVars();
                 }
             }
+            this.tableListaDocPendEnc = ((ListaDocPendEncDataTable)(base.Tables["ListaDocPendEnc"]));
+            if ((initTable == true)) {
+                if ((this.tableListaDocPendEnc != null)) {
+                    this.tableListaDocPendEnc.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +256,8 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             base.Tables.Add(this.tableListaCtaPend);
             this.tableListaDocPend = new ListaDocPendDataTable();
             base.Tables.Add(this.tableListaDocPend);
+            this.tableListaDocPendEnc = new ListaDocPendEncDataTable();
+            base.Tables.Add(this.tableListaDocPendEnc);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -243,6 +269,12 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeListaDocPend() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeListaDocPendEnc() {
             return false;
         }
         
@@ -306,6 +338,9 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ListaDocPendRowChangeEventHandler(object sender, ListaDocPendRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ListaDocPendEncRowChangeEventHandler(object sender, ListaDocPendEncRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -677,6 +712,20 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             
             private global::System.Data.DataColumn columntipo;
             
+            private global::System.Data.DataColumn columnfechaEmision;
+            
+            private global::System.Data.DataColumn columnfechaVence;
+            
+            private global::System.Data.DataColumn columndiasVencida;
+            
+            private global::System.Data.DataColumn columnimporte;
+            
+            private global::System.Data.DataColumn columntasa;
+            
+            private global::System.Data.DataColumn columnabonado;
+            
+            private global::System.Data.DataColumn columnresta;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ListaDocPendDataTable() {
@@ -728,6 +777,62 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fechaEmisionColumn {
+                get {
+                    return this.columnfechaEmision;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fechaVenceColumn {
+                get {
+                    return this.columnfechaVence;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn diasVencidaColumn {
+                get {
+                    return this.columndiasVencida;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn importeColumn {
+                get {
+                    return this.columnimporte;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tasaColumn {
+                get {
+                    return this.columntasa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn abonadoColumn {
+                get {
+                    return this.columnabonado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn restaColumn {
+                get {
+                    return this.columnresta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -763,11 +868,18 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ListaDocPendRow AddListaDocPendRow(string documento, string tipo) {
+            public ListaDocPendRow AddListaDocPendRow(string documento, string tipo, System.DateTime fechaEmision, System.DateTime fechaVence, string diasVencida, decimal importe, decimal tasa, decimal abonado, decimal resta) {
                 ListaDocPendRow rowListaDocPendRow = ((ListaDocPendRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         documento,
-                        tipo};
+                        tipo,
+                        fechaEmision,
+                        fechaVence,
+                        diasVencida,
+                        importe,
+                        tasa,
+                        abonado,
+                        resta};
                 rowListaDocPendRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowListaDocPendRow);
                 return rowListaDocPendRow;
@@ -792,6 +904,13 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             internal void InitVars() {
                 this.columndocumento = base.Columns["documento"];
                 this.columntipo = base.Columns["tipo"];
+                this.columnfechaEmision = base.Columns["fechaEmision"];
+                this.columnfechaVence = base.Columns["fechaVence"];
+                this.columndiasVencida = base.Columns["diasVencida"];
+                this.columnimporte = base.Columns["importe"];
+                this.columntasa = base.Columns["tasa"];
+                this.columnabonado = base.Columns["abonado"];
+                this.columnresta = base.Columns["resta"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -801,6 +920,20 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
                 base.Columns.Add(this.columndocumento);
                 this.columntipo = new global::System.Data.DataColumn("tipo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntipo);
+                this.columnfechaEmision = new global::System.Data.DataColumn("fechaEmision", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfechaEmision);
+                this.columnfechaVence = new global::System.Data.DataColumn("fechaVence", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfechaVence);
+                this.columndiasVencida = new global::System.Data.DataColumn("diasVencida", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndiasVencida);
+                this.columnimporte = new global::System.Data.DataColumn("importe", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimporte);
+                this.columntasa = new global::System.Data.DataColumn("tasa", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntasa);
+                this.columnabonado = new global::System.Data.DataColumn("abonado", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnabonado);
+                this.columnresta = new global::System.Data.DataColumn("resta", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnresta);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -887,6 +1020,281 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "ListaDocPendDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ListaDocPendEncDataTable : global::System.Data.TypedTableBase<ListaDocPendEncRow> {
+            
+            private global::System.Data.DataColumn columncl_nombre;
+            
+            private global::System.Data.DataColumn columncl_cirif;
+            
+            private global::System.Data.DataColumn columncl_codigo;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ListaDocPendEncDataTable() {
+                this.TableName = "ListaDocPendEnc";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ListaDocPendEncDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ListaDocPendEncDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cl_nombreColumn {
+                get {
+                    return this.columncl_nombre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cl_cirifColumn {
+                get {
+                    return this.columncl_cirif;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cl_codigoColumn {
+                get {
+                    return this.columncl_codigo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ListaDocPendEncRow this[int index] {
+                get {
+                    return ((ListaDocPendEncRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ListaDocPendEncRowChangeEventHandler ListaDocPendEncRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ListaDocPendEncRowChangeEventHandler ListaDocPendEncRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ListaDocPendEncRowChangeEventHandler ListaDocPendEncRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ListaDocPendEncRowChangeEventHandler ListaDocPendEncRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddListaDocPendEncRow(ListaDocPendEncRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ListaDocPendEncRow AddListaDocPendEncRow(string cl_nombre, string cl_cirif, string cl_codigo) {
+                ListaDocPendEncRow rowListaDocPendEncRow = ((ListaDocPendEncRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        cl_nombre,
+                        cl_cirif,
+                        cl_codigo};
+                rowListaDocPendEncRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowListaDocPendEncRow);
+                return rowListaDocPendEncRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ListaDocPendEncDataTable cln = ((ListaDocPendEncDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ListaDocPendEncDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columncl_nombre = base.Columns["cl_nombre"];
+                this.columncl_cirif = base.Columns["cl_cirif"];
+                this.columncl_codigo = base.Columns["cl_codigo"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columncl_nombre = new global::System.Data.DataColumn("cl_nombre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncl_nombre);
+                this.columncl_cirif = new global::System.Data.DataColumn("cl_cirif", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncl_cirif);
+                this.columncl_codigo = new global::System.Data.DataColumn("cl_codigo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncl_codigo);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ListaDocPendEncRow NewListaDocPendEncRow() {
+                return ((ListaDocPendEncRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ListaDocPendEncRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ListaDocPendEncRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ListaDocPendEncRowChanged != null)) {
+                    this.ListaDocPendEncRowChanged(this, new ListaDocPendEncRowChangeEvent(((ListaDocPendEncRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ListaDocPendEncRowChanging != null)) {
+                    this.ListaDocPendEncRowChanging(this, new ListaDocPendEncRowChangeEvent(((ListaDocPendEncRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ListaDocPendEncRowDeleted != null)) {
+                    this.ListaDocPendEncRowDeleted(this, new ListaDocPendEncRowChangeEvent(((ListaDocPendEncRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ListaDocPendEncRowDeleting != null)) {
+                    this.ListaDocPendEncRowDeleting(this, new ListaDocPendEncRowChangeEvent(((ListaDocPendEncRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveListaDocPendEncRow(ListaDocPendEncRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DS_CxC ds = new DS_CxC();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ListaDocPendEncDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1242,6 +1650,118 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fechaEmision {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableListaDocPend.fechaEmisionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fechaEmision\' in table \'ListaDocPend\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaDocPend.fechaEmisionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fechaVence {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableListaDocPend.fechaVenceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fechaVence\' in table \'ListaDocPend\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaDocPend.fechaVenceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string diasVencida {
+                get {
+                    try {
+                        return ((string)(this[this.tableListaDocPend.diasVencidaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'diasVencida\' in table \'ListaDocPend\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaDocPend.diasVencidaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal importe {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableListaDocPend.importeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'importe\' in table \'ListaDocPend\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaDocPend.importeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal tasa {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableListaDocPend.tasaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tasa\' in table \'ListaDocPend\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaDocPend.tasaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal abonado {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableListaDocPend.abonadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'abonado\' in table \'ListaDocPend\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaDocPend.abonadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal resta {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableListaDocPend.restaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'resta\' in table \'ListaDocPend\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaDocPend.restaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsdocumentoNull() {
                 return this.IsNull(this.tableListaDocPend.documentoColumn);
             }
@@ -1262,6 +1782,189 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SettipoNull() {
                 this[this.tableListaDocPend.tipoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfechaEmisionNull() {
+                return this.IsNull(this.tableListaDocPend.fechaEmisionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfechaEmisionNull() {
+                this[this.tableListaDocPend.fechaEmisionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfechaVenceNull() {
+                return this.IsNull(this.tableListaDocPend.fechaVenceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfechaVenceNull() {
+                this[this.tableListaDocPend.fechaVenceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdiasVencidaNull() {
+                return this.IsNull(this.tableListaDocPend.diasVencidaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdiasVencidaNull() {
+                this[this.tableListaDocPend.diasVencidaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsimporteNull() {
+                return this.IsNull(this.tableListaDocPend.importeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetimporteNull() {
+                this[this.tableListaDocPend.importeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstasaNull() {
+                return this.IsNull(this.tableListaDocPend.tasaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettasaNull() {
+                this[this.tableListaDocPend.tasaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsabonadoNull() {
+                return this.IsNull(this.tableListaDocPend.abonadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetabonadoNull() {
+                this[this.tableListaDocPend.abonadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsrestaNull() {
+                return this.IsNull(this.tableListaDocPend.restaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetrestaNull() {
+                this[this.tableListaDocPend.restaColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ListaDocPendEncRow : global::System.Data.DataRow {
+            
+            private ListaDocPendEncDataTable tableListaDocPendEnc;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ListaDocPendEncRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableListaDocPendEnc = ((ListaDocPendEncDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cl_nombre {
+                get {
+                    try {
+                        return ((string)(this[this.tableListaDocPendEnc.cl_nombreColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cl_nombre\' in table \'ListaDocPendEnc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaDocPendEnc.cl_nombreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cl_cirif {
+                get {
+                    try {
+                        return ((string)(this[this.tableListaDocPendEnc.cl_cirifColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cl_cirif\' in table \'ListaDocPendEnc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaDocPendEnc.cl_cirifColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cl_codigo {
+                get {
+                    try {
+                        return ((string)(this[this.tableListaDocPendEnc.cl_codigoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cl_codigo\' in table \'ListaDocPendEnc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaDocPendEnc.cl_codigoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscl_nombreNull() {
+                return this.IsNull(this.tableListaDocPendEnc.cl_nombreColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcl_nombreNull() {
+                this[this.tableListaDocPendEnc.cl_nombreColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscl_cirifNull() {
+                return this.IsNull(this.tableListaDocPendEnc.cl_cirifColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcl_cirifNull() {
+                this[this.tableListaDocPendEnc.cl_cirifColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscl_codigoNull() {
+                return this.IsNull(this.tableListaDocPendEnc.cl_codigoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcl_codigoNull() {
+                this[this.tableListaDocPendEnc.cl_codigoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1319,6 +2022,40 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ListaDocPendRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ListaDocPendEncRowChangeEvent : global::System.EventArgs {
+            
+            private ListaDocPendEncRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ListaDocPendEncRowChangeEvent(ListaDocPendEncRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ListaDocPendEncRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -40,13 +40,38 @@ namespace IPos
         DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_ClienteZona(string idGrupoUsu);
         DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_ClienteZona_Agregar(string idGrupoUsu);
         DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_ClienteZona_Editar(string idGrupoUsu);
-        //
 
-        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente(string idGrupoUsu);
-        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_Agregar(string idGrupoUsu);
-        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_Editar(string idGrupoUsu);
-        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_Reportes(string idGrupoUsu);
-        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> Permiso_Cliente_ActivarInactivar(string idGrupoUsu);
+
+        // CLIENTE ADM
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Agregar(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Editar(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_Cliente_Reportes(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_Cliente_ActivarInactivar(string idGrupoUsu);
+
+
+        // CXC
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha> 
+            Permiso_CxC(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_CxC_Tools(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_CxC_Tools_AgregarDoc(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_CxC_Tools_AgregarDocAdm_NCR(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_CxC_Tools_AgregarDocAdm_NDB(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_CxC_Tools_GestionCobro(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_CxC_Tools_VisualizarDocPend(string idGrupoUsu);
+        DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
+            Permiso_CxC_Tools_ReporteCtasPend(string idGrupoUsu);
 
     }
 

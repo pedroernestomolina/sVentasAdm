@@ -306,8 +306,26 @@ namespace ModVentaAdm.Src.Principal
 
         public void ToolsCxC()
         {
-            _gToolsCxC.Inicializa();
-            _gToolsCxC.Inicia();
+            var r00 = Sistema.MyData.Permiso_CxC(Sistema.Usuario.idGrupo);
+            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+            {
+                var r01 = Sistema.MyData.Permiso_CxC_Tools(Sistema.Usuario.idGrupo);
+                if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r01.Mensaje);
+                    return;
+                }
+                if (Seguridad.Gestion.SolicitarClave(r01.Entidad))
+                {
+                    _gToolsCxC.Inicializa();
+                    _gToolsCxC.Inicia();
+                }
+            }
         }
 
     }

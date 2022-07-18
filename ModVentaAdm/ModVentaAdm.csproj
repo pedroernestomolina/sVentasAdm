@@ -91,6 +91,7 @@
     <Compile Include="Data\Prov\CxC.cs" />
     <Compile Include="Data\Prov\DataPrv.cs" />
     <Compile Include="Data\Prov\Documento.cs" />
+    <Compile Include="Data\Prov\Helpers.cs" />
     <Compile Include="Data\Prov\Permiso.cs" />
     <Compile Include="Data\Prov\Producto.cs" />
     <Compile Include="Data\Prov\Reportes.cs" />
@@ -934,6 +935,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CambiosVersion.txt" />
     <Content Include="conf.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

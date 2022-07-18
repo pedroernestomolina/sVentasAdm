@@ -19,7 +19,7 @@ namespace DtoLibPos.CxC.Tools.CtasPendiente.Lista
         public int cntDocPend { get; set; }
         public int limiteFactPend { get; set; }
         public decimal limiteMontoCredito { get; set; }
-        public int cntFactPend { get; set; }
+        public int? cntFactPend { get; set; }
 
 
         public Ficha() 
