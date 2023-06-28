@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.Gestion
 {
-    
     public interface IProcesar
     {
-
         bool ProcesarIsOK { get; }
         void Procesar();
-
     }
-
 }

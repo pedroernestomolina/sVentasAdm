@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.Identificacion
 {
-    
     public class Login: ILogin
     {
-
-
         private bool _isOk;
         private string _codigoUsu;
         private string _claveUsu;
@@ -67,23 +64,22 @@ namespace ModVentaAdm.Src.Identificacion
                 Sistema.Usuario.setInvitado();
                 return true;
             }
-
             var ficha = new OOB.Usuario.Identificar.Ficha()
             {
                 codigo = _codigoUsu,
                 clave = _claveUsu,
             };
-            var r01 = Sistema.MyData.Usuario_Identificar(ficha);
-            if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.Usuario_Identificar(ficha);
+                Sistema.Usuario = r01.Entidad;
+                return rt;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            Sistema.Usuario = r01.Entidad;
-
-            return rt;
         }
-
     }
-
 }

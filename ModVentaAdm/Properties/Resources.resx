@@ -391,4 +391,28 @@
   <data name="bt_borrador_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_borrador_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="transporteJJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\imagenes\transportejj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="localizacion_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\localizacion_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="telefono_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\telefono_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="transporteJJ1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\transporteJJ.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fondoTransporte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fondoTransporte.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="inicio_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inicio_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bt_transporte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_transporte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bt_margen_beneficio_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_margen_beneficio_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

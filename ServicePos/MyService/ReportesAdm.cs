@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace ServicePos.MyService
 {
-    
     public partial class Service : IService
     {
-
         public DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Ficha> 
             ReportesAdm_GeneralDocumento(DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Filtro filtro)
         {
@@ -67,7 +65,16 @@ namespace ServicePos.MyService
         {
             return ServiceProv.ReportesAdm_UtilidadConsolidado(filtro);
         }
-
+        //
+        public DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Resumen.Ficha> 
+            ReportesAdm_VentasPorVendedor_Resumen(DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Filtro filtro)
+        {
+            return ServiceProv.ReportesAdm_VentasPorVendedor_Resumen(filtro);
+        }
+        public DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Detallado.Ficha> 
+            ReportesAdm_VentasPorVendedor_Detallado(DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Filtro filtro)
+        {
+            return ServiceProv.ReportesAdm_VentasPorVendedor_Detallado(filtro);
+        }
     }
-
 }

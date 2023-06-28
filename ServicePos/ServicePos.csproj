@@ -69,6 +69,7 @@
     <Compile Include="Interfaces\IVendedor.cs" />
     <Compile Include="Interfaces\IVenta.cs" />
     <Compile Include="Interfaces\IVentaAdm.cs" />
+    <Compile Include="Interfaces\Transporte\IAliado.cs" />
     <Compile Include="MyService\Auditoria.cs" />
     <Compile Include="MyService\Cliente.cs" />
     <Compile Include="MyService\ClienteGrupo.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="MyService\Sistema.cs" />
     <Compile Include="MyService\Sucursal.cs" />
     <Compile Include="MyService\Transporte.cs" />
+    <Compile Include="MyService\TransporteAliado.cs" />
     <Compile Include="MyService\Usuario.cs" />
     <Compile Include="MyService\Vendedor.cs" />
     <Compile Include="MyService\Venta.cs" />
@@ -109,6 +111,10 @@
     <ProjectReference Include="..\DtoLib\DtoLib.csproj">
       <Project>{317543d0-b357-4bba-8ba1-84fa25f4efa6}</Project>
       <Name>DtoLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DtoTransporte\DtoTransporte.csproj">
+      <Project>{6e9d0e29-ef5f-413f-b3a1-df076c0c2db3}</Project>
+      <Name>DtoTransporte</Name>
     </ProjectReference>
     <ProjectReference Include="..\IPos\IPos.csproj">
       <Project>{e491ec14-4dbf-4162-a312-643a53119503}</Project>

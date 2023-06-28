@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Infra
 {
-    
     public interface IReportes
     {
-
         OOB.Resultado.Lista<OOB.Reportes.GeneralDocumento.Ficha> 
             Reportes_GeneralDocumento(OOB.Reportes.GeneralDocumento.Filtro filtro);
         OOB.Resultado.Lista<OOB.Reportes.GeneralPorDepartamento.Ficha> 
@@ -33,7 +31,10 @@ namespace ModVentaAdm.Data.Infra
             Reportes_UtilidadConsolidado(OOB.Reportes.Utilidad.Filtro filtro);
         OOB.Resultado.Lista<OOB.Reportes.LibroVenta.Ficha> 
             ReportesAdm_LibroVenta(OOB.Reportes.LibroVenta.Filtro filtro);
-
+        //
+        OOB.Resultado.Lista<OOB.Reportes.Vendedor.Resumen.Ficha>
+            ReportesAdm_VentasPorVendedor_Resumen(OOB.Reportes.Vendedor.Filtro filtro);
+        OOB.Resultado.Lista<OOB.Reportes.Vendedor.Detallado.Ficha>
+            ReportesAdm_VentasPorVendedor_Detallado(OOB.Reportes.Vendedor.Filtro filtro);
     }
-
 }

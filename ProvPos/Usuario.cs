@@ -1,6 +1,7 @@
 ﻿using LibEntityPos;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +9,11 @@ using System.Threading.Tasks;
 
 namespace ProvPos
 {
-
-
     public partial class Provider: IPos.IProvider
     {
-
         public DtoLib.ResultadoEntidad<DtoLibPos.Usuario.Entidad.Ficha> Usuario_Identificar(DtoLibPos.Usuario.Identificar.Ficha data)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Usuario.Entidad.Ficha>();
-
             try
             {
                 using (var cnn = new  PosEntities(_cnPos.ConnectionString))
@@ -30,7 +27,6 @@ namespace ProvPos
                         result.Result = DtoLib.Enumerados.EnumResult.isError;
                         return result;
                     }
-
                     if (ent.estatus.Trim().ToUpper() != "ACTIVO")
                     {
                         result.Entidad = null;
@@ -38,7 +34,6 @@ namespace ProvPos
                         result.Result = DtoLib.Enumerados.EnumResult.isError;
                         return result;
                     }
-
                     var nombreGrupo = "";
                     var entGrupo = cnn.usuarios_grupo.Find(ent.auto_grupo);
                     if (entGrupo != null) 
@@ -57,15 +52,17 @@ namespace ProvPos
                     result.Entidad = nr;
                 }
             }
-            catch (Exception e)
+            catch (EntityException e)
             {
-                result.Mensaje = e.Message;
+                result.Mensaje = ((System.Exception)e.InnerException).Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            catch (Exception e)
+            {
+                result.Mensaje = ((System.Exception)e.InnerException).Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
             return result;
         }
-
     }
-
 }

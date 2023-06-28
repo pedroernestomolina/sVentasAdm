@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace ProvPos
 {
-    
     public partial class Provider: IPos.IProvider
     {
-
         public DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Ficha> 
             ReportesAdm_GeneralDocumento(DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Filtro filtro)
         {
@@ -687,7 +685,117 @@ namespace ProvPos
 
             return rt;
         }
+        //
+        public DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Resumen.Ficha> 
+            ReportesAdm_VentasPorVendedor_Resumen(DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Filtro filtro)
+        {
+            var rt = new DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Resumen.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
 
+                    var sql_1 = @"select
+                                        vend.auto as autoVend,
+                                        vend.nombre as nombreVend,
+                                        vend.codigo as codigoVend,
+                                        sum(vent.neto*vent.signo) as netoMonLocal,                            
+                                        count(*) as cntDoc,
+                                        sum(vent.neto/vent.factor_cambio*vent.signo) as netoDivisa ";
+                    var sql_2 = @" from ventas as vent
+                                        join vendedores as vend on vend.auto=vent.auto_vendedor ";
+                    var sql_3 = @" where vent.fecha>=@desde and 
+                                        vent.fecha <= @hasta and 
+                                        vent.tipo in ('01','02', '03','04') and
+                                        vent.estatus_anulado='0' ";
+                    var sql_4 = @" group by vent.auto_vendedor ";
+
+                    p1.ParameterName = "@desde";
+                    p1.Value = filtro.desde;
+                    sql_3 += " and vent.fecha>=@desde ";
+
+                    p2.ParameterName = "@hasta";
+                    p2.Value = filtro.hasta;
+                    sql_3 += " and vent.fecha<=@hasta ";
+                    if (filtro.codSucursal != "")
+                    {
+                        p3.ParameterName = "@suc";
+                        p3.Value = filtro.codSucursal;
+                        sql_3 += " and vent.codigo_sucursal=@suc ";
+                    }
+                    var sql = sql_1 + sql_2 + sql_3 + sql_4;
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Resumen.Ficha>(sql, p1, p2, p3).ToList();
+                    rt.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return rt;
+        }
+        public DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Detallado.Ficha>
+            ReportesAdm_VentasPorVendedor_Detallado(DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Filtro filtro)
+        {
+            var rt = new DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Detallado.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+
+                    var sql_1 = @"select
+                                        vent.fecha as docFechaEmision,
+                                        vent.documento as docNumero,
+                                        vent.tipo as docTipo,
+                                        vent.neto as netoMonLocal,
+                                        vent.signo as docSigno,
+                                        vent.razon_social as razonSocial,
+                                        (vent.neto/vent.factor_cambio) as netoDivisa,
+                                        vent.documento_nombre as docNombre,
+                                        vend.auto as autoVend,
+                                        vend.nombre as nombreVend,
+                                        vend.codigo as codigoVend ";
+                    var sql_2 = @" from ventas as vent
+                                        join vendedores as vend on vend.auto=vent.auto_vendedor ";
+                    var sql_3 = @" where vent.fecha>=@desde and 
+                                        vent.fecha <= @hasta and 
+                                        vent.tipo in ('01','02', '03','04') and
+                                        vent.estatus_anulado='0' ";
+                    var sql_4 = @"";
+
+                    p1.ParameterName = "@desde";
+                    p1.Value = filtro.desde;
+                    sql_3 += " and vent.fecha>=@desde ";
+
+                    p2.ParameterName = "@hasta";
+                    p2.Value = filtro.hasta;
+                    sql_3 += " and vent.fecha<=@hasta ";
+                    if (filtro.codSucursal != "")
+                    {
+                        p3.ParameterName = "@suc";
+                        p3.Value = filtro.codSucursal;
+                        sql_3 += " and vent.codigo_sucursal=@suc ";
+                    }
+                    var sql = sql_1 + sql_2 + sql_3 + sql_4;
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Detallado.Ficha>(sql, p1, p2, p3).ToList();
+                    rt.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return rt;
+        }
     }
-
 }

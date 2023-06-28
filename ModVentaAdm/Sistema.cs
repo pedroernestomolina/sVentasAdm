@@ -8,20 +8,34 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm
 {
+    public class ConfiguracionMotorDatos
+    {
+        public string Instancia { get; set; }
+        public string BaseDatos { get; set; }
+        public string Usuario { get; set; }
+        public string GetHost
+        {
+            get
+            {
+                return Instancia + "/" + BaseDatos;
+            }
+        }
+    }
+
     
     public class Sistema
     {
+        static public ConfiguracionMotorDatos MotorDatos;
+        static public Fabrica.IFabrica Fabrica;
 
         static public IData MyData;
-        static public string Instancia;
-        static public string BaseDatos;
         public static OOB.Usuario.Entidad.Ficha Usuario;
         public static OOB.Sistema.Empresa.Entidad.Ficha DatosEmpresa;
         public static OOB.Sucursal.Entidad.Ficha Sucursal;
         public static string EquipoEstacion;
         public static string IdEquipo;
 
-        public static string NombreHerramienta            = "Tool Ventas Adm.";
+        public static string NombreHerramienta; //            
         public static string Id_SistDocumento_Factura     = "0000000001";
         public static string Id_SistDocumento_NotaDebito  = "0000000002";
         public static string Id_SistDocumento_NotaCredito = "0000000003";
@@ -31,7 +45,5 @@ namespace ModVentaAdm
 
         public static string Id_SistemaDocumento_NOTA_DEBITO_ADMINISTRATIVA_POC_COBRAR  = "0000000009";
         public static string Id_SistemaDocumento_NOTA_CREDITO_ADMINISTRATIVA_POC_COBRAR = "0000000010";
-
     }
-
 }

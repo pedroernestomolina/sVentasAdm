@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Prov
 {
-
     public partial class DataPrv : IData
     {
-
         public OOB.Resultado.Lista<OOB.Reportes.GeneralDocumento.Ficha> 
             Reportes_GeneralDocumento(OOB.Reportes.GeneralDocumento.Filtro filtro)
         {
@@ -556,7 +554,87 @@ namespace ModVentaAdm.Data.Prov
 
             return rt;
         }
-
+        //
+        public OOB.Resultado.Lista<OOB.Reportes.Vendedor.Resumen.Ficha> 
+            ReportesAdm_VentasPorVendedor_Resumen(OOB.Reportes.Vendedor.Filtro filtro)
+        {
+            var rt = new OOB.Resultado.Lista<OOB.Reportes.Vendedor.Resumen.Ficha>();
+            var filtroDTO = new DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Filtro()
+            {
+                codSucursal = filtro.codSucursal,
+                desde = filtro.desde,
+                hasta = filtro.hasta,
+            };
+            var r01 = MyData.ReportesAdm_VentasPorVendedor_Resumen(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var list = new List<OOB.Reportes.Vendedor.Resumen.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    list = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Reportes.Vendedor.Resumen.Ficha()
+                        {
+                            autoVend = s.autoVend,
+                            cntDoc = s.cntDoc,
+                            netoDivisa = s.netoDivisa,
+                            netoMonLocal = s.netoMonLocal,
+                            nombreVend = s.nombreVend,
+                            codigoVend = s.codigoVend,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            rt.ListaD = list;
+            return rt;
+        }
+        public OOB.Resultado.Lista<OOB.Reportes.Vendedor.Detallado.Ficha> 
+            ReportesAdm_VentasPorVendedor_Detallado(OOB.Reportes.Vendedor.Filtro filtro)
+        {
+            var rt = new OOB.Resultado.Lista<OOB.Reportes.Vendedor.Detallado.Ficha>();
+            var filtroDTO = new DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Filtro()
+            {
+                codSucursal = filtro.codSucursal,
+                desde = filtro.desde,
+                hasta = filtro.hasta,
+            };
+            var r01 = MyData.ReportesAdm_VentasPorVendedor_Detallado(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var list = new List<OOB.Reportes.Vendedor.Detallado.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    list = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Reportes.Vendedor.Detallado.Ficha()
+                        {
+                            docFechaEmision = s.docFechaEmision,
+                            docNombre = s.docNombre,
+                            docNumero = s.docNumero,
+                            docSigno = s.docSigno,
+                            docTipo = s.docTipo,
+                            razonSocial = s.razonSocial,
+                            autoVend = s.autoVend,
+                            netoDivisa = s.netoDivisa,
+                            netoMonLocal = s.netoMonLocal,
+                            nombreVend = s.nombreVend,
+                            codigoVend = s.codigoVend,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            rt.ListaD = list;
+            return rt;
+        }
     }
-
 }

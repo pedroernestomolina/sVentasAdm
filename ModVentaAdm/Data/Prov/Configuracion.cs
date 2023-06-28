@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Prov
 {
-    
     public partial class DataPrv : IData
     {
-
         public OOB.Resultado.FichaEntidad<OOB.Configuracion.BusquedaCliente.Entidad.Ficha> 
             Configuracion_BusquedaCliente()
         {
@@ -38,7 +36,6 @@ namespace ModVentaAdm.Data.Prov
             Configuracion_FactorDivisa()
         {
             var rt = new OOB.Resultado.FichaEntidad<decimal>();
-
             var r01 = MyData.Configuracion_FactorDivisa();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -51,12 +48,12 @@ namespace ModVentaAdm.Data.Prov
             if (cnf.Trim() != "")
             {
                 var style = NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands;
-                var culture = CultureInfo.CreateSpecificCulture("es-ES");
+                var culture = CultureInfo.CurrentCulture;
+                //var culture = CultureInfo.CreateSpecificCulture("es-ES");
                 //var culture = CultureInfo.CreateSpecificCulture("en-EN");
                 Decimal.TryParse(cnf, style, culture, out m1);
             }
             rt.Entidad = m1;
-
             return rt;
         }
         public OOB.Resultado.FichaEntidad<OOB.Configuracion.BusquedaProducto.Enumerado.EnumPreferenciaBusqueda> 
@@ -115,7 +112,5 @@ namespace ModVentaAdm.Data.Prov
 
             return rt;
         }
-
     }
-
 }

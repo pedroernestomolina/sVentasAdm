@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace IPos
 {
-    
     public interface IReportesAdm
     {
-
         DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Ficha> 
             ReportesAdm_GeneralDocumento(DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Filtro filtro);
         DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.GeneralPorDepartamento.Ficha> 
@@ -33,7 +31,10 @@ namespace IPos
             ReportesAdm_UtilidadProducto(DtoLibPos.Reportes.VentaAdministrativa.Utilidad.Filtro filtro);
         DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Ficha> 
             ReportesAdm_LibroVenta(DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Filtro filtro);
-
+        //
+        DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Resumen.Ficha>
+            ReportesAdm_VentasPorVendedor_Resumen(DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Filtro filtro);
+        DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Detallado.Ficha>
+            ReportesAdm_VentasPorVendedor_Detallado(DtoLibPos.Reportes.VentaAdministrativa.Vendedor.Filtro filtro);
     }
-
 }

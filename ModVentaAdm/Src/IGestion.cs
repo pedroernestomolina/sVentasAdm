@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src
 {
-    
     public interface IGestion
     {
-
         void Inicializa();
         void Inicia();
-
     }
-
 }

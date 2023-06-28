@@ -8,11 +8,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.Principal
 {
-    
     public class Gestion
     {
-
-
         private Administrador.Gestion _gestionAdm;
         private Reportes.Gestion _gestionRep;
         private Maestros.Gestion _gestionMaestro;
@@ -26,10 +23,10 @@ namespace ModVentaAdm.Src.Principal
         private CxC.Tools.PanelPrincipal.ITools _gToolsCxC;
 
 
-        public string BD_Ruta { get { return Sistema.Instancia; } }
-        public string BD_Nombre { get { return Sistema.BaseDatos; } }
+        public string BD_Ruta { get { return Sistema.MotorDatos.Instancia; } }
+        public string BD_Nombre { get { return Sistema.MotorDatos.BaseDatos; } }
         public string Version { get { return "Ver. " + Application.ProductVersion; } }
-        public string Host { get { return Sistema.Instancia + "/" + Sistema.BaseDatos; } }
+        public string Host { get { return Sistema.MotorDatos.GetHost; } }
         public string Usuario { get { return Sistema.Usuario.codigo + Environment.NewLine + Sistema.Usuario.nombre; } }
         public string GetNombreHerramienta { get { return Sistema.NombreHerramienta; } }
 
@@ -64,9 +61,10 @@ namespace ModVentaAdm.Src.Principal
         {
             if (CargarData()) 
             {
-                frm = new PrincipalFrm();
-                frm.setControlador(this);
-                frm.ShowDialog();
+                Sistema.Fabrica.Iniciar_FrmPrincipal(this);
+                //frm = new PrincipalFrm();
+                //frm.setControlador(this);
+                //frm.ShowDialog();
             }
         }
 
@@ -193,32 +191,10 @@ namespace ModVentaAdm.Src.Principal
                 _gestionAdmCliente.Inicia();
             }
         }
-
-        public void Reporte_Resumen()
-        {
-            Reporte(new Reportes.Modo.Resumen.Gestion());
-        }
-
-        public void Reporte_GeneralPorProducto()
-        {
-            Reporte(new Reportes.Modo.GeneralPorProducto.Gestion());
-        }
-
-        public void Reporte_GeneralDocumentoDetalle()
-        {
-            Reporte(new Reportes.Modo.GeneralDocumentoDetalle.Gestion());
-        }
-
-        public void Reporte_Consolidado()
-        {
-            Reporte(new Reportes.Modo.Consolidado.Gestion());
-        }
-
         public void Reporte_Cliente_Maestro()
         {
             ReporteCliente(new ReportesCliente.Modo.Maestro.Gestion());
         }
-
         private void ReporteCliente(ReportesCliente.IGestion gestion)
         {
             var r00 = Sistema.MyData.Permiso_Cliente_Reportes(Sistema.Usuario.idGrupo);
@@ -235,62 +211,28 @@ namespace ModVentaAdm.Src.Principal
                 _gestionRepCli.Inicia();
             }
         }
-
-        public void GenerarPresupuesto()
+        
+        //
+        public void Reporte_Resumen()
         {
-            if (_gestionPresup == null)
-            {
-                _gestionPresup = new Documentos.Generar.Presupuesto.Gestion();
-            }
-            GenerarDoc(_gestionPresup);
+            Reporte(new Reportes.Modo.Resumen.Gestion());
         }
-
-        public void GenerarFactura()
+        public void Reporte_GeneralPorProducto()
         {
-            if (_gestionFact == null)
-            {
-                _gestionFact = new Documentos.Generar.Factura.Gestion();
-            }
-            GenerarDoc(_gestionFact);
+            Reporte(new Reportes.Modo.GeneralPorProducto.Gestion());
         }
-
-        private void GenerarDoc(Documentos.Generar.IDocGestion _doc)
+        public void Reporte_GeneralDocumentoDetalle()
         {
-            _gGenDoc.setDocGestion(_doc);
-            _gGenDoc.Inicializa();
-            _gGenDoc.Inicia();
+            Reporte(new Reportes.Modo.GeneralDocumentoDetalle.Gestion());
         }
-
-        public void GenerarPedido()
+        public void Reporte_Consolidado()
         {
-            if (_gestionPedido== null)
-            {
-                _gestionPedido= new Documentos.Generar.Pedido.Gestion();
-            }
-            GenerarDoc(_gestionPedido);
+            Reporte(new Reportes.Modo.Consolidado.Gestion());
         }
-
         public void Reporte_LibroVenta()
         {
             Reporte(new Reportes.Modo.LibroVenta.Gestion());
         }
-
-        public void ConfiguracionSistema()
-        {
-            var r00 = Sistema.MyData.Permiso_Configuracion(Sistema.Usuario.idGrupo);
-            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-
-            if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
-            {
-                _gConfiguracion.Inicializa();
-                _gConfiguracion.Inica();
-            }
-        }
-
         public void UtilidadConsolidado()
         {
             Reporte(new Reportes.Modo.Utilidad.Consolidado.Gestion());
@@ -303,6 +245,15 @@ namespace ModVentaAdm.Src.Principal
         {
             Reporte(new Reportes.Modo.Utilidad.Producto.Gestion());
         }
+        public void Reporte_Vendedor_Resumen()
+        {
+            Reporte(new Reportes.Modo.Vendedor.Resumen.Gestion());
+        }
+        public void Reporte_Vendedor_Detallado()
+        {
+            Reporte(new Reportes.Modo.Vendedor.Detallado.Gestion());
+        }
+
 
         public void ToolsCxC()
         {
@@ -328,6 +279,79 @@ namespace ModVentaAdm.Src.Principal
             }
         }
 
-    }
 
+        public void ConfiguracionSistema()
+        {
+            var r00 = Sistema.MyData.Permiso_Configuracion(Sistema.Usuario.idGrupo);
+            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+
+            if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+            {
+                _gConfiguracion.Inicializa();
+                _gConfiguracion.Inica();
+            }
+        }
+
+
+        public void GenerarPresupuesto()
+        {
+            if (_gestionPresup == null)
+            {
+                _gestionPresup = new Documentos.Generar.Presupuesto.Gestion();
+            }
+            GenerarDoc(_gestionPresup);
+        }
+        public void GenerarFactura()
+        {
+            if (_gestionFact == null)
+            {
+                _gestionFact = new Documentos.Generar.Factura.Gestion();
+            }
+            GenerarDoc(_gestionFact);
+        }
+        private void GenerarDoc(Documentos.Generar.IDocGestion _doc)
+        {
+            _gGenDoc.setDocGestion(_doc);
+            _gGenDoc.Inicializa();
+            _gGenDoc.Inicia();
+        }
+        public void GenerarPedido()
+        {
+            if (_gestionPedido == null)
+            {
+                _gestionPedido = new Documentos.Generar.Pedido.Gestion();
+            }
+            GenerarDoc(_gestionPedido);
+        }
+
+
+
+        // TRANSPORTE
+        public void MenuMaestroAliados()
+        {
+            SrcTransporte.Aliados.AgregarEditar.Agregar.IAgregar _gest;
+            _gest = new SrcTransporte.Aliados.AgregarEditar.Agregar.Agregar();
+            _gest.Inicializa();
+            _gest.Inicia();
+        }
+        public void AliadoEditar()
+        {
+            SrcTransporte.Aliados.AgregarEditar.Editar.IEditar _gest;
+            _gest = new SrcTransporte.Aliados.AgregarEditar.Editar.Editar();
+            _gest.Inicializa();
+            _gest.setAliadoEditar(3);
+            _gest.Inicia();
+        }
+        public void TransportePresupuestoGenerar()
+        {
+            SrcTransporte.Presupuesto.Generar.IGenerar _gest;
+            _gest = new SrcTransporte.Presupuesto.Generar.ImpGenerar();
+            _gest.Inicializa();
+            _gest.Inicia();
+        }
+    }
 }

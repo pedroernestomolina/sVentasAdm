@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Infra
 {
-    
     public interface IConfiguracion
     {
-
         OOB.Resultado.FichaEntidad<OOB.Configuracion.BusquedaCliente.Entidad.Ficha> 
             Configuracion_BusquedaCliente();
         OOB.Resultado.FichaEntidad<OOB.Configuracion.BusquedaProducto.Enumerado.EnumPreferenciaBusqueda> 
@@ -21,7 +19,5 @@ namespace ModVentaAdm.Data.Infra
             Configuracion_RupturaPorExistencia();
         OOB.Resultado.FichaEntidad <int> 
             Configuracion_CantDocVisualizar();
-
     }
-
 }

@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Infra
 {
-    
     public interface IUsuario
     {
-
-        OOB.Resultado.FichaEntidad<OOB.Usuario.Entidad.Ficha> Usuario_Identificar(OOB.Usuario.Identificar.Ficha ficha);
-
+        OOB.Resultado.FichaEntidad<OOB.Usuario.Entidad.Ficha> 
+            Usuario_Identificar(OOB.Usuario.Identificar.Ficha ficha);
     }
-
 }

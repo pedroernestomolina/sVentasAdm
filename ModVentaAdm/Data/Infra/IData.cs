@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Infra
 {
-
     public interface IData: IUsuario, ISucursal, IDocumento, ISistema, IPermiso, IReportes,
         IClienteGrupo, IClienteZona, IConfiguracion, ICliente, IReportesCli, IProducto, IVenta,
-        IAuditoria, ICxC
+        IAuditoria, ICxC, Transporte.IAliado
     {
-
-        OOB.Resultado.FichaEntidad<DateTime> FechaServidor();
-        OOB.Resultado.Ficha Test();
-
+        OOB.Resultado.FichaEntidad<DateTime> 
+            FechaServidor();
+        OOB.Resultado.Ficha 
+            Test();
     }
-
 }

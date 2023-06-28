@@ -71,6 +71,7 @@
     <Compile Include="IVenta.cs" />
     <Compile Include="IVentaAdm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transporte\IAliado.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DtoLibPos\DtoLibPos.csproj">
@@ -80,6 +81,10 @@
     <ProjectReference Include="..\DtoLib\DtoLib.csproj">
       <Project>{317543d0-b357-4bba-8ba1-84fa25f4efa6}</Project>
       <Name>DtoLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DtoTransporte\DtoTransporte.csproj">
+      <Project>{6e9d0e29-ef5f-413f-b3a1-df076c0c2db3}</Project>
+      <Name>DtoTransporte</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

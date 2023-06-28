@@ -13,7 +13,7 @@ namespace ProvPos
     public partial class Provider: IPos.IProvider
     {
 
-        static EntityConnectionStringBuilder _cnPos;
+        public static EntityConnectionStringBuilder _cnPos;
         private string _Instancia;
         private string _BaseDatos;
         private string _Usuario;

@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Prov
 {
-
     public partial class DataPrv: IData
     {
-
-        public OOB.Resultado.FichaEntidad<OOB.Usuario.Entidad.Ficha> Usuario_Identificar(OOB.Usuario.Identificar.Ficha ficha)
+        public OOB.Resultado.FichaEntidad<OOB.Usuario.Entidad.Ficha> 
+            Usuario_Identificar(OOB.Usuario.Identificar.Ficha ficha)
         {
             var result = new OOB.Resultado.FichaEntidad<OOB.Usuario.Entidad.Ficha>();
-
             var fichaDTO = new DtoLibPos.Usuario.Identificar.Ficha()
             {
                 codigo = ficha.codigo,
@@ -24,11 +22,8 @@ namespace ModVentaAdm.Data.Prov
             var r01 = MyData.Usuario_Identificar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                result.Mensaje = r01.Mensaje;
-                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return result;
+                throw new Exception(r01.Mensaje);
             }
-
             var ent= r01.Entidad;
             var nr = new OOB.Usuario.Entidad.Ficha()
             {
@@ -40,10 +35,7 @@ namespace ModVentaAdm.Data.Prov
                 nombreGrupo = ent.nombreGrupo,
             };
             result.Entidad = nr;
-
             return result;
         }
-
     }
-
 }

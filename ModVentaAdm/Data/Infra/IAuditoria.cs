@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Infra
 {
-    
     public interface IAuditoria
     {
-
-        OOB.Resultado.FichaEntidad<OOB.Auditoria.Entidad.Ficha> Auditoria_Documento_GetFichaBy(OOB.Auditoria.Buscar.Ficha ficha);
-
+        OOB.Resultado.FichaEntidad<OOB.Auditoria.Entidad.Ficha> 
+            Auditoria_Documento_GetFichaBy(OOB.Auditoria.Buscar.Ficha ficha);
     }
-
 }

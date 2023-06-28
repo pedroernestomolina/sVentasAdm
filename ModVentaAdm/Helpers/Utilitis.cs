@@ -11,9 +11,6 @@ namespace ModVentaAdm.Helpers
     
     public class Utilitis
     {
-        static public string _DataLocal { get; set; }
-
-
         static public void Calculadora()
         {
             System.Diagnostics.Process p = new System.Diagnostics.Process();
@@ -25,7 +22,6 @@ namespace ModVentaAdm.Helpers
         static public OOB.Resultado.Ficha CargarXml()
         {
             var result = new OOB.Resultado.Ficha();
-
             try
             {
                 var doc = new XmlDocument();
@@ -45,42 +41,17 @@ namespace ModVentaAdm.Helpers
                                     {
                                         if (sv.LocalName.Trim().ToUpper() == "INSTANCIA")
                                         {
-                                            Sistema.Instancia = sv.InnerText.Trim();
+                                            Sistema.MotorDatos.Instancia = sv.InnerText.Trim();
                                         }
                                         if (sv.LocalName.Trim().ToUpper() == "CATALOGO")
                                         {
-                                            Sistema.BaseDatos = sv.InnerText.Trim();
+                                            Sistema.MotorDatos.BaseDatos = sv.InnerText.Trim();
                                         }
                                     }
                                 }
-
                                 if (nv.LocalName.ToUpper().Trim() == "IDEQUIPO")
                                 {
                                     Sistema.IdEquipo= nv.InnerText.Trim();
-                                }
-
-                                if (nv.LocalName.ToUpper().Trim() == "DATALOCAL") 
-                                {
-                                    _DataLocal = nv.InnerText.Trim();
-                                }
-
-                                if (nv.LocalName.ToUpper().Trim()=="IMPRESORATICKET")
-                                {
-                                    foreach (XmlNode mi in nv.ChildNodes)
-                                    {
-                                        if (mi.LocalName.Trim().ToUpper() == "TAMANOROLLO")
-                                        {
-                                            if (mi.InnerText.Trim().ToUpper() == "G")
-                                            {
-                                                //Sistema.ImpresoraTicket = Sistema.EnumModoRolloTicket.Grande;
-                                            }                                            
-                                            if (mi.InnerText.Trim().ToUpper() == "P")
-                                            {
-                                                //Sistema.ImpresoraTicket = Sistema.EnumModoRolloTicket.Pequeno;
-                                            }
-                                        }
-                                    }
-
                                 }
                             }
                         }
@@ -92,10 +63,7 @@ namespace ModVentaAdm.Helpers
                 result.Result =  OOB.Resultado.Enumerados.EnumResult.isError;
                 result.Mensaje = e.Message;
             }
-
             return result;
         }
-
     }
-
 }

@@ -43,6 +43,9 @@
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LibUtilitis">
+      <HintPath>..\..\..\LibUtilitis\LibUtilitis\bin\Debug\LibUtilitis.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="MySql.Data, Version=6.8.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -83,6 +86,7 @@
     <Compile Include="Data\Infra\ISucursal.cs" />
     <Compile Include="Data\Infra\IUsuario.cs" />
     <Compile Include="Data\Infra\IVenta.cs" />
+    <Compile Include="Data\Infra\Transporte\IAliado.cs" />
     <Compile Include="Data\Prov\Auditoria.cs" />
     <Compile Include="Data\Prov\Cliente.cs" />
     <Compile Include="Data\Prov\ClienteGrupo.cs" />
@@ -98,8 +102,12 @@
     <Compile Include="Data\Prov\ReportesCli.cs" />
     <Compile Include="Data\Prov\Sistema.cs" />
     <Compile Include="Data\Prov\Sucursal.cs" />
+    <Compile Include="Data\Prov\Transporte.cs" />
     <Compile Include="Data\Prov\Usuario.cs" />
     <Compile Include="Data\Prov\Venta.cs" />
+    <Compile Include="Fabrica\ModoGeneral.cs" />
+    <Compile Include="Fabrica\ModoTransporte.cs" />
+    <Compile Include="Fabrica\IFabrica.cs" />
     <Compile Include="Gestion.cs" />
     <Compile Include="Helpers\Imprimir\data.cs" />
     <Compile Include="Helpers\Imprimir\Documento.cs" />
@@ -212,6 +220,9 @@
     <Compile Include="OOB\Reportes\Utilidad\Filtro.cs" />
     <Compile Include="OOB\Reportes\Utilidad\Producto\Ficha.cs" />
     <Compile Include="OOB\Reportes\Utilidad\Venta\Ficha.cs" />
+    <Compile Include="OOB\Reportes\Vendedor\Detallado\Ficha.cs" />
+    <Compile Include="OOB\Reportes\Vendedor\Filtro.cs" />
+    <Compile Include="OOB\Reportes\Vendedor\Resumen\Ficha.cs" />
     <Compile Include="OOB\Reportes\VentaPorProducto\Ficha.cs" />
     <Compile Include="OOB\Reportes\VentaPorProducto\Filtro.cs" />
     <Compile Include="OOB\Resultado\Enumerados.cs" />
@@ -231,6 +242,20 @@
     <Compile Include="OOB\Sistema\Transporte\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\Vendedor\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sucursal\Entidad\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Aliado\Agregar\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Aliado\Agregar\Telefono.cs" />
+    <Compile Include="OOB\Transporte\Aliado\baseFicha.cs" />
+    <Compile Include="OOB\Transporte\Aliado\baseTelefono.cs" />
+    <Compile Include="OOB\Transporte\Aliado\Busqueda\Filtro.cs" />
+    <Compile Include="OOB\Transporte\Aliado\Entidad\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Aliado\Entidad\Telefono.cs" />
+    <Compile Include="OOB\Transporte\Aliado\Tipos.cs" />
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\Telefono\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\Telefono\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OOB\Usuario\Entidad\Ficha.cs" />
     <Compile Include="OOB\Usuario\Identificar\Ficha.cs" />
     <Compile Include="OOB\Venta\Temporal\Anular\Ficha.cs" />
@@ -271,6 +296,73 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Sistema.cs" />
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\Agregar\Agregar.cs" />
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\Agregar\IAgregar.cs" />
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\Aliado.cs" />
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\Editar\Editar.cs" />
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\Editar\IEditar.cs" />
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\IAgregarEditar.cs" />
+    <Compile Include="SrcTransporte\Aliados\AgregarEditar\ImpAgregarEditar.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\Lista\IAliadoLista.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\Lista\ImpAliadoLista.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\ImpBusqueda.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\Lista\data.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\IAliado.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\ImpAliado.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\ImpMetBusqueda.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\data.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\dataItem.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\dataTotales.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\DatosDocumento\data.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\DatosDocumento\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Presupuesto\Generar\DatosDocumento\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\Presupuesto\Generar\DatosDocumento\IDatosDoc.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\DatosDocumento\Imp.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\Presupuesto\Generar\IGenerar.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\ImpGenerar.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\ItemLista\IItemLista.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\ItemLista\Imp.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Agregar\Agregar.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Agregar\IAgregar.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\data.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Editar\Editar.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Editar\IEditar.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\IItem.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\ImpItem.cs" />
+    <Compile Include="SrcTransporte\Principal\PrincipalFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Principal\PrincipalFrm.Designer.cs">
+      <DependentUpon>PrincipalFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Src\Administrador\data.cs" />
     <Compile Include="Src\Administrador\Documentos\AdmDocFrm.cs">
       <SubType>Form</SubType>
@@ -644,7 +736,7 @@
     <Compile Include="Src\ReportesCliente\IGestion.cs" />
     <Compile Include="Src\ReportesCliente\Modo\Maestro\Filtro.cs" />
     <Compile Include="Src\ReportesCliente\Modo\Maestro\Gestion.cs" />
-    <Compile Include="Src\Reportes\DS1.Designer.cs">
+    <Compile Include="Src\Reportes\DS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DS.xsd</DependentUpon>
@@ -687,6 +779,9 @@
     <Compile Include="Src\Reportes\Modo\Utilidad\Producto\Gestion.cs" />
     <Compile Include="Src\Reportes\Modo\Utilidad\Ventas\Filtro.cs" />
     <Compile Include="Src\Reportes\Modo\Utilidad\Ventas\Gestion.cs" />
+    <Compile Include="Src\Reportes\Modo\Vendedor\Detallado\Gestion.cs" />
+    <Compile Include="Src\Reportes\Modo\Vendedor\Filtro.cs" />
+    <Compile Include="Src\Reportes\Modo\Vendedor\Resumen\Gestion.cs" />
     <Compile Include="Src\Reportes\ReporteFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -701,16 +796,40 @@
     <Compile Include="Src\Seguridad\SeguridadFrm.designer.cs">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Busqueda\IComp.cs" />
+    <Compile Include="Utils\CtrlMetodoBusq\IComp.cs" />
+    <Compile Include="Utils\dataFiltro.cs" />
     <EmbeddedResource Include="Helpers\Imprimir\Grafico\Documento.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Helpers\Imprimir\Grafico\ReporteFrm.resx">
       <DependentUpon>ReporteFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Aliados\AgregarEditar\Telefono\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Aliados\AgregarEditar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Presupuesto\Generar\Aliado\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Presupuesto\Generar\DatosDocumento\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Presupuesto\Generar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Presupuesto\Generar\Item\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Principal\PrincipalFrm.resx">
+      <DependentUpon>PrincipalFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Administrador\Documentos\AdmDocFrm.resx">
       <DependentUpon>AdmDocFrm.cs</DependentUpon>
@@ -874,6 +993,12 @@
     <EmbeddedResource Include="Src\Reportes\UtilidadVenta.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Src\Reportes\VentasPorVendedor_Detalle.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\Reportes\VentasPorVendedor_Resumen.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Src\Seguridad\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -926,6 +1051,7 @@
     <None Include="Src\Reportes\DS.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>DS.Designer.cs</LastGenOutput>
     </None>
     <None Include="Src\Reportes\DS.xss">
       <DependentUpon>DS.xsd</DependentUpon>
@@ -945,6 +1071,13 @@
     <None Include="Resources\bt_billetera_24.png" />
     <None Include="Resources\bt_billetera_48.png" />
     <None Include="Resources\bt_borrador_32.png" />
+    <None Include="Resources\telefono_48.png" />
+    <None Include="Resources\localizacion_48.png" />
+    <None Include="Resources\transporteJJ.jpeg" />
+    <None Include="Resources\fondoTransporte.jpeg" />
+    <None Include="Resources\inicio_48.png" />
+    <None Include="Resources\bt_transporte.png" />
+    <None Include="Resources\bt_margen_beneficio_32.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -996,6 +1129,7 @@
     <Content Include="Src\Imagenes\bt_limpiar_24.png" />
     <Content Include="Src\Imagenes\bt_limpiar_3.png" />
     <Content Include="Src\Imagenes\bt_lista.png" />
+    <Content Include="Src\Imagenes\bt_margen_beneficio_32.png" />
     <Content Include="Src\Imagenes\bt_mobil_notification.png" />
     <Content Include="Src\Imagenes\bt_mov.png" />
     <Content Include="Src\Imagenes\bt_mov_2.png" />
@@ -1015,6 +1149,7 @@
     <Content Include="Src\Imagenes\bt_status.png" />
     <Content Include="Src\Imagenes\bt_sumar.png" />
     <Content Include="Src\Imagenes\bt_sumar_2.png" />
+    <Content Include="Src\Imagenes\bt_transporte.png" />
     <Content Include="Src\Imagenes\bt_usuario %282%29.png" />
     <Content Include="Src\Imagenes\bt_usuario.png" />
     <Content Include="Src\Imagenes\bt_visor.png" />
@@ -1023,19 +1158,25 @@
     <Content Include="Src\Imagenes\dollar.png" />
     <Content Include="Src\Imagenes\fecha_derecha.png" />
     <Content Include="Src\Imagenes\flecha_izquierda.png" />
+    <Content Include="Src\Imagenes\fondoTransporte.jpeg" />
     <Content Include="Src\Imagenes\Gestion-Logistica-Integral-768x400.jpeg" />
     <Content Include="Src\Imagenes\icon_setup.png" />
     <Content Include="Src\Imagenes\images %281%29.jpg" />
     <Content Include="Src\Imagenes\images.jpg" />
+    <Content Include="Src\Imagenes\inicio_48.png" />
     <Content Include="Src\Imagenes\inventario.jpg" />
     <Content Include="Src\Imagenes\inventario_2.jpg" />
     <Content Include="Src\Imagenes\libro.png" />
+    <Content Include="Src\Imagenes\localizacion_48.png" />
     <Content Include="Src\Imagenes\Machine-learning-1024x682.jpg" />
     <Content Include="Src\Imagenes\mobile.ico" />
     <Content Include="Src\Imagenes\plataforma-efosearch.jpg" />
     <Content Include="Src\Imagenes\sinImagen.png" />
+    <Content Include="Src\Imagenes\telefono_48.png" />
     <Content Include="Src\Imagenes\TOOLS.ico" />
     <Content Include="Src\Imagenes\transferencia.png" />
+    <Content Include="Src\Imagenes\transporteJJ.jpeg" />
+    <Content Include="Src\Imagenes\transporteJJ.png" />
     <Content Include="Src\Imagenes\warehouse.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1046,6 +1187,10 @@
     <ProjectReference Include="..\DtoLib\DtoLib.csproj">
       <Project>{317543d0-b357-4bba-8ba1-84fa25f4efa6}</Project>
       <Name>DtoLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DtoTransporte\DtoTransporte.csproj">
+      <Project>{6e9d0e29-ef5f-413f-b3a1-df076c0c2db3}</Project>
+      <Name>DtoTransporte</Name>
     </ProjectReference>
     <ProjectReference Include="..\LibControles\LibControles.csproj">
       <Project>{a5a4936c-22d5-4862-953e-8296c3820a63}</Project>

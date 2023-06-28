@@ -88,6 +88,10 @@
             this.MENU_REPORTES_GENERAL_POR_PRODUCTO = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_GENERAL_POR_GRUPO = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripSeparator();
+            this.MENU_REPORTES_VENDEDOR = new System.Windows.Forms.ToolStripMenuItem();
+            this.MENU_REPORTES_VENDEDOR_RESUMEN = new System.Windows.Forms.ToolStripMenuItem();
+            this.MENU_REPORTES_VENDEDOR_DETALLADO = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.MENU_REPORTES_UTILIDAD_CONSOLIDADO = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_UTILIDAD_POR_VENTAS = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_UTILIDAD_POR_UTILIDAD = new System.Windows.Forms.ToolStripMenuItem();
@@ -176,11 +180,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(663, 1);
+            this.panel2.Location = new System.Drawing.Point(661, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(220, 52);
+            this.panel2.Size = new System.Drawing.Size(222, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -191,7 +195,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(216, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(218, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -206,7 +210,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(343, 52);
+            this.panel7.Size = new System.Drawing.Size(341, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -225,7 +229,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(339, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(337, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -259,7 +263,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(257, 22);
+            this.panel14.Size = new System.Drawing.Size(255, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -269,7 +273,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(253, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(251, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -305,7 +309,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(257, 22);
+            this.panel16.Size = new System.Drawing.Size(255, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -315,7 +319,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(253, 18);
+            this.L_HOST.Size = new System.Drawing.Size(251, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -324,7 +328,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(346, 1);
+            this.panel17.Location = new System.Drawing.Point(344, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -396,7 +400,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(548, 1);
+            this.panel20.Location = new System.Drawing.Point(546, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -640,6 +644,8 @@
             this.MENU_REPORTES_GENERAL_POR_PRODUCTO,
             this.MENU_REPORTES_GENERAL_POR_GRUPO,
             this.toolStripMenuItem14,
+            this.MENU_REPORTES_VENDEDOR,
+            this.toolStripMenuItem4,
             this.MENU_REPORTES_UTILIDAD_CONSOLIDADO,
             this.MENU_REPORTES_UTILIDAD_POR_VENTAS,
             this.MENU_REPORTES_UTILIDAD_POR_UTILIDAD,
@@ -724,6 +730,35 @@
             // 
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
             this.toolStripMenuItem14.Size = new System.Drawing.Size(256, 6);
+            // 
+            // MENU_REPORTES_VENDEDOR
+            // 
+            this.MENU_REPORTES_VENDEDOR.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MENU_REPORTES_VENDEDOR_RESUMEN,
+            this.MENU_REPORTES_VENDEDOR_DETALLADO});
+            this.MENU_REPORTES_VENDEDOR.Image = global::ModVentaAdm.Properties.Resources.bt_imprimir_3;
+            this.MENU_REPORTES_VENDEDOR.Name = "MENU_REPORTES_VENDEDOR";
+            this.MENU_REPORTES_VENDEDOR.Size = new System.Drawing.Size(259, 22);
+            this.MENU_REPORTES_VENDEDOR.Text = "Ventas Por Vendedor";
+            // 
+            // MENU_REPORTES_VENDEDOR_RESUMEN
+            // 
+            this.MENU_REPORTES_VENDEDOR_RESUMEN.Name = "MENU_REPORTES_VENDEDOR_RESUMEN";
+            this.MENU_REPORTES_VENDEDOR_RESUMEN.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_VENDEDOR_RESUMEN.Text = "Resumen";
+            this.MENU_REPORTES_VENDEDOR_RESUMEN.Click += new System.EventHandler(this.MENU_REPORTES_VENDEDOR_RESUMEN_Click);
+            // 
+            // MENU_REPORTES_VENDEDOR_DETALLADO
+            // 
+            this.MENU_REPORTES_VENDEDOR_DETALLADO.Name = "MENU_REPORTES_VENDEDOR_DETALLADO";
+            this.MENU_REPORTES_VENDEDOR_DETALLADO.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_VENDEDOR_DETALLADO.Text = "Detallado";
+            this.MENU_REPORTES_VENDEDOR_DETALLADO.Click += new System.EventHandler(this.MENU_REPORTES_VENDEDOR_DETALLADO_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(256, 6);
             // 
             // MENU_REPORTES_UTILIDAD_CONSOLIDADO
             // 
@@ -1117,5 +1152,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem15;
         private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_RESUMEN;
         private System.Windows.Forms.ToolStripMenuItem cxCToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_VENDEDOR;
+        private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_VENDEDOR_RESUMEN;
+        private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_VENDEDOR_DETALLADO;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
     }
 }
