@@ -21,6 +21,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
         public ImpGenerar()
         {
+            _limpiarDocumentoIsOK = false;
+            _editarDocumentoIsOK = false;
+            _notasObservaciones = "";
             _procesarIsOK = false;
             _abandonarIsOK = false;
             _dataGen = new data();
@@ -29,6 +32,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
         public void Inicializa()
         {
+            _limpiarDocumentoIsOK = false;
+            _editarDocumentoIsOK = false;
+            _notasObservaciones = "";
             _procesarIsOK = false;
             _abandonarIsOK = false;
             _dataGen.Inicializa();
@@ -86,14 +92,28 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             {
                 _datosDoc = new DatosDocumento.Imp();
             }
+            if (_dataGen.DatosDoc != null) 
+            {
+                Helpers.Msg.Alerta("DOCUMENTO YA CREADO");
+                return;
+            }
             _datosDoc.Inicializa();
             _datosDoc.Inicia();
+            if (_datosDoc.ProcesarIsOK)
+            {
+                _dataGen.setDatosDoc(_datosDoc.Data);
+            }
         }
 
 
         private Item.Agregar.IAgregar _itemAgregar;
         public void AgregarItem()
         {
+            if (!_dataGen.DocumentoIsOk) 
+            {
+                Helpers.Msg.Alerta("DEBES PRIMERO CREAR UN NUEVO DOCUMENTO");
+                return;
+            }
             _itemAgregar = new Item.Agregar.Agregar();
             _itemAgregar.Inicializa();
             _itemAgregar.Inicia();
@@ -138,6 +158,47 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     _dataGen.Totales.setMontoIvaDivisa(_dataGen.Items.MontoIvaDivisa);
                     Helpers.Msg.AgregarOk();
                 }
+            }
+        }
+
+        private string _notasObservaciones;
+        public string NotasObserv_Get { get { return _notasObservaciones; } }
+        public void setNotas(string desc)
+        {
+            _notasObservaciones = desc;
+        }
+
+
+        private bool _limpiarDocumentoIsOK;
+        public bool LimpiarDocumentoIsOK { get { return _limpiarDocumentoIsOK; } }
+        public void LimpiarDocumento()
+        {
+            _limpiarDocumentoIsOK = false; 
+            var xmsg = "Quieres Limpiar todo el Documento Actual ?";
+            var r = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (r == DialogResult.Yes) 
+            {
+                _dataGen.LimpiarTodo();
+                _notasObservaciones = "";
+                _limpiarDocumentoIsOK = true; 
+            }
+        }
+
+        private bool _editarDocumentoIsOK;
+        public bool EditarDocumentoIsOK { get { return _editarDocumentoIsOK; } }
+        public void EditarDocumento()
+        {
+            _editarDocumentoIsOK = false;
+            if (_dataGen.DatosDoc == null)
+            {
+                Helpers.Msg.Alerta("DEBES PRIMERO CREAR UN NUEVO DOCUMENTO");
+                return;
+            }
+            _datosDoc.Inicia();
+            if (_datosDoc.ProcesarIsOK)
+            {
+                _dataGen.setDatosDoc(_datosDoc.Data);
+                _editarDocumentoIsOK = true;
             }
         }
     }

@@ -33,7 +33,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         {
             _modoEditar = true;
             CB_COND_PAGO.DataSource = _controlador.Data.CondicionPago.GetSource;
-            //L_CLIENTE.Text = _controlador.DataCliente;
+            L_CLIENTE.Text = _controlador.Data.Cliente_GetInf;
             TB_FECHA.Text = _controlador.Data.FechaSistema_Get.ToShortDateString();
             TB_FECHA_VENCE.Text = _controlador.Data.FechaVencimiento_Get.ToShortDateString();
             TB_DIAS_VALIDEZ.Text = _controlador.Data.DiasValidez_Get.ToString("n0");
@@ -96,15 +96,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
 
         private void BuscarCliente()
         {
-            //_controlador.BuscarCliente();
-            //L_CLIENTE.Text = _controlador.DataCliente;
-            //_modoEditar = false;
-            //CB_VENDEDOR.SelectedValue = _controlador.DataIdVendedor;
-            //CB_COBRADOR.SelectedValue = _controlador.DataIdCobrador;
-            //CB_COND_PAGO.SelectedValue = _controlador.DataIdCondPago;
-            //TB_DIR_DESPACHO.Text = _controlador.DataDirDespacho;
-            //TB_DIAS_CREDITO.Text = _controlador.DataDiasCredito.ToString();
-            //_modoEditar = true;
+            _controlador.BuscarCliente();
+            L_CLIENTE.Text = _controlador.Data.Cliente_GetInf;
+            _modoEditar = false;
+            TB_DIAS_CREDITO.Text = _controlador.Data.DiasCredito_Get.ToString("n0");
+            CB_COND_PAGO.SelectedValue = _controlador.Data.CondicionPago.GetId;
+            TB_FECHA_VENCE.Text = _controlador.Data.FechaVencimiento_Get.ToShortDateString();
+            _modoEditar = true;
         }
         private void AceptarDatos()
         {

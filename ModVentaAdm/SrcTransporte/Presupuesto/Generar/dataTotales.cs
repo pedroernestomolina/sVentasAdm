@@ -42,8 +42,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
         private void limpiar() 
         {
-            _tasaDivisaActual = 0m;
-            //
             _montoNeto_MonedaActual = 0m;
             _montoIva_MonedaActual = 0m;
             //
@@ -64,13 +62,18 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         {
             _montoIva_MonedaDivisa = monto;
             _montoIva_MonedaActual = monto*_tasaDivisaActual;
-            _montoTotal_MonedaActual = _montoNeto_MonedaActual + _montoIva_MonedaActual;
             CalcularTotales();
         }
         private void CalcularTotales()
         {
             _montoTotal_MonedaActual = _montoNeto_MonedaActual + _montoIva_MonedaActual;
             _montoTotal_MonedaDivisa = _montoNeto_MonedaDivisa + _montoIva_MonedaDivisa;
+        }
+
+
+        public void LimpiarTodo()
+        {
+            limpiar();
         }
     }
 }

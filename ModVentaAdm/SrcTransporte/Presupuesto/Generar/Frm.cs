@@ -109,6 +109,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private void Frm_Load(object sender, EventArgs e)
         {
             _modoInicializa = true;
+            //
+            L_TIPO_DOCUMENTO.Text = "PRESUPUESTO";
             DGV.DataSource = _controlador.SourceItems_Get;
             L_ITEMS_CNT.Text = "Items Registrados";
             L_CNT_ITEM.Text =  _controlador.Ficha.Items.Cnt_Get.ToString("n0");
@@ -117,6 +119,18 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             L_MONTO_IVA.Text  = _controlador.Ficha.Totales.MontoIva_MonedaActual_Get.ToString("n2",_cult);
             L_MONTO.Text = _controlador.Ficha.Totales.MontoTotal_MonedaActual_Get.ToString("n2", _cult);
             L_MONTO_DIVISA.Text= _controlador.Ficha.Totales.MontoTotal_MonedaDivisa_Get.ToString("n2",_cult);
+            //
+            L_RIF_CLIENTE.Text = _controlador.Ficha.Cliente_ciRif_Get;
+            L_CODIGO_CLIENTE.Text = _controlador.Ficha.Cliente_codigo_Get;
+            L_CLIENTE.Text = _controlador.Ficha.Cliente_razonSocial_Get;
+            L_DATOS_DOC_FECHA.Text = _controlador.Ficha.DatosDoc_FechaEmi_Get;
+            L_DATOS_DOC_COND_PAGO.Text = _controlador.Ficha.DatosDoc_CondPago_Get;
+            L_DATOS_DOC_FECHA_VENCE.Text = _controlador.Ficha.DatosDoc_FechaVenc_Get;
+            //
+            L_NOMBRE_DOC_REMISION.Text = "";
+            L_NUMERO_DOC_REMISION.Text = "";
+            L_FECHA_DOC_REMISION.Text = "";
+            //
             _modoInicializa = false;
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -140,6 +154,12 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         }
 
 
+        private void TB_NOTAS_Leave(object sender, EventArgs e)
+        {
+            _controlador.setNotas(TB_NOTAS.Text);
+        }
+
+
         private void BT_ITEM_AGREGAR_Click(object sender, EventArgs e)
         {
             AgregarItem();
@@ -151,6 +171,29 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private void BT_ITEM_ELIMINAR_Click(object sender, EventArgs e)
         {
             EliminarItem();
+        }
+
+
+        private void BT_LIMPIAR_Click(object sender, EventArgs e)
+        {
+            _controlador.LimpiarDocumento();
+            if (_controlador.LimpiarDocumentoIsOK) 
+            {
+                ActualizarFicha();
+                ActualizarFichaRemision();
+                ActualizarContadores();
+                ActualizarTotales();
+                TB_NOTAS.Text = _controlador.NotasObserv_Get;
+            }
+        }
+        private void BT_EDITAR_Click(object sender, EventArgs e)
+        {
+            _controlador.EditarDocumento();
+            if (_controlador.EditarDocumentoIsOK)
+            {
+                ActualizarFicha();
+                ActualizarFichaRemision();
+            }
         }
 
         
@@ -169,6 +212,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private void NuevoDocumento()
         {
             _controlador.NuevoDocumento();
+            ActualizarFicha();
         }
         private void AgregarItem()
         {
@@ -187,6 +231,21 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _controlador.EliminarItem();
             ActualizarContadores();
             ActualizarTotales();
+        }
+        private void ActualizarFicha()
+        {
+            L_RIF_CLIENTE.Text = _controlador.Ficha.Cliente_ciRif_Get;
+            L_CODIGO_CLIENTE.Text = _controlador.Ficha.Cliente_codigo_Get;
+            L_CLIENTE.Text = _controlador.Ficha.Cliente_razonSocial_Get;
+            L_DATOS_DOC_FECHA.Text = _controlador.Ficha.DatosDoc_FechaEmi_Get;
+            L_DATOS_DOC_COND_PAGO.Text = _controlador.Ficha.DatosDoc_CondPago_Get;
+            L_DATOS_DOC_FECHA_VENCE.Text = _controlador.Ficha.DatosDoc_FechaVenc_Get;
+        }
+        private void ActualizarFichaRemision()
+        {
+            L_NOMBRE_DOC_REMISION.Text = "";
+            L_NUMERO_DOC_REMISION.Text = "";
+            L_FECHA_DOC_REMISION.Text = "";
         }
         private void ActualizarTotales()
         {

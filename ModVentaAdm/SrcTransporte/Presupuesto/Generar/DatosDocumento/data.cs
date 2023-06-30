@@ -20,6 +20,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         private int _diasValidez;
         private int _diasCredito;
         private LibUtilitis.CtrlCB.ICtrl _condPago;
+        private OOB.Maestro.Cliente.Entidad.Ficha _cliente;
 
 
         public DateTime FechaSistema_Get { get { return _fechaSistema; } }
@@ -27,11 +28,29 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         public int DiasValidez_Get { get { return _diasValidez; } }
         public int DiasCredito_Get { get { return _diasCredito; } }
         public LibUtilitis.CtrlCB.ICtrl CondicionPago { get { return _condPago; } }
+        public OOB.Maestro.Cliente.Entidad.Ficha Cliente { get { return _cliente; } }
+        public string CondPago_Get { get { return _condPago.GetItem == null ? "" : _condPago.GetItem.desc; } }
+        public string Cliente_ciRif_Get { get { return _cliente == null ? "" : _cliente.ciRif; } }
+        public string Cliente_codigo_Get { get { return _cliente == null ? "" : _cliente.codigo; } }
+        public string Cliente_razonSocial_Get { get { return _cliente == null ? "" : _cliente.razonSocial; } }
+        public string Cliente_GetInf 
+        { 
+            get 
+            {
+                var inf = "";
+                if (_cliente != null) 
+                {
+                    inf = _cliente.codigo.Trim() + Environment.NewLine + _cliente.ciRif + Environment.NewLine + _cliente.razonSocial;
+                }
+                return inf; 
+            } 
+        }
 
 
         public data()
         {
             _condPago = new LibUtilitis.CtrlCB.ImpCB();
+            _cliente = null;
             limpiar();
         }
 
@@ -66,6 +85,33 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
             _fechaVencimiento = DateTime.Now.Date;
             _diasCredito = 0;
             _diasValidez = 0;
+            _cliente = null;
+        }
+
+        public void setCliente(OOB.Maestro.Cliente.Entidad.Ficha ficha)
+        {
+            _cliente = ficha;
+        }
+
+        public bool DatosIsOK()
+        {
+            if (_cliente == null) 
+            {
+                Helpers.Msg.Alerta("CAMPO [ CLIENTE ] NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (_condPago.GetItem == null) 
+            {
+                Helpers.Msg.Alerta("CAMPO [ CONDICION DE PAGO ] NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            return true;
+        }
+
+        public void LimpiarTodo()
+        {
+            limpiar();
+            _condPago.LimpiarOpcion();
         }
     }
 }

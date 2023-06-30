@@ -62,6 +62,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
         //PARA LOS TOTALES TODO EN BASE A DIVISA
         public decimal MontoNetoDivisa { get { return _bl.Sum(s => s.Item.Get_Importe); } }
-        public decimal MontoIvaDivisa { get { return _bl.Sum(s => s.Item.Get_Iva); } } 
+        public decimal MontoIvaDivisa { get { return _bl.Sum(s => s.Item.Get_Iva); } }
+
+
+        public void LimpiarTodo()
+        {
+            _lst.Clear();
+            _bl.Clear();
+            _bs.CurrencyManager.Refresh();
+        }
     }
 }

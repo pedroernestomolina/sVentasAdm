@@ -10,5 +10,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
     public interface IDatosDoc: Src.IGestion, Src.Gestion.IAbandonar, Src.Gestion.IProcesar
     {
         data Data { get; }
+
+        void BuscarCliente();
     }
 }

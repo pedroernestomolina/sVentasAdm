@@ -10,6 +10,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
     public class Imp: IDatosDoc
     {
         private data _data;
+        private Utils.Buscar.IBuscar _cliente;
 
 
         public data Data { get { return _data; } }
@@ -79,7 +80,51 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         public bool ProcesarIsOK { get { return _procesarIsOK; } }
         public void Procesar()
         {
-            _procesarIsOK = true;
+            _procesarIsOK = false; ;
+            if (_data.DatosIsOK()) 
+            {
+                _procesarIsOK = true;
+            }
+        }
+
+
+        public void BuscarCliente()
+        {
+            if (_cliente ==null)
+            {
+                _cliente = new Utils.Buscar.Cliente.Imp();
+            }
+            _cliente.Inicializa();
+            _cliente.Inicia();
+            if (_cliente.ItemSeleccionadoIsOk)
+            {
+                getCliente((string)_cliente.ItemSeleccionadoGetId);
+            }
+        }
+
+
+        private void getCliente(string id)
+        {
+            try
+            {
+                var r01 = Sistema.MyData.Cliente_GetFicha(id);
+                if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                _data.setCliente(r01.Entidad);
+                _data.setDiasCredito(r01.Entidad.diasCredito);
+                _data.CondicionPago.setFichaById("01");
+                if (r01.Entidad.estatusCredito.Trim() == "1")
+                {
+                    _data.CondicionPago.setFichaById("02");
+                }
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return;
+            }
         }
     }
 }

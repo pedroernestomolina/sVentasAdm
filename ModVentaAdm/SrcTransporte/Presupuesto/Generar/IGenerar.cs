@@ -12,10 +12,17 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
     {
         BindingSource SourceItems_Get { get; }
         data Ficha { get; }
+        string NotasObserv_Get { get; }
+ 
 
         void NuevoDocumento();
         void AgregarItem();
         void EliminarItem();
         void EditarItem();
+        void setNotas(string desc);
+        void LimpiarDocumento();
+        bool LimpiarDocumentoIsOK { get;  }
+        void EditarDocumento();
+        bool EditarDocumentoIsOK { get; }
     }
 }

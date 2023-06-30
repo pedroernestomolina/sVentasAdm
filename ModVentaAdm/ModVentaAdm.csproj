@@ -796,7 +796,21 @@
     <Compile Include="Src\Seguridad\SeguridadFrm.designer.cs">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Buscar\Cliente\dataCli.cs" />
+    <Compile Include="Utils\Buscar\Cliente\ICliente.cs" />
+    <Compile Include="Utils\Buscar\Cliente\ImpCompBusqueda.cs" />
+    <Compile Include="Utils\Buscar\Cliente\ImpCtrlBusqueda.cs" />
+    <Compile Include="Utils\Buscar\Cliente\ImpItems.cs" />
+    <Compile Include="Utils\Buscar\IItem.cs" />
     <Compile Include="Utils\Busqueda\IComp.cs" />
+    <Compile Include="Utils\Buscar\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Buscar\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Buscar\Cliente\Imp.cs" />
+    <Compile Include="Utils\Buscar\IBuscar.cs" />
     <Compile Include="Utils\CtrlMetodoBusq\IComp.cs" />
     <Compile Include="Utils\dataFiltro.cs" />
     <EmbeddedResource Include="Helpers\Imprimir\Grafico\Documento.rdlc">
@@ -1002,6 +1016,9 @@
     <EmbeddedResource Include="Src\Seguridad\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Buscar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Helpers\Imprimir\Grafico\ds.xsc">
       <DependentUpon>ds.xsd</DependentUpon>
     </None>
@@ -1078,6 +1095,7 @@
     <None Include="Resources\inicio_48.png" />
     <None Include="Resources\bt_transporte.png" />
     <None Include="Resources\bt_margen_beneficio_32.png" />
+    <None Include="Resources\bt_editar_2_32.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1102,6 +1120,7 @@
     <Content Include="Src\Imagenes\bt_doc_pend.png" />
     <Content Include="Src\Imagenes\bt_dollar.png" />
     <Content Include="Src\Imagenes\bt_editar_20.png" />
+    <Content Include="Src\Imagenes\bt_editar_2_32.png" />
     <Content Include="Src\Imagenes\bt_editar_32.png" />
     <Content Include="Src\Imagenes\bt_editar_48.png" />
     <Content Include="Src\Imagenes\bt_editar_ficha.png" />
