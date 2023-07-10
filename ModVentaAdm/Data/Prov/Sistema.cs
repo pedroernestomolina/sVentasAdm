@@ -8,15 +8,12 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Prov
 {
-    
     public partial class DataPrv : IData
     {
-
         public OOB.Resultado.FichaEntidad<OOB.Sistema.Empresa.Entidad.Ficha> 
             Sistema_Empresa_GetFicha()
         {
             var result = new OOB.Resultado.FichaEntidad<OOB.Sistema.Empresa.Entidad.Ficha>();
-
             var r01 = MyData.Sistema_Empresa_GetFicha();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -32,7 +29,6 @@ namespace ModVentaAdm.Data.Prov
                 Nombre = s.Nombre,
                 Telefono = s.Telefono,
             };
-
             return result;
         }
         public OOB.Resultado.FichaEntidad<OOB.Sistema.TipoDocumento.Entidad.Ficha>
@@ -67,7 +63,6 @@ namespace ModVentaAdm.Data.Prov
             Sistema_Vendedor_GetLista()
         {
             var result = new OOB.Resultado.Lista<OOB.Sistema.Vendedor.Entidad.Ficha>();
-
             var filtroDTO = new DtoLibPos.Vendedor.Lista.Filtro();
             var r01 = MyData.Vendedor_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -76,7 +71,6 @@ namespace ModVentaAdm.Data.Prov
                 result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
                 return result;
             }
-
             var lst = new List<OOB.Sistema.Vendedor.Entidad.Ficha>();
             if (r01.Lista != null)
             {
@@ -95,7 +89,24 @@ namespace ModVentaAdm.Data.Prov
                 }
             }
             result.ListaD = lst;
-
+            return result;
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Sistema.Vendedor.Entidad.Ficha>
+            Sistema_Vendedor_Entidad_GetById(string id)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Sistema.Vendedor.Entidad.Ficha>();
+            var r01 = MyData.Vendedor_GetFichaById(id);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var s= r01.Entidad;
+            result.Entidad = new OOB.Sistema.Vendedor.Entidad.Ficha()
+            {
+                id = s.id,
+                codigo = s.codigo,
+                nombre = s.nombre,
+            };
             return result;
         }
 
@@ -304,7 +315,6 @@ namespace ModVentaAdm.Data.Prov
             Sistema_GetCodigoSucursal()
         {
             var rt = new OOB.Resultado.FichaEntidad<string>();
-
             var r01 = MyData.Sistema_GetCodigoSucursal();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -313,7 +323,6 @@ namespace ModVentaAdm.Data.Prov
                 return rt;
             }
             rt.Entidad = r01.Entidad;
-
             return rt;
         }
 
@@ -373,7 +382,5 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
     }
-
 }

@@ -87,6 +87,7 @@
     <Compile Include="Data\Infra\IUsuario.cs" />
     <Compile Include="Data\Infra\IVenta.cs" />
     <Compile Include="Data\Infra\Transporte\IAliado.cs" />
+    <Compile Include="Data\Infra\Transporte\ITransporteDocumento.cs" />
     <Compile Include="Data\Prov\Auditoria.cs" />
     <Compile Include="Data\Prov\Cliente.cs" />
     <Compile Include="Data\Prov\ClienteGrupo.cs" />
@@ -102,7 +103,8 @@
     <Compile Include="Data\Prov\ReportesCli.cs" />
     <Compile Include="Data\Prov\Sistema.cs" />
     <Compile Include="Data\Prov\Sucursal.cs" />
-    <Compile Include="Data\Prov\Transporte.cs" />
+    <Compile Include="Data\Prov\TransporteAliado.cs" />
+    <Compile Include="Data\Prov\TransporteDocumento.cs" />
     <Compile Include="Data\Prov\Usuario.cs" />
     <Compile Include="Data\Prov\Venta.cs" />
     <Compile Include="Fabrica\ModoGeneral.cs" />
@@ -250,6 +252,15 @@
     <Compile Include="OOB\Transporte\Aliado\Entidad\Ficha.cs" />
     <Compile Include="OOB\Transporte\Aliado\Entidad\Telefono.cs" />
     <Compile Include="OOB\Transporte\Aliado\Tipos.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\baseDetalle.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\baseFecha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\baseFicha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Fecha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\FichaDetalle.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Resultado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Remision\Lista\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Remision\Lista\Filtro.cs" />
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\Telefono\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +333,7 @@
     <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\IAliado.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\ImpAliado.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\ImpMetBusqueda.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\alicuota.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\data.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\dataItem.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\dataTotales.cs" />
@@ -356,7 +368,20 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\IItem.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\IItemObservador.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\ImpItem.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\ITotalObservador.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\MargenGanancia\data.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\MargenGanancia\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Presupuesto\Generar\MargenGanancia\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\Presupuesto\Generar\MargenGanancia\IBeneficio.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\MargenGanancia\Imp.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Remision\Imp.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Remision\IRemision.cs" />
     <Compile Include="SrcTransporte\Principal\PrincipalFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -813,6 +838,18 @@
     <Compile Include="Utils\Buscar\IBuscar.cs" />
     <Compile Include="Utils\CtrlMetodoBusq\IComp.cs" />
     <Compile Include="Utils\dataFiltro.cs" />
+    <Compile Include="Utils\DocLista\ILista.cs" />
+    <Compile Include="Utils\DocLista\Remision\data.cs" />
+    <Compile Include="Utils\DocLista\Remision\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\DocLista\Remision\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\DocLista\Remision\Imp.cs" />
+    <Compile Include="Utils\DocLista\IDocLista.cs" />
+    <Compile Include="Utils\DocLista\Remision\ImpLista.cs" />
+    <Compile Include="Utils\DocLista\Remision\IRemision.cs" />
     <EmbeddedResource Include="Helpers\Imprimir\Grafico\Documento.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -840,6 +877,9 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Presupuesto\Generar\Item\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Presupuesto\Generar\MargenGanancia\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Principal\PrincipalFrm.resx">
@@ -1017,6 +1057,9 @@
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Buscar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\DocLista\Remision\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Helpers\Imprimir\Grafico\ds.xsc">

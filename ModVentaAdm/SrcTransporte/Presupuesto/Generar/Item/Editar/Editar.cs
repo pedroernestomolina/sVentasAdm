@@ -44,6 +44,15 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item.Editar
             Item.setPrecioAliadoPautado(data.Get_Aliado_PrecioPautado);
             Item.setAliado(data.Get_Aliado);
             Item.setDescripcionFull(data.Get_DescripcionFull);
+            if (_tasasFiscal != null)
+            {
+                var it = _tasasFiscal.FirstOrDefault(f=>f.id==data.Get_Alicuota_ID);
+                if (it != null) 
+                {
+                    var nr = new alicuota() { id = it.id, codigo = "", desc = it.ToString(), tasa = it.tasa };
+                    Item.setAlicuota(nr);
+                }
+            }
         }
     }
 }

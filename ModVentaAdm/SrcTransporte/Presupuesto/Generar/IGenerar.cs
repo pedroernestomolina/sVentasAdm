@@ -13,7 +13,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         BindingSource SourceItems_Get { get; }
         data Ficha { get; }
         string NotasObserv_Get { get; }
- 
+        Remision.IRemision Remision { get; }
+
 
         void NuevoDocumento();
         void AgregarItem();
@@ -24,5 +25,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         bool LimpiarDocumentoIsOK { get;  }
         void EditarDocumento();
         bool EditarDocumentoIsOK { get; }
+        void MostrarBeneficio();
     }
 }

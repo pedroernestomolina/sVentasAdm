@@ -1573,9 +1573,9 @@
             // tableLayoutPanel31
             // 
             this.tableLayoutPanel31.ColumnCount = 3;
-            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.66038F));
-            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.33962F));
-            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel31.Controls.Add(this.panel80, 0, 0);
             this.tableLayoutPanel31.Controls.Add(this.panel81, 1, 0);
             this.tableLayoutPanel31.Controls.Add(this.panel82, 2, 0);
@@ -1597,7 +1597,7 @@
             this.panel80.Margin = new System.Windows.Forms.Padding(1);
             this.panel80.Name = "panel80";
             this.panel80.Padding = new System.Windows.Forms.Padding(2);
-            this.panel80.Size = new System.Drawing.Size(52, 33);
+            this.panel80.Size = new System.Drawing.Size(90, 33);
             this.panel80.TabIndex = 0;
             // 
             // label20
@@ -1606,20 +1606,20 @@
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(2, 2);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(48, 29);
+            this.label20.Size = new System.Drawing.Size(86, 29);
             this.label20.TabIndex = 0;
-            this.label20.Text = "Tipo Documt:";
+            this.label20.Text = "Tipo Documento:";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel81
             // 
             this.panel81.Controls.Add(this.CB_REMISION);
             this.panel81.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel81.Location = new System.Drawing.Point(55, 1);
+            this.panel81.Location = new System.Drawing.Point(93, 1);
             this.panel81.Margin = new System.Windows.Forms.Padding(1);
             this.panel81.Name = "panel81";
             this.panel81.Padding = new System.Windows.Forms.Padding(2);
-            this.panel81.Size = new System.Drawing.Size(120, 33);
+            this.panel81.Size = new System.Drawing.Size(121, 33);
             this.panel81.TabIndex = 1;
             // 
             // CB_REMISION
@@ -1630,18 +1630,19 @@
             this.CB_REMISION.FormattingEnabled = true;
             this.CB_REMISION.Location = new System.Drawing.Point(2, 2);
             this.CB_REMISION.Name = "CB_REMISION";
-            this.CB_REMISION.Size = new System.Drawing.Size(116, 24);
+            this.CB_REMISION.Size = new System.Drawing.Size(117, 24);
             this.CB_REMISION.TabIndex = 0;
+            this.CB_REMISION.SelectedIndexChanged += new System.EventHandler(this.CB_REMISION_SelectedIndexChanged);
             // 
             // panel82
             // 
             this.panel82.Controls.Add(this.BT_REMISION);
             this.panel82.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel82.Location = new System.Drawing.Point(177, 1);
+            this.panel82.Location = new System.Drawing.Point(216, 1);
             this.panel82.Margin = new System.Windows.Forms.Padding(1);
             this.panel82.Name = "panel82";
             this.panel82.Padding = new System.Windows.Forms.Padding(2);
-            this.panel82.Size = new System.Drawing.Size(79, 33);
+            this.panel82.Size = new System.Drawing.Size(40, 33);
             this.panel82.TabIndex = 2;
             // 
             // BT_REMISION
@@ -1653,9 +1654,10 @@
             this.BT_REMISION.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_REMISION.Location = new System.Drawing.Point(2, 2);
             this.BT_REMISION.Name = "BT_REMISION";
-            this.BT_REMISION.Size = new System.Drawing.Size(75, 29);
+            this.BT_REMISION.Size = new System.Drawing.Size(36, 29);
             this.BT_REMISION.TabIndex = 6;
             this.BT_REMISION.UseVisualStyleBackColor = true;
+            this.BT_REMISION.Click += new System.EventHandler(this.BT_REMISION_Click);
             // 
             // panel83
             // 
@@ -2503,6 +2505,7 @@
             this.BT_MARGEN.TabIndex = 9;
             this.toolTip1.SetToolTip(this.BT_MARGEN, "Margen / Beneficio Obtenido");
             this.BT_MARGEN.UseVisualStyleBackColor = true;
+            this.BT_MARGEN.Click += new System.EventHandler(this.BT_MARGEN_Click);
             // 
             // panel13
             // 

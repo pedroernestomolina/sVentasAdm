@@ -13,10 +13,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private bool _abandonarIsOK;
         private data _data;
         private Aliado.IAliado _aliado;
+        private LibUtilitis.CtrlCB.ICtrl _alicuota;
+        protected List<OOB.Sistema.Fiscal.Entidad.Ficha> _tasasFiscal;
 
 
         public data Item { get { return _data; } }
         public Aliado.IAliado MiAliado { get { return _aliado; } }
+        public LibUtilitis.CtrlCB.ICtrl Alicuota { get { return _alicuota; } }
         //
         public string ServItemMostrar { get { return _data.Get_Descripcion; } }
         public string AliadoItemMostrar { get { return _data.Get_Aliado_ItemMostrar ; } }
@@ -32,6 +35,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _abandonarIsOK = false;
             _data = new data();
             _aliado = new Aliado.ImpAliado();
+            _alicuota = new LibUtilitis.CtrlCB.ImpCB();
+            _tasasFiscal = null;
         }
 
 
@@ -41,6 +46,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _abandonarIsOK = false;
             _data.Inicializa();
             _aliado.Inicializa();
+            _alicuota.Inicializa();
+            _tasasFiscal = null;
         }
         Frm frm;
         public void Inicia()
@@ -105,6 +112,23 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         public void setId(int id)
         {
             _id = id;
+        }
+
+        public void setTasaFiscal(List<OOB.Sistema.Fiscal.Entidad.Ficha> list)
+        {
+            _tasasFiscal = list;
+            var lst = list.Select(s =>
+            {
+                //var nr = new Utils.dataFiltro() { id = s.id, codigo = "", desc = s.ToString() };
+                var nr = new alicuota() { id = s.id, codigo = "", desc = s.ToString(), tasa = s.tasa };
+                return nr;
+            }).ToList();
+            _alicuota.CargarData(lst.OrderBy(o => o.desc).ToList());
+        }
+        public void AlicuotaSetFichaById(string id)
+        {
+            _alicuota.setFichaById(id);
+            _data.setAlicuota((alicuota)_alicuota.GetItem);
         }
     }
 }

@@ -23,6 +23,12 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _cult = CultureInfo.CurrentCulture;
             InitializeComponent();
             InicializaGrid();
+            InicializaCB();
+        }
+        private void InicializaCB()
+        {
+            CB_REMISION.DisplayMember = "desc";
+            CB_REMISION.ValueMember = "id";
         }
         private void InicializaGrid()
         {
@@ -30,6 +36,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             var f1 = new Font("Serif", 8, FontStyle.Regular);
             var f2 = new Font("Serif", 10, FontStyle.Bold);
 
+            DGV.RowHeadersVisible = false;
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
             DGV.AutoGenerateColumns = false;
@@ -112,6 +119,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             //
             L_TIPO_DOCUMENTO.Text = "PRESUPUESTO";
             DGV.DataSource = _controlador.SourceItems_Get;
+            CB_REMISION.DataSource = _controlador.Remision.SourceItems_Get;
+            //
             L_ITEMS_CNT.Text = "Items Registrados";
             L_CNT_ITEM.Text =  _controlador.Ficha.Items.Cnt_Get.ToString("n0");
             L_TASA_DIVISA.Text = _controlador.Ficha.Totales.TasaDivisaActual_Get.ToString("n2",_cult);
@@ -127,9 +136,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             L_DATOS_DOC_COND_PAGO.Text = _controlador.Ficha.DatosDoc_CondPago_Get;
             L_DATOS_DOC_FECHA_VENCE.Text = _controlador.Ficha.DatosDoc_FechaVenc_Get;
             //
-            L_NOMBRE_DOC_REMISION.Text = "";
-            L_NUMERO_DOC_REMISION.Text = "";
-            L_FECHA_DOC_REMISION.Text = "";
+            CB_REMISION.SelectedValue = _controlador.Remision.ItemId_Get;
+            L_NOMBRE_DOC_REMISION.Text = _controlador.Remision.DocNombre_Get;
+            L_NUMERO_DOC_REMISION.Text = _controlador.Remision.DocNumero_Get;
+            L_FECHA_DOC_REMISION.Text = _controlador.Remision.DocFecha_Get;
             //
             _modoInicializa = false;
         }
@@ -157,6 +167,21 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private void TB_NOTAS_Leave(object sender, EventArgs e)
         {
             _controlador.setNotas(TB_NOTAS.Text);
+        }
+
+
+        private void CB_REMISION_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializa) { return; }
+            _controlador.Remision.setFichaId("");
+            if (CB_REMISION.SelectedIndex != -1) 
+            {
+                _controlador.Remision.setFichaId(CB_REMISION.SelectedValue.ToString());
+            }
+        }
+        private void BT_REMISION_Click(object sender, EventArgs e)
+        {
+            RemisionBuscar();
         }
 
 
@@ -195,6 +220,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 ActualizarFichaRemision();
             }
         }
+        private void BT_MARGEN_Click(object sender, EventArgs e)
+        {
+            _controlador.MostrarBeneficio();
+        }
 
         
         private void BT_DOC_PENDIENTE_Click(object sender, EventArgs e)
@@ -202,6 +231,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         }
         private void BT_PROCESAR_DOC_Click(object sender, EventArgs e)
         {
+            ProcesarDocumento();
         }
         private void BT_SALIDA_Click(object sender, EventArgs e)
         {
@@ -209,6 +239,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         }
 
 
+        private void RemisionBuscar()
+        {
+            _controlador.Remision.Buscar();
+        }
         private void NuevoDocumento()
         {
             _controlador.NuevoDocumento();
@@ -257,6 +291,18 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private void ActualizarContadores()
         {
             L_CNT_ITEM.Text = _controlador.Ficha.Items.Cnt_Get.ToString("n0");
+        }
+        private void ProcesarDocumento()
+        {
+            _controlador.Procesar();
+            if (_controlador.ProcesarIsOK) 
+            {
+                ActualizarFicha();
+                ActualizarFichaRemision();
+                ActualizarContadores();
+                ActualizarTotales();
+                TB_NOTAS.Text = _controlador.NotasObserv_Get;
+            }
         }
         private void AbandonarFicha()
         {

@@ -28,9 +28,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         {
             LB_FECHA.DisplayMember = "desc";
             LB_FECHA.ValueMember = "id";
+            CB_ALICUOTA.DisplayMember = "desc";
+            CB_ALICUOTA.ValueMember = "id";
         }
+        private bool _modoInicializar;
         private void Frm_Load(object sender, EventArgs e)
         {
+            _modoInicializar = true;
             TB_DESC_BREVE.Text = _controlador.Item.Get_Descripcion;
             TB_SOLICITADO_POR.Text = _controlador.Item.Get_SolicitadoPor;
             TB_MODULO_CARGAR.Text = _controlador.Item.Get_ModuloCargar;
@@ -45,6 +49,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             TB_DESCRIPCION_FULL.Text = _controlador.Item.Get_DescripcionFull;
             DTP_FECHA.Value = _controlador.Item.Get_Fecha;
             DTP_HORA.Value = _controlador.Item.Get_Fecha;
+            CB_ALICUOTA.DataSource = _controlador.Alicuota.GetSource;
+            CB_ALICUOTA.SelectedValue = _controlador.Item.Get_Alicuota_ID;
+            _modoInicializar = false;
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -123,6 +130,15 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private void TB_DESCRIPCION_FULL_Leave(object sender, EventArgs e)
         {
             _controlador.Item.setDescripcionFull(TB_DESCRIPCION_FULL.Text);
+        }
+        private void CB_ALICUOTA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) { return; }
+            _controlador.AlicuotaSetFichaById("");
+            if (CB_ALICUOTA.SelectedIndex != -1)
+            {
+                _controlador.AlicuotaSetFichaById(CB_ALICUOTA.SelectedValue.ToString());
+            }
         }
 
 

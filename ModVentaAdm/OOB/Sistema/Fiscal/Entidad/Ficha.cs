@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.Sistema.Fiscal.Entidad
 {
-    
     public class Ficha
     {
-
         public string id { get; set; }
         public string descripcion { get; set; }
         public decimal tasa { get; set; }
@@ -37,8 +35,6 @@ namespace ModVentaAdm.OOB.Sistema.Fiscal.Entidad
                 return rt;
             } 
         }
-
-
         public Ficha()
         {
             id = "";
@@ -46,6 +42,9 @@ namespace ModVentaAdm.OOB.Sistema.Fiscal.Entidad
             tasa = 0.0m;
         }
 
+        public override string ToString()
+        {
+            return descripcion.Trim() + " " + tasa.ToString("n2").Trim().PadLeft(2, '0') + "%";
+        }
     }
-
 }

@@ -47,8 +47,18 @@
     <Compile Include="Aliado\Entidad\Ficha.cs" />
     <Compile Include="Aliado\Entidad\Telefono.cs" />
     <Compile Include="Aliado\Tipos.cs" />
+    <Compile Include="Documento\Agregar\baseDetalle.cs" />
+    <Compile Include="Documento\Agregar\baseFecha.cs" />
+    <Compile Include="Documento\Agregar\Presupuesto\Fecha.cs" />
+    <Compile Include="Documento\Agregar\Presupuesto\Ficha.cs" />
+    <Compile Include="Documento\Agregar\Presupuesto\FichaDetalle.cs" />
+    <Compile Include="Documento\Agregar\Resultado.cs" />
+    <Compile Include="Documento\Agregar\baseFicha.cs" />
+    <Compile Include="Documento\Remision\Lista\Ficha.cs" />
+    <Compile Include="Documento\Remision\Lista\Filtro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

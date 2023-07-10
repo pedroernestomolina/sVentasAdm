@@ -14,6 +14,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         int id { get; }
         data Item { get; }
         Aliado.IAliado MiAliado { get; }
+        LibUtilitis.CtrlCB.ICtrl Alicuota { get; }
         // PARA EL DGV CABECERA A MOSTRAR
         string ServItemMostrar { get; }
         string AliadoItemMostrar { get; }
@@ -24,5 +25,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
 
         void Aliados();
         void setId(int id);
+        void AlicuotaSetFichaById(string id);
     }
 }

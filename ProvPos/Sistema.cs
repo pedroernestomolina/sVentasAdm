@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace ProvPos
 {
-    
     public partial class Provider: IPos.IProvider
     {
-
-
         public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.TipoDocumento.Entidad.Ficha> 
             Sistema_TipoDocumento_GetFichaById(string id)
         {
@@ -285,7 +282,6 @@ namespace ProvPos
             Sistema_GetCodigoSucursal()
         {
             var result = new DtoLib.ResultadoEntidad<string>();
-
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
@@ -305,11 +301,7 @@ namespace ProvPos
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return result;
         }
-
-
     }
-
 }

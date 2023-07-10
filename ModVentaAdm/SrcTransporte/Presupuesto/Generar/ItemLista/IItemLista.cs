@@ -8,5 +8,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.ItemLista
 {
     interface IItemLista
     {
+
     }
 }

@@ -19,6 +19,9 @@ namespace ModVentaAdm.Data.Infra
 
         OOB.Resultado.Lista<OOB.Sistema.Vendedor.Entidad.Ficha> 
             Sistema_Vendedor_GetLista();
+        OOB.Resultado.FichaEntidad<OOB.Sistema.Vendedor.Entidad.Ficha>
+            Sistema_Vendedor_Entidad_GetById(string id);
+
 
         OOB.Resultado.FichaEntidad<OOB.Sistema.Cobrador.Entidad.Ficha>
             Sistema_Cobrador_GetFicha_ById(string id);
@@ -40,10 +43,7 @@ namespace ModVentaAdm.Data.Infra
         OOB.Resultado.FichaEntidad<OOB.Sistema.MedioCobro.Entidad.Ficha>
             Sistema_MedioCobro_GetFicha_ById(string id);
 
-
         OOB.Resultado.FichaEntidad<string>
             Sistema_GetCodigoSucursal();
-
     }
-
 }

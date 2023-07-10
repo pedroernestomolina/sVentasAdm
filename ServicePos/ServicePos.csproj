@@ -70,6 +70,7 @@
     <Compile Include="Interfaces\IVenta.cs" />
     <Compile Include="Interfaces\IVentaAdm.cs" />
     <Compile Include="Interfaces\Transporte\IAliado.cs" />
+    <Compile Include="Interfaces\Transporte\ITranspDocumento.cs" />
     <Compile Include="MyService\Auditoria.cs" />
     <Compile Include="MyService\Cliente.cs" />
     <Compile Include="MyService\ClienteGrupo.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="MyService\Sucursal.cs" />
     <Compile Include="MyService\Transporte.cs" />
     <Compile Include="MyService\TransporteAliado.cs" />
+    <Compile Include="MyService\TransporteDocumento.cs" />
     <Compile Include="MyService\Usuario.cs" />
     <Compile Include="MyService\Vendedor.cs" />
     <Compile Include="MyService\Venta.cs" />

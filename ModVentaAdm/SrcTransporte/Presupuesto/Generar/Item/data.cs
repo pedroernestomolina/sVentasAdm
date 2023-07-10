@@ -33,6 +33,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private string _descripcionFull;
         private decimal _dscto;
         private decimal _precioDscto;
+        private alicuota _alicuota;
 
 
         public string Get_Descripcion { get { return _desc; } }
@@ -50,6 +51,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         public DateTime Get_Fecha { get { return _fechaServ; } }
         public DateTime Get_Hora { get { return _fechaServ; } }
         public OOB.Transporte.Aliado.Entidad.Ficha Get_Aliado { get { return _aliado; } }
+        public bool AliadoIsOk { get { return _aliado != null; } }
         public decimal Get_Iva 
         {
             get 
@@ -159,6 +161,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private void limpiar()
         {
             _aliado = null;
+            _alicuota = null;
             _desc = "";
             _solicitadoPor = "";
             _moduloCargar = "";
@@ -259,7 +262,19 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
                 Helpers.Msg.Alerta("Campo [ PRECIO ] No puede estar vacio !!!");
                 return false;
             }
+            if (_alicuota == null)
+            {
+                Helpers.Msg.Alerta("Campo [ ALICUOTA ] No puede estar vacio !!!");
+                return false;
+            }
             return true;
+        }
+
+        public string Get_Alicuota_ID { get { return _alicuota == null ? "" : _alicuota.id; } }
+        public alicuota Get_Alicuota { get { return _alicuota; } }
+        public void setAlicuota(alicuota ficha)
+        {
+            _alicuota = ficha;
         }
     }
 }

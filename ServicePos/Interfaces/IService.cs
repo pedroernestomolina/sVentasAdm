@@ -13,7 +13,8 @@ namespace ServicePos.Interfaces
         IFiscal, IUsuario, IPermiso, IConfiguracion, IJornada, IDocumento,
         IVenta, IPendiente, IReportesAdm, IClienteGrupo, IClienteZona,
         IConfiguracionAdm, IReportesCli, IReportePos, IProductoAdm, IVentaAdm, 
-        IDocumentoAdm, IAuditoria, ICxC, Transporte.IAliado
+        IDocumentoAdm, IAuditoria, ICxC, 
+        Transporte.IAliado, Transporte.ITranspDocumento
     {
 
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();

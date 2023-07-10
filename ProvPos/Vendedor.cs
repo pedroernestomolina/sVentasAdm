@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProvPos
 {
-
     public partial class Provider: IPos.IProvider
     {
-
-        public DtoLib.ResultadoLista<DtoLibPos.Vendedor.Lista.Ficha> Vendedor_GetLista(DtoLibPos.Vendedor.Lista.Filtro filtro)
+        public DtoLib.ResultadoLista<DtoLibPos.Vendedor.Lista.Ficha> 
+            Vendedor_GetLista(DtoLibPos.Vendedor.Lista.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.Vendedor.Lista.Ficha>();
 
@@ -38,7 +37,6 @@ namespace ProvPos
 
             return result;
         }
-
         public DtoLib.ResultadoEntidad<DtoLibPos.Vendedor.Entidad.Ficha> Vendedor_GetFichaById(string id)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Vendedor.Entidad.Ficha>();
@@ -72,7 +70,5 @@ namespace ProvPos
 
             return result;
         }
-
     }
-
 }

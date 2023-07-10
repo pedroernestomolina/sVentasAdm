@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Prov 
 {
-
     public partial class DataPrv : IData
     {
-
         public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> 
             Documento_Get_Lista(OOB.Documento.Lista.Filtro filtro)
         {
@@ -282,8 +280,8 @@ namespace ModVentaAdm.Data.Prov
             return result;
         }
         //
-
-        public OOB.Resultado.FichaAuto Documento_Agregar_Presupuesto(OOB.Documento.Agregar.Presupuesto.Ficha ficha)
+        public OOB.Resultado.FichaAuto
+            Documento_Agregar_Presupuesto(OOB.Documento.Agregar.Presupuesto.Ficha ficha)
         {
             var result = new OOB.Resultado.FichaAuto();
 
@@ -467,7 +465,8 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-        public OOB.Resultado.Ficha Documento_Anular_Presupuesto(OOB.Documento.Anular.Presupuesto.Ficha ficha)
+        public OOB.Resultado.Ficha 
+            Documento_Anular_Presupuesto(OOB.Documento.Anular.Presupuesto.Ficha ficha)
         {
             var result = new OOB.Resultado.Ficha();
 
@@ -495,7 +494,8 @@ namespace ModVentaAdm.Data.Prov
             return result;
         }
 
-        public OOB.Resultado.FichaAuto Documento_Agregar_Pedido(OOB.Documento.Agregar.Pedido.Ficha ficha)
+        public OOB.Resultado.FichaAuto 
+            Documento_Agregar_Pedido(OOB.Documento.Agregar.Pedido.Ficha ficha)
         {
             var result = new OOB.Resultado.FichaAuto();
 
@@ -696,7 +696,5 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
     }
-
 }

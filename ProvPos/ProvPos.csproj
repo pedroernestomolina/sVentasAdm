@@ -87,6 +87,7 @@
     <Compile Include="Sucursal.cs" />
     <Compile Include="TransporteAliado.cs" />
     <Compile Include="Transporte.cs" />
+    <Compile Include="TransporteDocumento.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Vendedor.cs" />
     <Compile Include="Venta.cs" />
