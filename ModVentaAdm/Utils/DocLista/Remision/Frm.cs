@@ -32,66 +32,74 @@ namespace ModVentaAdm.Utils.DocLista.Remision
             DGV.ReadOnly = true;
 
             var c1 = new DataGridViewTextBoxColumn();
-            c1.DataPropertyName = "Fecha";
+            c1.DataPropertyName = "DocFecha";
             c1.HeaderText = "Fecha";
             c1.Visible = true;
             c1.HeaderCell.Style.Font = f;
             c1.DefaultCellStyle.Font = f1;
-            c1.Width = 80;
+            c1.Width = 70;
 
             var c2 = new DataGridViewTextBoxColumn();
-            c2.DataPropertyName = "Tipo";
+            c2.DataPropertyName = "DocTipo";
             c2.HeaderText = "Tipo";
             c2.Visible = true;
-            c2.MinimumWidth = 90;
+            c2.MinimumWidth = 80;
             c2.HeaderCell.Style.Font = f;
             c2.DefaultCellStyle.Font = f1;
             c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             var c3 = new DataGridViewTextBoxColumn();
-            c3.DataPropertyName = "Serie";
-            c3.HeaderText = "Serie";
+            c3.DataPropertyName = "DocNumero";
+            c3.HeaderText = "Documento";
             c3.Visible = true;
-            c3.Width = 40;
+            c3.Width = 90;
             c3.HeaderCell.Style.Font = f;
             c3.DefaultCellStyle.Font = f1;
 
             var c4 = new DataGridViewTextBoxColumn();
-            c4.DataPropertyName = "Documento";
-            c4.HeaderText = "Documento";
+            c4.DataPropertyName = "NombreRazonSocial";
+            c4.HeaderText = "Nombre";
             c4.Visible = true;
-            c4.MinimumWidth = 90;
+            c4.MinimumWidth = 220;
             c4.HeaderCell.Style.Font = f;
             c4.DefaultCellStyle.Font = f1;
             c4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            var c9 = new DataGridViewTextBoxColumn();
-            c9.DataPropertyName = "ImporteDivisa";
-            c9.HeaderText = "Importe $";
-            c9.Visible = true;
-            c9.MinimumWidth = 100;
-            c9.HeaderCell.Style.Font = f;
-            c9.DefaultCellStyle.Font = f1;
-            c9.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            c9.DefaultCellStyle.Format = "n2";
-            c9.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            var c5 = new DataGridViewTextBoxColumn();
+            c5.DataPropertyName = "CiRif";
+            c5.HeaderText = "CiRif";
+            c5.Visible = true;
+            c5.Width = 100;
+            c5.HeaderCell.Style.Font = f;
+            c5.DefaultCellStyle.Font = f1;
 
-            var c0a = new DataGridViewTextBoxColumn();
-            c0a.DataPropertyName = "Estatus";
-            c0a.Name = "Estatus";
-            c0a.HeaderText = "*";
-            c0a.Visible = true;
-            c0a.Width = 100;
-            c0a.HeaderCell.Style.Font = f;
-            c0a.DefaultCellStyle.Font = f1;
-            c0a.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            var c6 = new DataGridViewTextBoxColumn();
+            c6.DataPropertyName = "CntRenglones";
+            c6.HeaderText = "Rengl";
+            c6.Visible = true;
+            c6.Width = 60;
+            c6.HeaderCell.Style.Font = f;
+            c6.DefaultCellStyle.Font = f1;
+            c6.DefaultCellStyle.Format = "n0";
+            c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            var c7 = new DataGridViewTextBoxColumn();
+            c7.DataPropertyName = "Monto";
+            c7.HeaderText = "Monto($)";
+            c7.Visible = true;
+            c7.Width = 90;
+            c7.HeaderCell.Style.Font = f;
+            c7.DefaultCellStyle.Font = f1;
+            c7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c7.DefaultCellStyle.Format = "n2";
 
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c2);
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
-            DGV.Columns.Add(c9);
-            DGV.Columns.Add(c0a);
+            DGV.Columns.Add(c5);
+            DGV.Columns.Add(c6);
+            DGV.Columns.Add(c7);
         }
         public Frm()
         {

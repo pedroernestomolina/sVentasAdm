@@ -1405,6 +1405,7 @@
             this.BT_VISUALIZAR_CLIENTE.Size = new System.Drawing.Size(27, 27);
             this.BT_VISUALIZAR_CLIENTE.TabIndex = 4;
             this.BT_VISUALIZAR_CLIENTE.UseVisualStyleBackColor = true;
+            this.BT_VISUALIZAR_CLIENTE.Visible = false;
             // 
             // panel73
             // 
@@ -1429,6 +1430,7 @@
             this.BT_DATOS_DOCUMENTO_EDITAR.Size = new System.Drawing.Size(27, 27);
             this.BT_DATOS_DOCUMENTO_EDITAR.TabIndex = 4;
             this.BT_DATOS_DOCUMENTO_EDITAR.UseVisualStyleBackColor = true;
+            this.BT_DATOS_DOCUMENTO_EDITAR.Visible = false;
             // 
             // panel74
             // 
@@ -1453,6 +1455,7 @@
             this.BT_DATOS_DOCUMENTO_LIMPIAR.Size = new System.Drawing.Size(27, 27);
             this.BT_DATOS_DOCUMENTO_LIMPIAR.TabIndex = 3;
             this.BT_DATOS_DOCUMENTO_LIMPIAR.UseVisualStyleBackColor = true;
+            this.BT_DATOS_DOCUMENTO_LIMPIAR.Visible = false;
             // 
             // panel75
             // 
@@ -1487,6 +1490,7 @@
             this.BT_VISUALIZAR_CLIENTE_DOC.Size = new System.Drawing.Size(27, 25);
             this.BT_VISUALIZAR_CLIENTE_DOC.TabIndex = 5;
             this.BT_VISUALIZAR_CLIENTE_DOC.UseVisualStyleBackColor = true;
+            this.BT_VISUALIZAR_CLIENTE_DOC.Visible = false;
             // 
             // panel77
             // 
@@ -1511,6 +1515,7 @@
             this.BT_VISUALIZAR_CLIENTE_ARTICULOS.Size = new System.Drawing.Size(27, 25);
             this.BT_VISUALIZAR_CLIENTE_ARTICULOS.TabIndex = 6;
             this.BT_VISUALIZAR_CLIENTE_ARTICULOS.UseVisualStyleBackColor = true;
+            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.Visible = false;
             // 
             // panel78
             // 
@@ -1535,6 +1540,7 @@
             this.button11.Size = new System.Drawing.Size(27, 25);
             this.button11.TabIndex = 7;
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Visible = false;
             // 
             // panel79
             // 

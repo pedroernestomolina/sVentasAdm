@@ -22,6 +22,7 @@ namespace DtoTransporte.Documento.Remision.Lista
         public string clienteNombre { get; set; }
         public string clienteCiRif { get; set; }
         public decimal factorCambio { get; set; }
+        public string estatusAnulado { get; set; }
         public Ficha()
         {
             docId = "";
@@ -37,6 +38,7 @@ namespace DtoTransporte.Documento.Remision.Lista
             clienteCiRif = "";
             clienteNombre = "";
             factorCambio = 0m;
+            estatusAnulado = "";
         }
     }
 }

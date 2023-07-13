@@ -126,6 +126,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         {
             var _monto = decimal.Parse(TB_PRECIO_PAUTADO_AFILIADO.Text);
             _controlador.Item.setPrecioAliadoPautado(_monto);
+            TB_PRECIO_PAUTADO_AFILIADO.Text = _controlador.Item.Get_Aliado_PrecioPautado.ToString("n2", _cult);
         }
         private void TB_DESCRIPCION_FULL_Leave(object sender, EventArgs e)
         {

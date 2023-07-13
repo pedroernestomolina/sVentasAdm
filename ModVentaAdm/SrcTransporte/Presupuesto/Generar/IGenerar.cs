@@ -26,5 +26,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         void EditarDocumento();
         bool EditarDocumentoIsOK { get; }
         void MostrarBeneficio();
+
+        bool RemisionIsOK { get; }
+        void BuscarRemision();
+        void IniciarEnLimpio();
     }
 }

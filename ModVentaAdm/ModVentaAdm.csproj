@@ -259,6 +259,11 @@
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Resultado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\baseEncabezado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaDetalle.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaEncabezado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaFechaServ.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Filtro.cs" />
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\Telefono\Frm.cs">
@@ -320,6 +325,36 @@
     </Compile>
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\IAgregarEditar.cs" />
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\ImpAgregarEditar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\data.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\dataItem.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\dataTotales.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\IGenerar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\IItemObservador.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\ImpGenerar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Item\Agregar\Agregar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Item\Agregar\IAgregar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Item\data.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Item\Editar\Editar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Item\Editar\IEditar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Item\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\Item\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\Item\IItem.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Item\ImpItem.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\ProForma\Imp.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\ProForma\IProForma.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Remision\data.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Remision\Imp.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Remision\IRemision.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -354,8 +389,6 @@
     </Compile>
     <Compile Include="SrcTransporte\Presupuesto\Generar\IGenerar.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\ImpGenerar.cs" />
-    <Compile Include="SrcTransporte\Presupuesto\Generar\ItemLista\IItemLista.cs" />
-    <Compile Include="SrcTransporte\Presupuesto\Generar\ItemLista\Imp.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Agregar\Agregar.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Agregar\IAgregar.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\data.cs" />
@@ -380,7 +413,9 @@
     </Compile>
     <Compile Include="SrcTransporte\Presupuesto\Generar\MargenGanancia\IBeneficio.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\MargenGanancia\Imp.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Remision\data.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Remision\Imp.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Remision\IObservador.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Remision\IRemision.cs" />
     <Compile Include="SrcTransporte\Principal\PrincipalFrm.cs">
       <SubType>Form</SubType>
@@ -867,6 +902,12 @@
     <EmbeddedResource Include="SrcTransporte\Aliados\AgregarEditar\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\Item\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Presupuesto\Generar\Aliado\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1139,6 +1180,8 @@
     <None Include="Resources\bt_transporte.png" />
     <None Include="Resources\bt_margen_beneficio_32.png" />
     <None Include="Resources\bt_editar_2_32.png" />
+    <None Include="Resources\bt_serv_traslado_24.png" />
+    <None Include="Resources\bt_presup_24.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1199,6 +1242,7 @@
     <Content Include="Src\Imagenes\bt_notificacion.png" />
     <Content Include="Src\Imagenes\bt_ok_2.png" />
     <Content Include="Src\Imagenes\bt_ok_3.png" />
+    <Content Include="Src\Imagenes\bt_presup_24.png" />
     <Content Include="Src\Imagenes\bt_price.png" />
     <Content Include="Src\Imagenes\bt_proceso.png" />
     <Content Include="Src\Imagenes\bt_proveedor.png" />
@@ -1207,6 +1251,7 @@
     <Content Include="Src\Imagenes\bt_reposo.png" />
     <Content Include="Src\Imagenes\bt_salida.png" />
     <Content Include="Src\Imagenes\bt_salida_2.png" />
+    <Content Include="Src\Imagenes\bt_serv_traslado_24.png" />
     <Content Include="Src\Imagenes\bt_setup.png" />
     <Content Include="Src\Imagenes\bt_status.png" />
     <Content Include="Src\Imagenes\bt_sumar.png" />
@@ -1263,7 +1308,9 @@
       <Name>ServicePos</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SrcTransporte\DocVenta\Generar\Factura\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

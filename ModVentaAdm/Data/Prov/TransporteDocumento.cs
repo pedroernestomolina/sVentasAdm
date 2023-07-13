@@ -118,6 +118,118 @@ namespace ModVentaAdm.Data.Prov
             };
             return result;
         }
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Presupuesto.Ficha> 
+            TransporteDocumento_EntidadPresupuesto_GetById(string idDoc)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Presupuesto.Ficha>();
+            var r01 = MyData.TransporteDocumento_EntidadPresupuesto_GetById (idDoc);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var e = r01.Entidad.encabezado;
+            var d= r01.Entidad.items;
+            result.Entidad = new OOB.Transporte.Documento.Entidad.Presupuesto.Ficha()
+            {
+                encabezado = new OOB.Transporte.Documento.Entidad.Presupuesto.FichaEncabezado()
+                {
+                    anoRelacion = e.anoRelacion,
+                    cargos = e.cargos,
+                    cargosp = e.cargosp,
+                    clienteCiRif = e.clienteCiRif,
+                    clienteCodigo = e.clienteCodigo,
+                    clienteDirFiscal = e.clienteDirFiscal,
+                    clienteId = e.clienteId,
+                    clienteNombre = e.clienteNombre,
+                    clienteTelefono = e.clienteTelefono,
+                    cntRenglones = e.cntRenglones,
+                    codSucursal = e.codSucursal,
+                    condPago = e.condPago,
+                    descuento1 = e.descuento1,
+                    descuento1p = e.descuento1p,
+                    descuento2 = e.descuento2,
+                    descuento2p = e.descuento2p,
+                    diasCredito = e.diasCredito,
+                    diasValidez = e.diasValidez,
+                    docCodigoTipo = e.docCodigoTipo,
+                    docFechaEmision = e.docFechaEmision,
+                    docFechaVence = e.docFechaVence,
+                    docModulo = e.docModulo,
+                    docNombre = e.docNombre,
+                    docNumero = e.docNumero,
+                    docSigno = e.docSigno,
+                    docTotal = e.docTotal,
+                    estacion = e.estacion,
+                    estatusAnulado = e.estatusAnulado,
+                    factorCambio = e.factorCambio,
+                    fechaRegistro = e.fechaRegistro,
+                    horaRegistro = e.horaRegistro,
+                    idDoc = e.idDoc,
+                    mesRelacion = e.mesRelacion,
+                    montoBase = e.montoBase,
+                    montoBase1 = e.montoBase1,
+                    montoBase2 = e.montoBase2,
+                    montoBase3 = e.montoBase3,
+                    montoDivisa = e.montoDivisa,
+                    montoExento = e.montoExento,
+                    montoImpuesto = e.montoImpuesto,
+                    montoImpuesto1 = e.montoImpuesto1,
+                    montoImpuesto2 = e.montoImpuesto2,
+                    montoImpuesto3 = e.montoImpuesto3,
+                    montoNeto = e.montoNeto,
+                    notasObs = e.notasObs,
+                    subTotal = e.subTotal,
+                    subTotalImpuesto = e.subTotalImpuesto,
+                    subTotalNeto = e.subTotalNeto,
+                    tasa1 = e.tasa1,
+                    tasa2 = e.tasa2,
+                    tasa3 = e.tasa3,
+                    usuarioId = e.usuarioId,
+                    usuarioNombre = e.usuarioNombre,
+                    uUsuarioCodigo = e.uUsuarioCodigo,
+                    vendedorCodigo = e.vendedorCodigo,
+                    vendedorId = e.vendedorId,
+                    vendedorNombre = e.vendedorNombre,
+                },
+                items = d.Select(s => 
+                {
+                    var nr = new OOB.Transporte.Documento.Entidad.Presupuesto.FichaDetalle()
+                    {
+                        aliadoCirif = s.aliadoCirif,
+                        aliadoCodigo = s.aliadoCirif,
+                        aliadoDesc = s.aliadoDesc,
+                        aliadoId = s.aliadoId,
+                        aliadoPrecioDivisa = s.aliadoPrecioDivisa,
+                        alicuotaDesc = s.alicuotaDesc,
+                        alicuotaId = s.alicuotaId,
+                        alicuotaTasa = s.alicuotaTasa,
+                        cntDias = s.cntDias,
+                        cntUnidades = s.cntUnidades,
+                        dscto = s.dscto,
+                        id = s.id,
+                        importe = s.importe,
+                        moduloCargar = s.moduloCargar,
+                        notas = s.notas,
+                        precioNetoDivisa = s.precioNetoDivisa,
+                        servicioDesc = s.servicioDesc,
+                        solicitadoPor = s.solicitadoPor,
+                        fechaServ = s.fechaServ.Select(ss => 
+                        {
+                            var xr = new OOB.Transporte.Documento.Entidad.Presupuesto.FichaFechaServ()
+                            {
+                                fecha = ss.fecha,
+                                hora = ss.hora,
+                                nota = ss.nota,
+                            };
+                            return xr;
+                        }).ToList(),
+                    };
+                    return nr;
+                }).ToList(),
+            };
+            return result;
+        }
+
         public OOB.Resultado.Lista<OOB.Transporte.Documento.Remision.Lista.Ficha> 
             TransporteDocumento_Remision_ListaBy(OOB.Transporte.Documento.Remision.Lista.Filtro filtro)
         {
@@ -154,6 +266,7 @@ namespace ModVentaAdm.Data.Prov
                             docNumero = s.docNumero,
                             docSigno = s.docSigno,
                             factorCambio = s.factorCambio,
+                            estatusAnulado=s.estatusAnulado,
                         };
                         return nr;
                     }).ToList();

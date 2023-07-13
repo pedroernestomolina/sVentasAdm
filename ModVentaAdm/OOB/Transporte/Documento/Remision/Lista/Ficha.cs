@@ -22,6 +22,9 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Remision.Lista
         public string clienteNombre { get; set; }
         public string clienteCiRif { get; set; }
         public decimal factorCambio { get; set; }
+        public string estatusAnulado { get; set; }
+        public bool isAnulado { get { return estatusAnulado == "1"; } }
+
         public Ficha()
         {
             docId = "";
@@ -37,6 +40,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Remision.Lista
             clienteCiRif = "";
             clienteNombre = "";
             factorCambio = 0m;
+            estatusAnulado = "";
         }
     }
 }

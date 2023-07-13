@@ -121,6 +121,7 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.MENU_DOCUMENTOS_PRO_FORMA = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -185,11 +186,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(651, 1);
+            this.panel2.Location = new System.Drawing.Point(650, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(232, 52);
+            this.panel2.Size = new System.Drawing.Size(233, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -200,7 +201,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(228, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(229, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -215,7 +216,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(334, 52);
+            this.panel7.Size = new System.Drawing.Size(333, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -234,7 +235,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(330, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(329, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -268,7 +269,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(250, 22);
+            this.panel14.Size = new System.Drawing.Size(249, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -278,7 +279,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(246, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(245, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -314,7 +315,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(250, 22);
+            this.panel16.Size = new System.Drawing.Size(249, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -324,7 +325,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(246, 18);
+            this.L_HOST.Size = new System.Drawing.Size(245, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -333,7 +334,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(337, 1);
+            this.panel17.Location = new System.Drawing.Point(336, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -405,7 +406,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(539, 1);
+            this.panel20.Location = new System.Drawing.Point(538, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -580,6 +581,7 @@
             // documentosToolStripMenuItem
             // 
             this.documentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MENU_DOCUMENTOS_PRO_FORMA,
             this.MENU_DOCUMENTOS_FACTURA,
             this.controlDeNotaDeEntregaToolStripMenuItem,
             this.MENU_DOCUMENTOS_PRESUPUESTO,
@@ -603,12 +605,14 @@
             this.controlDeNotaDeEntregaToolStripMenuItem.Name = "controlDeNotaDeEntregaToolStripMenuItem";
             this.controlDeNotaDeEntregaToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.controlDeNotaDeEntregaToolStripMenuItem.Text = "Control de Nota de Entrega";
+            this.controlDeNotaDeEntregaToolStripMenuItem.Visible = false;
             // 
             // MENU_DOCUMENTOS_PRESUPUESTO
             // 
             this.MENU_DOCUMENTOS_PRESUPUESTO.Name = "MENU_DOCUMENTOS_PRESUPUESTO";
             this.MENU_DOCUMENTOS_PRESUPUESTO.Size = new System.Drawing.Size(237, 22);
             this.MENU_DOCUMENTOS_PRESUPUESTO.Text = "Control de Presupuesto";
+            this.MENU_DOCUMENTOS_PRESUPUESTO.Visible = false;
             this.MENU_DOCUMENTOS_PRESUPUESTO.Click += new System.EventHandler(this.MENU_DOCUMENTOS_PRESUPUESTO_Click);
             // 
             // MENU_DOCUMENTOS_PEDIDO
@@ -616,6 +620,7 @@
             this.MENU_DOCUMENTOS_PEDIDO.Name = "MENU_DOCUMENTOS_PEDIDO";
             this.MENU_DOCUMENTOS_PEDIDO.Size = new System.Drawing.Size(237, 22);
             this.MENU_DOCUMENTOS_PEDIDO.Text = "Control de Pedido";
+            this.MENU_DOCUMENTOS_PEDIDO.Visible = false;
             this.MENU_DOCUMENTOS_PEDIDO.Click += new System.EventHandler(this.MENU_DOCUMENTOS_PEDIDO_Click);
             // 
             // toolStripMenuItem6
@@ -1061,6 +1066,13 @@
             this.panel8.Size = new System.Drawing.Size(433, 420);
             this.panel8.TabIndex = 3;
             // 
+            // MENU_DOCUMENTOS_PRO_FORMA
+            // 
+            this.MENU_DOCUMENTOS_PRO_FORMA.Name = "MENU_DOCUMENTOS_PRO_FORMA";
+            this.MENU_DOCUMENTOS_PRO_FORMA.Size = new System.Drawing.Size(237, 22);
+            this.MENU_DOCUMENTOS_PRO_FORMA.Text = "Control de ProForma";
+            this.MENU_DOCUMENTOS_PRO_FORMA.Click += new System.EventHandler(this.MENU_DOCUMENTOS_PRO_FORMA_Click);
+            // 
             // PrincipalFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1201,5 +1213,6 @@
         private System.Windows.Forms.ToolStripMenuItem MNU_TRANSPORTE_PRESUPUESTO_GENERAR;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.ToolStripMenuItem MNU_MAESTRO_ALIADO_editar;
+        private System.Windows.Forms.ToolStripMenuItem MENU_DOCUMENTOS_PRO_FORMA;
     }
 }

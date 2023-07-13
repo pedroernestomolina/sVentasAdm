@@ -213,7 +213,7 @@ namespace ModVentaAdm.SrcTransporte.Principal
         //DOCUMENTOS
         private void GenerarFactura()
         {
-            //_controlador.GenerarFactura();
+            _controlador.GenerarFactura();
         }
         private void GenerarPresupuesto()
         {
@@ -298,6 +298,15 @@ namespace ModVentaAdm.SrcTransporte.Principal
         private void TransportePresupuestoGenerar()
         {
             _controlador.TransportePresupuestoGenerar();
+        }
+
+        private void MENU_DOCUMENTOS_PRO_FORMA_Click(object sender, EventArgs e)
+        {
+            TransporteProForma();
+        }
+        private void TransporteProForma()
+        {
+            _controlador.TransporteProFormaGenerar();
         }
     }
 }

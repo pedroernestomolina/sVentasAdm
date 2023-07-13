@@ -13,13 +13,16 @@ namespace ModVentaAdm.Utils.DocLista.Remision
     public class Imp: IRemision
     {
         private ILista _items;
+        private bool _itemSeleccionadoIsOk;
 
 
         public ILista Items { get { return _items; } }
+        public object ItemSeleccionado { get { return _items.ItemActual; } }
 
 
         public Imp()
         {
+            _itemSeleccionadoIsOk = false;
             _abandonarIsOK = false;
             _items = new ImpLista();
         }
@@ -27,6 +30,7 @@ namespace ModVentaAdm.Utils.DocLista.Remision
 
         public void Inicializa()
         {
+            _itemSeleccionadoIsOk = false;
             _items.Inicializa();
         }
         Frm frm;
@@ -56,20 +60,22 @@ namespace ModVentaAdm.Utils.DocLista.Remision
             var _lst = new List<data>();
             foreach (var rg in lst) 
             {
-                var nr = new data();
+                var nr = new data((OOB.Transporte.Documento.Remision.Lista.Ficha)rg);
                 _lst.Add(nr);
             }
             _items.setDataCargar(_lst);
         }
 
 
-        public bool ItemSeleccionadoIsOk { get { return false; } }
+        public bool ItemSeleccionadoIsOk { get { return _itemSeleccionadoIsOk; } }
         public void SeleccionarItem()
         {
+            _itemSeleccionadoIsOk = false;
             if (_items.ItemActual == null) 
             {
                 return;
             }
+            _itemSeleccionadoIsOk = true;
         }
 
         private bool _abandonarIsOK;

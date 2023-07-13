@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 {
-    public class ImpGenerar: IGenerar 
+    public class ImpGenerar: IGenerar , Remision.IObservador
     {
         protected bool _procesarIsOK;
         private bool _abandonarIsOK;
@@ -25,15 +25,16 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
         public ImpGenerar()
         {
+            _remision = new Remision.Imp();
+            _remision.AgregarObservador(this);
             _limpiarDocumentoIsOK = false;
             _editarDocumentoIsOK = false;
             _notasObservaciones = "";
             _procesarIsOK = false;
             _abandonarIsOK = false;
-            _dataGen = new data();
+            _dataGen = new data(_remision);
             _tasasFiscal = null;
             _margBeneficio = new MargenGanancia.Imp(_dataGen.Items, _dataGen.Totales);
-            _remision = new Remision.Imp();
         }
 
 
@@ -113,12 +114,26 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         }
 
 
+        public bool RemisionIsOK { get { return _remision.RemisionIsOK; } }
+        public void BuscarRemision()
+        {
+            if (!_dataGen.DocumentoIsOk)
+            {
+                Helpers.Msg.Alerta("DEBES PRIMERO CREAR UN NUEVO DOCUMENTO");
+                return;
+            }
+            _remision.setClienteBuscar(_dataGen.DatosDoc.Cliente);
+            _remision.setHabilitarCargarDocRemision(_dataGen.Items.GetItems.Count == 0);
+            _remision.Buscar();
+        }
+
+
         private DatosDocumento.IDatosDoc _datosDoc;
         public void NuevoDocumento()
         {
             if (_datosDoc==null)
             {
-                _datosDoc = new DatosDocumento.Imp();
+                _datosDoc = new DatosDocumento.Imp(_remision);
             }
             if (_dataGen.DatosDoc != null) 
             {
@@ -198,6 +213,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         public bool LimpiarDocumentoIsOK { get { return _limpiarDocumentoIsOK; } }
         public void LimpiarDocumento()
         {
+            _procesarIsOK = false;
+            _abandonarIsOK = false;
             _limpiarDocumentoIsOK = false; 
             var xmsg = "Quieres Limpiar todo el Documento Actual ?";
             var r = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -255,7 +272,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 var _codVendedor = s01.Entidad.codigo;
                 var _nombreVendedor = s01.Entidad.nombre;
                 //
-                var _idSitemaDocumento = "0000000005";
+                var _idSitemaDocumento = Sistema.Id_SistDocumento_Presupuesto;
                 var s02 = Sistema.MyData.Sistema_TipoDocumento_GetFichaById(_idSitemaDocumento);
                 if (s02.Result == OOB.Resultado.Enumerados.EnumResult.isError)
                 {
@@ -308,6 +325,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 var _subTotal = _montoTotal - _montoIva;
                 var _subTotalImpuesto = _montoIva;
                 //
+                var _idDocRemision = _remision.DocRemision.docId;
+                var _numDocRemision = _remision.DocRemision.docNumero;
+                var _tipoDocRemision = _remision.DocRemision.docTipo;
+                //
                 var fichaOOB = new OOB.Transporte.Documento.Agregar.Presupuesto.Ficha()
                 {
                     cargos = 0m,
@@ -329,11 +350,11 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     DirFiscal = _dirFiscalCliente,
                     docCodigo = _nombreDocumento,
                     docNombre = _moduloDocumento,
-                    docRemision = "",
+                    docRemision = _numDocRemision,
                     estacion = _estacion,
                     factorCambio = _factorCambio,
                     idCliente = _idCliente,
-                    idRemision = "",
+                    idRemision = _idDocRemision,
                     idUsuario = _idUsuario,
                     idVendedor = _idVendedor,
                     montoBase = _montoBase,
@@ -357,7 +378,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     Tasa3 = _tasa3,
                     telefono = _telefonoCliente,
                     TipoDoc = _tipoDcumento,
-                    tipoRemision = "",
+                    tipoRemision = _tipoDocRemision,
                     Total = _montoTotal,
                     usuario = _nombreUsuario,
                     vendedor = _nombreVendedor,
@@ -404,6 +425,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 _procesarIsOK = true;
                 Helpers.Msg.AgregarOk();
                 _dataGen.LimpiarTodo();
+                _remision.Limpiar();
                 _notasObservaciones = "";
                 _limpiarDocumentoIsOK = true; 
             }
@@ -411,6 +433,23 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             {
                 Helpers.Msg.Error(e.Message);
             }
+        }
+
+        public void NotificarRemisionDocPresupuesto(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha)
+        {
+            setNotas(ficha.encabezado.notasObs);
+        }
+
+
+        public void IniciarEnLimpio()
+        {
+            _dataGen.LimpiarTodo();
+            _remision.Limpiar();
+            _notasObservaciones = "";
+            _abandonarIsOK = false;
+            _procesarIsOK = false;
+            _limpiarDocumentoIsOK = false;
+            _editarDocumentoIsOK = false;
         }
     }
 }

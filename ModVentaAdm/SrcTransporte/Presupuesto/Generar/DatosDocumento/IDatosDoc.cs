@@ -12,5 +12,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         data Data { get; }
 
         void BuscarCliente();
+        void setEscucha(DocVenta.Generar.dataItem items);
     }
 }

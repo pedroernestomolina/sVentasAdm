@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.ItemLista
+namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Editar
 {
-    public class Imp: IItemLista
+    public class Editar: IEditar
     {
     }
 }

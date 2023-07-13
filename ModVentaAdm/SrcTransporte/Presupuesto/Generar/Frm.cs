@@ -141,6 +141,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             L_NUMERO_DOC_REMISION.Text = _controlador.Remision.DocNumero_Get;
             L_FECHA_DOC_REMISION.Text = _controlador.Remision.DocFecha_Get;
             //
+            TB_NOTAS.Text = _controlador.NotasObserv_Get;
+            //
             _modoInicializa = false;
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -241,7 +243,15 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
         private void RemisionBuscar()
         {
-            _controlador.Remision.Buscar();
+            _controlador.BuscarRemision();
+            if (_controlador.RemisionIsOK)
+            {
+                ActualizarFichaRemision();
+                ActualizarContadores();
+                ActualizarTotales();
+                ActualizarFicha();
+                TB_NOTAS.Text = _controlador.NotasObserv_Get;
+            }
         }
         private void NuevoDocumento()
         {
@@ -277,9 +287,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         }
         private void ActualizarFichaRemision()
         {
-            L_NOMBRE_DOC_REMISION.Text = "";
-            L_NUMERO_DOC_REMISION.Text = "";
-            L_FECHA_DOC_REMISION.Text = "";
+            CB_REMISION.SelectedValue = _controlador.Remision.ItemId_Get;
+            L_NOMBRE_DOC_REMISION.Text = _controlador.Remision.DocNombre_Get;
+            L_NUMERO_DOC_REMISION.Text = _controlador.Remision.DocNumero_Get;
+            L_FECHA_DOC_REMISION.Text = _controlador.Remision.DocFecha_Get;
         }
         private void ActualizarTotales()
         {
@@ -302,6 +313,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 ActualizarContadores();
                 ActualizarTotales();
                 TB_NOTAS.Text = _controlador.NotasObserv_Get;
+                _controlador.IniciarEnLimpio();
             }
         }
         private void AbandonarFicha()

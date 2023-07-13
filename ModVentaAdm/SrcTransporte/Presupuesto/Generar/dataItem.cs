@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 {
-    public class dataItem
+    public class dataItem : Remision.IObservador
     {
         private List<Item.IItem> _lst;
         private BindingList<Item.IItem> _bl;
@@ -24,7 +24,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         public List<Item.IItem> GetItems { get { return _bl.ToList(); } }
 
 
-        public dataItem()
+        public dataItem(Remision.IRemision itemsRemision)
         {
             _lst = new List<Item.IItem>();
             _bl = new BindingList<Item.IItem>(_lst);
@@ -32,6 +32,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _bs.DataSource = _bl;
             _bs.CurrencyManager.Refresh();
             _observadores = new List<IItemObservador>();
+            itemsRemision.AgregarObservador(this);
         }
 
         public void Inicializa()
@@ -43,14 +44,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         public void AgregarItem(Item.IItem item)
         {
             var _id = 1;
-            if (_lst.Count>0)
+            if (_lst.Count > 0)
             {
                 _id = _lst.Max(m => m.id) + 2;
             }
             item.setId(_id);
             _bl.Add(item);
             _bs.CurrencyManager.Refresh();
-            foreach (var obs in _observadores) 
+            foreach (var obs in _observadores)
             {
                 obs.OnItemAgregado(item);
             }
@@ -69,7 +70,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private decimal _tasaDivisa = 0m;
         public void setTasaDivisa(decimal tasa)
         {
-            _tasaDivisa=tasa;
+            _tasaDivisa = tasa;
         }
 
 
@@ -81,30 +82,30 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         }
         public bool DataIsOk()
         {
-            if (_lst == null) 
+            if (_lst == null)
             {
                 Helpers.Msg.Alerta("LISTA DE ITEMS NO DEFINIDA");
                 return false;
             }
-            if (_lst.Count == 0) 
+            if (_lst.Count == 0)
             {
                 Helpers.Msg.Alerta("NO HAY ITEMS DEFINIDOS");
                 return false;
             }
-            var _cntAliado = _lst.Where(w => w.Item.AliadoIsOk!= true).Count();
-            if (_cntAliado > 0) 
+            var _cntAliado = _lst.Where(w => w.Item.AliadoIsOk != true).Count();
+            if (_cntAliado > 0)
             {
                 Helpers.Msg.Alerta("HAY ITEMS PENDIENTES POR DEFINIR EL ALIADO");
                 return false;
             }
-            var _cntAliadoPrecio = _lst.Where(w => w.Item.Get_Aliado_PrecioPautado ==0m ).Count();
+            var _cntAliadoPrecio = _lst.Where(w => w.Item.Get_Aliado_PrecioPautado == 0m).Count();
             if (_cntAliadoPrecio > 0)
             {
                 Helpers.Msg.Alerta("HAY ITEMS PENDIENTES POR DEFINIR EL MONTO PAUTADO POR EL ALIADO");
                 return false;
             }
 
-            var _cntImporte = _lst.Where(w => w.ImporteItemMostrar ==0m ).Count();
+            var _cntImporte = _lst.Where(w => w.ImporteItemMostrar == 0m).Count();
             if (_cntImporte > 0)
             {
                 Helpers.Msg.Alerta("HAY ITEMS CON IMPORTES INCORRECTOS (MONTO EN CERO)");
@@ -130,6 +131,65 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         public void EliminarObservador(IItemObservador observador)
         {
             _observadores.Remove(observador);
+        }
+
+
+        public void NotificarRemisionDocPresupuesto(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha)
+        {
+            try
+            {
+                var r01 = Sistema.MyData.Sistema_TasaFiscal_GetLista();
+                if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError) 
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+
+                foreach (var it in ficha.items)
+                {
+                    var _aliado = new OOB.Transporte.Aliado.Entidad.Ficha()
+                    {
+                        id = it.aliadoId,
+                        ciRif = it.aliadoCirif,
+                        codigo = it.aliadoCodigo,
+                        nombreRazonSocial = it.aliadoDesc,
+                    };
+                    var _alicuota = new alicuota()
+                    {
+                        codigo = "",
+                        desc = it.alicuotaDesc,
+                        id = it.alicuotaId,
+                        tasa = it.alicuotaTasa,
+                    };
+                    var _item = new Item.Agregar.Agregar();
+                    _item.Item.setDescripcion(it.servicioDesc);
+                    _item.Item.setSolicitadoPor(it.solicitadoPor);
+                    _item.Item.setModuloaCargar(it.moduloCargar);
+                    _item.Item.setCntDias(it.cntDias);
+                    _item.Item.setCntUnidades(it.cntUnidades);
+                    _item.Item.setPrecioDivisa(it.precioNetoDivisa);
+                    _item.Item.setDscto(it.dscto);
+                    _item.Item.setAlicuota(_alicuota);
+                    _item.Item.setAliado(_aliado);
+                    _item.Item.setPrecioAliadoPautado(it.aliadoPrecioDivisa);
+                    _item.Item.setDescripcionFull(it.notas);
+                    _item.Item.setTasaIva(it.alicuotaTasa);
+                    _item.setTasaFiscal(r01.ListaD);
+                    _item.AlicuotaSetFichaById(it.alicuotaId);
+                    foreach (var xr in it.fechaServ) 
+                    {
+                        var hora = DateTime.Parse(xr.hora);
+                        DateTime fechaYHora = xr.fecha.Date + hora.TimeOfDay;
+                        _item.Item.setFecha(xr.fecha);
+                        _item.Item.setHora(fechaYHora);
+                        _item.Item.AgregarFecha();
+                    }
+                    AgregarItem(_item);
+                }
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
         }
     }
 }

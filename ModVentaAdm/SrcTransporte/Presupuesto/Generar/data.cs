@@ -34,13 +34,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         public bool DocumentoIsOk { get { return _datosDoc != null; } }
 
 
-        public data()
+        public data(Remision.IRemision _remision)
         {
             _tasaDivisa = 0m;
             _tasaFiscal_1 = null;
             _tasaFiscal_2 = null;
             _tasaFiscal_3 = null;
-            _items = new dataItem();
+            _items = new dataItem(_remision);
             _totales = new dataTotales(_items);
             _datosDoc = null;
         }

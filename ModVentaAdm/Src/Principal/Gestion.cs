@@ -353,5 +353,13 @@ namespace ModVentaAdm.Src.Principal
             _gest.Inicializa();
             _gest.Inicia();
         }
+
+        public void TransporteProFormaGenerar()
+        {
+            SrcTransporte.DocVenta.Generar.ProForma.IProForma _gest;
+            _gest = new SrcTransporte.DocVenta.Generar.ProForma.Imp();
+            _gest.Inicializa();
+            _gest.Inicia();
+        }
     }
 }

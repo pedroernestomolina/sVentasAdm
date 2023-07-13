@@ -7,25 +7,32 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
 {
-    public class Imp: IDatosDoc
+    public class Imp: IDatosDoc,  Remision.IObservador, DocVenta.Generar.IItemObservador
     {
         private data _data;
+        private bool _habilitarBusquedaCliente;
         private Utils.Buscar.IBuscar _cliente;
 
 
         public data Data { get { return _data; } }
 
 
-        public Imp()
+        public Imp(Remision.IRemision _remision)
         {
+            if (_remision != null)
+            {
+                _remision.AgregarObservador(this);
+            }
             _abandonarIsOK = false;
             _procesarIsOK = false;
             _data = new data();
+            _habilitarBusquedaCliente = true;
         }
 
 
         public void Inicializa()
         {
+            _habilitarBusquedaCliente = true;
             _abandonarIsOK = false;
             _procesarIsOK = false;
             _data.Inicializa();
@@ -90,6 +97,11 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
 
         public void BuscarCliente()
         {
+            if (!_habilitarBusquedaCliente) 
+            {
+                Helpers.Msg.Alerta("OPCION NO ACTIVA");
+                return; 
+            }
             if (_cliente ==null)
             {
                 _cliente = new Utils.Buscar.Cliente.Imp();
@@ -124,6 +136,38 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
             {
                 Helpers.Msg.Error(e.Message);
                 return;
+            }
+        }
+
+        public void NotificarRemisionDocPresupuesto(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha)
+        {
+            _habilitarBusquedaCliente = false;
+        }
+        public void setHabilitarBusquedaCliente(bool act)
+        {
+            _habilitarBusquedaCliente = act;
+        }
+
+
+        private DocVenta.Generar.dataItem _itemsVenta;
+        public void setEscucha(DocVenta.Generar.dataItem items)
+        {
+            _itemsVenta = items;
+            items.RegistrarObservador(this);
+        }
+        public void OnItemAgregado()
+        {
+            verificarActivarBusquedaCliente();
+        }
+        public void OnItemEliminado()
+        {
+            verificarActivarBusquedaCliente();
+        }
+        private void verificarActivarBusquedaCliente()
+        {
+            if (_itemsVenta.Cnt_Get > 0)
+            {
+                _habilitarBusquedaCliente = false;
             }
         }
     }

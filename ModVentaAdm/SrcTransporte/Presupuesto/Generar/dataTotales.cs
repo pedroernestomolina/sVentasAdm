@@ -177,23 +177,23 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
         public void OnItemAgregado(Item.IItem item)
         {
-            setMontoNetoDivisa(_items.MontoNetoDivisa);
-            setMontoNetoDivisa_Exento(_items.MontoNetoDivisa_Exento);
-            setMontoNetoDivisa_Tasa1(_items.MontoNetoDivisa_Tasa1);
-            setMontoNetoDivisa_Tasa2(_items.MontoNetoDivisa_Tasa2);
-            setMontoNetoDivisa_Tasa3(_items.MontoNetoDivisa_Tasa3);
+            ActualizarMontos();
             NotificarObservadores();
         }
         public void OnItemEliminado(Item.IItem item)
+        {
+            ActualizarMontos();
+            NotificarObservadores();
+        }
+
+        private void ActualizarMontos()
         {
             setMontoNetoDivisa(_items.MontoNetoDivisa);
             setMontoNetoDivisa_Exento(_items.MontoNetoDivisa_Exento);
             setMontoNetoDivisa_Tasa1(_items.MontoNetoDivisa_Tasa1);
             setMontoNetoDivisa_Tasa2(_items.MontoNetoDivisa_Tasa2);
             setMontoNetoDivisa_Tasa3(_items.MontoNetoDivisa_Tasa3);
-            NotificarObservadores();
         }
-
         private void NotificarObservadores()
         {
             foreach (var obs in _observadores) 
