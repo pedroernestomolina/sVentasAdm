@@ -19,7 +19,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
         private decimal _dscto;
         private decimal _precioDscto;
         private Presupuesto.Generar.alicuota _alicuota;
-        private Presupuesto.Generar.Item.Agregar.IAgregar _itemServicio;
+        private Presupuesto.Generar.Item.IItem _itemServicio;
         private Utils.DocLista.Remision.data _itemPresupuesto; 
 
 
@@ -29,6 +29,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
         public decimal Get_Dscto { get { return _dscto; } }
         public decimal Get_Importe { get { return _importe; } }
         public string Get_PresupuestoNumero { get { return _itemPresupuesto == null ? "" : _itemPresupuesto.DocNumero; } }
+        public Presupuesto.Generar.Item.IItem Get_ItemServicio { get { return _itemServicio; } }
         public decimal Get_Iva 
         {
             get 
@@ -134,7 +135,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
             _alicuota = ficha;
         }
 
-        public void setItemServicio(Presupuesto.Generar.Item.Agregar.IAgregar itemServ)
+        public void setItemServicio(Presupuesto.Generar.Item.IItem itemServ)
         {
             _itemServicio = itemServ;
         }

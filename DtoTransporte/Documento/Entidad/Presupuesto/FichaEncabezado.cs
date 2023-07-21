@@ -9,9 +9,13 @@ namespace DtoTransporte.Documento.Entidad.Presupuesto
 {
     public class FichaEncabezado: baseEncabezado
     {
+        public string docSolicitadoPor { get; set; }
+        public string docModuloCargar { get; set; }
         public FichaEncabezado()
             :base()
         {
+            docSolicitadoPor = "";
+            docModuloCargar = "";
         }
     }
 }

@@ -42,7 +42,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item.Editar
             Item.setFecha(DateTime.Now);
             Item.setHora(DateTime.Now);
             Item.setPrecioAliadoPautado(data.Get_Aliado_PrecioPautado);
+            Item.setCntAliadoPautado(data.Get_Aliado_CntPautado);
             Item.setAliado(data.Get_Aliado);
+            Item.setListaAliadosLlamados(data.Get_ListaAliadosLLamados);
             Item.setDescripcionFull(data.Get_DescripcionFull);
             if (_tasasFiscal != null)
             {

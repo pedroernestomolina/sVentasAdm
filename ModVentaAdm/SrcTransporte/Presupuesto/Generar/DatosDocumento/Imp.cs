@@ -141,6 +141,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
 
         public void NotificarRemisionDocPresupuesto(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha)
         {
+            _data.setSolicitadoPor(ficha.encabezado.docSolicitadoPor);
+            _data.setModuloCargar(ficha.encabezado.docModuloCargar);
             _habilitarBusquedaCliente = false;
         }
         public void setHabilitarBusquedaCliente(bool act)

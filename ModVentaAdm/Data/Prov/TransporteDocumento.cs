@@ -67,16 +67,13 @@ namespace ModVentaAdm.Data.Prov
                 Tasa2 = ficha.Tasa2,
                 Tasa3 = ficha.Tasa3,
                 Total = ficha.Total,
-                nota= ficha.nota,
+                nota = ficha.nota,
+                docModuloCargar = ficha.docModuloCargar,
+                docSolicitadoPor = ficha.docSolicitadoPor,
                 items = ficha.items.Select(s =>
                 {
                     var nr = new DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle()
                     {
-                        aliadoCirif = s.aliadoCirif,
-                        aliadoCodigo = s.aliadoCodigo,
-                        aliadoDesc = s.aliadoDesc,
-                        aliadoId = s.aliadoId,
-                        aliadoPrecioDivisa = s.aliadoPrecioDivisa,
                         alicuotaDesc = s.alicuotaDesc,
                         alicuotaId = s.alicuotaId,
                         alicuotaTasa = s.alicuotaTasa,
@@ -84,15 +81,13 @@ namespace ModVentaAdm.Data.Prov
                         cntUnidades = s.cntUnidades,
                         dscto = s.dscto,
                         estatusAnulado = s.estatusAnulado,
-                        moduloCargar = s.moduloCargar,
                         notas = s.notas,
                         precioNetoDivisa = s.precioNetoDivisa,
                         servicioDesc = s.servicioDesc,
                         signoDoc = s.signoDoc,
-                        solicitadorPor = s.solicitadorPor,
                         tipoDoc = s.tipoDoc,
                         importe = s.importe,
-                        fechas = s.fechas.Select(ss => 
+                        fechas = s.fechas.Select(ss =>
                         {
                             var nr2 = new DtoTransporte.Documento.Agregar.Presupuesto.Fecha()
                             {
@@ -101,6 +96,20 @@ namespace ModVentaAdm.Data.Prov
                                 nota = ss.nota,
                             };
                             return nr2;
+                        }).ToList(),
+                        alidos = s.aliados.Select(xx =>
+                        {
+                            var nr3 = new DtoTransporte.Documento.Agregar.Presupuesto.Aliado()
+                            {
+                                ciRif = xx.ciRif,
+                                cntDias = xx.cntDias,
+                                codigo = xx.codigo,
+                                desc = xx.desc,
+                                id = xx.id,
+                                importe = xx.importe,
+                                precioUnitDivisa = xx.precioUnitDivisa,
+                            };
+                            return nr3;
                         }).ToList(),
                     };
                     return nr;
@@ -190,16 +199,13 @@ namespace ModVentaAdm.Data.Prov
                     vendedorCodigo = e.vendedorCodigo,
                     vendedorId = e.vendedorId,
                     vendedorNombre = e.vendedorNombre,
+                    docSolicitadoPor = e.docSolicitadoPor,
+                    docModuloCargar= e.docModuloCargar,
                 },
                 items = d.Select(s => 
                 {
                     var nr = new OOB.Transporte.Documento.Entidad.Presupuesto.FichaDetalle()
                     {
-                        aliadoCirif = s.aliadoCirif,
-                        aliadoCodigo = s.aliadoCirif,
-                        aliadoDesc = s.aliadoDesc,
-                        aliadoId = s.aliadoId,
-                        aliadoPrecioDivisa = s.aliadoPrecioDivisa,
                         alicuotaDesc = s.alicuotaDesc,
                         alicuotaId = s.alicuotaId,
                         alicuotaTasa = s.alicuotaTasa,
@@ -208,12 +214,10 @@ namespace ModVentaAdm.Data.Prov
                         dscto = s.dscto,
                         id = s.id,
                         importe = s.importe,
-                        moduloCargar = s.moduloCargar,
                         notas = s.notas,
                         precioNetoDivisa = s.precioNetoDivisa,
                         servicioDesc = s.servicioDesc,
-                        solicitadoPor = s.solicitadoPor,
-                        fechaServ = s.fechaServ.Select(ss => 
+                        fechaServ = s.fechaServ.Select(ss =>
                         {
                             var xr = new OOB.Transporte.Documento.Entidad.Presupuesto.FichaFechaServ()
                             {
@@ -222,6 +226,20 @@ namespace ModVentaAdm.Data.Prov
                                 nota = ss.nota,
                             };
                             return xr;
+                        }).ToList(),
+                        aliados = s.aliados.Select(xx =>
+                        {
+                            var xz = new OOB.Transporte.Documento.Entidad.Presupuesto.FichaAliado()
+                            {
+                                ciRif = xx.ciRif,
+                                cntDias = xx.cntDias,
+                                codigo = xx.codigo,
+                                descripcion = xx.descripcion,
+                                idAliado = xx.idAliado,
+                                importe = xx.importe,
+                                precioUnitDivisa = xx.precioUnitDivisa,
+                            };
+                            return xz;
                         }).ToList(),
                     };
                     return nr;
@@ -267,6 +285,8 @@ namespace ModVentaAdm.Data.Prov
                             docSigno = s.docSigno,
                             factorCambio = s.factorCambio,
                             estatusAnulado=s.estatusAnulado,
+                            docSolicitadoPor= s.docSolicitadoPor,
+                            docModuloCargar=s.docModuloCargar,
                         };
                         return nr;
                     }).ToList();

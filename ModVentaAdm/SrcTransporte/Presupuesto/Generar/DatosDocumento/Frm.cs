@@ -38,6 +38,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
             TB_FECHA_VENCE.Text = _controlador.Data.FechaVencimiento_Get.ToShortDateString();
             TB_DIAS_VALIDEZ.Text = _controlador.Data.DiasValidez_Get.ToString("n0");
             TB_DIAS_CREDITO.Text = _controlador.Data.DiasCredito_Get.ToString("n0");
+            TB_SOLICITADO_POR.Text = _controlador.Data.SolicitadoPor_Get;
+            TB_MODULO_CARGAR.Text = _controlador.Data.ModuloCargar_Get;
             CB_COND_PAGO.SelectedValue = _controlador.Data.CondicionPago.GetId;
             _modoEditar = false;
         }
@@ -77,6 +79,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         {
             var _dias = int.Parse(TB_DIAS_VALIDEZ.Text);
             _controlador.Data.setDiasValidez(_dias);
+        }
+        private void TB_SOLICITADO_POR_Leave(object sender, EventArgs e)
+        {
+            _controlador.Data.setSolicitadoPor(TB_SOLICITADO_POR.Text);
+        }
+        private void TB_MODULO_CARGAR_Leave(object sender, EventArgs e)
+        {
+            _controlador.Data.setModuloCargar(TB_MODULO_CARGAR.Text);
         }
 
 

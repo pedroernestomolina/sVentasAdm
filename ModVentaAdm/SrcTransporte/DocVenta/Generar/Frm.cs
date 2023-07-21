@@ -251,9 +251,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         }
         private void EditarItem()
         {
-            //_controlador.EditarItem();
-            //ActualizarContadores();
-            //ActualizarTotales();
+            _controlador.EditarItem();
+            ActualizarContadores();
+            ActualizarTotales();
         }
         private void EliminarItem()
         {

@@ -21,6 +21,8 @@ namespace ModVentaAdm.Utils.DocLista.Remision
         public string CiRif { get { return _ficha.clienteCiRif; } }
         public decimal Monto { get { return _ficha.docMontoMonedaDiv; } }
         public int CntRenglones { get { return _ficha.docCntRenglones; } }
+        public string SolicitadoPor { get { return _ficha.docSolicitadoPor; } }
+        public string ModuloCargar { get { return _ficha.docModuloCargar; } }
 
 
         public data(OOB.Transporte.Documento.Remision.Lista.Ficha ficha)

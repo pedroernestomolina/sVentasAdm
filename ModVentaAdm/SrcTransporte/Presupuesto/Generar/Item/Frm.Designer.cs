@@ -147,7 +147,27 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel56 = new System.Windows.Forms.Panel();
             this.TB_PRECIO_PAUTADO_AFILIADO = new LibControles.NumeroDecimal();
+            this.panel57 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel58 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel59 = new System.Windows.Forms.Panel();
+            this.TB_CNT_PAUTADA_ALIADO = new LibControles.NumeroEntero();
+            this.panel60 = new System.Windows.Forms.Panel();
+            this.BT_GUARDAR_ALIADO = new System.Windows.Forms.Button();
+            this.panel61 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel62 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel65 = new System.Windows.Forms.Panel();
+            this.BT_ELIMINAR_ALIDO_LLAMADO = new System.Windows.Forms.Button();
+            this.panel63 = new System.Windows.Forms.Panel();
+            this.DGV_ALIADO = new System.Windows.Forms.DataGridView();
+            this.panel64 = new System.Windows.Forms.Panel();
+            this.L_CNT_ALIADOS = new System.Windows.Forms.Label();
             this.TAB_DESCRIPCION = new System.Windows.Forms.TabPage();
             this.panel35 = new System.Windows.Forms.Panel();
             this.gb_DESCRIPCION = new System.Windows.Forms.GroupBox();
@@ -252,6 +272,21 @@
             this.tableLayoutPanel14.SuspendLayout();
             this.panel23.SuspendLayout();
             this.panel26.SuspendLayout();
+            this.tableLayoutPanel27.SuspendLayout();
+            this.panel56.SuspendLayout();
+            this.panel57.SuspendLayout();
+            this.tableLayoutPanel28.SuspendLayout();
+            this.panel58.SuspendLayout();
+            this.panel59.SuspendLayout();
+            this.panel60.SuspendLayout();
+            this.panel61.SuspendLayout();
+            this.tableLayoutPanel29.SuspendLayout();
+            this.panel62.SuspendLayout();
+            this.tableLayoutPanel30.SuspendLayout();
+            this.panel65.SuspendLayout();
+            this.panel63.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_ALIADO)).BeginInit();
+            this.panel64.SuspendLayout();
             this.TAB_DESCRIPCION.SuspendLayout();
             this.panel35.SuspendLayout();
             this.gb_DESCRIPCION.SuspendLayout();
@@ -651,7 +686,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(151, 26);
             this.label5.TabIndex = 2;
-            this.label5.Text = "* Precio Neto ($):";
+            this.label5.Text = "* Precio Unit  Neto ($):";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel22
@@ -812,9 +847,10 @@
             this.TB_SOLICITADO_POR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.TB_SOLICITADO_POR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_SOLICITADO_POR.Location = new System.Drawing.Point(2, 2);
-            this.TB_SOLICITADO_POR.MaxLength = 150;
+            this.TB_SOLICITADO_POR.MaxLength = 200;
             this.TB_SOLICITADO_POR.Multiline = true;
             this.TB_SOLICITADO_POR.Name = "TB_SOLICITADO_POR";
+            this.TB_SOLICITADO_POR.ReadOnly = true;
             this.TB_SOLICITADO_POR.Size = new System.Drawing.Size(361, 39);
             this.TB_SOLICITADO_POR.TabIndex = 1;
             this.TB_SOLICITADO_POR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KeyDown);
@@ -884,9 +920,10 @@
             this.TB_MODULO_CARGAR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.TB_MODULO_CARGAR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_MODULO_CARGAR.Location = new System.Drawing.Point(2, 2);
-            this.TB_MODULO_CARGAR.MaxLength = 150;
+            this.TB_MODULO_CARGAR.MaxLength = 200;
             this.TB_MODULO_CARGAR.Multiline = true;
             this.TB_MODULO_CARGAR.Name = "TB_MODULO_CARGAR";
+            this.TB_MODULO_CARGAR.ReadOnly = true;
             this.TB_MODULO_CARGAR.Size = new System.Drawing.Size(361, 39);
             this.TB_MODULO_CARGAR.TabIndex = 2;
             this.TB_MODULO_CARGAR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KeyDown);
@@ -1462,13 +1499,15 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.Controls.Add(this.panel9, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.p_ALIADO_PRECIO, 0, 1);
+            this.tableLayoutPanel12.Controls.Add(this.panel61, 0, 2);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(1, 14);
             this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 3;
+            this.tableLayoutPanel12.RowCount = 4;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 251F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(526, 485);
             this.tableLayoutPanel12.TabIndex = 0;
@@ -1711,12 +1750,12 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(151, 29);
             this.label9.TabIndex = 1;
-            this.label9.Text = "Precio Pautado($):";
+            this.label9.Text = "Precio Unit Paut($):";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel26
             // 
-            this.panel26.Controls.Add(this.TB_PRECIO_PAUTADO_AFILIADO);
+            this.panel26.Controls.Add(this.tableLayoutPanel27);
             this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel26.Location = new System.Drawing.Point(158, 1);
             this.panel26.Margin = new System.Windows.Forms.Padding(1);
@@ -1724,19 +1763,265 @@
             this.panel26.Size = new System.Drawing.Size(365, 33);
             this.panel26.TabIndex = 1;
             // 
+            // tableLayoutPanel27
+            // 
+            this.tableLayoutPanel27.ColumnCount = 3;
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel27.Controls.Add(this.panel56, 0, 0);
+            this.tableLayoutPanel27.Controls.Add(this.panel57, 1, 0);
+            this.tableLayoutPanel27.Controls.Add(this.panel60, 2, 0);
+            this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel27.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel27.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel27.Name = "tableLayoutPanel27";
+            this.tableLayoutPanel27.RowCount = 1;
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel27.Size = new System.Drawing.Size(365, 33);
+            this.tableLayoutPanel27.TabIndex = 0;
+            // 
+            // panel56
+            // 
+            this.panel56.Controls.Add(this.TB_PRECIO_PAUTADO_AFILIADO);
+            this.panel56.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel56.Location = new System.Drawing.Point(0, 0);
+            this.panel56.Margin = new System.Windows.Forms.Padding(0);
+            this.panel56.Name = "panel56";
+            this.panel56.Padding = new System.Windows.Forms.Padding(2);
+            this.panel56.Size = new System.Drawing.Size(110, 33);
+            this.panel56.TabIndex = 0;
+            // 
             // TB_PRECIO_PAUTADO_AFILIADO
             // 
             this.TB_PRECIO_PAUTADO_AFILIADO.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PRECIO_PAUTADO_AFILIADO.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_PRECIO_PAUTADO_AFILIADO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_PRECIO_PAUTADO_AFILIADO.Location = new System.Drawing.Point(3, 4);
+            this.TB_PRECIO_PAUTADO_AFILIADO.Location = new System.Drawing.Point(2, 2);
             this.TB_PRECIO_PAUTADO_AFILIADO.MaxLength = 10;
             this.TB_PRECIO_PAUTADO_AFILIADO.Name = "TB_PRECIO_PAUTADO_AFILIADO";
-            this.TB_PRECIO_PAUTADO_AFILIADO.Size = new System.Drawing.Size(100, 26);
-            this.TB_PRECIO_PAUTADO_AFILIADO.TabIndex = 1;
+            this.TB_PRECIO_PAUTADO_AFILIADO.Size = new System.Drawing.Size(106, 26);
+            this.TB_PRECIO_PAUTADO_AFILIADO.TabIndex = 2;
             this.TB_PRECIO_PAUTADO_AFILIADO.Text = "0";
             this.TB_PRECIO_PAUTADO_AFILIADO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TB_PRECIO_PAUTADO_AFILIADO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KeyDown);
             this.TB_PRECIO_PAUTADO_AFILIADO.Leave += new System.EventHandler(this.TB_PRECIO_PAUTADO_AFILIADO_Leave);
+            // 
+            // panel57
+            // 
+            this.panel57.Controls.Add(this.tableLayoutPanel28);
+            this.panel57.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel57.Location = new System.Drawing.Point(110, 0);
+            this.panel57.Margin = new System.Windows.Forms.Padding(0);
+            this.panel57.Name = "panel57";
+            this.panel57.Size = new System.Drawing.Size(135, 33);
+            this.panel57.TabIndex = 1;
+            // 
+            // tableLayoutPanel28
+            // 
+            this.tableLayoutPanel28.ColumnCount = 2;
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.Controls.Add(this.panel58, 0, 0);
+            this.tableLayoutPanel28.Controls.Add(this.panel59, 1, 0);
+            this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel28.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel28.Name = "tableLayoutPanel28";
+            this.tableLayoutPanel28.RowCount = 1;
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel28.Size = new System.Drawing.Size(135, 33);
+            this.tableLayoutPanel28.TabIndex = 0;
+            // 
+            // panel58
+            // 
+            this.panel58.Controls.Add(this.label17);
+            this.panel58.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel58.Location = new System.Drawing.Point(0, 0);
+            this.panel58.Margin = new System.Windows.Forms.Padding(0);
+            this.panel58.Name = "panel58";
+            this.panel58.Padding = new System.Windows.Forms.Padding(2);
+            this.panel58.Size = new System.Drawing.Size(67, 33);
+            this.panel58.TabIndex = 0;
+            // 
+            // label17
+            // 
+            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(2, 2);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 29);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Cnt:";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel59
+            // 
+            this.panel59.Controls.Add(this.TB_CNT_PAUTADA_ALIADO);
+            this.panel59.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel59.Location = new System.Drawing.Point(67, 0);
+            this.panel59.Margin = new System.Windows.Forms.Padding(0);
+            this.panel59.Name = "panel59";
+            this.panel59.Padding = new System.Windows.Forms.Padding(2);
+            this.panel59.Size = new System.Drawing.Size(68, 33);
+            this.panel59.TabIndex = 1;
+            // 
+            // TB_CNT_PAUTADA_ALIADO
+            // 
+            this.TB_CNT_PAUTADA_ALIADO.BackColor = System.Drawing.Color.Yellow;
+            this.TB_CNT_PAUTADA_ALIADO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CNT_PAUTADA_ALIADO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_CNT_PAUTADA_ALIADO.Location = new System.Drawing.Point(2, 2);
+            this.TB_CNT_PAUTADA_ALIADO.MaxLength = 3;
+            this.TB_CNT_PAUTADA_ALIADO.Name = "TB_CNT_PAUTADA_ALIADO";
+            this.TB_CNT_PAUTADA_ALIADO.Size = new System.Drawing.Size(64, 26);
+            this.TB_CNT_PAUTADA_ALIADO.TabIndex = 0;
+            this.TB_CNT_PAUTADA_ALIADO.Text = "0";
+            this.TB_CNT_PAUTADA_ALIADO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_CNT_PAUTADA_ALIADO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KeyDown);
+            this.TB_CNT_PAUTADA_ALIADO.Leave += new System.EventHandler(this.TB_CNT_PAUTADA_ALIADO_Leave);
+            // 
+            // panel60
+            // 
+            this.panel60.Controls.Add(this.BT_GUARDAR_ALIADO);
+            this.panel60.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel60.Location = new System.Drawing.Point(246, 1);
+            this.panel60.Margin = new System.Windows.Forms.Padding(1);
+            this.panel60.Name = "panel60";
+            this.panel60.Padding = new System.Windows.Forms.Padding(2);
+            this.panel60.Size = new System.Drawing.Size(118, 31);
+            this.panel60.TabIndex = 2;
+            // 
+            // BT_GUARDAR_ALIADO
+            // 
+            this.BT_GUARDAR_ALIADO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_GUARDAR_ALIADO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_GUARDAR_ALIADO.Location = new System.Drawing.Point(2, 2);
+            this.BT_GUARDAR_ALIADO.Name = "BT_GUARDAR_ALIADO";
+            this.BT_GUARDAR_ALIADO.Size = new System.Drawing.Size(114, 27);
+            this.BT_GUARDAR_ALIADO.TabIndex = 0;
+            this.BT_GUARDAR_ALIADO.Text = "Guardar";
+            this.BT_GUARDAR_ALIADO.UseVisualStyleBackColor = true;
+            this.BT_GUARDAR_ALIADO.Click += new System.EventHandler(this.BT_GUARDAR_ALIADO_Click);
+            // 
+            // panel61
+            // 
+            this.panel61.Controls.Add(this.tableLayoutPanel29);
+            this.panel61.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel61.Location = new System.Drawing.Point(3, 142);
+            this.panel61.Name = "panel61";
+            this.panel61.Size = new System.Drawing.Size(520, 245);
+            this.panel61.TabIndex = 2;
+            // 
+            // tableLayoutPanel29
+            // 
+            this.tableLayoutPanel29.ColumnCount = 2;
+            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.11539F));
+            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.88461F));
+            this.tableLayoutPanel29.Controls.Add(this.panel62, 1, 0);
+            this.tableLayoutPanel29.Controls.Add(this.panel63, 0, 1);
+            this.tableLayoutPanel29.Controls.Add(this.panel64, 0, 0);
+            this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel29.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel29.Name = "tableLayoutPanel29";
+            this.tableLayoutPanel29.RowCount = 2;
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.87755F));
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.12245F));
+            this.tableLayoutPanel29.Size = new System.Drawing.Size(520, 245);
+            this.tableLayoutPanel29.TabIndex = 0;
+            // 
+            // panel62
+            // 
+            this.panel62.Controls.Add(this.tableLayoutPanel30);
+            this.panel62.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel62.Location = new System.Drawing.Point(427, 0);
+            this.panel62.Margin = new System.Windows.Forms.Padding(0);
+            this.panel62.Name = "panel62";
+            this.panel62.Size = new System.Drawing.Size(93, 33);
+            this.panel62.TabIndex = 0;
+            // 
+            // tableLayoutPanel30
+            // 
+            this.tableLayoutPanel30.ColumnCount = 3;
+            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel30.Controls.Add(this.panel65, 2, 0);
+            this.tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel30.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel30.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel30.Name = "tableLayoutPanel30";
+            this.tableLayoutPanel30.RowCount = 1;
+            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel30.Size = new System.Drawing.Size(93, 33);
+            this.tableLayoutPanel30.TabIndex = 0;
+            // 
+            // panel65
+            // 
+            this.panel65.Controls.Add(this.BT_ELIMINAR_ALIDO_LLAMADO);
+            this.panel65.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel65.Location = new System.Drawing.Point(63, 1);
+            this.panel65.Margin = new System.Windows.Forms.Padding(1);
+            this.panel65.Name = "panel65";
+            this.panel65.Padding = new System.Windows.Forms.Padding(2);
+            this.panel65.Size = new System.Drawing.Size(29, 31);
+            this.panel65.TabIndex = 0;
+            // 
+            // BT_ELIMINAR_ALIDO_LLAMADO
+            // 
+            this.BT_ELIMINAR_ALIDO_LLAMADO.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_eliminar;
+            this.BT_ELIMINAR_ALIDO_LLAMADO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_ELIMINAR_ALIDO_LLAMADO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ELIMINAR_ALIDO_LLAMADO.FlatAppearance.BorderSize = 0;
+            this.BT_ELIMINAR_ALIDO_LLAMADO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_ELIMINAR_ALIDO_LLAMADO.Location = new System.Drawing.Point(2, 2);
+            this.BT_ELIMINAR_ALIDO_LLAMADO.Name = "BT_ELIMINAR_ALIDO_LLAMADO";
+            this.BT_ELIMINAR_ALIDO_LLAMADO.Size = new System.Drawing.Size(25, 27);
+            this.BT_ELIMINAR_ALIDO_LLAMADO.TabIndex = 10;
+            this.BT_ELIMINAR_ALIDO_LLAMADO.UseVisualStyleBackColor = true;
+            this.BT_ELIMINAR_ALIDO_LLAMADO.Click += new System.EventHandler(this.BT_ELIMINAR_ALIDO_LLAMADO_Click);
+            // 
+            // panel63
+            // 
+            this.tableLayoutPanel29.SetColumnSpan(this.panel63, 2);
+            this.panel63.Controls.Add(this.DGV_ALIADO);
+            this.panel63.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel63.Location = new System.Drawing.Point(0, 33);
+            this.panel63.Margin = new System.Windows.Forms.Padding(0);
+            this.panel63.Name = "panel63";
+            this.panel63.Padding = new System.Windows.Forms.Padding(2);
+            this.panel63.Size = new System.Drawing.Size(520, 212);
+            this.panel63.TabIndex = 1;
+            // 
+            // DGV_ALIADO
+            // 
+            this.DGV_ALIADO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_ALIADO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGV_ALIADO.Location = new System.Drawing.Point(2, 2);
+            this.DGV_ALIADO.Name = "DGV_ALIADO";
+            this.DGV_ALIADO.Size = new System.Drawing.Size(516, 208);
+            this.DGV_ALIADO.TabIndex = 0;
+            // 
+            // panel64
+            // 
+            this.panel64.Controls.Add(this.L_CNT_ALIADOS);
+            this.panel64.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel64.Location = new System.Drawing.Point(1, 1);
+            this.panel64.Margin = new System.Windows.Forms.Padding(1);
+            this.panel64.Name = "panel64";
+            this.panel64.Padding = new System.Windows.Forms.Padding(2);
+            this.panel64.Size = new System.Drawing.Size(425, 31);
+            this.panel64.TabIndex = 2;
+            // 
+            // L_CNT_ALIADOS
+            // 
+            this.L_CNT_ALIADOS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_CNT_ALIADOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_CNT_ALIADOS.Location = new System.Drawing.Point(2, 2);
+            this.L_CNT_ALIADOS.Name = "L_CNT_ALIADOS";
+            this.L_CNT_ALIADOS.Size = new System.Drawing.Size(421, 27);
+            this.L_CNT_ALIADOS.TabIndex = 2;
+            this.L_CNT_ALIADOS.Text = "Aliados Registrados:";
+            this.L_CNT_ALIADOS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TAB_DESCRIPCION
             // 
@@ -2067,7 +2352,23 @@
             this.tableLayoutPanel14.ResumeLayout(false);
             this.panel23.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
-            this.panel26.PerformLayout();
+            this.tableLayoutPanel27.ResumeLayout(false);
+            this.panel56.ResumeLayout(false);
+            this.panel56.PerformLayout();
+            this.panel57.ResumeLayout(false);
+            this.tableLayoutPanel28.ResumeLayout(false);
+            this.panel58.ResumeLayout(false);
+            this.panel59.ResumeLayout(false);
+            this.panel59.PerformLayout();
+            this.panel60.ResumeLayout(false);
+            this.panel61.ResumeLayout(false);
+            this.tableLayoutPanel29.ResumeLayout(false);
+            this.panel62.ResumeLayout(false);
+            this.tableLayoutPanel30.ResumeLayout(false);
+            this.panel65.ResumeLayout(false);
+            this.panel63.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_ALIADO)).EndInit();
+            this.panel64.ResumeLayout(false);
             this.TAB_DESCRIPCION.ResumeLayout(false);
             this.panel35.ResumeLayout(false);
             this.gb_DESCRIPCION.ResumeLayout(false);
@@ -2211,7 +2512,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel24;
         private System.Windows.Forms.Panel panel50;
         private System.Windows.Forms.Button BT_ELIMINAR_FECHA;
-        private LibControles.NumeroDecimal TB_PRECIO_PAUTADO_AFILIADO;
         private System.Windows.Forms.Panel p_DSCTO;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel25;
         private System.Windows.Forms.Panel panel52;
@@ -2224,5 +2524,26 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel55;
         private System.Windows.Forms.ComboBox CB_ALICUOTA;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel27;
+        private System.Windows.Forms.Panel panel56;
+        private LibControles.NumeroDecimal TB_PRECIO_PAUTADO_AFILIADO;
+        private System.Windows.Forms.Panel panel57;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel28;
+        private System.Windows.Forms.Panel panel58;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel59;
+        private LibControles.NumeroEntero TB_CNT_PAUTADA_ALIADO;
+        private System.Windows.Forms.Panel panel60;
+        private System.Windows.Forms.Button BT_GUARDAR_ALIADO;
+        private System.Windows.Forms.Panel panel61;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
+        private System.Windows.Forms.Panel panel62;
+        private System.Windows.Forms.Panel panel63;
+        private System.Windows.Forms.DataGridView DGV_ALIADO;
+        private System.Windows.Forms.Panel panel64;
+        private System.Windows.Forms.Label L_CNT_ALIADOS;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel30;
+        private System.Windows.Forms.Panel panel65;
+        private System.Windows.Forms.Button BT_ELIMINAR_ALIDO_LLAMADO;
     }
 }

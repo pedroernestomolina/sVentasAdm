@@ -46,5 +46,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item.Agregar
         {
             _validarDatosCompletos = est;
         }
+        public void setSolicitadoPor(string desc)
+        {
+            Item.setSolicitadoPor(desc);
+        }
+        public void setModuloCargar(string desc)
+        {
+            Item.setModuloaCargar(desc);
+        }
     }
 }

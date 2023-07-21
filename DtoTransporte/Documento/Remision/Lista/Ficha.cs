@@ -23,6 +23,8 @@ namespace DtoTransporte.Documento.Remision.Lista
         public string clienteCiRif { get; set; }
         public decimal factorCambio { get; set; }
         public string estatusAnulado { get; set; }
+        public string docSolicitadoPor { get; set; }
+        public string docModuloCargar { get; set; }
         public Ficha()
         {
             docId = "";
@@ -35,6 +37,8 @@ namespace DtoTransporte.Documento.Remision.Lista
             docHoraEmision = "";
             docMontoMonedaAct = 0m;
             docMontoMonedaDiv = 0m;
+            docSolicitadoPor = "";
+            docModuloCargar = "";
             clienteCiRif = "";
             clienteNombre = "";
             factorCambio = 0m;

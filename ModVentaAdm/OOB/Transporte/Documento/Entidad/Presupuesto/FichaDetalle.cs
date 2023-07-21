@@ -20,14 +20,10 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Entidad.Presupuesto
         public string alicuotaId { get; set; }
         public decimal alicuotaTasa { get; set; }
         public string alicuotaDesc { get; set; }
-        public int aliadoId { get; set; }
-        public string aliadoCirif { get; set; }
-        public string aliadoCodigo { get; set; }
-        public string aliadoDesc { get; set; }
-        public decimal aliadoPrecioDivisa { get; set; }
         public string notas { get; set; }
         public decimal importe { get; set; }
         public List<FichaFechaServ> fechaServ { get; set; }
+        public List<FichaAliado> aliados { get; set; }
         public FichaDetalle()
         {
             id = -1;
@@ -41,14 +37,10 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Entidad.Presupuesto
             alicuotaId = "";
             alicuotaTasa = 0m;
             alicuotaDesc = "";
-            aliadoId = -1;
-            aliadoCirif = "";
-            aliadoCodigo = "";
-            aliadoDesc = "";
-            aliadoPrecioDivisa = 0m;
             notas = "";
             importe = 0m;
             fechaServ = new List<FichaFechaServ>();
+            aliados = new List<FichaAliado>();
         }
     }
 }

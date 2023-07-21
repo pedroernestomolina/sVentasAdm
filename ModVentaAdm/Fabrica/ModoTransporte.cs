@@ -8,7 +8,7 @@ namespace ModVentaAdm.Fabrica
 {
     public class ModoTransporte: IFabrica
     {
-        public string NombreHerramienta { get { return "Gestión Presupuestos."; } }
+        public string NombreHerramienta { get { return "Gestión Administrativa."; } }
 
         public void Iniciar_FrmPrincipal(Src.Principal.Gestion ctr)
         {

@@ -213,7 +213,7 @@ namespace ModVentaAdm.SrcTransporte.Principal
         //DOCUMENTOS
         private void GenerarFactura()
         {
-            _controlador.GenerarFactura();
+            //_controlador.GenerarFactura();
         }
         private void GenerarPresupuesto()
         {

@@ -44,7 +44,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             var rt = true;
             if (item.Item.Get_ItemPresupuesto != null)
             {
-                var _cnt = _lst.Count(c => c.Item.Get_ItemPresupuesto.DocId == item.Item.Get_ItemPresupuesto.DocId);
+                var _cnt = _lst.Count(c => c.Item.Get_ItemPresupuesto !=null && c.Item.Get_ItemPresupuesto.DocId == item.Item.Get_ItemPresupuesto.DocId);
                 if (_cnt > 0)
                 {
                     Helpers.Msg.Alerta("DOCUMENTO YA FUE REGISTRADO POR OTRO ITEM");

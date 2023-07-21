@@ -9,10 +9,14 @@ namespace DtoTransporte.Documento.Agregar.Presupuesto
 {
     public class Ficha: baseFicha
     {
+        public string docSolicitadoPor { get; set; }
+        public string docModuloCargar { get; set; }
         public List<FichaDetalle> items { get; set; }
         public Ficha()
             :base()
         {
+            docSolicitadoPor = "";
+            docModuloCargar = "";
             items = new List<FichaDetalle>();
         }
     }

@@ -35,7 +35,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
             _modoInicializar = true;
             TB_DESC_BREVE.Text = _controlador.Item.Get_Descripcion;
             TB_CNT_DIAS.Text = _controlador.Item.Get_Cnt.ToString("n0", _cult);
-            TB_PRECIO_DIVISA.Text = _controlador.Item.Get_PrecioDivisa.ToString("n2", _cult);
+            TB_PRECIO_DIVISA.Text = _controlador.Item.Get_PrecioDivisa.ToString();
             TB_DSCTO.Text = _controlador.Item.Get_Dscto.ToString("n2", _cult);
             L_IMPORTE.Text = _controlador.Item.Get_Importe.ToString("n2", _cult);
             CB_ALICUOTA.DataSource = _controlador.Alicuota.GetSource;

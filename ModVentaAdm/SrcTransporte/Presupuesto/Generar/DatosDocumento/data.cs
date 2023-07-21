@@ -21,6 +21,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         private int _diasCredito;
         private LibUtilitis.CtrlCB.ICtrl _condPago;
         private OOB.Maestro.Cliente.Entidad.Ficha _cliente;
+        private string _solicitadoPor;
+        private string _moduloCargar;
 
 
         public DateTime FechaSistema_Get { get { return _fechaSistema; } }
@@ -28,6 +30,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         public int DiasValidez_Get { get { return _diasValidez; } }
         public int DiasCredito_Get { get { return _diasCredito; } }
         public LibUtilitis.CtrlCB.ICtrl CondicionPago { get { return _condPago; } }
+        public string SolicitadoPor_Get { get { return _solicitadoPor; } }
+        public string ModuloCargar_Get { get { return _moduloCargar; } }
         public OOB.Maestro.Cliente.Entidad.Ficha Cliente { get { return _cliente; } }
         public string CondPago_Get { get { return _condPago.GetItem == null ? "" : _condPago.GetItem.desc; } }
         public string Cliente_ciRif_Get { get { return _cliente == null ? "" : _cliente.ciRif; } }
@@ -73,6 +77,19 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         {
             _diasValidez = dias;
         }
+        public void setSolicitadoPor(string desc)
+        {
+            _solicitadoPor = desc;
+        }
+        public void setModuloCargar(string desc)
+        {
+            _moduloCargar = desc;
+        }
+        public void setCliente(OOB.Maestro.Cliente.Entidad.Ficha ficha)
+        {
+            _cliente = ficha;
+        }
+
         public void CondicionPagoCargar(List<ficha> lst)
         {
             _condPago.CargarData(lst);
@@ -85,15 +102,11 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
             _fechaVencimiento = DateTime.Now.Date;
             _diasCredito = 0;
             _diasValidez = 0;
+            _solicitadoPor = "";
+            _moduloCargar = "";
             _cliente = null;
         }
-
-        public void setCliente(OOB.Maestro.Cliente.Entidad.Ficha ficha)
-        {
-            _cliente = ficha;
-        }
-
-        public bool DatosIsOK()
+        public bool DatosGrabarIsOK()
         {
             if (_cliente == null) 
             {
@@ -105,9 +118,27 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
                 Helpers.Msg.Alerta("CAMPO [ CONDICION DE PAGO ] NO PUEDE ESTAR VACIO");
                 return false;
             }
+            if (_solicitadoPor.Trim() == "") 
+            {
+                Helpers.Msg.Alerta("CAMPO [ SOLCITADO POR ] NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (_moduloCargar.Trim() == "")
+            {
+                Helpers.Msg.Alerta("CAMPO [ MODULO A CARGAR ] NO PUEDE ESTAR VACIO");
+                return false;
+            }
             return true;
         }
-
+        public bool DatosIsOK()
+        {
+            if (_cliente == null)
+            {
+                Helpers.Msg.Alerta("CAMPO [ CLIENTE ] NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            return true;
+        }
         public void LimpiarTodo()
         {
             limpiar();

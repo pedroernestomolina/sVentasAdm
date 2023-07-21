@@ -983,6 +983,16 @@ namespace ModVentaAdm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_transp {
+            get {
+                object obj = ResourceManager.GetObject("logo_transp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Machine_learning_1024x682 {
             get {
                 object obj = ResourceManager.GetObject("Machine_learning_1024x682", resourceCulture);

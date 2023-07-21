@@ -22,7 +22,48 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         {
             _cult = CultureInfo.CurrentCulture;
             InitializeComponent();
+            InicializaGrid();
             InicializaLB();
+        }
+
+        private void InicializaGrid()
+        {
+            var f = new Font("Serif", 8, FontStyle.Bold);
+            var f1 = new Font("Serif", 8, FontStyle.Regular);
+            var f2 = new Font("Serif", 10, FontStyle.Bold);
+
+            DGV_ALIADO.RowHeadersVisible = false;
+            DGV_ALIADO.AllowUserToAddRows = false;
+            DGV_ALIADO.AllowUserToDeleteRows = false;
+            DGV_ALIADO.AutoGenerateColumns = false;
+            DGV_ALIADO.AllowUserToResizeRows = false;
+            DGV_ALIADO.AllowUserToResizeColumns = false;
+            DGV_ALIADO.AllowUserToOrderColumns = false;
+            DGV_ALIADO.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGV_ALIADO.MultiSelect = false;
+            DGV_ALIADO.ReadOnly = true;
+
+            var c2 = new DataGridViewTextBoxColumn();
+            c2.DataPropertyName = "AliadoLlamado";
+            c2.HeaderText = "Aliado";
+            c2.Visible = true;
+            c2.MinimumWidth = 150;
+            c2.HeaderCell.Style.Font = f;
+            c2.DefaultCellStyle.Font = f1;
+            c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            var c3 = new DataGridViewTextBoxColumn();
+            c3.DataPropertyName = "Importe";
+            c3.HeaderText = "Importe($)";
+            c3.Visible = true;
+            c3.Width = 80;
+            c3.HeaderCell.Style.Font = f;
+            c3.DefaultCellStyle.Font = f1;
+            c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c3.DefaultCellStyle.Format = "n2";
+
+            DGV_ALIADO.Columns.Add(c2);
+            DGV_ALIADO.Columns.Add(c3);
         }
         private void InicializaLB()
         {
@@ -35,6 +76,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private void Frm_Load(object sender, EventArgs e)
         {
             _modoInicializar = true;
+            DGV_ALIADO.DataSource = _controlador.Item.Get_SourceAliadosLlamados;
+            LB_FECHA.DataSource = _controlador.Item.Get_SourceFechas;
+            //
             TB_DESC_BREVE.Text = _controlador.Item.Get_Descripcion;
             TB_SOLICITADO_POR.Text = _controlador.Item.Get_SolicitadoPor;
             TB_MODULO_CARGAR.Text = _controlador.Item.Get_ModuloCargar;
@@ -44,8 +88,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             TB_DSCTO.Text = _controlador.Item.Get_Dscto.ToString("n2", _cult);
             L_ALIADO.Text = _controlador.Item.Get_Aliado_Inf;
             TB_PRECIO_PAUTADO_AFILIADO.Text = _controlador.Item.Get_Aliado_PrecioPautado.ToString("n2", _cult);
+            TB_CNT_PAUTADA_ALIADO.Text = _controlador.Item.Get_Aliado_CntPautado.ToString("n0");
             L_IMPORTE.Text = _controlador.Item.Get_Importe.ToString("n2", _cult);
-            LB_FECHA.DataSource = _controlador.Item.Get_SourceFechas;
             TB_DESCRIPCION_FULL.Text = _controlador.Item.Get_DescripcionFull;
             DTP_FECHA.Value = _controlador.Item.Get_Fecha;
             DTP_HORA.Value = _controlador.Item.Get_Fecha;
@@ -128,6 +172,12 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _controlador.Item.setPrecioAliadoPautado(_monto);
             TB_PRECIO_PAUTADO_AFILIADO.Text = _controlador.Item.Get_Aliado_PrecioPautado.ToString("n2", _cult);
         }
+        private void TB_CNT_PAUTADA_ALIADO_Leave(object sender, EventArgs e)
+        {
+            var _cnt = int.Parse(TB_CNT_PAUTADA_ALIADO.Text);
+            _controlador.Item.setCntAliadoPautado(_cnt);
+            TB_CNT_PAUTADA_ALIADO.Text = _controlador.Item.Get_Aliado_CntPautado.ToString("n0");
+        }
         private void TB_DESCRIPCION_FULL_Leave(object sender, EventArgs e)
         {
             _controlador.Item.setDescripcionFull(TB_DESCRIPCION_FULL.Text);
@@ -146,6 +196,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private void BT_BUSCAR_ALIADO_Click(object sender, EventArgs e)
         {
             BuscarAliado();
+        }
+        private void BT_GUARDAR_ALIADO_Click(object sender, EventArgs e)
+        {
+            GuardarAliado();
+        }
+        private void BT_ELIMINAR_ALIDO_LLAMADO_Click(object sender, EventArgs e)
+        {
+            EliminarAliado();
         }
         private void BT_LIMPIAR_ALIADO_Click(object sender, EventArgs e)
         {
@@ -194,6 +252,17 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         {
             _controlador.Item.LimpiarAliado();
             L_ALIADO.Text = _controlador.Item.Get_Aliado_Inf;
+        }
+        private void GuardarAliado()
+        {
+            _controlador.Item.GuardarAliado();
+            L_ALIADO.Text = _controlador.Item.Get_Aliado_Inf;
+            TB_PRECIO_PAUTADO_AFILIADO.Text = _controlador.Item.Get_Aliado_PrecioPautado.ToString("n2", _cult);
+            TB_CNT_PAUTADA_ALIADO.Text = _controlador.Item.Get_Aliado_CntPautado.ToString("n0");
+        }
+        private void EliminarAliado()
+        {
+            _controlador.Item.EliminarAliado();
         }
         private void ActualizaImporte()
         {

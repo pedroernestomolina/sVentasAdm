@@ -255,12 +255,14 @@
     <Compile Include="OOB\Transporte\Documento\Agregar\baseDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFicha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Aliado.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Fecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Resultado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\baseEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaAliado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaFechaServ.cs" />
@@ -391,6 +393,9 @@
     <Compile Include="SrcTransporte\Presupuesto\Generar\ImpGenerar.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Agregar\Agregar.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Agregar\IAgregar.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\AliadosLlamado\data.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\AliadosLlamado\ILLamados.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\AliadosLlamado\Imp.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\data.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Editar\Editar.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Editar\IEditar.cs" />
@@ -1182,6 +1187,7 @@
     <None Include="Resources\bt_editar_2_32.png" />
     <None Include="Resources\bt_serv_traslado_24.png" />
     <None Include="Resources\bt_presup_24.png" />
+    <None Include="Resources\logo_transp.jpg" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1275,6 +1281,7 @@
     <Content Include="Src\Imagenes\inventario_2.jpg" />
     <Content Include="Src\Imagenes\libro.png" />
     <Content Include="Src\Imagenes\localizacion_48.png" />
+    <Content Include="Src\Imagenes\logo_transp.jpg" />
     <Content Include="Src\Imagenes\Machine-learning-1024x682.jpg" />
     <Content Include="Src\Imagenes\mobile.ico" />
     <Content Include="Src\Imagenes\plataforma-efosearch.jpg" />

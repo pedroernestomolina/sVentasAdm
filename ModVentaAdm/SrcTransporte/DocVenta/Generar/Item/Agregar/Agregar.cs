@@ -12,7 +12,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
         public Agregar()
             : base()
         {
+            _idCliente = "";
         }
+
+
         public override void Procesar()
         {
             _procesarIsOK = false;
@@ -25,7 +28,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
                 }
             }
         }
-
         private string _idCliente;
         public void setCliente(string idCliente)
         {
@@ -36,8 +38,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
         {
             AgregarPresupuesto();
         }
-
-
         private Utils.DocLista.IDocLista _listDoc;
         private void AgregarPresupuesto()
         {
@@ -66,7 +66,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
                 {
                     var _doc=(Utils.DocLista.Remision.data)_listDoc.ItemSeleccionado;
                     var _docNumero =_doc.DocNumero;
-                    var _desc = "PRESUPUESTO #" + _docNumero;
+                    var _desc = "PRESUPUESTO #" + _docNumero+ Environment.NewLine+_doc.SolicitadoPor+Environment.NewLine+_doc.ModuloCargar;
                     var _precio =  _doc.Monto;
                     _data.setDescripcion(_desc);
                     _data.setCnt(1);
@@ -79,6 +79,30 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
+            }
+        }
+
+        public override void HabilitarServicio()
+        {
+            AgregarServicio();
+        }
+        private Presupuesto.Generar.Item.Agregar.IAgregar _itemAgregar;
+        private void AgregarServicio()
+        {
+            _itemAgregar = new Presupuesto.Generar.Item.Agregar.Agregar();
+            _itemAgregar.Inicializa();
+            _itemAgregar.setTasaFiscal(_tasasFiscal);
+            _itemAgregar.setValidarDatosCompletos(true);
+            _itemAgregar.Inicia();
+            if (_itemAgregar.ProcesarIsOK)
+            {
+                var _desc = _itemAgregar.Item.Get_Descripcion;
+                var _precio = _itemAgregar.Item.Get_Importe;
+                _data.setDescripcion(_desc);
+                _data.setCnt(1);
+                _data.setDscto(0m);
+                _data.setPrecioDivisa(_precio);
+                _data.setItemServicio(_itemAgregar);
             }
         }
     }

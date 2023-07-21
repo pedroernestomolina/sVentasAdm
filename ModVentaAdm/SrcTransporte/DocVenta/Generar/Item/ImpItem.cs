@@ -105,33 +105,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
             _data.setAlicuota((Presupuesto.Generar.alicuota)_alicuota.GetItem);
         }
 
-
         abstract public void HabilitarPresupuesto();
-        public void HabilitarServicio()
-        {
-            AgregarServicio();
-        }
-
-
-
-        private Presupuesto.Generar.Item.Agregar.IAgregar _itemAgregar;
-        private void AgregarServicio()
-        {
-            _itemAgregar = new Presupuesto.Generar.Item.Agregar.Agregar();
-            _itemAgregar.Inicializa();
-            _itemAgregar.setTasaFiscal(_tasasFiscal);
-            _itemAgregar.setValidarDatosCompletos(true);
-            _itemAgregar.Inicia();
-            if (_itemAgregar.ProcesarIsOK) 
-            {
-                var _desc = _itemAgregar.Item.Get_Descripcion;
-                var _precio = _itemAgregar.Item.Get_Importe;
-                _data.setDescripcion(_desc);
-                _data.setCnt(1);
-                _data.setDscto(0m);
-                _data.setPrecioDivisa(_precio);
-                _data.setItemServicio(_itemAgregar);
-            }
-        }
+        abstract public void HabilitarServicio();
     }
 }

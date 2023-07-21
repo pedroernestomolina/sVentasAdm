@@ -119,7 +119,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _tasasFiscal = list;
             var lst = list.Select(s =>
             {
-                //var nr = new Utils.dataFiltro() { id = s.id, codigo = "", desc = s.ToString() };
                 var nr = new alicuota() { id = s.id, codigo = "", desc = s.ToString(), tasa = s.tasa };
                 return nr;
             }).ToList();

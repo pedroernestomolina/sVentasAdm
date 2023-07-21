@@ -20,7 +20,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         public BindingSource Source_Get { get { return _bs; } }
         public Item.IItem ItemActual { get { return (Item.IItem)_bs.Current; } }
         public int Cnt_Get { get { return _bs.Count; } }
-        public decimal MontoPagoAliado_Get { get { return _bl.Sum(s => s.Item.Get_Aliado_PrecioPautado); } }
+        public decimal MontoPagoAliado_Get { get { return _bl.Sum(s => s.Item.Get_ImporteAliadosLLamados); } }
         public List<Item.IItem> GetItems { get { return _bl.ToList(); } }
 
 
@@ -98,13 +98,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 Helpers.Msg.Alerta("HAY ITEMS PENDIENTES POR DEFINIR EL ALIADO");
                 return false;
             }
-            var _cntAliadoPrecio = _lst.Where(w => w.Item.Get_Aliado_PrecioPautado == 0m).Count();
-            if (_cntAliadoPrecio > 0)
-            {
-                Helpers.Msg.Alerta("HAY ITEMS PENDIENTES POR DEFINIR EL MONTO PAUTADO POR EL ALIADO");
-                return false;
-            }
-
             var _cntImporte = _lst.Where(w => w.ImporteItemMostrar == 0m).Count();
             if (_cntImporte > 0)
             {
@@ -146,13 +139,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
                 foreach (var it in ficha.items)
                 {
-                    var _aliado = new OOB.Transporte.Aliado.Entidad.Ficha()
-                    {
-                        id = it.aliadoId,
-                        ciRif = it.aliadoCirif,
-                        codigo = it.aliadoCodigo,
-                        nombreRazonSocial = it.aliadoDesc,
-                    };
                     var _alicuota = new alicuota()
                     {
                         codigo = "",
@@ -162,15 +148,31 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     };
                     var _item = new Item.Agregar.Agregar();
                     _item.Item.setDescripcion(it.servicioDesc);
-                    _item.Item.setSolicitadoPor(it.solicitadoPor);
-                    _item.Item.setModuloaCargar(it.moduloCargar);
+                    _item.Item.setSolicitadoPor(ficha.encabezado.docSolicitadoPor);
+                    _item.Item.setModuloaCargar(ficha.encabezado.docModuloCargar);
                     _item.Item.setCntDias(it.cntDias);
                     _item.Item.setCntUnidades(it.cntUnidades);
                     _item.Item.setPrecioDivisa(it.precioNetoDivisa);
                     _item.Item.setDscto(it.dscto);
                     _item.Item.setAlicuota(_alicuota);
-                    _item.Item.setAliado(_aliado);
-                    _item.Item.setPrecioAliadoPautado(it.aliadoPrecioDivisa);
+
+                    foreach (var xr in it.aliados)
+                    {
+                        var _aliado = new OOB.Transporte.Aliado.Entidad.Ficha()
+                        {
+                            id = xr.idAliado ,
+                            ciRif = xr.ciRif ,
+                            codigo = xr.codigo,
+                            nombreRazonSocial = xr.descripcion,
+                        };
+                        _item.Item.setAliado(_aliado);
+                        _item.Item.setPrecioAliadoPautado(xr.precioUnitDivisa);
+                        _item.Item.setCntAliadoPautado(xr.cntDias);
+                        _item.Item.GuardarAliado();
+                    }
+                    _item.Item.setAliado(null);
+                    _item.Item.setPrecioAliadoPautado(0m);
+                    _item.Item.setCntAliadoPautado(0);
                     _item.Item.setDescripcionFull(it.notas);
                     _item.Item.setTasaIva(it.alicuotaTasa);
                     _item.setTasaFiscal(r01.ListaD);

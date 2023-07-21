@@ -31,7 +31,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         public string DatosDoc_FechaEmi_Get { get { return _datosDoc == null ? "" : _datosDoc.FechaSistema_Get.ToShortDateString(); } }
         public string DatosDoc_CondPago_Get { get { return _datosDoc == null ? "" : _datosDoc.CondPago_Get; } }
         public string DatosDoc_FechaVenc_Get { get { return _datosDoc == null ? "" : _datosDoc.FechaVencimiento_Get.ToShortDateString(); } }
+        public string DatosDoc_SolicitadoPor_Get { get { return _datosDoc == null ? "" : _datosDoc.SolicitadoPor_Get; } }
+        public string DatosDoc_ModuloCargar_Get { get { return _datosDoc == null ? "" : _datosDoc.ModuloCargar_Get; } }
         public bool DocumentoIsOk { get { return _datosDoc != null; } }
+        public bool DocumentoGrabarIsOk { get { return (_datosDoc != null && _datosDoc.DatosGrabarIsOK()); } }
 
 
         public data(Remision.IRemision _remision)

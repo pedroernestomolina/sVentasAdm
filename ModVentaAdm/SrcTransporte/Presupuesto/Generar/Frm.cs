@@ -135,6 +135,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             L_DATOS_DOC_FECHA.Text = _controlador.Ficha.DatosDoc_FechaEmi_Get;
             L_DATOS_DOC_COND_PAGO.Text = _controlador.Ficha.DatosDoc_CondPago_Get;
             L_DATOS_DOC_FECHA_VENCE.Text = _controlador.Ficha.DatosDoc_FechaVenc_Get;
+            L_DATOS_DOC_SOLICITADO_POR.Text = _controlador.Ficha.DatosDoc_SolicitadoPor_Get;
+            L_DATOS_DOC_MODULO_CARGAR.Text = _controlador.Ficha.DatosDoc_ModuloCargar_Get;
             //
             CB_REMISION.SelectedValue = _controlador.Remision.ItemId_Get;
             L_NOMBRE_DOC_REMISION.Text = _controlador.Remision.DocNombre_Get;
@@ -284,6 +286,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             L_DATOS_DOC_FECHA.Text = _controlador.Ficha.DatosDoc_FechaEmi_Get;
             L_DATOS_DOC_COND_PAGO.Text = _controlador.Ficha.DatosDoc_CondPago_Get;
             L_DATOS_DOC_FECHA_VENCE.Text = _controlador.Ficha.DatosDoc_FechaVenc_Get;
+            L_DATOS_DOC_SOLICITADO_POR.Text = _controlador.Ficha.DatosDoc_SolicitadoPor_Get;
+            L_DATOS_DOC_MODULO_CARGAR.Text = _controlador.Ficha.DatosDoc_ModuloCargar_Get;
         }
         private void ActualizarFichaRemision()
         {

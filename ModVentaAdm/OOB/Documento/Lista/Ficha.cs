@@ -30,7 +30,7 @@ namespace ModVentaAdm.OOB.Documento.Lista
         public string DocSituacion { get; set; }
         public string SucursalDesc { get; set; }
         public string SucursalCod { get; set; }
-        public bool IsActivo { get { return Estatus.Trim().ToUpper() == "0" ? true : false; } }
+        public bool IsActivo { get { return Estatus.Trim().ToUpper() == "1" ? false : true; } }
         public string DocSiglas
         {
             get

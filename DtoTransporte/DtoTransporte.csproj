@@ -49,6 +49,10 @@
     <Compile Include="Aliado\Tipos.cs" />
     <Compile Include="Documento\Agregar\baseDetalle.cs" />
     <Compile Include="Documento\Agregar\baseFecha.cs" />
+    <Compile Include="Documento\Agregar\Factura\Ficha.cs" />
+    <Compile Include="Documento\Agregar\Factura\FichaAliado.cs" />
+    <Compile Include="Documento\Agregar\Factura\FichaDocRef.cs" />
+    <Compile Include="Documento\Agregar\Presupuesto\Aliado.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Fecha.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Ficha.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\FichaDetalle.cs" />
@@ -56,6 +60,7 @@
     <Compile Include="Documento\Agregar\baseFicha.cs" />
     <Compile Include="Documento\Entidad\baseEncabezado.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\Ficha.cs" />
+    <Compile Include="Documento\Entidad\Presupuesto\FichaAliado.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\FichaDetalle.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\FichaEncabezado.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\FichaFechaServ.cs" />

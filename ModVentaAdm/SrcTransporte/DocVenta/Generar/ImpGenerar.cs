@@ -183,24 +183,24 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 }
             }
         }
-        //private Item.Editar.IEditar _itemEditar;
+        private Item.Editar.IEditar _itemEditar;
         public void EditarItem()
         {
-            //if (_dataGen.Items.ItemActual != null)
-            //{
-            //    var _itemViejo = _dataGen.Items.ItemActual;
-            //    _itemEditar = new Item.Editar.Editar();
-            //    _itemEditar.Inicializa();
-            //    _itemEditar.setTasaFiscal(_tasasFiscal);
-            //    _itemEditar.setItemEditar(_dataGen.Items.ItemActual.Item);
-            //    _itemEditar.Inicia();
-            //    if (_itemEditar.ProcesarIsOK)
-            //    {
-            //        _dataGen.Items.EliminarItem(_itemViejo);
-            //        _dataGen.Items.AgregarItem(_itemEditar);
-            //        Helpers.Msg.EditarOk();
-            //    }
-            //}
+            if (_dataGen.Items.ItemActual != null)
+            {
+                var _itemViejo = _dataGen.Items.ItemActual;
+                _itemEditar = new Item.Editar.Editar();
+                _itemEditar.Inicializa();
+                _itemEditar.setTasaFiscal(_tasasFiscal);
+                _itemEditar.setItemEditar(_dataGen.Items.ItemActual.Item);
+                _itemEditar.Inicia();
+                if (_itemEditar.ProcesarIsOK)
+                {
+                    _dataGen.Items.EliminarItem(_itemViejo);
+                    _dataGen.Items.AgregarItem(_itemEditar);
+                    Helpers.Msg.EditarOk();
+                }
+            }
         }
 
         private string _notasObservaciones;

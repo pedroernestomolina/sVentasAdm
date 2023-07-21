@@ -12,7 +12,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         public int id { get; set; }
         public DateTime fechaServ { get; set; }
         public DateTime horaServ { get; set; }
-        public string desc { get { return fechaServ.ToShortDateString()+", "+horaServ.ToShortTimeString(); } }
+        public string desc { get { return fechaServ.ToShortDateString() + ", " + horaServ.ToShortTimeString(); } }
     }
     public class data
     {
@@ -30,12 +30,20 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private List<fecha> _fechas;
         private BindingSource _bsFechas;
         private decimal _precioAliadoPautado;
+        private int _cntAliadoPautado;
         private string _descripcionFull;
         private decimal _dscto;
         private decimal _precioDscto;
         private alicuota _alicuota;
+        private AliadosLlamado.ILLamados _aliadosLlamados;
 
 
+        public BindingSource Get_SourceFechas { get { return _bsFechas; } }
+        public BindingSource Get_SourceAliadosLlamados { get { return _aliadosLlamados.Get_Source; } }
+        public List<AliadosLlamado.data> Get_ListaAliadosLLamados { get { return _aliadosLlamados.GetLista; } }
+        public decimal Get_ImporteAliadosLLamados { get { return _aliadosLlamados.Get_Importe; } }
+
+        //
         public string Get_Descripcion { get { return _desc; } }
         public string Get_SolicitadoPor { get { return _solicitadoPor; } }
         public string Get_ModuloCargar { get { return _moduloCargar; } }
@@ -44,51 +52,51 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         public decimal Get_PrecioDivisa { get { return _precioDivisa; } }
         public decimal Get_Dscto { get { return _dscto; } }
         public decimal Get_Importe { get { return _importe; } }
-        public  BindingSource Get_SourceFechas { get { return _bsFechas; } }
         public decimal Get_Aliado_PrecioPautado { get { return _precioAliadoPautado; } }
+        public int Get_Aliado_CntPautado { get { return _cntAliadoPautado; } }
         public string Get_DescripcionFull { get { return _descripcionFull; } }
         public List<fecha> Get_Fechas { get { return _fechas; } }
         public DateTime Get_Fecha { get { return _fechaServ; } }
         public DateTime Get_Hora { get { return _fechaServ; } }
         public OOB.Transporte.Aliado.Entidad.Ficha Get_Aliado { get { return _aliado; } }
-        public bool AliadoIsOk { get { return _aliado != null; } }
-        public decimal Get_Iva 
+        public bool AliadoIsOk { get { return (_aliadosLlamados != null && _aliadosLlamados.GetLista.Count > 0); } }
+        public decimal Get_Iva
         {
-            get 
+            get
             {
                 var rt = 0m;
-                if (_tasaIva > 0m) 
+                if (_tasaIva > 0m)
                 {
                     rt = _importe * _tasaIva / 100;
                 }
-                return rt; 
-            } 
+                return rt;
+            }
         }
-        public string Get_Aliado_ItemMostrar 
+        public string Get_Aliado_ItemMostrar
         {
-            get 
+            get
             {
                 var rt = "NO DEFINIDO";
                 if (_aliado != null)
                 {
-                    rt = _aliado.ciRif.Trim()+"("+_aliado.nombreRazonSocial.Trim()+")";
+                    rt = _aliado.ciRif.Trim() + "(" + _aliado.nombreRazonSocial.Trim() + ")";
                 }
                 return rt;
-            } 
+            }
         }
-        public string Get_Aliado_Inf 
-        { 
-            get 
+        public string Get_Aliado_Inf
+        {
+            get
             {
                 var rt = "";
-                if (_aliado != null) 
+                if (_aliado != null)
                 {
                     rt = _aliado.codigo + Environment.NewLine +
-                        _aliado.ciRif + Environment.NewLine + 
+                        _aliado.ciRif + Environment.NewLine +
                         _aliado.nombreRazonSocial;
                 }
                 return rt;
-            } 
+            }
         }
 
 
@@ -98,12 +106,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _bsFechas = new BindingSource();
             _bsFechas.DataSource = _fechas;
             _bsFechas.CurrencyManager.Refresh();
+            _aliadosLlamados = new AliadosLlamado.Imp();
         }
 
         public void Inicializa()
         {
             limpiar();
             _bsFechas.CurrencyManager.Refresh();
+            _aliadosLlamados.Inicializa();
         }
 
 
@@ -117,7 +127,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         }
         public void setModuloaCargar(string desc)
         {
-            _moduloCargar=desc;
+            _moduloCargar = desc;
         }
         public void setCntDias(int cnt)
         {
@@ -141,7 +151,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         }
         public void setTasaIva(decimal tasa)
         {
-            _tasaIva  = tasa;
+            _tasaIva = tasa;
         }
         public void setDscto(decimal tasa)
         {
@@ -175,7 +185,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _importe = 0m;
             _fechaServ = DateTime.Now;
             _horaServ = DateTime.Now;
-            _precioAliadoPautado=0m;
+            _precioAliadoPautado = 0m;
+            _cntAliadoPautado = 0;
             _fechas = new List<fecha>();
         }
         public void LimpiarAliado()
@@ -184,15 +195,15 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         }
         public void AgregarFecha()
         {
-            var _id=0;
-            if (_fechas.Count==0)
-                _id=1;
+            var _id = 0;
+            if (_fechas.Count == 0)
+                _id = 1;
             else
-                _id= _fechas.Max(m=>m.id)+2;
+                _id = _fechas.Max(m => m.id) + 2;
             var nr = new fecha()
             {
                 fechaServ = _fechaServ,
-                horaServ=_horaServ,
+                horaServ = _horaServ,
                 id = _id,
             };
             _fechas.Add(nr);
@@ -203,7 +214,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         }
         public void EliminarFecha()
         {
-            if (_bsFechas.Current != null) 
+            if (_bsFechas.Current != null)
             {
                 var _item = (fecha)_bsFechas.Current;
                 _fechas.Remove(_item);
@@ -220,11 +231,15 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         }
         public void setHora(DateTime hora)
         {
-            _horaServ= hora;
+            _horaServ = hora;
         }
         public void setPrecioAliadoPautado(decimal _monto)
         {
             _precioAliadoPautado = _monto;
+        }
+        public void setCntAliadoPautado(int cnt)
+        {
+            _cntAliadoPautado = cnt;
         }
         public void setDescripcionFull(string desc)
         {
@@ -232,7 +247,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         }
         public bool VerificarDatosIsOK()
         {
-            if (_desc.Trim() == "") 
+            if (_desc.Trim() == "")
             {
                 Helpers.Msg.Alerta("Campo [ DESCRIPCION BREVE ] No puede estar vacio !!!");
                 return false;
@@ -247,7 +262,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
                 Helpers.Msg.Alerta("Campo [ MODULO / CARGAR ] No puede estar vacio !!!");
                 return false;
             }
-            if (_fechas.Count ==0)
+            if (_fechas.Count == 0)
             {
                 Helpers.Msg.Alerta("Campo [ FECHAS ] No puede estar vacio !!!");
                 return false;
@@ -275,6 +290,58 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         public void setAlicuota(alicuota ficha)
         {
             _alicuota = ficha;
+        }
+
+
+        public void GuardarAliado()
+        {
+            if (aliadoRegistrarIsOK())
+            {
+                var data = new AliadosLlamado.data() { aliado = _aliado, precio = _precioAliadoPautado, cnt = _cntAliadoPautado };
+                _aliadosLlamados.Agregar(data);
+                limpiarDataAliado();
+            }
+        }
+        public void EliminarAliado()
+        {
+            if (_aliadosLlamados.ItemActual != null)
+            {
+                var _item = _aliadosLlamados.ItemActual;
+                _aliadosLlamados.Eliminar(_item);
+            }
+        }
+
+
+        private void limpiarDataAliado()
+        {
+            setAliado(null);
+            setPrecioAliadoPautado(0m);
+            setCntAliadoPautado(0);
+        }
+        private bool aliadoRegistrarIsOK()
+        {
+            var rt = true;
+            if (_aliado == null)
+            {
+                Helpers.Msg.Alerta("ALIADO NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (_precioAliadoPautado == 0m)
+            {
+                Helpers.Msg.Alerta("PRECIO NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (_cntAliadoPautado == 0)
+            {
+                Helpers.Msg.Alerta("CANTIDAD NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            return rt;
+        }
+
+        public  void setListaAliadosLlamados(List<AliadosLlamado.data> lst)
+        {
+            _aliadosLlamados.setListaAliadosLlamados(lst);
         }
     }
 }

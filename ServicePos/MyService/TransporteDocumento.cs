@@ -33,5 +33,11 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteDocumento_Remision_ListaBy(filtro);
         }
+
+        public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado> 
+            TransporteDocumento_AgregarFactura(DtoTransporte.Documento.Agregar.Factura.Ficha ficha)
+        {
+            return ServiceProv.TransporteDocumento_AgregarFactura(ficha);
+        }
     }
 }

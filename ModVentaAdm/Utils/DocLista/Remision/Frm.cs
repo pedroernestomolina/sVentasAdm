@@ -73,6 +73,24 @@ namespace ModVentaAdm.Utils.DocLista.Remision
             c5.HeaderCell.Style.Font = f;
             c5.DefaultCellStyle.Font = f1;
 
+            var c8 = new DataGridViewTextBoxColumn();
+            c8.DataPropertyName = "SolicitadoPor";
+            c8.HeaderText = "Solicitado";
+            c8.Visible = true;
+            c8.MinimumWidth = 120;
+            c8.HeaderCell.Style.Font = f;
+            c8.DefaultCellStyle.Font = f1;
+            c8.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            var c9 = new DataGridViewTextBoxColumn();
+            c9.DataPropertyName = "ModuloCargar";
+            c9.HeaderText = "Modulo a Cargar";
+            c9.Visible = true;
+            c9.MinimumWidth = 120;
+            c9.HeaderCell.Style.Font = f;
+            c9.DefaultCellStyle.Font = f1;
+            c9.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
             var c6 = new DataGridViewTextBoxColumn();
             c6.DataPropertyName = "CntRenglones";
             c6.HeaderText = "Rengl";
@@ -98,6 +116,8 @@ namespace ModVentaAdm.Utils.DocLista.Remision
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
             DGV.Columns.Add(c5);
+            DGV.Columns.Add(c8);
+            DGV.Columns.Add(c9);
             DGV.Columns.Add(c6);
             DGV.Columns.Add(c7);
         }

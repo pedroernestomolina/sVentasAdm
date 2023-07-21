@@ -152,13 +152,15 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private Item.Agregar.IAgregar _itemAgregar;
         public void AgregarItem()
         {
-            if (!_dataGen.DocumentoIsOk) 
+            if (!_dataGen.DocumentoGrabarIsOk) 
             {
                 Helpers.Msg.Alerta("DEBES PRIMERO CREAR UN NUEVO DOCUMENTO");
                 return;
             }
             _itemAgregar = new Item.Agregar.Agregar();
             _itemAgregar.Inicializa();
+            _itemAgregar.setSolicitadoPor(_dataGen.DatosDoc_SolicitadoPor_Get);
+            _itemAgregar.setModuloCargar(_dataGen.DatosDoc_ModuloCargar_Get);
             _itemAgregar.setTasaFiscal(_tasasFiscal);
             _itemAgregar.Inicia();
             if (_itemAgregar.ProcesarIsOK) 
@@ -266,6 +268,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 var _dirFiscalCliente = _dataGen.DatosDoc.Cliente.dirFiscal;
                 var _razonSocial = _dataGen.DatosDoc.Cliente.razonSocial;
                 var _telefonoCliente = _dataGen.DatosDoc.Cliente.telefono1;
+                var _docModuloCargar =_dataGen.DatosDoc.ModuloCargar_Get;
+                var _docSolicitadoPor= _dataGen.DatosDoc.SolicitadoPor_Get;
                 //
                 var _idVendedor = "0000000001";
                 var s01 = Sistema.MyData.Sistema_Vendedor_Entidad_GetById(_idVendedor);
@@ -383,15 +387,12 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     usuario = _nombreUsuario,
                     vendedor = _nombreVendedor,
                     nota= _notasObservaciones,
+                    docModuloCargar=_docModuloCargar,
+                    docSolicitadoPor=_docSolicitadoPor,
                     items = _dataGen.Items.GetItems.Select(s =>
                     {
                         var nr = new OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle()
                         {
-                            aliadoCirif = s.Item.Get_Aliado.ciRif,
-                            aliadoCodigo = s.Item.Get_Aliado.codigo,
-                            aliadoDesc = s.Item.Get_Aliado.nombreRazonSocial,
-                            aliadoId = s.Item.Get_Aliado.id,
-                            aliadoPrecioDivisa = s.Item.Get_Aliado_PrecioPautado,
                             alicuotaDesc = s.Item.Get_Alicuota.desc,
                             alicuotaId = s.Item.Get_Alicuota.id,
                             alicuotaTasa = s.Item.Get_Alicuota.tasa,
@@ -399,15 +400,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                             cntUnidades = s.Item.Get_CntUnidades,
                             dscto = s.Item.Get_Dscto,
                             estatusAnulado = "0",
-                            moduloCargar = s.Item.Get_ModuloCargar,
                             notas = s.Item.Get_DescripcionFull,
                             precioNetoDivisa = s.Item.Get_PrecioDivisa,
                             servicioDesc = s.Item.Get_Descripcion,
                             signoDoc = _signoDocumento,
-                            solicitadorPor = s.Item.Get_SolicitadoPor,
                             tipoDoc = _tipoDcumento,
                             importe = s.Item.Get_Importe,
-                            fechas = s.Item.Get_Fechas.Select(ss => 
+                            fechas = s.Item.Get_Fechas.Select(ss =>
                             {
                                 var nr2 = new OOB.Transporte.Documento.Agregar.Presupuesto.Fecha()
                                 {
@@ -416,6 +415,20 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                                     nota = "",
                                 };
                                 return nr2;
+                            }).ToList(),
+                            aliados = s.Item.Get_ListaAliadosLLamados.Select(xx =>
+                            {
+                                var nr3 = new OOB.Transporte.Documento.Agregar.Presupuesto.Aliado()
+                                {
+                                    ciRif = xx.aliado.ciRif,
+                                    cntDias = xx.cnt,
+                                    codigo = xx.aliado.codigo,
+                                    desc = xx.aliado.nombreRazonSocial,
+                                    id = xx.aliado.id,
+                                    importe = xx.Importe,
+                                    precioUnitDivisa = xx.precio,
+                                };
+                                return nr3;
                             }).ToList(),
                         };
                         return nr;

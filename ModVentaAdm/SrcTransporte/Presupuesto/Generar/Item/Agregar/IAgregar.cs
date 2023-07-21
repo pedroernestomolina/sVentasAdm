@@ -11,5 +11,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item.Agregar
     {
         void setTasaFiscal(List<OOB.Sistema.Fiscal.Entidad.Ficha> tasas);
         void setValidarDatosCompletos(bool est);
+        void setSolicitadoPor(string desc);
+        void setModuloCargar(string desc);
     }
 }
