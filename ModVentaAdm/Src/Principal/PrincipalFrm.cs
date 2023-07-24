@@ -43,6 +43,7 @@ namespace ModVentaAdm.Src.Principal
             L_USUARIO.Text = _controlador.Usuario;
             L_FECHA.Text = "";
             L_HORA.Text = "";
+            P_ICONO.BackgroundImage = _controlador.EmpresaLogo;
             this.Text = _controlador.GetNombreHerramienta;
         }
 

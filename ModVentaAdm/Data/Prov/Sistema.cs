@@ -28,6 +28,7 @@ namespace ModVentaAdm.Data.Prov
                 Direccion = s.Direccion,
                 Nombre = s.Nombre,
                 Telefono = s.Telefono,
+                logo = s.logo,
             };
             return result;
         }
@@ -380,6 +381,38 @@ namespace ModVentaAdm.Data.Prov
                 nombre = s.nombre,
             };
 
+            return result;
+        }
+
+
+        public OOB.Resultado.FichaEntidad<OOB.Sistema.SerieFiscal.Entidad.Ficha> 
+            Sistema_Serie_GetFichaById(string id)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Sistema.SerieFiscal.Entidad.Ficha>();
+            var r01 = MyData.Sistema_Serie_GetFichaById(id);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var _ent = r01.Entidad;
+            result.Entidad = new OOB.Sistema.SerieFiscal.Entidad.Ficha()
+            {
+                control = _ent.Control,
+                id = _ent.Auto,
+                serie = _ent.Serie,
+            };
+            return result;
+        }
+        public OOB.Resultado.FichaEntidad<string> 
+            Sistema_Serie_GetIdByNombre(string nomb)
+        {
+            var result = new OOB.Resultado.FichaEntidad<string>();
+            var r01 = MyData.Sistema_Serie_GetFichaByNombre(nomb);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            result.Entidad = r01.Entidad; 
             return result;
         }
     }

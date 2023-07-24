@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace DtoTransporte.Documento.Agregar.Factura
+namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
 {
     public class Ficha: baseFicha
     {

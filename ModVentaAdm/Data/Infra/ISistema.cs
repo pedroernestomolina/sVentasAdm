@@ -45,5 +45,11 @@ namespace ModVentaAdm.Data.Infra
 
         OOB.Resultado.FichaEntidad<string>
             Sistema_GetCodigoSucursal();
+
+
+        OOB.Resultado.FichaEntidad<OOB.Sistema.SerieFiscal.Entidad.Ficha>
+            Sistema_Serie_GetFichaById(string id);
+        OOB.Resultado.FichaEntidad<string>
+            Sistema_Serie_GetIdByNombre(string nomb);
     }
 }

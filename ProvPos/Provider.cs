@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace ProvPos
 {
-
     public partial class Provider: IPos.IProvider
     {
-
         public static EntityConnectionStringBuilder _cnPos;
         private string _Instancia;
         private string _BaseDatos;
@@ -38,7 +36,8 @@ namespace ProvPos
             _cnPos.ProviderConnectionString = "data source=" + _Instancia + ";initial catalog=" + _BaseDatos + ";user id=" + _Usuario + ";Password=" + _Password + ";Convert Zero Datetime=True;";
         }
 
-        public DtoLib.ResultadoEntidad<DateTime> FechaServidor()
+        public DtoLib.ResultadoEntidad<DateTime> 
+            FechaServidor()
         {
             var result = new DtoLib.ResultadoEntidad<DateTime>();
 
@@ -58,43 +57,8 @@ namespace ProvPos
 
             return result;
         }
-
-        //public DtoLib.ResultadoEntidad<DtoLibInventario.Empresa.Data.Ficha> Empresa_Datos()
-        //{
-        //    var result = new DtoLib.ResultadoEntidad<DtoLibInventario.Empresa.Data.Ficha>();
-
-        //    try
-        //    {
-        //        using (var ctx = new invEntities(_cnPos.ConnectionString))
-        //        {
-        //            var ent = ctx.empresa.FirstOrDefault();
-        //            if (ent == null)
-        //            {
-        //                result.Result = DtoLib.Enumerados.EnumResult.isError;
-        //                result.Mensaje = "REGISTRO ENTIDAD [ EMPRESA ] NO DEFINIDO";
-        //                return result;
-        //            }
-
-        //            var nr = new DtoLibInventario.Empresa.Data.Ficha()
-        //            {
-        //                CiRif = ent.rif,
-        //                DireccionFiscal = ent.direccion,
-        //                Nombre = ent.nombre,
-        //                Telefono = ent.telefono,
-        //            };
-        //            result.Entidad = nr;
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        result.Mensaje = e.Message;
-        //        result.Result = DtoLib.Enumerados.EnumResult.isError;
-        //    }
-
-        //    return result;
-        //}
-
-        public DtoLib.Resultado Test()
+        public DtoLib.Resultado 
+            Test()
         {
             var result = new DtoLib.Resultado();
 
@@ -112,7 +76,5 @@ namespace ProvPos
 
             return result;
         }
-
     }
-
 }

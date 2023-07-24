@@ -23,6 +23,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         public List<Item.IItem> GetItems { get { return _bl.ToList(); } }
 
 
+
         public dataItem()
         {
             _lst = new List<Item.IItem>();

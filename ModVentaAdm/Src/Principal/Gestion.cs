@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +31,7 @@ namespace ModVentaAdm.Src.Principal
         public string Host { get { return Sistema.MotorDatos.GetHost; } }
         public string Usuario { get { return Sistema.Usuario.codigo + Environment.NewLine + Sistema.Usuario.nombre; } }
         public string GetNombreHerramienta { get { return Sistema.NombreHerramienta; } }
+        public System.Drawing.Image EmpresaLogo { get { return logo(); } }
 
 
         public Gestion()
@@ -353,13 +356,26 @@ namespace ModVentaAdm.Src.Principal
             _gest.Inicializa();
             _gest.Inicia();
         }
-
         public void TransporteProFormaGenerar()
         {
             SrcTransporte.DocVenta.Generar.ProForma.IProForma _gest;
             _gest = new SrcTransporte.DocVenta.Generar.ProForma.Imp();
             _gest.Inicializa();
             _gest.Inicia();
+        }
+
+
+        private System.Drawing.Image logo()
+        {
+            if (Sistema.DatosEmpresa.logo.Length > 0)
+            {
+                using (MemoryStream ms = new MemoryStream(Sistema.DatosEmpresa.logo))
+                {
+                    Image image = Image.FromStream(ms);
+                    return image;
+                }
+            }
+            return null;
         }
     }
 }

@@ -80,18 +80,17 @@ namespace ProvPos
             Sistema_Serie_GetFichaById(string id)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha>();
-
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
                 {
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
-
                     p1.ParameterName = "@p1";
                     p1.Value = id;
-                    var sql = @"SELECT auto, serie, control 
+                    var sql = @"SELECT 
+                                    auto, 
+                                    serie, 
+                                    control 
                                 FROM empresa_series_fiscales 
                                 WHERE auto=@p1";
                     var ent = cnn.Database.SqlQuery<DtoLibPos.Sistema.Serie.Entidad.Ficha>(sql, p1).FirstOrDefault();
@@ -109,35 +108,29 @@ namespace ProvPos
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return result;
         }
-        public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha> 
+        public DtoLib.ResultadoEntidad<string> 
             Sistema_Serie_GetFichaByNombre(string nombre)
         {
-            var result = new DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha>();
-
+            var result = new DtoLib.ResultadoEntidad<string>();
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
                 {
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
-
                     p1.ParameterName = "@p1";
                     p1.Value = nombre;
-                    var sql = @"SELECT auto, serie, control 
+                    var sql = @"SELECT
+                                    auto 
                                 FROM empresa_series_fiscales 
                                 WHERE serie=@p1";
-                    var ent = cnn.Database.SqlQuery<DtoLibPos.Sistema.Serie.Entidad.Ficha>(sql, p1).FirstOrDefault();
-                    if (ent == null)
+                    var ent = cnn.Database.SqlQuery<string>(sql, p1).FirstOrDefault();
+                    result.Entidad = "";
+                    if (ent != null)
                     {
-                        result.Mensaje = "[ ID SERIE ] NO ENCONTRADO";
-                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                        return result;
+                        result.Entidad = ent;
                     }
-                    result.Entidad = ent;
                 }
             }
             catch (Exception e)
@@ -145,7 +138,6 @@ namespace ProvPos
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return result;
         }
         public DtoLib.ResultadoLista<DtoLibPos.Sistema.Serie.Entidad.Ficha> 
@@ -230,7 +222,6 @@ namespace ProvPos
             Sistema_Empresa_GetFicha()
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Empresa.Ficha>();
-
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
@@ -239,6 +230,10 @@ namespace ProvPos
                                 FROM empresa
                                 WHERE auto='0000000001'";
                     var ent= cnn.Database.SqlQuery<DtoLibPos.Sistema.Empresa.Ficha>(sql).FirstOrDefault();
+
+                    sql = @"select logo from empresa_extra";
+                    var _logo = cnn.Database.SqlQuery<byte[]>(sql).FirstOrDefault();
+                    ent.logo = _logo;
                     result.Entidad = ent;
                 }
             }
@@ -247,7 +242,6 @@ namespace ProvPos
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return result;
         }
 

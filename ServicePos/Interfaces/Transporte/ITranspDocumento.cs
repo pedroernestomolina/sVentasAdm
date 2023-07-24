@@ -11,11 +11,13 @@ namespace ServicePos.Interfaces.Transporte
     {
         DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>
           TransporteDocumento_AgregarPresupuesto(DtoTransporte.Documento.Agregar.Presupuesto.Ficha ficha);
-        DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Presupuesto.Ficha>
-            TransporteDocumento_EntidadPresupuesto_GetById(string idDoc);
-
         DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>
             TransporteDocumento_AgregarFactura(DtoTransporte.Documento.Agregar.Factura.Ficha ficha);
+
+        DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Presupuesto.Ficha>
+            TransporteDocumento_EntidadPresupuesto_GetById(string idDoc);
+        DtoLib.ResultadoLista<DtoTransporte.Documento.Entidad.Presupuesto.FichaAliado>
+            TransporteDocumento_EntidadPresupuesto_GetAliadosById(string idDoc);
 
         DtoLib.ResultadoLista<DtoTransporte.Documento.Remision.Lista.Ficha>
             TransporteDocumento_Remision_ListaBy(DtoTransporte.Documento.Remision.Lista.Filtro filtro);

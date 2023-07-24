@@ -30,7 +30,7 @@ namespace ServicePos.MyService
         {
             return ServiceProv.Sistema_Serie_GetFichaById(id);
         }
-        public DtoLib.ResultadoEntidad<DtoLibPos.Sistema.Serie.Entidad.Ficha> 
+        public DtoLib.ResultadoEntidad<string> 
             Sistema_Serie_GetFichaByNombre(string nombre)
         {
             return ServiceProv.Sistema_Serie_GetFichaByNombre(nombre);
@@ -68,8 +68,5 @@ namespace ServicePos.MyService
         {
             return ServiceProv.Sistema_GetCodigoSucursal();
         }
-
-
     }
-
 }

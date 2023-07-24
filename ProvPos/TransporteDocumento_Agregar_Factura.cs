@@ -27,7 +27,6 @@ namespace ProvPos
                         var anoRelacion = fechaSistema.Year.ToString().Trim().PadLeft(4, '0');
                         var fechaNula = new DateTime(2000, 1, 1);
 
-
                         var sql = "update sistema_contadores set a_ventas=a_ventas+1, a_cxc=a_cxc+1";
                         var r1 = cn.Database.ExecuteSqlCommand(sql);
                         if (r1 == 0)
@@ -374,6 +373,12 @@ namespace ProvPos
                                                                 p41, p42, p43, p44, p45, p46, p47, p48, p49, p50,
                                                                 p51, p53, p54, p55, p56, p57, p58, p59, p60,
                                                                 p61, p62, p63, p64);
+                        if (r == 0)
+                        {
+                            result.Mensaje = "PROBLEMA AL INSERTAR DOCUMENTO DE VENTA";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
                         cn.SaveChanges();
 
                         //INSERTAR CXC
@@ -436,7 +441,7 @@ namespace ProvPos
                                         @codigoCliente,
                                         '0',
                                         @resta,
-                                        '0'
+                                        '0',
                                         @autoDoc,
                                         '',
                                         '0000000001',
@@ -453,7 +458,7 @@ namespace ProvPos
                                         '',
                                         @montoDivisa,
                                         @tasaDivisa,
-                                        @acumuladoDivisa,
+                                        0,
                                         @codigoSuc,
                                         @restaDivisa,
                                         @importeNetoDivisa,
@@ -471,20 +476,145 @@ namespace ProvPos
                         var t10 = new MySql.Data.MySqlClient.MySqlParameter("@resta", ficha.Total);
                         var t11 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var t12 = new MySql.Data.MySqlClient.MySqlParameter("@autoVendedor", ficha.idVendedor);
-                        var t13 = new MySql.Data.MySqlClient.MySqlParameter("@autoVendedor", ficha.serieDocDesc);
+                        var t13 = new MySql.Data.MySqlClient.MySqlParameter("@serieDocDesc", ficha.serieDocDesc);
                         var t14 = new MySql.Data.MySqlClient.MySqlParameter("@importeNeto", ficha.subTotal);
                         var t15 = new MySql.Data.MySqlClient.MySqlParameter("@dias", ficha.diasCredito );
                         var t16 = new MySql.Data.MySqlClient.MySqlParameter("@montoDivisa", ficha.montoDivisa );
                         var t17 = new MySql.Data.MySqlClient.MySqlParameter("@tasaDivisa", ficha.factorCambio );
-                        var t18 = new MySql.Data.MySqlClient.MySqlParameter("@acumuladoDivisa", 0m );
                         var t19 = new MySql.Data.MySqlClient.MySqlParameter("@codigoSuc", ficha.codSucursal );
                         var t20 = new MySql.Data.MySqlClient.MySqlParameter("@restaDivisa", ficha.montoDivisa );
                         var t21 = new MySql.Data.MySqlClient.MySqlParameter("@importeNetoDivisa", ficha.subTotalMonDivisa);
                         var t22 = new MySql.Data.MySqlClient.MySqlParameter("@estatusDocCxc", "0");
                         r = cn.Database.ExecuteSqlCommand(_sql, t1 , t2, t3, t4, t5, t6, t7, t8, t9, t10,
-                                                        t11, t12, t13, t14, t15, t16, t17, t18, t19, t20,
+                                                        t11, t12, t13, t14, t15, t16, t17, t19, t20,
                                                         t21, t22);
+                        if (r == 0)
+                        {
+                            result.Mensaje = "PROBLEMA AL INSERTAR DOCUMENTO CXC";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
                         cn.SaveChanges();
+
+                        _sql= @"INSERT INTO ventas_transp_detalle
+                                    (
+                                        id_venta ,
+                                        detalle ,
+                                        cnt_dias ,
+                                        precio_neto_mon_local ,
+                                        precio_neto_mon_divisa ,
+                                        descuento_monto_mon_local ,
+                                        descuento_monto_mon_divisa ,
+                                        descuento_porct ,
+                                        alicuota_id ,
+                                        alicuota_tasa ,
+                                        impuesto_mon_local ,
+                                        impuesto_mon_divisa ,
+                                        alicuota_desc ,
+                                        precio_item_mon_local ,
+                                        precio_item_mon_divisa ,
+                                        precio_final_mon_local ,
+                                        precio_final_mon_divisa ,
+                                        importe_neto_mon_local ,
+                                        importe_neto_mon_divisa ,
+                                        importe_total_mon_local ,
+                                        importe_total_mon_divisa ,
+                                        total_mon_local ,
+                                        total_mon_divisa ,
+                                        estatus_anulado_doc ,
+                                        fecha_doc ,
+                                        id_cliente ,
+                                        signo_doc ,
+                                        codigo_doc ,
+                                        id_doc_ref ,
+                                        doc_num_ref ,
+                                        doc_fecha_ref ,
+                                        doc_monto_ref ,
+                                        doc_codigo_ref
+                                    )
+                                VALUES
+                                    (
+                                        @id_venta ,
+                                        @detalle ,
+                                        @cnt_dias ,
+                                        @precio_neto_mon_local ,
+                                        @precio_neto_mon_divisa ,
+                                        @descuento_monto_mon_local ,
+                                        @descuento_monto_mon_divisa ,
+                                        @descuento_porct ,
+                                        @alicuota_id ,
+                                        @alicuota_tasa ,
+                                        @impuesto_mon_local ,
+                                        @impuesto_mon_divisa ,
+                                        @alicuota_desc ,
+                                        @precio_item_mon_local ,
+                                        @precio_item_mon_divisa ,
+                                        @precio_final_mon_local ,
+                                        @precio_final_mon_divisa ,
+                                        @importe_neto_mon_local ,
+                                        @importe_neto_mon_divisa ,
+                                        @importe_total_mon_local ,
+                                        @importe_total_mon_divisa ,
+                                        @total_mon_local ,
+                                        @total_mon_divisa ,
+                                        @estatus_anulado_doc ,
+                                        @fecha_doc ,
+                                        @id_cliente ,
+                                        @signo_doc ,
+                                        @codigo_doc ,
+                                        @id_doc_ref ,
+                                        @doc_num_ref ,
+                                        @doc_fecha_ref ,
+                                        @doc_monto_ref ,
+                                        @doc_codigo_ref
+                                    )";
+                        foreach (var rg in ficha.items) 
+                        {
+                            var ld1 = new MySql.Data.MySqlClient.MySqlParameter("@id_venta", autoDoc);
+                            var ld2 = new MySql.Data.MySqlClient.MySqlParameter("@detalle", rg.detalle);
+                            var ld3 = new MySql.Data.MySqlClient.MySqlParameter("@cnt_dias", rg.cntDias);
+                            var ld4 = new MySql.Data.MySqlClient.MySqlParameter("@precio_neto_mon_local", rg.precioNetoMonLocal);
+                            var ld5 = new MySql.Data.MySqlClient.MySqlParameter("@precio_neto_mon_divisa", rg.precioNetoMonDivisa);
+                            var ld6 = new MySql.Data.MySqlClient.MySqlParameter("@descuento_monto_mon_local", rg.dsctoMontoMonLocal);
+                            var ld7 = new MySql.Data.MySqlClient.MySqlParameter("@descuento_monto_mon_divisa", rg.dsctoMontoMonDivisa);
+                            var ld8 = new MySql.Data.MySqlClient.MySqlParameter("@descuento_porct", rg.dsctoPorc);
+                            var ld9 = new MySql.Data.MySqlClient.MySqlParameter("@alicuota_id", rg.alicuotaId);
+                            var ld10 = new MySql.Data.MySqlClient.MySqlParameter("@alicuota_tasa", rg.alicuotaTasa);
+                            var ld11 = new MySql.Data.MySqlClient.MySqlParameter("@impuesto_mon_local", rg.impuestoMonLocal);
+                            var ld12 = new MySql.Data.MySqlClient.MySqlParameter("@impuesto_mon_divisa", rg.impuestoMonDivisa);
+                            var ld13 = new MySql.Data.MySqlClient.MySqlParameter("@alicuota_desc", rg.alicuotaDesc);
+                            var ld14 = new MySql.Data.MySqlClient.MySqlParameter("@precio_item_mon_local", rg.precioItemMonLocal);
+                            var ld15 = new MySql.Data.MySqlClient.MySqlParameter("@precio_item_mon_divisa", rg.precioItemMonDivisa);
+                            var ld16 = new MySql.Data.MySqlClient.MySqlParameter("@precio_final_mon_local", rg.precioFinalMonLocal);
+                            var ld17 = new MySql.Data.MySqlClient.MySqlParameter("@precio_final_mon_divisa", rg.precioFinalMonDivisa);
+                            var ld18 = new MySql.Data.MySqlClient.MySqlParameter("@importe_neto_mon_local", rg.importeNetoMonLocal);
+                            var ld19 = new MySql.Data.MySqlClient.MySqlParameter("@importe_neto_mon_divisa", rg.importeNetoMonDivisa);
+                            var ld20 = new MySql.Data.MySqlClient.MySqlParameter("@importe_total_mon_local", rg.importeTotalMonLocal);
+                            var ld21 = new MySql.Data.MySqlClient.MySqlParameter("@importe_total_mon_divisa", rg.importeTotalMonDivisa);
+                            var ld22 = new MySql.Data.MySqlClient.MySqlParameter("@total_mon_local", rg.totalMonLocal);
+                            var ld23 = new MySql.Data.MySqlClient.MySqlParameter("@total_mon_divisa", rg.totalMonDivisa);
+                            var ld24 = new MySql.Data.MySqlClient.MySqlParameter("@estatus_anulado_doc", "0");
+                            var ld25 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_doc", fechaSistema.Date);
+                            var ld26 = new MySql.Data.MySqlClient.MySqlParameter("@id_cliente", ficha.idCliente);
+                            var ld27 = new MySql.Data.MySqlClient.MySqlParameter("@signo_doc", ficha.signo);
+                            var ld28 = new MySql.Data.MySqlClient.MySqlParameter("@codigo_doc", ficha.TipoDoc);
+                            var ld29 = new MySql.Data.MySqlClient.MySqlParameter("@id_doc_ref", rg.idDocRef);
+                            var ld30 = new MySql.Data.MySqlClient.MySqlParameter("@doc_num_ref", rg.numDocRef);
+                            var ld31 = new MySql.Data.MySqlClient.MySqlParameter("@doc_fecha_ref", rg.fechaDocRef);
+                            var ld32 = new MySql.Data.MySqlClient.MySqlParameter("@doc_monto_ref", rg.montoDocRef);
+                            var ld33 = new MySql.Data.MySqlClient.MySqlParameter("@doc_codigo_ref", rg.codigoDocRef);
+                            var r_det = cn.Database.ExecuteSqlCommand(_sql, ld1, ld2, ld3, ld4, ld5, ld6, ld7, ld8, ld9, ld10,
+                                                                            ld11, ld12, ld13, ld14, ld15, ld16, ld17, ld18, ld19, ld20,
+                                                                            ld21, ld22, ld23, ld24, ld25, ld26, ld27, ld28, ld29, ld30,
+                                                                            ld31, ld32, ld33);
+                            if (r_det == 0)
+                            {
+                                result.Mensaje = "PROBLEMA AL INSERTAR ITEM ";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cn.SaveChanges();
+                        }
 
                         //SALDO DEL CLIENTE EN DIVISA
                         var xcli_1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
@@ -500,8 +630,9 @@ namespace ProvPos
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
                             return result;
                         }
+                        cn.SaveChanges();
 
-                        //DOCUMENTOS DE PRESUPUESTO QUE SE USARON PARA GENERAR LA FACTURA
+                        //DOCUMENTOS DE REFERENCIA QUE SE USARON PARA GENERAR LA FACTURA
                         _sql = @"INSERT INTO ventas_transp_doc  
                                     (
                                         id_venta,
@@ -511,7 +642,7 @@ namespace ProvPos
                                         id_doc_ref,
                                         doc_num_ref,
                                         doc_fecha_ref,
-                                        doc_monto_ref,
+                                        doc_monto_divisa_ref,
                                         doc_cod_ref,
                                         doc_tipo_ref
                                     )
@@ -524,7 +655,7 @@ namespace ProvPos
                                         @idDocRef,
                                         @docNumRef,
                                         @docFechaRef,
-                                        @docMontoRef,
+                                        @docMontoDivisaRef,
                                         @docCodRef,
                                         @docTipoRef
                                     )
@@ -538,59 +669,135 @@ namespace ProvPos
                             var lp5 = new MySql.Data.MySqlClient.MySqlParameter("@idDocRef", rg.idDoc);
                             var lp6 = new MySql.Data.MySqlClient.MySqlParameter("@docNumRef", rg.numDoc);
                             var lp7 = new MySql.Data.MySqlClient.MySqlParameter("@docFechaRef", rg.fechaDoc);
-                            var lp8 = new MySql.Data.MySqlClient.MySqlParameter("@docMontoRef", rg.montoDivisaDoc);
+                            var lp8 = new MySql.Data.MySqlClient.MySqlParameter("@docMontoDivisaRef", rg.montoDivisaDoc);
                             var lp9 = new MySql.Data.MySqlClient.MySqlParameter("@docCodRef", rg.codigoDoc);
                             var lp10 = new MySql.Data.MySqlClient.MySqlParameter("@docTipoRef", rg.tipoDoc);
                             var r3 = cn.Database.ExecuteSqlCommand(_sql, lp1, lp2, lp3, lp4, lp5, lp6,
                                                                     lp7, lp8, lp9, lp10);
+                            if (r3 == 0)
+                            {
+                                result.Mensaje = "PROBLEMA AL INSERTAR VENTA - DOCUMENTO - REF";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cn.SaveChanges();
+
+                            //ACTUALIZO LA REMISION DE DOCUMENTOS DE REFERENCIA
+                            var xlp1 = new MySql.Data.MySqlClient.MySqlParameter("@idRemision", autoDoc);
+                            var xlp2 = new MySql.Data.MySqlClient.MySqlParameter("@codDocRemision", ficha.docCodigo);
+                            var xlp3 = new MySql.Data.MySqlClient.MySqlParameter("@numDocRemision", docNumero);
+                            var xlp4 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocRef", rg.idDoc);
+                            var _sql_2 = @"update ventas set 
+                                                auto_remision=@idRemision,
+                                                tipo_remision=@codDocRemision,
+                                                documento_remision=@numDocRemision
+                                            where auto=@autoDocRef";
+                            var xr3 = cn.Database.ExecuteSqlCommand(_sql_2, xlp1, xlp2, xlp3, xlp4);
+                            if (xr3 == 0)
+                            {
+                                result.Mensaje = "PROBLEMA AL ACTUALIZAR REMISION DOCUMENTO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
                             cn.SaveChanges();
                         }
 
-                        //ALIADOS USADOS 
-                        _sql = @"INSERT INTO ventas_transp_aliado 
+                        //ALIADOS USADOS RESUMEN
+                        foreach (var aliadoRes in ficha.aliadosResumen) 
+                        {
+                            _sql = @"update transp_aliado set 
+                                    monto_debitos_mon_divisa=monto_debitos_mon_divisa+@monto
+                                where id=@idAliado";
+                            var ylp1 = new MySql.Data.MySqlClient.MySqlParameter("@monto", aliadoRes.montoDivisa);
+                            var ylp2 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", aliadoRes.idAliado);
+                            var xr4 = cn.Database.ExecuteSqlCommand(_sql, ylp1, ylp2);
+                            if (xr4 == 0) 
+                            {
+                                result.Mensaje = "PROBLEMA AL ACTUALIZAR SALDO ALIADO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cn.SaveChanges();
+
+                            //REGISTRAR ALIADO USADO EN EL DOCUMENTO FACTURA
+                            _sql = @"INSERT INTO ventas_transp_aliado 
                                             (
                                                 id_venta,
                                                 id_cliente,
                                                 id_aliado,
-                                                cirif,
-                                                codigo,
-                                                nombre_desc,
-                                                precio_unit_divisa,
-                                                cnt_dias,
-                                                importe,
-                                                estatus_anulado,
-                                                fecha
+                                                importe_divisa,
+                                                fecha,
+                                                estatus_anulado
                                             )
                                             VALUES 
                                             (
                                                 @idVenta, 
                                                 @idCliente, 
                                                 @idAliado, 
-                                                @ciRifAliado, 
-                                                @codigoAliado, 
-                                                @descAliado, 
-                                                @precioUnitDiv, 
-                                                @cntDias,
-                                                @importe
-                                                @estatusAnulado,
-                                                @fechaRegistro
+                                                @importeDivisa,
+                                                @fechaRegistro,
+                                                @estatusAnulado
                                             )";
-                        foreach (var aliad in ficha.aliados)
-                        {
                             var zp1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
                             var zp2 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
-                            var zp3 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", aliad.idAliado);
-                            var zp4 = new MySql.Data.MySqlClient.MySqlParameter("@ciRifAliado", aliad.ciRifAliado);
-                            var zp5 = new MySql.Data.MySqlClient.MySqlParameter("@codigoAliado", aliad.codigoAliado);
-                            var zp6 = new MySql.Data.MySqlClient.MySqlParameter("@descAliado", aliad.nombreDescAliado);
-                            var zp7 = new MySql.Data.MySqlClient.MySqlParameter("@precioUnitDiv", aliad.precioUnitDivisa);
-                            var zp8 = new MySql.Data.MySqlClient.MySqlParameter("@cntDias", aliad.cntDias);
-                            var zp9 = new MySql.Data.MySqlClient.MySqlParameter("@importe", aliad.importeDivisa);
-                            var zp10 = new MySql.Data.MySqlClient.MySqlParameter("@estatusAnulado", "0");
-                            var zp11 = new MySql.Data.MySqlClient.MySqlParameter("@fechaRegistro", fechaSistema.Date);
-                            var r4 = cn.Database.ExecuteSqlCommand(_sql, zp1, zp2, zp3, zp4, zp5, zp6,
-                                                                    zp7, zp8, zp9, zp10, zp11);
+                            var zp3 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", aliadoRes.idAliado);
+                            var zp4 = new MySql.Data.MySqlClient.MySqlParameter("@importeDivisa", aliadoRes.montoDivisa);
+                            var zp5 = new MySql.Data.MySqlClient.MySqlParameter("@estatusAnulado", "0");
+                            var zp6 = new MySql.Data.MySqlClient.MySqlParameter("@fechaRegistro", fechaSistema.Date);
+                            var xr5 = cn.Database.ExecuteSqlCommand(_sql, zp1, zp2, zp3, zp4, zp5, zp6);
                             cn.SaveChanges();
+                            if (xr5 == 0)
+                            {
+                                result.Mensaje = "PROBLEMA AL INSERTAR VENTA - ALIADO - REF";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+
+                            _sql = @"INSERT INTO transp_aliado_doc 
+                                        (
+                                            id, 
+                                            id_aliado, 
+                                            id_doc_ref, 
+                                            id_cliente,
+                                            doc_numero, 
+                                            doc_fecha, 
+                                            doc_codigo, 
+                                            doc_nombre,
+                                            importe_divisa, 
+                                            acumulado_divisa,
+                                            estatus_anulado
+                                        )
+                                    VALUES 
+                                        (
+                                            NULL,
+                                            @idAliado, 
+                                            @idDocRef, 
+                                            @idCliente,
+                                            @docNumero, 
+                                            @docFecha, 
+                                            @docCodigo, 
+                                            @docNombre,
+                                            @importeDivisa, 
+                                            0,
+                                            @estatusAnulado
+                                        )";
+                            zp1 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", aliadoRes.idAliado);
+                            zp2 = new MySql.Data.MySqlClient.MySqlParameter("@idDocRef", autoDoc);
+                            zp3 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
+                            zp4 = new MySql.Data.MySqlClient.MySqlParameter("@docNumero", docNumero);
+                            zp5 = new MySql.Data.MySqlClient.MySqlParameter("@docFecha", fechaSistema.Date);
+                            zp6 = new MySql.Data.MySqlClient.MySqlParameter("@docCodigo", ficha.docCodigo);
+                            var zp7 = new MySql.Data.MySqlClient.MySqlParameter("@docNombre", ficha.docNombre);
+                            var zp8 = new MySql.Data.MySqlClient.MySqlParameter("@importeDivisa", aliadoRes.montoDivisa);
+                            var zp10 = new MySql.Data.MySqlClient.MySqlParameter("@estatusAnulado", "0");
+                            var xr6 = cn.Database.ExecuteSqlCommand(_sql, zp1, zp2, zp3, zp4, zp5, zp6, zp7, zp8, zp10);
+                            cn.SaveChanges();
+                            if (xr6 == 0)
+                            {
+                                result.Mensaje = "PROBLEMA AL INSERTAR ALIADO - DOCUMENTO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
                         }
 
                         ts.Complete();

@@ -148,6 +148,36 @@ namespace ProvPos
             }
             return result;
         }
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.Entidad.Presupuesto.FichaAliado> 
+            TransporteDocumento_EntidadPresupuesto_GetAliadosById(string idDoc)
+        {
+            var result = new DtoLib.ResultadoLista<DtoTransporte.Documento.Entidad.Presupuesto.FichaAliado>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var _sql = @"select 
+                                    id_aliado as idAliado,
+                                    cirif_aliado as ciRif,
+                                    codigo_aliado as codigo,
+                                    desc_alido as descripcion,
+                                    precio_unit_divisa as precioUnitDivisa,
+                                    cnt_dias as cntDias,
+                                    importe as importe
+                                FROM ventas_transp_item_aliado where id_venta=@idDoc ";
+                    var zp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var _aliad = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Presupuesto.FichaAliado>(_sql, zp1).ToList();
+                    result.Lista = _aliad;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
 
         public DtoLib.ResultadoLista<DtoTransporte.Documento.Remision.Lista.Ficha>
             TransporteDocumento_Remision_ListaBy(DtoTransporte.Documento.Remision.Lista.Filtro filtro)
@@ -177,7 +207,7 @@ namespace ProvPos
                                         docSolicitadoPor as docSolicitadoPor,
                                         docModuloCargar as docModuloCargar
                                     FROM ventas ";
-                    var _sql_2 = @" where 1=1 and estatus_anulado='' and auto_remision='' ";
+                    var _sql_2 = @" where 1=1 and estatus_anulado!='1' and auto_remision='' ";
                     if (filtro.idCliente != "")
                     {
                         p1.ParameterName = "@idCliente";

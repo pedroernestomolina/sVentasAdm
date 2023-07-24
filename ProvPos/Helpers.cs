@@ -11,10 +11,8 @@ using System.Transactions;
 
 namespace ProvPos
 {
-    
     public class Helpers
     {
-
         static public string 
             MYSQL_VerificaError(MySql.Data.MySqlClient.MySqlException ex) 
         {
@@ -69,7 +67,6 @@ namespace ProvPos
             return msg;
         }
 
-
         static public DtoLib.ResultadoEntidad<DtoLibPos.Permiso.Entidad.Ficha>
             SolicitarPermiso(string cn, string idGrupoUsu, string codFuncion)
         {
@@ -103,7 +100,5 @@ namespace ProvPos
 
             return result;
         }
-
     }
-
 }

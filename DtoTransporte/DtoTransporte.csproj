@@ -50,7 +50,8 @@
     <Compile Include="Documento\Agregar\baseDetalle.cs" />
     <Compile Include="Documento\Agregar\baseFecha.cs" />
     <Compile Include="Documento\Agregar\Factura\Ficha.cs" />
-    <Compile Include="Documento\Agregar\Factura\FichaAliado.cs" />
+    <Compile Include="Documento\Agregar\Factura\FichaAliadoResumen.cs" />
+    <Compile Include="Documento\Agregar\Factura\FichaItem.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaDocRef.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Aliado.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Fecha.cs" />

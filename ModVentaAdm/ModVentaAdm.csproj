@@ -105,6 +105,8 @@
     <Compile Include="Data\Prov\Sucursal.cs" />
     <Compile Include="Data\Prov\TransporteAliado.cs" />
     <Compile Include="Data\Prov\TransporteDocumento.cs" />
+    <Compile Include="Data\Prov\TransporteDocumento_Agregar_Factura.cs" />
+    <Compile Include="Data\Prov\TransporteDocumento_Agregar_Presupuesto.cs" />
     <Compile Include="Data\Prov\Usuario.cs" />
     <Compile Include="Data\Prov\Venta.cs" />
     <Compile Include="Fabrica\ModoGeneral.cs" />
@@ -240,6 +242,7 @@
     <Compile Include="OOB\Sistema\Estado\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\Fiscal\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\MedioCobro\Entidad\Ficha.cs" />
+    <Compile Include="OOB\Sistema\SerieFiscal\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\TipoDocumento\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\Transporte\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\Vendedor\Entidad\Ficha.cs" />
@@ -255,6 +258,10 @@
     <Compile Include="OOB\Transporte\Documento\Agregar\baseDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFicha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Factura\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaAliadoResumen.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaDocRef.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaItem.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Aliado.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Fecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Ficha.cs" />

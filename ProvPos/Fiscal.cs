@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProvPos
 {
-
     public partial class Provider: IPos.IProvider
     {
-
-        public DtoLib.ResultadoLista<DtoLibPos.Fiscal.Entidad.Ficha> Fiscal_GetTasas(DtoLibPos.Fiscal.Lista.Filtro filtro)
+        public DtoLib.ResultadoLista<DtoLibPos.Fiscal.Entidad.Ficha> 
+            Fiscal_GetTasas(DtoLibPos.Fiscal.Lista.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.Fiscal.Entidad.Ficha>();
             var lst = new List<DtoLibPos.Fiscal.Entidad.Ficha>();
@@ -52,7 +51,5 @@ namespace ProvPos
 
             return result;
         }
-
     }
-
 }
