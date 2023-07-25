@@ -75,6 +75,52 @@ namespace ModVentaAdm.Data.Prov
                 subTotalMonDivisa = ficha.subTotalMonDivisa,
                 items=  ficha.items.Select(z =>
                 {
+                    DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle _servicioDetalle= null;
+                    if (z.servDetalle !=null)
+                    {
+                        var s = z.servDetalle;
+                        var nr = new DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle()
+                        {
+                            alicuotaDesc = s.alicuotaDesc,
+                            alicuotaId = s.alicuotaId,
+                            alicuotaTasa = s.alicuotaTasa,
+                            cntDias = s.cntDias,
+                            cntUnidades = s.cntUnidades,
+                            dscto = s.dscto,
+                            estatusAnulado = s.estatusAnulado,
+                            notas = s.notas,
+                            precioNetoDivisa = s.precioNetoDivisa,
+                            servicioDesc = s.servicioDesc,
+                            signoDoc = s.signoDoc,
+                            tipoDoc = s.tipoDoc,
+                            importe = s.importe,
+                            fechas = s.fechas.Select(ss =>
+                            {
+                                var nr2 = new DtoTransporte.Documento.Agregar.Presupuesto.Fecha()
+                                {
+                                    fecha = ss.fecha,
+                                    hora = ss.hora,
+                                    nota = ss.nota,
+                                };
+                                return nr2;
+                            }).ToList(),
+                            alidos = s.aliados.Select(xx =>
+                            {
+                                var nr3 = new DtoTransporte.Documento.Agregar.Presupuesto.Aliado()
+                                {
+                                    ciRif = xx.ciRif,
+                                    cntDias = xx.cntDias,
+                                    codigo = xx.codigo,
+                                    desc = xx.desc,
+                                    id = xx.id,
+                                    importe = xx.importe,
+                                    precioUnitDivisa = xx.precioUnitDivisa,
+                                };
+                                return nr3;
+                            }).ToList(),
+                        };
+                        _servicioDetalle = nr;
+                    }
                     var zr = new DtoTransporte.Documento.Agregar.Factura.FichaItem()
                     {
                         alicuotaDesc = z.alicuotaDesc,
@@ -104,6 +150,8 @@ namespace ModVentaAdm.Data.Prov
                         precioNetoMonLocal = z.precioNetoMonLocal,
                         totalMonDivisa = z.totalMonDivisa,
                         totalMonLocal = z.totalMonLocal,
+                        tipoProcedenciaItem = z.tipoItemProcedencia,
+                        servicioDetalle = _servicioDetalle,
                     };
                     return zr;
                 }).ToList(),

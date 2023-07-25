@@ -105,12 +105,15 @@
     <Compile Include="Data\Prov\Sucursal.cs" />
     <Compile Include="Data\Prov\TransporteAliado.cs" />
     <Compile Include="Data\Prov\TransporteDocumento.cs" />
+    <Compile Include="Data\Prov\TransporteDocumento_Anular.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Agregar_Factura.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Agregar_Presupuesto.cs" />
     <Compile Include="Data\Prov\Usuario.cs" />
     <Compile Include="Data\Prov\Venta.cs" />
-    <Compile Include="Fabrica\ModoGeneral.cs" />
-    <Compile Include="Fabrica\ModoTransporte.cs" />
+    <Compile Include="Fabrica\General\DocVenta.cs" />
+    <Compile Include="Fabrica\General\ModoGeneral.cs" />
+    <Compile Include="Fabrica\Transporte\DocVenta.cs" />
+    <Compile Include="Fabrica\Transporte\ModoTransporte.cs" />
     <Compile Include="Fabrica\IFabrica.cs" />
     <Compile Include="Gestion.cs" />
     <Compile Include="Helpers\Imprimir\data.cs" />
@@ -267,6 +270,14 @@
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Resultado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\baseAliado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\baseAuditoria.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\NotaEntrega\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\NotaEntrega\FichaAliado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\NotaEntrega\FichaAliadoDoc.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\NotaEntrega\FichaAuditoria.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\Presupuesto\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\Presupuesto\FichaAuditoria.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\baseEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaAliado.cs" />
@@ -275,6 +286,16 @@
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaFechaServ.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Filtro.cs" />
+    <Compile Include="SrcTransporte\AdmDocumentos\IGestion.cs" />
+    <Compile Include="SrcTransporte\AdmDocumentos\Ventas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\AdmDocumentos\Ventas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\AdmDocumentos\Ventas\filtro.cs" />
+    <Compile Include="SrcTransporte\AdmDocumentos\Ventas\Gestion.cs" />
+    <Compile Include="SrcTransporte\AdmDocumentos\Ventas\GestionLista.cs" />
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\Telefono\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -902,6 +923,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Helpers\Imprimir\Grafico\ReporteFrm.resx">
       <DependentUpon>ReporteFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\AdmDocumentos\Ventas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Aliados\AgregarEditar\Telefono\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>

@@ -27,6 +27,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                 var _dirFiscalCliente = Ficha.DatosDoc.Cliente.dirFiscal;
                 var _razonSocial = Ficha.DatosDoc.Cliente.razonSocial;
                 var _telefonoCliente = Ficha.DatosDoc.Cliente.telefono1;
+                var _docModuloCargar = Ficha.DatosDoc.ModuloCargar_Get;
+                var _docSolicitadoPor = Ficha.DatosDoc.SolicitadoPor_Get;
                 //
                 var _idVendedor = "0000000001";
                 var s01 = Sistema.MyData.Sistema_Vendedor_Entidad_GetById(_idVendedor);
@@ -119,6 +121,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     var _codDocRef = "";
                     var _montoDocRef = 0m;
                     var _fecDocRef = DateTime.Now.Date;
+                    var _tipoItemProcedencia = "";
                     OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle _servdetalle=null;
                     if (s.Item.IsItemPresupuesto)
                     {
@@ -127,9 +130,11 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                         _codDocRef = s.Item.Get_ItemPresupuesto.Ficha.docCodigo;
                         _montoDocRef = s.Item.Get_ItemPresupuesto.Ficha.docMontoMonedaDiv;
                         _fecDocRef = s.Item.Get_ItemPresupuesto.Ficha.docFechaEmision;
+                        _tipoItemProcedencia = "P";
                     }
                     if (s.Item.Get_ItemServicio!=null) 
                     {
+                        _tipoItemProcedencia = "S";
                         _servdetalle= new OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle()
                         {
                             alicuotaDesc = s.Item.Get_ItemServicio.Item.Get_Alicuota.desc,
@@ -209,6 +214,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     ni.precioFinalMonDivisa = ni.precioItemMonDivisa;
                     ni.precioFinalMonLocal = ni.precioFinalMonDivisa * _factorCambio;
                     ni.servDetalle = _servdetalle;
+                    ni.tipoItemProcedencia = _tipoItemProcedencia;
                     return ni;
                 }).ToList();
                 //
@@ -281,8 +287,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     usuario = _nombreUsuario,
                     vendedor = _nombreVendedor,
                     nota = _notasObs,
-                    docModuloCargar = "",
-                    docSolicitadoPor = "",
+                    docModuloCargar = _docModuloCargar,
+                    docSolicitadoPor = _docSolicitadoPor,
                     serieDocDesc = _serieDoc,
                     serieDocId = _serieId,
                     subTotalMonDivisa = 0m,

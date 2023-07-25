@@ -59,6 +59,17 @@
     <Compile Include="Documento\Agregar\Presupuesto\FichaDetalle.cs" />
     <Compile Include="Documento\Agregar\Resultado.cs" />
     <Compile Include="Documento\Agregar\baseFicha.cs" />
+    <Compile Include="Documento\Anular\baseAliado.cs" />
+    <Compile Include="Documento\Anular\baseAuditoria.cs" />
+    <Compile Include="Documento\Anular\NotaEntrega\dataAnular.cs" />
+    <Compile Include="Documento\Anular\NotaEntrega\Ficha.cs" />
+    <Compile Include="Documento\Anular\NotaEntrega\FichaAliado.cs" />
+    <Compile Include="Documento\Anular\NotaEntrega\FichaAliadoDoc.cs" />
+    <Compile Include="Documento\Anular\NotaEntrega\FichaAuditoria.cs" />
+    <Compile Include="Documento\Anular\NotaEntrega\FichaDocRef.cs" />
+    <Compile Include="Documento\Anular\NotaEntrega\FichaItemServ.cs" />
+    <Compile Include="Documento\Anular\Presupuesto\Ficha.cs" />
+    <Compile Include="Documento\Anular\Presupuesto\FichaAuditoria.cs" />
     <Compile Include="Documento\Entidad\baseEncabezado.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\Ficha.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\FichaAliado.cs" />

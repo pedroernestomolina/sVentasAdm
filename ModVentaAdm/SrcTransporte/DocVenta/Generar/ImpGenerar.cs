@@ -165,6 +165,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _itemAgregar.Inicializa();
             _itemAgregar.setTasaFiscal(_tasasFiscal);
             _itemAgregar.setCliente(_dataGen.DatosDoc.Cliente.id);
+            _itemAgregar.setSolicitadoPor(_dataGen.DatosDoc.SolicitadoPor_Get);
+            _itemAgregar.setModuloCargar(_dataGen.DatosDoc.ModuloCargar_Get);
             _itemAgregar.Inicia();
             if (_itemAgregar.ProcesarIsOK)
             {

@@ -36,6 +36,8 @@ namespace DtoTransporte.Documento.Agregar.Factura
         public DateTime fechaDocRef { get; set; }
         public decimal montoDocRef { get; set; }
         public string codigoDocRef { get; set; }
+        public string tipoProcedenciaItem { get; set; }
+        public Presupuesto.FichaDetalle servicioDetalle { get; set; }
         public FichaItem()
         {
             detalle = "";
@@ -65,6 +67,8 @@ namespace DtoTransporte.Documento.Agregar.Factura
             fechaDocRef = DateTime.Now.Date;
             montoDocRef = 0m;
             codigoDocRef = "";
+            tipoProcedenciaItem = "";
+            servicioDetalle = null;
         }
     }
 }

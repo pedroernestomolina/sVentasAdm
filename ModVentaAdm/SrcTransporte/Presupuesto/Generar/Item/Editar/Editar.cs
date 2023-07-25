@@ -56,5 +56,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item.Editar
                 }
             }
         }
+        public void setSolicitadoPor(string desc)
+        {
+            Item.setSolicitadoPor(desc);
+        }
+        public void setModuloCargar(string desc)
+        {
+            Item.setModuloaCargar(desc);
+        }
     }
 }

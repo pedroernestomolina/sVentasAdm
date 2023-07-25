@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.Fabrica
+namespace ModVentaAdm.Fabrica.General
 {
-    public class ModoGeneral: IFabrica
+    public partial class ModoGeneral: IFabrica
     {
         public string NombreHerramienta { get { return "Tools Ventas Adm."; } }
 

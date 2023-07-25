@@ -11,5 +11,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
     {
         void setTasaFiscal(List<OOB.Sistema.Fiscal.Entidad.Ficha> tasas);
         void setCliente(string idCliente);
+        void setSolicitadoPor(string desc);
+        void setModuloCargar(string desc);
     }
 }

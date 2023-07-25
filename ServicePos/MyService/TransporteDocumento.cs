@@ -44,5 +44,31 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteDocumento_Remision_ListaBy(filtro);
         }
+
+        public DtoLib.Resultado 
+            TransporteDocumento_AnularPresupuesto(DtoTransporte.Documento.Anular.Presupuesto.Ficha ficha)
+        {
+            return ServiceProv.TransporteDocumento_AnularPresupuesto(ficha);
+        }
+        public DtoLib.Resultado 
+            TransporteDocumento_AnularNotaEntrega(DtoTransporte.Documento.Anular.NotaEntrega.Ficha ficha)
+        {
+            var r01 = ServiceProv.TransporteDocumento_AnularNotaEntrega_GetDataAnular(ficha.idDocVenta);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError) 
+            {
+                var rt = new DtoLib.Resultado();
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+                return rt;
+            };
+            ficha.idCliente = r01.Entidad.idCliente;
+            ficha.montoDivisa = r01.Entidad.montoDivisa;
+            ficha.idDocCxC  = r01.Entidad.idDocCxC;
+            ficha.aliadosInv = r01.Entidad.aliadosInv;
+            ficha.aliadosDoc = r01.Entidad.aliadosDoc;
+            ficha.itemsServicio = r01.Entidad.itemsServ;
+            ficha.docRef = r01.Entidad.docRef;
+            return ServiceProv.TransporteDocumento_AnularNotaEntrega(ficha);
+        }
     }
 }

@@ -30,8 +30,8 @@ namespace ModVentaAdm
                 _gLogin.Inicia();
                 if (_gLogin.IsOk)
                 {
-                    Sistema.Fabrica = new Fabrica.ModoTransporte();
-                    //Sistema.Fabrica = new Fabrica.ModoGeneral();
+                    Sistema.Fabrica = new Fabrica.Transporte.ModoTransporte();
+                    //Sistema.Fabrica = new Fabrica.General.ModoGeneral();
                     var gestion = new Gestion();
                     gestion.Inicia();
                 }

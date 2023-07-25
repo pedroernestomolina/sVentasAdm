@@ -99,51 +99,10 @@ namespace ModVentaAdm.Src.Administrador.Documentos
 
         public void AnularItem()
         {
-            if (GetItemActual != null)
+            if  (Sistema.Fabrica.AnularDocumentoVenta(GetItemActual, _gAnular))
             {
-                if (GetItemActual.IsAnulado) 
-                {
-                    Helpers.Msg.Error("DOCUMENTO YA SE ENCUENTRA ANULADO, VERIFIQUE POR FAVOR");
-                    return;
-                }
-                if (!GetItemActual.IsDocVentaAdministrativo) 
-                {
-                    Helpers.Msg.Error("DOCUMENTO NO ES DE TIPO VENTA ADMINISTRATIVA, VERIFIQUE POR FAVOR");
-                    return;
-                }
-
-                var r00 = Sistema.MyData.Permiso_Adm_AnularDocumento(Sistema.Usuario.idGrupo);
-                if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r00.Mensaje);
-                    return;
-                }
-                if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
-                {
-                    _gAnular.Inicializa();
-                    _gAnular.Inicia();
-                    if (_gAnular.ProcesarIsOK)
-                    {
-                        var msg = MessageBox.Show("Estas Seguro De Anular Este Documento ?", "** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                        if (msg == DialogResult.No)
-                        {
-                            return;
-                        }
-                        var motivo = _gAnular.Motivo;
-                        var rt = false;
-                        switch (GetItemActual.DocTipo)
-                        {
-                            case data.enumTipoDoc.Presupuesto:
-                                rt = AnularPresupuesto(_gLista.GetItemActual, motivo);
-                                break;
-                        }
-                        if (rt)
-                        {
-                            _gLista.GetItemActual.SetAnulado();
-                            Helpers.Msg.EliminarOk();
-                        }
-                    }
-                }
+                _gLista.GetItemActual.SetAnulado();
+                Helpers.Msg.EliminarOk();
             }
         }
 
@@ -212,30 +171,6 @@ namespace ModVentaAdm.Src.Administrador.Documentos
         {
             _gFiltro.setFiltros(_filtrarPor);
             _gFiltro.Inicia();
-        }
-
-        private bool AnularPresupuesto(data doc, string motivo)
-        {
-            var ficha = new OOB.Documento.Anular.Presupuesto.Ficha()
-            {
-                autoDocumento = doc.idDocumento,
-                auditoria = new OOB.Documento.Anular.Presupuesto.FichaAuditoria
-                {
-                    autoSistemaDocumento = Sistema.Id_SistDocumento_Presupuesto,
-                    autoUsuario = Sistema.Usuario.id,
-                    codigo = Sistema.Usuario.codigo,
-                    estacion = Sistema.EquipoEstacion,
-                    motivo = motivo,
-                    usuario = Sistema.Usuario.nombre,
-                },
-            };
-            var r03 = Sistema.MyData.Documento_Anular_Presupuesto(ficha);
-            if (r03.Result == OOB.Resultado.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r03.Mensaje);
-                return false;
-            }
-            return true;
         }
 
         public void VerAnulacion()

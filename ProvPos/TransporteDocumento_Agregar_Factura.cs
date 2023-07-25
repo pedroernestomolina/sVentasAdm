@@ -265,7 +265,7 @@ namespace ProvPos
                                         @docNombre, 
                                         @subtotalImp, 
                                         @subTotal, 
-                                        '', 
+                                        @autoDocCxC, 
                                         '', 
                                         '', 
                                         '', 
@@ -365,6 +365,7 @@ namespace ProvPos
                         var p62 = new MySql.Data.MySqlClient.MySqlParameter("@docSolicitadoPor", ficha.docSolicitadoPor);
                         var p63 = new MySql.Data.MySqlClient.MySqlParameter("@docModuloCargar", ficha.docModuloCargar);
                         var p64 = new MySql.Data.MySqlClient.MySqlParameter("@serieDoc", ficha.serieDocDesc);
+                        var p65 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCxC", autoCxC);
                         var r = cn.Database.ExecuteSqlCommand(_sql,
                                                                 p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
                                                                 p11, p12, p13, p14, p15, p16, p17, p18, p19, p20,
@@ -372,7 +373,7 @@ namespace ProvPos
                                                                 p31, p32, p33, p34, p35, p36, p37, p38, p39, p40,
                                                                 p41, p42, p43, p44, p45, p46, p47, p48, p49, p50,
                                                                 p51, p53, p54, p55, p56, p57, p58, p59, p60,
-                                                                p61, p62, p63, p64);
+                                                                p61, p62, p63, p64, p65);
                         if (r == 0)
                         {
                             result.Mensaje = "PROBLEMA AL INSERTAR DOCUMENTO DE VENTA";
@@ -496,7 +497,7 @@ namespace ProvPos
                         }
                         cn.SaveChanges();
 
-                        _sql= @"INSERT INTO ventas_transp_detalle
+                        var _sqlDetFct= @"INSERT INTO ventas_transp_detalle
                                     (
                                         id_venta ,
                                         detalle ,
@@ -530,7 +531,9 @@ namespace ProvPos
                                         doc_num_ref ,
                                         doc_fecha_ref ,
                                         doc_monto_ref ,
-                                        doc_codigo_ref
+                                        doc_codigo_ref,
+                                        tipo_procedencia_item,
+                                        id_item_servicio
                                     )
                                 VALUES
                                     (
@@ -566,10 +569,159 @@ namespace ProvPos
                                         @doc_num_ref ,
                                         @doc_fecha_ref ,
                                         @doc_monto_ref ,
-                                        @doc_codigo_ref
+                                        @doc_codigo_ref,
+                                        @tipo_procedencia_item,
+                                        @id_item_servicio
                                     )";
                         foreach (var rg in ficha.items) 
                         {
+                            var _idItemServicio=-1;
+                            //EN CASO DE SER UN SERVICIO SE AGREGA PRIMERO EL DETALLE DEL SERVCION
+                            if (rg.servicioDetalle != null) 
+                            {
+                                var it = rg.servicioDetalle;
+                                var _sql_I = @"INSERT INTO ventas_transp_item (
+                                    `id_item`, 
+                                    `id_venta`,
+                                    `servicio_desc`, 
+                                    `cnt_dias`, 
+                                    `cnt_unidades`, 
+                                    `precio_neto_divisa`, 
+                                    `dscto`, 
+                                    `alicuota_id`, 
+                                    `alicuota_tasa`, 
+                                    `alicuota_desc`, 
+                                    `notas`, 
+                                    `fecha_doc`, 
+                                    `hora_doc`, 
+                                    `signo_doc`, 
+                                    `tipo_doc`, 
+                                    `estatus_anulado`,
+                                    `importe`
+                                ) 
+                                VALUES 
+                                (
+                                    null, 
+                                    @idVenta,
+                                    @servicioDesc, 
+                                    @cntDias, 
+                                    @cntUnidades, 
+                                    @precioNetoDivisa, 
+                                    @dscto, 
+                                    @alicuotaId, 
+                                    @alicuotaTasa, 
+                                    @alicuotaDesc, 
+                                    @notas, 
+                                    @fechaDoc, 
+                                    @horaDoc, 
+                                    @signoDoc, 
+                                    @tipoDoc, 
+                                    @estatusAnulado, 
+                                    @importe 
+                                )";
+                                var xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
+                                var xp2 = new MySql.Data.MySqlClient.MySqlParameter("@servicioDesc", it.servicioDesc);
+                                var xp5 = new MySql.Data.MySqlClient.MySqlParameter("@cntDias", it.cntDias);
+                                var xp6 = new MySql.Data.MySqlClient.MySqlParameter("@cntUnidades", it.cntUnidades);
+                                var xp7 = new MySql.Data.MySqlClient.MySqlParameter("@precioNetoDivisa", it.precioNetoDivisa);
+                                var xp8 = new MySql.Data.MySqlClient.MySqlParameter("@dscto", it.dscto);
+                                var xp9 = new MySql.Data.MySqlClient.MySqlParameter("@alicuotaId", it.alicuotaId);
+                                var xp10 = new MySql.Data.MySqlClient.MySqlParameter("@alicuotaTasa", it.alicuotaTasa);
+                                var xp11 = new MySql.Data.MySqlClient.MySqlParameter("@alicuotaDesc", it.alicuotaDesc);
+                                var xp17 = new MySql.Data.MySqlClient.MySqlParameter("@notas", it.notas);
+                                var xp18 = new MySql.Data.MySqlClient.MySqlParameter("@fechaDoc", fechaSistema.Date);
+                                var xp19 = new MySql.Data.MySqlClient.MySqlParameter("@horaDoc", fechaSistema.ToShortTimeString());
+                                var xp20 = new MySql.Data.MySqlClient.MySqlParameter("@signoDoc", it.signoDoc);
+                                var xp21 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDoc", it.tipoDoc);
+                                var xp22 = new MySql.Data.MySqlClient.MySqlParameter("@estatusAnulado", it.estatusAnulado);
+                                var xp23 = new MySql.Data.MySqlClient.MySqlParameter("@importe", it.importe);
+                                var r2 = cn.Database.ExecuteSqlCommand(_sql_I,
+                                                                        xp1, xp2, xp5, xp6, xp7, xp8, xp9, xp10,
+                                                                        xp11, xp17, xp18, xp19, xp20,
+                                                                        xp21, xp22, xp23);
+                                if (r2 == 0)
+                                {
+                                    result.Mensaje = "PROBLEMA AL INSERTAR ITEM SERVICIO";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
+                                cn.SaveChanges();
+                                //
+                                _sql = "SELECT LAST_INSERT_ID()";
+                                var idEnt = cn.Database.SqlQuery<int>(_sql).FirstOrDefault();
+                                //
+                                _idItemServicio=idEnt;
+
+                                var _sql_F = @"INSERT INTO ventas_transp_item_fecha 
+                                        (
+                                            id_venta, id_item, fecha, hora, nota) 
+                                        VALUES 
+                                        (
+                                            @idVenta, @idItem, @fecha, @hora, @nota)";
+                                foreach (var fech in it.fechas)
+                                {
+                                    var yp1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
+                                    var yp2 = new MySql.Data.MySqlClient.MySqlParameter("@idItem", idEnt);
+                                    var yp3 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fech.fecha);
+                                    var yp4 = new MySql.Data.MySqlClient.MySqlParameter("@hora", fech.hora);
+                                    var yp5 = new MySql.Data.MySqlClient.MySqlParameter("@nota", fech.nota);
+                                    var r3 = cn.Database.ExecuteSqlCommand(_sql_F, yp1, yp2, yp3, yp4, yp5);
+                                    if (r3 == 0) 
+                                    {
+                                        result.Mensaje = "PROBLEMA AL INSERTAR FECHA SERVICIO";
+                                        result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                        return result;
+                                    }
+                                    cn.SaveChanges();
+                                }
+
+                                var _sql_G = @"INSERT INTO ventas_transp_item_aliado 
+                                            (
+                                                id_venta,
+                                                id_item,
+                                                id_aliado,
+                                                cirif_aliado,
+                                                codigo_aliado,
+                                                desc_alido,
+                                                precio_unit_divisa,
+                                                cnt_dias,
+                                                importe
+                                            )
+                                            VALUES 
+                                            (
+                                                @idVenta, 
+                                                @idItem, 
+                                                @idAliado, 
+                                                @ciRifAliado, 
+                                                @codigoAliado, 
+                                                @descAliado, 
+                                                @precioUnitDiv, 
+                                                @cntDias,
+                                                @importe
+                                            )";
+                                foreach (var aliad in it.alidos)
+                                {
+                                    var zp1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
+                                    var zp2 = new MySql.Data.MySqlClient.MySqlParameter("@idItem", idEnt);
+                                    var zp3 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", aliad.id);
+                                    var zp4 = new MySql.Data.MySqlClient.MySqlParameter("@ciRifAliado", aliad.ciRif);
+                                    var zp5 = new MySql.Data.MySqlClient.MySqlParameter("@codigoAliado", aliad.codigo);
+                                    var zp6 = new MySql.Data.MySqlClient.MySqlParameter("@descAliado", aliad.desc);
+                                    var zp7 = new MySql.Data.MySqlClient.MySqlParameter("@precioUnitDiv", aliad.precioUnitDivisa);
+                                    var zp8 = new MySql.Data.MySqlClient.MySqlParameter("@cntDias", aliad.cntDias);
+                                    var zp9 = new MySql.Data.MySqlClient.MySqlParameter("@importe", aliad.importe);
+                                    var r4 = cn.Database.ExecuteSqlCommand(_sql_G, zp1, zp2, zp3, zp4, zp5, zp6, zp7, zp8, zp9);
+                                    if (r4 == 0)
+                                    {
+                                        result.Mensaje = "PROBLEMA AL INSERTAR ALIADO SERVICIO";
+                                        result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                        return result;
+                                    }
+                                    cn.SaveChanges();
+                                }
+                            }
+
+                            //INSERTAR DETALLE DOCUMENTO
                             var ld1 = new MySql.Data.MySqlClient.MySqlParameter("@id_venta", autoDoc);
                             var ld2 = new MySql.Data.MySqlClient.MySqlParameter("@detalle", rg.detalle);
                             var ld3 = new MySql.Data.MySqlClient.MySqlParameter("@cnt_dias", rg.cntDias);
@@ -603,10 +755,12 @@ namespace ProvPos
                             var ld31 = new MySql.Data.MySqlClient.MySqlParameter("@doc_fecha_ref", rg.fechaDocRef);
                             var ld32 = new MySql.Data.MySqlClient.MySqlParameter("@doc_monto_ref", rg.montoDocRef);
                             var ld33 = new MySql.Data.MySqlClient.MySqlParameter("@doc_codigo_ref", rg.codigoDocRef);
-                            var r_det = cn.Database.ExecuteSqlCommand(_sql, ld1, ld2, ld3, ld4, ld5, ld6, ld7, ld8, ld9, ld10,
+                            var ld34 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_procedencia_item", rg.tipoProcedenciaItem);
+                            var ld35 = new MySql.Data.MySqlClient.MySqlParameter("@id_item_servicio", _idItemServicio);
+                            var r_det = cn.Database.ExecuteSqlCommand(_sqlDetFct, ld1, ld2, ld3, ld4, ld5, ld6, ld7, ld8, ld9, ld10,
                                                                             ld11, ld12, ld13, ld14, ld15, ld16, ld17, ld18, ld19, ld20,
                                                                             ld21, ld22, ld23, ld24, ld25, ld26, ld27, ld28, ld29, ld30,
-                                                                            ld31, ld32, ld33);
+                                                                            ld31, ld32, ld33, ld34, ld35);
                             if (r_det == 0)
                             {
                                 result.Mensaje = "PROBLEMA AL INSERTAR ITEM ";

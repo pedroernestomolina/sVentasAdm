@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.Documento.Lista
 {
-    
     public class Ficha
     {
-
         public string Id { get; set; }
         public string DocNumero { get; set; }
         public string Control { get; set; }
@@ -41,18 +39,22 @@ namespace ModVentaAdm.OOB.Documento.Lista
                     case "01":
                         rt = "FAC";
                         break;
+                    case "02":
+                        rt = "NDB";
+                        break;
                     case "03":
                         rt = "NCR";
                         break;
                     case "04":
                         rt = "NEN";
                         break;
+                    case "05":
+                        rt = "PRE";
+                        break;
                 }
                 return rt;
             }
         }
-
-
         public Ficha()
         {
             Id = "";
@@ -77,9 +79,6 @@ namespace ModVentaAdm.OOB.Documento.Lista
             ClaveSistema = "";
         }
 
-
         public string ClaveSistema { get; set; }
-
     }
-
 }

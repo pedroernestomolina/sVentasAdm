@@ -21,5 +21,10 @@ namespace ModVentaAdm.Data.Infra.Transporte
 
         OOB.Resultado.Lista<OOB.Transporte.Documento.Remision.Lista.Ficha>
             TransporteDocumento_Remision_ListaBy(OOB.Transporte.Documento.Remision.Lista.Filtro filtro);
+
+        OOB.Resultado.Ficha
+            TransporteDocumento_AnularPresupuesto(OOB.Transporte.Documento.Anular.Presupuesto.Ficha ficha);
+        OOB.Resultado.Ficha
+            TransporteDocumento_AnularNotaEntrega(OOB.Transporte.Documento.Anular.NotaEntrega.Ficha ficha);
     }
 }

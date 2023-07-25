@@ -193,6 +193,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 _itemEditar.Inicializa();
                 _itemEditar.setTasaFiscal(_tasasFiscal);
                 _itemEditar.setItemEditar(_dataGen.Items.ItemActual.Item);
+                _itemEditar.setSolicitadoPor(_dataGen.DatosDoc_SolicitadoPor_Get);
+                _itemEditar.setModuloCargar(_dataGen.DatosDoc_ModuloCargar_Get);
                 _itemEditar.Inicia();
                 if (_itemEditar.ProcesarIsOK)
                 {

@@ -13,6 +13,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
             : base()
         {
             _idCliente = "";
+            _solicitadoPor = "";
+            _moduloCargar = "";
         }
 
 
@@ -33,6 +35,17 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
         {
             _idCliente = idCliente;
         }
+        private string _solicitadoPor;
+        public void setSolicitadoPor(string desc)
+        {
+            _solicitadoPor = desc;
+        }
+        private string _moduloCargar;
+        public void setModuloCargar(string desc)
+        {
+            _moduloCargar = desc;
+        }
+
 
         public override void HabilitarPresupuesto()
         {
@@ -92,7 +105,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
             _itemAgregar = new Presupuesto.Generar.Item.Agregar.Agregar();
             _itemAgregar.Inicializa();
             _itemAgregar.setTasaFiscal(_tasasFiscal);
-            _itemAgregar.setValidarDatosCompletos(true);
+            _itemAgregar.setValidarDatosCompletos(false);
+            _itemAgregar.setSolicitadoPor(_solicitadoPor);
+            _itemAgregar.setModuloCargar(_moduloCargar);
             _itemAgregar.Inicia();
             if (_itemAgregar.ProcesarIsOK)
             {
