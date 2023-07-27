@@ -9,5 +9,6 @@ namespace ModVentaAdm.SrcTransporte.Aliados.AgregarEditar.Agregar
 {
     public interface IAgregar: IAgregarEditar
     {
+        int IdAliadoAgregado { get; }
     }
 }

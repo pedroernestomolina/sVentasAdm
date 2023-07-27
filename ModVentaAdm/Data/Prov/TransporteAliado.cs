@@ -106,5 +106,33 @@ namespace ModVentaAdm.Data.Prov
             result.ListaD = _lst;
             return result;
         }
+        public OOB.Resultado.Ficha 
+            TransporteAliado_Editar(OOB.Transporte.Aliado.Editar.Ficha ficha)
+        {
+            var result = new OOB.Resultado.Ficha();
+            var fichaDTO = new DtoTransporte.Aliado.Editar.Ficha
+            {
+                idAliado = ficha.idAliado,
+                ciRif = ficha.ciRif,
+                codigo = ficha.codigo,
+                dirFiscal = ficha.dirFiscal,
+                nombreRazonSocial = ficha.nombreRazonSocial,
+                personaContacto = ficha.personaContacto,
+                telefonos = ficha.telefonos.Select(s =>
+                {
+                    var nr = new DtoTransporte.Aliado.Editar.Telefono()
+                    {
+                        numero = s.numero,
+                    };
+                    return nr;
+                }).ToList(),
+            };
+            var r01 = MyData.TransporteAliado_Editar(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return result;
+        }
     }
 }

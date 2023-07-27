@@ -15,5 +15,7 @@ namespace ModVentaAdm.Data.Infra.Transporte
             TransporteAliado_GetById(int idAliado);
         OOB.Resultado.Lista<OOB.Transporte.Aliado.Entidad.Ficha>
             TransporteAliado_GetLista(OOB.Transporte.Aliado.Busqueda.Filtro filtro);
+        OOB.Resultado.Ficha
+            TransporteAliado_Editar (OOB.Transporte.Aliado.Editar.Ficha ficha);
     }
 }

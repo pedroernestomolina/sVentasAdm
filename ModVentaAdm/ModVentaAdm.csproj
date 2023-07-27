@@ -88,6 +88,7 @@
     <Compile Include="Data\Infra\IVenta.cs" />
     <Compile Include="Data\Infra\Transporte\IAliado.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteDocumento.cs" />
+    <Compile Include="Data\Infra\Transporte\ITransporteReporte.cs" />
     <Compile Include="Data\Prov\Auditoria.cs" />
     <Compile Include="Data\Prov\Cliente.cs" />
     <Compile Include="Data\Prov\ClienteGrupo.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Data\Prov\TransporteDocumento_Anular.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Agregar_Factura.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Agregar_Presupuesto.cs" />
+    <Compile Include="Data\Prov\TransporteReporte.cs" />
     <Compile Include="Data\Prov\Usuario.cs" />
     <Compile Include="Data\Prov\Venta.cs" />
     <Compile Include="Fabrica\General\DocVenta.cs" />
@@ -255,6 +257,8 @@
     <Compile Include="OOB\Transporte\Aliado\baseFicha.cs" />
     <Compile Include="OOB\Transporte\Aliado\baseTelefono.cs" />
     <Compile Include="OOB\Transporte\Aliado\Busqueda\Filtro.cs" />
+    <Compile Include="OOB\Transporte\Aliado\Editar\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Aliado\Editar\Telefono.cs" />
     <Compile Include="OOB\Transporte\Aliado\Entidad\Ficha.cs" />
     <Compile Include="OOB\Transporte\Aliado\Entidad\Telefono.cs" />
     <Compile Include="OOB\Transporte\Aliado\Tipos.cs" />
@@ -272,10 +276,10 @@
     <Compile Include="OOB\Transporte\Documento\Agregar\Resultado.cs" />
     <Compile Include="OOB\Transporte\Documento\Anular\baseAliado.cs" />
     <Compile Include="OOB\Transporte\Documento\Anular\baseAuditoria.cs" />
-    <Compile Include="OOB\Transporte\Documento\Anular\NotaEntrega\Ficha.cs" />
-    <Compile Include="OOB\Transporte\Documento\Anular\NotaEntrega\FichaAliado.cs" />
-    <Compile Include="OOB\Transporte\Documento\Anular\NotaEntrega\FichaAliadoDoc.cs" />
-    <Compile Include="OOB\Transporte\Documento\Anular\NotaEntrega\FichaAuditoria.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\Venta\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\Venta\FichaAliado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\Venta\FichaAliadoDoc.cs" />
+    <Compile Include="OOB\Transporte\Documento\Anular\Venta\FichaAuditoria.cs" />
     <Compile Include="OOB\Transporte\Documento\Anular\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Anular\Presupuesto\FichaAuditoria.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\baseEncabezado.cs" />
@@ -284,8 +288,13 @@
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaFechaServ.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaDetalle.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Filtro.cs" />
+    <Compile Include="OOB\Transporte\Reporte\AliadoDetalleDoc.cs" />
+    <Compile Include="OOB\Transporte\Reporte\AliadoResumen.cs" />
     <Compile Include="SrcTransporte\AdmDocumentos\IGestion.cs" />
     <Compile Include="SrcTransporte\AdmDocumentos\Ventas\Frm.cs">
       <SubType>Form</SubType>
@@ -358,6 +367,8 @@
     <Compile Include="SrcTransporte\DocVenta\Generar\data.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\dataItem.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\dataTotales.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Factura\Imp.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\Factura\IProForma.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -385,6 +396,11 @@
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\data.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\Imp.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\IRemision.cs" />
+    <Compile Include="SrcTransporte\Maestro\Transp\Aliados\data.cs" />
+    <Compile Include="SrcTransporte\Maestro\Transp\Aliados\IAliado.cs" />
+    <Compile Include="SrcTransporte\Maestro\Transp\Aliados\IAliadoLista.cs" />
+    <Compile Include="SrcTransporte\Maestro\Transp\Aliados\Imp.cs" />
+    <Compile Include="SrcTransporte\Maestro\Transp\Aliados\ImpLista.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -455,6 +471,13 @@
     </Compile>
     <Compile Include="SrcTransporte\Principal\PrincipalFrm.Designer.cs">
       <DependentUpon>PrincipalFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\Reportes\Aliado\DetalleDoc.cs" />
+    <Compile Include="SrcTransporte\Reportes\Aliado\Resumen.cs" />
+    <Compile Include="SrcTransporte\Reportes\DS_TRANSP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_TRANSP.xsd</DependentUpon>
     </Compile>
     <Compile Include="Src\Administrador\data.cs" />
     <Compile Include="Src\Administrador\Documentos\AdmDocFrm.cs">
@@ -918,6 +941,14 @@
     <Compile Include="Utils\DocLista\IDocLista.cs" />
     <Compile Include="Utils\DocLista\Remision\ImpLista.cs" />
     <Compile Include="Utils\DocLista\Remision\IRemision.cs" />
+    <Compile Include="SrcTransporte\Maestro\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Maestro\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Maestro\ILista.cs" />
+    <Compile Include="Utils\Maestro\IMaestro.cs" />
     <EmbeddedResource Include="Helpers\Imprimir\Grafico\Documento.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -961,6 +992,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Principal\PrincipalFrm.resx">
       <DependentUpon>PrincipalFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\AliadoDetalleDoc.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\AliadoResumen.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Administrador\Documentos\AdmDocFrm.resx">
       <DependentUpon>AdmDocFrm.cs</DependentUpon>
@@ -1139,6 +1176,9 @@
     <EmbeddedResource Include="Utils\DocLista\Remision\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Maestro\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Helpers\Imprimir\Grafico\ds.xsc">
       <DependentUpon>ds.xsd</DependentUpon>
     </None>
@@ -1160,6 +1200,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SrcTransporte\Reportes\DS_TRANSP.xsc">
+      <DependentUpon>DS_TRANSP.xsd</DependentUpon>
+    </None>
+    <None Include="SrcTransporte\Reportes\DS_TRANSP.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_TRANSP.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SrcTransporte\Reportes\DS_TRANSP.xss">
+      <DependentUpon>DS_TRANSP.xsd</DependentUpon>
+    </None>
     <None Include="Src\CxC\Tools\Reportes\DS_CxC.xsc">
       <DependentUpon>DS_CxC.xsd</DependentUpon>
     </None>
@@ -1346,9 +1397,7 @@
       <Name>ServicePos</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SrcTransporte\DocVenta\Generar\Factura\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

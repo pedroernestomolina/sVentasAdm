@@ -210,5 +210,84 @@ namespace ProvPos
             }
             return result;
         }
+        public DtoLib.Resultado 
+            TransporteAliado_Editar(DtoTransporte.Aliado.Editar.Ficha ficha)
+        {
+            var result = new DtoLib.Resultado();
+            try
+            {
+                using (var ctx = new PosEntities(ProvPos.Provider._cnPos.ConnectionString))
+                {
+                    using (var ts = new TransactionScope())
+                    {
+                        var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", ficha.idAliado);
+                        var p1 = new MySql.Data.MySqlClient.MySqlParameter("@codigo", ficha.codigo);
+                        var p2 = new MySql.Data.MySqlClient.MySqlParameter("@ciRif", ficha.ciRif);
+                        var p3 = new MySql.Data.MySqlClient.MySqlParameter("@nombreRazonSocial", ficha.nombreRazonSocial);
+                        var p4 = new MySql.Data.MySqlClient.MySqlParameter("@dirFiscal", ficha.dirFiscal);
+                        var p5 = new MySql.Data.MySqlClient.MySqlParameter("@contacto", ficha.personaContacto);
+                        var _sql = @"update transp_aliado
+                                        set codigo=@codigo, 
+                                            ciRif=@ciRif,
+                                            nombreRazonSocial=@nombreRazonSocial, 
+                                            dirFiscal=@dirFiscal, 
+                                            personaContacto=@contacto
+                                    where id=@idAliado";
+                        var r = ctx.Database.ExecuteSqlCommand(_sql, p0, p1, p2, p3, p4, p5);
+                        if (r == 0)
+                        {
+                            throw new Exception("PROBLEMA AL ACTUALIZAR ALIADO");
+                        }
+                        ctx.SaveChanges();
+
+                        _sql = @"delete 
+                                    from transp_aliado_telefono 
+                                    where idAliado=@idAliado";
+                        p0 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", ficha.idAliado);
+                        r = ctx.Database.ExecuteSqlCommand(_sql, p0);
+                        ctx.SaveChanges();
+                        
+                        foreach (var rg in ficha.telefonos)
+                        {
+                            p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                            p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                            p1.ParameterName = "@idAliado";
+                            p1.Value = ficha.idAliado;
+                            p2.ParameterName = "@numero";
+                            p2.Value = rg.numero;
+                            _sql = @"INSERT INTO transp_aliado_telefono (
+                                        `idAliado`, 
+                                        `numero`) 
+                                    VALUES (
+                                        @idAliado,
+                                        @numero)";
+                            r = ctx.Database.ExecuteSqlCommand(_sql, p1, p2);
+                            if (r == 0)
+                            {
+                                throw new Exception("PROBLEMA AL REGISTRAR TELEFONO");
+                            }
+                            ctx.SaveChanges();
+                        }
+                        ts.Complete();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
     }
 }

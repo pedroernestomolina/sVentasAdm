@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.OOB.Transporte.Documento.Anular.NotaEntrega
+namespace ModVentaAdm.OOB.Transporte.Documento.Anular.Venta
 {
-    public class FichaAliado: baseAliado
+    public class FichaAuditoria: baseAuditoria
     {
-        public FichaAliado()
+        public FichaAuditoria()
             :base()
         {
         }

@@ -15,6 +15,8 @@ namespace IPos.Transporte
             TransporteDocumento_AgregarPresupuestoConRemision(DtoTransporte.Documento.Agregar.Presupuesto.Ficha ficha);
 
         //
+        DtoLib.Resultado
+            TransporteDocumento_AgregarFactura_Vericar(DtoTransporte.Documento.Agregar.Factura.Ficha ficha);
         DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>
             TransporteDocumento_AgregarFactura(DtoTransporte.Documento.Agregar.Factura.Ficha ficha);
 
@@ -35,5 +37,11 @@ namespace IPos.Transporte
             TransporteDocumento_AnularNotaEntrega(DtoTransporte.Documento.Anular.NotaEntrega.Ficha ficha);
         DtoLib.ResultadoEntidad<DtoTransporte.Documento.Anular.NotaEntrega.dataAnular>
             TransporteDocumento_AnularNotaEntrega_GetDataAnular(string idDoc);
+        DtoLib.Resultado 
+            TransporteDocumento_AnularNotaEntrega_Verifica(DtoTransporte.Documento.Anular.NotaEntrega.Ficha ficha);
+
+        //
+        DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Venta.Ficha>
+            TransporteDocumento_EntidadVenta_GetById(string idDoc);
     }
 }

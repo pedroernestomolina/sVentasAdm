@@ -486,6 +486,7 @@
             this.BT_ABRIR_PEND.Text = "AbrirPend";
             this.BT_ABRIR_PEND.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_ABRIR_PEND.UseVisualStyleBackColor = true;
+            this.BT_ABRIR_PEND.Visible = false;
             // 
             // panel2
             // 
@@ -2611,6 +2612,7 @@
             this.L_DOC_PENDIENTE.TabIndex = 0;
             this.L_DOC_PENDIENTE.Text = "Cant/Doc Pendiente: 1000";
             this.L_DOC_PENDIENTE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_DOC_PENDIENTE.Visible = false;
             // 
             // panel68
             // 
@@ -2723,6 +2725,7 @@
             this.BT_DOC_PENDIENTE.Text = "Pendiente";
             this.BT_DOC_PENDIENTE.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_DOC_PENDIENTE.UseVisualStyleBackColor = true;
+            this.BT_DOC_PENDIENTE.Visible = false;
             this.BT_DOC_PENDIENTE.Click += new System.EventHandler(this.BT_DOC_PENDIENTE_Click);
             // 
             // P_BOT_PROCESAR

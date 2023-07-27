@@ -53,7 +53,8 @@ namespace ModVentaAdm.Fabrica.Transporte
                         rt = AnularPresupuesto(GetItemActual, motivo);
                         break;
                     case Src.Administrador.data.enumTipoDoc.NotaEntrega:
-                        rt = AnularNotaEntrega(GetItemActual, motivo);
+                    case Src.Administrador.data.enumTipoDoc.Factura:
+                        rt = AnularVenta(GetItemActual, motivo);
                         break;
                 }
                 return rt;
@@ -82,14 +83,24 @@ namespace ModVentaAdm.Fabrica.Transporte
             var r01 = Sistema.MyData.TransporteDocumento_AnularPresupuesto(ficha);
             return true;
         }
-        private bool AnularNotaEntrega(Src.Administrador.data doc, string motivo)
+        private bool AnularVenta(Src.Administrador.data doc, string motivo)
         {
-            var ficha = new OOB.Transporte.Documento.Anular.NotaEntrega.Ficha()
+            var _idSistDoc = "";
+            switch (doc.DocCodigo) 
+            {
+                case "01":
+                    _idSistDoc = Sistema.Id_SistDocumento_Factura;
+                    break;
+                case "04":
+                    _idSistDoc = Sistema.Id_SistDocumento_NotaEntrega;
+                    break;
+            }
+            var ficha = new OOB.Transporte.Documento.Anular.Venta.Ficha()
             {
                 idDocVenta = doc.idDocumento,
-                auditoria = new OOB.Transporte.Documento.Anular.NotaEntrega.FichaAuditoria
+                auditoria = new OOB.Transporte.Documento.Anular.Venta.FichaAuditoria
                 {
-                    idSistemaDocumento = Sistema.Id_SistDocumento_NotaEntrega,
+                    idSistemaDocumento = _idSistDoc,
                     idUsuario = Sistema.Usuario.id,
                     codigo = Sistema.Usuario.codigo,
                     estacion = Sistema.EquipoEstacion,
@@ -97,8 +108,51 @@ namespace ModVentaAdm.Fabrica.Transporte
                     usuario = Sistema.Usuario.nombre,
                 },
             };
-            var r01 = Sistema.MyData.TransporteDocumento_AnularNotaEntrega(ficha);
+            var r01 = Sistema.MyData.TransporteDocumento_AnularVenta(ficha);
             return true;
+        }
+        public void VisualizarDocumento(Src.Administrador.data doc)
+        {
+            if (doc == null)
+            {
+                return;
+            }
+            switch (doc.DocCodigo.Trim().ToUpper()) 
+            {
+                case "05":
+                    CargarPresupuesto(doc.idDocumento);
+                    break;
+                case "01":
+                case "04":
+                    CargarVenta(doc.idDocumento);
+                    break;
+            }
+        }
+
+
+        private void CargarVenta(string idDoc)
+        {
+            try
+            {
+                var r01 = Sistema.MyData.TransporteDocumento_EntidadVenta_GetById(idDoc);
+                Helpers.Msg.OK("VENTA");
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
+        }
+        private void CargarPresupuesto(string idDoc)
+        {
+            try
+            {
+                var r01 = Sistema.MyData.TransporteDocumento_EntidadPresupuesto_GetById(idDoc);
+                Helpers.Msg.OK("PRESUPUESTO");
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
         }
     }
 }

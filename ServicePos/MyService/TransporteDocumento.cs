@@ -25,6 +25,17 @@ namespace ServicePos.MyService
         public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>
             TransporteDocumento_AgregarFactura(DtoTransporte.Documento.Agregar.Factura.Ficha ficha)
         {
+            var r01 = ServiceProv.TransporteDocumento_AgregarFactura_Vericar(ficha);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError) 
+            {
+                var rt = new DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>()
+                {
+                    Entidad = null,
+                    Mensaje = r01.Mensaje,
+                    Result = DtoLib.Enumerados.EnumResult.isError
+                };
+                return rt;
+            }
             return ServiceProv.TransporteDocumento_AgregarFactura(ficha);
         }
 
@@ -68,7 +79,23 @@ namespace ServicePos.MyService
             ficha.aliadosDoc = r01.Entidad.aliadosDoc;
             ficha.itemsServicio = r01.Entidad.itemsServ;
             ficha.docRef = r01.Entidad.docRef;
+
+            var r00 = ServiceProv.TransporteDocumento_AnularNotaEntrega_Verifica(ficha);
+            if (r00.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                var rt = new DtoLib.Resultado();
+                rt.Mensaje = r00.Mensaje;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+                return rt;
+            }
+
             return ServiceProv.TransporteDocumento_AnularNotaEntrega(ficha);
+        }
+
+        public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Venta.Ficha> 
+            TransporteDocumento_EntidadVenta_GetById(string idDoc)
+        {
+            return ServiceProv.TransporteDocumento_EntidadVenta_GetById(idDoc);
         }
     }
 }

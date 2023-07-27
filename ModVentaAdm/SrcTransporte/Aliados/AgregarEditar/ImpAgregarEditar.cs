@@ -25,7 +25,7 @@ namespace ModVentaAdm.SrcTransporte.Aliados.AgregarEditar
         }
 
 
-        public void Inicializa()
+        public virtual void Inicializa()
         {
             _procesarIsOK = false;
             _abandonarIsOK = false;

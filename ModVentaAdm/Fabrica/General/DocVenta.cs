@@ -90,5 +90,22 @@ namespace ModVentaAdm.Fabrica.General
             }
             return true;
         }
+        private Helpers.Imprimir.IDocumento _gVisualizarDoc;
+        public void VisualizarDocumento(Src.Administrador.data doc)
+        {
+            if (doc != null)
+            {
+                var r01 = Helpers.Imprimir.Documento.CargarDataDocumento(doc.idDocumento);
+                if (r01 != null)
+                {
+                    if (_gVisualizarDoc == null) 
+                    {
+                        _gVisualizarDoc = new Helpers.Imprimir.Grafico.Documento();
+                    }
+                    _gVisualizarDoc.setData(r01);
+                    _gVisualizarDoc.ImprimirDoc();
+                }
+            }
+        }
     }
 }

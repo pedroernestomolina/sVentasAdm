@@ -11,6 +11,8 @@ namespace ServicePos.Interfaces.Transporte
     {
         DtoLib.ResultadoId
             TransporteAliado_Agregar(DtoTransporte.Aliado.Agregar.Ficha ficha);
+        DtoLib.Resultado
+            TransporteAliado_Editar(DtoTransporte.Aliado.Editar.Ficha ficha);
         DtoLib.ResultadoEntidad<DtoTransporte.Aliado.Entidad.Ficha>
             TransporteAliado_GetById(int idAliado);
         DtoLib.ResultadoLista<DtoTransporte.Aliado.Entidad.Ficha>

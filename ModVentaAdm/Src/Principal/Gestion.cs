@@ -334,20 +334,15 @@ namespace ModVentaAdm.Src.Principal
 
 
         // TRANSPORTE
+        private Utils.Maestro.IMaestro _gMasterAliado;
         public void MenuMaestroAliados()
         {
-            SrcTransporte.Aliados.AgregarEditar.Agregar.IAgregar _gest;
-            _gest = new SrcTransporte.Aliados.AgregarEditar.Agregar.Agregar();
-            _gest.Inicializa();
-            _gest.Inicia();
-        }
-        public void AliadoEditar()
-        {
-            SrcTransporte.Aliados.AgregarEditar.Editar.IEditar _gest;
-            _gest = new SrcTransporte.Aliados.AgregarEditar.Editar.Editar();
-            _gest.Inicializa();
-            _gest.setAliadoEditar(3);
-            _gest.Inicia();
+            if (_gMasterAliado==null)
+            {
+                _gMasterAliado= new SrcTransporte.Maestro.Transp.Aliados.Imp();
+            }
+            _gMasterAliado.Inicializa();
+            _gMasterAliado.Inicia();
         }
         public void TransportePresupuestoGenerar()
         {
@@ -360,6 +355,13 @@ namespace ModVentaAdm.Src.Principal
         {
             SrcTransporte.DocVenta.Generar.ProForma.IProForma _gest;
             _gest = new SrcTransporte.DocVenta.Generar.ProForma.Imp();
+            _gest.Inicializa();
+            _gest.Inicia();
+        }
+        public void TransporteFacturaGenerar()
+        {
+            SrcTransporte.DocVenta.Generar.Factura.IFactura _gest;
+            _gest = new SrcTransporte.DocVenta.Generar.Factura.Imp();
             _gest.Inicializa();
             _gest.Inicia();
         }
@@ -376,6 +378,19 @@ namespace ModVentaAdm.Src.Principal
                 }
             }
             return null;
+        }
+
+        public void ReporteTransporte_AliadoResumen()
+        {
+            IReporte _rep;
+            _rep = new SrcTransporte.Reportes.Aliado.Resumen();
+            _rep.Generar();
+        }
+        public void ReporteTransporte_AliadoDetalleDoc()
+        {
+            IReporte _rep;
+            _rep = new SrcTransporte.Reportes.Aliado.DetalleDoc();
+            _rep.Generar();
         }
     }
 }

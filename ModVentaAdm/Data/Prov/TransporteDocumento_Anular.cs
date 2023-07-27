@@ -35,7 +35,7 @@ namespace ModVentaAdm.Data.Prov
             return result;
         }
         public OOB.Resultado.Ficha 
-            TransporteDocumento_AnularNotaEntrega(OOB.Transporte.Documento.Anular.NotaEntrega.Ficha ficha)
+            TransporteDocumento_AnularVenta(OOB.Transporte.Documento.Anular.Venta.Ficha ficha)
         {
             var result = new OOB.Resultado.Ficha();
             var fichaDTO = new DtoTransporte.Documento.Anular.NotaEntrega.Ficha()

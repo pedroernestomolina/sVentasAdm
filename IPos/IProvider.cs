@@ -7,18 +7,16 @@ using System.Threading.Tasks;
 
 namespace IPos
 {
-    
     public interface IProvider: IProducto, ICliente, ISucursal, IDeposito,
         ICobrador, IVendedor, IMedioPago, IConcepto, ITransporte, ISistema, 
         IFiscal, IUsuario, IPermiso, IConfiguracion, IJornada, IDocumento,
         IVenta, IPendiente, IReportesAdm, IClienteGrupo, IClienteZona, IConfiguracionAdm,
         IReportesCli, IReportesPos, IProductoAdm, IVentaAdm, IDocumentoAdm, 
-        IAuditoria, IModuloAdm, ICxC, Transporte.IAliado, Transporte.ITranspDocumento
+        IAuditoria, IModuloAdm, ICxC, 
+        Transporte.IAliado, Transporte.ITranspDocumento, Transporte.ITranspReporte
     {
 
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();
         DtoLib.Resultado Test();
-
     }
-
 }

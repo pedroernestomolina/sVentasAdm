@@ -25,6 +25,9 @@ namespace ModVentaAdm.Data.Infra.Transporte
         OOB.Resultado.Ficha
             TransporteDocumento_AnularPresupuesto(OOB.Transporte.Documento.Anular.Presupuesto.Ficha ficha);
         OOB.Resultado.Ficha
-            TransporteDocumento_AnularNotaEntrega(OOB.Transporte.Documento.Anular.NotaEntrega.Ficha ficha);
+            TransporteDocumento_AnularVenta(OOB.Transporte.Documento.Anular.Venta.Ficha ficha);
+
+        OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Venta.Ficha>
+            TransporteDocumento_EntidadVenta_GetById(string idDoc);
     }
 }

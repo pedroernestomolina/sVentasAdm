@@ -279,6 +279,9 @@ namespace ModVentaAdm.SrcTransporte.Principal
             _controlador.Reporte_Vendedor_Detallado();
         }
 
+
+
+        //
         private void MNU_MAESTRO_ALIADO_Click(object sender, EventArgs e)
         {
             MenuMaestroAliados();
@@ -286,10 +289,6 @@ namespace ModVentaAdm.SrcTransporte.Principal
         private void MenuMaestroAliados()
         {
             _controlador.MenuMaestroAliados();
-        }
-        private void MNU_MAESTRO_ALIADO_editar_Click(object sender, EventArgs e)
-        {
-            _controlador.AliadoEditar();
         }
         private void MNU_TRANSPORTE_PRESUPUESTO_GENERAR_Click(object sender, EventArgs e)
         {
@@ -300,13 +299,39 @@ namespace ModVentaAdm.SrcTransporte.Principal
             _controlador.TransportePresupuestoGenerar();
         }
 
-        private void MENU_DOCUMENTOS_PRO_FORMA_Click(object sender, EventArgs e)
+        private void MENU_DOCUMENTOS_TRANS_PRO_FORMA_Click(object sender, EventArgs e)
         {
             TransporteProForma();
         }
         private void TransporteProForma()
         {
             _controlador.TransporteProFormaGenerar();
+        }
+
+        private void MNU_TRANSPORTE_FACTURA_Click(object sender, EventArgs e)
+        {
+            TransporteFactura();
+        }
+        private void TransporteFactura()
+        {
+            _controlador.TransporteFacturaGenerar();
+        }
+
+        private void REP_TRANS_ALIADO_RESUMEN_Click(object sender, EventArgs e)
+        {
+            ReporteTransporte_AliadoResumen();
+        }
+        private void ReporteTransporte_AliadoResumen()
+        {
+            _controlador.ReporteTransporte_AliadoResumen();
+        }
+        private void REP_TRANS_ALIADO_DETALLE_Click(object sender, EventArgs e)
+        {
+            ReporteTransporte_AliadoDetalleDoc();
+        }
+        private void ReporteTransporte_AliadoDetalleDoc()
+        {
+            _controlador.ReporteTransporte_AliadoDetalleDoc();
         }
     }
 }

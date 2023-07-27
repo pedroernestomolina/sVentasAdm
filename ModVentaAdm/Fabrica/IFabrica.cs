@@ -12,5 +12,6 @@ namespace ModVentaAdm.Fabrica
         string NombreHerramienta { get;  }
         void Iniciar_FrmPrincipal(Src.Principal.Gestion ctr);
         bool AnularDocumentoVenta(Src.Administrador.data GetItemActual, Src.Anular.Gestion _gAnular);
+        void VisualizarDocumento(Src.Administrador.data GetItemActual);
     }
 }

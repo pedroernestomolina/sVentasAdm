@@ -12,6 +12,18 @@ namespace ProvPos
 {
     public partial class Provider : IPos.IProvider
     {
+        private class docVtaVerifAnular
+        {
+            public string estatus { get; set; }
+            public string autoRemision { get; set; }
+            public decimal monto { get; set; }
+            public docVtaVerifAnular()
+            {
+                estatus = "";
+                autoRemision = "";
+                monto = 0m;
+            }
+        }
         public DtoLib.Resultado
             TransporteDocumento_AnularPresupuesto(DtoTransporte.Documento.Anular.Presupuesto.Ficha ficha)
         {
@@ -115,6 +127,7 @@ namespace ProvPos
             }
             return result;
         }
+
         public DtoLib.Resultado
             TransporteDocumento_AnularNotaEntrega(DtoTransporte.Documento.Anular.NotaEntrega.Ficha ficha)
         {
@@ -214,16 +227,19 @@ namespace ProvPos
                         }
                         cn.SaveChanges();
 
-                        sql = "update ventas_transp_doc set estatus_anulado='1' where id_venta=@p1";
-                        p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", ficha.idDocVenta);
-                        var v3b = cn.Database.ExecuteSqlCommand(sql, p1);
-                        if (v3b == 0)
+                        if (ficha.docRef.Count > 0)
                         {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR ESTATUS [ ANULADO ] DOC INVOLUCRADOS";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            sql = "update ventas_transp_doc set estatus_anulado='1' where id_venta=@p1";
+                            p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", ficha.idDocVenta);
+                            var v3b = cn.Database.ExecuteSqlCommand(sql, p1);
+                            if (v3b == 0)
+                            {
+                                result.Mensaje = "PROBLEMA AL ACTUALIZAR ESTATUS [ ANULADO ] DOC INVOLUCRADOS";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cn.SaveChanges();
                         }
-                        cn.SaveChanges();
 
                         if (ficha.aliadosInv.Count > 0)
                         {
@@ -310,7 +326,8 @@ namespace ProvPos
                         sql = @"update ventas 
                                 set auto_remision='',
                                     documento_remision='',
-                                    tipo_remision=''
+                                    tipo_remision='',
+                                    situacion=''
                                 where auto=@idDocRef";
                         foreach (var rg in ficha.docRef)
                         {
@@ -398,6 +415,83 @@ namespace ProvPos
                     _ent.docRef = _docRef;
                     result.Entidad = _ent;
                 }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.Resultado
+            TransporteDocumento_AnularNotaEntrega_Verifica(DtoTransporte.Documento.Anular.NotaEntrega.Ficha ficha)
+        {
+            var result = new DtoLib.Resultado();
+            try
+            {
+                using (var cn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    using (var ts = new TransactionScope())
+                    {
+                        //DOCUMENTO
+                        var _sql = @"select 
+                                        estatus_anulado as estatus,
+                                        acumulado_divisa as monto
+                                    from cxc
+                                    where auto=@autoCxC";
+                        var t1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxC", ficha.idDocCxC);
+                        var _docCxC = cn.Database.SqlQuery<docVtaVerifAnular>(_sql, t1).FirstOrDefault();
+                        if (_docCxC == null)
+                        {
+                            result.Mensaje = "DOCUMENTO [ CXC ] NO ENCONTRADO";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        if (_docCxC.estatus.Trim().ToUpper()=="1")
+                        {
+                            result.Mensaje = "DOCUMENTO [ CXC] ESTATUS INCORRECTO";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        if (_docCxC.monto >0)
+                        {
+                            result.Mensaje = "DOCUMENTO [ CXC] POSSE UN PAGO REGISTRADO";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+
+                        _sql = @"select 
+                                    estatus_anulado as estatus,
+                                    auto_remision as autoRemision
+                                from ventas 
+                                where auto=@p1";
+                        var p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", ficha.idDocVenta);
+                        var _docVta = cn.Database.SqlQuery<docVtaVerifAnular>(_sql, p1).FirstOrDefault();
+                        if (_docVta ==null)
+                        {
+                            result.Mensaje = "DOCUMENTO [ VENTA ] NO ENCONTRADO";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        if (_docVta.estatus.Trim().ToUpper()=="1")
+                        {
+                            result.Mensaje = "DOCUMENTO [ VENTA ] ESTATUS INCORRECTO";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        ts.Complete();
+                    }
+                };
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
             {

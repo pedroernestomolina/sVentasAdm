@@ -210,5 +210,119 @@ namespace ModVentaAdm.Data.Prov
             result.ListaD = lst;
             return result;
         }
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Venta.Ficha> 
+            TransporteDocumento_EntidadVenta_GetById(string idDoc)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Venta.Ficha>();
+            var r01 = MyData.TransporteDocumento_EntidadVenta_GetById(idDoc);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var e = r01.Entidad.encabezado;
+            var d = r01.Entidad.detalles;
+            result.Entidad = new OOB.Transporte.Documento.Entidad.Venta.Ficha()
+            {
+                encabezado = new OOB.Transporte.Documento.Entidad.Venta.FichaEncabezado()
+                {
+                    anoRelacion = e.anoRelacion,
+                    cargos = e.cargos,
+                    cargosp = e.cargosp,
+                    clienteCiRif = e.clienteCiRif,
+                    clienteCodigo = e.clienteCodigo,
+                    clienteDirFiscal = e.clienteDirFiscal,
+                    clienteId = e.clienteId,
+                    clienteNombre = e.clienteNombre,
+                    clienteTelefono = e.clienteTelefono,
+                    cntRenglones = e.cntRenglones,
+                    codSucursal = e.codSucursal,
+                    condPago = e.condPago,
+                    descuento1 = e.descuento1,
+                    descuento1p = e.descuento1p,
+                    descuento2 = e.descuento2,
+                    descuento2p = e.descuento2p,
+                    diasCredito = e.diasCredito,
+                    diasValidez = e.diasValidez,
+                    docCodigoTipo = e.docCodigoTipo,
+                    docFechaEmision = e.docFechaEmision,
+                    docFechaVence = e.docFechaVence,
+                    docModulo = e.docModulo,
+                    docNombre = e.docNombre,
+                    docNumero = e.docNumero,
+                    docSigno = e.docSigno,
+                    docTotal = e.docTotal,
+                    estacion = e.estacion,
+                    estatusAnulado = e.estatusAnulado,
+                    factorCambio = e.factorCambio,
+                    fechaRegistro = e.fechaRegistro,
+                    horaRegistro = e.horaRegistro,
+                    idDoc = e.idDoc,
+                    mesRelacion = e.mesRelacion,
+                    montoBase = e.montoBase,
+                    montoBase1 = e.montoBase1,
+                    montoBase2 = e.montoBase2,
+                    montoBase3 = e.montoBase3,
+                    montoDivisa = e.montoDivisa,
+                    montoExento = e.montoExento,
+                    montoImpuesto = e.montoImpuesto,
+                    montoImpuesto1 = e.montoImpuesto1,
+                    montoImpuesto2 = e.montoImpuesto2,
+                    montoImpuesto3 = e.montoImpuesto3,
+                    montoNeto = e.montoNeto,
+                    notasObs = e.notasObs,
+                    subTotal = e.subTotal,
+                    subTotalImpuesto = e.subTotalImpuesto,
+                    subTotalNeto = e.subTotalNeto,
+                    tasa1 = e.tasa1,
+                    tasa2 = e.tasa2,
+                    tasa3 = e.tasa3,
+                    usuarioId = e.usuarioId,
+                    usuarioNombre = e.usuarioNombre,
+                    uUsuarioCodigo = e.uUsuarioCodigo,
+                    vendedorCodigo = e.vendedorCodigo,
+                    vendedorId = e.vendedorId,
+                    vendedorNombre = e.vendedorNombre,
+                    docSolicitadoPor = e.docSolicitadoPor,
+                    docModuloCargar = e.docModuloCargar,
+                },
+                detalles = d.Select(s =>
+                {
+                    var nr = new OOB.Transporte.Documento.Entidad.Venta.FichaDetalle()
+                    {
+                        alicuotaDesc = s.alicuotaDesc,
+                        alicuotaId = s.alicuotaId,
+                        alicuotaTasa = s.alicuotaTasa,
+                        cntDias = s.cntDias,
+                        codigoDocRef = s.codigoDocRef,
+                        detalle = s.detalle,
+                        dsctoMontoMonDivisa = s.dsctoMontoMonDivisa,
+                        dsctoMontoMonLocal = s.dsctoMontoMonLocal,
+                        dsctoPorc = s.dsctoPorc,
+                        fechaDocRef = s.fechaDocRef,
+                        idDocRef = s.idDocRef,
+                        idItemServicio = s.idItemServicio,
+                        importeNetoMonDivisa = s.importeNetoMonDivisa,
+                        importeNetoMonLocal = s.importeNetoMonLocal,
+                        importeTotalMonDivisa = s.importeTotalMonDivisa,
+                        importeTotalMonLocal = s.importeTotalMonLocal,
+                        impuestoMonDivisa = s.impuestoMonDivisa,
+                        impuestoMonLocal = s.impuestoMonLocal,
+                        montoDocRef = s.montoDocRef,
+                        numDocRef = s.numDocRef,
+                        precioFinalMonDivisa = s.precioFinalMonDivisa,
+                        precioFinalMonLocal = s.precioFinalMonLocal,
+                        precioItemMonDivisa = s.precioItemMonDivisa,
+                        precioItemMonLocal = s.precioItemMonLocal,
+                        precioNetoMonDivisa = s.precioNetoMonDivisa,
+                        precioNetoMonLocal = s.precioNetoMonLocal,
+                        tipoProcedenciaItem = s.tipoProcedenciaItem,
+                        totalMonDivisa = s.totalMonDivisa,
+                        totalMonLocal = s.totalMonLocal,
+                    };
+                    return nr;
+                }).ToList(),
+            };
+            return result;
+        }
     }
 }

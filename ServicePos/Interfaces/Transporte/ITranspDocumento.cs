@@ -29,5 +29,9 @@ namespace ServicePos.Interfaces.Transporte
             TransporteDocumento_AnularPresupuesto(DtoTransporte.Documento.Anular.Presupuesto.Ficha ficha);
         DtoLib.Resultado
             TransporteDocumento_AnularNotaEntrega(DtoTransporte.Documento.Anular.NotaEntrega.Ficha ficha);
+
+        //
+        DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Venta.Ficha>
+            TransporteDocumento_EntidadVenta_GetById(string idDoc);
     }
 }

@@ -838,15 +838,17 @@ namespace ProvPos
 
                             //ACTUALIZO LA REMISION DE DOCUMENTOS DE REFERENCIA
                             var xlp1 = new MySql.Data.MySqlClient.MySqlParameter("@idRemision", autoDoc);
-                            var xlp2 = new MySql.Data.MySqlClient.MySqlParameter("@codDocRemision", ficha.docCodigo);
+                            var xlp2 = new MySql.Data.MySqlClient.MySqlParameter("@codDocRemision", ficha.TipoDoc);
                             var xlp3 = new MySql.Data.MySqlClient.MySqlParameter("@numDocRemision", docNumero);
                             var xlp4 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocRef", rg.idDoc);
+                            var xlp5 = new MySql.Data.MySqlClient.MySqlParameter("@situacion", "PROCESADO");
                             var _sql_2 = @"update ventas set 
                                                 auto_remision=@idRemision,
                                                 tipo_remision=@codDocRemision,
-                                                documento_remision=@numDocRemision
+                                                documento_remision=@numDocRemision,
+                                                situacion=@situacion
                                             where auto=@autoDocRef";
-                            var xr3 = cn.Database.ExecuteSqlCommand(_sql_2, xlp1, xlp2, xlp3, xlp4);
+                            var xr3 = cn.Database.ExecuteSqlCommand(_sql_2, xlp1, xlp2, xlp3, xlp4, xlp5);
                             if (xr3 == 0)
                             {
                                 result.Mensaje = "PROBLEMA AL ACTUALIZAR REMISION DOCUMENTO";
@@ -961,6 +963,114 @@ namespace ProvPos
                             numDoc = docNumero,
                         };
                         result.Entidad = ret;
+                    }
+                };
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+
+        private class docVerif
+        {
+            public string estatus { get; set; }
+            public string autoRemision { get; set; }
+            public docVerif()
+            {
+                estatus = "";
+                autoRemision = "";
+            }
+        }
+        public DtoLib.Resultado 
+            TransporteDocumento_AgregarFactura_Vericar(DtoTransporte.Documento.Agregar.Factura.Ficha ficha)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>();
+            try
+            {
+                using (var cn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    using (var ts = new TransactionScope())
+                    {
+                        //SALDO DEL CLIENTE EN DIVISA
+                        var xcli_1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
+                        var xsql_cli = @"select estatus from clientes
+                                                where auto=@idCliente";
+                        var _estatus = cn.Database.SqlQuery<string>(xsql_cli, xcli_1).FirstOrDefault();
+                        if (_estatus==null)
+                        {
+                            result.Mensaje = "CLIENTE [ ID ] NO ENCONTRADO";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        if (_estatus.Trim().ToUpper() != "ACTIVO")
+                        {
+                            result.Mensaje = "CLIENTE [ ESTATUS ] INCORRECTO";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+
+                        foreach (var rg in ficha.docRef)
+                        {
+                            var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDocRef", rg.idDoc);
+                            var _sql= @"select 
+                                            estatus_anulado as estatus, 
+                                            auto_remision as autoRemision 
+                                        from ventas
+                                        where auto=@idDocRef";
+                            var _docV = cn.Database.SqlQuery<docVerif>(_sql, p1).FirstOrDefault();
+                            if (_docV == null)
+                            {
+                                result.Mensaje = "DOCUMENTO [ ID ] NO ENCONTRADO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            if (_docV.estatus.Trim().ToUpper() == "1")
+                            {
+                                result.Mensaje = "DOCUMENTO [ ESTATUS ] INCORRECTO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            if (_docV.autoRemision.Trim().ToUpper() != "")
+                            {
+                                result.Mensaje = "DOCUMENTO [ REMISION ] INCORRECTO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                        }
+
+                        foreach (var rg in ficha.aliadosResumen)
+                        {
+                            var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", rg.idAliado);
+                            var _sql= @"select estatus from transp_aliado
+                                                where id=@idAliado";
+                            var _estatusAliad = cn.Database.SqlQuery<string>(_sql, p1).FirstOrDefault();
+                            if (_estatusAliad == null)
+                            {
+                                result.Mensaje = "ALIADO [ ID ] NO ENCONTRADO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            if (_estatusAliad.Trim().ToUpper() == "1")
+                            {
+                                result.Mensaje = "ALIADO [ ESTATUS ] INCORRECTO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                        }
+                        ts.Complete();
                     }
                 };
             }

@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src
 {
-    
     public interface IReporte
     {
-
         void Generar();
     }
-
 }

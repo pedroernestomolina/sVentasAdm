@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.OOB.Transporte.Documento.Entidad.Presupuesto
+namespace ModVentaAdm.OOB.Transporte.Documento.Entidad
 {
     abstract public class baseEncabezado
     {

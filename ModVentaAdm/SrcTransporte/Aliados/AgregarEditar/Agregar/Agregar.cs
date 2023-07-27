@@ -9,12 +9,23 @@ namespace ModVentaAdm.SrcTransporte.Aliados.AgregarEditar.Agregar
 {
     public class Agregar: ImpAgregarEditar, IAgregar
     {
+        private int _idAliadoAgreagado;
+
+
+        public int IdAliadoAgregado { get { return _idAliadoAgreagado; } }
+
 
         public Agregar()
             : base()
         {
+            _idAliadoAgreagado = -1;
         }
 
+        public override void Inicializa()
+        {
+            base.Inicializa();
+            _idAliadoAgreagado = -1;
+        }
         public override void Procesar()
         {
             _procesarIsOK = false;
@@ -42,6 +53,7 @@ namespace ModVentaAdm.SrcTransporte.Aliados.AgregarEditar.Agregar
                     try
                     {
                         var r01 = Sistema.MyData.TransporteAliado_Agregar(fichaOOB);
+                        _idAliadoAgreagado = r01.Id;
                         _procesarIsOK = true;
                         Helpers.Msg.AgregarOk();
                     }

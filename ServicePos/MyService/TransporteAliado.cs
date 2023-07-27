@@ -25,5 +25,10 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteAliado_GetLista(filtro);
         }
+        public DtoLib.Resultado 
+            TransporteAliado_Editar(DtoTransporte.Aliado.Editar.Ficha ficha)
+        {
+            return ServiceProv.TransporteAliado_Editar(ficha);
+        }
     }
 }

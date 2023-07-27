@@ -44,6 +44,8 @@
     <Compile Include="Aliado\baseFicha.cs" />
     <Compile Include="Aliado\baseTelefono.cs" />
     <Compile Include="Aliado\Busqueda\Filtro.cs" />
+    <Compile Include="Aliado\Editar\Ficha.cs" />
+    <Compile Include="Aliado\Editar\Telefono.cs" />
     <Compile Include="Aliado\Entidad\Ficha.cs" />
     <Compile Include="Aliado\Entidad\Telefono.cs" />
     <Compile Include="Aliado\Tipos.cs" />
@@ -76,9 +78,14 @@
     <Compile Include="Documento\Entidad\Presupuesto\FichaDetalle.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\FichaEncabezado.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\FichaFechaServ.cs" />
+    <Compile Include="Documento\Entidad\Venta\Ficha.cs" />
+    <Compile Include="Documento\Entidad\Venta\FichaDetalle.cs" />
+    <Compile Include="Documento\Entidad\Venta\FichaEncabezado.cs" />
     <Compile Include="Documento\Remision\Lista\Ficha.cs" />
     <Compile Include="Documento\Remision\Lista\Filtro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporte\AliadoDetalleDoc.cs" />
+    <Compile Include="Reporte\AliadoResumen.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

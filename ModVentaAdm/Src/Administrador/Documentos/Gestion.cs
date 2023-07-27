@@ -8,11 +8,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.Administrador.Documentos
 {
-
     public class Gestion : IGestion
     {
-
-
         private Reportes.Filtro.IFiltro _filtrarPor;
         private IGestionListaDetalle _gLista;
         private Reportes.Filtro.Gestion _gFiltro;
@@ -118,15 +115,7 @@ namespace ModVentaAdm.Src.Administrador.Documentos
 
         public void VisualizarDocumento()
         {
-            if (GetItemActual != null)
-            {
-                var r01 = Helpers.Imprimir.Documento.CargarDataDocumento(GetItemActual.idDocumento);
-                if (r01 != null)
-                {
-                    _gVisualizarDoc.setData(r01);
-                    _gVisualizarDoc.ImprimirDoc();
-                }
-            }
+            Sistema.Fabrica.VisualizarDocumento(GetItemActual);
         }
 
         public void Imprimir()
@@ -209,7 +198,5 @@ namespace ModVentaAdm.Src.Administrador.Documentos
             _gAuditoria.setData(r01.Entidad);
             _gAuditoria.Inicia();
         }
-
     }
-
 }

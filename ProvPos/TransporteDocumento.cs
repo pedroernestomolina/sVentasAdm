@@ -10,17 +10,17 @@ using System.Transactions;
 
 namespace ProvPos
 {
-    public partial class Provider: IPos.IProvider
+    public partial class Provider : IPos.IProvider
     {
-        public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Presupuesto.Ficha> 
+        public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Presupuesto.Ficha>
             TransporteDocumento_EntidadPresupuesto_GetById(string idDoc)
         {
-            var result = new DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Presupuesto.Ficha>(); 
+            var result = new DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Presupuesto.Ficha>();
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
                 {
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc",idDoc);
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
                     var _sql_1 = @"select 
                                         auto as idDoc, 
                                         documento as docNUmero,
@@ -84,7 +84,7 @@ namespace ProvPos
                                     FROM ventas where auto=@idDoc";
                     var _sql = _sql_1;
                     var _ent = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Presupuesto.FichaEncabezado>(_sql, p1).FirstOrDefault();
-                    if (_ent == null) 
+                    if (_ent == null)
                     {
                         throw new Exception("DOCUMENTO [ ID ] NO ENCONTRADO");
                     }
@@ -109,7 +109,7 @@ namespace ProvPos
                         throw new Exception("ITEMS DOCUMENTO NO ENCONTRADOS");
                     }
                     foreach (var reg in _det)
-                    { 
+                    {
                         _sql = @"select 
                                     fecha,
                                     hora,
@@ -148,7 +148,7 @@ namespace ProvPos
             }
             return result;
         }
-        public DtoLib.ResultadoLista<DtoTransporte.Documento.Entidad.Presupuesto.FichaAliado> 
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.Entidad.Presupuesto.FichaAliado>
             TransporteDocumento_EntidadPresupuesto_GetAliadosById(string idDoc)
         {
             var result = new DtoLib.ResultadoLista<DtoTransporte.Documento.Entidad.Presupuesto.FichaAliado>();
@@ -223,6 +223,135 @@ namespace ProvPos
                     var _sql = _sql_1 + _sql_2;
                     var _lst = cnn.Database.SqlQuery<DtoTransporte.Documento.Remision.Lista.Ficha>(_sql, p1, p2).ToList();
                     result.Lista = _lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+
+        public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Venta.Ficha>
+            TransporteDocumento_EntidadVenta_GetById(string idDoc)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Venta.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var _sql_1 = @"select 
+                                        auto as idDoc, 
+                                        documento as docNUmero,
+                                        fecha as docFechaEmision, 
+                                        fecha_vencimiento as docFechaVence, 
+                                        razon_social as clienteNombre,  
+                                        dir_fiscal as clienteDirFiscal, 
+                                        ci_rif as clienteCiRif, 
+                                        tipo as docCodigoTipo, 
+                                        exento as montoExento, 
+                                        base1 as montoBase1, 
+                                        base2 as montoBase2, 
+                                        base3 as montoBase3, 
+                                        impuesto1 as impuesto1, 
+                                        impuesto2 as impuesto2, 
+                                        impuesto3 as impuesto3, 
+                                        base as montoBase,
+                                        impuesto as montoImpuesto,
+                                        total as docTotal, 
+                                        tasa1 as tasa1, 
+                                        tasa2 as tasa2, 
+                                        tasa3 as tasa3, 
+                                        nota as notasObs, 
+                                        auto_cliente as clienteId,
+                                        codigo_cliente as clienteCodigo,
+                                        mes_relacion as mesRelacion,
+                                        fecha_registro as fechaRegistro,
+                                        dias as diasCredito,
+                                        descuento1,
+                                        descuento2,
+                                        cargos,
+                                        descuento1p,
+                                        descuento2p,
+                                        cargosp,
+                                        estatus_anulado as estatusAnulado,
+                                        subtotal_neto as subtotalNeto,
+                                        telefono as clienteTelefono,
+                                        factor_cambio as factorCambio,
+                                        codigo_vendedor as vendedorCodigo,
+                                        vendedor as vendedorNombre,
+                                        auto_vendedor as vendedorId,
+                                        condicion_pago as condPago,
+                                        usuario as usuarioNombre,
+                                        codigo_usuario as usuarioCodigo,
+                                        codigo_sucursal as codSucursal,
+                                        hora as horaRegistro,
+                                        monto_divisa as montoDivisa,
+                                        estacion,
+                                        renglones as cntRenglones,
+                                        ano_relacion as anoRelacion,
+                                        dias_validez as diasValidez,
+                                        auto_usuario as usuarioId,
+                                        signo as docSigno,
+                                        documento_nombre as docNombre,
+                                        subtotal_impuesto as subTotalImpuesto,
+                                        subtotal,
+                                        neto as montoNeto,
+                                        documento_tipo as docModulo,
+                                        docSolicitadoPor as docSolicitadoPor,
+                                        docModuloCargar as docModuloCargar
+                                    FROM ventas where auto=@idDoc";
+                    var _sql = _sql_1;
+                    var _ent = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.FichaEncabezado>(_sql, p1).FirstOrDefault();
+                    if (_ent == null)
+                    {
+                        throw new Exception("DOCUMENTO [ ID ] NO ENCONTRADO");
+                    }
+
+                    _sql = @"select 
+                                detalle as detalle,
+                                cnt_dias as cntDias,
+                                precio_neto_mon_local as precioNetoMonLocal,
+                                precio_neto_mon_divisa as precioNetoMonDivisa,
+                                descuento_monto_mon_local as dsctoMontoMonLocal,
+                                descuento_monto_mon_divisa as dsctoMontoMonDivisa,
+                                descuento_porct as dsctoPorc,
+                                alicuota_id as alicuotaId,
+                                alicuota_tasa as alicuotaTasa,
+                                impuesto_mon_local as impuestoMonLocal,
+                                impuesto_mon_divisa as impuestoMonDivisa,
+                                alicuota_desc as alicuotaDesc,
+                                precio_item_mon_local as precioItemMonLocal,
+                                precio_item_mon_divisa as precioItemMonDivisa,
+                                precio_final_mon_local as precioFinalMonLocal,
+                                precio_final_mon_divisa as precioFinalMonDivisa,
+                                importe_neto_mon_local as importeNetoMonLocal,
+                                importe_neto_mon_divisa as importeNetoMonDivisa,
+                                importe_total_mon_local as importeTotalMonLocal,
+                                importe_total_mon_divisa as importeTotalMonDivisa,
+                                total_mon_local as totalMonLocal,
+                                total_mon_divisa as totalMonDivisa,
+                                id_doc_ref as idDocRef,
+                                doc_num_ref as numDocRef,
+                                doc_fecha_ref as fechaDocRef,
+                                doc_monto_ref as montoDocRef,
+                                doc_codigo_ref as codigoDocRef,
+                                tipo_procedencia_item as tipoProcedenciaItem,
+                                id_item_servicio as idItemServicio
+                            FROM ventas_transp_detalle where id_venta=@idDoc";
+                    var xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var _det = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.FichaDetalle>(_sql, xp1).ToList();
+                    if (_det == null)
+                    {
+                        throw new Exception("ITEMS DOCUMENTO NO ENCONTRADOS");
+                    }
+                    result.Entidad = new DtoTransporte.Documento.Entidad.Venta.Ficha()
+                    {
+                        encabezado = _ent,
+                        detalles = _det,
+                    };
                 }
             }
             catch (Exception e)
