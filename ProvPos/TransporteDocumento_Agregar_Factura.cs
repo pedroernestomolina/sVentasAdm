@@ -942,7 +942,7 @@ namespace ProvPos
                             zp3 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
                             zp4 = new MySql.Data.MySqlClient.MySqlParameter("@docNumero", docNumero);
                             zp5 = new MySql.Data.MySqlClient.MySqlParameter("@docFecha", fechaSistema.Date);
-                            zp6 = new MySql.Data.MySqlClient.MySqlParameter("@docCodigo", ficha.docCodigo);
+                            zp6 = new MySql.Data.MySqlClient.MySqlParameter("@docCodigo", ficha.TipoDoc);
                             var zp7 = new MySql.Data.MySqlClient.MySqlParameter("@docNombre", ficha.docNombre);
                             var zp8 = new MySql.Data.MySqlClient.MySqlParameter("@importeDivisa", aliadoRes.montoDivisa);
                             var zp10 = new MySql.Data.MySqlClient.MySqlParameter("@estatusAnulado", "0");
