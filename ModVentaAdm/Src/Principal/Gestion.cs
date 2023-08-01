@@ -344,6 +344,17 @@ namespace ModVentaAdm.Src.Principal
             _gMasterAliado.Inicializa();
             _gMasterAliado.Inicia();
         }
+        private Utils.Maestro.IMaestro _gMasterServPrest;
+        public void MenuMaestroServiciosPrestados()
+        {
+            if (_gMasterServPrest == null)
+            {
+                _gMasterServPrest = new SrcTransporte.Maestro.Transp.Aliados.Imp();
+            }
+            _gMasterServPrest.Inicializa();
+            _gMasterServPrest.Inicia();
+        }
+
         public void TransportePresupuestoGenerar()
         {
             SrcTransporte.Presupuesto.Generar.IGenerar _gest;

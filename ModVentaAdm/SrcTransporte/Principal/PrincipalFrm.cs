@@ -290,6 +290,16 @@ namespace ModVentaAdm.SrcTransporte.Principal
         {
             _controlador.MenuMaestroAliados();
         }
+        private void MNU_MAESTRO_SERV_PRESTADOS_Click(object sender, EventArgs e)
+        {
+            MenuMaestroServiciosPrestados();
+        }
+        private void MenuMaestroServiciosPrestados()
+        {
+            _controlador.MenuMaestroServiciosPrestados();
+        }
+
+
         private void MNU_TRANSPORTE_PRESUPUESTO_GENERAR_Click(object sender, EventArgs e)
         {
             TransportePresupuestoGenerar();

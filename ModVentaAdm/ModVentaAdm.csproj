@@ -401,6 +401,11 @@
     <Compile Include="SrcTransporte\Maestro\Transp\Aliados\IAliadoLista.cs" />
     <Compile Include="SrcTransporte\Maestro\Transp\Aliados\Imp.cs" />
     <Compile Include="SrcTransporte\Maestro\Transp\Aliados\ImpLista.cs" />
+    <Compile Include="SrcTransporte\Maestro\Transp\ServPrest\data.cs" />
+    <Compile Include="SrcTransporte\Maestro\Transp\ServPrest\IServ.cs" />
+    <Compile Include="SrcTransporte\Maestro\Transp\ServPrest\IServLista.cs" />
+    <Compile Include="SrcTransporte\Maestro\Transp\ServPrest\Imp.cs" />
+    <Compile Include="SrcTransporte\Maestro\Transp\ServPrest\ImpLista.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Aliado\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
