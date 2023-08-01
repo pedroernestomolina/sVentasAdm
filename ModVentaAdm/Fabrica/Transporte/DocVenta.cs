@@ -144,15 +144,9 @@ namespace ModVentaAdm.Fabrica.Transporte
         }
         private void CargarPresupuesto(string idDoc)
         {
-            try
-            {
-                var r01 = Sistema.MyData.TransporteDocumento_EntidadPresupuesto_GetById(idDoc);
-                Helpers.Msg.OK("PRESUPUESTO");
-            }
-            catch (Exception e)
-            {
-                Helpers.Msg.Error(e.Message);
-            }
+            SrcTransporte.Reportes.Presupuesto.IPresupuesto _presup = new SrcTransporte.Reportes.Presupuesto.Gestion(); ;
+            _presup.setIdDocVisualizar(idDoc);
+            _presup.Generar();
         }
     }
 }

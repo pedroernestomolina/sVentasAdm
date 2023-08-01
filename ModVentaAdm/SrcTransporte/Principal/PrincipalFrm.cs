@@ -343,5 +343,14 @@ namespace ModVentaAdm.SrcTransporte.Principal
         {
             _controlador.ReporteTransporte_AliadoDetalleDoc();
         }
+
+        private void MNU_CNF_NOTAS_PRESUP_Click(object sender, EventArgs e)
+        {
+            Cnf_NotasPresupuesto();
+        }
+        private void Cnf_NotasPresupuesto()
+        {
+            _controlador.Cnf_NotasPresupuesto();
+        }
     }
 }

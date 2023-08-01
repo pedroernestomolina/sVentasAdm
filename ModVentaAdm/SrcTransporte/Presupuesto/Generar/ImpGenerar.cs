@@ -97,6 +97,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 {
                     throw new Exception(r02.Mensaje);
                 }
+                var r03 = Sistema.MyData.TransporteCnf_NotasPresupuesto_Get();
+                //
+                setNotas(r03.Entidad);
                 _tasasFiscal = r02.ListaD;
                 _dataGen.setTasaDivisa(r01.Entidad);
                 _dataGen.Items.setTasaDivisa(r01.Entidad);

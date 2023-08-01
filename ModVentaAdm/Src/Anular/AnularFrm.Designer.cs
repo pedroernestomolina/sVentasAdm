@@ -46,7 +46,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.TB_MOTIVO = new System.Windows.Forms.TextBox();
+            this.TB_MOTIVO= new System.Windows.Forms.TextBox();
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.BT_PROCESAR = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();

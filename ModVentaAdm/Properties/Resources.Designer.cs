@@ -993,6 +993,46 @@ namespace ModVentaAdm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_transp_01 {
+            get {
+                object obj = ResourceManager.GetObject("logo_transp_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_transp_02 {
+            get {
+                object obj = ResourceManager.GetObject("logo_transp_02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_transp_presup {
+            get {
+                object obj = ResourceManager.GetObject("logo_transp_presup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_transp_presup_2 {
+            get {
+                object obj = ResourceManager.GetObject("logo_transp_presup_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Machine_learning_1024x682 {
             get {
                 object obj = ResourceManager.GetObject("Machine_learning_1024x682", resourceCulture);

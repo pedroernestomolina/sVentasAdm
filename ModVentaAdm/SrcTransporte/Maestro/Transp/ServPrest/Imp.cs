@@ -45,13 +45,13 @@ namespace ModVentaAdm.SrcTransporte.Maestro.Transp.ServPrest
 
         public void AgregarItem()
         {
-            SrcTransporte.Aliados.AgregarEditar.Agregar.IAgregar _gest;
-            _gest = new SrcTransporte.Aliados.AgregarEditar.Agregar.Agregar();
+            SrcTransporte.ServPrestado.AgregarEditar.Agregar.IAgregar _gest;
+            _gest = new SrcTransporte.ServPrestado.AgregarEditar.Agregar.Agregar();
             _gest.Inicializa();
             _gest.Inicia();
             if (_gest.ProcesarIsOK) 
             {
-                InsertarItemLista(_gest.IdAliadoAgregado);
+                InsertarItemLista(_gest.IdAgregado);
             }
         }
         public void EditarItem()
@@ -59,10 +59,10 @@ namespace ModVentaAdm.SrcTransporte.Maestro.Transp.ServPrest
             if (_lista.ItemActual != null)
             {
                 var _item = ((data)_lista.ItemActual);
-                SrcTransporte.Aliados.AgregarEditar.Editar.IEditar _gest;
-                _gest = new SrcTransporte.Aliados.AgregarEditar.Editar.Editar();
+                SrcTransporte.ServPrestado.AgregarEditar.Editar.IEditar _gest;
+                _gest = new SrcTransporte.ServPrestado.AgregarEditar.Editar.Editar();
                 _gest.Inicializa();
-                _gest.setAliadoEditar(_item.Ficha.id);
+                _gest.setFichaEditar(_item.Ficha.id);
                 _gest.Inicia();
                 if (_gest.ProcesarIsOK) 
                 {
@@ -76,8 +76,8 @@ namespace ModVentaAdm.SrcTransporte.Maestro.Transp.ServPrest
         {
             try
             {
-                var filtroOOB = new OOB.Transporte.Aliado.Busqueda.Filtro(); 
-                var r01 = Sistema.MyData.TransporteAliado_GetLista(filtroOOB);
+                var filtroOOB = new OOB.Transporte.ServPrest.Busqueda.Filtro(); 
+                var r01 = Sistema.MyData.TransporteServPrest_GetLista(filtroOOB);
                 _lista.setDataCargar(r01.ListaD);
                 return true;
             }
@@ -91,7 +91,7 @@ namespace ModVentaAdm.SrcTransporte.Maestro.Transp.ServPrest
         {
             try
             {
-                var xr1 = Sistema.MyData.TransporteAliado_GetById(idItem);
+                var xr1 = Sistema.MyData.TransporteServPrest_GetById(idItem);
                 _lista.AgregarItem(xr1.Entidad);
             }
             catch (Exception e)
@@ -103,7 +103,7 @@ namespace ModVentaAdm.SrcTransporte.Maestro.Transp.ServPrest
         {
             try
             {
-                var xr1 = Sistema.MyData.TransporteAliado_GetById(idItem);
+                var xr1 = Sistema.MyData.TransporteServPrest_GetById(idItem);
                 _lista.RemoverItemBy(idItem);
                 _lista.AgregarItem(xr1.Entidad);
             }

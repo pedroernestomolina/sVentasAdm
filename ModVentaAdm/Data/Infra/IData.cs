@@ -10,7 +10,9 @@ namespace ModVentaAdm.Data.Infra
     public interface IData: IUsuario, ISucursal, IDocumento, ISistema, IPermiso, IReportes,
         IClienteGrupo, IClienteZona, IConfiguracion, ICliente, IReportesCli, IProducto, IVenta,
         IAuditoria, ICxC, 
-        Transporte.IAliado, Transporte.ITransporteDocumento, Transporte.ITransporteReporte
+        Transporte.IAliado, Transporte.ITransporteDocumento,
+        Transporte.ITransporteReporte, Transporte.IServicioPrest,
+        Transporte.ICnf
     {
         OOB.Resultado.FichaEntidad<DateTime> 
             FechaServidor();

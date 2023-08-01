@@ -72,6 +72,8 @@
     <Compile Include="IVentaAdm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transporte\IAliado.cs" />
+    <Compile Include="Transporte\ICnf.cs" />
+    <Compile Include="Transporte\IServicioPrest.cs" />
     <Compile Include="Transporte\ITranspDocumento.cs" />
     <Compile Include="Transporte\ITranspReporte.cs" />
   </ItemGroup>

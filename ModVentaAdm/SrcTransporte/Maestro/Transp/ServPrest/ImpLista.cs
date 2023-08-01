@@ -42,14 +42,14 @@ namespace ModVentaAdm.SrcTransporte.Maestro.Transp.ServPrest
             _lst.Clear();
             foreach (var rg in lst)
             {
-                var nr = new data((OOB.Transporte.Aliado.Entidad.Ficha)rg);
+                var nr = new data((OOB.Transporte.ServPrest.Entidad.Ficha)rg);
                 _lst.Add(nr);
             }
             _bs.CurrencyManager.Refresh();
         }
         public void AgregarItem(object ficha)
         {
-            var nr = new data(((OOB.Transporte.Aliado.Entidad.Ficha)ficha));
+            var nr = new data(((OOB.Transporte.ServPrest.Entidad.Ficha)ficha));
             _lst.Add(nr);
             _bs.CurrencyManager.Refresh();
         }

@@ -13,7 +13,9 @@ namespace IPos
         IVenta, IPendiente, IReportesAdm, IClienteGrupo, IClienteZona, IConfiguracionAdm,
         IReportesCli, IReportesPos, IProductoAdm, IVentaAdm, IDocumentoAdm, 
         IAuditoria, IModuloAdm, ICxC, 
-        Transporte.IAliado, Transporte.ITranspDocumento, Transporte.ITranspReporte
+        Transporte.IAliado, Transporte.ITranspDocumento, 
+        Transporte.ITranspReporte, Transporte.IServicioPrest,
+        Transporte.ICnf
     {
 
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();

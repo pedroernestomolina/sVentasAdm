@@ -87,6 +87,8 @@
     <Compile Include="Data\Infra\IUsuario.cs" />
     <Compile Include="Data\Infra\IVenta.cs" />
     <Compile Include="Data\Infra\Transporte\IAliado.cs" />
+    <Compile Include="Data\Infra\Transporte\ICnf.cs" />
+    <Compile Include="Data\Infra\Transporte\IServicioPrest.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteDocumento.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteReporte.cs" />
     <Compile Include="Data\Prov\Auditoria.cs" />
@@ -105,11 +107,13 @@
     <Compile Include="Data\Prov\Sistema.cs" />
     <Compile Include="Data\Prov\Sucursal.cs" />
     <Compile Include="Data\Prov\TransporteAliado.cs" />
+    <Compile Include="Data\Prov\TransporteCnf.cs" />
     <Compile Include="Data\Prov\TransporteDocumento.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Anular.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Agregar_Factura.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Agregar_Presupuesto.cs" />
     <Compile Include="Data\Prov\TransporteReporte.cs" />
+    <Compile Include="Data\Prov\TransporteServPrest.cs" />
     <Compile Include="Data\Prov\Usuario.cs" />
     <Compile Include="Data\Prov\Venta.cs" />
     <Compile Include="Fabrica\General\DocVenta.cs" />
@@ -295,6 +299,11 @@
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Filtro.cs" />
     <Compile Include="OOB\Transporte\Reporte\AliadoDetalleDoc.cs" />
     <Compile Include="OOB\Transporte\Reporte\AliadoResumen.cs" />
+    <Compile Include="OOB\Transporte\ServPrest\Agregar\Ficha.cs" />
+    <Compile Include="OOB\Transporte\ServPrest\baseFicha.cs" />
+    <Compile Include="OOB\Transporte\ServPrest\Busqueda\Filtro.cs" />
+    <Compile Include="OOB\Transporte\ServPrest\Editar\Ficha.cs" />
+    <Compile Include="OOB\Transporte\ServPrest\Entidad\Ficha.cs" />
     <Compile Include="SrcTransporte\AdmDocumentos\IGestion.cs" />
     <Compile Include="SrcTransporte\AdmDocumentos\Ventas\Frm.cs">
       <SubType>Form</SubType>
@@ -364,6 +373,14 @@
     </Compile>
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\IAgregarEditar.cs" />
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\ImpAgregarEditar.cs" />
+    <Compile Include="SrcTransporte\Configuracion\Notas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Configuracion\Notas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\Configuracion\Notas\INotas.cs" />
+    <Compile Include="SrcTransporte\Configuracion\Notas\Presupuesto\Imp.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\data.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\dataItem.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\dataTotales.cs" />
@@ -484,6 +501,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_TRANSP.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SrcTransporte\Reportes\Presupuesto\Gestion.cs" />
+    <Compile Include="SrcTransporte\Reportes\Presupuesto\IPresupuesto.cs" />
+    <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Editar\Editar.cs" />
+    <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Editar\IEditar.cs" />
+    <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Servicio.cs" />
+    <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\IAgregarEditar.cs" />
+    <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\ImpAgregarEditar.cs" />
+    <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Agregar\Agregar.cs" />
+    <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Agregar\IAgregar.cs" />
     <Compile Include="Src\Administrador\data.cs" />
     <Compile Include="Src\Administrador\Documentos\AdmDocFrm.cs">
       <SubType>Form</SubType>
@@ -974,6 +1006,9 @@
     <EmbeddedResource Include="SrcTransporte\Aliados\AgregarEditar\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Configuracion\Notas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1003,6 +1038,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\AliadoResumen.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Presupuesto.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\ServPrestado\AgregarEditar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Administrador\Documentos\AdmDocFrm.resx">
       <DependentUpon>AdmDocFrm.cs</DependentUpon>
@@ -1275,6 +1316,10 @@
     <None Include="Resources\bt_serv_traslado_24.png" />
     <None Include="Resources\bt_presup_24.png" />
     <None Include="Resources\logo_transp.jpg" />
+    <None Include="Resources\logo_transp_02.jpeg" />
+    <None Include="Resources\logo_transp_01.jpeg" />
+    <None Include="Resources\logo_transp_presup.jpeg" />
+    <None Include="Resources\logo_transp_presup_2.jpeg" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1369,6 +1414,10 @@
     <Content Include="Src\Imagenes\libro.png" />
     <Content Include="Src\Imagenes\localizacion_48.png" />
     <Content Include="Src\Imagenes\logo_transp.jpg" />
+    <Content Include="Src\Imagenes\logo_transp_01.jpeg" />
+    <Content Include="Src\Imagenes\logo_transp_02.jpeg" />
+    <Content Include="Src\Imagenes\logo_transp_presup.jpeg" />
+    <Content Include="Src\Imagenes\logo_transp_presup_2.jpeg" />
     <Content Include="Src\Imagenes\Machine-learning-1024x682.jpg" />
     <Content Include="Src\Imagenes\mobile.ico" />
     <Content Include="Src\Imagenes\plataforma-efosearch.jpg" />

@@ -349,7 +349,7 @@ namespace ModVentaAdm.Src.Principal
         {
             if (_gMasterServPrest == null)
             {
-                _gMasterServPrest = new SrcTransporte.Maestro.Transp.Aliados.Imp();
+                _gMasterServPrest = new SrcTransporte.Maestro.Transp.ServPrest.Imp();
             }
             _gMasterServPrest.Inicializa();
             _gMasterServPrest.Inicia();
@@ -402,6 +402,17 @@ namespace ModVentaAdm.Src.Principal
             IReporte _rep;
             _rep = new SrcTransporte.Reportes.Aliado.DetalleDoc();
             _rep.Generar();
+        }
+
+        SrcTransporte.Configuracion.Notas.INotas _gNotas;
+        public void Cnf_NotasPresupuesto()
+        {
+            if (_gNotas == null) 
+            {
+                _gNotas = new SrcTransporte.Configuracion.Notas.Presupuesto.Imp();
+            }
+            _gNotas.Inicializa();
+            _gNotas.Inicia();
         }
     }
 }
