@@ -42,5 +42,9 @@ namespace ModVentaAdm.Helpers
         {
             return MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes;
         }
+        public static bool DejarPendiente(string msg = "Dejar Documento En Pendiente ?")
+        {
+            return MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes;
+        }
     }
 }

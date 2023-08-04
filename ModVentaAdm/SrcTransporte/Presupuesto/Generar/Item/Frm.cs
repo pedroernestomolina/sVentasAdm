@@ -71,6 +71,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             LB_FECHA.ValueMember = "id";
             CB_ALICUOTA.DisplayMember = "desc";
             CB_ALICUOTA.ValueMember = "id";
+            CB_TIPO_SERV.DisplayMember = "desc";
+            CB_TIPO_SERV.ValueMember = "id";
         }
         private bool _modoInicializar;
         private void Frm_Load(object sender, EventArgs e)
@@ -95,8 +97,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             DTP_HORA.Value = _controlador.Item.Get_Fecha;
             CB_ALICUOTA.DataSource = _controlador.Alicuota.GetSource;
             CB_ALICUOTA.SelectedValue = _controlador.Item.Get_Alicuota_ID;
+            CB_TIPO_SERV.DataSource = _controlador.TipoServ.GetSource;
+            CB_TIPO_SERV.SelectedValue = _controlador.Item.Get_TipoServ_ID;
+            TB_UNIDADES_DETALL.Text = _controlador.Item.Get_UnidadesDetall;
+
+            IrFoco_Detalle();
             _modoInicializar = false;
         }
+
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
@@ -182,6 +190,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         {
             _controlador.Item.setDescripcionFull(TB_DESCRIPCION_FULL.Text);
         }
+        private void TB_UNIDADES_DETALL_Leave(object sender, EventArgs e)
+        {
+            _controlador.Item.setUnidadesDetalle(TB_UNIDADES_DETALL.Text);
+        }
         private void CB_ALICUOTA_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) { return; }
@@ -190,6 +202,16 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             {
                 _controlador.AlicuotaSetFichaById(CB_ALICUOTA.SelectedValue.ToString());
             }
+        }
+        private void CB_TIPO_SERV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) { return; }
+            _controlador.TipoServSetFichaById("");
+            if (CB_TIPO_SERV.SelectedIndex != -1)
+            {
+                _controlador.TipoServSetFichaById(CB_TIPO_SERV.SelectedValue.ToString());
+            }
+            TB_DESC_BREVE.Text = _controlador.Item.Get_Descripcion;
         }
 
 
@@ -267,6 +289,11 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private void ActualizaImporte()
         {
             L_IMPORTE.Text = _controlador.Item.Get_Importe.ToString("n2", _cult);
+        }
+        private void IrFoco_Detalle()
+        {
+            TB_OPCIONES.SelectedTab = TAB_DETALLE;
+            CB_TIPO_SERV.Focus();
         }
         private void IrFoco_Item()
         {

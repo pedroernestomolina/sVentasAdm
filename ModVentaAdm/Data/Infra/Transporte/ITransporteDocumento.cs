@@ -29,5 +29,8 @@ namespace ModVentaAdm.Data.Infra.Transporte
 
         OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Venta.Ficha>
             TransporteDocumento_EntidadVenta_GetById(string idDoc);
+        
+        OOB.Resultado.FichaEntidad<int>
+            TransporteDocumento_Presupuesto_Pendiente_Cnt();
     }
 }

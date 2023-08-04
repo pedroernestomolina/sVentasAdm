@@ -57,7 +57,8 @@ namespace ModVentaAdm.Src.Administrador
                         _docNombre = "PRESUPUESTO";
                         break;
                 }
-                return _docNombre;
+                //return _docNombre;
+                return doc.DocNombre;
             }
         }
         public enumTipoDoc DocTipo

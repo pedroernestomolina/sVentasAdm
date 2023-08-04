@@ -430,7 +430,7 @@ namespace ProvPos
                                         0, 
                                         0, 
                                         @fechaReg,
-                                        'FAC', 
+                                        @tipoDocSiglas, 
                                         @docNumero, 
                                         @fechaVence,
                                         '',
@@ -486,9 +486,10 @@ namespace ProvPos
                         var t20 = new MySql.Data.MySqlClient.MySqlParameter("@restaDivisa", ficha.montoDivisa );
                         var t21 = new MySql.Data.MySqlClient.MySqlParameter("@importeNetoDivisa", ficha.subTotalMonDivisa);
                         var t22 = new MySql.Data.MySqlClient.MySqlParameter("@estatusDocCxc", "0");
-                        r = cn.Database.ExecuteSqlCommand(_sql, t1 , t2, t3, t4, t5, t6, t7, t8, t9, t10,
+                        var t23 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDocSiglas", ficha.tipoDocSiglas);
+                        r = cn.Database.ExecuteSqlCommand(_sql, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10,
                                                         t11, t12, t13, t14, t15, t16, t17, t19, t20,
-                                                        t21, t22);
+                                                        t21, t22, t23);
                         if (r == 0)
                         {
                             result.Mensaje = "PROBLEMA AL INSERTAR DOCUMENTO CXC";
@@ -576,7 +577,7 @@ namespace ProvPos
                         foreach (var rg in ficha.items) 
                         {
                             var _idItemServicio=-1;
-                            //EN CASO DE SER UN SERVICIO SE AGREGA PRIMERO EL DETALLE DEL SERVCION
+                            //EN CASO DE SER UN SERVICIO SE AGREGA PRIMERO EL DETALLE DEL SERVCIO
                             if (rg.servicioDetalle != null) 
                             {
                                 var it = rg.servicioDetalle;
@@ -597,7 +598,11 @@ namespace ProvPos
                                     `signo_doc`, 
                                     `tipo_doc`, 
                                     `estatus_anulado`,
-                                    `importe`
+                                    `importe`,
+                                    unidades_desc,
+                                    servicio_id,
+                                    servicio_codigo,
+                                    servicio_detalle
                                 ) 
                                 VALUES 
                                 (
@@ -617,7 +622,11 @@ namespace ProvPos
                                     @signoDoc, 
                                     @tipoDoc, 
                                     @estatusAnulado, 
-                                    @importe 
+                                    @importe,
+                                    @unidades_desc,
+                                    @servicio_id,
+                                    @servicio_codigo,
+                                    @servicio_detalle
                                 )";
                                 var xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
                                 var xp2 = new MySql.Data.MySqlClient.MySqlParameter("@servicioDesc", it.servicioDesc);
@@ -635,10 +644,14 @@ namespace ProvPos
                                 var xp21 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDoc", it.tipoDoc);
                                 var xp22 = new MySql.Data.MySqlClient.MySqlParameter("@estatusAnulado", it.estatusAnulado);
                                 var xp23 = new MySql.Data.MySqlClient.MySqlParameter("@importe", it.importe);
+                                var xp24 = new MySql.Data.MySqlClient.MySqlParameter("@unidades_desc", it.unidadesDesc);
+                                var xp25 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_id", it.servicioId);
+                                var xp26 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_codigo", it.servicioCodigo);
+                                var xp27 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_detalle", it.servicioDetalle);
                                 var r2 = cn.Database.ExecuteSqlCommand(_sql_I,
                                                                         xp1, xp2, xp5, xp6, xp7, xp8, xp9, xp10,
                                                                         xp11, xp17, xp18, xp19, xp20,
-                                                                        xp21, xp22, xp23);
+                                                                        xp21, xp22, xp23, xp24, xp25, xp26, xp27);
                                 if (r2 == 0)
                                 {
                                     result.Mensaje = "PROBLEMA AL INSERTAR ITEM SERVICIO";

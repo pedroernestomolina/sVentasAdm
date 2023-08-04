@@ -11,10 +11,14 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Presupuesto
     {
         public string docSolicitadoPor { get; set; }
         public string docModuloCargar { get; set; }
+        public bool estatusPendiente { get; set; }
         public List<FichaDetalle> items { get; set; }
         public Ficha()
             : base()
         {
+            docSolicitadoPor = "";
+            docModuloCargar = "";
+            estatusPendiente = false;
             items = new List<FichaDetalle>();
         }
     }

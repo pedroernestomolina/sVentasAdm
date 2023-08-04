@@ -65,6 +65,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Remision
         }
         public void Limpiar()
         {
+            _remisionBusquedaIsOk=false;
             _docRemision.Limpiar();
             _ctrl.LimpiarOpcion();
         }
@@ -121,7 +122,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Remision
                 return null;
             }
         }
-        private Utils.DocLista.IDocLista _listDoc;
+        private Utils.DocLista.Remision.IRemision _listDoc;
         private void MostrarSeleccionarDocumentos(List<OOB.Transporte.Documento.Remision.Lista.Ficha> list)
         {
             _listDoc = new Utils.DocLista.Remision.Imp();

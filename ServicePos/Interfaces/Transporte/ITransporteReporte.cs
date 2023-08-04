@@ -13,5 +13,7 @@ namespace ServicePos.Interfaces.Transporte
             TransporteReporte_AliadoResumen();
         DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleDoc>
             TransporteReporte_AliadoDetalleDoc();
+        DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleServ>
+            TransporteReporte_AliadoDetalleServ();
     }
 }

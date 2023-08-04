@@ -22,6 +22,10 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar
         public string tipoDoc { get; set; }
         public string estatusAnulado { get; set; }
         public decimal importe { get; set; }
+        public string unidadesDesc { get; set; }
+        public int servicioId { get; set; }
+        public string servicioCodigo { get; set; }
+        public string servicioDetalle { get; set; }
         public baseDetalle()
         {
             servicioDesc = "";

@@ -22,6 +22,10 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Entidad.Presupuesto
         public string alicuotaDesc { get; set; }
         public string notas { get; set; }
         public decimal importe { get; set; }
+        public string unidadesDesc { get; set; }
+        public int servicioId { get; set; }
+        public string servicioCodigo { get; set; }
+        public string servicioDetalle { get; set; }
         public List<FichaFechaServ> fechaServ { get; set; }
         public List<FichaAliado> aliados { get; set; }
         public FichaDetalle()
@@ -39,6 +43,10 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Entidad.Presupuesto
             alicuotaDesc = "";
             notas = "";
             importe = 0m;
+            unidadesDesc = "";
+            servicioId = -1;
+            servicioCodigo = "";
+            servicioDetalle = "";
             fechaServ = new List<FichaFechaServ>();
             aliados = new List<FichaAliado>();
         }

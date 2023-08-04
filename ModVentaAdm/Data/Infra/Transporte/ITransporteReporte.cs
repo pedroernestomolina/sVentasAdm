@@ -13,5 +13,7 @@ namespace ModVentaAdm.Data.Infra.Transporte
             TransporteReporte_AliadoResumen();
         OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleDoc>
             TransporteReporte_AliadoDetalleDoc();
+        OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleServ>
+            TransporteReporte_AliadoDetalleServ();
     }
 }

@@ -300,12 +300,11 @@
             this.TB_NOTAS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_NOTAS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_NOTAS.Location = new System.Drawing.Point(2, 2);
-            this.TB_NOTAS.MaxLength = 120;
+            this.TB_NOTAS.MaxLength = 300;
             this.TB_NOTAS.Multiline = true;
             this.TB_NOTAS.Name = "TB_NOTAS";
             this.TB_NOTAS.Size = new System.Drawing.Size(642, 146);
             this.TB_NOTAS.TabIndex = 0;
-            this.TB_NOTAS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
             this.TB_NOTAS.Leave += new System.EventHandler(this.TB_NOTAS_Leave);
             // 
             // Frm

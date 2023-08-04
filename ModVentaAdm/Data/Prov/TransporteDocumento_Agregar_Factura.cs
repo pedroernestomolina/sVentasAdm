@@ -73,6 +73,7 @@ namespace ModVentaAdm.Data.Prov
                 serieDocDesc = ficha.serieDocDesc,
                 serieDocId = ficha.serieDocId,
                 subTotalMonDivisa = ficha.subTotalMonDivisa,
+                tipoDocSiglas=ficha.tipoDocSiglas,
                 items=  ficha.items.Select(z =>
                 {
                     DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle _servicioDetalle= null;
@@ -94,6 +95,10 @@ namespace ModVentaAdm.Data.Prov
                             signoDoc = s.signoDoc,
                             tipoDoc = s.tipoDoc,
                             importe = s.importe,
+                            servicioCodigo = s.servicioCodigo,
+                            servicioDetalle = s.servicioDetalle,
+                            servicioId = s.servicioId,
+                            unidadesDesc = s.unidadesDesc,
                             fechas = s.fechas.Select(ss =>
                             {
                                 var nr2 = new DtoTransporte.Documento.Agregar.Presupuesto.Fecha()

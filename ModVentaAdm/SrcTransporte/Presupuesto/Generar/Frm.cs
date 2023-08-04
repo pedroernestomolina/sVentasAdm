@@ -143,6 +143,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             L_NUMERO_DOC_REMISION.Text = _controlador.Remision.DocNumero_Get;
             L_FECHA_DOC_REMISION.Text = _controlador.Remision.DocFecha_Get;
             //
+            L_DOC_PENDIENTE.Text = "Cant/Doc Pendiente: " + _controlador.CntDocPendiente.ToString();
             TB_NOTAS.Text = _controlador.NotasObserv_Get;
             //
             _modoInicializa = false;
@@ -165,6 +166,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private void BT_NUEVO_DOC_Click(object sender, EventArgs e)
         {
             NuevoDocumento();
+        }
+        private void BT_ABRIR_PEND_Click(object sender, EventArgs e)
+        {
+            AbrirPendiente();
         }
 
 
@@ -232,6 +237,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         
         private void BT_DOC_PENDIENTE_Click(object sender, EventArgs e)
         {
+            ProcesarPendiente();
         }
         private void BT_PROCESAR_DOC_Click(object sender, EventArgs e)
         {
@@ -252,6 +258,19 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 ActualizarContadores();
                 ActualizarTotales();
                 ActualizarFicha();
+                TB_NOTAS.Text = _controlador.NotasObserv_Get;
+            }
+        }
+        private void AbrirPendiente()
+        {
+            _controlador.BuscarPendiente();
+            if (_controlador.AbrirPedienteIsOK)
+            {
+                ActualizarFichaRemision();
+                ActualizarContadores();
+                ActualizarTotales();
+                ActualizarFicha();
+                ActualizarPendiente();
                 TB_NOTAS.Text = _controlador.NotasObserv_Get;
             }
         }
@@ -307,6 +326,25 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         {
             L_CNT_ITEM.Text = _controlador.Ficha.Items.Cnt_Get.ToString("n0");
         }
+        private void ActualizarPendiente()
+        {
+            L_DOC_PENDIENTE.Text = "Cant/Doc Pendiente: " + _controlador.CntDocPendiente.ToString();
+        }
+        private void ProcesarPendiente()
+        {
+            _controlador.ProcesarPendiente();
+            if (_controlador.ProcesarPendienteIsOK)
+            {
+                ActualizarFicha();
+                ActualizarFichaRemision();
+                ActualizarContadores();
+                ActualizarTotales();
+                ActualizarPendiente();
+                TB_NOTAS.Text = _controlador.NotasObserv_Get;
+                _controlador.IniciarEnLimpio();
+            }
+        }
+
         private void ProcesarDocumento()
         {
             _controlador.Procesar();

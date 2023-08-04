@@ -100,7 +100,11 @@ namespace ProvPos
                                 alicuota_tasa as alicuotaTasa,
                                 alicuota_desc as alicuotaDesc,
                                 notas,
-                                importe 
+                                importe,
+                                unidades_desc as unidadesDesc,
+                                servicio_id as servicioId,
+                                servicio_codigo as servicioCodigo,
+                                servicio_detalle as servicioDetalle
                             FROM ventas_transp_item where id_venta=@idDoc";
                     var xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
                     var _det = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Presupuesto.FichaDetalle>(_sql, xp1).ToList();
@@ -207,7 +211,7 @@ namespace ProvPos
                                         docSolicitadoPor as docSolicitadoPor,
                                         docModuloCargar as docModuloCargar
                                     FROM ventas ";
-                    var _sql_2 = @" where 1=1 and estatus_anulado!='1' and auto_remision='' ";
+                    var _sql_2 = @" where 1=1 and estatus_anulado<>'1' and auto_remision='' and docEstatusPendiente<>'1' ";
                     if (filtro.idCliente != "")
                     {
                         p1.ParameterName = "@idCliente";
@@ -352,6 +356,34 @@ namespace ProvPos
                         encabezado = _ent,
                         detalles = _det,
                     };
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+
+        public DtoLib.ResultadoEntidad<int> 
+            TransporteDocumento_Presupuesto_Pendiente_Cnt()
+        {
+            var result = new DtoLib.ResultadoEntidad<int>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var _sql_1 = @"select count(*) as cnt 
+                                    FROM ventas where tipo='05' and 
+                                        estatus_anulado<>'1' and 
+                                        docEstatusPendiente='1'";
+                    var _sql = _sql_1;
+                    var _cnt= cnn.Database.SqlQuery<int?>(_sql).FirstOrDefault();
+                    if (_cnt.HasValue)
+                    {
+                        result.Entidad = _cnt.Value;
+                    }
                 }
             }
             catch (Exception e)

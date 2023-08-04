@@ -14,6 +14,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
         public string docSolicitadoPor { get; set; }
         public string docModuloCargar { get; set; }
         public decimal subTotalMonDivisa { get; set; }
+        public string tipoDocSiglas { get; set; }
         public List<FichaItem> items { get; set; }
         public List<FichaDocRef> docRef { get; set; }
         public List<FichaAliadoResumen> aliadosResumen { get; set; }
@@ -25,6 +26,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
             docSolicitadoPor = "";
             docModuloCargar = "";
             subTotalMonDivisa = 0m;
+            tipoDocSiglas = "";
             items = new List<FichaItem>();
             docRef = new List<FichaDocRef>();
             aliadosResumen = new List<FichaAliadoResumen>();

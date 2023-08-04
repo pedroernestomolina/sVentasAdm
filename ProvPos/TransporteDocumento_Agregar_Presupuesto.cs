@@ -161,7 +161,8 @@ namespace ProvPos
                                         `estatus_fiscal`, 
                                         `z_fiscal`,
                                         docSolicitadoPor,
-                                        docModuloCargar
+                                        docModuloCargar,
+                                        docEstatusPendiente
                                     ) 
                                     VALUES 
                                     (
@@ -282,7 +283,8 @@ namespace ProvPos
                                         '', 
                                         '0',
                                         @docSolicitadoPor,
-                                        @docModuloCargar)";
+                                        @docModuloCargar,
+                                        @docEstatusPendiente)";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
                         var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", fechaSistema.Date);
@@ -345,6 +347,7 @@ namespace ProvPos
                         var p61 = new MySql.Data.MySqlClient.MySqlParameter("@nota", ficha.nota);
                         var p62 = new MySql.Data.MySqlClient.MySqlParameter("@docSolicitadoPor", ficha.docSolicitadoPor);
                         var p63 = new MySql.Data.MySqlClient.MySqlParameter("@docModuloCargar", ficha.docModuloCargar);
+                        var p64 = new MySql.Data.MySqlClient.MySqlParameter("@docEstatusPendiente", ficha.estatusPendiente ? "1" : "0");
                         var r = cn.Database.ExecuteSqlCommand(_sql,
                                                                 p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
                                                                 p11, p12, p13, p14, p15, p16, p17, p18, p19, p20,
@@ -352,7 +355,7 @@ namespace ProvPos
                                                                 p31, p32, p33, p34, p35, p36, p37, p38, p39, p40,
                                                                 p41, p42, p43, p44, p45, p46, p47, p48, p49, p50,
                                                                 p51, p53, p54, p55, p56, p57, p58, p59, p60,
-                                                                p61, p62, p63);
+                                                                p61, p62, p63, p64);
                         cn.SaveChanges();
 
                         var _sql_I = @"INSERT INTO ventas_transp_item (
@@ -372,7 +375,11 @@ namespace ProvPos
                                     `signo_doc`, 
                                     `tipo_doc`, 
                                     `estatus_anulado`,
-                                    `importe`
+                                    `importe`,
+                                    unidades_desc,
+                                    servicio_id,
+                                    servicio_codigo,
+                                    servicio_detalle
                                 ) 
                                 VALUES 
                                 (
@@ -392,7 +399,11 @@ namespace ProvPos
                                     @signoDoc, 
                                     @tipoDoc, 
                                     @estatusAnulado, 
-                                    @importe 
+                                    @importe,
+                                    @unidades_desc,
+                                    @servicio_id,
+                                    @servicio_codigo,
+                                    @servicio_detalle
                                 )";
                         foreach (var it in ficha.items)
                         {
@@ -412,10 +423,14 @@ namespace ProvPos
                             var xp21 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDoc", it.tipoDoc);
                             var xp22 = new MySql.Data.MySqlClient.MySqlParameter("@estatusAnulado", it.estatusAnulado);
                             var xp23 = new MySql.Data.MySqlClient.MySqlParameter("@importe", it.importe);
+                            var xp24 = new MySql.Data.MySqlClient.MySqlParameter("@unidades_desc", it.unidadesDesc);
+                            var xp25 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_id", it.servicioId);
+                            var xp26 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_codigo", it.servicioCodigo);
+                            var xp27 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_detalle", it.servicioDetalle);
                             var r2 = cn.Database.ExecuteSqlCommand(_sql_I,
                                                                     xp1, xp2, xp5, xp6, xp7, xp8, xp9, xp10,
                                                                     xp11, xp17, xp18, xp19, xp20,
-                                                                    xp21, xp22, xp23);
+                                                                    xp21, xp22, xp23, xp24, xp25, xp26, xp27);
                             cn.SaveChanges();
                             //
                             _sql = "SELECT LAST_INSERT_ID()";
@@ -555,6 +570,52 @@ namespace ProvPos
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
                             return result;
                         }
+
+
+                        //AUDITORIA
+                        sql = @"INSERT INTO auditoria_documentos 
+                                        (
+                                            `auto_documento`, 
+                                            `auto_sistema_documentos`, 
+                                            `auto_usuario`, 
+                                            `usuario`, 
+                                            `codigo`, 
+                                            `fecha`, 
+                                            `hora`, 
+                                            `memo`, 
+                                            `estacion`, 
+                                            `ip`
+                                        ) 
+                                    VALUES 
+                                        (
+                                            @p1, 
+                                            @p2, 
+                                            @p3, 
+                                            @p4, 
+                                            @p5, 
+                                            @p6, 
+                                            @p7, 
+                                            @p8, 
+                                            @p9, 
+                                            ''
+                                        )";
+                        var ap1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", ficha.idRemision);
+                        var ap2 = new MySql.Data.MySqlClient.MySqlParameter("@p2", "0000000005");
+                        var ap3 = new MySql.Data.MySqlClient.MySqlParameter("@p3", ficha.idUsuario);
+                        var ap4 = new MySql.Data.MySqlClient.MySqlParameter("@p4", ficha.usuario);
+                        var ap5 = new MySql.Data.MySqlClient.MySqlParameter("@p5", ficha.codUsuario);
+                        var ap6 = new MySql.Data.MySqlClient.MySqlParameter("@p6", fechaSistema.Date);
+                        var ap7 = new MySql.Data.MySqlClient.MySqlParameter("@p7", fechaSistema.ToShortTimeString());
+                        var ap8 = new MySql.Data.MySqlClient.MySqlParameter("@p8", "ACTUALIZACION / MODIFICACION");
+                        var ap9 = new MySql.Data.MySqlClient.MySqlParameter("@p9", ficha.estacion);
+                        var va1 = cn.Database.ExecuteSqlCommand(sql, ap1, ap2, ap3, ap4, ap5, ap6, ap7, ap8, ap9);
+                        if (va1 == 0)
+                        {
+                            result.Mensaje = "PROBLEMA AL INSERTAR AUDITORIA";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cn.SaveChanges();
 
 
                         var _sql = @"INSERT INTO `ventas` (
@@ -886,7 +947,11 @@ namespace ProvPos
                                     `signo_doc`, 
                                     `tipo_doc`, 
                                     `estatus_anulado`,
-                                    `importe`
+                                    `importe`,
+                                    unidades_desc,
+                                    servicio_id,
+                                    servicio_codigo,
+                                    servicio_detalle
                                 ) 
                                 VALUES 
                                 (
@@ -906,7 +971,11 @@ namespace ProvPos
                                     @signoDoc, 
                                     @tipoDoc, 
                                     @estatusAnulado, 
-                                    @importe 
+                                    @importe,
+                                    @unidades_desc,
+                                    @servicio_id,
+                                    @servicio_codigo,
+                                    @servicio_detalle
                                 )";
                         foreach (var it in ficha.items)
                         {
@@ -926,10 +995,14 @@ namespace ProvPos
                             var xp21 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDoc", it.tipoDoc);
                             var xp22 = new MySql.Data.MySqlClient.MySqlParameter("@estatusAnulado", it.estatusAnulado);
                             var xp23 = new MySql.Data.MySqlClient.MySqlParameter("@importe", it.importe);
+                            var xp24 = new MySql.Data.MySqlClient.MySqlParameter("@unidades_desc", it.unidadesDesc);
+                            var xp25 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_id", it.servicioId);
+                            var xp26 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_codigo", it.servicioCodigo);
+                            var xp27 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_detalle", it.servicioDetalle);
                             var r2 = cn.Database.ExecuteSqlCommand(_sql_I,
                                                                     xp1, xp2, xp5, xp6, xp7, xp8, xp9, xp10,
                                                                     xp11, xp17, xp18, xp19, xp20,
-                                                                    xp21, xp22, xp23);
+                                                                    xp21, xp22, xp23, xp24, xp25, xp26, xp27);
                             cn.SaveChanges();
                             //
                             _sql = "SELECT LAST_INSERT_ID()";

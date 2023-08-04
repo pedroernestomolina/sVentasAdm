@@ -100,6 +100,10 @@ namespace ModVentaAdm.Data.Prov
                         notas = s.notas,
                         precioNetoDivisa = s.precioNetoDivisa,
                         servicioDesc = s.servicioDesc,
+                        servicioCodigo=s.servicioCodigo,
+                        servicioDetalle=s.servicioDetalle,
+                        servicioId=s.servicioId,
+                        unidadesDesc=s.unidadesDesc,
                         fechaServ = s.fechaServ.Select(ss =>
                         {
                             var xr = new OOB.Transporte.Documento.Entidad.Presupuesto.FichaFechaServ()
@@ -322,6 +326,18 @@ namespace ModVentaAdm.Data.Prov
                     return nr;
                 }).ToList(),
             };
+            return result;
+        }
+        public OOB.Resultado.FichaEntidad<int> 
+            TransporteDocumento_Presupuesto_Pendiente_Cnt()
+        {
+            var result = new OOB.Resultado.FichaEntidad<int>();
+            var r01 = MyData.TransporteDocumento_Presupuesto_Pendiente_Cnt();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            result.Entidad = r01.Entidad;
             return result;
         }
     }

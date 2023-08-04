@@ -92,6 +92,33 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             }
             return true;
         }
+        public bool DataPendienteIsOK()
+        {
+            if (_datosDoc == null)
+            {
+                Helpers.Msg.Alerta("PROBLEMA CON LOS DATOS DEL DOCUMENTO, VERIFIQUE POR FAVOR");
+                return false;
+            }
+            var _docOk = _datosDoc.DatosIsOK();
+            if (!_docOk)
+            {
+                Helpers.Msg.Alerta("PROBLEMA CON LOS DATOS DEL DOCUMENTO, VERIFIQUE POR FAVOR");
+                return false;
+            }
+            var _itemsOK = _items.DataPendienteIsOk();
+            if (!_itemsOK)
+            {
+                Helpers.Msg.Alerta("PROBLEMA CON LOS ITEMS DEL DOCUMENTO, VERIFIQUE POR FAVOR");
+                return false;
+            }
+            var _totOK = _totales.DataIsOk();
+            if (!_totOK)
+            {
+                Helpers.Msg.Alerta("PROBLEMA CON LOS MONTOS TOTALES DEL DOCUMENTO, VERIFIQUE POR FAVOR");
+                return false;
+            }
+            return true;
+        }
         public void setTasaDivisa(decimal factor)
         {
             _tasaDivisa = factor;

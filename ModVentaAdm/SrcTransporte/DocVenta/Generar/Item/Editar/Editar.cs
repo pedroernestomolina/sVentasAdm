@@ -32,7 +32,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Editar
         {
             AgregarPresupuesto();
         }
-        private Utils.DocLista.IDocLista _listDoc;
+        private Utils.DocLista.Remision.IRemision _listDoc;
         private void AgregarPresupuesto()
         {
             try

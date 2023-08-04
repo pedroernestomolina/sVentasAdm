@@ -135,10 +135,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     if (s.Item.Get_ItemServicio!=null) 
                     {
                         _tipoItemProcedencia = "S";
-                        _servdetalle= new OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle()
+                        _servdetalle = new OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle()
                         {
                             alicuotaDesc = s.Item.Get_ItemServicio.Item.Get_Alicuota.desc,
-                            alicuotaId = s.Item.Get_ItemServicio.Item.Get_Alicuota.id ,
+                            alicuotaId = s.Item.Get_ItemServicio.Item.Get_Alicuota.id,
                             alicuotaTasa = s.Item.Get_ItemServicio.Item.Get_Alicuota.tasa,
                             cntDias = s.Item.Get_ItemServicio.Item.Get_CntDias,
                             cntUnidades = s.Item.Get_ItemServicio.Item.Get_CntUnidades,
@@ -146,10 +146,14 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                             estatusAnulado = "0",
                             notas = s.Item.Get_ItemServicio.Item.Get_DescripcionFull,
                             precioNetoDivisa = s.Item.Get_ItemServicio.Item.Get_PrecioDivisa,
-                            servicioDesc = s.Item.Get_ItemServicio.Item.Get_Descripcion,
+                            servicioDesc = s.Item.Get_ItemServicio.Item.Get_TipoServicio.descripcion,
                             signoDoc = _signoDocumento,
                             tipoDoc = _tipoDcumento,
                             importe = s.Item.Get_ItemServicio.Item.Get_Importe,
+                            servicioCodigo = s.Item.Get_ItemServicio.Item.Get_TipoServicio.codigo,
+                            servicioDetalle = s.Item.Get_ItemServicio.Item.Get_Descripcion,
+                            servicioId = s.Item.Get_ItemServicio.Item.Get_TipoServicio.id,
+                            unidadesDesc = s.Item.Get_ItemServicio.Item.Get_UnidadesDetall,
                             fechas = s.Item.Get_ItemServicio.Item.Get_Fechas.Select(ss =>
                             {
                                 var nr2 = new OOB.Transporte.Documento.Agregar.Presupuesto.Fecha()
@@ -293,6 +297,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     serieDocId = _serieId,
                     subTotalMonDivisa = 0m,
                     items=itemsDet,
+                    tipoDocSiglas="PRF",
                     aliadosResumen = _grupoAliados.Select(s =>
                     {
                         var nr = new OOB.Transporte.Documento.Agregar.Factura.FichaAliadoResumen()

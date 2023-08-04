@@ -344,6 +344,15 @@ namespace ModVentaAdm.SrcTransporte.Principal
             _controlador.ReporteTransporte_AliadoDetalleDoc();
         }
 
+        private void REP_TRANS_ALIADO_POR_SERVICIO_Click(object sender, EventArgs e)
+        {
+            ReporteTransporte_AliadoDetalleServ();
+        }
+        private void ReporteTransporte_AliadoDetalleServ()
+        {
+            _controlador.ReporteTransporte_AliadoDetalleServ();
+        }
+
         private void MNU_CNF_NOTAS_PRESUP_Click(object sender, EventArgs e)
         {
             Cnf_NotasPresupuesto();
@@ -351,6 +360,15 @@ namespace ModVentaAdm.SrcTransporte.Principal
         private void Cnf_NotasPresupuesto()
         {
             _controlador.Cnf_NotasPresupuesto();
+        }
+
+        private void MNU_CNF_NOTAS_FACTURA_Click(object sender, EventArgs e)
+        {
+            Cnf_NotasFactura();
+        }
+        private void Cnf_NotasFactura()
+        {
+            _controlador.Cnf_NotasFactura();
         }
     }
 }

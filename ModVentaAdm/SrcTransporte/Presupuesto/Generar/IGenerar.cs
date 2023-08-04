@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 {
-    public interface IGenerar : Src.IGestion, Src.Gestion.IAbandonar, Src.Gestion.IProcesar
+    public interface IGenerar : Src.IGestion, Src.Gestion.IAbandonar, Src.Gestion.IProcesar, Src.Gestion.IPendiente
     {
         BindingSource SourceItems_Get { get; }
         data Ficha { get; }
@@ -30,5 +30,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         bool RemisionIsOK { get; }
         void BuscarRemision();
         void IniciarEnLimpio();
+
+        int CntDocPendiente { get;  }
+        bool AbrirPedienteIsOK { get; }
+        void BuscarPendiente();
     }
 }

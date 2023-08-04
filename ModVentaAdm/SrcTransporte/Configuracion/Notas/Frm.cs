@@ -36,10 +36,7 @@ namespace ModVentaAdm.SrcTransporte.Configuracion.Notas
         }
         private void Ctr_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                this.SelectNextControl((Control)sender, true, true, true, true);
-            }
+
         }
         public void setControlador(INotas ctr)
         {

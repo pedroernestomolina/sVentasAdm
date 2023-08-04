@@ -81,5 +81,60 @@ namespace ModVentaAdm.Data.Prov
             rt.ListaD = _lst;
             return rt;
         }
+        public OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleServ> 
+            TransporteReporte_AliadoDetalleServ()
+        {
+            var rt = new OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleServ>();
+            var r01 = MyData.TransporteReporte_AliadoDetalleServ();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var _lst = new List<OOB.Transporte.Reporte.AliadoDetalleServ>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    _lst = r01.Lista.Select(s =>
+                    {
+                        var _servId = -1;
+                        var _servCodigo = "";
+                        var _servDesc = "";
+                        var _servImporte = 0m;
+                        if (s.servId.HasValue)
+                        {
+                            _servId = s.servId.Value;
+                            _servCodigo = s.servCodigo;
+                            _servDesc = s.servDesc;
+                            _servImporte = s.servImporte.Value;
+                        }
+                        if (s.prespServId.HasValue)
+                        {
+                            _servId = s.prespServId.Value;
+                            _servCodigo = s.prespServCodigo;
+                            _servDesc = s.prespServDesc;
+                            _servImporte = s.prespServImporte.Value;
+                        }
+                        var nr = new OOB.Transporte.Reporte.AliadoDetalleServ()
+                        {
+                            aliadoCiRif = s.aliadoCiRif,
+                            aliadoId = s.aliadoId,
+                            aliadoNombre = s.aliadoNombre,
+                            docCliente = s.docCliente,
+                            docFecha = s.docFecha,
+                            docNombre = s.docNombre,
+                            docNumero = s.docNumero,
+                            servId = _servId,
+                            servCodigo = _servCodigo,
+                            servDesc = _servDesc,
+                            servImporte = _servImporte,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            rt.ListaD = _lst;
+            return rt;
+        }
     }
 }

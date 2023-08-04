@@ -97,5 +97,11 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteDocumento_EntidadVenta_GetById(idDoc);
         }
+
+        public DtoLib.ResultadoEntidad<int> 
+            TransporteDocumento_Presupuesto_Pendiente_Cnt()
+        {
+            return ServiceProv.TransporteDocumento_Presupuesto_Pendiente_Cnt();
+        }
     }
 }

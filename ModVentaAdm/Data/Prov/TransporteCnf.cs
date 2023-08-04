@@ -33,5 +33,28 @@ namespace ModVentaAdm.Data.Prov
             }
             return result;
         }
+        public OOB.Resultado.FichaEntidad<string> 
+            TransporteCnf_NotasFactura_Get()
+        {
+            var result = new OOB.Resultado.FichaEntidad<string>();
+            var r01 = MyData.TransporteCnf_NotasFactura_Get();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            result.Entidad = r01.Entidad;
+            return result;
+        }
+        public OOB.Resultado.Ficha 
+            TransporteCnf_NotasFactura_Editar(string notas)
+        {
+            var result = new OOB.Resultado.Ficha();
+            var r01 = MyData.TransporteCnf_NotasFactura_Editar(notas);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return result;
+        }
     }
 }

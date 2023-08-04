@@ -33,5 +33,9 @@ namespace ServicePos.Interfaces.Transporte
         //
         DtoLib.ResultadoEntidad<DtoTransporte.Documento.Entidad.Venta.Ficha>
             TransporteDocumento_EntidadVenta_GetById(string idDoc);
+
+        //
+        DtoLib.ResultadoEntidad<int>
+            TransporteDocumento_Presupuesto_Pendiente_Cnt();
     }
 }

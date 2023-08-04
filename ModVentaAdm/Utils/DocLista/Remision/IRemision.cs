@@ -11,5 +11,6 @@ namespace ModVentaAdm.Utils.DocLista.Remision
     {
         bool ItemSeleccionadoIsOk { get; }
         void SeleccionarItem();
+        void setDataCargar(List<OOB.Transporte.Documento.Remision.Lista.Ficha> list);
     }
 }

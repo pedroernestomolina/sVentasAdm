@@ -14,12 +14,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private data _data;
         private Aliado.IAliado _aliado;
         private LibUtilitis.CtrlCB.ICtrl _alicuota;
+        private LibUtilitis.CtrlCB.ICtrl _tipoServ;
         protected List<OOB.Sistema.Fiscal.Entidad.Ficha> _tasasFiscal;
 
 
         public data Item { get { return _data; } }
         public Aliado.IAliado MiAliado { get { return _aliado; } }
         public LibUtilitis.CtrlCB.ICtrl Alicuota { get { return _alicuota; } }
+        public LibUtilitis.CtrlCB.ICtrl TipoServ { get { return _tipoServ; } }
         //
         public string ServItemMostrar { get { return _data.Get_Descripcion; } }
         public string AliadoItemMostrar { get { return _data.Get_Aliado_ItemMostrar ; } }
@@ -36,6 +38,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _data = new data();
             _aliado = new Aliado.ImpAliado();
             _alicuota = new LibUtilitis.CtrlCB.ImpCB();
+            _tipoServ = new LibUtilitis.CtrlCB.ImpCB();
             _tasasFiscal = null;
         }
 
@@ -47,6 +50,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _data.Inicializa();
             _aliado.Inicializa();
             _alicuota.Inicializa();
+            _tipoServ.Inicializa();
             _tasasFiscal = null;
         }
         Frm frm;
@@ -98,6 +102,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         {
             try
             {
+                var filtroOOB = new OOB.Transporte.ServPrest.Busqueda.Filtro();
+                var r01 = Sistema.MyData.TransporteServPrest_GetLista(filtroOOB);
+                var lst = r01.ListaD.Select(s =>
+                {
+                    var nr = new tipoServicio() { id = s.id.ToString(), codigo = "", desc = s.descripcion };
+                    return nr;
+                }).ToList();
+                _tipoServ.CargarData(lst.OrderBy(o => o.desc).ToList());
                 return true;
             }
             catch (Exception e)
@@ -128,6 +140,28 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         {
             _alicuota.setFichaById(id);
             _data.setAlicuota((alicuota)_alicuota.GetItem);
+        }
+        public void TipoServSetFichaById(string id)
+        {
+            _tipoServ.setFichaById(id);
+            if (id.Trim() == "")
+            {
+                _data.setTipoServicio(null);
+                _data.setDescripcion("");
+                return;
+            }
+
+            try
+            {
+                var _id= int.Parse(id);
+                var r01 = Sistema.MyData.TransporteServPrest_GetById(_id);
+                _data.setTipoServicio(r01.Entidad);
+                _data.setDescripcion(r01.Entidad.detalle);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Alerta(e.Message);
+            }
         }
     }
 }

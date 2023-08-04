@@ -12,6 +12,5 @@ namespace ModVentaAdm.Utils.DocLista
          ILista Items { get;  }
          bool ItemSeleccionadoIsOk { get; }
          object ItemSeleccionado { get; }
-         void setDataCargar(IEnumerable<object> lst);
     }
 }

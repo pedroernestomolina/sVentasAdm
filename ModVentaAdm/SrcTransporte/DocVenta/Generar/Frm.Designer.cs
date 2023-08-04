@@ -1006,7 +1006,7 @@
             // 
             this.TB_NOTAS.BackColor = System.Drawing.Color.Yellow;
             this.TB_NOTAS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_NOTAS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_NOTAS.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_NOTAS.Location = new System.Drawing.Point(2, 15);
             this.TB_NOTAS.MaxLength = 5000;
             this.TB_NOTAS.Multiline = true;

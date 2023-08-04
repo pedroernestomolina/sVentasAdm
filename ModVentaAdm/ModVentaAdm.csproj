@@ -298,6 +298,7 @@
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Filtro.cs" />
     <Compile Include="OOB\Transporte\Reporte\AliadoDetalleDoc.cs" />
+    <Compile Include="OOB\Transporte\Reporte\AliadoDetalleServ.cs" />
     <Compile Include="OOB\Transporte\Reporte\AliadoResumen.cs" />
     <Compile Include="OOB\Transporte\ServPrest\Agregar\Ficha.cs" />
     <Compile Include="OOB\Transporte\ServPrest\baseFicha.cs" />
@@ -373,6 +374,7 @@
     </Compile>
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\IAgregarEditar.cs" />
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\ImpAgregarEditar.cs" />
+    <Compile Include="SrcTransporte\Configuracion\Notas\Factura\Imp.cs" />
     <Compile Include="SrcTransporte\Configuracion\Notas\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -488,6 +490,7 @@
     <Compile Include="SrcTransporte\Presupuesto\Generar\Remision\Imp.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Remision\IObservador.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Remision\IRemision.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\tipoServicio.cs" />
     <Compile Include="SrcTransporte\Principal\PrincipalFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -495,7 +498,12 @@
       <DependentUpon>PrincipalFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="SrcTransporte\Reportes\Aliado\DetalleDoc.cs" />
+    <Compile Include="SrcTransporte\Reportes\Aliado\DetalleServ.cs" />
     <Compile Include="SrcTransporte\Reportes\Aliado\Resumen.cs" />
+    <Compile Include="SrcTransporte\Reportes\DS_TRANSP.cs">
+      <DependentUpon>DS_TRANSP.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SrcTransporte\Reportes\DS_TRANSP.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -503,6 +511,8 @@
     </Compile>
     <Compile Include="SrcTransporte\Reportes\Presupuesto\Gestion.cs" />
     <Compile Include="SrcTransporte\Reportes\Presupuesto\IPresupuesto.cs" />
+    <Compile Include="SrcTransporte\Reportes\ProForma\Gestion.cs" />
+    <Compile Include="SrcTransporte\Reportes\ProForma\IProforma.cs" />
     <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Editar\Editar.cs" />
     <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Editar\IEditar.cs" />
     <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Servicio.cs" />
@@ -815,6 +825,7 @@
     <Compile Include="Src\Gestion\HndCombo\IOpcion.cs" />
     <Compile Include="Src\Gestion\HndCombo\Opcion.cs" />
     <Compile Include="Src\Gestion\IAbandonar.cs" />
+    <Compile Include="Src\Gestion\IPendiente.cs" />
     <Compile Include="Src\Identificacion\Login.cs" />
     <Compile Include="Src\Identificacion\IdentificacionFrm.cs">
       <SubType>Form</SubType>
@@ -967,6 +978,17 @@
     <Compile Include="Utils\CtrlMetodoBusq\IComp.cs" />
     <Compile Include="Utils\dataFiltro.cs" />
     <Compile Include="Utils\DocLista\ILista.cs" />
+    <Compile Include="Utils\DocLista\PresupuestoPend\data.cs" />
+    <Compile Include="Utils\DocLista\PresupuestoPend\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\DocLista\PresupuestoPend\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\DocLista\PresupuestoPend\Imp.cs" />
+    <Compile Include="Utils\DocLista\PresupuestoPend\ImpLista.cs" />
+    <Compile Include="Utils\DocLista\PresupuestoPend\IPrespPend.cs" />
+    <Compile Include="Utils\DocLista\PresupuestoPend\IPrespPendLista.cs" />
     <Compile Include="Utils\DocLista\Remision\data.cs" />
     <Compile Include="Utils\DocLista\Remision\Frm.cs">
       <SubType>Form</SubType>
@@ -984,6 +1006,7 @@
     <Compile Include="SrcTransporte\Maestro\Frm.designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\DocLista\Remision\IRemisionLista.cs" />
     <Compile Include="Utils\Maestro\ILista.cs" />
     <Compile Include="Utils\Maestro\IMaestro.cs" />
     <EmbeddedResource Include="Helpers\Imprimir\Grafico\Documento.rdlc">
@@ -1036,10 +1059,17 @@
     <EmbeddedResource Include="SrcTransporte\Reportes\AliadoDetalleDoc.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\AliadoDetalleServ.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\AliadoResumen.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Factura.rdlc" />
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Presupuesto.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_ProForma.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\ServPrestado\AgregarEditar\Frm.resx">
@@ -1219,6 +1249,9 @@
     <EmbeddedResource Include="Utils\Buscar\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utils\DocLista\PresupuestoPend\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utils\DocLista\Remision\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1320,6 +1353,10 @@
     <None Include="Resources\logo_transp_01.jpeg" />
     <None Include="Resources\logo_transp_presup.jpeg" />
     <None Include="Resources\logo_transp_presup_2.jpeg" />
+    <None Include="Resources\logo_transp_doc.jpeg" />
+    <None Include="Resources\logo_transp.jpeg" />
+    <None Include="Resources\logo_transp_2.jpeg" />
+    <None Include="Resources\logo_transp_3.jpeg" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1413,9 +1450,13 @@
     <Content Include="Src\Imagenes\inventario_2.jpg" />
     <Content Include="Src\Imagenes\libro.png" />
     <Content Include="Src\Imagenes\localizacion_48.png" />
+    <Content Include="Src\Imagenes\logo_transp.jpeg" />
     <Content Include="Src\Imagenes\logo_transp.jpg" />
     <Content Include="Src\Imagenes\logo_transp_01.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_02.jpeg" />
+    <Content Include="Src\Imagenes\logo_transp_2.jpeg" />
+    <Content Include="Src\Imagenes\logo_transp_3.jpeg" />
+    <Content Include="Src\Imagenes\logo_transp_doc.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_presup.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_presup_2.jpeg" />
     <Content Include="Src\Imagenes\Machine-learning-1024x682.jpg" />

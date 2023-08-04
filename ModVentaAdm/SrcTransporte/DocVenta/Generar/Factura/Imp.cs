@@ -150,10 +150,14 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                             estatusAnulado = "0",
                             notas = s.Item.Get_ItemServicio.Item.Get_DescripcionFull,
                             precioNetoDivisa = s.Item.Get_ItemServicio.Item.Get_PrecioDivisa,
-                            servicioDesc = s.Item.Get_ItemServicio.Item.Get_Descripcion,
+                            servicioDesc = s.Item.Get_ItemServicio.Item.Get_TipoServicio.descripcion,
                             signoDoc = _signoDocumento,
                             tipoDoc = _tipoDcumento,
                             importe = s.Item.Get_ItemServicio.Item.Get_Importe,
+                            servicioCodigo = s.Item.Get_ItemServicio.Item.Get_TipoServicio.codigo,
+                            servicioDetalle = s.Item.Get_ItemServicio.Item.Get_Descripcion,
+                            servicioId = s.Item.Get_ItemServicio.Item.Get_TipoServicio.id,
+                            unidadesDesc = s.Item.Get_ItemServicio.Item.Get_UnidadesDetall,
                             fechas = s.Item.Get_ItemServicio.Item.Get_Fechas.Select(ss =>
                             {
                                 var nr2 = new OOB.Transporte.Documento.Agregar.Presupuesto.Fecha()
@@ -296,6 +300,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     serieDocDesc = _serieDoc,
                     serieDocId = _serieId,
                     subTotalMonDivisa = 0m,
+                    tipoDocSiglas=s02.Entidad.siglas,
                     items=itemsDet,
                     aliadosResumen = _grupoAliados.Select(s =>
                     {

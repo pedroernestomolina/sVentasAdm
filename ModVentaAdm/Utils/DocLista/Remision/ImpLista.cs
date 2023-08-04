@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Utils.DocLista.Remision
 {
-    public class ImpLista: ILista
+    public class ImpLista: IRemisionLista
     {
         private List<data> _lst;
         private BindingList<data> _bl;

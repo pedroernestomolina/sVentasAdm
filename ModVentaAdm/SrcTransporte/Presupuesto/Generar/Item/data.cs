@@ -35,7 +35,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private decimal _dscto;
         private decimal _precioDscto;
         private alicuota _alicuota;
+        private OOB.Transporte.ServPrest.Entidad.Ficha _tipoServicio;
         private AliadosLlamado.ILLamados _aliadosLlamados;
+        private string _unidadesDetalle;
 
 
         public BindingSource Get_SourceFechas { get { return _bsFechas; } }
@@ -77,9 +79,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             get
             {
                 var rt = "NO DEFINIDO";
-                if (_aliado != null)
+                //if (_aliado != null)
+                //{
+                //    rt = _aliado.ciRif.Trim() + "(" + _aliado.nombreRazonSocial.Trim() + ")";
+                //}
+                if (_aliadosLlamados.GetLista.Count > 0) 
                 {
-                    rt = _aliado.ciRif.Trim() + "(" + _aliado.nombreRazonSocial.Trim() + ")";
+                    rt = "YA DEFINIDO (" + _aliadosLlamados.GetLista.Count.ToString().Trim() + ") ALIADO(s)";
                 }
                 return rt;
             }
@@ -172,6 +178,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         {
             _aliado = null;
             _alicuota = null;
+            _tipoServicio = null;
             _desc = "";
             _solicitadoPor = "";
             _moduloCargar = "";
@@ -188,6 +195,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _precioAliadoPautado = 0m;
             _cntAliadoPautado = 0;
             _fechas = new List<fecha>();
+            _unidadesDetalle = "";
         }
         public void LimpiarAliado()
         {
@@ -247,6 +255,11 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         }
         public bool VerificarDatosIsOK()
         {
+            if (_tipoServicio == null)
+            {
+                Helpers.Msg.Alerta("Campo [ TIPO DE SERVICIO ] No puede estar vacio !!!");
+                return false;
+            }
             if (_desc.Trim() == "")
             {
                 Helpers.Msg.Alerta("Campo [ DESCRIPCION BREVE ] No puede estar vacio !!!");
@@ -342,6 +355,20 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         public  void setListaAliadosLlamados(List<AliadosLlamado.data> lst)
         {
             _aliadosLlamados.setListaAliadosLlamados(lst);
+        }
+
+
+        public OOB.Transporte.ServPrest.Entidad.Ficha Get_TipoServicio { get { return _tipoServicio; } }
+        public string Get_TipoServ_ID { get { return _tipoServicio == null ? "" : _tipoServicio.id.ToString(); } }
+        public void setTipoServicio(OOB.Transporte.ServPrest.Entidad.Ficha tipoServ)
+        {
+            _tipoServicio = tipoServ;
+        }
+
+        public string Get_UnidadesDetall { get { return _unidadesDetalle; } }
+        public void setUnidadesDetalle(string desc)
+        {
+            _unidadesDetalle = desc;
         }
     }
 }

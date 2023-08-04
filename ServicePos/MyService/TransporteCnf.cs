@@ -20,5 +20,15 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteCnf_NotasPresupuesto_Editar(notas);
         }
+        public DtoLib.ResultadoEntidad<string> 
+            TransporteCnf_NotasFactura_Get()
+        {
+            return ServiceProv.TransporteCnf_NotasFactura_Get();
+        }
+        public DtoLib.Resultado 
+            TransporteCnf_NotasFactura_Editar(string notas)
+        {
+            return ServiceProv.TransporteCnf_NotasFactura_Editar(notas);
+        }
     }
 }

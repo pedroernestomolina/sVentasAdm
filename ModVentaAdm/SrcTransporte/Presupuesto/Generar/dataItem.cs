@@ -104,8 +104,55 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 Helpers.Msg.Alerta("HAY ITEMS CON IMPORTES INCORRECTOS (MONTO EN CERO)");
                 return false;
             }
+            if (_lst.Where(w => w.Item.Get_DescripcionFull.Trim()=="").Count()>0)
+            {
+                Helpers.Msg.Alerta("HAY ITEMS CON CAMPO [ MAS INFORMACION ] QUE NO PUEDEN ESTAR VACIO");
+                return false;
+            }
+            if (_lst.Where(w => w.Item.Get_UnidadesDetall.Trim() == "").Count() > 0)
+            {
+                Helpers.Msg.Alerta("HAY ITEMS CON CAMPO [ UNIDADES DETALLE ] QUE NO PUEDEN ESTAR VACIO");
+                return false;
+            }
             return true;
         }
+        public bool DataPendienteIsOk()
+        {
+            if (_lst == null)
+            {
+                Helpers.Msg.Alerta("LISTA DE ITEMS NO DEFINIDA");
+                return false;
+            }
+            if (_lst.Count == 0)
+            {
+                Helpers.Msg.Alerta("NO HAY ITEMS DEFINIDOS");
+                return false;
+            }
+            //var _cntAliado = _lst.Where(w => w.Item.AliadoIsOk != true).Count();
+            //if (_cntAliado > 0)
+            //{
+            //    Helpers.Msg.Alerta("HAY ITEMS PENDIENTES POR DEFINIR EL ALIADO");
+            //    return false;
+            //}
+            var _cntImporte = _lst.Where(w => w.ImporteItemMostrar == 0m).Count();
+            if (_cntImporte > 0)
+            {
+                Helpers.Msg.Alerta("HAY ITEMS CON IMPORTES INCORRECTOS (MONTO EN CERO)");
+                return false;
+            }
+            //if (_lst.Where(w => w.Item.Get_DescripcionFull.Trim() == "").Count() > 0)
+            //{
+            //    Helpers.Msg.Alerta("HAY ITEMS CON CAMPO [ MAS INFORMACION ] QUE NO PUEDEN ESTAR VACIO");
+            //    return false;
+            //}
+            //if (_lst.Where(w => w.Item.Get_UnidadesDetall.Trim() == "").Count() > 0)
+            //{
+            //    Helpers.Msg.Alerta("HAY ITEMS CON CAMPO [ UNIDADES DETALLE ] QUE NO PUEDEN ESTAR VACIO");
+            //    return false;
+            //}
+            return true;
+        }
+
 
 
         //PARA LOS TOTALES TODO EN BASE A DIVISA
@@ -146,8 +193,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                         id = it.alicuotaId,
                         tasa = it.alicuotaTasa,
                     };
+                    var _tipoServicio = new OOB.Transporte.ServPrest.Entidad.Ficha()
+                    {
+                        detalle = "",
+                        descripcion = it.servicioDesc,
+                        codigo = it.servicioCodigo,
+                        id = it.servicioId,
+                    };
                     var _item = new Item.Agregar.Agregar();
-                    _item.Item.setDescripcion(it.servicioDesc);
                     _item.Item.setSolicitadoPor(ficha.encabezado.docSolicitadoPor);
                     _item.Item.setModuloaCargar(ficha.encabezado.docModuloCargar);
                     _item.Item.setCntDias(it.cntDias);
@@ -155,6 +208,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     _item.Item.setPrecioDivisa(it.precioNetoDivisa);
                     _item.Item.setDscto(it.dscto);
                     _item.Item.setAlicuota(_alicuota);
+                    _item.Item.setUnidadesDetalle(it.unidadesDesc);
+                    _item.Item.setTipoServicio(_tipoServicio);
+                    _item.Item.setDescripcion(it.servicioDetalle);
 
                     foreach (var xr in it.aliados)
                     {

@@ -12,7 +12,7 @@ namespace ModVentaAdm.Utils.DocLista.Remision
 {
     public class Imp: IRemision
     {
-        private ILista _items;
+        private IRemisionLista _items;
         private bool _itemSeleccionadoIsOk;
 
 
@@ -55,12 +55,12 @@ namespace ModVentaAdm.Utils.DocLista.Remision
         }
 
 
-        public void setDataCargar(IEnumerable<object> lst)
+        public void setDataCargar(List<OOB.Transporte.Documento.Remision.Lista.Ficha> list)
         {
             var _lst = new List<data>();
-            foreach (var rg in lst) 
+            foreach (var rg in list) 
             {
-                var nr = new data((OOB.Transporte.Documento.Remision.Lista.Ficha)rg);
+                var nr = new data(rg);
                 _lst.Add(nr);
             }
             _items.setDataCargar(_lst);

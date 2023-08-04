@@ -20,5 +20,10 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteReporte_AliadoDetalleDoc();
         }
+        public DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleServ> 
+            TransporteReporte_AliadoDetalleServ()
+        {
+            return ServiceProv.TransporteReporte_AliadoDetalleServ();
+        }
     }
 }

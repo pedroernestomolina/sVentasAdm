@@ -15,6 +15,5 @@ namespace ModVentaAdm.Utils.DocLista
         int Cnt { get;  }
 
         void Inicializa();
-        void setDataCargar(List<Remision.data> _lst);
     }
 }

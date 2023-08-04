@@ -124,12 +124,17 @@ namespace ModVentaAdm.Fabrica.Transporte
                     break;
                 case "01":
                 case "04":
-                    CargarVenta(doc.idDocumento);
+                    CargarProForma(doc.idDocumento);
                     break;
             }
         }
 
-
+        private void CargarProForma(string idDoc)
+        {
+            SrcTransporte.Reportes.ProForma.IProForma _doc = new SrcTransporte.Reportes.ProForma.Gestion(); ;
+            _doc.setIdDocVisualizar(idDoc);
+            _doc.Generar();
+        }
         private void CargarVenta(string idDoc)
         {
             try

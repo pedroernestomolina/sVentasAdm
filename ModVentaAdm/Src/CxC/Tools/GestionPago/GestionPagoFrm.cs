@@ -169,8 +169,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
             cB.ReadOnly = true;
 
             DGV.Columns.Add(c1);
-            DGV.Columns.Add(c2);
             DGV.Columns.Add(c3);
+            DGV.Columns.Add(c2);
             DGV.Columns.Add(c4);
             DGV.Columns.Add(c5);
             DGV.Columns.Add(c6);

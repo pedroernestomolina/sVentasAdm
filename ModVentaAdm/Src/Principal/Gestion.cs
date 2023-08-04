@@ -403,16 +403,34 @@ namespace ModVentaAdm.Src.Principal
             _rep = new SrcTransporte.Reportes.Aliado.DetalleDoc();
             _rep.Generar();
         }
+        public void ReporteTransporte_AliadoDetalleServ()
+        {
+            IReporte _rep;
+            _rep = new SrcTransporte.Reportes.Aliado.DetalleServ();
+            _rep.Generar();
+        }
 
-        SrcTransporte.Configuracion.Notas.INotas _gNotas;
+
+        SrcTransporte.Configuracion.Notas.INotas _gNotasPresup;
         public void Cnf_NotasPresupuesto()
         {
-            if (_gNotas == null) 
+            if (_gNotasPresup == null) 
             {
-                _gNotas = new SrcTransporte.Configuracion.Notas.Presupuesto.Imp();
+                _gNotasPresup = new SrcTransporte.Configuracion.Notas.Presupuesto.Imp();
             }
-            _gNotas.Inicializa();
-            _gNotas.Inicia();
+            _gNotasPresup.Inicializa();
+            _gNotasPresup.Inicia();
+        }
+
+        SrcTransporte.Configuracion.Notas.INotas _gNotasFact;
+        public void Cnf_NotasFactura()
+        {
+            if (_gNotasFact == null)
+            {
+                _gNotasFact = new SrcTransporte.Configuracion.Notas.Factura.Imp();
+            }
+            _gNotasFact.Inicializa();
+            _gNotasFact.Inicia();
         }
     }
 }
