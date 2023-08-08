@@ -32,5 +32,15 @@ namespace ModVentaAdm.Data.Infra.Transporte
         
         OOB.Resultado.FichaEntidad<int>
             TransporteDocumento_Presupuesto_Pendiente_Cnt();
+
+        //
+        OOB.Resultado.Lista<OOB.Transporte.Documento.Lista.Pendiente.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_Pendiente();
+        OOB.Resultado.Ficha
+            TransporteDocumento_AnularPresupuesto_Pendiente(string idDoc);
+
+        //
+        OOB.Resultado.Lista<OOB.Documento.Lista.Ficha>
+            TransporteDocumento_GetLista(OOB.Documento.Lista.Filtro filtro);
     }
 }

@@ -9,10 +9,9 @@ namespace ModVentaAdm.Utils.DocLista.PresupuestoPend
 {
     public class data
     {
-        private OOB.Transporte.Documento.Remision.Lista.Ficha _ficha;
+        private OOB.Transporte.Documento.Lista.Pendiente.Presupuesto.Ficha _ficha;
 
-
-        public OOB.Transporte.Documento.Remision.Lista.Ficha Ficha { get { return _ficha; } }
+        public OOB.Transporte.Documento.Lista.Pendiente.Presupuesto.Ficha  Ficha { get { return _ficha; } }
         public string DocId { get { return _ficha.docId; } }
         public string DocNumero { get { return _ficha.docNumero; } }
         public DateTime DocFecha { get { return _ficha.docFechaEmision; } }
@@ -23,9 +22,7 @@ namespace ModVentaAdm.Utils.DocLista.PresupuestoPend
         public int CntRenglones { get { return _ficha.docCntRenglones; } }
         public string SolicitadoPor { get { return _ficha.docSolicitadoPor; } }
         public string ModuloCargar { get { return _ficha.docModuloCargar; } }
-
-
-        public data(OOB.Transporte.Documento.Remision.Lista.Ficha ficha)
+        public data(OOB.Transporte.Documento.Lista.Pendiente.Presupuesto.Ficha ficha)
         {
             _ficha = ficha;
         }

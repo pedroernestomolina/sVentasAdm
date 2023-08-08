@@ -393,5 +393,156 @@ namespace ProvPos
             }
             return result;
         }
+
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.Lista.Pendiente.Presupuesto.Ficha> 
+            TransporteDocumento_Presupuesto_Pendiente()
+        {
+            var result = new DtoLib.ResultadoLista<DtoTransporte.Documento.Lista.Pendiente.Presupuesto.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var _sql_1 = @"select 
+                                        auto as docId, 
+                                        documento as docNumero,
+                                        fecha as docFechaEmision, 
+                                        hora as docHoraEmision, 
+                                        monto_divisa as docMontoMonedaDiv, 
+                                        total as docMontoMonedaAct,
+                                        tipo as docCodigo, 
+                                        documento_nombre as docNombre, 
+                                        razon_social clienteNombre, 
+                                        ci_rif as clienteCiRif, 
+                                        factor_cambio as factorCambio, 
+                                        signo as docSigno, 
+                                        renglones as docCntRenglones,
+                                        estatus_anulado as estatusAnulado, 
+                                        docSolicitadoPor as docSolicitadoPor,
+                                        docModuloCargar as docModuloCargar
+                                    FROM ventas ";
+                    var _sql_2 = @" where 1=1 and estatus_anulado<>'1' and auto_remision='' and docEstatusPendiente='1' ";
+                    var _sql = _sql_1 + _sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoTransporte.Documento.Lista.Pendiente.Presupuesto.Ficha>(_sql, p1, p2).ToList();
+                    result.Lista = _lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+
+        public DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha> 
+            TransporteDocumento_GetLista(DtoLibPos.Documento.Lista.Filtro filtro)
+        {
+            var rt = new DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p6 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p7 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p8 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p9 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var sql_1 = @"select v.auto as id, 
+                                v.documento as docNumero, 
+                                v.control, 
+                                v.fecha as fechaEmision, 
+                                v.hora as horaEmision, 
+                                v.razon_social as nombreRazonSocial, 
+                                v.ci_Rif as cirif, 
+                                v.total as monto, 
+                                v.estatus_Anulado as estatus, 
+                                v.renglones, 
+                                v.serie, 
+                                v.monto_divisa as montoDivisa, 
+                                v.tipo as docCodigo, 
+                                v.signo as docSigno,    
+                                v.documento_nombre as docNombre, 
+                                v.aplica as docAplica, 
+                                v.codigo_sucursal as sucursalCod, 
+                                v.situacion as docSituacion,    
+                                es.nombre as sucursalDesc,
+                                v.clave as claveSistema
+                                FROM ventas as v ";
+                    var sql_2 = " join empresa_sucursal as es on v.codigo_sucursal=es.codigo ";
+                    var sql_3 = " where 1=1 and docEstatusPendiente<>'1' ";
+
+                    if (filtro.idArqueo != "")
+                    {
+                        sql_3 += " and v.cierre=@p1 ";
+                        p1.ParameterName = "@p1";
+                        p1.Value = filtro.idArqueo;
+                    }
+                    if (filtro.codTipoDocumento != "")
+                    {
+                        sql_3 += " and v.tipo=@p2 ";
+                        p2.ParameterName = "@p2";
+                        p2.Value = filtro.codTipoDocumento;
+                    }
+                    if (filtro.codSucursal != "")
+                    {
+                        sql_3 += " and v.codigo_sucursal=@p3 ";
+                        p3.ParameterName = "@p3";
+                        p3.Value = filtro.codSucursal;
+                    }
+                    if (filtro.fecha != null)
+                    {
+                        sql_3 += " and v.fecha>=@p4 and v.fecha<=@p5 ";
+                        p4.ParameterName = "@p4";
+                        p4.Value = filtro.fecha.desde;
+                        p5.ParameterName = "@p5";
+                        p5.Value = filtro.fecha.hasta;
+                    }
+                    if (filtro.idCliente != "")
+                    {
+                        sql_3 += " and v.auto_cliente=@p6 ";
+                        p6.ParameterName = "@p6";
+                        p6.Value = filtro.idCliente;
+                    }
+                    if (filtro.idProducto != "")
+                    {
+                        sql_2 += @" join ventas_detalle as vd on v.auto= vd.auto_documento and vd.auto_producto=@idProducto ";
+                        p7.ParameterName = "@idProducto";
+                        p7.Value = filtro.idProducto;
+                    }
+                    if (filtro.estatus != DtoLibPos.Documento.Lista.Filtro.enumEstatus.SinDefinir)
+                    {
+                        var xEstatus = "0";
+                        if (filtro.estatus == DtoLibPos.Documento.Lista.Filtro.enumEstatus.Anulado)
+                            xEstatus = "1";
+
+                        sql_3 += " and v.estatus_anulado=@estatus ";
+                        p8.ParameterName = "@estatus";
+                        p8.Value = xEstatus;
+                    }
+                    if (filtro.palabraClave != "")
+                    {
+                        p9.ParameterName = "@clave";
+                        p9.Value = "%" + filtro.palabraClave + "%";
+                        sql_3 += " and (v.ci_rif LIKE @clave or v.razon_social LIKE @clave) ";
+                    }
+                    var sql = sql_1 + sql_2 + sql_3;
+                    var q = cnn.Database.SqlQuery<DtoLibPos.Documento.Lista.Ficha>(sql, p1, p2, p3, p4, p5, p6, p7, p8, p9).ToList();
+                    rt.Lista = q;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return rt;
+        }
     }
 }

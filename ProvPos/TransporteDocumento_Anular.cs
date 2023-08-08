@@ -24,6 +24,7 @@ namespace ProvPos
                 monto = 0m;
             }
         }
+
         public DtoLib.Resultado
             TransporteDocumento_AnularPresupuesto(DtoTransporte.Documento.Anular.Presupuesto.Ficha ficha)
         {
@@ -98,6 +99,66 @@ namespace ProvPos
 
                         //
                         sql = "update ventas_transp_item set estatus_anulado='1' where id_venta=@p1";
+                        var v3 = cn.Database.ExecuteSqlCommand(sql, p1);
+                        if (v3 == 0)
+                        {
+                            result.Mensaje = "PROBLEMA AL ACTUALIZAR ESTATUS [ ANULADO ] A LOS ITEMS DEL DOCUMENTO ";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cn.SaveChanges();
+                        ts.Complete();
+                    }
+                };
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.Resultado
+            TransporteDocumento_AnularPresupuesto_Pendiente(string idDoc)
+        {
+            var result = new DtoLib.Resultado();
+            try
+            {
+                using (var cn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    using (var ts = new TransactionScope())
+                    {
+                        var fechaSistema = cn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
+                        var fechaNula = new DateTime(2000, 1, 1);
+                        var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                        //DOCUMENTO
+                        var sql = @"update ventas set estatus_anulado='1' 
+                                    where auto=@idDoc and 
+                                        tipo='05' and
+                                        docEstatusPendiente='1' and 
+                                        estatus_anulado<>'1' and
+                                        auto_remision=''";
+                        var v2 = cn.Database.ExecuteSqlCommand(sql, p1);
+                        if (v2 == 0)
+                        {
+                            result.Mensaje = "PROBLEMA AL ACTUALIZAR ESTATUS DEL DOCUMENTO ";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cn.SaveChanges();
+
+                        //
+                        sql = "update ventas_transp_item set estatus_anulado='1' where id_venta=@idDoc";
                         var v3 = cn.Database.ExecuteSqlCommand(sql, p1);
                         if (v3 == 0)
                         {

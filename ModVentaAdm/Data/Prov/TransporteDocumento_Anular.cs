@@ -78,5 +78,15 @@ namespace ModVentaAdm.Data.Prov
             }
             return result;
         }
+        public OOB.Resultado.Ficha TransporteDocumento_AnularPresupuesto_Pendiente(string idDoc)
+        {
+            var result = new OOB.Resultado.Ficha();
+            var r01 = MyData.TransporteDocumento_AnularPresupuesto_Pendiente(idDoc);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return result;
+        }
     }
 }

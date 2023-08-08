@@ -77,7 +77,8 @@ namespace ModVentaAdm.Src.Administrador.Documentos
                 idProducto = _gFiltro.GetIdProducto,
                 estatus = _gFiltro.GetEstatus,
             };
-            var rt1 = Sistema.MyData.Documento_Get_Lista(filtro);
+            var rt1 = Sistema.Fabrica.DocumentosGetLista(filtro);
+            //var rt1 = Sistema.MyData.Documento_Get_Lista(filtro);
             if (rt1.Result == OOB.Resultado.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(rt1.Mensaje);

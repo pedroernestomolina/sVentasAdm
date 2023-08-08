@@ -153,5 +153,10 @@ namespace ModVentaAdm.Fabrica.Transporte
             _presup.setIdDocVisualizar(idDoc);
             _presup.Generar();
         }
+
+        public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> DocumentosGetLista(OOB.Documento.Lista.Filtro filtro)
+        {
+            return Sistema.MyData.TransporteDocumento_GetLista(filtro);
+        }
     }
 }

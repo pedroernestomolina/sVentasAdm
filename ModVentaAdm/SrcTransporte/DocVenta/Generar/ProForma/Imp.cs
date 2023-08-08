@@ -311,12 +311,19 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                 };
                 var r01 = Sistema.MyData.TransporteDocumento_AgregarFactura(fichaOOB);
                 _procesarIsOK = true;
+                visualizarDoc(r01.Entidad.autoDoc);
                 Helpers.Msg.AgregarOk();
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
             }
+        }
+        private void visualizarDoc(string id)
+        {
+            SrcTransporte.Reportes.ProForma.IProForma _doc = new SrcTransporte.Reportes.ProForma.Gestion();
+            _doc.setIdDocVisualizar(id);
+            _doc.Generar();
         }
     }
 }

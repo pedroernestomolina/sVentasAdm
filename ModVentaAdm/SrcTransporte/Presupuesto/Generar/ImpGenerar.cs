@@ -18,6 +18,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private MargenGanancia.IBeneficio _margBeneficio;
         private Remision.IRemision _remision;
         private int _cntPendiente;
+        private List<IObservador> _observadores;
 
 
         public int CntDocPendiente { get { return _cntPendiente; } }
@@ -39,8 +40,12 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _procesarIsOK = false;
             _abandonarIsOK = false;
             _dataGen = new data(_remision);
+            _datosDoc = new DatosDocumento.Imp(_remision);
             _tasasFiscal = null;
             _margBeneficio = new MargenGanancia.Imp(_dataGen.Items, _dataGen.Totales);
+            _observadores = new List<IObservador>();
+            _observadores.Add(_datosDoc);
+            _observadores.Add(_dataGen.Items);
         }
 
 
@@ -725,6 +730,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         public bool AbrirPedienteIsOK { get { return _abrirPedienteIsOK; } }
         public void BuscarPendiente()
         {
+            _abrirPedienteIsOK = false;
             if (_dataGen.DocumentoIsOk)
             {
                 Helpers.Msg.Alerta("PARA LLAMAR DOCUMENTOS PENDIENTES DEBE LIMPIAR TODO");
@@ -736,6 +742,30 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             }
             _presupPend.Inicializa();
             _presupPend.Inicia();
+            if (_presupPend.ItemSeleccionadoIsOk) 
+            {
+                CargarNotificarObservadoresPresupuesto(((Utils.DocLista.PresupuestoPend.data)_presupPend.ItemSeleccionado).DocId);
+            }
+        }
+
+        private void CargarNotificarObservadoresPresupuesto(string idDoc)
+        {
+            try
+            {
+                var r01 = Sistema.MyData.TransporteDocumento_EntidadPresupuesto_GetById(idDoc);
+                _abrirPedienteIsOK = true;
+                foreach (var obs in _observadores)
+                {
+                    obs.NotificarDocPresupuesto(r01.Entidad);
+                }
+                _dataGen.setDatosDoc(_datosDoc.Data);
+                setNotas(r01.Entidad.encabezado.notasObs);
+                var r02 = Sistema.MyData.TransporteDocumento_AnularPresupuesto_Pendiente(idDoc);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
         }
     }
 }

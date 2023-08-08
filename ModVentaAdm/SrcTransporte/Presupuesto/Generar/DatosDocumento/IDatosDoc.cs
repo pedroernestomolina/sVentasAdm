@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
 {
-    public interface IDatosDoc: Src.IGestion, Src.Gestion.IAbandonar, Src.Gestion.IProcesar
+    public interface IDatosDoc: Src.IGestion, Src.Gestion.IAbandonar, Src.Gestion.IProcesar, Generar.IObservador
     {
         data Data { get; }
 

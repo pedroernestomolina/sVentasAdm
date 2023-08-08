@@ -587,7 +587,8 @@ namespace ProvPos
             return result;
         }
 
-        public DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha> Documento_Get_Lista(DtoLibPos.Documento.Lista.Filtro filtro)
+        public DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha> 
+            Documento_Get_Lista(DtoLibPos.Documento.Lista.Filtro filtro)
         {
             var rt = new DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha>();
 

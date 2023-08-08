@@ -103,5 +103,22 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteDocumento_Presupuesto_Pendiente_Cnt();
         }
+
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.Lista.Pendiente.Presupuesto.Ficha> 
+            TransporteDocumento_Presupuesto_Pendiente()
+        {
+            return ServiceProv.TransporteDocumento_Presupuesto_Pendiente();
+        }
+        public DtoLib.Resultado 
+            TransporteDocumento_AnularPresupuesto_Pendiente(string idDoc)
+        {
+            return ServiceProv.TransporteDocumento_AnularPresupuesto_Pendiente(idDoc);
+        }
+
+        public DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha> 
+            TransporteDocumento_GetLista(DtoLibPos.Documento.Lista.Filtro filtro)
+        {
+            return ServiceProv.TransporteDocumento_GetLista(filtro);
+        }
     }
 }

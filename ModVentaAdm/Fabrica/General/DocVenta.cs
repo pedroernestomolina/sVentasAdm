@@ -107,5 +107,9 @@ namespace ModVentaAdm.Fabrica.General
                 }
             }
         }
+        public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> DocumentosGetLista(OOB.Documento.Lista.Filtro filtro)
+        {
+            return Sistema.MyData.Documento_Get_Lista(filtro);
+        }
     }
 }

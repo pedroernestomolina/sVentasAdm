@@ -340,5 +340,116 @@ namespace ModVentaAdm.Data.Prov
             result.Entidad = r01.Entidad;
             return result;
         }
+        public OOB.Resultado.Lista<OOB.Transporte.Documento.Lista.Pendiente.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_Pendiente()
+        {
+            var result = new OOB.Resultado.Lista<OOB.Transporte.Documento.Lista.Pendiente.Presupuesto.Ficha>();
+            var r01 = MyData.TransporteDocumento_Presupuesto_Pendiente();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.Transporte.Documento.Lista.Pendiente.Presupuesto.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Transporte.Documento.Lista.Pendiente.Presupuesto.Ficha()
+                        {
+                            clienteCiRif = s.clienteCiRif,
+                            clienteNombre = s.clienteNombre,
+                            docCntRenglones = s.docCntRenglones,
+                            docCodigo = s.docCodigo,
+                            docFechaEmision = s.docFechaEmision,
+                            docHoraEmision = s.docHoraEmision,
+                            docId = s.docId,
+                            docMontoMonedaAct = s.docMontoMonedaAct,
+                            docMontoMonedaDiv = s.docMontoMonedaDiv,
+                            docNombre = s.docNombre,
+                            docNumero = s.docNumero,
+                            docSigno = s.docSigno,
+                            factorCambio = s.factorCambio,
+                            estatusAnulado = s.estatusAnulado,
+                            docSolicitadoPor = s.docSolicitadoPor,
+                            docModuloCargar = s.docModuloCargar,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.ListaD = lst;
+            return result;
+        }
+        public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> 
+            TransporteDocumento_GetLista(OOB.Documento.Lista.Filtro filtro)
+        {
+            var result = new OOB.Resultado.Lista<OOB.Documento.Lista.Ficha>();
+            var xestatus = DtoLibPos.Documento.Lista.Filtro.enumEstatus.SinDefinir;
+            switch (filtro.estatus.Trim().ToUpper())
+            {
+                case "ACTIVO":
+                    xestatus = DtoLibPos.Documento.Lista.Filtro.enumEstatus.Activo;
+                    break;
+                case "ANULADO":
+                    xestatus = DtoLibPos.Documento.Lista.Filtro.enumEstatus.Anulado;
+                    break;
+            }
+            var filtroDTO = new DtoLibPos.Documento.Lista.Filtro()
+            {
+                idArqueo = filtro.idArqueo,
+                idCliente = filtro.idCliente,
+                idProducto = filtro.idProducto,
+                codSucursal = filtro.codSucursal,
+                codTipoDocumento = filtro.codTipoDocumento,
+                fecha = new DtoLibPos.Documento.Lista.Filtro.Fecha() { desde = filtro.desde, hasta = filtro.hasta },
+                estatus = xestatus,
+                palabraClave = filtro.palabraClave,
+            };
+            var r01 = MyData.TransporteDocumento_GetLista(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                result.Mensaje = r01.Mensaje;
+                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return result;
+            }
+            var lst = new List<OOB.Documento.Lista.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Documento.Lista.Ficha()
+                        {
+                            CiRif = s.CiRif,
+                            Control = s.Control,
+                            DocCodigo = s.DocCodigo,
+                            DocNombre = s.DocNombre,
+                            DocNumero = s.DocNumero,
+                            DocSigno = s.DocSigno,
+                            Estatus = s.Estatus,
+                            FechaEmision = s.FechaEmision,
+                            HoraEmision = s.HoraEmision,
+                            Id = s.Id,
+                            Monto = s.Monto,
+                            NombreRazonSocial = s.NombreRazonSocial,
+                            Renglones = s.Renglones,
+                            Serie = s.Serie,
+                            MontoDivisa = s.MontoDivisa,
+                            DocAplica = s.DocAplica,
+                            DocSituacion = s.DocSituacion,
+                            SucursalCod = s.SucursalCod,
+                            SucursalDesc = s.SucursalDesc,
+                            ClaveSistema = s.ClaveSistema,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.ListaD = lst;
+            return result;
+        }
     }
 }

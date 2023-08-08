@@ -36,5 +36,12 @@ namespace ModVentaAdm.Utils.DocLista.PresupuestoPend
             _bs.DataSource = _bl;
             _bs.CurrencyManager.Refresh();
         }
+        public void setDataCargar(IEnumerable<data> lst)
+        {
+            _lst.Clear();
+            _lst.AddRange(lst);
+            _bs.DataSource = _bl;
+            _bs.CurrencyManager.Refresh();
+        }
     }
 }

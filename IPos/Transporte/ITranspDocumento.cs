@@ -9,6 +9,7 @@ namespace IPos.Transporte
 {
     public interface ITranspDocumento
     {
+        //
         DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>
             TransporteDocumento_AgregarPresupuesto(DtoTransporte.Documento.Agregar.Presupuesto.Ficha ficha);
         DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>
@@ -47,5 +48,15 @@ namespace IPos.Transporte
         //
         DtoLib.ResultadoEntidad<int>
             TransporteDocumento_Presupuesto_Pendiente_Cnt();
+
+        //
+        DtoLib.ResultadoLista<DtoTransporte.Documento.Lista.Pendiente.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_Pendiente();
+        DtoLib.Resultado
+            TransporteDocumento_AnularPresupuesto_Pendiente(string idDoc);
+
+        //
+        DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha> 
+            TransporteDocumento_GetLista(DtoLibPos.Documento.Lista.Filtro filtro);
     }
 }

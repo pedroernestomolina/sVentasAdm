@@ -172,5 +172,38 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
                 _habilitarBusquedaCliente = false;
             }
         }
+
+        public void NotificarDocPresupuesto(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha)
+        {
+            try
+            {
+                var r01 = Sistema.MyData.Cliente_GetFicha(ficha.encabezado.clienteId);
+                if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                _data.setCliente(r01.Entidad);
+                var _lst = new List<ficha>();
+                _lst.Add(new ficha() { id = "01", codigo = "", desc = "CONTADO" });
+                _lst.Add(new ficha() { id = "02", codigo = "", desc = "CREDITO" });
+                _data.CondicionPagoCargar(_lst);
+
+                var _idCondPago = "01";
+                if (ficha.encabezado.condPago == "CREDITO")
+                {
+                    _idCondPago = "02";
+                }
+                _data.CondicionPago.setFichaById(_idCondPago);
+                _data.setDiasCredito(ficha.encabezado.diasCredito);
+                _data.setFechaSistema(DateTime.Now.Date);
+                _data.setSolicitadoPor(ficha.encabezado.docSolicitadoPor);
+                _data.setModuloCargar(ficha.encabezado.docModuloCargar);
+                _habilitarBusquedaCliente = false;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
+        }
     }
 }

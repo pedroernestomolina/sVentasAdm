@@ -37,5 +37,15 @@ namespace ServicePos.Interfaces.Transporte
         //
         DtoLib.ResultadoEntidad<int>
             TransporteDocumento_Presupuesto_Pendiente_Cnt();
+
+        //
+        DtoLib.ResultadoLista<DtoTransporte.Documento.Lista.Pendiente.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_Pendiente();
+        DtoLib.Resultado
+            TransporteDocumento_AnularPresupuesto_Pendiente(string idDoc);
+
+        //
+        DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha>
+            TransporteDocumento_GetLista(DtoLibPos.Documento.Lista.Filtro filtro);
     }
 }

@@ -12,7 +12,7 @@ namespace ModVentaAdm.Utils.DocLista.PresupuestoPend
 {
     public class Imp: IPrespPend
     {
-        private ILista _items;
+        private IPrespPendLista _items;
         private bool _itemSeleccionadoIsOk;
 
 
@@ -50,21 +50,24 @@ namespace ModVentaAdm.Utils.DocLista.PresupuestoPend
 
         private bool CargarData()
         {
-            var rt = true;
-            return rt;
+            try
+            {
+                var r01 = Sistema.MyData.TransporteDocumento_Presupuesto_Pendiente();
+                var _lst = new List<data>();
+                foreach (var rg in r01.ListaD)
+                {
+                    var nr = new data(rg);
+                    _lst.Add(nr);
+                }
+                _items.setDataCargar(_lst);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return false;
+            }
         }
-
-
-        //public void setDataCargar(IEnumerable<object> lst)
-        //{
-        //    //var _lst = new List<data>();
-        //    //foreach (var rg in lst) 
-        //    //{
-        //    //    var nr = new data((OOB.Transporte.Documento.Remision.Lista.Ficha)rg);
-        //    //    _lst.Add(nr);
-        //    //}
-        //    //_items.setDataCargar(_lst);
-        //}
 
 
         public bool ItemSeleccionadoIsOk { get { return _itemSeleccionadoIsOk; } }

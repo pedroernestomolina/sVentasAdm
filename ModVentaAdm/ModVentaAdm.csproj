@@ -295,6 +295,8 @@
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaEncabezado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Lista\baseLista.cs" />
+    <Compile Include="OOB\Transporte\Documento\Lista\Pendiente\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Filtro.cs" />
     <Compile Include="OOB\Transporte\Reporte\AliadoDetalleDoc.cs" />
@@ -459,6 +461,7 @@
     </Compile>
     <Compile Include="SrcTransporte\Presupuesto\Generar\IGenerar.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\ImpGenerar.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\IObservador.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Agregar\Agregar.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\Agregar\IAgregar.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\AliadosLlamado\data.cs" />

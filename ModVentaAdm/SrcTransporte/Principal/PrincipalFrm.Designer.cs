@@ -86,6 +86,7 @@
             this.aliadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.REP_TRANS_ALIADO_RESUMEN = new System.Windows.Forms.ToolStripMenuItem();
             this.REP_TRANS_ALIADO_DETALLE = new System.Windows.Forms.ToolStripMenuItem();
+            this.REP_TRANS_ALIADO_POR_SERVICIO = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_LIBRO_VENTA = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,7 +131,6 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
-            this.REP_TRANS_ALIADO_POR_SERVICIO = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -195,11 +195,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(629, 1);
+            this.panel2.Location = new System.Drawing.Point(628, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(254, 52);
+            this.panel2.Size = new System.Drawing.Size(255, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -210,7 +210,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(250, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(251, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -225,7 +225,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(317, 52);
+            this.panel7.Size = new System.Drawing.Size(316, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -244,7 +244,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(313, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(312, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -278,7 +278,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(237, 22);
+            this.panel14.Size = new System.Drawing.Size(236, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -288,7 +288,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(233, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(232, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -324,7 +324,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(237, 22);
+            this.panel16.Size = new System.Drawing.Size(236, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -334,7 +334,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(233, 18);
+            this.L_HOST.Size = new System.Drawing.Size(232, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -343,7 +343,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(320, 1);
+            this.panel17.Location = new System.Drawing.Point(319, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -415,7 +415,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(522, 1);
+            this.panel20.Location = new System.Drawing.Point(521, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -718,16 +718,23 @@
             // REP_TRANS_ALIADO_RESUMEN
             // 
             this.REP_TRANS_ALIADO_RESUMEN.Name = "REP_TRANS_ALIADO_RESUMEN";
-            this.REP_TRANS_ALIADO_RESUMEN.Size = new System.Drawing.Size(152, 22);
+            this.REP_TRANS_ALIADO_RESUMEN.Size = new System.Drawing.Size(136, 22);
             this.REP_TRANS_ALIADO_RESUMEN.Text = "Resumen ";
             this.REP_TRANS_ALIADO_RESUMEN.Click += new System.EventHandler(this.REP_TRANS_ALIADO_RESUMEN_Click);
             // 
             // REP_TRANS_ALIADO_DETALLE
             // 
             this.REP_TRANS_ALIADO_DETALLE.Name = "REP_TRANS_ALIADO_DETALLE";
-            this.REP_TRANS_ALIADO_DETALLE.Size = new System.Drawing.Size(152, 22);
+            this.REP_TRANS_ALIADO_DETALLE.Size = new System.Drawing.Size(136, 22);
             this.REP_TRANS_ALIADO_DETALLE.Text = "Detalle";
             this.REP_TRANS_ALIADO_DETALLE.Click += new System.EventHandler(this.REP_TRANS_ALIADO_DETALLE_Click);
+            // 
+            // REP_TRANS_ALIADO_POR_SERVICIO
+            // 
+            this.REP_TRANS_ALIADO_POR_SERVICIO.Name = "REP_TRANS_ALIADO_POR_SERVICIO";
+            this.REP_TRANS_ALIADO_POR_SERVICIO.Size = new System.Drawing.Size(136, 22);
+            this.REP_TRANS_ALIADO_POR_SERVICIO.Text = "Por Servicio";
+            this.REP_TRANS_ALIADO_POR_SERVICIO.Click += new System.EventHandler(this.REP_TRANS_ALIADO_POR_SERVICIO_Click);
             // 
             // toolStripMenuItem8
             // 
@@ -929,6 +936,7 @@
             // 
             // MNU_CNF_NOTAS_FACTURA
             // 
+            this.MNU_CNF_NOTAS_FACTURA.Image = global::ModVentaAdm.Properties.Resources.bt_configuracion;
             this.MNU_CNF_NOTAS_FACTURA.Name = "MNU_CNF_NOTAS_FACTURA";
             this.MNU_CNF_NOTAS_FACTURA.Size = new System.Drawing.Size(290, 22);
             this.MNU_CNF_NOTAS_FACTURA.Text = "Notas / Observaciones Para Factura";
@@ -1152,13 +1160,6 @@
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(884, 2);
             this.panel22.TabIndex = 4;
-            // 
-            // REP_TRANS_ALIADO_POR_SERVICIO
-            // 
-            this.REP_TRANS_ALIADO_POR_SERVICIO.Name = "REP_TRANS_ALIADO_POR_SERVICIO";
-            this.REP_TRANS_ALIADO_POR_SERVICIO.Size = new System.Drawing.Size(152, 22);
-            this.REP_TRANS_ALIADO_POR_SERVICIO.Text = "Por Servicio";
-            this.REP_TRANS_ALIADO_POR_SERVICIO.Click += new System.EventHandler(this.REP_TRANS_ALIADO_POR_SERVICIO_Click);
             // 
             // PrincipalFrm
             // 

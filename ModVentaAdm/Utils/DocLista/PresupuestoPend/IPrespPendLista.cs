@@ -9,5 +9,6 @@ namespace ModVentaAdm.Utils.DocLista.PresupuestoPend
 {
     public interface IPrespPendLista: ILista
     {
+        void setDataCargar(IEnumerable<data> _lst);
     }
 }
