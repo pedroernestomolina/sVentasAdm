@@ -52,7 +52,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Presupuesto
             re["fechaDoc"] = ficha.encabezado.docFechaEmision;
             re["cliente"] = ficha.encabezado.clienteCiRif + Environment.NewLine + ficha.encabezado.clienteNombre;
             re["solicitadoPor"] = ficha.encabezado.docSolicitadoPor;
-            re["modulo"] = ficha.encabezado.docModulo;
+            re["modulo"] = ficha.encabezado.docModuloCargar;
             ds.Tables["PresupuestoEnc"].Rows.Add(re);
 
             DataRow rp = ds.Tables["PresupuestoPie"].NewRow();

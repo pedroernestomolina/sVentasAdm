@@ -27,7 +27,15 @@ namespace ProvPos
                         var anoRelacion = fechaSistema.Year.ToString().Trim().PadLeft(4, '0');
                         var fechaNula = new DateTime(2000, 1, 1);
 
-                        var sql = "update sistema_contadores set a_ventas=a_ventas+1, a_ventas_presupuesto=a_ventas_presupuesto+1";
+                        var sql = "update sistema_contadores set a_ventas=a_ventas+1";
+                        if (ficha.estatusPendiente) //CONTADORES PARA PENDIENTE
+                        {
+                            sql += ", a_ventas_presupuesto_pend=a_ventas_presupuesto_pend+1";
+                        }
+                        else //CONTADOR PARA PRESUPUESTO
+                        {
+                            sql += ", a_ventas_presupuesto=a_ventas_presupuesto+1";
+                        }
                         var r1 = cn.Database.ExecuteSqlCommand(sql);
                         if (r1 == 0)
                         {
@@ -37,7 +45,15 @@ namespace ProvPos
                         }
 
                         var aDoc = cn.Database.SqlQuery<int>("select a_ventas from sistema_contadores").FirstOrDefault();
-                        var nDoc = cn.Database.SqlQuery<int>("select a_ventas_presupuesto from sistema_contadores").FirstOrDefault();
+                        var nDoc = 0;
+                        if (ficha.estatusPendiente) // CUANDO ES PENDIENTE
+                        {
+                            nDoc = cn.Database.SqlQuery<int>("select a_ventas_presupuesto_pend from sistema_contadores").FirstOrDefault();
+                        }
+                        else // CUANDO ES PRESUPUESTO
+                        {
+                            nDoc = cn.Database.SqlQuery<int>("select a_ventas_presupuesto from sistema_contadores").FirstOrDefault();
+                        }
                         var largo = 10;
                         var fechaVenc = fechaSistema.AddDays(ficha.diasCredito);
                         var autoDoc = aDoc.ToString().Trim().PadLeft(largo, '0');
@@ -287,8 +303,8 @@ namespace ProvPos
                                         @docEstatusPendiente)";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
-                        var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", fechaSistema.Date);
-                        var p4 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVen", fechaVenc);
+                        var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.fechaEmision);
+                        var p4 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVen", ficha.fechaVencimiento);
                         var p5 = new MySql.Data.MySqlClient.MySqlParameter("@razonSocial", ficha.RazonSocial);
                         var p6 = new MySql.Data.MySqlClient.MySqlParameter("@dirFiscal", ficha.DirFiscal);
                         var p7 = new MySql.Data.MySqlClient.MySqlParameter("@ciRif", ficha.CiRif);
@@ -417,7 +433,7 @@ namespace ProvPos
                             var xp10 = new MySql.Data.MySqlClient.MySqlParameter("@alicuotaTasa", it.alicuotaTasa);
                             var xp11 = new MySql.Data.MySqlClient.MySqlParameter("@alicuotaDesc", it.alicuotaDesc);
                             var xp17 = new MySql.Data.MySqlClient.MySqlParameter("@notas", it.notas);
-                            var xp18 = new MySql.Data.MySqlClient.MySqlParameter("@fechaDoc", fechaSistema.Date);
+                            var xp18 = new MySql.Data.MySqlClient.MySqlParameter("@fechaDoc", ficha.fechaEmision);
                             var xp19 = new MySql.Data.MySqlClient.MySqlParameter("@horaDoc", fechaSistema.ToShortTimeString());
                             var xp20 = new MySql.Data.MySqlClient.MySqlParameter("@signoDoc", it.signoDoc);
                             var xp21 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDoc", it.tipoDoc);
@@ -860,8 +876,8 @@ namespace ProvPos
                                         @docModuloCargar)";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
-                        var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", fechaSistema.Date);
-                        var p4 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVen", fechaVenc);
+                        var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.fechaEmision);
+                        var p4 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVen", ficha.fechaVencimiento);
                         var p5 = new MySql.Data.MySqlClient.MySqlParameter("@razonSocial", ficha.RazonSocial);
                         var p6 = new MySql.Data.MySqlClient.MySqlParameter("@dirFiscal", ficha.DirFiscal);
                         var p7 = new MySql.Data.MySqlClient.MySqlParameter("@ciRif", ficha.CiRif);
@@ -989,7 +1005,7 @@ namespace ProvPos
                             var xp10 = new MySql.Data.MySqlClient.MySqlParameter("@alicuotaTasa", it.alicuotaTasa);
                             var xp11 = new MySql.Data.MySqlClient.MySqlParameter("@alicuotaDesc", it.alicuotaDesc);
                             var xp17 = new MySql.Data.MySqlClient.MySqlParameter("@notas", it.notas);
-                            var xp18 = new MySql.Data.MySqlClient.MySqlParameter("@fechaDoc", fechaSistema.Date);
+                            var xp18 = new MySql.Data.MySqlClient.MySqlParameter("@fechaDoc", ficha.fechaEmision);
                             var xp19 = new MySql.Data.MySqlClient.MySqlParameter("@horaDoc", fechaSistema.ToShortTimeString());
                             var xp20 = new MySql.Data.MySqlClient.MySqlParameter("@signoDoc", it.signoDoc);
                             var xp21 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDoc", it.tipoDoc);

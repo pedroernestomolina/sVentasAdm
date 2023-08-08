@@ -46,7 +46,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.TB_FECHA = new System.Windows.Forms.TextBox();
+            this.TB_FECHA_EM = new System.Windows.Forms.DateTimePicker();
             this.panel13 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -63,6 +63,14 @@
             this.TB_DIAS_VALIDEZ = new LibControles.NumeroEntero();
             this.panel33 = new System.Windows.Forms.Panel();
             this.panel34 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.TB_SOLICITADO_POR = new System.Windows.Forms.TextBox();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.TB_MODULO_CARGAR = new System.Windows.Forms.TextBox();
             this.P_PIE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -70,14 +78,6 @@
             this.BT_ACEPTAR = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.BT_SALIR = new System.Windows.Forms.Button();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.TB_SOLICITADO_POR = new System.Windows.Forms.TextBox();
-            this.TB_MODULO_CARGAR = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.P_TITULO.SuspendLayout();
@@ -97,14 +97,14 @@
             this.panel16.SuspendLayout();
             this.panel31.SuspendLayout();
             this.panel32.SuspendLayout();
-            this.P_PIE.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel18.SuspendLayout();
+            this.P_PIE.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -354,7 +354,7 @@
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.TB_FECHA);
+            this.panel10.Controls.Add(this.TB_FECHA_EM);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(125, 83);
             this.panel10.Margin = new System.Windows.Forms.Padding(1);
@@ -363,17 +363,18 @@
             this.panel10.Size = new System.Drawing.Size(357, 25);
             this.panel10.TabIndex = 3;
             // 
-            // TB_FECHA
+            // TB_FECHA_EM
             // 
-            this.TB_FECHA.BackColor = System.Drawing.Color.Yellow;
-            this.TB_FECHA.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_FECHA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_FECHA.Location = new System.Drawing.Point(2, 2);
-            this.TB_FECHA.Name = "TB_FECHA";
-            this.TB_FECHA.ReadOnly = true;
-            this.TB_FECHA.Size = new System.Drawing.Size(132, 22);
-            this.TB_FECHA.TabIndex = 0;
-            this.TB_FECHA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
+            this.TB_FECHA_EM.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_FECHA_EM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_FECHA_EM.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.TB_FECHA_EM.Location = new System.Drawing.Point(2, 2);
+            this.TB_FECHA_EM.Name = "TB_FECHA_EM";
+            this.TB_FECHA_EM.Size = new System.Drawing.Size(129, 22);
+            this.TB_FECHA_EM.TabIndex = 2;
+            this.TB_FECHA_EM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
+            this.TB_FECHA_EM.Leave += new System.EventHandler(this.TB_FECHA_EM_Leave);
+            this.TB_FECHA_EM.Validating += new System.ComponentModel.CancelEventHandler(this.TB_FECHA_EM_Validating);
             // 
             // panel13
             // 
@@ -560,6 +561,98 @@
             this.panel34.Size = new System.Drawing.Size(357, 113);
             this.panel34.TabIndex = 27;
             // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.label4);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(11, 195);
+            this.panel11.Margin = new System.Windows.Forms.Padding(1);
+            this.panel11.Name = "panel11";
+            this.panel11.Padding = new System.Windows.Forms.Padding(2);
+            this.panel11.Size = new System.Drawing.Size(112, 60);
+            this.panel11.TabIndex = 28;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(2, 2);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 56);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Solicitado Por:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.TB_SOLICITADO_POR);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(125, 195);
+            this.panel12.Margin = new System.Windows.Forms.Padding(1);
+            this.panel12.Name = "panel12";
+            this.panel12.Padding = new System.Windows.Forms.Padding(2);
+            this.panel12.Size = new System.Drawing.Size(357, 60);
+            this.panel12.TabIndex = 29;
+            // 
+            // TB_SOLICITADO_POR
+            // 
+            this.TB_SOLICITADO_POR.BackColor = System.Drawing.Color.Yellow;
+            this.TB_SOLICITADO_POR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_SOLICITADO_POR.Location = new System.Drawing.Point(2, 2);
+            this.TB_SOLICITADO_POR.MaxLength = 200;
+            this.TB_SOLICITADO_POR.Multiline = true;
+            this.TB_SOLICITADO_POR.Name = "TB_SOLICITADO_POR";
+            this.TB_SOLICITADO_POR.Size = new System.Drawing.Size(353, 56);
+            this.TB_SOLICITADO_POR.TabIndex = 2;
+            this.TB_SOLICITADO_POR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
+            this.TB_SOLICITADO_POR.Leave += new System.EventHandler(this.TB_SOLICITADO_POR_Leave);
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.label7);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel17.Location = new System.Drawing.Point(11, 257);
+            this.panel17.Margin = new System.Windows.Forms.Padding(1);
+            this.panel17.Name = "panel17";
+            this.panel17.Padding = new System.Windows.Forms.Padding(2);
+            this.panel17.Size = new System.Drawing.Size(112, 60);
+            this.panel17.TabIndex = 30;
+            // 
+            // label7
+            // 
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(2, 2);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(108, 56);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Módulo Cargar:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.TB_MODULO_CARGAR);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel18.Location = new System.Drawing.Point(125, 257);
+            this.panel18.Margin = new System.Windows.Forms.Padding(1);
+            this.panel18.Name = "panel18";
+            this.panel18.Padding = new System.Windows.Forms.Padding(2);
+            this.panel18.Size = new System.Drawing.Size(357, 60);
+            this.panel18.TabIndex = 31;
+            // 
+            // TB_MODULO_CARGAR
+            // 
+            this.TB_MODULO_CARGAR.BackColor = System.Drawing.Color.Yellow;
+            this.TB_MODULO_CARGAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_MODULO_CARGAR.Location = new System.Drawing.Point(2, 2);
+            this.TB_MODULO_CARGAR.MaxLength = 200;
+            this.TB_MODULO_CARGAR.Multiline = true;
+            this.TB_MODULO_CARGAR.Name = "TB_MODULO_CARGAR";
+            this.TB_MODULO_CARGAR.Size = new System.Drawing.Size(353, 56);
+            this.TB_MODULO_CARGAR.TabIndex = 3;
+            this.TB_MODULO_CARGAR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
+            this.TB_MODULO_CARGAR.Leave += new System.EventHandler(this.TB_MODULO_CARGAR_Leave);
+            // 
             // P_PIE
             // 
             this.P_PIE.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -652,98 +745,6 @@
             this.BT_SALIR.UseVisualStyleBackColor = true;
             this.BT_SALIR.Click += new System.EventHandler(this.BT_SALIR_Click);
             // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.label4);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(11, 195);
-            this.panel11.Margin = new System.Windows.Forms.Padding(1);
-            this.panel11.Name = "panel11";
-            this.panel11.Padding = new System.Windows.Forms.Padding(2);
-            this.panel11.Size = new System.Drawing.Size(112, 60);
-            this.panel11.TabIndex = 28;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.TB_SOLICITADO_POR);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(125, 195);
-            this.panel12.Margin = new System.Windows.Forms.Padding(1);
-            this.panel12.Name = "panel12";
-            this.panel12.Padding = new System.Windows.Forms.Padding(2);
-            this.panel12.Size = new System.Drawing.Size(357, 60);
-            this.panel12.TabIndex = 29;
-            // 
-            // label4
-            // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(2, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 56);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Solicitado Por:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // panel17
-            // 
-            this.panel17.Controls.Add(this.label7);
-            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(11, 257);
-            this.panel17.Margin = new System.Windows.Forms.Padding(1);
-            this.panel17.Name = "panel17";
-            this.panel17.Padding = new System.Windows.Forms.Padding(2);
-            this.panel17.Size = new System.Drawing.Size(112, 60);
-            this.panel17.TabIndex = 30;
-            // 
-            // panel18
-            // 
-            this.panel18.Controls.Add(this.TB_MODULO_CARGAR);
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(125, 257);
-            this.panel18.Margin = new System.Windows.Forms.Padding(1);
-            this.panel18.Name = "panel18";
-            this.panel18.Padding = new System.Windows.Forms.Padding(2);
-            this.panel18.Size = new System.Drawing.Size(357, 60);
-            this.panel18.TabIndex = 31;
-            // 
-            // label7
-            // 
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(2, 2);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(108, 56);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Módulo Cargar:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TB_SOLICITADO_POR
-            // 
-            this.TB_SOLICITADO_POR.BackColor = System.Drawing.Color.Yellow;
-            this.TB_SOLICITADO_POR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_SOLICITADO_POR.Location = new System.Drawing.Point(2, 2);
-            this.TB_SOLICITADO_POR.MaxLength = 200;
-            this.TB_SOLICITADO_POR.Multiline = true;
-            this.TB_SOLICITADO_POR.Name = "TB_SOLICITADO_POR";
-            this.TB_SOLICITADO_POR.Size = new System.Drawing.Size(353, 56);
-            this.TB_SOLICITADO_POR.TabIndex = 2;
-            this.TB_SOLICITADO_POR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
-            this.TB_SOLICITADO_POR.Leave += new System.EventHandler(this.TB_SOLICITADO_POR_Leave);
-            // 
-            // TB_MODULO_CARGAR
-            // 
-            this.TB_MODULO_CARGAR.BackColor = System.Drawing.Color.Yellow;
-            this.TB_MODULO_CARGAR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_MODULO_CARGAR.Location = new System.Drawing.Point(2, 2);
-            this.TB_MODULO_CARGAR.MaxLength = 200;
-            this.TB_MODULO_CARGAR.Multiline = true;
-            this.TB_MODULO_CARGAR.Name = "TB_MODULO_CARGAR";
-            this.TB_MODULO_CARGAR.Size = new System.Drawing.Size(353, 56);
-            this.TB_MODULO_CARGAR.TabIndex = 3;
-            this.TB_MODULO_CARGAR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
-            this.TB_MODULO_CARGAR.Leave += new System.EventHandler(this.TB_MODULO_CARGAR_Leave);
-            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -771,7 +772,6 @@
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
@@ -781,16 +781,16 @@
             this.panel31.ResumeLayout(false);
             this.panel32.ResumeLayout(false);
             this.panel32.PerformLayout();
-            this.P_PIE.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
             this.panel17.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
+            this.P_PIE.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -822,7 +822,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TB_FECHA;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label label5;
@@ -847,5 +846,6 @@
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.TextBox TB_SOLICITADO_POR;
         private System.Windows.Forms.TextBox TB_MODULO_CARGAR;
+        private System.Windows.Forms.DateTimePicker TB_FECHA_EM;
     }
 }

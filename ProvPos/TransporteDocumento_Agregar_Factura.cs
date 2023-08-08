@@ -304,8 +304,8 @@ namespace ProvPos
                                         @docModuloCargar)";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
-                        var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", fechaSistema.Date);
-                        var p4 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVen", fechaVenc);
+                        var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.fechaEmision);
+                        var p4 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVen", ficha.fechaVencimiento);
                         var p5 = new MySql.Data.MySqlClient.MySqlParameter("@razonSocial", ficha.RazonSocial);
                         var p6 = new MySql.Data.MySqlClient.MySqlParameter("@dirFiscal", ficha.DirFiscal);
                         var p7 = new MySql.Data.MySqlClient.MySqlParameter("@ciRif", ficha.CiRif);
@@ -466,9 +466,9 @@ namespace ProvPos
                                         @estatusDocCxc
                                     )";
                         var t1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxC",autoCxC);
-                        var t2 = new MySql.Data.MySqlClient.MySqlParameter("@fechaReg",fechaSistema.Date);
+                        var t2 = new MySql.Data.MySqlClient.MySqlParameter("@fechaReg", ficha.fechaEmision);
                         var t3 = new MySql.Data.MySqlClient.MySqlParameter("@docNumero", docNumero);
-                        var t4 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVence", fechaVenc);
+                        var t4 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVence", ficha.fechaVencimiento);
                         var t5 = new MySql.Data.MySqlClient.MySqlParameter("@importe", ficha.Total);
                         var t6 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
                         var t7 = new MySql.Data.MySqlClient.MySqlParameter("@nombreCliente", ficha.RazonSocial);
@@ -638,7 +638,7 @@ namespace ProvPos
                                 var xp10 = new MySql.Data.MySqlClient.MySqlParameter("@alicuotaTasa", it.alicuotaTasa);
                                 var xp11 = new MySql.Data.MySqlClient.MySqlParameter("@alicuotaDesc", it.alicuotaDesc);
                                 var xp17 = new MySql.Data.MySqlClient.MySqlParameter("@notas", it.notas);
-                                var xp18 = new MySql.Data.MySqlClient.MySqlParameter("@fechaDoc", fechaSistema.Date);
+                                var xp18 = new MySql.Data.MySqlClient.MySqlParameter("@fechaDoc", ficha.fechaEmision);
                                 var xp19 = new MySql.Data.MySqlClient.MySqlParameter("@horaDoc", fechaSistema.ToShortTimeString());
                                 var xp20 = new MySql.Data.MySqlClient.MySqlParameter("@signoDoc", it.signoDoc);
                                 var xp21 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDoc", it.tipoDoc);
@@ -759,7 +759,7 @@ namespace ProvPos
                             var ld22 = new MySql.Data.MySqlClient.MySqlParameter("@total_mon_local", rg.totalMonLocal);
                             var ld23 = new MySql.Data.MySqlClient.MySqlParameter("@total_mon_divisa", rg.totalMonDivisa);
                             var ld24 = new MySql.Data.MySqlClient.MySqlParameter("@estatus_anulado_doc", "0");
-                            var ld25 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_doc", fechaSistema.Date);
+                            var ld25 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_doc", ficha.fechaEmision);
                             var ld26 = new MySql.Data.MySqlClient.MySqlParameter("@id_cliente", ficha.idCliente);
                             var ld27 = new MySql.Data.MySqlClient.MySqlParameter("@signo_doc", ficha.signo);
                             var ld28 = new MySql.Data.MySqlClient.MySqlParameter("@codigo_doc", ficha.TipoDoc);
@@ -831,7 +831,7 @@ namespace ProvPos
                         {
                             var lp1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
                             var lp2 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
-                            var lp3 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fechaSistema.Date);
+                            var lp3 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", ficha.fechaEmision);
                             var lp4 = new MySql.Data.MySqlClient.MySqlParameter("@estatusAnulado", "0");
                             var lp5 = new MySql.Data.MySqlClient.MySqlParameter("@idDocRef", rg.idDoc);
                             var lp6 = new MySql.Data.MySqlClient.MySqlParameter("@docNumRef", rg.numDoc);
@@ -912,7 +912,7 @@ namespace ProvPos
                             var zp3 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", aliadoRes.idAliado);
                             var zp4 = new MySql.Data.MySqlClient.MySqlParameter("@importeDivisa", aliadoRes.montoDivisa);
                             var zp5 = new MySql.Data.MySqlClient.MySqlParameter("@estatusAnulado", "0");
-                            var zp6 = new MySql.Data.MySqlClient.MySqlParameter("@fechaRegistro", fechaSistema.Date);
+                            var zp6 = new MySql.Data.MySqlClient.MySqlParameter("@fechaRegistro", ficha.fechaEmision);
                             var xr5 = cn.Database.ExecuteSqlCommand(_sql, zp1, zp2, zp3, zp4, zp5, zp6);
                             cn.SaveChanges();
                             if (xr5 == 0)
@@ -954,7 +954,7 @@ namespace ProvPos
                             zp2 = new MySql.Data.MySqlClient.MySqlParameter("@idDocRef", autoDoc);
                             zp3 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
                             zp4 = new MySql.Data.MySqlClient.MySqlParameter("@docNumero", docNumero);
-                            zp5 = new MySql.Data.MySqlClient.MySqlParameter("@docFecha", fechaSistema.Date);
+                            zp5 = new MySql.Data.MySqlClient.MySqlParameter("@docFecha", ficha.fechaEmision);
                             zp6 = new MySql.Data.MySqlClient.MySqlParameter("@docCodigo", ficha.TipoDoc);
                             var zp7 = new MySql.Data.MySqlClient.MySqlParameter("@docNombre", ficha.docNombre);
                             var zp8 = new MySql.Data.MySqlClient.MySqlParameter("@importeDivisa", aliadoRes.montoDivisa);

@@ -74,6 +74,8 @@ namespace ModVentaAdm.Data.Prov
                 serieDocId = ficha.serieDocId,
                 subTotalMonDivisa = ficha.subTotalMonDivisa,
                 tipoDocSiglas=ficha.tipoDocSiglas,
+                fechaEmision=ficha.fechaEmision,
+                fechaVencimiento = ficha.fechaVencimiento,
                 items=  ficha.items.Select(z =>
                 {
                     DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle _servicioDetalle= null;

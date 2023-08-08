@@ -135,6 +135,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
                 return nr;
             }).ToList();
             _alicuota.CargarData(lst.OrderBy(o => o.desc).ToList());
+            AlicuotaSetFichaById("0000000004");
         }
         public void AlicuotaSetFichaById(string id)
         {

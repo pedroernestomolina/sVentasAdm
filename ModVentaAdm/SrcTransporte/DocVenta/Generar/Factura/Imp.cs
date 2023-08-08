@@ -21,6 +21,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
         {
             try
             {
+                var _fechaEmision = Ficha.DatosDoc.FechaEmision_Get;
+                var _fechaVencimiento = Ficha.DatosDoc.FechaVencimiento_Get;
                 var _idCliente = Ficha.DatosDoc.Cliente.id;
                 var _cirif = Ficha.DatosDoc.Cliente.ciRif;
                 var _codCliente = Ficha.DatosDoc.Cliente.codigo;
@@ -300,8 +302,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     serieDocDesc = _serieDoc,
                     serieDocId = _serieId,
                     subTotalMonDivisa = 0m,
-                    tipoDocSiglas=s02.Entidad.siglas,
-                    items=itemsDet,
+                    tipoDocSiglas = s02.Entidad.siglas,
+                    items = itemsDet,
+                    fechaEmision = _fechaEmision,
+                    fechaVencimiento = _fechaVencimiento,
                     aliadosResumen = _grupoAliados.Select(s =>
                     {
                         var nr = new OOB.Transporte.Documento.Agregar.Factura.FichaAliadoResumen()

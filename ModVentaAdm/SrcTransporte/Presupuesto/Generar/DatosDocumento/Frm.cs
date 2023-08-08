@@ -34,7 +34,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
             _modoEditar = true;
             CB_COND_PAGO.DataSource = _controlador.Data.CondicionPago.GetSource;
             L_CLIENTE.Text = _controlador.Data.Cliente_GetInf;
-            TB_FECHA.Text = _controlador.Data.FechaSistema_Get.ToShortDateString();
+            TB_FECHA_EM.Value = _controlador.Data.FechaEmision_Get;
             TB_FECHA_VENCE.Text = _controlador.Data.FechaVencimiento_Get.ToShortDateString();
             TB_DIAS_VALIDEZ.Text = _controlador.Data.DiasValidez_Get.ToString("n0");
             TB_DIAS_CREDITO.Text = _controlador.Data.DiasCredito_Get.ToString("n0");
@@ -82,11 +82,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         }
         private void TB_SOLICITADO_POR_Leave(object sender, EventArgs e)
         {
-            _controlador.Data.setSolicitadoPor(TB_SOLICITADO_POR.Text);
+            _controlador.Data.setSolicitadoPor(TB_SOLICITADO_POR.Text.Trim().ToUpper());
+            TB_SOLICITADO_POR.Text = _controlador.Data.SolicitadoPor_Get;
         }
         private void TB_MODULO_CARGAR_Leave(object sender, EventArgs e)
         {
-            _controlador.Data.setModuloCargar(TB_MODULO_CARGAR.Text);
+            _controlador.Data.setModuloCargar(TB_MODULO_CARGAR.Text.Trim().ToUpper());
+            TB_MODULO_CARGAR.Text = _controlador.Data.ModuloCargar_Get;
         }
 
 
@@ -133,6 +135,20 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         private void Salir()
         {
             this.Close();
+        }
+
+        private void TB_FECHA_EM_Leave(object sender, EventArgs e)
+        {
+            _controlador.Data.setFechaEmision(TB_FECHA_EM.Value);
+            TB_FECHA_VENCE.Text = _controlador.Data.FechaVencimiento_Get.ToShortDateString();
+        }
+        private void TB_FECHA_EM_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = false;
+            if (TB_FECHA_EM.Value > _controlador.Data.FechaSistema_Get) 
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

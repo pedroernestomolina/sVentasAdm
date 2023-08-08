@@ -19,6 +19,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private Remision.IRemision _remision;
         private int _cntPendiente;
         private List<IObservador> _observadores;
+        private string _notasDelDoc;
 
 
         public int CntDocPendiente { get { return _cntPendiente; } }
@@ -46,6 +47,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _observadores = new List<IObservador>();
             _observadores.Add(_datosDoc);
             _observadores.Add(_dataGen.Items);
+            _notasDelDoc = "";
         }
 
 
@@ -115,6 +117,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 var r04 = Sistema.MyData.TransporteDocumento_Presupuesto_Pendiente_Cnt ();
                 //
                 _cntPendiente = r04.Entidad;
+                _notasDelDoc = r03.Entidad;
                 setNotas(r03.Entidad);
                 _tasasFiscal = r02.ListaD;
                 _dataGen.setTasaDivisa(r01.Entidad);
@@ -246,7 +249,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 _remision.Limpiar();
                 _dataGen.LimpiarTodo();
                 _notasObservaciones = "";
-                _limpiarDocumentoIsOK = true; 
+                _limpiarDocumentoIsOK = true;
+                setNotas(_notasDelDoc);
             }
         }
 
@@ -283,6 +287,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         {
             try
             {
+                var _fechaEmision = _dataGen.DatosDoc.FechaEmision_Get;
+                var _fechaVencimiento = _dataGen.DatosDoc.FechaVencimiento_Get;
                 var _idCliente = _dataGen.DatosDoc.Cliente.id;
                 var _cirif= _dataGen.DatosDoc.Cliente.ciRif;
                 var _codCliente = _dataGen.DatosDoc.Cliente.codigo;
@@ -410,6 +416,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     nota = _notasObservaciones,
                     docModuloCargar = _docModuloCargar,
                     docSolicitadoPor = _docSolicitadoPor,
+                    fechaEmision = _fechaEmision,
+                    fechaVencimiento = _fechaVencimiento,
                     items = _dataGen.Items.GetItems.Select(s =>
                     {
                         var nr = new OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle()
@@ -496,6 +504,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _procesarIsOK = false;
             _limpiarDocumentoIsOK = false;
             _editarDocumentoIsOK = false;
+            setNotas(_notasDelDoc);
         }
 
 
@@ -522,6 +531,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         {
             try
             {
+                var _fechaEmision = _dataGen.DatosDoc.FechaEmision_Get;
+                var _fechaVencimiento = _dataGen.DatosDoc.FechaVencimiento_Get;
                 var _idCliente = _dataGen.DatosDoc.Cliente.id;
                 var _cirif = _dataGen.DatosDoc.Cliente.ciRif;
                 var _codCliente = _dataGen.DatosDoc.Cliente.codigo;
@@ -650,6 +661,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     docModuloCargar = _docModuloCargar,
                     docSolicitadoPor = _docSolicitadoPor,
                     estatusPendiente=true,
+                    fechaEmision = _fechaEmision,
+                    fechaVencimiento = _fechaVencimiento,
                     items = _dataGen.Items.GetItems.Select(s =>
                     {
                         var nr = new OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle()

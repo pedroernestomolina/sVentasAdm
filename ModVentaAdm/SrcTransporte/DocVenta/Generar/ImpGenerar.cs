@@ -15,6 +15,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         private data _dataGen;
         private List<OOB.Sistema.Fiscal.Entidad.Ficha> _tasasFiscal;
         private Remision.IRemision _remision;
+        private decimal _factorDivisa;
+        private decimal _tasaDivisa;
+        private string _notasDelDoc;
 
 
         public BindingSource SourceItems_Get { get { return _dataGen.Items.Source_Get; } }
@@ -32,6 +35,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _abandonarIsOK = false;
             _dataGen = new data();
             _tasasFiscal = null;
+            _factorDivisa=0m;
+            _tasaDivisa = 0m;
+            _notasDelDoc = "";
         }
 
 
@@ -45,6 +51,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _dataGen.Inicializa();
             _tasasFiscal = null;
             _remision.Inicializa();
+            _tasaDivisa = _factorDivisa;
         }
         Frm frm;
         public void Inicia()
@@ -102,9 +109,12 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 }
                 var r03 = Sistema.MyData.TransporteCnf_NotasFactura_Get ();
                 //
+                _notasDelDoc = r03.Entidad;
                 setNotas(r03.Entidad);
                 _tasasFiscal = r02.ListaD;
                 _dataGen.setTasaDivisa(r01.Entidad);
+                _factorDivisa = r01.Entidad;
+                _tasaDivisa = r01.Entidad;
                 _dataGen.Items.setTasaDivisa(r01.Entidad);
                 _dataGen.Totales.setTasaDivisa(r01.Entidad);
                 _dataGen.setTasaFiscal(r02.ListaD);
@@ -237,6 +247,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 _dataGen.LimpiarTodo();
                 _notasObservaciones = "";
                 _limpiarDocumentoIsOK = true;
+                _tasaDivisa = _factorDivisa;
+                _dataGen.setTasaDivisa(_tasaDivisa);
+                setNotas(_notasDelDoc);
             }
         }
 
@@ -268,10 +281,31 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _procesarIsOK = false;
             _limpiarDocumentoIsOK = false;
             _editarDocumentoIsOK = false;
+            _tasaDivisa = _factorDivisa;
+            _dataGen.setTasaDivisa(_tasaDivisa);
+            setNotas(_notasDelDoc);
         }
 
 
         abstract public string TipoDocumento_Get { get; }
         abstract protected void GuardarDoc();
+
+
+        TasaDivisa.ITasa _gDivisa;
+        public void EditarFactorDivisa()
+        {
+            if (_gDivisa == null) 
+            {
+                _gDivisa = new TasaDivisa.Imp();
+            }
+            _gDivisa.Inicializa();
+            _gDivisa.setTasaDivisa(_tasaDivisa);
+            _gDivisa.Inicia();
+            if (_gDivisa.ProcesarIsOK) 
+            {
+                _dataGen.setTasaDivisa(_gDivisa.TasaActual_Get);
+                _tasaDivisa=_gDivisa.TasaActual_Get;
+            }
+        }
     }
 }

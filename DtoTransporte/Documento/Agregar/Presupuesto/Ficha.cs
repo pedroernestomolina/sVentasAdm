@@ -9,6 +9,8 @@ namespace DtoTransporte.Documento.Agregar.Presupuesto
 {
     public class Ficha: baseFicha
     {
+        public DateTime fechaEmision { get; set; }
+        public DateTime fechaVencimiento { get; set; }
         public string docSolicitadoPor { get; set; }
         public string docModuloCargar { get; set; }
         public bool estatusPendiente { get; set; }
@@ -16,6 +18,8 @@ namespace DtoTransporte.Documento.Agregar.Presupuesto
         public Ficha()
             :base()
         {
+            fechaEmision = DateTime.Now.Date;
+            fechaVencimiento = DateTime.Now.Date;
             docSolicitadoPor = "";
             docModuloCargar = "";
             estatusPendiente = false;

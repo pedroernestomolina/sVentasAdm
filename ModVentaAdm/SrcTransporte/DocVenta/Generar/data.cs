@@ -28,7 +28,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         public string Cliente_ciRif_Get { get { return _datosDoc == null ? "" : _datosDoc.Cliente_ciRif_Get; } }
         public string Cliente_codigo_Get { get { return _datosDoc == null ? "" : _datosDoc.Cliente_codigo_Get; } }
         public string Cliente_razonSocial_Get { get { return _datosDoc == null ? "" : _datosDoc.Cliente_razonSocial_Get; } }
-        public string DatosDoc_FechaEmi_Get { get { return _datosDoc == null ? "" : _datosDoc.FechaSistema_Get.ToShortDateString(); } }
+        public string DatosDoc_FechaEmi_Get { get { return _datosDoc == null ? "" : _datosDoc.FechaEmision_Get.ToShortDateString(); } }
         public string DatosDoc_CondPago_Get { get { return _datosDoc == null ? "" : _datosDoc.CondPago_Get; } }
         public string DatosDoc_FechaVenc_Get { get { return _datosDoc == null ? "" : _datosDoc.FechaVencimiento_Get.ToShortDateString(); } }
         public bool DocumentoIsOk { get { return _datosDoc != null; } }
@@ -92,6 +92,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         public void setTasaDivisa(decimal factor)
         {
             _tasaDivisa = factor;
+            _totales.setTasaDivisa(factor);
         }
         public void setTasaFiscal(List<OOB.Sistema.Fiscal.Entidad.Ficha> list)
         {

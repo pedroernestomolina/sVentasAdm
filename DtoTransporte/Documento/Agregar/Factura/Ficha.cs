@@ -9,6 +9,8 @@ namespace DtoTransporte.Documento.Agregar.Factura
 {
     public class Ficha: baseFicha
     {
+        public DateTime fechaEmision { get; set; }
+        public DateTime fechaVencimiento { get; set; }
         public string serieDocId { get; set; }
         public string serieDocDesc { get; set; }
         public string docSolicitadoPor { get; set; }
@@ -21,6 +23,8 @@ namespace DtoTransporte.Documento.Agregar.Factura
         public Ficha()
             :base()
         {
+            fechaEmision = DateTime.Now.Date;
+            fechaVencimiento = DateTime.Now.Date;
             serieDocId = "";
             serieDocDesc = "";
             docSolicitadoPor = "";

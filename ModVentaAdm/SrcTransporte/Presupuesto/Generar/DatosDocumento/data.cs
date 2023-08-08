@@ -16,6 +16,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
     public class data
     {
         private DateTime _fechaSistema;
+        private DateTime _fechaEmision;
         private DateTime _fechaVencimiento;
         private int _diasValidez;
         private int _diasCredito;
@@ -26,6 +27,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
 
 
         public DateTime FechaSistema_Get { get { return _fechaSistema; } }
+        public DateTime FechaEmision_Get { get { return _fechaEmision; } }
         public DateTime FechaVencimiento_Get { get { return _fechaVencimiento; } }
         public int DiasValidez_Get { get { return _diasValidez; } }
         public int DiasCredito_Get { get { return _diasCredito; } }
@@ -67,11 +69,12 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         public void setFechaSistema(DateTime fecha)
         {
             _fechaSistema = fecha;
+            setDiasCredito(_diasCredito);
         }
         public void setDiasCredito(int dias)
         {
             _diasCredito = dias;
-            _fechaVencimiento = _fechaVencimiento.AddDays(dias);
+            _fechaVencimiento = _fechaEmision.AddDays(dias);
         }
         public void setDiasValidez(int dias)
         {
@@ -89,6 +92,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         {
             _cliente = ficha;
         }
+        public void setFechaEmision(DateTime fecha)
+        {
+            _fechaEmision = fecha;
+            _fechaVencimiento = fecha;
+            setDiasCredito(_diasCredito);
+        }
+
 
         public void CondicionPagoCargar(List<ficha> lst)
         {
@@ -99,6 +109,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
         private void limpiar() 
         {
             _fechaSistema = DateTime.Now.Date;
+            _fechaEmision = DateTime.Now.Date;
             _fechaVencimiento = DateTime.Now.Date;
             _diasCredito = 0;
             _diasValidez = 0;

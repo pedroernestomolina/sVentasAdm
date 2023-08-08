@@ -195,11 +195,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(628, 1);
+            this.panel2.Location = new System.Drawing.Point(627, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(255, 52);
+            this.panel2.Size = new System.Drawing.Size(256, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -210,7 +210,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(251, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(252, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -419,7 +419,7 @@
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
-            this.panel20.Size = new System.Drawing.Size(105, 52);
+            this.panel20.Size = new System.Drawing.Size(104, 52);
             this.panel20.TabIndex = 3;
             // 
             // tableLayoutPanel8
@@ -435,7 +435,7 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(101, 48);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(100, 48);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // panel21
@@ -446,7 +446,7 @@
             this.panel21.Margin = new System.Windows.Forms.Padding(1);
             this.panel21.Name = "panel21";
             this.panel21.Padding = new System.Windows.Forms.Padding(2);
-            this.panel21.Size = new System.Drawing.Size(92, 46);
+            this.panel21.Size = new System.Drawing.Size(91, 46);
             this.panel21.TabIndex = 0;
             // 
             // L_HORA
@@ -456,7 +456,7 @@
             this.L_HORA.ForeColor = System.Drawing.Color.Black;
             this.L_HORA.Location = new System.Drawing.Point(2, 2);
             this.L_HORA.Name = "L_HORA";
-            this.L_HORA.Size = new System.Drawing.Size(88, 42);
+            this.L_HORA.Size = new System.Drawing.Size(87, 42);
             this.L_HORA.TabIndex = 6;
             this.L_HORA.Text = "Hoy";
             this.L_HORA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -606,7 +606,7 @@
             // 
             this.MENU_DOCUMENTOS_TRANS_PRO_FORMA.Name = "MENU_DOCUMENTOS_TRANS_PRO_FORMA";
             this.MENU_DOCUMENTOS_TRANS_PRO_FORMA.Size = new System.Drawing.Size(237, 22);
-            this.MENU_DOCUMENTOS_TRANS_PRO_FORMA.Text = "Control de Pro-Forma";
+            this.MENU_DOCUMENTOS_TRANS_PRO_FORMA.Text = "Control de Hoja-Servicio";
             this.MENU_DOCUMENTOS_TRANS_PRO_FORMA.Click += new System.EventHandler(this.MENU_DOCUMENTOS_TRANS_PRO_FORMA_Click);
             // 
             // MNU_TRANSPORTE_FACTURA
@@ -695,7 +695,7 @@
             this.REP_CLIENTE_MAESTRO});
             this.clienteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("clienteToolStripMenuItem.Image")));
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.clienteToolStripMenuItem.Text = "Clientes";
             // 
             // REP_CLIENTE_MAESTRO
@@ -712,7 +712,7 @@
             this.REP_TRANS_ALIADO_POR_SERVICIO});
             this.aliadosToolStripMenuItem.Image = global::ModVentaAdm.Properties.Resources.bt_imprimir_3;
             this.aliadosToolStripMenuItem.Name = "aliadosToolStripMenuItem";
-            this.aliadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aliadosToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.aliadosToolStripMenuItem.Text = "Aliados";
             // 
             // REP_TRANS_ALIADO_RESUMEN
@@ -739,7 +739,7 @@
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(113, 6);
             // 
             // ventasToolStripMenuItem
             // 
@@ -764,7 +764,7 @@
             this.MENU_REPORTES_RESUMEN});
             this.ventasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("ventasToolStripMenuItem.Image")));
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.ventasToolStripMenuItem.Text = "Ventas";
             // 
             // MENU_REPORTES_LIBRO_VENTA
@@ -913,7 +913,7 @@
             // 
             this.cxCToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("cxCToolStripMenuItem1.Image")));
             this.cxCToolStripMenuItem1.Name = "cxCToolStripMenuItem1";
-            this.cxCToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cxCToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.cxCToolStripMenuItem1.Text = "CxC";
             // 
             // configuracionToolStripMenuItem

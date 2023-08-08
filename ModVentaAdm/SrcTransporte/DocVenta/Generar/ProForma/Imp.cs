@@ -9,7 +9,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
 {
     public class Imp: ImpGenerar, IProForma
     {
-        public override string TipoDocumento_Get { get { return "PRO - FORMA"; } }
+        public override string TipoDocumento_Get { get { return "HOJA - SERVICIO"; } }
 
 
         public Imp()
@@ -21,6 +21,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
         {
             try
             {
+                var _fechaEmision = Ficha.DatosDoc.FechaEmision_Get;
+                var _fechaVencimiento = Ficha.DatosDoc.FechaVencimiento_Get;
                 var _idCliente = Ficha.DatosDoc.Cliente.id;
                 var _cirif = Ficha.DatosDoc.Cliente.ciRif;
                 var _codCliente = Ficha.DatosDoc.Cliente.codigo;
@@ -297,7 +299,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     serieDocId = _serieId,
                     subTotalMonDivisa = 0m,
                     items=itemsDet,
-                    tipoDocSiglas="PRF",
+                    tipoDocSiglas="HSV",
+                    fechaEmision=_fechaEmision,
+                    fechaVencimiento=_fechaVencimiento,
                     aliadosResumen = _grupoAliados.Select(s =>
                     {
                         var nr = new OOB.Transporte.Documento.Agregar.Factura.FichaAliadoResumen()

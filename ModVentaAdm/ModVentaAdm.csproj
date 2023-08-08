@@ -417,6 +417,14 @@
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\data.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\Imp.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\IRemision.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Imp.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\ITasa.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SrcTransporte\Maestro\Transp\Aliados\data.cs" />
     <Compile Include="SrcTransporte\Maestro\Transp\Aliados\IAliado.cs" />
     <Compile Include="SrcTransporte\Maestro\Transp\Aliados\IAliadoLista.cs" />
@@ -1039,6 +1047,9 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\Item\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Presupuesto\Generar\Aliado\Frm.resx">

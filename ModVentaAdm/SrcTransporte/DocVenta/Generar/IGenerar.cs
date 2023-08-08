@@ -31,5 +31,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         void IniciarEnLimpio();
 
         string TipoDocumento_Get { get; }
+        void EditarFactorDivisa();
     }
 }

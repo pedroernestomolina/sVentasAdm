@@ -60,7 +60,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
                 {
                     throw new Exception(r01.Mensaje);
                 }
-                _data.setFechaSistema(r01.Entidad);
+                //_data.setFechaSistema(r01.Entidad);
+                _data.setFechaEmision(r01.Entidad);
                 //
                 var _lst = new List<ficha>();
                 _lst.Add(new ficha() { id = "01", codigo = "", desc = "CONTADO" });
@@ -193,9 +194,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.DatosDocumento
                 {
                     _idCondPago = "02";
                 }
+                _data.setFechaEmision(ficha.encabezado.docFechaEmision);
                 _data.CondicionPago.setFichaById(_idCondPago);
                 _data.setDiasCredito(ficha.encabezado.diasCredito);
-                _data.setFechaSistema(DateTime.Now.Date);
                 _data.setSolicitadoPor(ficha.encabezado.docSolicitadoPor);
                 _data.setModuloCargar(ficha.encabezado.docModuloCargar);
                 _habilitarBusquedaCliente = false;
