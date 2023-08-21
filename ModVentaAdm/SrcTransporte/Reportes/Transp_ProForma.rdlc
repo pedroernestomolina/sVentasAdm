@@ -500,7 +500,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Pro - Forma Nro:</Value>
+                  <Value>Hoja - Servicio Nro:</Value>
                   <Style>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>

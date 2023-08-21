@@ -2335,6 +2335,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             private global::System.Data.DataColumn columnimporte;
             
+            private global::System.Data.DataColumn columnnotas;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AliadoDetalleServDataTable() {
@@ -2426,6 +2428,14 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn notasColumn {
+                get {
+                    return this.columnnotas;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2461,7 +2471,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AliadoDetalleServRow AddAliadoDetalleServRow(string aliado, string cliente, string docNumero, System.DateTime docFecha, string docNombre, string servcio, decimal importe) {
+            public AliadoDetalleServRow AddAliadoDetalleServRow(string aliado, string cliente, string docNumero, System.DateTime docFecha, string docNombre, string servcio, decimal importe, string notas) {
                 AliadoDetalleServRow rowAliadoDetalleServRow = ((AliadoDetalleServRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         aliado,
@@ -2470,7 +2480,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                         docFecha,
                         docNombre,
                         servcio,
-                        importe};
+                        importe,
+                        notas};
                 rowAliadoDetalleServRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAliadoDetalleServRow);
                 return rowAliadoDetalleServRow;
@@ -2500,6 +2511,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 this.columndocNombre = base.Columns["docNombre"];
                 this.columnservcio = base.Columns["servcio"];
                 this.columnimporte = base.Columns["importe"];
+                this.columnnotas = base.Columns["notas"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2519,6 +2531,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 base.Columns.Add(this.columnservcio);
                 this.columnimporte = new global::System.Data.DataColumn("importe", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnimporte);
+                this.columnnotas = new global::System.Data.DataColumn("notas", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnotas);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3731,6 +3745,22 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string notas {
+                get {
+                    try {
+                        return ((string)(this[this.tableAliadoDetalleServ.notasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'notas\' in table \'AliadoDetalleServ\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAliadoDetalleServ.notasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsaliadoNull() {
                 return this.IsNull(this.tableAliadoDetalleServ.aliadoColumn);
             }
@@ -3811,6 +3841,18 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetimporteNull() {
                 this[this.tableAliadoDetalleServ.importeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnotasNull() {
+                return this.IsNull(this.tableAliadoDetalleServ.notasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnotasNull() {
+                this[this.tableAliadoDetalleServ.notasColumn] = global::System.Convert.DBNull;
             }
         }
         

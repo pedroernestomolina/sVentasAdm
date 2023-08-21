@@ -101,12 +101,14 @@ namespace ModVentaAdm.Data.Prov
                         var _servCodigo = "";
                         var _servDesc = "";
                         var _servImporte = 0m;
+                        var _servNotas="";
                         if (s.servId.HasValue)
                         {
                             _servId = s.servId.Value;
                             _servCodigo = s.servCodigo;
                             _servDesc = s.servDesc;
                             _servImporte = s.servImporte.Value;
+                            _servNotas=s.servNotas;
                         }
                         if (s.prespServId.HasValue)
                         {
@@ -114,6 +116,7 @@ namespace ModVentaAdm.Data.Prov
                             _servCodigo = s.prespServCodigo;
                             _servDesc = s.prespServDesc;
                             _servImporte = s.prespServImporte.Value;
+                            _servNotas=s.prespServNotas;
                         }
                         var nr = new OOB.Transporte.Reporte.AliadoDetalleServ()
                         {
@@ -128,6 +131,7 @@ namespace ModVentaAdm.Data.Prov
                             servCodigo = _servCodigo,
                             servDesc = _servDesc,
                             servImporte = _servImporte,
+                            servNotas= _servNotas,
                         };
                         return nr;
                     }).ToList();

@@ -38,7 +38,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Aliado
             foreach (var it in lst.OrderBy(o => o.nombreAliado).ToList())
             {
                 DataRow rt = ds.Tables["AliadoDetalleDoc"].NewRow();
-                rt["aliado"] = it.rifAliado+ Environment.NewLine + it.nombreAliado;
+                rt["aliado"] = it.nombreAliado + Environment.NewLine + it.rifAliado;
                 rt["cliente"] = it.rifCliente+ Environment.NewLine + it.nombreCliente;
                 rt["docNumero"] = it.numDoc;
                 rt["docFecha"] = it.fechaDoc;

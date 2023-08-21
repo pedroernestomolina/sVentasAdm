@@ -20,5 +20,6 @@ namespace ModVentaAdm.OOB.Transporte.Reporte
         public string servCodigo { get; set; }
         public string servDesc { get; set; }
         public decimal servImporte { get; set; }
+        public string servNotas { get; set; }
     }
 }

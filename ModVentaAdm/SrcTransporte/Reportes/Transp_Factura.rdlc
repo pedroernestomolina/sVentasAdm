@@ -261,7 +261,7 @@
         </TablixRowHierarchy>
         <DataSetName>PresupItem</DataSetName>
         <Height>0.6cm</Height>
-        <Width>20.74221cm</Width>
+        <Width>20.74222cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -496,7 +496,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Pro - Forma Nro:</Value>
+                  <Value>Factura Nro:</Value>
                   <Style>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -602,7 +602,7 @@
           <KeepTogether>true</KeepTogether>
           <Top>4.02264cm</Top>
           <Left>0.33195cm</Left>
-          <Height>2.40298cm</Height>
+          <Height>2.40299cm</Height>
           <Width>12.46604cm</Width>
           <ZIndex>9</ZIndex>
           <Style>

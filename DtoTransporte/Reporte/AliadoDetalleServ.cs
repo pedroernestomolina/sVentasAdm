@@ -20,9 +20,11 @@ namespace DtoTransporte.Reporte
         public string servCodigo { get; set; }
         public string servDesc { get; set; }
         public decimal? servImporte { get; set; }
+        public string servNotas { get; set; }
         public int? prespServId { get; set; }
         public string prespServCodigo { get; set; }
         public string prespServDesc { get; set; }
         public decimal? prespServImporte { get; set; }
+        public string  prespServNotas { get; set; }
     }
 }

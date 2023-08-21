@@ -774,6 +774,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 _dataGen.setDatosDoc(_datosDoc.Data);
                 setNotas(r01.Entidad.encabezado.notasObs);
                 var r02 = Sistema.MyData.TransporteDocumento_AnularPresupuesto_Pendiente(idDoc);
+                var r03 = Sistema.MyData.TransporteDocumento_Presupuesto_Pendiente_Cnt();
+                _cntPendiente = r03.Entidad;
             }
             catch (Exception e)
             {

@@ -45,6 +45,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Aliado
                 rt["docFecha"] = it.docFecha;
                 rt["docNombre"] = it.docNombre;
                 rt["importe"] = it.servImporte;
+                rt["notas"] = it.servNotas;
                 ds.Tables["AliadoDetalleServ"].Rows.Add(rt);
             }
 
