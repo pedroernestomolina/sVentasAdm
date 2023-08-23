@@ -20,6 +20,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
         public List<FichaItem> items { get; set; }
         public List<FichaDocRef> docRef { get; set; }
         public List<FichaAliadoResumen> aliadosResumen { get; set; }
+        public List<FichaAliadoDocRef> aliadosDocRef { get; set; }
         public Ficha()
             :base()
         {
@@ -34,6 +35,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
             items = new List<FichaItem>();
             docRef = new List<FichaDocRef>();
             aliadosResumen = new List<FichaAliadoResumen>();
+            aliadosDocRef = new List<FichaAliadoDocRef>();
         }
     }
 }

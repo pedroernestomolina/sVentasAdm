@@ -451,5 +451,38 @@ namespace ModVentaAdm.Data.Prov
             result.ListaD = lst;
             return result;
         }
+
+        public OOB.Resultado.Lista<OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha> 
+            TransporteDocumento_GetAliados_Presupuesto(string idDoc)
+        {
+            var result = new OOB.Resultado.Lista<OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha> ();
+            var r01 = MyData.TransporteDocumento_Presupuesto_GetAliados(idDoc);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                result.Mensaje = r01.Mensaje;
+                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return result;
+            }
+            var lst = new List<OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha()
+                        {
+                            ciRif = s.ciRif,
+                            idAliado = s.idAliado,
+                            importe = s.importe,
+                            nombre = s.nombre,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.ListaD = lst;
+            return result;
+        }
     }
 }

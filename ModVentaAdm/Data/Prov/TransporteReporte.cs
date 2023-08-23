@@ -97,41 +97,22 @@ namespace ModVentaAdm.Data.Prov
                 {
                     _lst = r01.Lista.Select(s =>
                     {
-                        var _servId = -1;
-                        var _servCodigo = "";
-                        var _servDesc = "";
-                        var _servImporte = 0m;
-                        var _servNotas="";
-                        if (s.servId.HasValue)
-                        {
-                            _servId = s.servId.Value;
-                            _servCodigo = s.servCodigo;
-                            _servDesc = s.servDesc;
-                            _servImporte = s.servImporte.Value;
-                            _servNotas=s.servNotas;
-                        }
-                        if (s.prespServId.HasValue)
-                        {
-                            _servId = s.prespServId.Value;
-                            _servCodigo = s.prespServCodigo;
-                            _servDesc = s.prespServDesc;
-                            _servImporte = s.prespServImporte.Value;
-                            _servNotas=s.prespServNotas;
-                        }
                         var nr = new OOB.Transporte.Reporte.AliadoDetalleServ()
                         {
                             aliadoCiRif = s.aliadoCiRif,
                             aliadoId = s.aliadoId,
                             aliadoNombre = s.aliadoNombre,
-                            docCliente = s.docCliente,
-                            docFecha = s.docFecha,
-                            docNombre = s.docNombre,
-                            docNumero = s.docNumero,
-                            servId = _servId,
-                            servCodigo = _servCodigo,
-                            servDesc = _servDesc,
-                            servImporte = _servImporte,
-                            servNotas= _servNotas,
+                            servId = s.servId,
+                            servCodigo = s.servCodigo,
+                            servDesc = s.servDesc,
+                            aliadoCodigo = s.aliadoCodigo,
+                            clienteCiRif = s.clienteCiRif,
+                            clienteNombre = s.clienteNombre,
+                            fechaDoc = s.fechaDoc,
+                            importeServ = s.importeServ,
+                            nombreDoc = s.nombreDoc,
+                            numDoc = s.numDoc,
+                            servDetalle = s.servDetalle,
                         };
                         return nr;
                     }).ToList();

@@ -968,6 +968,32 @@ namespace ProvPos
                                 return result;
                             }
                         }
+                        //ALIADOS DOCUMENTO REFERENCIA 
+                        foreach (var aliadoDocRef in ficha.aliadosDocRef)
+                        {
+                            _sql = @"insert into ventas_transp_aliado_detalle (
+                                        id_venta,
+                                        id_doc_ref,
+                                        id_aliado,
+                                        estatus_anulado
+                                    )
+                                    VALUES (
+                                        @idVenta, 
+                                        @idDocRef, 
+                                        @idAliado, 
+                                        '0')";
+                            var zlp1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
+                            var zlp2 = new MySql.Data.MySqlClient.MySqlParameter("@idDocRef", aliadoDocRef.idDocRef == "" ? autoDoc : aliadoDocRef.idDocRef);
+                            var zlp3 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", aliadoDocRef.idAliado);
+                            var zr1 = cn.Database.ExecuteSqlCommand(_sql, zlp1, zlp2, zlp3);
+                            if (zr1 == 0)
+                            {
+                                result.Mensaje = "PROBLEMA AL INSERTAR ALIADO DETALLE DOC REFERENCIA";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cn.SaveChanges();
+                        }
 
                         ts.Complete();
                         var ret = new DtoTransporte.Documento.Agregar.Resultado()

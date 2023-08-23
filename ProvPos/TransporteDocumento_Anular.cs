@@ -403,6 +403,11 @@ namespace ProvPos
                             cn.SaveChanges();
                         }
 
+                        sql = "update ventas_transp_aliado_detalle set estatus_anulado='1' where id_venta=@p1";
+                        p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", ficha.idDocVenta);
+                        var z1d = cn.Database.ExecuteSqlCommand(sql, p1);
+                        cn.SaveChanges();
+
                         ts.Complete();
                     }
                 };

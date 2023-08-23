@@ -40,12 +40,12 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Aliado
                 DataRow rt = ds.Tables["AliadoDetalleServ"].NewRow();
                 rt["aliado"] = it.aliadoCiRif + Environment.NewLine + it.aliadoNombre;
                 rt["servcio"] = it.servDesc;
-                rt["cliente"] = it.docCliente;
-                rt["docNumero"] = it.docNumero;
-                rt["docFecha"] = it.docFecha;
-                rt["docNombre"] = it.docNombre;
-                rt["importe"] = it.servImporte;
-                rt["notas"] = it.servNotas;
+                rt["cliente"] = it.clienteCiRif+Environment.NewLine+ it.clienteNombre;
+                rt["docNumero"] = it.numDoc;
+                rt["docFecha"] = it.fechaDoc;
+                rt["docNombre"] = it.nombreDoc;
+                rt["importe"] = it.importeServ;
+                rt["notas"] = it.servDesc;
                 ds.Tables["AliadoDetalleServ"].Rows.Add(rt);
             }
 

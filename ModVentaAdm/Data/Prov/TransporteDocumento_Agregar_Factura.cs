@@ -73,13 +73,13 @@ namespace ModVentaAdm.Data.Prov
                 serieDocDesc = ficha.serieDocDesc,
                 serieDocId = ficha.serieDocId,
                 subTotalMonDivisa = ficha.subTotalMonDivisa,
-                tipoDocSiglas=ficha.tipoDocSiglas,
-                fechaEmision=ficha.fechaEmision,
+                tipoDocSiglas = ficha.tipoDocSiglas,
+                fechaEmision = ficha.fechaEmision,
                 fechaVencimiento = ficha.fechaVencimiento,
-                items=  ficha.items.Select(z =>
+                items = ficha.items.Select(z =>
                 {
-                    DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle _servicioDetalle= null;
-                    if (z.servDetalle !=null)
+                    DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle _servicioDetalle = null;
+                    if (z.servDetalle != null)
                     {
                         var s = z.servDetalle;
                         var nr = new DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle()
@@ -181,6 +181,15 @@ namespace ModVentaAdm.Data.Prov
                     {
                         idAliado = ss.idAliado,
                         montoDivisa = ss.montoDivisa,
+                    };
+                    return nr;
+                }).ToList(),
+                aliadosDocRef = ficha.aliadosDocRef.Select(xx => 
+                {
+                    var nr = new DtoTransporte.Documento.Agregar.Factura.FichaAliadoDocRef()
+                    {
+                        idAliado = xx.idAliado,
+                        idDocRef = xx.idDocRef,
                     };
                     return nr;
                 }).ToList(),

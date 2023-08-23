@@ -270,6 +270,7 @@
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFicha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaAliadoDocRef.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaAliadoResumen.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaDocRef.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaItem.cs" />
@@ -295,6 +296,7 @@
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaEncabezado.cs" />
+    <Compile Include="OOB\Transporte\Documento\GetAliados\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Lista\baseLista.cs" />
     <Compile Include="OOB\Transporte\Documento\Lista\Pendiente\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Ficha.cs" />

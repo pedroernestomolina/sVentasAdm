@@ -12,14 +12,16 @@ namespace ModVentaAdm.OOB.Transporte.Reporte
         public int aliadoId { get; set; }
         public string aliadoCiRif { get; set; }
         public string aliadoNombre { get; set; }
-        public string docNumero { get; set; }
-        public DateTime docFecha { get; set; }
-        public string docCliente { get; set; }
-        public string docNombre { get; set; }
+        public string aliadoCodigo { get; set; }
+        public decimal importeServ { get; set; }
+        public string clienteCiRif { get; set; }
+        public string clienteNombre { get; set; }
+        public DateTime fechaDoc { get; set; }
+        public string numDoc { get; set; }
+        public string nombreDoc { get; set; }
         public int servId { get; set; }
         public string servCodigo { get; set; }
+        public string servDetalle { get; set; }
         public string servDesc { get; set; }
-        public decimal servImporte { get; set; }
-        public string servNotas { get; set; }
     }
 }

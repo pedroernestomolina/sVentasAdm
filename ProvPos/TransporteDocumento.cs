@@ -544,5 +544,37 @@ namespace ProvPos
 
             return rt;
         }
+
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.GetAliados.Presupuesto.Ficha> 
+            TransporteDocumento_Presupuesto_GetAliados(string idDoc)
+        {
+            var rt = new DtoLib.ResultadoLista<DtoTransporte.Documento.GetAliados.Presupuesto.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql_1 = @"SELECT 
+                                    aliado.id as idAliado, 
+                                    aliado.ciRif as ciRif, 
+                                    aliado.nombreRazonSocial as nombre, 
+                                    sum(item.importe) as importe
+                                FROM ventas_transp_item_aliado as item
+                                join transp_aliado as aliado on aliado.id=item.id_aliado
+                                where item.id_venta=@idDoc
+                                group by item.id_aliado";
+                    var sql = sql_1;
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var lst = cnn.Database.SqlQuery<DtoTransporte.Documento.GetAliados.Presupuesto.Ficha>(sql, p1).ToList();
+                    rt.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return rt;
+        }
     }
 }

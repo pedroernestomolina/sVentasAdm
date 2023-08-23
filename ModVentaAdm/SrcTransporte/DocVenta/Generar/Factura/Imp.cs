@@ -120,6 +120,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                 //
                 var _aliados = new List<OOB.Transporte.Documento.Agregar.Factura.FichaAliadoResumen>();
                 //
+                var _aliadosDocRef = new List<OOB.Transporte.Documento.Agregar.Factura.FichaAliadoDocRef>();
                 var itemsDet = Ficha.Items.GetItems.Select(s =>
                 {
                     var _idDocRef = "";
@@ -137,6 +138,16 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                         _montoDocRef = s.Item.Get_ItemPresupuesto.Ficha.docMontoMonedaDiv;
                         _fecDocRef = s.Item.Get_ItemPresupuesto.Ficha.docFechaEmision;
                         _tipoItemProcedencia = "P";
+                        var rtAliados = Sistema.MyData.TransporteDocumento_GetAliados_Presupuesto(_idDocRef);
+                        foreach (var rg in rtAliados.ListaD)
+                        {
+                            var nr = new OOB.Transporte.Documento.Agregar.Factura.FichaAliadoDocRef()
+                            {
+                                idAliado = rg.idAliado,
+                                idDocRef = _idDocRef,
+                            };
+                            _aliadosDocRef.Add(nr);
+                        }
                     }
                     if (s.Item.Get_ItemServicio!=null) 
                     {
@@ -178,6 +189,13 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                                     montoDivisa = xx.Importe,
                                 };
                                 _aliados.Add(_aliadoRes);
+
+                                var _nuevoAliadoDocRef = new OOB.Transporte.Documento.Agregar.Factura.FichaAliadoDocRef()
+                                {
+                                    idAliado = xx.aliado.id,
+                                    idDocRef = "",
+                                };
+                                _aliadosDocRef.Add(_nuevoAliadoDocRef);
                                 //
                                 var nr3 = new OOB.Transporte.Documento.Agregar.Presupuesto.Aliado()
                                 {
@@ -306,6 +324,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     items = itemsDet,
                     fechaEmision = _fechaEmision,
                     fechaVencimiento = _fechaVencimiento,
+                    aliadosDocRef= _aliadosDocRef,
                     aliadosResumen = _grupoAliados.Select(s =>
                     {
                         var nr = new OOB.Transporte.Documento.Agregar.Factura.FichaAliadoResumen()

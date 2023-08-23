@@ -47,5 +47,9 @@ namespace ServicePos.Interfaces.Transporte
         //
         DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha>
             TransporteDocumento_GetLista(DtoLibPos.Documento.Lista.Filtro filtro);
+
+        //
+        DtoLib.ResultadoLista<DtoTransporte.Documento.GetAliados.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_GetAliados(string idDoc);
     }
 }
