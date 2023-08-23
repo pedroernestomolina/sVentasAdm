@@ -395,7 +395,11 @@ namespace ProvPos
                                     unidades_desc,
                                     servicio_id,
                                     servicio_codigo,
-                                    servicio_detalle
+                                    servicio_detalle,
+                                    turno_estatus,
+                                    turno_id,
+                                    turno_desc,
+                                    turno_cnt_dias
                                 ) 
                                 VALUES 
                                 (
@@ -419,7 +423,11 @@ namespace ProvPos
                                     @unidades_desc,
                                     @servicio_id,
                                     @servicio_codigo,
-                                    @servicio_detalle
+                                    @servicio_detalle,
+                                    @turno_estatus,
+                                    @turno_id,
+                                    @turno_desc,
+                                    @turno_cnt_dias
                                 )";
                         foreach (var it in ficha.items)
                         {
@@ -443,10 +451,15 @@ namespace ProvPos
                             var xp25 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_id", it.servicioId);
                             var xp26 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_codigo", it.servicioCodigo);
                             var xp27 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_detalle", it.servicioDetalle);
+                            var xp30 = new MySql.Data.MySqlClient.MySqlParameter("@turno_estatus", it.turnoEstatus);
+                            var xp31 = new MySql.Data.MySqlClient.MySqlParameter("@turno_id", it.turnoId);
+                            var xp32 = new MySql.Data.MySqlClient.MySqlParameter("@turno_desc", it.turnoDesc);
+                            var xp33 = new MySql.Data.MySqlClient.MySqlParameter("@turno_cnt_dias", it.turnoCntDias);
                             var r2 = cn.Database.ExecuteSqlCommand(_sql_I,
                                                                     xp1, xp2, xp5, xp6, xp7, xp8, xp9, xp10,
                                                                     xp11, xp17, xp18, xp19, xp20,
-                                                                    xp21, xp22, xp23, xp24, xp25, xp26, xp27);
+                                                                    xp21, xp22, xp23, xp24, xp25, xp26, xp27,
+                                                                    xp30, xp31, xp32, xp33);
                             cn.SaveChanges();
                             //
                             _sql = "SELECT LAST_INSERT_ID()";
@@ -967,7 +980,11 @@ namespace ProvPos
                                     unidades_desc,
                                     servicio_id,
                                     servicio_codigo,
-                                    servicio_detalle
+                                    servicio_detalle,
+                                    turno_estatus,
+                                    turno_id,
+                                    turno_desc,
+                                    turno_cnt_dias
                                 ) 
                                 VALUES 
                                 (
@@ -991,7 +1008,11 @@ namespace ProvPos
                                     @unidades_desc,
                                     @servicio_id,
                                     @servicio_codigo,
-                                    @servicio_detalle
+                                    @servicio_detalle,
+                                    @turno_estatus,
+                                    @turno_id,
+                                    @turno_desc,
+                                    @turno_cnt_dias
                                 )";
                         foreach (var it in ficha.items)
                         {
@@ -1015,10 +1036,15 @@ namespace ProvPos
                             var xp25 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_id", it.servicioId);
                             var xp26 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_codigo", it.servicioCodigo);
                             var xp27 = new MySql.Data.MySqlClient.MySqlParameter("@servicio_detalle", it.servicioDetalle);
+                            var xp30 = new MySql.Data.MySqlClient.MySqlParameter("@turno_estatus", it.turnoEstatus);
+                            var xp31 = new MySql.Data.MySqlClient.MySqlParameter("@turno_id", it.turnoId);
+                            var xp32 = new MySql.Data.MySqlClient.MySqlParameter("@turno_desc", it.turnoDesc);
+                            var xp33 = new MySql.Data.MySqlClient.MySqlParameter("@turno_cnt_dias", it.turnoCntDias);
                             var r2 = cn.Database.ExecuteSqlCommand(_sql_I,
                                                                     xp1, xp2, xp5, xp6, xp7, xp8, xp9, xp10,
                                                                     xp11, xp17, xp18, xp19, xp20,
-                                                                    xp21, xp22, xp23, xp24, xp25, xp26, xp27);
+                                                                    xp21, xp22, xp23, xp24, xp25, xp26, xp27,
+                                                                    xp30, xp31, xp32, xp33);
                             cn.SaveChanges();
                             //
                             _sql = "SELECT LAST_INSERT_ID()";

@@ -489,6 +489,7 @@
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\IItem.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\IItemObservador.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\Item\ImpItem.cs" />
+    <Compile Include="SrcTransporte\Presupuesto\Generar\Item\tipoTurno.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\ITotalObservador.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\MargenGanancia\data.cs" />
     <Compile Include="SrcTransporte\Presupuesto\Generar\MargenGanancia\Frm.cs">

@@ -38,6 +38,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private OOB.Transporte.ServPrest.Entidad.Ficha _tipoServicio;
         private AliadosLlamado.ILLamados _aliadosLlamados;
         private string _unidadesDetalle;
+        //
+        private int _turnoCntDias;
+        private bool _turnoIsActivo;
+        private LibUtilitis.Opcion.IData _tipoTurno;
 
 
         public BindingSource Get_SourceFechas { get { return _bsFechas; } }
@@ -79,10 +83,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             get
             {
                 var rt = "NO DEFINIDO";
-                //if (_aliado != null)
-                //{
-                //    rt = _aliado.ciRif.Trim() + "(" + _aliado.nombreRazonSocial.Trim() + ")";
-                //}
                 if (_aliadosLlamados.GetLista.Count > 0) 
                 {
                     rt = "YA DEFINIDO (" + _aliadosLlamados.GetLista.Count.ToString().Trim() + ") ALIADO(s)";
@@ -196,6 +196,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _cntAliadoPautado = 0;
             _fechas = new List<fecha>();
             _unidadesDetalle = "";
+            //
+            _turnoCntDias = 0;
+            _turnoIsActivo = false;
+            _tipoTurno = null;
         }
         public void LimpiarAliado()
         {
@@ -295,6 +299,19 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
                 Helpers.Msg.Alerta("Campo [ ALICUOTA ] No puede estar vacio !!!");
                 return false;
             }
+            if (_turnoIsActivo) 
+            {
+                if (_tipoTurno == null)
+                {
+                    Helpers.Msg.Alerta("Campo [ TURNO ] No puede estar vacio !!!");
+                    return false;
+                }
+                if (_turnoCntDias <= 0) 
+                {
+                    Helpers.Msg.Alerta("Campo [ TURNO CANTIDAD / DIAS ] No puede estar vacio !!!");
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -369,6 +386,34 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         public void setUnidadesDetalle(string desc)
         {
             _unidadesDetalle = desc;
+        }
+
+
+        //
+        public LibUtilitis.Opcion.IData Get_TipoTurno { get { return _tipoTurno; } }
+        public int Get_TurnoCntDias { get { return _turnoCntDias; } }
+        public bool Get_TurnoIsActivo { get { return _turnoIsActivo; } }
+        public string Get_TipoTurno_ID { get { return _tipoTurno == null ? "" : _tipoTurno.id.ToString(); } }
+        public void setTipoTurno(LibUtilitis.Opcion.IData ficha)
+        {
+            _tipoTurno = ficha;
+        }
+        public void setTurnoCntDias(int cnt)
+        {
+            _turnoCntDias = cnt;
+        }
+        public void setTurnoIsActivo()
+        {
+            _turnoIsActivo = !_turnoIsActivo;
+            if (!_turnoIsActivo) 
+            {
+                setTurnoCntDias(0);
+                setTipoTurno(null);
+            }
+        }
+        public void setTurnoInicializaEstatus(bool turno)
+        {
+            _turnoIsActivo = turno;
         }
     }
 }

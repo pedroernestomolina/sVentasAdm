@@ -28,5 +28,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Remision
 
         void AgregarObservador(IObservador imp);
         void setHabilitarCargarDocRemision(bool hab);
+        void setEsPorRemisionLaCargaDocumento(bool esPorRemision);
     }
 }

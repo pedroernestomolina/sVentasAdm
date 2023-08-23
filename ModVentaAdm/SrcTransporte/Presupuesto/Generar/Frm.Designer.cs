@@ -114,27 +114,10 @@
             this.panel71 = new System.Windows.Forms.Panel();
             this.P_DATOS_DOCUMENTO_BOTONES_REMISION = new System.Windows.Forms.Panel();
             this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
-            this.P_DAT_DOC_BOT = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel72 = new System.Windows.Forms.Panel();
-            this.BT_VISUALIZAR_CLIENTE = new System.Windows.Forms.Button();
-            this.panel73 = new System.Windows.Forms.Panel();
-            this.BT_DATOS_DOCUMENTO_EDITAR = new System.Windows.Forms.Button();
-            this.panel74 = new System.Windows.Forms.Panel();
-            this.BT_DATOS_DOCUMENTO_LIMPIAR = new System.Windows.Forms.Button();
-            this.panel75 = new System.Windows.Forms.Panel();
-            this.panel76 = new System.Windows.Forms.Panel();
-            this.BT_VISUALIZAR_CLIENTE_DOC = new System.Windows.Forms.Button();
-            this.panel77 = new System.Windows.Forms.Panel();
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS = new System.Windows.Forms.Button();
-            this.panel78 = new System.Windows.Forms.Panel();
-            this.button11 = new System.Windows.Forms.Button();
-            this.panel79 = new System.Windows.Forms.Panel();
             this.P_DAT_DOC_REM = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
             this.panel80 = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
             this.panel81 = new System.Windows.Forms.Panel();
             this.CB_REMISION = new System.Windows.Forms.ComboBox();
             this.panel82 = new System.Windows.Forms.Panel();
@@ -231,6 +214,7 @@
             this.P_BOT_SALIDA = new System.Windows.Forms.Panel();
             this.BT_SALIDA = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.CHB_ES_POR_REMISION = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.p_ENCABEZADO.SuspendLayout();
@@ -284,14 +268,6 @@
             this.panel61.SuspendLayout();
             this.P_DATOS_DOCUMENTO_BOTONES_REMISION.SuspendLayout();
             this.tableLayoutPanel29.SuspendLayout();
-            this.P_DAT_DOC_BOT.SuspendLayout();
-            this.tableLayoutPanel30.SuspendLayout();
-            this.panel72.SuspendLayout();
-            this.panel73.SuspendLayout();
-            this.panel74.SuspendLayout();
-            this.panel76.SuspendLayout();
-            this.panel77.SuspendLayout();
-            this.panel78.SuspendLayout();
             this.P_DAT_DOC_REM.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel31.SuspendLayout();
@@ -1391,9 +1367,8 @@
             // tableLayoutPanel29
             // 
             this.tableLayoutPanel29.ColumnCount = 2;
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel29.Controls.Add(this.P_DAT_DOC_BOT, 1, 0);
+            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.48039F));
+            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.51961F));
             this.tableLayoutPanel29.Controls.Add(this.P_DAT_DOC_REM, 0, 0);
             this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel29.Location = new System.Drawing.Point(0, 0);
@@ -1404,212 +1379,6 @@
             this.tableLayoutPanel29.Size = new System.Drawing.Size(408, 64);
             this.tableLayoutPanel29.TabIndex = 0;
             // 
-            // P_DAT_DOC_BOT
-            // 
-            this.P_DAT_DOC_BOT.Controls.Add(this.tableLayoutPanel30);
-            this.P_DAT_DOC_BOT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.P_DAT_DOC_BOT.Location = new System.Drawing.Point(265, 0);
-            this.P_DAT_DOC_BOT.Margin = new System.Windows.Forms.Padding(0);
-            this.P_DAT_DOC_BOT.Name = "P_DAT_DOC_BOT";
-            this.P_DAT_DOC_BOT.Size = new System.Drawing.Size(143, 64);
-            this.P_DAT_DOC_BOT.TabIndex = 0;
-            // 
-            // tableLayoutPanel30
-            // 
-            this.tableLayoutPanel30.ColumnCount = 5;
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel30.Controls.Add(this.panel72, 1, 0);
-            this.tableLayoutPanel30.Controls.Add(this.panel73, 2, 0);
-            this.tableLayoutPanel30.Controls.Add(this.panel74, 3, 0);
-            this.tableLayoutPanel30.Controls.Add(this.panel75, 4, 0);
-            this.tableLayoutPanel30.Controls.Add(this.panel76, 1, 1);
-            this.tableLayoutPanel30.Controls.Add(this.panel77, 2, 1);
-            this.tableLayoutPanel30.Controls.Add(this.panel78, 3, 1);
-            this.tableLayoutPanel30.Controls.Add(this.panel79, 4, 1);
-            this.tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel30.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel30.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel30.Name = "tableLayoutPanel30";
-            this.tableLayoutPanel30.RowCount = 2;
-            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.85185F));
-            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.14815F));
-            this.tableLayoutPanel30.Size = new System.Drawing.Size(143, 64);
-            this.tableLayoutPanel30.TabIndex = 0;
-            // 
-            // panel72
-            // 
-            this.panel72.Controls.Add(this.BT_VISUALIZAR_CLIENTE);
-            this.panel72.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel72.Location = new System.Drawing.Point(11, 1);
-            this.panel72.Margin = new System.Windows.Forms.Padding(1);
-            this.panel72.Name = "panel72";
-            this.panel72.Padding = new System.Windows.Forms.Padding(2);
-            this.panel72.Size = new System.Drawing.Size(31, 31);
-            this.panel72.TabIndex = 0;
-            // 
-            // BT_VISUALIZAR_CLIENTE
-            // 
-            this.BT_VISUALIZAR_CLIENTE.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_info;
-            this.BT_VISUALIZAR_CLIENTE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BT_VISUALIZAR_CLIENTE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_VISUALIZAR_CLIENTE.FlatAppearance.BorderSize = 0;
-            this.BT_VISUALIZAR_CLIENTE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_VISUALIZAR_CLIENTE.Location = new System.Drawing.Point(2, 2);
-            this.BT_VISUALIZAR_CLIENTE.Name = "BT_VISUALIZAR_CLIENTE";
-            this.BT_VISUALIZAR_CLIENTE.Size = new System.Drawing.Size(27, 27);
-            this.BT_VISUALIZAR_CLIENTE.TabIndex = 4;
-            this.BT_VISUALIZAR_CLIENTE.UseVisualStyleBackColor = true;
-            this.BT_VISUALIZAR_CLIENTE.Visible = false;
-            // 
-            // panel73
-            // 
-            this.panel73.Controls.Add(this.BT_DATOS_DOCUMENTO_EDITAR);
-            this.panel73.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel73.Location = new System.Drawing.Point(44, 1);
-            this.panel73.Margin = new System.Windows.Forms.Padding(1);
-            this.panel73.Name = "panel73";
-            this.panel73.Padding = new System.Windows.Forms.Padding(2);
-            this.panel73.Size = new System.Drawing.Size(31, 31);
-            this.panel73.TabIndex = 1;
-            // 
-            // BT_DATOS_DOCUMENTO_EDITAR
-            // 
-            this.BT_DATOS_DOCUMENTO_EDITAR.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_editar_20;
-            this.BT_DATOS_DOCUMENTO_EDITAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BT_DATOS_DOCUMENTO_EDITAR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_DATOS_DOCUMENTO_EDITAR.FlatAppearance.BorderSize = 0;
-            this.BT_DATOS_DOCUMENTO_EDITAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_DATOS_DOCUMENTO_EDITAR.Location = new System.Drawing.Point(2, 2);
-            this.BT_DATOS_DOCUMENTO_EDITAR.Name = "BT_DATOS_DOCUMENTO_EDITAR";
-            this.BT_DATOS_DOCUMENTO_EDITAR.Size = new System.Drawing.Size(27, 27);
-            this.BT_DATOS_DOCUMENTO_EDITAR.TabIndex = 4;
-            this.BT_DATOS_DOCUMENTO_EDITAR.UseVisualStyleBackColor = true;
-            this.BT_DATOS_DOCUMENTO_EDITAR.Visible = false;
-            // 
-            // panel74
-            // 
-            this.panel74.Controls.Add(this.BT_DATOS_DOCUMENTO_LIMPIAR);
-            this.panel74.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel74.Location = new System.Drawing.Point(77, 1);
-            this.panel74.Margin = new System.Windows.Forms.Padding(1);
-            this.panel74.Name = "panel74";
-            this.panel74.Padding = new System.Windows.Forms.Padding(2);
-            this.panel74.Size = new System.Drawing.Size(31, 31);
-            this.panel74.TabIndex = 2;
-            // 
-            // BT_DATOS_DOCUMENTO_LIMPIAR
-            // 
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_limpiar_20;
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.FlatAppearance.BorderSize = 0;
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.Location = new System.Drawing.Point(2, 2);
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.Name = "BT_DATOS_DOCUMENTO_LIMPIAR";
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.Size = new System.Drawing.Size(27, 27);
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.TabIndex = 3;
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.UseVisualStyleBackColor = true;
-            this.BT_DATOS_DOCUMENTO_LIMPIAR.Visible = false;
-            // 
-            // panel75
-            // 
-            this.panel75.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel75.Location = new System.Drawing.Point(110, 1);
-            this.panel75.Margin = new System.Windows.Forms.Padding(1);
-            this.panel75.Name = "panel75";
-            this.panel75.Padding = new System.Windows.Forms.Padding(2);
-            this.panel75.Size = new System.Drawing.Size(32, 31);
-            this.panel75.TabIndex = 3;
-            // 
-            // panel76
-            // 
-            this.panel76.Controls.Add(this.BT_VISUALIZAR_CLIENTE_DOC);
-            this.panel76.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel76.Location = new System.Drawing.Point(11, 34);
-            this.panel76.Margin = new System.Windows.Forms.Padding(1);
-            this.panel76.Name = "panel76";
-            this.panel76.Padding = new System.Windows.Forms.Padding(2);
-            this.panel76.Size = new System.Drawing.Size(31, 29);
-            this.panel76.TabIndex = 4;
-            // 
-            // BT_VISUALIZAR_CLIENTE_DOC
-            // 
-            this.BT_VISUALIZAR_CLIENTE_DOC.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_info_cliente;
-            this.BT_VISUALIZAR_CLIENTE_DOC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BT_VISUALIZAR_CLIENTE_DOC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_VISUALIZAR_CLIENTE_DOC.FlatAppearance.BorderSize = 0;
-            this.BT_VISUALIZAR_CLIENTE_DOC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_VISUALIZAR_CLIENTE_DOC.Location = new System.Drawing.Point(2, 2);
-            this.BT_VISUALIZAR_CLIENTE_DOC.Name = "BT_VISUALIZAR_CLIENTE_DOC";
-            this.BT_VISUALIZAR_CLIENTE_DOC.Size = new System.Drawing.Size(27, 25);
-            this.BT_VISUALIZAR_CLIENTE_DOC.TabIndex = 5;
-            this.BT_VISUALIZAR_CLIENTE_DOC.UseVisualStyleBackColor = true;
-            this.BT_VISUALIZAR_CLIENTE_DOC.Visible = false;
-            // 
-            // panel77
-            // 
-            this.panel77.Controls.Add(this.BT_VISUALIZAR_CLIENTE_ARTICULOS);
-            this.panel77.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel77.Location = new System.Drawing.Point(44, 34);
-            this.panel77.Margin = new System.Windows.Forms.Padding(1);
-            this.panel77.Name = "panel77";
-            this.panel77.Padding = new System.Windows.Forms.Padding(2);
-            this.panel77.Size = new System.Drawing.Size(31, 29);
-            this.panel77.TabIndex = 5;
-            // 
-            // BT_VISUALIZAR_CLIENTE_ARTICULOS
-            // 
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_compra;
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.FlatAppearance.BorderSize = 0;
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.Location = new System.Drawing.Point(2, 2);
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.Name = "BT_VISUALIZAR_CLIENTE_ARTICULOS";
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.Size = new System.Drawing.Size(27, 25);
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.TabIndex = 6;
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.UseVisualStyleBackColor = true;
-            this.BT_VISUALIZAR_CLIENTE_ARTICULOS.Visible = false;
-            // 
-            // panel78
-            // 
-            this.panel78.Controls.Add(this.button11);
-            this.panel78.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel78.Location = new System.Drawing.Point(77, 34);
-            this.panel78.Margin = new System.Windows.Forms.Padding(1);
-            this.panel78.Name = "panel78";
-            this.panel78.Padding = new System.Windows.Forms.Padding(2);
-            this.panel78.Size = new System.Drawing.Size(31, 29);
-            this.panel78.TabIndex = 6;
-            // 
-            // button11
-            // 
-            this.button11.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_doc_pend;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(2, 2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(27, 25);
-            this.button11.TabIndex = 7;
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Visible = false;
-            // 
-            // panel79
-            // 
-            this.panel79.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel79.Location = new System.Drawing.Point(110, 34);
-            this.panel79.Margin = new System.Windows.Forms.Padding(1);
-            this.panel79.Name = "panel79";
-            this.panel79.Padding = new System.Windows.Forms.Padding(2);
-            this.panel79.Size = new System.Drawing.Size(32, 29);
-            this.panel79.TabIndex = 7;
-            // 
             // P_DAT_DOC_REM
             // 
             this.P_DAT_DOC_REM.Controls.Add(this.groupBox5);
@@ -1618,7 +1387,7 @@
             this.P_DAT_DOC_REM.Margin = new System.Windows.Forms.Padding(1);
             this.P_DAT_DOC_REM.Name = "P_DAT_DOC_REM";
             this.P_DAT_DOC_REM.Padding = new System.Windows.Forms.Padding(2);
-            this.P_DAT_DOC_REM.Size = new System.Drawing.Size(263, 62);
+            this.P_DAT_DOC_REM.Size = new System.Drawing.Size(359, 62);
             this.P_DAT_DOC_REM.TabIndex = 1;
             // 
             // groupBox5
@@ -1629,7 +1398,7 @@
             this.groupBox5.Margin = new System.Windows.Forms.Padding(1);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(1);
-            this.groupBox5.Size = new System.Drawing.Size(259, 58);
+            this.groupBox5.Size = new System.Drawing.Size(355, 58);
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Remisión:";
@@ -1647,43 +1416,32 @@
             this.tableLayoutPanel31.Location = new System.Drawing.Point(1, 14);
             this.tableLayoutPanel31.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel31.Name = "tableLayoutPanel31";
-            this.tableLayoutPanel31.RowCount = 2;
+            this.tableLayoutPanel31.RowCount = 1;
             this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel31.Size = new System.Drawing.Size(257, 43);
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel31.Size = new System.Drawing.Size(353, 43);
             this.tableLayoutPanel31.TabIndex = 0;
             // 
             // panel80
             // 
-            this.panel80.Controls.Add(this.label20);
+            this.panel80.Controls.Add(this.CHB_ES_POR_REMISION);
             this.panel80.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel80.Location = new System.Drawing.Point(1, 1);
             this.panel80.Margin = new System.Windows.Forms.Padding(1);
             this.panel80.Name = "panel80";
             this.panel80.Padding = new System.Windows.Forms.Padding(2);
-            this.panel80.Size = new System.Drawing.Size(90, 33);
+            this.panel80.Size = new System.Drawing.Size(140, 41);
             this.panel80.TabIndex = 0;
-            // 
-            // label20
-            // 
-            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(2, 2);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(86, 29);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "Tipo Documento:";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel81
             // 
             this.panel81.Controls.Add(this.CB_REMISION);
             this.panel81.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel81.Location = new System.Drawing.Point(93, 1);
+            this.panel81.Location = new System.Drawing.Point(143, 1);
             this.panel81.Margin = new System.Windows.Forms.Padding(1);
             this.panel81.Name = "panel81";
             this.panel81.Padding = new System.Windows.Forms.Padding(2);
-            this.panel81.Size = new System.Drawing.Size(121, 33);
+            this.panel81.Size = new System.Drawing.Size(167, 41);
             this.panel81.TabIndex = 1;
             // 
             // CB_REMISION
@@ -1694,7 +1452,7 @@
             this.CB_REMISION.FormattingEnabled = true;
             this.CB_REMISION.Location = new System.Drawing.Point(2, 2);
             this.CB_REMISION.Name = "CB_REMISION";
-            this.CB_REMISION.Size = new System.Drawing.Size(117, 24);
+            this.CB_REMISION.Size = new System.Drawing.Size(163, 24);
             this.CB_REMISION.TabIndex = 0;
             this.CB_REMISION.SelectedIndexChanged += new System.EventHandler(this.CB_REMISION_SelectedIndexChanged);
             // 
@@ -1702,11 +1460,11 @@
             // 
             this.panel82.Controls.Add(this.BT_REMISION);
             this.panel82.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel82.Location = new System.Drawing.Point(216, 1);
+            this.panel82.Location = new System.Drawing.Point(312, 1);
             this.panel82.Margin = new System.Windows.Forms.Padding(1);
             this.panel82.Name = "panel82";
             this.panel82.Padding = new System.Windows.Forms.Padding(2);
-            this.panel82.Size = new System.Drawing.Size(40, 33);
+            this.panel82.Size = new System.Drawing.Size(40, 41);
             this.panel82.TabIndex = 2;
             // 
             // BT_REMISION
@@ -1718,7 +1476,7 @@
             this.BT_REMISION.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_REMISION.Location = new System.Drawing.Point(2, 2);
             this.BT_REMISION.Name = "BT_REMISION";
-            this.BT_REMISION.Size = new System.Drawing.Size(36, 29);
+            this.BT_REMISION.Size = new System.Drawing.Size(36, 37);
             this.BT_REMISION.TabIndex = 6;
             this.BT_REMISION.UseVisualStyleBackColor = true;
             this.BT_REMISION.Click += new System.EventHandler(this.BT_REMISION_Click);
@@ -2854,6 +2612,19 @@
             this.BT_SALIDA.UseVisualStyleBackColor = true;
             this.BT_SALIDA.Click += new System.EventHandler(this.BT_SALIDA_Click);
             // 
+            // CHB_ES_POR_REMISION
+            // 
+            this.CHB_ES_POR_REMISION.AutoSize = true;
+            this.CHB_ES_POR_REMISION.Dock = System.Windows.Forms.DockStyle.Right;
+            this.CHB_ES_POR_REMISION.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHB_ES_POR_REMISION.Location = new System.Drawing.Point(15, 2);
+            this.CHB_ES_POR_REMISION.Name = "CHB_ES_POR_REMISION";
+            this.CHB_ES_POR_REMISION.Size = new System.Drawing.Size(123, 37);
+            this.CHB_ES_POR_REMISION.TabIndex = 0;
+            this.CHB_ES_POR_REMISION.Text = "Es Por Remision \r\nTipo Documento:";
+            this.CHB_ES_POR_REMISION.UseVisualStyleBackColor = true;
+            this.CHB_ES_POR_REMISION.CheckedChanged += new System.EventHandler(this.CHB_ES_POR_REMISION_CheckedChanged);
+            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2919,18 +2690,11 @@
             this.panel61.ResumeLayout(false);
             this.P_DATOS_DOCUMENTO_BOTONES_REMISION.ResumeLayout(false);
             this.tableLayoutPanel29.ResumeLayout(false);
-            this.P_DAT_DOC_BOT.ResumeLayout(false);
-            this.tableLayoutPanel30.ResumeLayout(false);
-            this.panel72.ResumeLayout(false);
-            this.panel73.ResumeLayout(false);
-            this.panel74.ResumeLayout(false);
-            this.panel76.ResumeLayout(false);
-            this.panel77.ResumeLayout(false);
-            this.panel78.ResumeLayout(false);
             this.P_DAT_DOC_REM.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.tableLayoutPanel31.ResumeLayout(false);
             this.panel80.ResumeLayout(false);
+            this.panel80.PerformLayout();
             this.panel81.ResumeLayout(false);
             this.panel82.ResumeLayout(false);
             this.panel83.ResumeLayout(false);
@@ -3165,27 +2929,10 @@
         private System.Windows.Forms.Panel panel71;
         private System.Windows.Forms.Panel P_DATOS_DOCUMENTO_BOTONES_REMISION;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
-        private System.Windows.Forms.Panel P_DAT_DOC_BOT;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel30;
-        private System.Windows.Forms.Panel panel72;
-        private System.Windows.Forms.Button BT_VISUALIZAR_CLIENTE;
-        private System.Windows.Forms.Panel panel73;
-        private System.Windows.Forms.Button BT_DATOS_DOCUMENTO_EDITAR;
-        private System.Windows.Forms.Panel panel74;
-        private System.Windows.Forms.Button BT_DATOS_DOCUMENTO_LIMPIAR;
-        private System.Windows.Forms.Panel panel75;
-        private System.Windows.Forms.Panel panel76;
-        private System.Windows.Forms.Button BT_VISUALIZAR_CLIENTE_DOC;
-        private System.Windows.Forms.Panel panel77;
-        private System.Windows.Forms.Button BT_VISUALIZAR_CLIENTE_ARTICULOS;
-        private System.Windows.Forms.Panel panel78;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Panel panel79;
         private System.Windows.Forms.Panel P_DAT_DOC_REM;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel31;
         private System.Windows.Forms.Panel panel80;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Panel panel81;
         private System.Windows.Forms.ComboBox CB_REMISION;
         private System.Windows.Forms.Panel panel82;
@@ -3200,5 +2947,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label L_DATOS_DOC_SOLICITADO_POR;
         private System.Windows.Forms.Label L_DATOS_DOC_MODULO_CARGAR;
+        private System.Windows.Forms.CheckBox CHB_ES_POR_REMISION;
     }
 }

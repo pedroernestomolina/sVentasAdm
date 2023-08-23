@@ -34,6 +34,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Remision
             _docRemision = new data();
             _ctrl = new LibUtilitis.CtrlCB.ImpCB();
             _observadores = new List<IObservador>();
+            _esPorRemisionLaCargaDocumento = true;
         }
 
 
@@ -155,11 +156,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Remision
             try
             {
                 var r01 = Sistema.MyData.TransporteDocumento_EntidadPresupuesto_GetById(idDoc);
-                _docRemision.setId(r01.Entidad.encabezado.idDoc);
-                _docRemision.setNombre(r01.Entidad.encabezado.docNombre);
-                _docRemision.setNumero(r01.Entidad.encabezado.docNumero);
-                _docRemision.setFecha(r01.Entidad.encabezado.docFechaEmision);
-                _docRemision.setTipo(r01.Entidad.encabezado.docCodigoTipo);
+                if (_esPorRemisionLaCargaDocumento)
+                {
+                    _docRemision.setId(r01.Entidad.encabezado.idDoc);
+                    _docRemision.setNombre(r01.Entidad.encabezado.docNombre);
+                    _docRemision.setNumero(r01.Entidad.encabezado.docNumero);
+                    _docRemision.setFecha(r01.Entidad.encabezado.docFechaEmision);
+                    _docRemision.setTipo(r01.Entidad.encabezado.docCodigoTipo);
+                }
                 _remisionBusquedaIsOk = true;
                 foreach (var obs in _observadores)
                 {
@@ -176,6 +180,12 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Remision
         public void AgregarObservador(IObservador obs) 
         {
             _observadores.Add(obs);
+        }
+
+        private bool _esPorRemisionLaCargaDocumento;
+        public void setEsPorRemisionLaCargaDocumento(bool esPorRemision)
+        {
+            _esPorRemisionLaCargaDocumento = esPorRemision;
         }
     }
 }

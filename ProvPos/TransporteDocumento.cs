@@ -104,7 +104,11 @@ namespace ProvPos
                                 unidades_desc as unidadesDesc,
                                 servicio_id as servicioId,
                                 servicio_codigo as servicioCodigo,
-                                servicio_detalle as servicioDetalle
+                                servicio_detalle as servicioDetalle,
+                                turno_estatus as turnoEstatus,
+                                turno_id as turnoId,
+                                turno_desc as turnoDesc,
+                                turno_cnt_dias as turnoCntDias
                             FROM ventas_transp_item where id_venta=@idDoc";
                     var xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
                     var _det = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Presupuesto.FichaDetalle>(_sql, xp1).ToList();

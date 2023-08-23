@@ -24,6 +24,10 @@ namespace DtoTransporte.Documento.Entidad.Presupuesto
         public int servicioId { get; set; }
         public string servicioCodigo { get; set; }
         public string servicioDetalle { get; set; }
+        public string turnoEstatus { get; set; }
+        public string turnoId { get; set; }
+        public string turnoDesc { get; set; }
+        public int turnoCntDias { get; set; }
         public List<FichaFechaServ> fechaServ { get; set; }
         public List<FichaAliado> aliados { get; set; }
         public FichaDetalle()
@@ -43,6 +47,10 @@ namespace DtoTransporte.Documento.Entidad.Presupuesto
             servicioId = -1;
             servicioCodigo = "";
             servicioDetalle = "";
+            turnoEstatus = "";
+            turnoId = "";
+            turnoDesc = "";
+            turnoCntDias = 0;
             fechaServ = new List<FichaFechaServ>();
             aliados = new List<FichaAliado>();
         }

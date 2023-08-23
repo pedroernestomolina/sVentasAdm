@@ -29,6 +29,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
         bool RemisionIsOK { get; }
         void BuscarRemision();
+        bool GetEsPorRemisionLaCargaDocumento { get; }
+        void setEsPorRemisionLaCargaDocumento();
         void IniciarEnLimpio();
 
         int CntDocPendiente { get;  }

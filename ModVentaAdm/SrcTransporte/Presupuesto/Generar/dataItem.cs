@@ -128,31 +128,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 Helpers.Msg.Alerta("NO HAY ITEMS DEFINIDOS");
                 return false;
             }
-            //var _cntAliado = _lst.Where(w => w.Item.AliadoIsOk != true).Count();
-            //if (_cntAliado > 0)
-            //{
-            //    Helpers.Msg.Alerta("HAY ITEMS PENDIENTES POR DEFINIR EL ALIADO");
-            //    return false;
-            //}
             var _cntImporte = _lst.Where(w => w.ImporteItemMostrar == 0m).Count();
             if (_cntImporte > 0)
             {
                 Helpers.Msg.Alerta("HAY ITEMS CON IMPORTES INCORRECTOS (MONTO EN CERO)");
                 return false;
             }
-            //if (_lst.Where(w => w.Item.Get_DescripcionFull.Trim() == "").Count() > 0)
-            //{
-            //    Helpers.Msg.Alerta("HAY ITEMS CON CAMPO [ MAS INFORMACION ] QUE NO PUEDEN ESTAR VACIO");
-            //    return false;
-            //}
-            //if (_lst.Where(w => w.Item.Get_UnidadesDetall.Trim() == "").Count() > 0)
-            //{
-            //    Helpers.Msg.Alerta("HAY ITEMS CON CAMPO [ UNIDADES DETALLE ] QUE NO PUEDEN ESTAR VACIO");
-            //    return false;
-            //}
             return true;
         }
-
 
 
         //PARA LOS TOTALES TODO EN BASE A DIVISA
@@ -176,86 +159,20 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
         public void NotificarRemisionDocPresupuesto(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha)
         {
-            try
-            {
-                var r01 = Sistema.MyData.Sistema_TasaFiscal_GetLista();
-                if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError) 
-                {
-                    throw new Exception(r01.Mensaje);
-                }
-
-                foreach (var it in ficha.items)
-                {
-                    var _alicuota = new alicuota()
-                    {
-                        codigo = "",
-                        desc = it.alicuotaDesc,
-                        id = it.alicuotaId,
-                        tasa = it.alicuotaTasa,
-                    };
-                    var _tipoServicio = new OOB.Transporte.ServPrest.Entidad.Ficha()
-                    {
-                        detalle = "",
-                        descripcion = it.servicioDesc,
-                        codigo = it.servicioCodigo,
-                        id = it.servicioId,
-                    };
-                    var _item = new Item.Agregar.Agregar();
-                    _item.Item.setSolicitadoPor(ficha.encabezado.docSolicitadoPor);
-                    _item.Item.setModuloaCargar(ficha.encabezado.docModuloCargar);
-                    _item.Item.setCntDias(it.cntDias);
-                    _item.Item.setCntUnidades(it.cntUnidades);
-                    _item.Item.setPrecioDivisa(it.precioNetoDivisa);
-                    _item.Item.setDscto(it.dscto);
-                    _item.Item.setAlicuota(_alicuota);
-                    _item.Item.setUnidadesDetalle(it.unidadesDesc);
-                    _item.Item.setTipoServicio(_tipoServicio);
-                    _item.Item.setDescripcion(it.servicioDetalle);
-
-                    foreach (var xr in it.aliados)
-                    {
-                        var _aliado = new OOB.Transporte.Aliado.Entidad.Ficha()
-                        {
-                            id = xr.idAliado ,
-                            ciRif = xr.ciRif ,
-                            codigo = xr.codigo,
-                            nombreRazonSocial = xr.descripcion,
-                        };
-                        _item.Item.setAliado(_aliado);
-                        _item.Item.setPrecioAliadoPautado(xr.precioUnitDivisa);
-                        _item.Item.setCntAliadoPautado(xr.cntDias);
-                        _item.Item.GuardarAliado();
-                    }
-                    _item.Item.setAliado(null);
-                    _item.Item.setPrecioAliadoPautado(0m);
-                    _item.Item.setCntAliadoPautado(0);
-                    _item.Item.setDescripcionFull(it.notas);
-                    _item.Item.setTasaIva(it.alicuotaTasa);
-                    _item.setTasaFiscal(r01.ListaD);
-                    _item.AlicuotaSetFichaById(it.alicuotaId);
-                    foreach (var xr in it.fechaServ) 
-                    {
-                        var hora = DateTime.Parse(xr.hora);
-                        DateTime fechaYHora = xr.fecha.Date + hora.TimeOfDay;
-                        _item.Item.setFecha(xr.fecha);
-                        _item.Item.setHora(fechaYHora);
-                        _item.Item.AgregarFecha();
-                    }
-                    AgregarItem(_item);
-                }
-            }
-            catch (Exception e)
-            {
-                Helpers.Msg.Error(e.Message);
-            }
+            inyectarItems(ficha);
         }
 
         public void NotificarDocPresupuesto(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha)
         {
+            inyectarItems(ficha);
+        }
+
+        private void inyectarItems(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha) 
+        {
             try
             {
                 var r01 = Sistema.MyData.Sistema_TasaFiscal_GetLista();
-                if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError) 
+                if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
                 {
                     throw new Exception(r01.Mensaje);
                 }
@@ -292,8 +209,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     {
                         var _aliado = new OOB.Transporte.Aliado.Entidad.Ficha()
                         {
-                            id = xr.idAliado ,
-                            ciRif = xr.ciRif ,
+                            id = xr.idAliado,
+                            ciRif = xr.ciRif,
                             codigo = xr.codigo,
                             nombreRazonSocial = xr.descripcion,
                         };
@@ -309,7 +226,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     _item.Item.setTasaIva(it.alicuotaTasa);
                     _item.setTasaFiscal(r01.ListaD);
                     _item.AlicuotaSetFichaById(it.alicuotaId);
-                    foreach (var xr in it.fechaServ) 
+
+                    foreach (var xr in it.fechaServ)
                     {
                         var hora = DateTime.Parse(xr.hora);
                         DateTime fechaYHora = xr.fecha.Date + hora.TimeOfDay;
@@ -317,6 +235,25 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                         _item.Item.setHora(fechaYHora);
                         _item.Item.AgregarFecha();
                     }
+
+                    var _tipoTurno = new Item.tipoTurno()
+                    {
+                        codigo = "",
+                        desc = it.turnoDesc,
+                        id = it.turnoId,
+                    };
+                    _item.Item.setTurnoInicializaEstatus(it.turnoEstatus == "1");
+                    _item.Item.setTurnoCntDias(it.turnoCntDias);
+                    _item.Item.setTipoTurno(it.turnoEstatus == "1" ? _tipoTurno : null);
+                    if (it.turnoEstatus == "1")
+                    {
+                        _item.Item.setCntDias(_item.Item.Get_CntDias * it.turnoCntDias);
+                        foreach (var aliad in _item.Item.Get_ListaAliadosLLamados)
+                        {
+                            aliad.setCnt(it.turnoCntDias);
+                        }
+                    }
+
                     AgregarItem(_item);
                 }
             }

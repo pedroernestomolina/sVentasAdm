@@ -14,5 +14,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item.AliadosLlamado
         public OOB.Transporte.Aliado.Entidad.Ficha aliado { get; set; }
         public string AliadoLlamado { get { return aliado.nombreRazonSocial; } }
         public decimal Importe { get { return cnt * precio; } }
+        public void setCnt(int cant)
+        {
+            cnt = cant;
+        }
     }
 }

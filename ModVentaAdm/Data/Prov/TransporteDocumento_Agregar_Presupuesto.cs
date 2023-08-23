@@ -70,9 +70,9 @@ namespace ModVentaAdm.Data.Prov
                 nota = ficha.nota,
                 docModuloCargar = ficha.docModuloCargar,
                 docSolicitadoPor = ficha.docSolicitadoPor,
-                estatusPendiente=ficha.estatusPendiente,
-                fechaEmision= ficha.fechaEmision,
-                fechaVencimiento=ficha.fechaVencimiento,
+                estatusPendiente = ficha.estatusPendiente,
+                fechaEmision = ficha.fechaEmision,
+                fechaVencimiento = ficha.fechaVencimiento,
                 items = ficha.items.Select(s =>
                 {
                     var nr = new DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle()
@@ -94,6 +94,10 @@ namespace ModVentaAdm.Data.Prov
                         servicioId = s.servicioId,
                         servicioCodigo = s.servicioCodigo,
                         servicioDetalle = s.servicioDetalle,
+                        turnoEstatus = s.turnoEstatus,
+                        turnoId = s.turnoId,
+                        turnoDesc = s.turnoDesc,
+                        turnoCntDias = s.turnoCntDias,
                         fechas = s.fechas.Select(ss =>
                         {
                             var nr2 = new DtoTransporte.Documento.Agregar.Presupuesto.Fecha()

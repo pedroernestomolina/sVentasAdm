@@ -21,12 +21,32 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item.Editar
                 var r = Helpers.Msg.ProcesarGuardar();
                 if (r)
                 {
+                    if (Item.Get_TurnoIsActivo)
+                    {
+                        Item.setCntDias(Item.Get_CntDias * Item.Get_TurnoCntDias);
+                        foreach (var aliad in Item.Get_ListaAliadosLLamados)
+                        {
+                            aliad.setCnt(Item.Get_TurnoCntDias);
+                        }
+                    }
                     _procesarIsOK = true;
                 }
             }
         }
         public void setItemEditar(data data)
         {
+            if (data.Get_TurnoIsActivo)
+            {
+                var _cntDiasTurno = data.Get_TurnoCntDias;
+                if (_cntDiasTurno > 0)
+                {
+                    data.setCntDias(data.Get_CntDias / _cntDiasTurno);
+                    foreach (var aliad in data.Get_ListaAliadosLLamados)
+                    {
+                        aliad.setCnt(aliad.cnt / _cntDiasTurno);
+                    }
+                }
+            }
             Item.setDescripcion(data.Get_Descripcion);
             Item.setSolicitadoPor(data.Get_SolicitadoPor);
             Item.setModuloaCargar(data.Get_ModuloCargar);
@@ -48,7 +68,11 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item.Editar
             Item.setDescripcionFull(data.Get_DescripcionFull);
             Item.setUnidadesDetalle(data.Get_UnidadesDetall);
             Item.setTipoServicio(data.Get_TipoServicio);
-
+            //
+            Item.setTurnoInicializaEstatus(data.Get_TurnoIsActivo);
+            Item.setTurnoCntDias(data.Get_TurnoCntDias);
+            Item.setTipoTurno(data.Get_TipoTurno);
+            //
             if (_tasasFiscal != null)
             {
                 var it = _tasasFiscal.FirstOrDefault(f=>f.id==data.Get_Alicuota_ID);

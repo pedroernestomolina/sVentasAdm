@@ -192,6 +192,27 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panel69 = new System.Windows.Forms.Panel();
             this.TB_UNIDADES_DETALL = new System.Windows.Forms.TextBox();
+            this.TAB_TURNO = new System.Windows.Forms.TabPage();
+            this.panel73 = new System.Windows.Forms.Panel();
+            this.gb_turno = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel33 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel74 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel34 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel75 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel76 = new System.Windows.Forms.Panel();
+            this.TB_CNT_DIAS_TURNO = new LibControles.NumeroEntero();
+            this.panel114 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel48 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel115 = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.panel116 = new System.Windows.Forms.Panel();
+            this.CB_TURNO = new System.Windows.Forms.ComboBox();
+            this.panel77 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel35 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel78 = new System.Windows.Forms.Panel();
+            this.CHK_TURNO = new System.Windows.Forms.CheckBox();
+            this.panel79 = new System.Windows.Forms.Panel();
             this.p_LATERAL = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -320,6 +341,21 @@
             this.tableLayoutPanel31.SuspendLayout();
             this.panel68.SuspendLayout();
             this.panel69.SuspendLayout();
+            this.TAB_TURNO.SuspendLayout();
+            this.panel73.SuspendLayout();
+            this.gb_turno.SuspendLayout();
+            this.tableLayoutPanel33.SuspendLayout();
+            this.panel74.SuspendLayout();
+            this.tableLayoutPanel34.SuspendLayout();
+            this.panel75.SuspendLayout();
+            this.panel76.SuspendLayout();
+            this.panel114.SuspendLayout();
+            this.tableLayoutPanel48.SuspendLayout();
+            this.panel115.SuspendLayout();
+            this.panel116.SuspendLayout();
+            this.panel77.SuspendLayout();
+            this.tableLayoutPanel35.SuspendLayout();
+            this.panel78.SuspendLayout();
             this.p_LATERAL.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -447,6 +483,7 @@
             this.TB_OPCIONES.Controls.Add(this.TAB_ALIADO);
             this.TB_OPCIONES.Controls.Add(this.TAB_DESCRIPCION);
             this.TB_OPCIONES.Controls.Add(this.TAB_UNIDADES);
+            this.TB_OPCIONES.Controls.Add(this.TAB_TURNO);
             this.TB_OPCIONES.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_OPCIONES.Location = new System.Drawing.Point(0, 0);
             this.TB_OPCIONES.Name = "TB_OPCIONES";
@@ -2328,6 +2365,265 @@
             this.TB_UNIDADES_DETALL.TabIndex = 0;
             this.TB_UNIDADES_DETALL.Leave += new System.EventHandler(this.TB_UNIDADES_DETALL_Leave);
             // 
+            // TAB_TURNO
+            // 
+            this.TAB_TURNO.Controls.Add(this.panel73);
+            this.TAB_TURNO.Location = new System.Drawing.Point(4, 22);
+            this.TAB_TURNO.Name = "TAB_TURNO";
+            this.TAB_TURNO.Size = new System.Drawing.Size(532, 531);
+            this.TAB_TURNO.TabIndex = 4;
+            this.TAB_TURNO.Text = "Por Turno";
+            this.TAB_TURNO.UseVisualStyleBackColor = true;
+            // 
+            // panel73
+            // 
+            this.panel73.Controls.Add(this.gb_turno);
+            this.panel73.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel73.Location = new System.Drawing.Point(0, 0);
+            this.panel73.Margin = new System.Windows.Forms.Padding(1);
+            this.panel73.Name = "panel73";
+            this.panel73.Size = new System.Drawing.Size(532, 531);
+            this.panel73.TabIndex = 0;
+            // 
+            // gb_turno
+            // 
+            this.gb_turno.Controls.Add(this.tableLayoutPanel33);
+            this.gb_turno.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gb_turno.Location = new System.Drawing.Point(0, 0);
+            this.gb_turno.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.gb_turno.Name = "gb_turno";
+            this.gb_turno.Padding = new System.Windows.Forms.Padding(1);
+            this.gb_turno.Size = new System.Drawing.Size(532, 531);
+            this.gb_turno.TabIndex = 4;
+            this.gb_turno.TabStop = false;
+            // 
+            // tableLayoutPanel33
+            // 
+            this.tableLayoutPanel33.ColumnCount = 1;
+            this.tableLayoutPanel33.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel33.Controls.Add(this.panel74, 0, 3);
+            this.tableLayoutPanel33.Controls.Add(this.panel114, 0, 2);
+            this.tableLayoutPanel33.Controls.Add(this.panel77, 0, 1);
+            this.tableLayoutPanel33.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel33.Location = new System.Drawing.Point(1, 14);
+            this.tableLayoutPanel33.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel33.Name = "tableLayoutPanel33";
+            this.tableLayoutPanel33.RowCount = 5;
+            this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel33.Size = new System.Drawing.Size(530, 516);
+            this.tableLayoutPanel33.TabIndex = 0;
+            // 
+            // panel74
+            // 
+            this.panel74.Controls.Add(this.tableLayoutPanel34);
+            this.panel74.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel74.Location = new System.Drawing.Point(1, 77);
+            this.panel74.Margin = new System.Windows.Forms.Padding(1);
+            this.panel74.Name = "panel74";
+            this.panel74.Size = new System.Drawing.Size(528, 32);
+            this.panel74.TabIndex = 4;
+            // 
+            // tableLayoutPanel34
+            // 
+            this.tableLayoutPanel34.ColumnCount = 2;
+            this.tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel34.Controls.Add(this.panel75, 0, 0);
+            this.tableLayoutPanel34.Controls.Add(this.panel76, 1, 0);
+            this.tableLayoutPanel34.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel34.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel34.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel34.Name = "tableLayoutPanel34";
+            this.tableLayoutPanel34.RowCount = 1;
+            this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel34.Size = new System.Drawing.Size(528, 32);
+            this.tableLayoutPanel34.TabIndex = 0;
+            // 
+            // panel75
+            // 
+            this.panel75.Controls.Add(this.label20);
+            this.panel75.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel75.Location = new System.Drawing.Point(1, 1);
+            this.panel75.Margin = new System.Windows.Forms.Padding(1);
+            this.panel75.Name = "panel75";
+            this.panel75.Padding = new System.Windows.Forms.Padding(2);
+            this.panel75.Size = new System.Drawing.Size(156, 30);
+            this.panel75.TabIndex = 0;
+            // 
+            // label20
+            // 
+            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(2, 2);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(152, 26);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Cantidad / Días:";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel76
+            // 
+            this.panel76.Controls.Add(this.TB_CNT_DIAS_TURNO);
+            this.panel76.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel76.Location = new System.Drawing.Point(159, 1);
+            this.panel76.Margin = new System.Windows.Forms.Padding(1);
+            this.panel76.Name = "panel76";
+            this.panel76.Size = new System.Drawing.Size(368, 30);
+            this.panel76.TabIndex = 1;
+            // 
+            // TB_CNT_DIAS_TURNO
+            // 
+            this.TB_CNT_DIAS_TURNO.BackColor = System.Drawing.Color.Yellow;
+            this.TB_CNT_DIAS_TURNO.Enabled = false;
+            this.TB_CNT_DIAS_TURNO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_CNT_DIAS_TURNO.Location = new System.Drawing.Point(3, 2);
+            this.TB_CNT_DIAS_TURNO.MaxLength = 2;
+            this.TB_CNT_DIAS_TURNO.Name = "TB_CNT_DIAS_TURNO";
+            this.TB_CNT_DIAS_TURNO.Size = new System.Drawing.Size(54, 26);
+            this.TB_CNT_DIAS_TURNO.TabIndex = 0;
+            this.TB_CNT_DIAS_TURNO.Text = "0";
+            this.TB_CNT_DIAS_TURNO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_CNT_DIAS_TURNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KeyDown);
+            this.TB_CNT_DIAS_TURNO.Leave += new System.EventHandler(this.TB_CNT_DIAS_TURNO_Leave);
+            // 
+            // panel114
+            // 
+            this.panel114.Controls.Add(this.tableLayoutPanel48);
+            this.panel114.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel114.Location = new System.Drawing.Point(1, 45);
+            this.panel114.Margin = new System.Windows.Forms.Padding(1);
+            this.panel114.Name = "panel114";
+            this.panel114.Size = new System.Drawing.Size(528, 30);
+            this.panel114.TabIndex = 10;
+            // 
+            // tableLayoutPanel48
+            // 
+            this.tableLayoutPanel48.ColumnCount = 2;
+            this.tableLayoutPanel48.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel48.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel48.Controls.Add(this.panel115, 0, 0);
+            this.tableLayoutPanel48.Controls.Add(this.panel116, 1, 0);
+            this.tableLayoutPanel48.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel48.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel48.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel48.Name = "tableLayoutPanel48";
+            this.tableLayoutPanel48.RowCount = 1;
+            this.tableLayoutPanel48.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel48.Size = new System.Drawing.Size(528, 30);
+            this.tableLayoutPanel48.TabIndex = 4;
+            // 
+            // panel115
+            // 
+            this.panel115.Controls.Add(this.label33);
+            this.panel115.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel115.Location = new System.Drawing.Point(1, 1);
+            this.panel115.Margin = new System.Windows.Forms.Padding(1);
+            this.panel115.Name = "panel115";
+            this.panel115.Padding = new System.Windows.Forms.Padding(2);
+            this.panel115.Size = new System.Drawing.Size(156, 28);
+            this.panel115.TabIndex = 0;
+            // 
+            // label33
+            // 
+            this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(2, 2);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(152, 24);
+            this.label33.TabIndex = 2;
+            this.label33.Text = "Turno:";
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel116
+            // 
+            this.panel116.Controls.Add(this.CB_TURNO);
+            this.panel116.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel116.Location = new System.Drawing.Point(159, 1);
+            this.panel116.Margin = new System.Windows.Forms.Padding(1);
+            this.panel116.Name = "panel116";
+            this.panel116.Padding = new System.Windows.Forms.Padding(2);
+            this.panel116.Size = new System.Drawing.Size(368, 28);
+            this.panel116.TabIndex = 1;
+            // 
+            // CB_TURNO
+            // 
+            this.CB_TURNO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CB_TURNO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_TURNO.Enabled = false;
+            this.CB_TURNO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_TURNO.FormattingEnabled = true;
+            this.CB_TURNO.Location = new System.Drawing.Point(2, 2);
+            this.CB_TURNO.Name = "CB_TURNO";
+            this.CB_TURNO.Size = new System.Drawing.Size(364, 24);
+            this.CB_TURNO.TabIndex = 0;
+            this.CB_TURNO.SelectedIndexChanged += new System.EventHandler(this.CB_TURNO_SelectedIndexChanged);
+            this.CB_TURNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KeyDown);
+            // 
+            // panel77
+            // 
+            this.panel77.Controls.Add(this.tableLayoutPanel35);
+            this.panel77.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel77.Location = new System.Drawing.Point(1, 11);
+            this.panel77.Margin = new System.Windows.Forms.Padding(1);
+            this.panel77.Name = "panel77";
+            this.panel77.Size = new System.Drawing.Size(528, 32);
+            this.panel77.TabIndex = 11;
+            // 
+            // tableLayoutPanel35
+            // 
+            this.tableLayoutPanel35.ColumnCount = 2;
+            this.tableLayoutPanel35.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel35.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel35.Controls.Add(this.panel78, 0, 0);
+            this.tableLayoutPanel35.Controls.Add(this.panel79, 1, 0);
+            this.tableLayoutPanel35.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel35.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel35.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel35.Name = "tableLayoutPanel35";
+            this.tableLayoutPanel35.RowCount = 1;
+            this.tableLayoutPanel35.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel35.Size = new System.Drawing.Size(528, 32);
+            this.tableLayoutPanel35.TabIndex = 1;
+            // 
+            // panel78
+            // 
+            this.panel78.Controls.Add(this.CHK_TURNO);
+            this.panel78.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel78.Location = new System.Drawing.Point(1, 1);
+            this.panel78.Margin = new System.Windows.Forms.Padding(1);
+            this.panel78.Name = "panel78";
+            this.panel78.Padding = new System.Windows.Forms.Padding(2);
+            this.panel78.Size = new System.Drawing.Size(156, 30);
+            this.panel78.TabIndex = 0;
+            // 
+            // CHK_TURNO
+            // 
+            this.CHK_TURNO.AutoSize = true;
+            this.CHK_TURNO.Dock = System.Windows.Forms.DockStyle.Right;
+            this.CHK_TURNO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHK_TURNO.Location = new System.Drawing.Point(71, 2);
+            this.CHK_TURNO.Name = "CHK_TURNO";
+            this.CHK_TURNO.Size = new System.Drawing.Size(83, 26);
+            this.CHK_TURNO.TabIndex = 1;
+            this.CHK_TURNO.Text = "Activar";
+            this.CHK_TURNO.UseVisualStyleBackColor = true;
+            this.CHK_TURNO.CheckedChanged += new System.EventHandler(this.CHK_TURNO_CheckedChanged);
+            this.CHK_TURNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KeyDown);
+            // 
+            // panel79
+            // 
+            this.panel79.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel79.Location = new System.Drawing.Point(159, 1);
+            this.panel79.Margin = new System.Windows.Forms.Padding(1);
+            this.panel79.Name = "panel79";
+            this.panel79.Padding = new System.Windows.Forms.Padding(2);
+            this.panel79.Size = new System.Drawing.Size(368, 30);
+            this.panel79.TabIndex = 1;
+            // 
             // p_LATERAL
             // 
             this.p_LATERAL.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -2591,6 +2887,23 @@
             this.panel68.ResumeLayout(false);
             this.panel69.ResumeLayout(false);
             this.panel69.PerformLayout();
+            this.TAB_TURNO.ResumeLayout(false);
+            this.panel73.ResumeLayout(false);
+            this.gb_turno.ResumeLayout(false);
+            this.tableLayoutPanel33.ResumeLayout(false);
+            this.panel74.ResumeLayout(false);
+            this.tableLayoutPanel34.ResumeLayout(false);
+            this.panel75.ResumeLayout(false);
+            this.panel76.ResumeLayout(false);
+            this.panel76.PerformLayout();
+            this.panel114.ResumeLayout(false);
+            this.tableLayoutPanel48.ResumeLayout(false);
+            this.panel115.ResumeLayout(false);
+            this.panel116.ResumeLayout(false);
+            this.panel77.ResumeLayout(false);
+            this.tableLayoutPanel35.ResumeLayout(false);
+            this.panel78.ResumeLayout(false);
+            this.panel78.PerformLayout();
             this.p_LATERAL.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -2774,5 +3087,26 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel72;
         private System.Windows.Forms.ComboBox CB_TIPO_SERV;
+        private System.Windows.Forms.TabPage TAB_TURNO;
+        private System.Windows.Forms.Panel panel73;
+        private System.Windows.Forms.GroupBox gb_turno;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel33;
+        private System.Windows.Forms.Panel panel114;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel48;
+        private System.Windows.Forms.Panel panel115;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Panel panel116;
+        private System.Windows.Forms.ComboBox CB_TURNO;
+        private System.Windows.Forms.Panel panel74;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel34;
+        private System.Windows.Forms.Panel panel75;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Panel panel76;
+        private LibControles.NumeroEntero TB_CNT_DIAS_TURNO;
+        private System.Windows.Forms.Panel panel77;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel35;
+        private System.Windows.Forms.Panel panel78;
+        private System.Windows.Forms.Panel panel79;
+        private System.Windows.Forms.CheckBox CHK_TURNO;
     }
 }

@@ -120,6 +120,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             L_TIPO_DOCUMENTO.Text = "PRESUPUESTO";
             DGV.DataSource = _controlador.SourceItems_Get;
             CB_REMISION.DataSource = _controlador.Remision.SourceItems_Get;
+            CHB_ES_POR_REMISION.Checked = _controlador.GetEsPorRemisionLaCargaDocumento;
             //
             L_ITEMS_CNT.Text = "Items Registrados";
             L_CNT_ITEM.Text =  _controlador.Ficha.Items.Cnt_Get.ToString("n0");
@@ -179,6 +180,11 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         }
 
 
+        private void CHB_ES_POR_REMISION_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializa) { return; }
+            _controlador.setEsPorRemisionLaCargaDocumento();
+        }
         private void CB_REMISION_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializa) { return; }
@@ -307,6 +313,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             L_DATOS_DOC_FECHA_VENCE.Text = _controlador.Ficha.DatosDoc_FechaVenc_Get;
             L_DATOS_DOC_SOLICITADO_POR.Text = _controlador.Ficha.DatosDoc_SolicitadoPor_Get;
             L_DATOS_DOC_MODULO_CARGAR.Text = _controlador.Ficha.DatosDoc_ModuloCargar_Get;
+            CHB_ES_POR_REMISION.Checked = _controlador.GetEsPorRemisionLaCargaDocumento;
         }
         private void ActualizarFichaRemision()
         {

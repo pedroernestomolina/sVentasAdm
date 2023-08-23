@@ -35,6 +35,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item.Agregar
                 var r= Helpers.Msg.ProcesarGuardar();
                 if (r)
                 {
+                    if (Item.Get_TurnoIsActivo)
+                    {
+                        Item.setCntDias(Item.Get_CntDias * Item.Get_TurnoCntDias);
+                        foreach (var aliad in Item.Get_ListaAliadosLLamados)
+                        {
+                            aliad.setCnt(Item.Get_TurnoCntDias);
+                        }
+                    }
                     _procesarIsOK = true;
                 }
             }

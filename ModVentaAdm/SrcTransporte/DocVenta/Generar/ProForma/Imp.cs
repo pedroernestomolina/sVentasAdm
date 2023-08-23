@@ -149,6 +149,17 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     if (s.Item.Get_ItemServicio!=null) 
                     {
                         _tipoItemProcedencia = "S";
+                        var _turnoEstatus="";
+                        var _turnoId="";
+                        var _turnoDesc="";
+                        var _turnoCntDias=0;
+                        if (s.Item.Get_ItemServicio.Item.Get_TurnoIsActivo)
+                        {
+                            _turnoEstatus="1";
+                            _turnoId=s.Item.Get_ItemServicio.Item.Get_TipoTurno.id;
+                            _turnoDesc=s.Item.Get_ItemServicio.Item.Get_TipoTurno.desc;
+                            _turnoCntDias=s.Item.Get_ItemServicio.Item.Get_TurnoCntDias ;
+                        }
                         _servdetalle = new OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle()
                         {
                             alicuotaDesc = s.Item.Get_ItemServicio.Item.Get_Alicuota.desc,
@@ -168,6 +179,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                             servicioDetalle = s.Item.Get_ItemServicio.Item.Get_Descripcion,
                             servicioId = s.Item.Get_ItemServicio.Item.Get_TipoServicio.id,
                             unidadesDesc = s.Item.Get_ItemServicio.Item.Get_UnidadesDetall,
+                            turnoEstatus = _turnoEstatus,
+                            turnoId = _turnoId,
+                            turnoDesc = _turnoDesc,
+                            turnoCntDias = _turnoCntDias,
                             fechas = s.Item.Get_ItemServicio.Item.Get_Fechas.Select(ss =>
                             {
                                 var nr2 = new OOB.Transporte.Documento.Agregar.Presupuesto.Fecha()

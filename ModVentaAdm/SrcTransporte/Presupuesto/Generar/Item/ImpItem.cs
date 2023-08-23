@@ -39,6 +39,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _aliado = new Aliado.ImpAliado();
             _alicuota = new LibUtilitis.CtrlCB.ImpCB();
             _tipoServ = new LibUtilitis.CtrlCB.ImpCB();
+            _tipoTurno = new LibUtilitis.CtrlCB.ImpCB();
             _tasasFiscal = null;
         }
 
@@ -51,6 +52,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             _aliado.Inicializa();
             _alicuota.Inicializa();
             _tipoServ.Inicializa();
+            _tipoTurno.Inicializa();
             _tasasFiscal = null;
         }
         Frm frm;
@@ -110,6 +112,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
                     return nr;
                 }).ToList();
                 _tipoServ.CargarData(lst.OrderBy(o => o.desc).ToList());
+                //
+                var _lstTurno = new List<tipoTurno>();
+                _lstTurno.Add(new tipoTurno() { id = "1", codigo = "", desc = "Turno 1" });
+                _lstTurno.Add(new tipoTurno() { id = "2", codigo = "", desc = "Turno 2" });
+                _lstTurno.Add(new tipoTurno() { id = "3", codigo = "", desc = "Turno 3" });
+                _lstTurno.Add(new tipoTurno() { id = "4", codigo = "", desc = "Turno Normal (Administrativo)" });
+                _tipoTurno.CargarData(_lstTurno);
                 return true;
             }
             catch (Exception e)
@@ -163,6 +172,15 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             {
                 Helpers.Msg.Alerta(e.Message);
             }
+        }
+
+        //TURNO
+        private LibUtilitis.CtrlCB.ICtrl _tipoTurno;
+        public LibUtilitis.CtrlCB.ICtrl TipoTurno { get { return _tipoTurno; } }
+        public void TipoTurnoSetFichaById(string id)
+        {
+            _tipoTurno.setFichaById(id);
+            _data.setTipoTurno(_tipoTurno.GetItem);
         }
     }
 }

@@ -28,5 +28,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         void setId(int id);
         void AlicuotaSetFichaById(string id);
         void TipoServSetFichaById(string id);
+
+        //
+        LibUtilitis.CtrlCB.ICtrl TipoTurno { get; }
+        void TipoTurnoSetFichaById(string id);
     }
 }

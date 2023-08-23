@@ -20,12 +20,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private int _cntPendiente;
         private List<IObservador> _observadores;
         private string _notasDelDoc;
+        private bool _esPorRemisionLaCargaDocumento;
 
 
         public int CntDocPendiente { get { return _cntPendiente; } }
         public BindingSource SourceItems_Get { get { return _dataGen.Items.Source_Get; } }
         public data Ficha { get { return _dataGen; } }
         public Remision.IRemision Remision { get { return _remision; } }
+        public bool GetEsPorRemisionLaCargaDocumento { get { return _esPorRemisionLaCargaDocumento; } }
 
 
         public ImpGenerar()
@@ -48,6 +50,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _observadores.Add(_datosDoc);
             _observadores.Add(_dataGen.Items);
             _notasDelDoc = "";
+            _esPorRemisionLaCargaDocumento = true;
         }
 
 
@@ -64,6 +67,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _dataGen.Inicializa();
             _tasasFiscal = null;
             _remision.Inicializa();
+            _esPorRemisionLaCargaDocumento = true;
         }
         Frm frm;
         public void Inicia()
@@ -146,7 +150,12 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             }
             _remision.setClienteBuscar(_dataGen.DatosDoc.Cliente);
             _remision.setHabilitarCargarDocRemision(_dataGen.Items.GetItems.Count == 0);
+            _remision.setEsPorRemisionLaCargaDocumento(_esPorRemisionLaCargaDocumento);
             _remision.Buscar();
+        }
+        public void setEsPorRemisionLaCargaDocumento()
+        {
+            _esPorRemisionLaCargaDocumento = !_esPorRemisionLaCargaDocumento;
         }
 
 
@@ -251,6 +260,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 _notasObservaciones = "";
                 _limpiarDocumentoIsOK = true;
                 setNotas(_notasDelDoc);
+                _esPorRemisionLaCargaDocumento = true;
             }
         }
 
@@ -420,6 +430,17 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     fechaVencimiento = _fechaVencimiento,
                     items = _dataGen.Items.GetItems.Select(s =>
                     {
+                        var _turnoEstatus = "";
+                        var _turnoId = "";
+                        var _turnoDesc = "";
+                        var _turnoCntDias = 0;
+                        if (s.Item.Get_TurnoIsActivo)
+                        {
+                            _turnoEstatus = "1";
+                            _turnoId = s.Item.Get_TipoTurno.id;
+                            _turnoDesc = s.Item.Get_TipoTurno.desc;
+                            _turnoCntDias = s.Item.Get_TurnoCntDias;
+                        }
                         var nr = new OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle()
                         {
                             alicuotaDesc = s.Item.Get_Alicuota.desc,
@@ -439,6 +460,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                             servicioId = s.Item.Get_TipoServicio.id,
                             servicioCodigo = s.Item.Get_TipoServicio.codigo,
                             servicioDetalle = s.Item.Get_Descripcion,
+                            turnoEstatus = _turnoEstatus,
+                            turnoId = _turnoId,
+                            turnoDesc = _turnoDesc,
+                            turnoCntDias = _turnoCntDias,
                             fechas = s.Item.Get_Fechas.Select(ss =>
                             {
                                 var nr2 = new OOB.Transporte.Documento.Agregar.Presupuesto.Fecha()
@@ -505,6 +530,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _limpiarDocumentoIsOK = false;
             _editarDocumentoIsOK = false;
             setNotas(_notasDelDoc);
+            _esPorRemisionLaCargaDocumento = true;
         }
 
 
@@ -665,6 +691,17 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                     fechaVencimiento = _fechaVencimiento,
                     items = _dataGen.Items.GetItems.Select(s =>
                     {
+                        var _turnoEstatus = "";
+                        var _turnoId = "";
+                        var _turnoDesc = "";
+                        var _turnoCntDias = 0;
+                        if (s.Item.Get_TurnoIsActivo)
+                        {
+                            _turnoEstatus = "1";
+                            _turnoId = s.Item.Get_TipoTurno.id;
+                            _turnoDesc = s.Item.Get_TipoTurno.desc;
+                            _turnoCntDias = s.Item.Get_TurnoCntDias;
+                        }
                         var nr = new OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle()
                         {
                             alicuotaDesc = s.Item.Get_Alicuota.desc,
@@ -684,6 +721,10 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                             servicioId = s.Item.Get_TipoServicio.id,
                             servicioCodigo = s.Item.Get_TipoServicio.codigo,
                             servicioDetalle = s.Item.Get_Descripcion,
+                            turnoEstatus = _turnoEstatus,
+                            turnoId = _turnoId,
+                            turnoDesc = _turnoDesc,
+                            turnoCntDias = _turnoCntDias,
                             fechas = s.Item.Get_Fechas.Select(ss =>
                             {
                                 var nr2 = new OOB.Transporte.Documento.Agregar.Presupuesto.Fecha()

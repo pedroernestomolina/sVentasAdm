@@ -100,10 +100,14 @@ namespace ModVentaAdm.Data.Prov
                         notas = s.notas,
                         precioNetoDivisa = s.precioNetoDivisa,
                         servicioDesc = s.servicioDesc,
-                        servicioCodigo=s.servicioCodigo,
-                        servicioDetalle=s.servicioDetalle,
-                        servicioId=s.servicioId,
-                        unidadesDesc=s.unidadesDesc,
+                        servicioCodigo = s.servicioCodigo,
+                        servicioDetalle = s.servicioDetalle,
+                        servicioId = s.servicioId,
+                        unidadesDesc = s.unidadesDesc,
+                        turnoEstatus = s.turnoEstatus,
+                        turnoId = s.turnoId,
+                        turnoDesc = s.turnoDesc,
+                        turnoCntDias = s.turnoCntDias,
                         fechaServ = s.fechaServ.Select(ss =>
                         {
                             var xr = new OOB.Transporte.Documento.Entidad.Presupuesto.FichaFechaServ()

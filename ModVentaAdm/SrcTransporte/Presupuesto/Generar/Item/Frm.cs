@@ -73,6 +73,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             CB_ALICUOTA.ValueMember = "id";
             CB_TIPO_SERV.DisplayMember = "desc";
             CB_TIPO_SERV.ValueMember = "id";
+            CB_TURNO.DisplayMember = "desc";
+            CB_TURNO.ValueMember = "id";
         }
         private bool _modoInicializar;
         private void Frm_Load(object sender, EventArgs e)
@@ -100,7 +102,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
             CB_TIPO_SERV.DataSource = _controlador.TipoServ.GetSource;
             CB_TIPO_SERV.SelectedValue = _controlador.Item.Get_TipoServ_ID;
             TB_UNIDADES_DETALL.Text = _controlador.Item.Get_UnidadesDetall;
-
+            //
+            TB_CNT_DIAS_TURNO.Text = _controlador.Item.Get_TurnoCntDias.ToString("n0");
+            CHK_TURNO.Checked = _controlador.Item.Get_TurnoIsActivo;
+            CB_TURNO.DataSource = _controlador.TipoTurno.GetSource;
+            CB_TURNO.SelectedValue = _controlador.Item.Get_TipoTurno_ID;
+            TB_CNT_DIAS_TURNO.Enabled = _controlador.Item.Get_TurnoIsActivo;
+            CB_TURNO.Enabled = _controlador.Item.Get_TurnoIsActivo;
+            //
             IrFoco_Detalle();
             _modoInicializar = false;
         }
@@ -194,6 +203,14 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         {
             _controlador.Item.setUnidadesDetalle(TB_UNIDADES_DETALL.Text);
         }
+        private void TB_CNT_DIAS_TURNO_Leave(object sender, EventArgs e)
+        {
+            var _cnt = int.Parse(TB_CNT_DIAS_TURNO.Text);
+            _controlador.Item.setTurnoCntDias(_cnt);
+            TB_CNT_DIAS_TURNO.Text = _controlador.Item.Get_TurnoCntDias.ToString("n0");
+        }
+
+
         private void CB_ALICUOTA_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) { return; }
@@ -212,6 +229,23 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
                 _controlador.TipoServSetFichaById(CB_TIPO_SERV.SelectedValue.ToString());
             }
             TB_DESC_BREVE.Text = _controlador.Item.Get_Descripcion;
+        }
+        private void CB_TURNO_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) { return; }
+            _controlador.TipoTurnoSetFichaById("");
+            if (CB_TURNO.SelectedIndex != -1)
+            {
+                _controlador.TipoTurnoSetFichaById(CB_TURNO.SelectedValue.ToString());
+            }
+        }
+        private void CHK_TURNO_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) { return; }
+            _controlador.Item.setTurnoIsActivo();
+            TB_CNT_DIAS_TURNO.Enabled = _controlador.Item.Get_TurnoIsActivo;
+            CB_TURNO.Enabled = _controlador.Item.Get_TurnoIsActivo;
+            ActualizarTurno();
         }
 
 
@@ -289,6 +323,11 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         private void ActualizaImporte()
         {
             L_IMPORTE.Text = _controlador.Item.Get_Importe.ToString("n2", _cult);
+        }
+        private void ActualizarTurno()
+        {
+            TB_CNT_DIAS_TURNO.Text = _controlador.Item.Get_TurnoCntDias.ToString("n0");
+            CB_TURNO.SelectedValue = _controlador.Item.Get_TipoTurno_ID;
         }
         private void IrFoco_Detalle()
         {
