@@ -181,6 +181,18 @@ namespace ModVentaAdm.Data.Prov
                     {
                         idAliado = ss.idAliado,
                         montoDivisa = ss.montoDivisa,
+                        servicios = ss.servicios.Select(svc => 
+                        {
+                            var xnr = new DtoTransporte.Documento.Agregar.Factura.Servicio()
+                            {
+                                codigo = svc.codigo,
+                                desc = svc.desc,
+                                detalle = svc.detalle,
+                                id = svc.id,
+                                importe = svc.importe,
+                            };
+                            return xnr;
+                        }).ToList(),
                     };
                     return nr;
                 }).ToList(),

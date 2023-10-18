@@ -1141,6 +1141,10 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             private global::System.Data.DataColumn columnitem;
             
+            private global::System.Data.DataColumn columnturnoDesc;
+            
+            private global::System.Data.DataColumn columnturnoCntDias;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PresupItemDataTable() {
@@ -1248,6 +1252,22 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn turnoDescColumn {
+                get {
+                    return this.columnturnoDesc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn turnoCntDiasColumn {
+                get {
+                    return this.columnturnoCntDias;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1283,7 +1303,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PresupItemRow AddPresupItemRow(string descripcion, string detalle, int cnt_dias, int cnt_und, decimal precio_unit, decimal importe, string desc_und, int cnt, int item) {
+            public PresupItemRow AddPresupItemRow(string descripcion, string detalle, int cnt_dias, int cnt_und, decimal precio_unit, decimal importe, string desc_und, int cnt, int item, string turnoDesc, int turnoCntDias) {
                 PresupItemRow rowPresupItemRow = ((PresupItemRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         descripcion,
@@ -1294,7 +1314,9 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                         importe,
                         desc_und,
                         cnt,
-                        item};
+                        item,
+                        turnoDesc,
+                        turnoCntDias};
                 rowPresupItemRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPresupItemRow);
                 return rowPresupItemRow;
@@ -1326,6 +1348,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 this.columndesc_und = base.Columns["desc_und"];
                 this.columncnt = base.Columns["cnt"];
                 this.columnitem = base.Columns["item"];
+                this.columnturnoDesc = base.Columns["turnoDesc"];
+                this.columnturnoCntDias = base.Columns["turnoCntDias"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1349,6 +1373,10 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 base.Columns.Add(this.columncnt);
                 this.columnitem = new global::System.Data.DataColumn("item", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnitem);
+                this.columnturnoDesc = new global::System.Data.DataColumn("turnoDesc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnturnoDesc);
+                this.columnturnoCntDias = new global::System.Data.DataColumn("turnoCntDias", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnturnoCntDias);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3185,6 +3213,38 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string turnoDesc {
+                get {
+                    try {
+                        return ((string)(this[this.tablePresupItem.turnoDescColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'turnoDesc\' in table \'PresupItem\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupItem.turnoDescColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int turnoCntDias {
+                get {
+                    try {
+                        return ((int)(this[this.tablePresupItem.turnoCntDiasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'turnoCntDias\' in table \'PresupItem\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupItem.turnoCntDiasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsdescripcionNull() {
                 return this.IsNull(this.tablePresupItem.descripcionColumn);
             }
@@ -3289,6 +3349,30 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetitemNull() {
                 this[this.tablePresupItem.itemColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsturnoDescNull() {
+                return this.IsNull(this.tablePresupItem.turnoDescColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetturnoDescNull() {
+                this[this.tablePresupItem.turnoDescColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsturnoCntDiasNull() {
+                return this.IsNull(this.tablePresupItem.turnoCntDiasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetturnoCntDiasNull() {
+                this[this.tablePresupItem.turnoCntDiasColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
 {
-
     public interface ITools: IGestion
     {
-
         decimal GetMontoPendientePorCobrar { get; }
         BindingSource CtasPendGetSource { get; }
         bool AbandonarIsOk { get; }
@@ -29,10 +27,11 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
 
         void ListadoCtasPend();
         void DocDetallesPend();
-
-
         void GestionPago();
 
-    }
 
+        //
+        void AgregarAnticipo();
+        void AdmDocAnticipos();
+    }
 }

@@ -89,6 +89,8 @@
     <Compile Include="Data\Infra\Transporte\IAliado.cs" />
     <Compile Include="Data\Infra\Transporte\ICnf.cs" />
     <Compile Include="Data\Infra\Transporte\IServicioPrest.cs" />
+    <Compile Include="Data\Infra\Transporte\ITransporteCaja.cs" />
+    <Compile Include="Data\Infra\Transporte\ITransporteClienteAnticipo.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteDocumento.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteReporte.cs" />
     <Compile Include="Data\Prov\Auditoria.cs" />
@@ -107,6 +109,8 @@
     <Compile Include="Data\Prov\Sistema.cs" />
     <Compile Include="Data\Prov\Sucursal.cs" />
     <Compile Include="Data\Prov\TransporteAliado.cs" />
+    <Compile Include="Data\Prov\TransporteCaja.cs" />
+    <Compile Include="Data\Prov\TransporteClienteAnticipo.cs" />
     <Compile Include="Data\Prov\TransporteCnf.cs" />
     <Compile Include="Data\Prov\TransporteDocumento.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Anular.cs" />
@@ -266,6 +270,11 @@
     <Compile Include="OOB\Transporte\Aliado\Entidad\Ficha.cs" />
     <Compile Include="OOB\Transporte\Aliado\Entidad\Telefono.cs" />
     <Compile Include="OOB\Transporte\Aliado\Tipos.cs" />
+    <Compile Include="OOB\Transporte\Caja\Lista\Ficha.cs" />
+    <Compile Include="OOB\Transporte\ClienteAnticipo\Agregar\Caja.cs" />
+    <Compile Include="OOB\Transporte\ClienteAnticipo\Agregar\CajaMov.cs" />
+    <Compile Include="OOB\Transporte\ClienteAnticipo\Agregar\Ficha.cs" />
+    <Compile Include="OOB\Transporte\ClienteAnticipo\Agregar\Movimiento.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFicha.cs" />
@@ -274,6 +283,7 @@
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaAliadoResumen.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaDocRef.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaItem.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Factura\Servicio.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Aliado.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Fecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Ficha.cs" />
@@ -297,6 +307,7 @@
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\GetAliados\Presupuesto\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\GetServicios\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Lista\baseLista.cs" />
     <Compile Include="OOB\Transporte\Documento\Lista\Pendiente\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Ficha.cs" />
@@ -378,6 +389,20 @@
     </Compile>
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\IAgregarEditar.cs" />
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\ImpAgregarEditar.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Handler\HndCaja.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Handler\data.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Handler\dataCaja.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Handler\Imp.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\IHnd.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\IHndCaja.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\Idata.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\IdataCaja.cs" />
     <Compile Include="SrcTransporte\Configuracion\Notas\Factura\Imp.cs" />
     <Compile Include="SrcTransporte\Configuracion\Notas\Frm.cs">
       <SubType>Form</SubType>
@@ -419,6 +444,7 @@
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\data.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\Imp.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\IRemision.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\servAliado.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Imp.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\ITasa.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Frm.cs">
@@ -989,6 +1015,14 @@
     </Compile>
     <Compile Include="Utils\Buscar\Cliente\Imp.cs" />
     <Compile Include="Utils\Buscar\IBuscar.cs" />
+    <Compile Include="Utils\Componente\Monto\Handler\Imp.cs" />
+    <Compile Include="Utils\Componente\Monto\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Componente\Monto\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Componente\Monto\Vistas\IMonto.cs" />
     <Compile Include="Utils\CtrlMetodoBusq\IComp.cs" />
     <Compile Include="Utils\dataFiltro.cs" />
     <Compile Include="Utils\DocLista\ILista.cs" />
@@ -1041,6 +1075,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Aliados\AgregarEditar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Configuracion\Notas\Frm.resx">
@@ -1266,6 +1303,9 @@
     <EmbeddedResource Include="Utils\Buscar\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Componente\Monto\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utils\DocLista\PresupuestoPend\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1374,9 +1414,12 @@
     <None Include="Resources\logo_transp.jpeg" />
     <None Include="Resources\logo_transp_2.jpeg" />
     <None Include="Resources\logo_transp_3.jpeg" />
+    <None Include="Resources\manager_doc_48.png" />
+    <None Include="Resources\avance_dinero_48.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
+    <Content Include="Src\Imagenes\avance_dinero_48.png" />
     <Content Include="Src\Imagenes\aydai-logistica.jpg" />
     <Content Include="Src\Imagenes\bt_abrir_doc.png" />
     <Content Include="Src\Imagenes\bt_agregar_nuevo.png" />
@@ -1477,6 +1520,7 @@
     <Content Include="Src\Imagenes\logo_transp_presup.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_presup_2.jpeg" />
     <Content Include="Src\Imagenes\Machine-learning-1024x682.jpg" />
+    <Content Include="Src\Imagenes\manager_doc_48.png" />
     <Content Include="Src\Imagenes\mobile.ico" />
     <Content Include="Src\Imagenes\plataforma-efosearch.jpg" />
     <Content Include="Src\Imagenes\sinImagen.png" />

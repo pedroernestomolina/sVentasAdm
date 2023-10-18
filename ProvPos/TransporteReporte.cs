@@ -82,31 +82,26 @@ namespace ProvPos
         public DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleServ> 
             TransporteReporte_AliadoDetalleServ()
         {
-            var sql = @"select 
+            var sql = @"SELECT 
                             aliado.id as aliadoId,
                             aliado.ciRif as aliadoCiRif,
                             aliado.nombreRazonSocial as aliadoNombre,
                             aliado.codigo as aliadoCodigo,
-
-                            vItem.importe as importeServ,
-
                             vta.ci_rif as clienteCiRif,
                             vta.razon_social as clienteNombre,
-                            vta.fecha as fechaDoc,
-                            vta.documento as numDoc,
-                            vta.documento_nombre as nombreDoc,
-
-                            vItemServ.servicio_id as servId,
-                            vItemServ.servicio_codigo as servCodigo,
-                            vItemServ.servicio_detalle as servDetalle,
-                            vItemServ.servicio_desc as servDesc
-
-                        from ventas_transp_aliado_detalle as vAliado
-                        join transp_aliado as aliado on aliado.id=vAliado.id_aliado
-                        join ventas as vta on vta.auto=vAliado.id_venta
-                        join ventas_transp_item_aliado as vItem on vItem.id_venta=vAliado.id_doc_ref and vItem.id_aliado=vAliado.id_aliado
-                        join ventas_transp_item as vItemServ on vItemServ.id_item=vItem.id_item
-                        where vAliado.estatus_anulado='0'";
+                            aliadoDoc.doc_fecha as fechaDoc,
+                            aliadoDoc.doc_numero as numDoc,
+                            aliadoDoc.doc_nombre as nombreDoc,
+                            aliadoServ.importe_serv_div as importeServ,
+                            aliadoServ.id_serv as servId,
+                            aliadoServ.codigo_serv as servCodigo,
+                            aliadoServ.desc_serv as servDesc,
+                            aliadoServ.detalle_serv as servDetalle
+                        from transp_aliado_doc as aliadoDoc 
+                        join transp_aliado_doc_servicio as aliadoServ on aliadoServ.id_aliado_doc=aliadoDoc.id
+                        join transp_aliado as aliado on aliado.id=aliadoDoc.id_aliado
+                        join ventas as vta on vta.auto=aliadoDoc.id_doc_ref
+                        where aliadoDoc.estatus_anulado='0'";
             var result = new DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleServ>();
             try
             {
@@ -128,77 +123,3 @@ namespace ProvPos
         }
     }
 }
-
-
-//SELECT 
-//                            aliado.id as aliadoId,
-//                            aliado.ciRif as alidoCiRif,
-//                            aliado.nombreRazonSocial as aliadoNombre,
-//                            ventas.documento as docNumero,
-//                            ventas.fecha as docFecha,
-//                            ventas.razon_social as docCliente,
-//                            ventas.documento_nombre as docNombre,
-//                            vtaItemServ.servicio_id as servId,
-//                            vtaItemServ.servicio_codigo as servCodigo,
-//                            vtaItemServ.servicio_desc as servDesc, 
-//                            vtaItemServ.notas as servNotas,
-//                            detServ.importe servImporte,
-//                            itemPresp.servicio_codigo as prespServCodigo,
-//                            itemPresp.servicio_id as prespServId,
-//                            itemPresp.servicio_desc as prespServDesc, 
-//                            itemPresp.notas as prespServNotas, 
-//                            detPresp.importe as prespServImporte
-
-//                        FROM `ventas_transp_aliado` as vtaAliado
-//                        join ventas as ventas on vtaAliado.id_venta=ventas.auto
-//                        join transp_aliado as aliado on aliado.id=vtaAliado.id_aliado
-//                        join ventas_transp_detalle as vtaDetalle on vtaDetalle.id_venta=ventas.auto
-
-//                        left join ventas_transp_item_aliado as detPresp on detPresp.id_venta=vtaDetalle.id_doc_ref 
-//                                and detPresp.id_aliado=vtaAliado.id_aliado
-//                        join ventas_transp_item as itemPresp on itemPresp.id_venta=detPresp.id_venta 
-
-//                        left join ventas_transp_item as vtaItemServ on vtaItemServ.id_item=vtaDetalle.id_item_servicio 
-//                        and vtaItemServ.id_venta=vtaDetalle.id_venta 
-//                        left join ventas_transp_item_aliado as detServ on detServ.id_venta=vtaItemServ.id_venta 
-//                        and detServ.id_aliado= vtaAliado.id_aliado
-//                        and detServ.id_item=vtaItemServ.id_item
-
-//                        where vtaAliado.estatus_anulado<>'1'
-
-
-
-//            var sql = @"SELECT 
-//                            aliado.id as aliadoId,
-//                            aliado.ciRif as alidoCiRif,
-//                            aliado.nombreRazonSocial as aliadoNombre,
-//                            ventas.documento as docNumero,
-//                            ventas.fecha as docFecha,
-//                            ventas.razon_social as docCliente,
-//                            ventas.documento_nombre as docNombre,
-//                            vtaItemServ.servicio_id as servId,
-//                            vtaItemServ.servicio_codigo as servCodigo,
-//                            vtaItemServ.servicio_desc as servDesc, 
-//                            vtaItemServ.notas as servNotas,
-//                            detServ.importe servImporte,
-//                            itemPresp.servicio_codigo as prespServCodigo,
-//                            itemPresp.servicio_id as prespServId,
-//                            itemPresp.servicio_desc as prespServDesc, 
-//                            itemPresp.notas as prespServNotas, 
-//                            detPresp.importe as prespServImporte
-//
-//                        FROM `ventas_transp_aliado` as vtaAliado
-//                        join ventas as ventas on vtaAliado.id_venta=ventas.auto
-//                        join transp_aliado as aliado on aliado.id=vtaAliado.id_aliado
-//                        join ventas_transp_detalle as vtaDetalle on vtaDetalle.id_venta=ventas.auto
-//
-//                        left join ventas_transp_item as itemPresp on itemPresp.id_venta=vtaDetalle.id_doc_ref 
-//                        left join ventas_transp_item_aliado as detPresp on detPresp.id_venta=vtaDetalle.id_doc_ref
-//
-//                        left join ventas_transp_item as vtaItemServ on vtaItemServ.id_item=vtaDetalle.id_item_servicio 
-//                        and vtaItemServ.id_venta=vtaDetalle.id_venta 
-//                        left join ventas_transp_item_aliado as detServ on detServ.id_venta=vtaItemServ.id_venta 
-//                        and detServ.id_aliado= vtaAliado.id_aliado
-//                        and detServ.id_item=vtaItemServ.id_item
-//
-//                        where vtaAliado.estatus_anulado<>'1'";

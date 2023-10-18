@@ -11,6 +11,7 @@ namespace DtoTransporte.Documento.Agregar.Factura
     {
         public int idAliado { get; set; }
         public decimal montoDivisa { get; set; }
+        public List<Servicio> servicios { get; set; }
         public FichaAliadoResumen()
         {
             idAliado = -1;

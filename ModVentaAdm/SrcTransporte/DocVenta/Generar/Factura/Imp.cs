@@ -121,6 +121,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                 var _aliados = new List<OOB.Transporte.Documento.Agregar.Factura.FichaAliadoResumen>();
                 //
                 var _aliadosDocRef = new List<OOB.Transporte.Documento.Agregar.Factura.FichaAliadoDocRef>();
+                var _lstServAliado = new List<servAliado>();
                 var itemsDet = Ficha.Items.GetItems.Select(s =>
                 {
                     var _idDocRef = "";
@@ -147,6 +148,20 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                                 idDocRef = _idDocRef,
                             };
                             _aliadosDocRef.Add(nr);
+                        }
+                        var presp = Sistema.MyData.TransporteDocumento_Presupuesto_GetServicios(_idDocRef);
+                        foreach (var rg in presp.ListaD)
+                        {
+                            var _aliadoServ = new servAliado()
+                            {
+                                codServ = rg.codServ,
+                                descServ = rg.descServ,
+                                detServ = rg.detServ,
+                                idAliado = rg.idAliado,
+                                idServ = rg.idServ,
+                                importeSev = rg.importeServ,
+                            };
+                            _lstServAliado.Add(_aliadoServ);
                         }
                     }
                     if (s.Item.Get_ItemServicio!=null) 
@@ -183,6 +198,18 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                             }).ToList(),
                             aliados = s.Item.Get_ItemServicio.Item.Get_ListaAliadosLLamados.Select(xx =>
                             {
+                                var _aliadoServ = new servAliado()
+                                {
+                                    codServ = s.Item.Get_ItemServicio.Item.Get_TipoServicio.codigo,
+                                    descServ = s.Item.Get_ItemServicio.Item.Get_TipoServicio.descripcion,
+                                    detServ = s.Item.Get_ItemServicio.Item.Get_Descripcion,
+                                    idAliado = xx.aliado.id,
+                                    idServ = s.Item.Get_ItemServicio.Item.Get_TipoServicio.id,
+                                    importeSev = xx.Importe,
+                                };
+                                _lstServAliado.Add(_aliadoServ);
+
+
                                 var _aliadoRes = new OOB.Transporte.Documento.Agregar.Factura.FichaAliadoResumen()
                                 {
                                     idAliado = xx.aliado.id,
@@ -331,6 +358,18 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                         {
                             idAliado = s.key,
                             montoDivisa = s.lst.Sum(tt => tt.montoDivisa),
+                            servicios = _lstServAliado.Where(w => w.idAliado == s.key).Select(svc =>
+                            {
+                                var ns = new OOB.Transporte.Documento.Agregar.Factura.Servicio()
+                                {
+                                    codigo = svc.codServ,
+                                    desc = svc.descServ,
+                                    detalle = svc.detServ,
+                                    id = svc.idServ,
+                                    importe = svc.importeSev,
+                                };
+                                return ns;
+                            }).ToList(),
                         };
                         return nr;
                     }).ToList(),

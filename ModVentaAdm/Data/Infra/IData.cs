@@ -12,7 +12,9 @@ namespace ModVentaAdm.Data.Infra
         IAuditoria, ICxC, 
         Transporte.IAliado, Transporte.ITransporteDocumento,
         Transporte.ITransporteReporte, Transporte.IServicioPrest,
-        Transporte.ICnf
+        Transporte.ICnf,
+        Transporte.ITransporteCaja,
+        Transporte.ITransporteClienteAnticipo
     {
         OOB.Resultado.FichaEntidad<DateTime> 
             FechaServidor();

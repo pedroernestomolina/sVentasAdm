@@ -15,7 +15,9 @@ namespace ServicePos.Interfaces
         IDocumentoAdm, IAuditoria, ICxC, 
         Transporte.IAliado, Transporte.ITranspDocumento,
         Transporte.ITransporteReporte, Transporte.IServicioPrest,
-        Transporte.ICnf
+        Transporte.ICnf,
+        Transporte.ITranspCaja,
+        Transporte.ITranspClienteAnticipo
     {
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();
         DtoLib.Resultado Test();

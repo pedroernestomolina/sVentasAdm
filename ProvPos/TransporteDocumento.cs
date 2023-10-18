@@ -577,7 +577,38 @@ namespace ProvPos
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
+            return rt;
+        }
 
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.GetServicios.Presupuesto.Ficha> 
+            TransporteDocumento_Presupuesto_GetServicios(string idDoc)
+        {
+            var rt = new DtoLib.ResultadoLista<DtoTransporte.Documento.GetServicios.Presupuesto.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql_1 = @"SELECT 
+                                    itAliado.id_aliado as idAliado,
+                                    itAliado.importe as importeServ,
+                                    it.servicio_id as idServ,
+                                    it.servicio_codigo as codServ,
+                                    it.servicio_desc as descServ,
+                                    it.servicio_detalle as detServ
+                                FROM ventas_transp_item_aliado as itAliado
+                                join ventas_transp_item as it on it.id_item=itAliado.id_item
+                                where it.id_venta=@idDoc";
+                    var sql = sql_1;
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var lst = cnn.Database.SqlQuery<DtoTransporte.Documento.GetServicios.Presupuesto.Ficha>(sql, p1).ToList();
+                    rt.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
             return rt;
         }
     }

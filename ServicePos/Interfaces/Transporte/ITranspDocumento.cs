@@ -51,5 +51,8 @@ namespace ServicePos.Interfaces.Transporte
         //
         DtoLib.ResultadoLista<DtoTransporte.Documento.GetAliados.Presupuesto.Ficha>
             TransporteDocumento_Presupuesto_GetAliados(string idDoc);
+
+        DtoLib.ResultadoLista<DtoTransporte.Documento.GetServicios.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_GetServicios(string idDoc);
     }
 }

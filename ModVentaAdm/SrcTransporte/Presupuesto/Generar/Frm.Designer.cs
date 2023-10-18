@@ -118,6 +118,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
             this.panel80 = new System.Windows.Forms.Panel();
+            this.CHB_ES_POR_REMISION = new System.Windows.Forms.CheckBox();
             this.panel81 = new System.Windows.Forms.Panel();
             this.CB_REMISION = new System.Windows.Forms.ComboBox();
             this.panel82 = new System.Windows.Forms.Panel();
@@ -214,7 +215,6 @@
             this.P_BOT_SALIDA = new System.Windows.Forms.Panel();
             this.BT_SALIDA = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.CHB_ES_POR_REMISION = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.p_ENCABEZADO.SuspendLayout();
@@ -1418,7 +1418,7 @@
             this.tableLayoutPanel31.Name = "tableLayoutPanel31";
             this.tableLayoutPanel31.RowCount = 1;
             this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel31.Size = new System.Drawing.Size(353, 43);
             this.tableLayoutPanel31.TabIndex = 0;
             // 
@@ -1432,6 +1432,19 @@
             this.panel80.Padding = new System.Windows.Forms.Padding(2);
             this.panel80.Size = new System.Drawing.Size(140, 41);
             this.panel80.TabIndex = 0;
+            // 
+            // CHB_ES_POR_REMISION
+            // 
+            this.CHB_ES_POR_REMISION.AutoSize = true;
+            this.CHB_ES_POR_REMISION.Dock = System.Windows.Forms.DockStyle.Right;
+            this.CHB_ES_POR_REMISION.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHB_ES_POR_REMISION.Location = new System.Drawing.Point(15, 2);
+            this.CHB_ES_POR_REMISION.Name = "CHB_ES_POR_REMISION";
+            this.CHB_ES_POR_REMISION.Size = new System.Drawing.Size(123, 37);
+            this.CHB_ES_POR_REMISION.TabIndex = 0;
+            this.CHB_ES_POR_REMISION.Text = "Es Por Remision \r\nTipo Documento:";
+            this.CHB_ES_POR_REMISION.UseVisualStyleBackColor = true;
+            this.CHB_ES_POR_REMISION.CheckedChanged += new System.EventHandler(this.CHB_ES_POR_REMISION_CheckedChanged);
             // 
             // panel81
             // 
@@ -2611,19 +2624,6 @@
             this.BT_SALIDA.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_SALIDA.UseVisualStyleBackColor = true;
             this.BT_SALIDA.Click += new System.EventHandler(this.BT_SALIDA_Click);
-            // 
-            // CHB_ES_POR_REMISION
-            // 
-            this.CHB_ES_POR_REMISION.AutoSize = true;
-            this.CHB_ES_POR_REMISION.Dock = System.Windows.Forms.DockStyle.Right;
-            this.CHB_ES_POR_REMISION.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHB_ES_POR_REMISION.Location = new System.Drawing.Point(15, 2);
-            this.CHB_ES_POR_REMISION.Name = "CHB_ES_POR_REMISION";
-            this.CHB_ES_POR_REMISION.Size = new System.Drawing.Size(123, 37);
-            this.CHB_ES_POR_REMISION.TabIndex = 0;
-            this.CHB_ES_POR_REMISION.Text = "Es Por Remision \r\nTipo Documento:";
-            this.CHB_ES_POR_REMISION.UseVisualStyleBackColor = true;
-            this.CHB_ES_POR_REMISION.CheckedChanged += new System.EventHandler(this.CHB_ES_POR_REMISION_CheckedChanged);
             // 
             // Frm
             // 

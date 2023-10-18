@@ -29,6 +29,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             var f = new Font("Serif", 8, FontStyle.Bold);
             var f1 = new Font("Serif", 8, FontStyle.Regular);
 
+            DGV_1.RowHeadersVisible = false;
             DGV_1.AllowUserToAddRows = false;
             DGV_1.AllowUserToDeleteRows = false;
             DGV_1.AutoGenerateColumns = false;
@@ -249,6 +250,24 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             BuscarCtasPendientes();
         }
 
+        //
+        //
+        private void BT_AGREGAR_ANTICIPO_Click(object sender, EventArgs e)
+        {
+            AgregarAnticipo();
+        }
+        private void BT_ADM_DOC_ANTICIPO_Click(object sender, EventArgs e)
+        {
+            AdmDocAnticipos();
+        }
+        private void AgregarAnticipo()
+        {
+            _controlador.AgregarAnticipo();
+        }
+        private void AdmDocAnticipos()
+        {
+            _controlador.AdmDocAnticipos();
+        }
     }
 
 }

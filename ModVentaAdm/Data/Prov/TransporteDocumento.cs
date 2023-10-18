@@ -488,5 +488,40 @@ namespace ModVentaAdm.Data.Prov
             result.ListaD = lst;
             return result;
         }
+
+        public OOB.Resultado.Lista<OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha> 
+            TransporteDocumento_Presupuesto_GetServicios(string idDoc)
+        {
+            var result = new OOB.Resultado.Lista<OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha>();
+            var r01 = MyData.TransporteDocumento_Presupuesto_GetServicios(idDoc);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                result.Mensaje = r01.Mensaje;
+                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+                return result;
+            }
+            var lst = new List<OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha()
+                        {
+                            codServ = s.codServ,
+                            descServ = s.descServ,
+                            detServ = s.detServ,
+                            idAliado = s.idAliado,
+                            idServ = s.idServ,
+                            importeServ = s.importeServ,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.ListaD = lst;
+            return result;
+        }
     }
 }

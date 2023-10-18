@@ -49,6 +49,11 @@
     <Compile Include="Aliado\Entidad\Ficha.cs" />
     <Compile Include="Aliado\Entidad\Telefono.cs" />
     <Compile Include="Aliado\Tipos.cs" />
+    <Compile Include="Caja\Lista\Ficha.cs" />
+    <Compile Include="ClienteAnticipo\Agregar\Caja.cs" />
+    <Compile Include="ClienteAnticipo\Agregar\CajaMov.cs" />
+    <Compile Include="ClienteAnticipo\Agregar\Ficha.cs" />
+    <Compile Include="ClienteAnticipo\Agregar\Movimiento.cs" />
     <Compile Include="Documento\Agregar\baseDetalle.cs" />
     <Compile Include="Documento\Agregar\baseFecha.cs" />
     <Compile Include="Documento\Agregar\Factura\Ficha.cs" />
@@ -56,6 +61,7 @@
     <Compile Include="Documento\Agregar\Factura\FichaAliadoResumen.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaItem.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaDocRef.cs" />
+    <Compile Include="Documento\Agregar\Factura\Servicio.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Aliado.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Fecha.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Ficha.cs" />
@@ -83,6 +89,7 @@
     <Compile Include="Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="Documento\Entidad\Venta\FichaEncabezado.cs" />
     <Compile Include="Documento\GetAliados\Presupuesto\Ficha.cs" />
+    <Compile Include="Documento\GetServicios\Presupuesto\Ficha.cs" />
     <Compile Include="Documento\Lista\base.cs" />
     <Compile Include="Documento\Lista\Pendiente\Presupuesto\Ficha.cs" />
     <Compile Include="Documento\Remision\Lista\Ficha.cs" />

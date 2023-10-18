@@ -46,5 +46,8 @@ namespace ModVentaAdm.Data.Infra.Transporte
         //
         OOB.Resultado.Lista<OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha>
             TransporteDocumento_GetAliados_Presupuesto(string idDoc);
+
+        OOB.Resultado.Lista<OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_GetServicios(string idDoc);
     }
 }

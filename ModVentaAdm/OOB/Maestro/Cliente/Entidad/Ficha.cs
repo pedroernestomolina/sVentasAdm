@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.Maestro.Cliente.Entidad
 {
-    
     public class Ficha
     {
-
         public string id { get; set; }
         public string idGrupo { get; set; }
         public string idEstado { get; set; }
@@ -110,6 +108,15 @@ namespace ModVentaAdm.OOB.Maestro.Cliente.Entidad
             fechaBaja = DateTime.Now.Date;
         }
 
+        //
+        public string Info 
+        { 
+            get 
+            {
+                return "("+codigo.Trim().ToUpper() +")"+
+                    Environment.NewLine + ciRif.Trim().ToUpper() +
+                    Environment.NewLine + razonSocial.Trim();
+            }
+        }
     }
-
 }

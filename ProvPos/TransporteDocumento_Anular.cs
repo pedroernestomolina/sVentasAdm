@@ -364,13 +364,14 @@ namespace ProvPos
                             }
                             cn.SaveChanges();
                         }
-
-                        //ACTUALIZAR DOC ALIADOS
-                        sql = @"update transp_aliado_doc 
-                                set estatus_anulado='1' 
-                                where id=@idReg and id_doc_ref=@idDocVenta";
+                        //
+                        //
                         foreach (var rg in ficha.aliadosDoc)
                         {
+                            //ACTUALIZAR ESTATUS DOCUMENTOS ALIADOS
+                            sql = @"update transp_aliado_doc 
+                                set estatus_anulado='1' 
+                                where id=@idReg and id_doc_ref=@idDocVenta and acumulado_divisa=0";
                             var y1 = new MySql.Data.MySqlClient.MySqlParameter("@idReg", rg.idReg);
                             var y2 = new MySql.Data.MySqlClient.MySqlParameter("@idDocVenta", ficha.idDocVenta);
                             var r5 = cn.Database.ExecuteSqlCommand(sql, y1, y2);
@@ -381,8 +382,20 @@ namespace ProvPos
                                 return result;
                             }
                             cn.SaveChanges();
+                            //ACTUALIZAR ESTATUS SERVICIOS ALIADOS
+                            sql = @"update transp_aliado_doc_servicio 
+                                set estatus_anulado='1' 
+                                where id_aliado_doc=@idReg and monto_acumulado_div=0";
+                            y1 = new MySql.Data.MySqlClient.MySqlParameter("@idReg", rg.idReg);
+                            var r50 = cn.Database.ExecuteSqlCommand(sql, y1);
+                            if (r50 == 0)
+                            {
+                                result.Mensaje = "PROBLEMA AL ACTUALIZAR ESTATUS ANULADO SERVICIO PRESTADO POR EL ALIADO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cn.SaveChanges();
                         }
-
                         //ACTUALIZAR DOC REMISION
                         sql = @"update ventas 
                                 set auto_remision='',
@@ -402,12 +415,12 @@ namespace ProvPos
                             }
                             cn.SaveChanges();
                         }
-
+                        //
                         sql = "update ventas_transp_aliado_detalle set estatus_anulado='1' where id_venta=@p1";
                         p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", ficha.idDocVenta);
                         var z1d = cn.Database.ExecuteSqlCommand(sql, p1);
                         cn.SaveChanges();
-
+                        //
                         ts.Complete();
                     }
                 };
@@ -515,13 +528,13 @@ namespace ProvPos
                         }
                         if (_docCxC.estatus.Trim().ToUpper()=="1")
                         {
-                            result.Mensaje = "DOCUMENTO [ CXC] ESTATUS INCORRECTO";
+                            result.Mensaje = "DOCUMENTO [ CXC ] ESTATUS INCORRECTO";
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
                             return result;
                         }
                         if (_docCxC.monto >0)
                         {
-                            result.Mensaje = "DOCUMENTO [ CXC] POSSE UN PAGO REGISTRADO";
+                            result.Mensaje = "DOCUMENTO [ CXC ] POSSE UN PAGO REGISTRADO";
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
                             return result;
                         }
@@ -545,6 +558,29 @@ namespace ProvPos
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
                             return result;
                         }
+                        //
+                        foreach (var rg in ficha.aliadosDoc)
+                        {
+                            var sql = @"select acumulado_divisa 
+                                            FROM transp_aliado_doc
+                                            where id=@idReg and id_doc_ref=@idDocVenta and estatus_anulado='0'";
+                            var y1 = new MySql.Data.MySqlClient.MySqlParameter("@idReg", rg.idReg);
+                            var y2 = new MySql.Data.MySqlClient.MySqlParameter("@idDocVenta", ficha.idDocVenta);
+                            var _monto = cn.Database.SqlQuery<decimal?>(sql, y1, y2).FirstOrDefault();
+                            if (_monto==null)
+                            {
+                                result.Mensaje = "PROBLEMA AL ANULAR DOCUMENTO, ALIADO-DOCUMENTO NO ENCONTRADO / YA SE ENCUENTRA ANULADO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            if (_monto > 0m) 
+                            {
+                                result.Mensaje = "PROBLEMA AL ANULAR DOCUMENTO, EXISTE UN ANTICIPO A UN ALIADO EN ESTE DOCUMENTO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                        }
+                        //
                         ts.Complete();
                     }
                 };

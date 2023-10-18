@@ -9,11 +9,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
 {
-
     public class Tools : ITools
     {
-
-
         private ListaCtasPend.ILista _gListaCtasPend;
         private AgregarCta.IAgregar _gAgregar;
         private Reportes.ListaCtaPend.IRepCtaPend _gRepCtaPend;
@@ -236,6 +233,30 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             }
         }
 
+        
+        //
+        //
+        private SrcTransporte.ClienteAnticipo.Agregar.Vistas.IHnd _anticipo;
+        public void AgregarAnticipo()
+        {
+            if (_gListaCtasPend.ItemActual != null)
+            {
+                if (_anticipo == null)
+                {
+                    _anticipo = new SrcTransporte.ClienteAnticipo.Agregar.Handler.Imp();
+                }
+                var item = _gListaCtasPend.ItemActual;
+                _anticipo.Inicializa();
+                _anticipo.setClienteCargar(item.idCliente);
+                _anticipo.Inicia();
+                if (_anticipo.ProcesarIsOK)
+                {
+                    //ActualizarSaldoAliado(item.Id);
+                }
+            }
+        }
+        public void AdmDocAnticipos()
+        {
+        }
     }
-
 }

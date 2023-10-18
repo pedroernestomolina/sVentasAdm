@@ -10,7 +10,7 @@ using System.Transactions;
 
 namespace ProvPos
 {
-    public partial class Provider: IPos.IProvider
+    public partial class Provider : IPos.IProvider
     {
         public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>
             TransporteDocumento_AgregarFactura(DtoTransporte.Documento.Agregar.Factura.Ficha ficha)
@@ -465,7 +465,7 @@ namespace ProvPos
                                         @importeNetoDivisa,
                                         @estatusDocCxc
                                     )";
-                        var t1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxC",autoCxC);
+                        var t1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxC", autoCxC);
                         var t2 = new MySql.Data.MySqlClient.MySqlParameter("@fechaReg", ficha.fechaEmision);
                         var t3 = new MySql.Data.MySqlClient.MySqlParameter("@docNumero", docNumero);
                         var t4 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVence", ficha.fechaVencimiento);
@@ -479,11 +479,11 @@ namespace ProvPos
                         var t12 = new MySql.Data.MySqlClient.MySqlParameter("@autoVendedor", ficha.idVendedor);
                         var t13 = new MySql.Data.MySqlClient.MySqlParameter("@serieDocDesc", ficha.serieDocDesc);
                         var t14 = new MySql.Data.MySqlClient.MySqlParameter("@importeNeto", ficha.subTotal);
-                        var t15 = new MySql.Data.MySqlClient.MySqlParameter("@dias", ficha.diasCredito );
-                        var t16 = new MySql.Data.MySqlClient.MySqlParameter("@montoDivisa", ficha.montoDivisa );
-                        var t17 = new MySql.Data.MySqlClient.MySqlParameter("@tasaDivisa", ficha.factorCambio );
-                        var t19 = new MySql.Data.MySqlClient.MySqlParameter("@codigoSuc", ficha.codSucursal );
-                        var t20 = new MySql.Data.MySqlClient.MySqlParameter("@restaDivisa", ficha.montoDivisa );
+                        var t15 = new MySql.Data.MySqlClient.MySqlParameter("@dias", ficha.diasCredito);
+                        var t16 = new MySql.Data.MySqlClient.MySqlParameter("@montoDivisa", ficha.montoDivisa);
+                        var t17 = new MySql.Data.MySqlClient.MySqlParameter("@tasaDivisa", ficha.factorCambio);
+                        var t19 = new MySql.Data.MySqlClient.MySqlParameter("@codigoSuc", ficha.codSucursal);
+                        var t20 = new MySql.Data.MySqlClient.MySqlParameter("@restaDivisa", ficha.montoDivisa);
                         var t21 = new MySql.Data.MySqlClient.MySqlParameter("@importeNetoDivisa", ficha.subTotalMonDivisa);
                         var t22 = new MySql.Data.MySqlClient.MySqlParameter("@estatusDocCxc", "0");
                         var t23 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDocSiglas", ficha.tipoDocSiglas);
@@ -498,7 +498,7 @@ namespace ProvPos
                         }
                         cn.SaveChanges();
 
-                        var _sqlDetFct= @"INSERT INTO ventas_transp_detalle
+                        var _sqlDetFct = @"INSERT INTO ventas_transp_detalle
                                     (
                                         id_venta ,
                                         detalle ,
@@ -574,11 +574,11 @@ namespace ProvPos
                                         @tipo_procedencia_item,
                                         @id_item_servicio
                                     )";
-                        foreach (var rg in ficha.items) 
+                        foreach (var rg in ficha.items)
                         {
-                            var _idItemServicio=-1;
+                            var _idItemServicio = -1;
                             //EN CASO DE SER UN SERVICIO SE AGREGA PRIMERO EL DETALLE DEL SERVCIO
-                            if (rg.servicioDetalle != null) 
+                            if (rg.servicioDetalle != null)
                             {
                                 var it = rg.servicioDetalle;
                                 var _sql_I = @"INSERT INTO ventas_transp_item (
@@ -663,7 +663,7 @@ namespace ProvPos
                                 _sql = "SELECT LAST_INSERT_ID()";
                                 var idEnt = cn.Database.SqlQuery<int>(_sql).FirstOrDefault();
                                 //
-                                _idItemServicio=idEnt;
+                                _idItemServicio = idEnt;
 
                                 var _sql_F = @"INSERT INTO ventas_transp_item_fecha 
                                         (
@@ -679,7 +679,7 @@ namespace ProvPos
                                     var yp4 = new MySql.Data.MySqlClient.MySqlParameter("@hora", fech.hora);
                                     var yp5 = new MySql.Data.MySqlClient.MySqlParameter("@nota", fech.nota);
                                     var r3 = cn.Database.ExecuteSqlCommand(_sql_F, yp1, yp2, yp3, yp4, yp5);
-                                    if (r3 == 0) 
+                                    if (r3 == 0)
                                     {
                                         result.Mensaje = "PROBLEMA AL INSERTAR FECHA SERVICIO";
                                         result.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -872,7 +872,7 @@ namespace ProvPos
                         }
 
                         //ALIADOS USADOS RESUMEN
-                        foreach (var aliadoRes in ficha.aliadosResumen) 
+                        foreach (var aliadoRes in ficha.aliadosResumen)
                         {
                             _sql = @"update transp_aliado set 
                                     monto_debitos_mon_divisa=monto_debitos_mon_divisa+@monto
@@ -880,7 +880,7 @@ namespace ProvPos
                             var ylp1 = new MySql.Data.MySqlClient.MySqlParameter("@monto", aliadoRes.montoDivisa);
                             var ylp2 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", aliadoRes.idAliado);
                             var xr4 = cn.Database.ExecuteSqlCommand(_sql, ylp1, ylp2);
-                            if (xr4 == 0) 
+                            if (xr4 == 0)
                             {
                                 result.Mensaje = "PROBLEMA AL ACTUALIZAR SALDO ALIADO";
                                 result.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -921,7 +921,8 @@ namespace ProvPos
                                 result.Result = DtoLib.Enumerados.EnumResult.isError;
                                 return result;
                             }
-
+                            //
+                            // INSERTAR ALIADO DOCUMENTO 
                             _sql = @"INSERT INTO transp_aliado_doc 
                                         (
                                             id, 
@@ -966,6 +967,48 @@ namespace ProvPos
                                 result.Mensaje = "PROBLEMA AL INSERTAR ALIADO - DOCUMENTO";
                                 result.Result = DtoLib.Enumerados.EnumResult.isError;
                                 return result;
+                            }
+                            //
+                            sql = "SELECT LAST_INSERT_ID()";
+                            var idAliadoDoc = cn.Database.SqlQuery<int>(sql).FirstOrDefault();
+                            //
+                            //SERVICIOS PRESTADOS POR EL ALIADO
+                            foreach (var serv in aliadoRes.servicios)
+                            {
+                                _sql = @"INSERT INTO transp_aliado_doc_servicio (
+                                        id, 
+                                        id_aliado_doc, 
+                                        id_serv, 
+                                        codigo_serv, 
+                                        desc_serv, 
+                                        detalle_serv, 
+                                        importe_serv_div, 
+                                        monto_acumulado_div, 
+                                        estatus_anulado) 
+                                    VALUES (
+                                        NULL, 
+                                        @id_aliado_doc, 
+                                        @id_serv, 
+                                        @codigo_serv, 
+                                        @desc_serv, 
+                                        @detalle_serv, 
+                                        @importe_serv_div, 
+                                        0, 
+                                        '0')";
+                                var sv1 = new MySql.Data.MySqlClient.MySqlParameter("@id_aliado_doc", idAliadoDoc);
+                                var sv2 = new MySql.Data.MySqlClient.MySqlParameter("@id_serv", serv.id);
+                                var sv3 = new MySql.Data.MySqlClient.MySqlParameter("@codigo_serv", serv.codigo);
+                                var sv4 = new MySql.Data.MySqlClient.MySqlParameter("@desc_serv", serv.desc);
+                                var sv5 = new MySql.Data.MySqlClient.MySqlParameter("@detalle_serv", serv.detalle);
+                                var sv6 = new MySql.Data.MySqlClient.MySqlParameter("@importe_serv_div", serv.importe);
+                                var xsv = cn.Database.ExecuteSqlCommand(_sql, sv1, sv2, sv3, sv4, sv5, sv6);
+                                cn.SaveChanges();
+                                if (xsv == 0)
+                                {
+                                    result.Mensaje = "PROBLEMA AL INSERTAR ALIADO - DOCUMENTO - SERVICIO";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
                             }
                         }
                         //ALIADOS DOCUMENTO REFERENCIA 
@@ -1033,7 +1076,7 @@ namespace ProvPos
                 autoRemision = "";
             }
         }
-        public DtoLib.Resultado 
+        public DtoLib.Resultado
             TransporteDocumento_AgregarFactura_Vericar(DtoTransporte.Documento.Agregar.Factura.Ficha ficha)
         {
             var result = new DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>();
@@ -1048,7 +1091,7 @@ namespace ProvPos
                         var xsql_cli = @"select estatus from clientes
                                                 where auto=@idCliente";
                         var _estatus = cn.Database.SqlQuery<string>(xsql_cli, xcli_1).FirstOrDefault();
-                        if (_estatus==null)
+                        if (_estatus == null)
                         {
                             result.Mensaje = "CLIENTE [ ID ] NO ENCONTRADO";
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -1064,7 +1107,7 @@ namespace ProvPos
                         foreach (var rg in ficha.docRef)
                         {
                             var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDocRef", rg.idDoc);
-                            var _sql= @"select 
+                            var _sql = @"select 
                                             estatus_anulado as estatus, 
                                             auto_remision as autoRemision 
                                         from ventas
@@ -1093,7 +1136,7 @@ namespace ProvPos
                         foreach (var rg in ficha.aliadosResumen)
                         {
                             var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", rg.idAliado);
-                            var _sql= @"select estatus from transp_aliado
+                            var _sql = @"select estatus from transp_aliado
                                                 where id=@idAliado";
                             var _estatusAliad = cn.Database.SqlQuery<string>(_sql, p1).FirstOrDefault();
                             if (_estatusAliad == null)

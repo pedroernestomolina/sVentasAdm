@@ -126,5 +126,11 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteDocumento_Presupuesto_GetAliados(idDoc);
         }
+
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.GetServicios.Presupuesto.Ficha> 
+            TransporteDocumento_Presupuesto_GetServicios(string idDoc)
+        {
+            return ServiceProv.TransporteDocumento_Presupuesto_GetServicios(idDoc);
+        }
     }
 }

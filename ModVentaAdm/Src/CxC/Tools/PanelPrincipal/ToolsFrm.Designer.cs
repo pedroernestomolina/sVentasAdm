@@ -69,6 +69,10 @@
             this.BT_AGREGAR_NDB_ADM = new System.Windows.Forms.Button();
             this.panel21 = new System.Windows.Forms.Panel();
             this.BT_GESTION_PAGO = new System.Windows.Forms.Button();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.BT_AGREGAR_ANTICIPO = new System.Windows.Forms.Button();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.BT_ADM_DOC_ANTICIPO = new System.Windows.Forms.Button();
             this.P_PIE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -103,6 +107,8 @@
             this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel21.SuspendLayout();
+            this.panel22.SuspendLayout();
+            this.panel23.SuspendLayout();
             this.P_PIE.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -409,6 +415,8 @@
             this.tableLayoutPanel7.Controls.Add(this.panel17, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.panel18, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.panel21, 0, 3);
+            this.tableLayoutPanel7.Controls.Add(this.panel22, 0, 6);
+            this.tableLayoutPanel7.Controls.Add(this.panel23, 1, 6);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
@@ -609,6 +617,60 @@
             this.BT_GESTION_PAGO.UseVisualStyleBackColor = true;
             this.BT_GESTION_PAGO.Click += new System.EventHandler(this.BT_GESTION_PAGO_Click);
             // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.BT_AGREGAR_ANTICIPO);
+            this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel22.Location = new System.Drawing.Point(1, 475);
+            this.panel22.Margin = new System.Windows.Forms.Padding(1);
+            this.panel22.Name = "panel22";
+            this.panel22.Padding = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel7.SetRowSpan(this.panel22, 2);
+            this.panel22.Size = new System.Drawing.Size(78, 161);
+            this.panel22.TabIndex = 5;
+            // 
+            // BT_AGREGAR_ANTICIPO
+            // 
+            this.BT_AGREGAR_ANTICIPO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_AGREGAR_ANTICIPO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_AGREGAR_ANTICIPO.Image = global::ModVentaAdm.Properties.Resources.avance_dinero_48;
+            this.BT_AGREGAR_ANTICIPO.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_AGREGAR_ANTICIPO.Location = new System.Drawing.Point(2, 2);
+            this.BT_AGREGAR_ANTICIPO.Name = "BT_AGREGAR_ANTICIPO";
+            this.BT_AGREGAR_ANTICIPO.Size = new System.Drawing.Size(74, 157);
+            this.BT_AGREGAR_ANTICIPO.TabIndex = 1;
+            this.BT_AGREGAR_ANTICIPO.Text = "Agrega Anticip";
+            this.BT_AGREGAR_ANTICIPO.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BT_AGREGAR_ANTICIPO.UseVisualStyleBackColor = true;
+            this.BT_AGREGAR_ANTICIPO.Click += new System.EventHandler(this.BT_AGREGAR_ANTICIPO_Click);
+            // 
+            // panel23
+            // 
+            this.panel23.Controls.Add(this.BT_ADM_DOC_ANTICIPO);
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel23.Location = new System.Drawing.Point(81, 475);
+            this.panel23.Margin = new System.Windows.Forms.Padding(1);
+            this.panel23.Name = "panel23";
+            this.panel23.Padding = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel7.SetRowSpan(this.panel23, 2);
+            this.panel23.Size = new System.Drawing.Size(100, 161);
+            this.panel23.TabIndex = 6;
+            // 
+            // BT_ADM_DOC_ANTICIPO
+            // 
+            this.BT_ADM_DOC_ANTICIPO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ADM_DOC_ANTICIPO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_ADM_DOC_ANTICIPO.Image = global::ModVentaAdm.Properties.Resources.manager_doc_48;
+            this.BT_ADM_DOC_ANTICIPO.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_ADM_DOC_ANTICIPO.Location = new System.Drawing.Point(2, 2);
+            this.BT_ADM_DOC_ANTICIPO.Name = "BT_ADM_DOC_ANTICIPO";
+            this.BT_ADM_DOC_ANTICIPO.Size = new System.Drawing.Size(96, 157);
+            this.BT_ADM_DOC_ANTICIPO.TabIndex = 1;
+            this.BT_ADM_DOC_ANTICIPO.Text = "Adm\r\nAnticpos";
+            this.BT_ADM_DOC_ANTICIPO.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BT_ADM_DOC_ANTICIPO.UseVisualStyleBackColor = true;
+            this.BT_ADM_DOC_ANTICIPO.Click += new System.EventHandler(this.BT_ADM_DOC_ANTICIPO_Click);
+            // 
             // P_PIE
             // 
             this.P_PIE.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -728,6 +790,8 @@
             this.panel19.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
             this.panel21.ResumeLayout(false);
+            this.panel22.ResumeLayout(false);
+            this.panel23.ResumeLayout(false);
             this.P_PIE.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -785,6 +849,10 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button BT_GESTION_PAGO;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Button BT_AGREGAR_ANTICIPO;
+        private System.Windows.Forms.Button BT_ADM_DOC_ANTICIPO;
 
     }
 }

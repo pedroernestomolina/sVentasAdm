@@ -15,7 +15,9 @@ namespace IPos
         IAuditoria, IModuloAdm, ICxC, 
         Transporte.IAliado, Transporte.ITranspDocumento, 
         Transporte.ITranspReporte, Transporte.IServicioPrest,
-        Transporte.ICnf
+        Transporte.ICnf,
+        Transporte.ITranspCaja,
+        Transporte.ITranspClienteAnticipo
     {
 
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();

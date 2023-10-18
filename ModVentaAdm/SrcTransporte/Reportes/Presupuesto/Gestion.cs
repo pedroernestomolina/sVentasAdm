@@ -70,6 +70,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Presupuesto
                 rt["precio_unit"] = it.precioNetoDivisa;
                 rt["importe"] = it.importe;
                 rt["desc_und"] = it.unidadesDesc;
+                rt["turnoDesc"] = it.turnoDesc;
+                rt["turnoCntDias"] = it.turnoCntDias;
                 ds.Tables["PresupItem"].Rows.Add(rt);
             }
 
