@@ -11,11 +11,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
 {
-    
     public partial class MediosCobroFrm : Form
     {
-
-
         private IMedCobro _controlador;
 
 
@@ -32,6 +29,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
             var f1 = new Font("Serif", 8, FontStyle.Regular);
             var f2 = new Font("Serif", 10, FontStyle.Bold);
 
+            DGV.RowHeadersVisible = false;
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
             DGV.AutoGenerateColumns = false;
@@ -217,7 +215,13 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
         {
             _controlador.setGenerarNotaCredito(CHB_GENERAR_NOTA_CREDITO.Checked);
         }
-  
+        private void BT_ANTICIPOS_Click(object sender, EventArgs e)
+        {
+            AnticiposActivar();
+        }
+        private void AnticiposActivar()
+        {
+            _controlador.Anticipo.Activar();
+        }
     }
-
 }

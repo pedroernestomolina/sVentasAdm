@@ -389,6 +389,14 @@
     </Compile>
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\IAgregarEditar.cs" />
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\ImpAgregarEditar.cs" />
+    <Compile Include="SrcTransporte\CajaRetencion\Handler\Imp.cs" />
+    <Compile Include="SrcTransporte\CajaRetencion\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\CajaRetencion\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\CajaRetencion\Vista\IHnd.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Handler\HndCaja.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Handler\data.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Handler\dataCaja.cs" />
@@ -403,6 +411,7 @@
     <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\IHndCaja.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\Idata.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\IdataCaja.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\UsarDisponer\Vista\IHnd.cs" />
     <Compile Include="SrcTransporte\Configuracion\Notas\Factura\Imp.cs" />
     <Compile Include="SrcTransporte\Configuracion\Notas\Frm.cs">
       <SubType>Form</SubType>
@@ -1015,6 +1024,12 @@
     </Compile>
     <Compile Include="Utils\Buscar\Cliente\Imp.cs" />
     <Compile Include="Utils\Buscar\IBuscar.cs" />
+    <Compile Include="Utils\Componente\AplicaRetencionIslr\Handler\Imp.cs" />
+    <Compile Include="Utils\Componente\AplicaRetencionIslr\Vista\IHnd.cs" />
+    <Compile Include="Utils\Componente\CajasUtilizar\Handler\data.cs" />
+    <Compile Include="Utils\Componente\CajasUtilizar\Handler\Imp.cs" />
+    <Compile Include="Utils\Componente\CajasUtilizar\Vista\Idata.cs" />
+    <Compile Include="Utils\Componente\CajasUtilizar\Vista\IHnd.cs" />
     <Compile Include="Utils\Componente\Monto\Handler\Imp.cs" />
     <Compile Include="Utils\Componente\Monto\Vistas\Frm.cs">
       <SubType>Form</SubType>
@@ -1075,6 +1090,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Aliados\AgregarEditar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\CajaRetencion\Vista\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\Frm.resx">

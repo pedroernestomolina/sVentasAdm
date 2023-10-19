@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
 {
-    
     public class data
     {
-
-
         public int id { get; set; }
         public MetodoCobro.dataItem item { get; set; }
 
@@ -32,7 +29,5 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
             this.id = id;
             this.item = item;
         }
-
     }
-
 }

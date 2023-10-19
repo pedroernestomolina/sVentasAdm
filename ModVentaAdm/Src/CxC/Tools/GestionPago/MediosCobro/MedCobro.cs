@@ -12,8 +12,6 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
     
     public class MedCobro : IMedCobro
     {
-
-
         private List<data> _lst;
         private BindingList<data> _bl;
         private BindingSource _bs;
@@ -142,6 +140,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
         }
 
 
+        private SrcTransporte.CajaRetencion.Vista.IHnd _retCaja;
         public void Procesar()
         {
             _procesarIsOk = false;
@@ -166,11 +165,22 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
                     return;
                 }
             }
-            var msg = "Procesar y Guardar Los Cambios ?";
-            var r = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (r == DialogResult.Yes)
+
+            if (_retCaja == null) 
             {
-                _procesarIsOk = true;
+                _retCaja = new SrcTransporte.CajaRetencion.Handler.Imp();
+            }
+            _retCaja.Inicializa();
+            _retCaja.setMontoProcesarMonDiv(_montoCobrar);
+            _retCaja.Inicia();
+            if (_retCaja.ProcesarIsOK)
+            {
+                var msg = "Procesar y Guardar Los Cambios ?";
+                var r = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (r == DialogResult.Yes)
+                {
+                    _procesarIsOk = true;
+                }
             }
         }
         public void AbandonarFicha()
@@ -232,7 +242,5 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
             var rg = new data(id, item);
             _bl.Add(rg);
         }
-
     }
-
 }

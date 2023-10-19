@@ -8,11 +8,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.GestionPago
 {
-    
     public class GestionPago: IGestionPago 
     {
-
-
         private bool _abandonarIsOK;
         private bool _procesarPago; 
         private string _idCliente;
@@ -383,7 +380,5 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
             }
             _procesarPago = true;
         }
-
     }
-
 }

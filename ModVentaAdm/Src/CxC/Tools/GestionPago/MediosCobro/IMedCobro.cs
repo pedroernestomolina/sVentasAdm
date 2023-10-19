@@ -8,9 +8,10 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
 {
-    
     public interface IMedCobro: IGestion, Gestion.IAbandonar, Gestion.IProcesar
     {
+        public SrcTransporte.ClienteAnticipo.UsarDisponer.Vista.IHnd Anticipo { get; }
+
 
         BindingSource Source { get;  }
         decimal GetMontoCobrar { get; }
@@ -50,7 +51,5 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
         decimal GetImporteMonedaLocal { get; }
         bool MedioCobroIsOk { get; }
         IEnumerable<data> GetListaMedCobro { get;  }
-
     }
-
 }
