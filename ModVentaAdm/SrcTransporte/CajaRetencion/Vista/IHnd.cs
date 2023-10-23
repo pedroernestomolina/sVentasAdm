@@ -14,7 +14,7 @@ namespace ModVentaAdm.SrcTransporte.CajaRetencion.Vista
         Utils.Componente.CajasUtilizar.Vista.IHnd Caja { get; }
 
         void setFactorCambio(decimal factor);
-        void setMontoProcesarMonDiv(decimal monto);
+        void setMontoCajaProcesarMonDiv(decimal montoCaja);
         void ActualizarSaldoCaja();
     }
 }

@@ -18,6 +18,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
         private bool _procesarIsOk;
         private bool _abandonarIsOk;
         private decimal _montoCobrar;
+        private decimal _montoAnticipo;
         private bool _generarNotaCredito;
         private MetodoCobro.Agregar.IMetAgregar _gMetCobroAgregar;
         private MetodoCobro.Editar.IMetEditar _gMetCobroEditar;
@@ -25,8 +26,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
 
         public BindingSource Source { get { return _bs; } }
         public decimal GetMontoCobrar { get { return _montoCobrar; } }
-        public decimal GetMontoRecibido { get { return _bl.Sum(s => s.Importe); } }
-        public decimal GetMontoPend { get { return _montoCobrar-GetMontoRecibido; } }
+        public decimal GetMontoRecibido { get { return _bl.Sum(s => s.Importe) + _montoAnticipo; } }
+        public decimal GetMontoPend { get { return _montoCobrar - GetMontoRecibido; } }
         public string GetRestaCambio { get { return GetMontoPend > 0 ? "Resta:" : "Cambio:"; } }
         public bool AbandonarIsOK { get { return _abandonarIsOk; } }
         public bool ProcesarIsOK { get { return _procesarIsOk; } }
@@ -37,11 +38,13 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
 
         public MedCobro() 
         {
+            _idCliente = "";
             _lst = new List<data>();
             _bl = new BindingList<data>(_lst);
             _bs = new BindingSource();
             _bs.DataSource = _bl;
             _montoCobrar = 0m;
+            _montoAnticipo = 0m;
             _abandonarIsOk = false;
             _procesarIsOk = false;
             _generarNotaCredito = false;
@@ -57,8 +60,10 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
 
         private void limpiar()
         {
+            _idCliente = "";
             _bl.Clear();
             _montoCobrar = 0m;
+            _montoAnticipo = 0m;
             _abandonarIsOk = false;
             _procesarIsOk = false;
             _generarNotaCredito=false;
@@ -141,6 +146,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
 
 
         private SrcTransporte.CajaRetencion.Vista.IHnd _retCaja;
+        public SrcTransporte.CajaRetencion.Vista.IHnd Get_RetCaja { get { return _retCaja; } }
         public void Procesar()
         {
             _procesarIsOk = false;
@@ -166,12 +172,13 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
                 }
             }
 
+            var _saldoCaja = _bl.Where(w => w.item.GetAplicaMovCaja).Sum(s => s.Importe);
             if (_retCaja == null) 
             {
                 _retCaja = new SrcTransporte.CajaRetencion.Handler.Imp();
             }
             _retCaja.Inicializa();
-            _retCaja.setMontoProcesarMonDiv(_montoCobrar);
+            _retCaja.setMontoCajaProcesarMonDiv(_saldoCaja);
             _retCaja.Inicia();
             if (_retCaja.ProcesarIsOK)
             {
@@ -241,6 +248,34 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
             }
             var rg = new data(id, item);
             _bl.Add(rg);
+        }
+
+        //
+        public decimal GetMontoPorAnticipo { get { return _montoAnticipo; } }
+        private SrcTransporte.ClienteAnticipo.UsarDisponer.Vista.IHnd _anticipo;
+        public SrcTransporte.ClienteAnticipo.UsarDisponer.Vista.IHnd Anticipo { get { return _anticipo; } }
+        public void UsarAnticipo()
+        {
+            if (_anticipo == null)
+            {
+                _anticipo = new SrcTransporte.ClienteAnticipo.UsarDisponer.Handler.Imp();
+            }
+            _anticipo.Inicializa();
+            _anticipo.setMontoDeuda(GetMontoPend);
+            _anticipo.setMontoDisponer(_montoAnticipo);
+            _anticipo.setCliente(_idCliente);
+            _anticipo.Inicia();
+            if (_anticipo.ProcesarIsOK)
+            {
+                _montoAnticipo = _anticipo.Get_MontoADisponer;
+            }
+        }
+
+
+        private string _idCliente;
+        public void setClienteGestionar(string idCliente)
+        {
+            _idCliente = idCliente;
         }
     }
 }

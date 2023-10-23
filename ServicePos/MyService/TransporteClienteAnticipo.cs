@@ -15,5 +15,15 @@ namespace ServicePos.MyService
         {
             return ServiceProv.Transporte_Cliente_Anticipo_Agregar(ficha);
         }
+        public DtoLib.ResultadoEntidad<DtoTransporte.ClienteAnticipo.Obtener.Ficha> 
+            Transporte_Cliente_Anticipo_Obtener_ById(string idCliente)
+        {
+            return ServiceProv.Transporte_Cliente_Anticipo_Obtener_ById(idCliente);
+        }
+        public DtoLib.ResultadoLista<DtoTransporte.ClienteAnticipo.ListaMov.Ficha> 
+            Transporte_Cliente_Anticipo_GetLista(DtoTransporte.ClienteAnticipo.ListaMov.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Cliente_Anticipo_GetLista(filtro);
+        }
     }
 }

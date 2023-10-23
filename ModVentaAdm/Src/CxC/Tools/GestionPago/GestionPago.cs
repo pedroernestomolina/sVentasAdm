@@ -220,6 +220,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
             {
                 _gMedCobro.Inicializa();
                 _gMedCobro.setMontoCobrar(GetMontoAbonar);
+                _gMedCobro.setClienteGestionar(_cliente.id);
                 _gMedCobro.Inicia();
                 if (_gMedCobro.MedioCobroIsOk) 
                 {
@@ -368,10 +369,49 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
                 Cobro = cobroOOb,
                 Documentos = documentosOOb,
                 Recibo = reciboOOb,
-                MetodosPago= _metodosCobOOb,
+                MetodosPago = _metodosCobOOb,
                 saldoCliente = saldoClienteOOb,
-                notaAdm=_notaCrAdm,
+                notaAdm = _notaCrAdm,
+                autoCliente = _cliente.id,
+                montoAnticipo = _gMedCobro.GetMontoPorAnticipo,
             };
+            if (_gMedCobro.Get_RetCaja.Retencion.Get_AplicaRet) 
+            {
+                var rtIslr =_gMedCobro.Get_RetCaja.Retencion;
+                fichaOOb.retencion = new OOB.CxC.GestionCobro.Retencion()
+                {
+                    factorCambio = rtIslr.Get_FactorCambio,
+                    montoAplicarRetMonAct = rtIslr.Get_MontoAplicarRetencionMonAct,
+                    retencionMonAct = rtIslr.Get_MontoRetencion,
+                    sustraendoMonAct = rtIslr.Get_MontoSustraendo,
+                    tasaRet = rtIslr.Get_TasaRetencion,
+                    totalRetMonAct = rtIslr.Get_TotalRetencionMonAct
+                };
+            }
+            var _lstCaja = new List<OOB.CxC.GestionCobro.Caja>();
+            var _factorCambio = _gMedCobro.Get_RetCaja.Retencion.Get_FactorCambio;
+            foreach (var rg in _gMedCobro.Get_RetCaja.Caja.Get_Lista.Where(w => w.montoAbonar > 0).ToList())
+            {
+                var cj = (Utils.Componente.CajasUtilizar.Handler.data)rg;
+                var nr = new OOB.CxC.GestionCobro.Caja()
+                {
+                    idCaja = cj.Get_Ficha.id,
+                    monto = cj.montoAbonar,
+                    codCaja = cj.Get_Ficha.codigo,
+                    descCaja = cj.Get_Ficha.descripcion,
+                    cajaMov = new OOB.CxC.GestionCobro.CajaMov()
+                    {
+                        descMov = "",
+                        factorCambio = _factorCambio,
+                        montoMovMonAct = cj.esDivisa ? cj.montoAbonar * _factorCambio : cj.montoAbonar,
+                        montoMovMonDiv = cj.esDivisa ? cj.montoAbonar : cj.montoAbonar / _factorCambio,
+                        movFueDivisa = cj.esDivisa,
+                    }
+                };
+                _lstCaja.Add(nr);
+            }
+            fichaOOb.cajas = _lstCaja;
+
             var rt2 = Sistema.MyData.CxC_GestionCobro_Agregar(fichaOOb);
             if (rt2.Result == OOB.Resultado.Enumerados.EnumResult.isError)
             {

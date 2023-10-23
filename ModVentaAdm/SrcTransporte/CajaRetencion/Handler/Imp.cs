@@ -58,13 +58,13 @@ namespace ModVentaAdm.SrcTransporte.CajaRetencion.Handler
             _retencion.setMontoAplicarRetencionMonAct(_montoProcesarMonDiv * _factorCambio);
             _caja.setFactorCambio(factor);
         }
-        public void setMontoProcesarMonDiv(decimal monto)
+        public void setMontoCajaProcesarMonDiv(decimal montoCaja)
         {
-            _montoProcesarMonDiv = monto;
+            _montoProcesarMonDiv = montoCaja;
         }
         public void ActualizarSaldoCaja()
         {
-            var _monto = _montoProcesarMonDiv - _retencion.Get_TotalRetencionMonDiv;
+            var _monto = _montoProcesarMonDiv;
             _monto = Math.Round(_monto, 2, MidpointRounding.AwayFromZero);
             _caja.setFactorCambio(_factorCambio);
             _caja.setMontoPendDiv(_monto);

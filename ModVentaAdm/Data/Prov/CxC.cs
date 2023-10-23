@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Prov
 {
-    
     public partial class DataPrv : IData
     {
-
-
         public OOB.Resultado.Lista<OOB.CxC.Tools.CtasPendiente.Lista.Ficha> 
             CxC_Tool_CtasPendiente_GetLista(OOB.CxC.Tools.CtasPendiente.Lista.Filtro filtro)
         {
@@ -249,9 +246,10 @@ namespace ModVentaAdm.Data.Prov
             CxC_GestionCobro_Agregar(OOB.CxC.GestionCobro.Ficha ficha)
         {
             var result = new OOB.Resultado.Ficha();
-
             var fichaDto = new DtoLibPos.CxC.GestionCobro.Ficha()
             {
+                autoCliente = ficha.autoCliente,
+                montoAnticipo = ficha.montoAnticipo,
                 SucPrefijo = ficha.SucPrefijo,
                 Cobro = new DtoLibPos.CxC.GestionCobro.FichaCobro()
                 {
@@ -286,7 +284,7 @@ namespace ModVentaAdm.Data.Prov
                     Telefono = ficha.Recibo.Telefono,
                     Usuario = ficha.Recibo.Usuario,
                 },
-                Documentos = ficha.Documentos.Select(s=>
+                Documentos = ficha.Documentos.Select(s =>
                 {
                     var nr = new DtoLibPos.CxC.GestionCobro.FichaDocumento()
                     {
@@ -297,11 +295,11 @@ namespace ModVentaAdm.Data.Prov
                         Importe = s.Importe,
                         ImporteDivisa = s.ImporteDivisa,
                         TipoDocumento = s.TipoDocumento,
-                        Notas= s.Notas,
+                        Notas = s.Notas,
                     };
                     return nr;
                 }).ToList(),
-                MetodosPago = ficha.MetodosPago.Select(s=>
+                MetodosPago = ficha.MetodosPago.Select(s =>
                 {
                     var nr = new DtoLibPos.CxC.GestionCobro.FichaMetodoPago()
                     {
@@ -349,6 +347,43 @@ namespace ModVentaAdm.Data.Prov
                     montoDoc = ficha.notaAdm.montoDoc,
                 };
             }
+            if (ficha.retencion != null) 
+            {
+                var fr= ficha.retencion;
+                fichaDto.retencion = new DtoLibPos.CxC.GestionCobro.Retencion()
+                {
+                    factorCambio = fr.factorCambio,
+                    montoAplicarRetMonAct = fr.montoAplicarRetMonAct,
+                    retencionMonAct = fr.retencionMonAct,
+                    sustraendoMonAct = fr.sustraendoMonAct,
+                    tasaRet = fr.tasaRet,
+                    totalRetMonAct = fr.totalRetMonAct,
+                };
+            }
+            if (ficha.cajas != null) 
+            {
+                var lt = new List<DtoLibPos.CxC.GestionCobro.Caja>();
+                foreach (var rg in ficha.cajas) 
+                {
+                    var mv = new DtoLibPos.CxC.GestionCobro.Caja()
+                    {
+                        idCaja = rg.idCaja,
+                        codCaja = rg.codCaja,
+                        descCaja = rg.descCaja,
+                        monto = rg.monto,
+                        cajaMov = new DtoLibPos.CxC.GestionCobro.CajaMov()
+                        {
+                            descMov = rg.cajaMov.descMov,
+                            factorCambio = rg.cajaMov.factorCambio,
+                            montoMovMonAct = rg.cajaMov.montoMovMonAct,
+                            montoMovMonDiv = rg.cajaMov.montoMovMonDiv,
+                            movFueDivisa = rg.cajaMov.movFueDivisa,
+                        },
+                    };
+                    lt.Add(mv);
+                }
+                fichaDto.cajas = lt;
+            }
             var r01 = MyData.CxC_GestionCobro_Agregar(fichaDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -356,10 +391,7 @@ namespace ModVentaAdm.Data.Prov
                 result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
                 return result;
             }
-
             return result;
         }
-
     }
-
 }

@@ -82,6 +82,8 @@
     <Compile Include="CxC\Agregar\Ficha.cs" />
     <Compile Include="CxC\DocumentosPend\Ficha.cs" />
     <Compile Include="CxC\DocumentosPend\Filtro.cs" />
+    <Compile Include="CxC\GestionCobro\Caja.cs" />
+    <Compile Include="CxC\GestionCobro\CajaMov.cs" />
     <Compile Include="CxC\GestionCobro\Ficha.cs" />
     <Compile Include="CxC\GestionCobro\FichaCliente.cs" />
     <Compile Include="CxC\GestionCobro\FichaDocumento.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="CxC\GestionCobro\FichaCobro.cs" />
     <Compile Include="CxC\GestionCobro\FichaNotaAdm.cs" />
     <Compile Include="CxC\GestionCobro\FichaRecibo.cs" />
+    <Compile Include="CxC\GestionCobro\Retencion.cs" />
     <Compile Include="CxC\Tools\CtasPendiente\Lista\Ficha.cs" />
     <Compile Include="CxC\Tools\CtasPendiente\Lista\Filtro.cs" />
     <Compile Include="Deposito\Entidad\Ficha.cs" />

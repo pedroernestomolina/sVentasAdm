@@ -863,7 +863,6 @@ namespace ProvPos
                             var rt4 = cn.Database.ExecuteSqlCommand(xsql_cli, xcli_1, xcli_2);
                             cn.SaveChanges();
 
-
                             if (ficha.notaAdm != null) 
                             {
                                 var t1 = cn.Database.ExecuteSqlCommand("update sistema_contadores set a_cxc=a_cxc+1, a_cxc_nc=a_cxc_nc+1");
@@ -925,6 +924,172 @@ namespace ProvPos
                                                 saldo=saldo-@monto
                                                 where auto=@idCliente";
                                 var t2 = cn.Database.ExecuteSqlCommand(xsql_cli, xcli_1, xcli_2);
+                                cn.SaveChanges();
+                            }
+                            //
+                            if (ficha.montoAnticipo > 0m) 
+                            {
+                                // ACTUALIZAR CLIENTE
+                                sql = @"update clientes set
+                                    anticipos= anticipos-@montoAnticipo
+                                where auto=@autoCliente";
+                                var t00 = new MySql.Data.MySqlClient.MySqlParameter("@autoCliente", ficha.autoCliente);
+                                var t01 = new MySql.Data.MySqlClient.MySqlParameter("@montoAnticipo", ficha.montoAnticipo);
+                                var rp0 = cn.Database.ExecuteSqlCommand(sql, t00, t01);
+                                if (rp0 == 0)
+                                {
+                                    result.Mensaje = "ERROR AL ACTUALIZAR ANTICPO-CLIENTE";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
+                                cn.SaveChanges();
+                            }
+                            if (ficha.retencion != null)
+                            {
+                                var fRet=ficha.retencion;
+                                //INSERTAR REGISTRO DE RETENCION
+                                var _sql = @"INSERT INTO cxc_recibos_retencion (
+                                                auto_recibo, 
+                                                monto_aplicar_mon_act, 
+                                                tasa_ret, 
+                                                retencion_mon_act, 
+                                                sustraendo_mon_act, 
+                                                total_ret, 
+                                                factor_cambio, 
+                                                auto_cliente, 
+                                                fecha_registro, 
+                                                estatus_anulado, 
+                                                id) 
+                                            VALUES(
+                                                @auto_recibo, 
+                                                @monto_aplicar_mon_act, 
+                                                @tasa_ret, 
+                                                @retencion_mon_act, 
+                                                @sustraendo_mon_act, 
+                                                @total_ret, 
+                                                @factor_cambio, 
+                                                @auto_cliente, 
+                                                @fecha_registro, 
+                                                '0',
+                                                NULL)";
+                                var t0= new MySql.Data.MySqlClient.MySqlParameter("@auto_recibo", autoRecibo);
+                                var t1= new MySql.Data.MySqlClient.MySqlParameter("@monto_aplicar_mon_act", fRet.montoAplicarRetMonAct);
+                                var t2= new MySql.Data.MySqlClient.MySqlParameter("@tasa_ret", fRet.tasaRet);
+                                var t3= new MySql.Data.MySqlClient.MySqlParameter("@retencion_mon_act", fRet.retencionMonAct);
+                                var t4= new MySql.Data.MySqlClient.MySqlParameter("@sustraendo_mon_act", fRet.sustraendoMonAct);
+                                var t5= new MySql.Data.MySqlClient.MySqlParameter("@total_ret", fRet.totalRetMonAct);
+                                var t6= new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio", fRet.factorCambio);
+                                var t7= new MySql.Data.MySqlClient.MySqlParameter("@auto_cliente", ficha.autoCliente);
+                                var t8= new MySql.Data.MySqlClient.MySqlParameter("@fecha_registro", fechaSistema.Date);
+                                var rp1 = cn.Database.ExecuteSqlCommand(_sql, 
+                                                        t0,t1,t2,t3,t4,t5,t6,t7,t8);
+                                cn.SaveChanges();
+                            }
+                        }
+                        if (ficha.cajas != null)
+                        {
+                            foreach (var rg in ficha.cajas)
+                            {
+                                sql = @"INSERT INTO transp_caja_mov (
+                                        id, 
+                                        id_caja, 
+                                        fecha_reg, 
+                                        concepto_mov, 
+                                        tipo_mov, 
+                                        monto_mov_mon_act,
+                                        monto_mov_mon_div, 
+                                        factor_cambio_mov, 
+                                        estatus_anulado_mov,
+                                        mov_fue_divisa,
+                                        signo)
+                                    VALUES (
+                                        NULL, 
+                                        @id_caja, 
+                                        @fecha_reg, 
+                                        @concepto_mov, 
+                                        'I', 
+                                        @monto_mov_mon_act,
+                                        @monto_mov_mon_div, 
+                                        @factor_cambio_mov, 
+                                        '0',
+                                        @mov_fue_divisa,
+                                        1)";
+                                var cjMov = rg.cajaMov;
+                                var p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", rg.idCaja);
+                                var p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_reg", fechaSistema.Date);
+                                var p02 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", cjMov.descMov);
+                                var p03 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_act", cjMov.montoMovMonAct);
+                                var p04 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_div", cjMov.montoMovMonDiv);
+                                var p05 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio_mov", cjMov.factorCambio);
+                                var p06 = new MySql.Data.MySqlClient.MySqlParameter("@mov_fue_divisa", cjMov.movFueDivisa ? "1" : "0");
+                                var rp2 = cn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06);
+                                if (rp2 == 0)
+                                {
+                                    result.Mensaje = "ERROR AL INSERTAR CAJA - MOVIMIENTO";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
+                                cn.SaveChanges();
+                                //
+                                sql = "SELECT LAST_INSERT_ID()";
+                                var idCjMov = cn.Database.SqlQuery<int>(sql).FirstOrDefault();
+                                //
+                                // INSERTAR CAJA AFECTADA POR ANITCIPO DEL ALIADO
+                                sql = @"INSERT INTO cxc_recibos_caj (
+                                        id, 
+                                        auto_recibo,
+                                        auto_cliente,
+                                        fecha_registro,
+                                        estatus_anulado,
+                                        id_caja, 
+                                        cod_caja,
+                                        desc_caja,
+                                        id_caja_mov,
+                                        monto,
+                                        es_divisa) 
+                                    VALUES (
+                                        NULL,
+                                        @auto_recibo,
+                                        @auto_cliente,
+                                        @fecha_registro,
+                                        '0',
+                                        @id_caja, 
+                                        @cod_caja,
+                                        @desc_caja,
+                                        @id_caja_mov,
+                                        @monto,
+                                        @es_divisa)";
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto_recibo", autoRecibo);
+                                p01 = new MySql.Data.MySqlClient.MySqlParameter("@auto_cliente", ficha.autoCliente);
+                                p02 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_registro", fechaSistema.Date);
+                                p03 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", rg.idCaja);
+                                p04 = new MySql.Data.MySqlClient.MySqlParameter("@cod_caja", rg.codCaja);
+                                p05 = new MySql.Data.MySqlClient.MySqlParameter("@desc_caja", rg.descCaja);
+                                p06 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja_mov", idCjMov);
+                                var p07 = new MySql.Data.MySqlClient.MySqlParameter("@monto", rg.monto);
+                                var p08 = new MySql.Data.MySqlClient.MySqlParameter("@es_divisa", cjMov.movFueDivisa ? "1" : "0");
+                                var rp3 = cn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, p07, p08);
+                                if (rp3 == 0)
+                                {
+                                    result.Mensaje = "ERROR AL INSERTAR CXC-RECIBO-CAJA";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
+                                cn.SaveChanges();
+                                //
+                                // ACTUALIZAR SALDO CAJAS 
+                                sql = @"update transp_caja set 
+                                        monto_ingreso=monto_ingreso+@monto
+                                    where id=@idCaja";
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@idCaja", rg.idCaja);
+                                p01 = new MySql.Data.MySqlClient.MySqlParameter("@monto", rg.monto);
+                                var rp4 = cn.Database.ExecuteSqlCommand(sql, p00, p01);
+                                if (rp4 == 0)
+                                {
+                                    result.Mensaje = "ERROR AL ACTUALIZAR CAJA - SALDO";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
                                 cn.SaveChanges();
                             }
                         }

@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro.MetodoCobro
 {
-    
     public interface IMetodoAgregarEditar: IMetodo
     {
-
         string GetTituloFicha { get; }
 
 
@@ -43,6 +41,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro.MetodoCobro
         void setLote(string lote);
         void setReferencia(string referenc);
 
+        //
+        bool GetAplicaMovCaja { get; }
+        void setAplicaMovCaja(bool modo);
     }
-
 }

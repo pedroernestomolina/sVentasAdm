@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro.MetodoCobro
 {
-    
     public class dataItem
     {
-
         private decimal _monto;
         private decimal _factor;
         private string _banco;
@@ -88,6 +86,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro.MetodoCobro
             _fechaOp = DateTime.Now.Date;
             _referencia="";
             _lote="";
+            _aplicaMovCaja = false;
             _metodo = null;
         }
 
@@ -137,6 +136,12 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro.MetodoCobro
             _referencia=referenc;
         }
 
-    }
 
+        private bool _aplicaMovCaja;
+        public bool GetAplicaMovCaja { get { return _aplicaMovCaja; } }
+        public void setAplicaMovCaja(bool modo)
+        {
+            _aplicaMovCaja = modo;
+        }
+    }
 }

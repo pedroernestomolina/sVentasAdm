@@ -94,6 +94,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro.MetodoCobro
             TB_DETALLE_OPERACION.Text = _controlador.GetDetalleOp;
             TB_REF.Text = _controlador.GetReferencia;
             TB_LOTE.Text = _controlador.GetLote;
+            CHB_APLICA_MOV_CAJA.Checked = _controlador.GetAplicaMovCaja;
             _modoInicializa = false;
         }
 
@@ -156,6 +157,10 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro.MetodoCobro
             }
         }
 
+        private void CHB_APLICA_MOV_CAJA_CheckedChanged(object sender, EventArgs e)
+        {
+            var _modo = CHB_APLICA_MOV_CAJA.Checked;
+            _controlador.setAplicaMovCaja(_modo);
+        }
     }
-
 }

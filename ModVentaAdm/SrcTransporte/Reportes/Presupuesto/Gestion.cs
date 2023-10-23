@@ -45,8 +45,12 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Presupuesto
         private void generarDoc(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha)
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"\SrcTransporte\Reportes\Transp_Presupuesto.rdlc";
-            var ds = new DS_TRANSP();
+            if (ficha.items.Count(w=>w.turnoEstatus.Trim().ToUpper()=="1")>0)
+            {
+                pt = AppDomain.CurrentDomain.BaseDirectory + @"\SrcTransporte\Reportes\Transp_PresupuestoPorTurno.rdlc";
+            }
 
+            var ds = new DS_TRANSP();
             DataRow re = ds.Tables["PresupuestoEnc"].NewRow();
             re["numeroDoc"] = ficha.encabezado.docNumero;
             re["fechaDoc"] = ficha.encabezado.docFechaEmision;

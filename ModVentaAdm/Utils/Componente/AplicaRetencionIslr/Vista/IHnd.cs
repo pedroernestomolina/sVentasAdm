@@ -10,6 +10,8 @@ namespace ModVentaAdm.Utils.Componente.AplicaRetencionIslr.Vista
 {
     public interface IHnd
     {
+        decimal Get_FactorCambio { get; }
+        decimal Get_MontoAplicarRetencionMonAct { get; }
         bool Get_AplicaRet { get; }
         decimal Get_TasaRetencion { get; }
         decimal Get_MontoSustraendo { get; }
@@ -22,6 +24,7 @@ namespace ModVentaAdm.Utils.Componente.AplicaRetencionIslr.Vista
         void setTasaRet(decimal monto);
         void setMontoSustraendo(decimal monto);
         void setAplicaRet(bool aplica);
+        void setTotalRetencionMonAct(decimal monto);
 
         void Inicializa();
         bool IsOk();

@@ -63,5 +63,66 @@ namespace ModVentaAdm.Data.Prov
             result.Entidad = r01.Id;
             return result;
         }
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.ClienteAnticipo.Obtener.Ficha> 
+            Transporte_Cliente_Anticipo_Obtener_ById(string id)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.ClienteAnticipo.Obtener.Ficha>();
+            var r01 = MyData.Transporte_Cliente_Anticipo_Obtener_ById(id);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var s=r01.Entidad;
+            var _ent = new OOB.Transporte.ClienteAnticipo.Obtener.Ficha()
+            {
+                ciRif = s.ciRif,
+                id = s.id,
+                montoDiv = s.montoDiv,
+                nombreRazonSocial = s.nombreRazonSocial,
+            };
+            result.Entidad = _ent;
+            return result;
+        }
+        public OOB.Resultado.Lista<OOB.Transporte.ClienteAnticipo.ListaMov.Ficha> 
+            Transporte_Cliente_Anticipo_GetLista(OOB.Transporte.ClienteAnticipo.ListaMov.Filtro filtro)
+        {
+            var result = new OOB.Resultado.Lista<OOB.Transporte.ClienteAnticipo.ListaMov.Ficha>();
+            var filtroDTO = new DtoTransporte.ClienteAnticipo.ListaMov.Filtro()
+            {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                Estatus = filtro.Estatus,
+                IdCliente = filtro.IdCliente,
+            };
+            var r01 = MyData.Transporte_Cliente_Anticipo_GetLista (filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.Transporte.ClienteAnticipo.ListaMov.Ficha>();
+            if (r01.Lista!=null)
+            {
+                if (r01.Lista.Count > 0) 
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Transporte.ClienteAnticipo.ListaMov.Ficha()
+                        {
+                            aplicaRet = s.aplicaRet,
+                            ciRifCliente = s.ciRifCliente,
+                            estatusAnulado = s.estatusAnulado,
+                            fechaReg = s.fechaReg,
+                            idMov = s.idMov,
+                            montoMonDiv = s.montoMonDiv,
+                            montoRecMonDiv = s.montoRecMonDiv,
+                            nombreCliente = s.nombreCliente,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.ListaD = lst;
+            return result;
+        }
     }
 }

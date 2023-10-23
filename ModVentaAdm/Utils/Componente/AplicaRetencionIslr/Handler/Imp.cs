@@ -18,6 +18,8 @@ namespace ModVentaAdm.Utils.Componente.AplicaRetencionIslr.Handler
         private decimal _totalRetencion;
 
 
+        public decimal Get_FactorCambio { get { return _factorCambio; } }
+        public decimal Get_MontoAplicarRetencionMonAct { get { return _montoAplicarRetMonAct; } }
         public decimal Get_TasaRetencion { get { return _tasaRet; } }
         public decimal Get_MontoSustraendo { get { return _montoSustraendo; } }
         public decimal Get_MontoRetencion { get { return _montoRetencion; } }
@@ -86,6 +88,10 @@ namespace ModVentaAdm.Utils.Componente.AplicaRetencionIslr.Handler
                 _montoRetencion = 0m;
             }
             calculoRet();
+        }
+        public void setTotalRetencionMonAct(decimal monto)
+        {
+            _totalRetencion = monto;
         }
         public bool IsOk()
         {

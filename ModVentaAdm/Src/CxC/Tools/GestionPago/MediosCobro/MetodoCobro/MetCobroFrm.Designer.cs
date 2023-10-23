@@ -80,6 +80,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.TB_REF = new System.Windows.Forms.TextBox();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.CHB_APLICA_MOV_CAJA = new System.Windows.Forms.CheckBox();
             this.P_PIE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -116,6 +118,7 @@
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.P_PIE.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -129,7 +132,7 @@
             this.P_PRINCIPAL.Location = new System.Drawing.Point(0, 0);
             this.P_PRINCIPAL.Margin = new System.Windows.Forms.Padding(1);
             this.P_PRINCIPAL.Name = "P_PRINCIPAL";
-            this.P_PRINCIPAL.Size = new System.Drawing.Size(644, 497);
+            this.P_PRINCIPAL.Size = new System.Drawing.Size(644, 529);
             this.P_PRINCIPAL.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -147,7 +150,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(644, 497);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(644, 529);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // P_TITULO
@@ -182,7 +185,7 @@
             this.P_FICHA.Margin = new System.Windows.Forms.Padding(1);
             this.P_FICHA.Name = "P_FICHA";
             this.P_FICHA.Padding = new System.Windows.Forms.Padding(2);
-            this.P_FICHA.Size = new System.Drawing.Size(642, 395);
+            this.P_FICHA.Size = new System.Drawing.Size(642, 427);
             this.P_FICHA.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -200,7 +203,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(638, 391);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(638, 423);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel1
@@ -210,7 +213,7 @@
             this.panel1.Location = new System.Drawing.Point(21, 16);
             this.panel1.Margin = new System.Windows.Forms.Padding(1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(596, 359);
+            this.panel1.Size = new System.Drawing.Size(596, 391);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -240,11 +243,12 @@
             this.tableLayoutPanel6.Controls.Add(this.panel5, 1, 7);
             this.tableLayoutPanel6.Controls.Add(this.panel6, 0, 8);
             this.tableLayoutPanel6.Controls.Add(this.panel10, 1, 8);
+            this.tableLayoutPanel6.Controls.Add(this.panel11, 1, 12);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 13;
+            this.tableLayoutPanel6.RowCount = 14;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -257,8 +261,9 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(596, 359);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(596, 391);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // panel17
@@ -769,12 +774,36 @@
             this.TB_REF.Size = new System.Drawing.Size(174, 22);
             this.TB_REF.TabIndex = 2;
             // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.CHB_APLICA_MOV_CAJA);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(184, 341);
+            this.panel11.Margin = new System.Windows.Forms.Padding(1);
+            this.panel11.Name = "panel11";
+            this.panel11.Padding = new System.Windows.Forms.Padding(2);
+            this.panel11.Size = new System.Drawing.Size(411, 28);
+            this.panel11.TabIndex = 20;
+            // 
+            // CHB_APLICA_MOV_CAJA
+            // 
+            this.CHB_APLICA_MOV_CAJA.AutoSize = true;
+            this.CHB_APLICA_MOV_CAJA.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CHB_APLICA_MOV_CAJA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHB_APLICA_MOV_CAJA.Location = new System.Drawing.Point(2, 2);
+            this.CHB_APLICA_MOV_CAJA.Name = "CHB_APLICA_MOV_CAJA";
+            this.CHB_APLICA_MOV_CAJA.Size = new System.Drawing.Size(407, 20);
+            this.CHB_APLICA_MOV_CAJA.TabIndex = 5;
+            this.CHB_APLICA_MOV_CAJA.Text = "Aplica Movimiento de Caja";
+            this.CHB_APLICA_MOV_CAJA.UseVisualStyleBackColor = true;
+            this.CHB_APLICA_MOV_CAJA.CheckedChanged += new System.EventHandler(this.CHB_APLICA_MOV_CAJA_CheckedChanged);
+            // 
             // P_PIE
             // 
             this.P_PIE.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.P_PIE.Controls.Add(this.tableLayoutPanel3);
             this.P_PIE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.P_PIE.Location = new System.Drawing.Point(1, 438);
+            this.P_PIE.Location = new System.Drawing.Point(1, 470);
             this.P_PIE.Margin = new System.Windows.Forms.Padding(1);
             this.P_PIE.Name = "P_PIE";
             this.P_PIE.Padding = new System.Windows.Forms.Padding(2);
@@ -867,7 +896,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BT_SALIR;
-            this.ClientSize = new System.Drawing.Size(644, 497);
+            this.ClientSize = new System.Drawing.Size(644, 529);
             this.Controls.Add(this.P_PRINCIPAL);
             this.KeyPreview = true;
             this.Name = "MetCobroFrm";
@@ -913,6 +942,8 @@
             this.panel6.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.P_PIE.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -982,5 +1013,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox TB_LOTE;
         private System.Windows.Forms.TextBox TB_REF;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.CheckBox CHB_APLICA_MOV_CAJA;
     }
 }

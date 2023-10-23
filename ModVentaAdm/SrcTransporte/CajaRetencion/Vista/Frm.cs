@@ -130,6 +130,38 @@ namespace ModVentaAdm.SrcTransporte.CajaRetencion.Vista
             _controlador.setFactorCambio(_monto);
             TB_FACTOR_CAMBIO.Text = _controlador.Get_FactorCambio.ToString("n2", _cult);
         }
+        private void CHB_APLICA_RET_CheckedChanged(object sender, EventArgs e)
+        {
+            _controlador.Retencion.setAplicaRet(CHB_APLICA_RET.Checked);
+            ActualizarRetencion();
+        }
+        private void TB_MONTO_BASE_RET_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_MONTO_BASE_RET.Text);
+            _controlador.Retencion.setMontoAplicarRetencionMonAct(_monto);
+            ActualizarRetencion();
+        }
+        private void TB_RET_TASA_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_RET_TASA.Text);
+            _controlador.Retencion.setTasaRet(_monto);
+            TB_RET_TASA.Text = _controlador.Retencion.Get_TasaRetencion.ToString("n2", _cult);
+            ActualizarRetencion();
+        }
+        private void TB_RET_SUSTRAENDO_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_RET_SUSTRAENDO.Text);
+            _controlador.Retencion.setMontoSustraendo(_monto);
+            TB_RET_SUSTRAENDO.Text = _controlador.Retencion.Get_MontoSustraendo.ToString("n2", _cult);
+            ActualizarRetencion();
+        }
+        private void TB_TOTAL_MONTO_RET_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_TOTAL_MONTO_RET.Text);
+            _controlador.Retencion.setTotalRetencionMonAct(_monto);
+            TB_TOTAL_MONTO_RET.Text = _controlador.Retencion.Get_TotalRetencionMonAct.ToString("n2", _cult);
+        }
+
 
         private void BT_ACEPTAR_Click(object sender, EventArgs e)
         {
@@ -162,33 +194,18 @@ namespace ModVentaAdm.SrcTransporte.CajaRetencion.Vista
             this.Close();
         }
 
-        private void CHB_APLICA_RET_CheckedChanged(object sender, EventArgs e)
-        {
-            _controlador.Retencion.setAplicaRet(CHB_APLICA_RET.Checked);
-            ActualizarRetencion();
-        }
-        private void TB_RET_TASA_Leave(object sender, EventArgs e)
-        {
-            var _monto = decimal.Parse(TB_RET_TASA.Text);
-            _controlador.Retencion.setTasaRet(_monto);
-            TB_RET_TASA.Text = _controlador.Retencion.Get_TasaRetencion.ToString("n2", _cult);
-            ActualizarRetencion();
-        }
-        private void TB_RET_SUSTRAENDO_Leave(object sender, EventArgs e)
-        {
-            var _monto = decimal.Parse(TB_RET_SUSTRAENDO.Text);
-            _controlador.Retencion.setMontoSustraendo(_monto);
-            TB_RET_SUSTRAENDO.Text = _controlador.Retencion.Get_MontoSustraendo.ToString("n2", _cult);
-            ActualizarRetencion();
-        }
 
         private void ActualizarRetencion()
         {
-            L_MONTO_RETENCION.Text = _controlador.Retencion.Get_TotalRetencionMonAct.ToString("n2", _cult);
+            TB_MONTO_BASE_RET.Text = _controlador.Retencion.Get_MontoAplicarRetencionMonAct.ToString("n2", _cult);
             TB_RET_TASA.Text = _controlador.Retencion.Get_TasaRetencion.ToString("n2", _cult);
             TB_RET_SUSTRAENDO.Text = _controlador.Retencion.Get_MontoSustraendo.ToString("n2", _cult);
+            TB_TOTAL_MONTO_RET.Text = _controlador.Retencion.Get_TotalRetencionMonAct.ToString("n2", _cult);
+            //
+            TB_MONTO_BASE_RET.Enabled = _controlador.Retencion.Get_AplicaRet;
             TB_RET_TASA.Enabled = _controlador.Retencion.Get_AplicaRet;
             TB_RET_SUSTRAENDO.Enabled = _controlador.Retencion.Get_AplicaRet;
+            TB_TOTAL_MONTO_RET.Enabled = _controlador.Retencion.Get_AplicaRet;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)

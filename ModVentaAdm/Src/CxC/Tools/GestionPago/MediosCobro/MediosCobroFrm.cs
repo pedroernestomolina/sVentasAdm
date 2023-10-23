@@ -111,6 +111,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
         private void ActualizarTotal()
         {
             L_MONTO_COBRAR.Text = _controlador.GetMontoCobrar.ToString("n2");
+            L_MONTO_ANTICIPO.Text = _controlador.GetMontoPorAnticipo.ToString("n2");
             L_MONTO_RECIBIDO.Text = _controlador.GetMontoRecibido.ToString("n2");
             L_MONTO_PEND.Text = _controlador.GetMontoPend.ToString("n2");
             L_RESTA_CAMBIO.Text = _controlador.GetRestaCambio;
@@ -221,7 +222,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
         }
         private void AnticiposActivar()
         {
-            _controlador.Anticipo.Activar();
+            _controlador.UsarAnticipo();
+            ActualizarTotal();
         }
     }
 }

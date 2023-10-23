@@ -201,6 +201,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro.MetodoCobro
                 setDetalleOperacion(_itemEditar.GetDetalleOp);
                 setReferencia(_itemEditar.GetReferencia);
                 setLote(_itemEditar.GetLote);
+                setAplicaMovCaja(_itemEditar.GetAplicaMovCaja);
             }
             return true;
         }
@@ -211,6 +212,11 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro.MetodoCobro
             _procesarIsOk = false;
         }
 
-    }
 
+        public bool GetAplicaMovCaja { get { return _item.GetAplicaMovCaja; } }
+        public void setAplicaMovCaja(bool modo)
+        {
+            _item.setAplicaMovCaja(modo);
+        }
+    }
 }

@@ -249,14 +249,19 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 _anticipo.Inicializa();
                 _anticipo.setClienteCargar(item.idCliente);
                 _anticipo.Inicia();
-                if (_anticipo.ProcesarIsOK)
-                {
-                    //ActualizarSaldoAliado(item.Id);
-                }
             }
         }
+        //
+        //
+        private SrcTransporte.ClienteAnticipo.Administrador.Vistas.IAdm _admAnticipo;
         public void AdmDocAnticipos()
         {
+            if (_admAnticipo == null) 
+            {
+                _admAnticipo = new SrcTransporte.ClienteAnticipo.Administrador.Handler.Imp();
+            }
+            _admAnticipo.Inicializa();
+            _admAnticipo.Inicia();
         }
     }
 }
