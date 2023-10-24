@@ -263,5 +263,15 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             _admAnticipo.Inicializa();
             _admAnticipo.Inicia();
         }
+        private SrcTransporte.ToolsCxC.Administrador.Vistas.IAdm _transpAdmDocCxC;
+        public void AdmPagosRecibidos()
+        {
+            if (_transpAdmDocCxC == null)
+            {
+                _transpAdmDocCxC = new SrcTransporte.ToolsCxC.Administrador.Handler.Imp();
+            }
+            _transpAdmDocCxC.Inicializa();
+            _transpAdmDocCxC.Inicia();
+        }
     }
 }

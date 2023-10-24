@@ -124,5 +124,22 @@ namespace ModVentaAdm.Data.Prov
             result.ListaD = lst;
             return result;
         }
+        //
+        public OOB.Resultado.Ficha 
+            Transporte_Cliente_Anticipo_Anular(int idMov)
+        {
+            var rt = new OOB.Resultado.Ficha();
+            var r01 = MyData.Transporte_Cliente_Anticipo_Anular_ObtenerData (idMov);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var r02 = MyData.Transporte_Cliente_Anticipo_Anular(r01.Entidad);
+            if (r02.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r02.Mensaje);
+            }
+            return rt;
+        }
     }
 }

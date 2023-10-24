@@ -80,6 +80,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_SALIDA = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.BT_ADM_PAGOS_REC = new System.Windows.Forms.Button();
             this.MenuP.SuspendLayout();
             this.P_PRINCIPAL.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -112,6 +114,7 @@
             this.P_PIE.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel24.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuP
@@ -417,6 +420,7 @@
             this.tableLayoutPanel7.Controls.Add(this.panel21, 0, 3);
             this.tableLayoutPanel7.Controls.Add(this.panel22, 0, 6);
             this.tableLayoutPanel7.Controls.Add(this.panel23, 1, 6);
+            this.tableLayoutPanel7.Controls.Add(this.panel24, 0, 5);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
@@ -747,6 +751,33 @@
             this.BT_SALIDA.UseVisualStyleBackColor = true;
             this.BT_SALIDA.Click += new System.EventHandler(this.BT_SALIDA_Click);
             // 
+            // panel24
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.panel24, 2);
+            this.panel24.Controls.Add(this.BT_ADM_PAGOS_REC);
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel24.Location = new System.Drawing.Point(1, 396);
+            this.panel24.Margin = new System.Windows.Forms.Padding(1);
+            this.panel24.Name = "panel24";
+            this.panel24.Padding = new System.Windows.Forms.Padding(2);
+            this.panel24.Size = new System.Drawing.Size(180, 77);
+            this.panel24.TabIndex = 7;
+            // 
+            // BT_ADM_PAGOS_REC
+            // 
+            this.BT_ADM_PAGOS_REC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ADM_PAGOS_REC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_ADM_PAGOS_REC.Image = global::ModVentaAdm.Properties.Resources.manager_doc_48;
+            this.BT_ADM_PAGOS_REC.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_ADM_PAGOS_REC.Location = new System.Drawing.Point(2, 2);
+            this.BT_ADM_PAGOS_REC.Name = "BT_ADM_PAGOS_REC";
+            this.BT_ADM_PAGOS_REC.Size = new System.Drawing.Size(176, 73);
+            this.BT_ADM_PAGOS_REC.TabIndex = 2;
+            this.BT_ADM_PAGOS_REC.Text = "Adm\r\nPagos Recibios";
+            this.BT_ADM_PAGOS_REC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BT_ADM_PAGOS_REC.UseVisualStyleBackColor = true;
+            this.BT_ADM_PAGOS_REC.Click += new System.EventHandler(this.BT_ADM_PAGOS_REC_Click);
+            // 
             // ToolsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -795,6 +826,7 @@
             this.P_PIE.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel24.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -853,6 +885,8 @@
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Button BT_AGREGAR_ANTICIPO;
         private System.Windows.Forms.Button BT_ADM_DOC_ANTICIPO;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Button BT_ADM_PAGOS_REC;
 
     }
 }

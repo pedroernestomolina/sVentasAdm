@@ -686,11 +686,13 @@ namespace ProvPos
                                             monto_recibido_divisa,
                                             cambio_divisa,
                                             estatus_doc_cxc, 
-                                            codigo_sucursal)
+                                            codigo_sucursal,
+                                            tasa_cambio)
                                         VALUES ( 
                                             {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10},
                                             {11}, {12}, {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20},
-                                            {21}, {22}, {23}, {24}, {25}, {26}, {27}, {28}, {29}, {30})";
+                                            {21}, {22}, {23}, {24}, {25}, {26}, {27}, {28}, {29}, {30},
+                                            {31})";
                             var rt2 = cn.Database.ExecuteSqlCommand(sql_2,
                                 autoRecibo,
                                 reciboNUmero,
@@ -708,7 +710,7 @@ namespace ProvPos
                                 ficha.Recibo.Direccion,
                                 ficha.Recibo.Telefono,
                                 ficha.Recibo.AutoCobrador,
-                                0m,
+                                ficha.montoAnticipo,
                                 ficha.Recibo.Cambio,
                                 ficha.Recibo.Nota,
                                 ficha.Recibo.CodigoCobrador,
@@ -719,10 +721,11 @@ namespace ProvPos
                                 "",
                                 "",
                                 ficha.Recibo.ImporteDivisa,
-                                ficha.Recibo.MontoRecibidoDivisa,
+                                ficha.montoRecibido,
                                 ficha.Recibo.CambioDivisa,
                                 "1", 
-                                ficha.SucPrefijo);
+                                ficha.SucPrefijo,
+                                ficha.factorCambio);
                             cn.SaveChanges();
 
                             //LISTA DE DOCUMENTOS INCLUIDOS EN RECIBO DE COBRO
@@ -854,8 +857,8 @@ namespace ProvPos
                                 cn.SaveChanges();
                             }
 
-                            var xcli_1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.saldoCliente.idCliente );
-                            var xcli_2 = new MySql.Data.MySqlClient.MySqlParameter("@monto", ficha.saldoCliente.monto);
+                            var xcli_1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.autoCliente);
+                            var xcli_2 = new MySql.Data.MySqlClient.MySqlParameter("@monto", ficha.Recibo.ImporteDivisa);
                             var xsql_cli = @"update clientes set 
                                                 creditos=creditos+@monto,
                                                 saldo=saldo-@monto
@@ -1124,19 +1127,19 @@ namespace ProvPos
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
                 {
-                    var ent = cnn.clientes.Find(ficha.saldoCliente.idCliente);
+                    var ent = cnn.clientes.Find(ficha.autoCliente);
                     if (ent == null)
                     {
                         rt.Mensaje = "[ ID ] CLIENTE NO ENCONTRADO";
                         rt.Result = DtoLib.Enumerados.EnumResult.isError;
                         return rt;
                     }
-                    if (ficha.saldoCliente.monto > ent.saldo)
-                    {
-                        rt.Mensaje = "MONTO ABONAR SUPERIOR AL SALDO DEL CLIENTE";
-                        rt.Result = DtoLib.Enumerados.EnumResult.isError;
-                        return rt;
-                    }
+                    //if (ficha.saldoCliente.monto > ent.saldo)
+                    //{
+                    //    rt.Mensaje = "MONTO ABONAR SUPERIOR AL SALDO DEL CLIENTE";
+                    //    rt.Result = DtoLib.Enumerados.EnumResult.isError;
+                    //    return rt;
+                    //}
                     foreach (var rg in ficha.Documentos)
                     {
                         var doc = Environment.NewLine + "Documento: " + rg.DocumentoNro + ", Tipo: " + rg.TipoDocumento;

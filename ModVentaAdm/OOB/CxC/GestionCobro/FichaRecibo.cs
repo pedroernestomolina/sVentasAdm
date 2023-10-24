@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.CxC.GestionCobro
 {
-    
     public class FichaRecibo
     {
-
         public string AutoUsuario { get; set; }
         public string Usuario { get; set; }
         public string Cobrador { get; set; }
@@ -29,8 +27,6 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
         public decimal Importe { get; set; }
         public decimal MontoRecibido { get; set; }
         public decimal Cambio { get; set; }
-
-
         public FichaRecibo()
         {
             AutoUsuario = "";
@@ -52,7 +48,5 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
             MontoRecibidoDivisa = 0m;
             CambioDivisa = 0m;
         }
-
     }
-
 }

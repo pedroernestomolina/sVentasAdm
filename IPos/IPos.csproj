@@ -76,6 +76,7 @@
     <Compile Include="Transporte\IServicioPrest.cs" />
     <Compile Include="Transporte\ITranspCaja.cs" />
     <Compile Include="Transporte\ITranspClienteAnticipo.cs" />
+    <Compile Include="Transporte\ITranspCxCMovCobro.cs" />
     <Compile Include="Transporte\ITranspDocumento.cs" />
     <Compile Include="Transporte\ITranspReporte.cs" />
   </ItemGroup>

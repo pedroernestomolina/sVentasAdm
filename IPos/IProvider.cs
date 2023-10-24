@@ -17,7 +17,8 @@ namespace IPos
         Transporte.ITranspReporte, Transporte.IServicioPrest,
         Transporte.ICnf,
         Transporte.ITranspCaja,
-        Transporte.ITranspClienteAnticipo
+        Transporte.ITranspClienteAnticipo,
+        Transporte.ITranspCxCMovCobro
     {
 
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();

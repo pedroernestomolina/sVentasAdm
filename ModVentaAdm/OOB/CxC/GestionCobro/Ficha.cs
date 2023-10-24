@@ -14,12 +14,13 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
         public FichaRecibo Recibo { get; set; }
         public List<FichaDocumento> Documentos { get; set; }
         public List<FichaMetodoPago> MetodosPago { get; set; }
-        public FichaCliente saldoCliente { get; set; }
         public FichaNotaAdm notaAdm { get; set; }
         public Retencion retencion { get; set; }
         public List<Caja> cajas { get; set; }
         public string autoCliente { get; set; }
         public decimal montoAnticipo { get; set; }
+        public decimal factorCambio { get; set; }
+        public decimal montoRecibido { get; set; }
         public Ficha() 
         {
             SucPrefijo = "";
@@ -27,12 +28,13 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
             Recibo = new FichaRecibo();
             Documentos = new List<FichaDocumento>();
             MetodosPago = new List<FichaMetodoPago>();
-            saldoCliente = new FichaCliente();
             notaAdm = null;
             retencion = null;
             cajas = null;
             autoCliente = "";
             montoAnticipo = 0m;
+            factorCambio = 0m;
+            montoRecibido = 0m;
         }
     }
 }

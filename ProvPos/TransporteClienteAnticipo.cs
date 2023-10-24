@@ -338,5 +338,159 @@ namespace ProvPos
             }
             return result;
         }
+        //
+        public DtoLib.Resultado 
+            Transporte_Cliente_Anticipo_Anular(DtoTransporte.ClienteAnticipo.Anular.Ficha ficha)
+        {
+            var result = new DtoLib.Resultado();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    using (var ts = cnn.Database.BeginTransaction())
+                    {
+                        var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
+                        var mesRelacion = fechaSistema.Month.ToString().Trim().PadLeft(2, '0');
+                        var anoRelacion = fechaSistema.Year.ToString().Trim().PadLeft(4, '0');
+                        //
+                        //ACTUALIZAR ESTATUS ANULADO ANTICIPO-CLIENTE
+                        var sql = @"update clientes_anticipo_mov set
+                                        estatus_anulado='1'
+                                    where id=@idMov and estatus_anulado='0'";
+                        var p00 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", ficha.idMov);
+                        //
+                        var r1 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                        if (r1 == 0)
+                        {
+                            result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS ANULADO CLIENTE-ANTICPO-MOV";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cnn.SaveChanges();
+                        //
+                        // ACTUALIZAR CLIENTE ANTICIPO
+                        sql = @"update clientes set
+                                    anticipos= anticipos-@monto
+                                where auto=@idCliente";
+                        p00 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
+                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@monto", ficha.montoAnticipoDiv);
+                        var r2 = cnn.Database.ExecuteSqlCommand(sql, p00, p01);
+                        if (r2 == 0)
+                        {
+                            result.Mensaje = "ERROR AL ACTUALIZAR ANTICPO-CLIENTE";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cnn.SaveChanges();
+                        //
+                        //ACTUALIZAR ESTATUS ANULADO MOVIMIENTO - CAJA
+                        foreach (var rg in ficha.cajas)
+                        {
+                            sql = @"update transp_caja_mov set
+                                        estatus_anulado_mov='1'
+                                    where id=@idCajaMov";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@idCajaMov", rg.idCajaMov);
+                            var r3 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                            if (r3 == 0)
+                            {
+                                result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS ANULADO CAJA - MOVIMIENTO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                            //
+                            // ACTUALIZAR ESTATUS CLIENTE-CAJA-MOV
+                            sql = @"update clientes_anticipo_caj set
+                                        estatus_anulado='1'
+                                    where id=@idMov";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", rg.idMov);
+                            var r4 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                            if (r4 == 0)
+                            {
+                                result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS ANULADO CLIENTE-ANITICIPO-CAJA";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                            //
+                            // ACTUALIZAR SALDO CAJAS 
+                            sql = @"update transp_caja set 
+                                        monto_ingreso_anulado=monto_ingreso_anulado+@monto
+                                    where id=@idCaja";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@idCaja", rg.idCaja);
+                            p01 = new MySql.Data.MySqlClient.MySqlParameter("@monto", rg.montoMov);
+                            var r5 = cnn.Database.ExecuteSqlCommand(sql, p00, p01);
+                            if (r5 == 0)
+                            {
+                                result.Mensaje = "ERROR AL ACTUALIZAR CAJA - SALDO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                        }
+                        ts.Commit();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.ResultadoEntidad<DtoTransporte.ClienteAnticipo.Anular.Ficha> 
+            Transporte_Cliente_Anticipo_Anular_ObtenerData(int idMov)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoTransporte.ClienteAnticipo.Anular.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql = @"SELECT 
+                                    id as idMov,
+                                    id_cliente as idCliente,
+                                    monto_anticipo_mon_div as montoAnticipoDiv
+                                FROM clientes_anticipo_mov
+                                where id=@idMov";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var _ent = cnn.Database.SqlQuery<DtoTransporte.ClienteAnticipo.Anular.Ficha>(sql, p1).FirstOrDefault();
+                    if (_ent == null)
+                    {
+                        result.Result = DtoLib.Enumerados.EnumResult.isError;
+                        result.Mensaje = "MOVIMIENTO NO ENCONTRADO";
+                        return result;
+                    }
+                    //
+                    sql = @"SELECT
+                                id as idMov,
+                                id_caja as idCaja,
+                                id_caja_mov as idCajaMov,
+                                monto_mov as montoMov
+                            FROM clientes_anticipo_caj
+                            where id_cliente_anticipo_mov=@idMov";
+                    p1 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var _lst = cnn.Database.SqlQuery<DtoTransporte.ClienteAnticipo.Anular.Caja>(sql, p1).ToList();
+                    _ent.cajas = _lst;
+                    result.Entidad = _ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
     }
 }

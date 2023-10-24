@@ -260,6 +260,10 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         {
             AdmDocAnticipos();
         }
+        private void BT_ADM_PAGOS_REC_Click(object sender, EventArgs e)
+        {
+            AdmPagosRecibidos();
+        }
         private void AgregarAnticipo()
         {
             _controlador.AgregarAnticipo();
@@ -268,6 +272,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         {
             _controlador.AdmDocAnticipos();
         }
+        private void AdmPagosRecibidos()
+        {
+            _controlador.AdmPagosRecibidos();
+        }
     }
-
 }

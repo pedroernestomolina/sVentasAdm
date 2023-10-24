@@ -33,5 +33,6 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         //
         void AgregarAnticipo();
         void AdmDocAnticipos();
+        void AdmPagosRecibidos();
     }
 }

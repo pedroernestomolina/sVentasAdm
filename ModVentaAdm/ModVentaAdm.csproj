@@ -91,6 +91,7 @@
     <Compile Include="Data\Infra\Transporte\IServicioPrest.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteCaja.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteClienteAnticipo.cs" />
+    <Compile Include="Data\Infra\Transporte\ITransporteCxcMovCobro.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteDocumento.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteReporte.cs" />
     <Compile Include="Data\Prov\Auditoria.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Data\Prov\TransporteCaja.cs" />
     <Compile Include="Data\Prov\TransporteClienteAnticipo.cs" />
     <Compile Include="Data\Prov\TransporteCnf.cs" />
+    <Compile Include="Data\Prov\TransporteCxcMovCobro.cs" />
     <Compile Include="Data\Prov\TransporteDocumento.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Anular.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Agregar_Factura.cs" />
@@ -281,6 +283,8 @@
     <Compile Include="OOB\Transporte\ClienteAnticipo\ListaMov\Ficha.cs" />
     <Compile Include="OOB\Transporte\ClienteAnticipo\ListaMov\Filtro.cs" />
     <Compile Include="OOB\Transporte\ClienteAnticipo\Obtener\Ficha.cs" />
+    <Compile Include="OOB\Transporte\CxcMovCobro\ListaMov\Ficha.cs" />
+    <Compile Include="OOB\Transporte\CxcMovCobro\ListaMov\Filtro.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFicha.cs" />
@@ -615,6 +619,21 @@
     <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\ImpAgregarEditar.cs" />
     <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Agregar\Agregar.cs" />
     <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Agregar\IAgregar.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\dataItem.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\HndBusqDoc.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\hndBusqueda.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\HndLista.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\Imp.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Vistas\IAdm.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Vistas\IBusqDocAdm.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Vistas\IdataItem.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Vistas\IListaAdm.cs" />
     <Compile Include="Src\Administrador\data.cs" />
     <Compile Include="Src\Administrador\Documentos\AdmDocFrm.cs">
       <SubType>Form</SubType>
@@ -1212,6 +1231,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\ServPrestado\AgregarEditar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\ToolsCxC\Administrador\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Administrador\Documentos\AdmDocFrm.resx">

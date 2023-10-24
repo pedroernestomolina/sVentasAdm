@@ -250,6 +250,8 @@ namespace ModVentaAdm.Data.Prov
             {
                 autoCliente = ficha.autoCliente,
                 montoAnticipo = ficha.montoAnticipo,
+                factorCambio =ficha.factorCambio,
+                montoRecibido = ficha.montoRecibido,
                 SucPrefijo = ficha.SucPrefijo,
                 Cobro = new DtoLibPos.CxC.GestionCobro.FichaCobro()
                 {
@@ -323,11 +325,6 @@ namespace ModVentaAdm.Data.Prov
                     };
                     return nr;
                 }).ToList(),
-                saldoCliente = new DtoLibPos.CxC.GestionCobro.FichaCliente()
-                {
-                    idCliente = ficha.saldoCliente.idCliente,
-                    monto = ficha.saldoCliente.monto,
-                },
             };
             if (ficha.notaAdm != null) 
             {

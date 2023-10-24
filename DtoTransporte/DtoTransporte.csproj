@@ -54,9 +54,15 @@
     <Compile Include="ClienteAnticipo\Agregar\CajaMov.cs" />
     <Compile Include="ClienteAnticipo\Agregar\Ficha.cs" />
     <Compile Include="ClienteAnticipo\Agregar\Movimiento.cs" />
+    <Compile Include="ClienteAnticipo\Anular\Caja.cs" />
+    <Compile Include="ClienteAnticipo\Anular\Ficha.cs" />
     <Compile Include="ClienteAnticipo\ListaMov\Ficha.cs" />
     <Compile Include="ClienteAnticipo\ListaMov\Filtro.cs" />
     <Compile Include="ClienteAnticipo\Obtener\Ficha.cs" />
+    <Compile Include="CxcMovCobro\Anular\Documento.cs" />
+    <Compile Include="CxcMovCobro\Anular\Ficha.cs" />
+    <Compile Include="CxcMovCobro\ListaMov\Ficha.cs" />
+    <Compile Include="CxcMovCobro\ListaMov\Filtro.cs" />
     <Compile Include="Documento\Agregar\baseDetalle.cs" />
     <Compile Include="Documento\Agregar\baseFecha.cs" />
     <Compile Include="Documento\Agregar\Factura\Ficha.cs" />

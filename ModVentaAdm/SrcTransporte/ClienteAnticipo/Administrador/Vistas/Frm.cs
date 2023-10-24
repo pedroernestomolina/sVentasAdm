@@ -48,31 +48,32 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Vistas
             c1.DefaultCellStyle.Font = f1;
 
             var c2 = new DataGridViewTextBoxColumn();
-            c2.DataPropertyName = "Motivo";
-            c2.HeaderText = "Motivo";
+            c2.DataPropertyName = "CiRif";
+            c2.HeaderText = "Rif";
             c2.Visible = true;
-            c2.MinimumWidth = 200;
+            c2.Width = 120;
             c2.HeaderCell.Style.Font = f;
             c2.DefaultCellStyle.Font = f1;
-            c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             var c3 = new DataGridViewTextBoxColumn();
-            c3.DataPropertyName = "TipoMov";
-            c3.HeaderText = "TipoMov";
+            c3.DataPropertyName = "Nombre";
+            c3.HeaderText = "Cliente";
             c3.Visible = true;
             c3.Width = 100;
             c3.HeaderCell.Style.Font = f;
             c3.DefaultCellStyle.Font = f1;
-            c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            c3.MinimumWidth = 200;
+            c3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             var c4 = new DataGridViewTextBoxColumn();
-            c4.DataPropertyName = "Monto";
-            c4.HeaderText = "Monto";
+            c4.DataPropertyName = "MontoMov";
+            c4.HeaderText = "Monto Ant";
             c4.Visible = true;
             c4.HeaderCell.Style.Font = f;
             c4.DefaultCellStyle.Font = f1;
             c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c4.Width = 100;
+            c4.DefaultCellStyle.Format = "n2";
 
             var c5 = new DataGridViewTextBoxColumn();
             c5.DataPropertyName = "Estatus";
@@ -84,40 +85,30 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Vistas
             c5.DefaultCellStyle.Font = f1;
 
             var c6 = new DataGridViewTextBoxColumn();
-            c6.DataPropertyName = "SignoMov";
-            c6.HeaderText = "Signo";
+            c6.DataPropertyName = "AplicaRet";
+            c6.HeaderText = "Aplica Ret";
             c6.Visible = true;
             c6.HeaderCell.Style.Font = f;
             c6.DefaultCellStyle.Font = f1;
-            c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             c6.Width = 60;
 
             var c7 = new DataGridViewTextBoxColumn();
-            c7.DataPropertyName = "CajaDesc";
-            c7.HeaderText = "Caja";
+            c7.DataPropertyName = "MontoRec";
+            c7.HeaderText = "Monto Rec";
             c7.Visible = true;
             c7.HeaderCell.Style.Font = f;
             c7.DefaultCellStyle.Font = f1;
-            c7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            c7.Width = 120;
-
-            var c8 = new DataGridViewTextBoxColumn();
-            c8.DataPropertyName = "EsDivisa";
-            c8.HeaderText = "";
-            c8.Visible = true;
-            c8.HeaderCell.Style.Font = f;
-            c8.DefaultCellStyle.Font = f1;
-            c8.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            c8.Width = 30;
-
+            c7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c7.Width = 100;
+            c7.DefaultCellStyle.Format = "n2";
 
             DGV.Columns.Add(c1);
-            DGV.Columns.Add(c7);
-            DGV.Columns.Add(c3);
-            DGV.Columns.Add(c6);
-            DGV.Columns.Add(c8);
-            DGV.Columns.Add(c4);
             DGV.Columns.Add(c2);
+            DGV.Columns.Add(c3);
+            DGV.Columns.Add(c4);
+            DGV.Columns.Add(c6);
+            DGV.Columns.Add(c7);
             DGV.Columns.Add(c5);
         }
         private void DGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

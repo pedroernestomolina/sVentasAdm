@@ -7,20 +7,14 @@ using System.Threading.Tasks;
 
 namespace DtoLibPos.CxC.GestionCobro
 {
-    
     public class FichaCliente
     {
-
         public string idCliente { get; set; }
         public decimal monto { get; set; }
-
-
         public FichaCliente() 
         {
             idCliente = "";
             monto = 0m;
         }
-
     }
-
 }

@@ -14,15 +14,13 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Handler
         private OOB.Transporte.ClienteAnticipo.ListaMov.Ficha _ficha;
 
 
+        public string CiRif { get; set; }
+        public string Nombre { get; set; }
         public DateTime FechaMov { get; set; }
-        public string Motivo { get; set; }
-        public decimal Monto { get; set; }
-        public string TipoMov { get; set; }
-        public int SignoMov { get; set; }
+        public bool AplicaRet { get; set; }
+        public decimal MontoMov { get; set; }
+        public decimal MontoRec { get; set; }
         public string Estatus { get; set; }
-        public string CajaDesc { get; set; }
-        public string EsDivisa { get; set; }
-        //
         public int idMov { get { return _idMov; } }
         public bool isAnulado { get { return _isAnulado; } }
 
@@ -30,14 +28,13 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Handler
         public dataItem(OOB.Transporte.ClienteAnticipo.ListaMov.Ficha ficha)
         {
             _ficha = ficha;
+            CiRif = ficha.ciRifCliente;
+            Nombre = ficha.nombreCliente;
+            AplicaRet = ficha.aplicaRet.Trim().ToUpper() == "1";
             FechaMov = ficha.fechaReg;
-            //Monto = ficha.movFueDivisa.ToUpper().Trim() == "1" ? ficha.montoMonDiv : ficha.montoMonAct;
-            //Motivo = ficha.motivoMov;
+            MontoMov = ficha.montoMonDiv;
+            MontoRec = ficha.montoRecMonDiv;
             Estatus = ficha.estatusAnulado == "1" ? "ANULADO" : "";
-            //TipoMov= ficha.tipoMov=="I"?"INGRESO":"EGRESO";
-            //SignoMov = ficha.signoMov;
-            //CajaDesc = ficha.cjDesc;
-            //EsDivisa= ficha.cjEsDivisa.Trim().ToUpper()=="1"?"$":"";
             _idMov = ficha.idMov;
             _isAnulado = ficha.estatusAnulado == "1";
         }

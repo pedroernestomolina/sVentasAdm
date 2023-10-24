@@ -15,5 +15,10 @@ namespace IPos.Transporte
             Transporte_Cliente_Anticipo_Obtener_ById(string idCliente);
         DtoLib.ResultadoLista<DtoTransporte.ClienteAnticipo.ListaMov.Ficha>
             Transporte_Cliente_Anticipo_GetLista(DtoTransporte.ClienteAnticipo.ListaMov.Filtro filtro);
+        //
+        DtoLib.ResultadoEntidad<DtoTransporte.ClienteAnticipo.Anular.Ficha>
+            Transporte_Cliente_Anticipo_Anular_ObtenerData(int idMov);
+        DtoLib.Resultado
+            Transporte_Cliente_Anticipo_Anular(DtoTransporte.ClienteAnticipo.Anular.Ficha ficha);
     }
 }

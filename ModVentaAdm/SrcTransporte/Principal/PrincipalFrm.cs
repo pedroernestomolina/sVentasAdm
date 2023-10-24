@@ -122,7 +122,6 @@ namespace ModVentaAdm.SrcTransporte.Principal
             ToolsCxC();
         }
 
-
         private void ToolsCxC()
         {
             _controlador.ToolsCxC();

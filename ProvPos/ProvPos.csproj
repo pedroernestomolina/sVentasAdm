@@ -85,6 +85,7 @@
     <Compile Include="ReportesCli.cs" />
     <Compile Include="Sistema.cs" />
     <Compile Include="Sucursal.cs" />
+    <Compile Include="TransporteCxcMovCobro.cs" />
     <Compile Include="TransporteCaja.cs" />
     <Compile Include="TransporteClienteAnticipo.cs" />
     <Compile Include="TransporteCnf.cs" />

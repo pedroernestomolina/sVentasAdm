@@ -79,7 +79,6 @@
             this.cxCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_CXC_TOOLS = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
-            this.TSM_CXC_ADM_DOC = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.REP_CLIENTE_MAESTRO = new System.Windows.Forms.ToolStripMenuItem();
@@ -195,11 +194,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(627, 1);
+            this.panel2.Location = new System.Drawing.Point(625, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(256, 52);
+            this.panel2.Size = new System.Drawing.Size(258, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -210,7 +209,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(252, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(254, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -225,7 +224,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(316, 52);
+            this.panel7.Size = new System.Drawing.Size(314, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -244,7 +243,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(312, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(310, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -278,7 +277,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(236, 22);
+            this.panel14.Size = new System.Drawing.Size(234, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -288,7 +287,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(232, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(230, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -324,7 +323,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(236, 22);
+            this.panel16.Size = new System.Drawing.Size(234, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -334,7 +333,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(232, 18);
+            this.L_HOST.Size = new System.Drawing.Size(230, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -343,7 +342,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(319, 1);
+            this.panel17.Location = new System.Drawing.Point(317, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -415,7 +414,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(521, 1);
+            this.panel20.Location = new System.Drawing.Point(519, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -653,8 +652,7 @@
             // 
             this.cxCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSM_CXC_TOOLS,
-            this.toolStripMenuItem10,
-            this.TSM_CXC_ADM_DOC});
+            this.toolStripMenuItem10});
             this.cxCToolStripMenuItem.Name = "cxCToolStripMenuItem";
             this.cxCToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.cxCToolStripMenuItem.Text = "CxC";
@@ -662,20 +660,14 @@
             // TSM_CXC_TOOLS
             // 
             this.TSM_CXC_TOOLS.Name = "TSM_CXC_TOOLS";
-            this.TSM_CXC_TOOLS.Size = new System.Drawing.Size(238, 22);
+            this.TSM_CXC_TOOLS.Size = new System.Drawing.Size(209, 22);
             this.TSM_CXC_TOOLS.Text = "Tools Cuentas Por Cobrar";
             this.TSM_CXC_TOOLS.Click += new System.EventHandler(this.TSM_CXC_TOOLS_Click);
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(235, 6);
-            // 
-            // TSM_CXC_ADM_DOC
-            // 
-            this.TSM_CXC_ADM_DOC.Name = "TSM_CXC_ADM_DOC";
-            this.TSM_CXC_ADM_DOC.Size = new System.Drawing.Size(238, 22);
-            this.TSM_CXC_ADM_DOC.Text = "Administrador De Documentos";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(206, 6);
             // 
             // reportesToolStripMenuItem
             // 
@@ -695,7 +687,7 @@
             this.REP_CLIENTE_MAESTRO});
             this.clienteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("clienteToolStripMenuItem.Image")));
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clienteToolStripMenuItem.Text = "Clientes";
             // 
             // REP_CLIENTE_MAESTRO
@@ -712,7 +704,7 @@
             this.REP_TRANS_ALIADO_POR_SERVICIO});
             this.aliadosToolStripMenuItem.Image = global::ModVentaAdm.Properties.Resources.bt_imprimir_3;
             this.aliadosToolStripMenuItem.Name = "aliadosToolStripMenuItem";
-            this.aliadosToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.aliadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aliadosToolStripMenuItem.Text = "Aliados";
             // 
             // REP_TRANS_ALIADO_RESUMEN
@@ -739,7 +731,7 @@
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(113, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(149, 6);
             // 
             // ventasToolStripMenuItem
             // 
@@ -764,7 +756,7 @@
             this.MENU_REPORTES_RESUMEN});
             this.ventasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("ventasToolStripMenuItem.Image")));
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ventasToolStripMenuItem.Text = "Ventas";
             // 
             // MENU_REPORTES_LIBRO_VENTA
@@ -913,7 +905,7 @@
             // 
             this.cxCToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("cxCToolStripMenuItem1.Image")));
             this.cxCToolStripMenuItem1.Name = "cxCToolStripMenuItem1";
-            this.cxCToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
+            this.cxCToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.cxCToolStripMenuItem1.Text = "CxC";
             // 
             // configuracionToolStripMenuItem
@@ -1269,7 +1261,6 @@
         private System.Windows.Forms.ToolStripMenuItem cxCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TSM_CXC_TOOLS;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
-        private System.Windows.Forms.ToolStripMenuItem TSM_CXC_ADM_DOC;
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_LIBRO_VENTA;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem11;

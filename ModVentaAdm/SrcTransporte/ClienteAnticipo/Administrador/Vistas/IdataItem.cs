@@ -9,13 +9,12 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Vistas
 {
     public interface IdataItem
     {
+        string  CiRif { get; set; }
+        string Nombre { get; set; }
         DateTime FechaMov { get; set; }
-        decimal Monto { get; set; }
-        string Motivo { get; set; }
+        decimal MontoMov { get; set; }
+        decimal MontoRec { get; set; }
         string Estatus { get; set; }
-        string TipoMov { get; set; }
-        int SignoMov { get; set; }
-        string CajaDesc { get; set; }
-        string EsDivisa { get; set; }
+        bool AplicaRet { get; set; }
     }
 }

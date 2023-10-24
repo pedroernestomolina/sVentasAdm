@@ -285,9 +285,9 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
                 Codigo = _cliente.codigo,
                 CodigoCobrador = _cobrador.codigo,
                 Direccion = _cliente.dirFiscal,
-                Importe = _montoAbonar,
+                Importe = _montoAbonarDivisa,
                 ImporteDivisa = _montoAbonarDivisa,
-                MontoRecibido = _montoRecibido,
+                MontoRecibido = _montoRecibidoDivisa,
                 MontoRecibidoDivisa = _montoRecibidoDivisa,
                 Nota = _gDetalleCobro.GetNotas,
                 Telefono = _cliente.telefono1,
@@ -370,10 +370,11 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
                 Documentos = documentosOOb,
                 Recibo = reciboOOb,
                 MetodosPago = _metodosCobOOb,
-                saldoCliente = saldoClienteOOb,
                 notaAdm = _notaCrAdm,
                 autoCliente = _cliente.id,
                 montoAnticipo = _gMedCobro.GetMontoPorAnticipo,
+                factorCambio=  _gMedCobro.Get_RetCaja.Retencion.Get_FactorCambio,
+                montoRecibido = _gMedCobro.GetListaMedCobro.Where(w=>w.item.GetAplicaMovCaja).Sum(s=>s.Importe),
             };
             if (_gMedCobro.Get_RetCaja.Retencion.Get_AplicaRet) 
             {

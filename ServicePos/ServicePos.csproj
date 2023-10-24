@@ -72,6 +72,7 @@
     <Compile Include="Interfaces\Transporte\IAliado.cs" />
     <Compile Include="Interfaces\Transporte\ICnf.cs" />
     <Compile Include="Interfaces\Transporte\IServicioPrest.cs" />
+    <Compile Include="Interfaces\Transporte\ITranspCxcMovCobro.cs" />
     <Compile Include="Interfaces\Transporte\ITranspDocumento.cs" />
     <Compile Include="Interfaces\Transporte\ITranspCaja.cs" />
     <Compile Include="Interfaces\Transporte\ITranspClienteAnticipo.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="MyService\Service.cs" />
     <Compile Include="MyService\Sistema.cs" />
     <Compile Include="MyService\Sucursal.cs" />
+    <Compile Include="MyService\TransporteCxcMovCobro.cs" />
     <Compile Include="MyService\Transporte.cs" />
     <Compile Include="MyService\TransporteAliado.cs" />
     <Compile Include="MyService\TransporteCaja.cs" />
