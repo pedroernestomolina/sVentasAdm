@@ -26,7 +26,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
 
         public BindingSource Source { get { return _bs; } }
         public decimal GetMontoCobrar { get { return _montoCobrar; } }
-        public decimal GetMontoRecibido { get { return _bl.Sum(s => s.Importe) + _montoAnticipo; } }
+        public decimal GetMontoRecibido { get { return Math.Round(_bl.Sum(s => s.Importe) + _montoAnticipo, 2, MidpointRounding.AwayFromZero); } }
         public decimal GetMontoPend { get { return _montoCobrar - GetMontoRecibido; } }
         public string GetRestaCambio { get { return GetMontoPend > 0 ? "Resta:" : "Cambio:"; } }
         public bool AbandonarIsOK { get { return _abandonarIsOk; } }

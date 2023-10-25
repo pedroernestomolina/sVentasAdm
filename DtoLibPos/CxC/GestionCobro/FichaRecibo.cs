@@ -27,6 +27,7 @@ namespace DtoLibPos.CxC.GestionCobro
         public decimal Importe { get; set; }
         public decimal MontoRecibido { get; set; }
         public decimal Cambio { get; set; }
+        public decimal MontoRetencionDiv { get; set; }
         public FichaRecibo()
         {
             AutoUsuario = "";
@@ -47,6 +48,7 @@ namespace DtoLibPos.CxC.GestionCobro
             ImporteDivisa = 0m;
             MontoRecibidoDivisa = 0m;
             CambioDivisa = 0m;
+            MontoRetencionDiv = 0m;
         }
     }
 }

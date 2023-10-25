@@ -17,6 +17,7 @@ namespace DtoTransporte.CxcMovCobro.ListaMov
         public decimal importeDiv { get; set; }
         public decimal montoRecibidoDiv { get; set; }
         public decimal montoAnticipoDiv { get; set; }
+        public decimal montoRetDiv { get; set; }
         public string estatusAnulado { get; set; }
     }
 }

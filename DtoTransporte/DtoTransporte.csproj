@@ -59,6 +59,7 @@
     <Compile Include="ClienteAnticipo\ListaMov\Ficha.cs" />
     <Compile Include="ClienteAnticipo\ListaMov\Filtro.cs" />
     <Compile Include="ClienteAnticipo\Obtener\Ficha.cs" />
+    <Compile Include="CxcMovCobro\Anular\Caja.cs" />
     <Compile Include="CxcMovCobro\Anular\Documento.cs" />
     <Compile Include="CxcMovCobro\Anular\Ficha.cs" />
     <Compile Include="CxcMovCobro\ListaMov\Ficha.cs" />

@@ -11,5 +11,7 @@ namespace ModVentaAdm.Data.Infra.Transporte
     {
         OOB.Resultado.Lista<OOB.Transporte.CxcMovCobro.ListaMov.Ficha>
             Transporte_CxcMovCobro_GetLista(OOB.Transporte.CxcMovCobro.ListaMov.Filtro filtro);
+        OOB.Resultado.Ficha
+            Transporte_CxcMovCobro_Anular(string idRecibo);
     }
 }

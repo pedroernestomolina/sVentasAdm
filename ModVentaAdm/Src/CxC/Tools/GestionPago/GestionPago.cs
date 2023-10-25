@@ -241,12 +241,12 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
         private void ProcesarCobro()
         {
             var _montoAbonarDivisa = GetMontoAbonar;
-            var _montoAbonar = _gMedCobro.GetImporteMonedaLocal;
+            var _montoAbonar = GetMontoAbonar; //_gMedCobro.GetImporteMonedaLocal;
             var _tasaCambio = _factorDivisa;
-            if (_montoAbonarDivisa > 0)
-            {
-                _tasaCambio = Math.Round(_montoAbonar / _montoAbonarDivisa, 2, MidpointRounding.AwayFromZero);
-            }
+            //if (_montoAbonarDivisa > 0)
+            //{
+            //    _tasaCambio = Math.Round(_montoAbonar / _montoAbonarDivisa, 2, MidpointRounding.AwayFromZero);
+            //}
             var _montoRecibidoDivisa= _gMedCobro.GetMontoRecibido;
             var _montoRecibido= Math.Round( _montoRecibidoDivisa*_tasaCambio,2, MidpointRounding.AwayFromZero);
             var _cambioDivisa= 0m;
@@ -272,6 +272,11 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
                 Nota = "",
                 TasaDivisa = _tasaCambio,
             };
+            var _montoRetencionDiv =0m;
+            if (_gMedCobro.Get_RetCaja.Retencion.Get_AplicaRet) 
+            {
+                _montoRetencionDiv = _gMedCobro.Get_RetCaja.Retencion.Get_TotalRetencionMonDiv;
+            }
             var reciboOOb = new OOB.CxC.GestionCobro.FichaRecibo()
             {
                 AutoCliente = _cliente.id,
@@ -292,6 +297,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
                 Nota = _gDetalleCobro.GetNotas,
                 Telefono = _cliente.telefono1,
                 Usuario = Sistema.Usuario.nombre,
+                MontoRetencionDiv = _montoRetencionDiv,
             };
             var id=0;
             var documentosOOb = new List<OOB.CxC.GestionCobro.FichaDocumento>();

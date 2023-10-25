@@ -133,20 +133,20 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Administrador.Handler
         }
         private void anulaItem(dataItem it)
         {
-            //var seg = Helpers.Msg.ProcesarGuardar("Anular Movimiento de Anticipo ?");
-            //if (seg)
-            //{
-            //    try
-            //    {
-            //        var r01 = Sistema.MyData.Transporte_Cliente_Anticipo_Anular(it.idMov);
-            //        it.setEstatusAnulado();
-            //        Helpers.Msg.EliminarOk();
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Helpers.Msg.Error(e.Message);
-            //    }
-            //}
+            var seg = Helpers.Msg.ProcesarGuardar("Anular Movimiento de Pago Recibido ?");
+            if (seg)
+            {
+                try
+                {
+                    var r01 = Sistema.MyData.Transporte_CxcMovCobro_Anular(it.idMov);
+                    it.setEstatusAnulado();
+                    Helpers.Msg.EliminarOk();
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
+                }
+            }
         }
         private void visualizarItem(dataItem it)
         {

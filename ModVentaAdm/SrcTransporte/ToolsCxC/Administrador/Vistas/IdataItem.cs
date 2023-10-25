@@ -11,6 +11,7 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Administrador.Vistas
     {
         decimal ImporteMov { get; set; }
         decimal AnticipoMov { get; set; }
+        decimal RetencionMov { get; set; }
         string NroRecibo { get; set; }
         string  CiRif { get; set; }
         string Nombre { get; set; }

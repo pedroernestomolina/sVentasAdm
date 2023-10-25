@@ -44,6 +44,7 @@ namespace ModVentaAdm.Data.Prov
                             montoRecibidoDiv = s.montoRecibidoDiv,
                             nombreCliente = s.nombreCliente,
                             numRecibo = s.numRecibo,
+                            montoRetDiv = s.montoRetDiv,
                         };
                         return nr;
                     }).ToList();
@@ -51,6 +52,22 @@ namespace ModVentaAdm.Data.Prov
             }
             result.ListaD = lst;
             return result;
+        }
+        public OOB.Resultado.Ficha 
+            Transporte_CxcMovCobro_Anular(string idRecibo)
+        {
+            var rt = new OOB.Resultado.Ficha();
+            var r01 = MyData.Transporte_CxcMovCobro_Anular_ObtenerData (idRecibo);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var r02 = MyData.Transporte_CxcMovCobro_Anular(r01.Entidad);
+            if (r02.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r02.Mensaje);
+            }
+            return rt;
         }
     }
 }

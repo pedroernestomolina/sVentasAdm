@@ -16,6 +16,7 @@ namespace ModVentaAdm.OOB.Transporte.CxcMovCobro.ListaMov
         public string nombreCliente { get; set; }
         public decimal importeDiv { get; set; }
         public decimal montoRecibidoDiv { get; set; }
+        public decimal montoRetDiv { get; set; }
         public decimal montoAnticipoDiv { get; set; }
         public string estatusAnulado { get; set; }
     }

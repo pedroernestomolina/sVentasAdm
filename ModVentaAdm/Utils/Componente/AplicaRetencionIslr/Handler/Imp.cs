@@ -114,8 +114,10 @@ namespace ModVentaAdm.Utils.Componente.AplicaRetencionIslr.Handler
 
         private void calculoRet()
         {
+            _montoRetencion = 0m;
             _totalRetencion = 0m;
-            _totalRetencion = (_montoAplicarRetMonAct * _tasaRet / 100) + _montoSustraendo;
+            _montoRetencion = (_montoAplicarRetMonAct * _tasaRet/100m);
+            _totalRetencion = _montoRetencion + _montoSustraendo;
             _totalRetencion = Math.Round(_totalRetencion, 2, MidpointRounding.AwayFromZero);
         }
     }

@@ -563,7 +563,7 @@ namespace ProvPos
                         var largo = 10 - ficha.SucPrefijo.Length;
                         var autoCxCPago = ficha.SucPrefijo + aCxC.ToString().Trim().PadLeft(largo, '0');
                         var autoRecibo = ficha.SucPrefijo + aCxCRecibo.ToString().Trim().PadLeft(largo, '0');
-                        var reciboNUmero = ficha.SucPrefijo + aCxCReciboNumero.ToString().Trim().PadLeft(largo, '0');
+                        var reciboNumero = ficha.SucPrefijo + aCxCReciboNumero.ToString().Trim().PadLeft(largo, '0');
 
                         
                         if (1==1)
@@ -619,7 +619,7 @@ namespace ProvPos
                                 0m, 
                                 fechaSistema.Date,
                                 "PAG", 
-                                reciboNUmero, 
+                                reciboNumero, 
                                 fechaSistema.Date, 
                                 ficha.Cobro.Nota, 
                                 ficha.Cobro.Importe, 
@@ -695,12 +695,12 @@ namespace ProvPos
                                             {31})";
                             var rt2 = cn.Database.ExecuteSqlCommand(sql_2,
                                 autoRecibo,
-                                reciboNUmero,
+                                reciboNumero,
                                 fechaSistema.Date,
                                 ficha.Recibo.AutoUsuario,
-                                ficha.Recibo.Importe,
+                                ficha.Recibo.ImporteDivisa,
                                 ficha.Recibo.Usuario,
-                                ficha.Recibo.MontoRecibido,
+                                ficha.montoRecibido,
                                 ficha.Recibo.Cobrador,
                                 ficha.Recibo.AutoCliente,
                                 ficha.Recibo.Cliente,
@@ -715,7 +715,7 @@ namespace ProvPos
                                 ficha.Recibo.Nota,
                                 ficha.Recibo.CodigoCobrador,
                                 autoCxCPago,
-                                0m,
+                                ficha.Recibo.MontoRetencionDiv,
                                 0m,
                                 fechaSistema.ToShortTimeString(),
                                 "",
@@ -773,12 +773,12 @@ namespace ProvPos
                                     fechaSistema.Date,
                                     rg.TipoDocumento,
                                     rg.DocumentoNro,
-                                    rg.Importe,
+                                    rg.ImporteDivisa,
                                     "Pago",
                                     rg.AutoCxC,
                                     autoCxCPago,
                                     autoRecibo,
-                                    reciboNUmero,
+                                    reciboNumero,
                                     fechaNula.Date,
                                     0,
                                     0m,

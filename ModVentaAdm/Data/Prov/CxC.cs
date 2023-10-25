@@ -250,7 +250,7 @@ namespace ModVentaAdm.Data.Prov
             {
                 autoCliente = ficha.autoCliente,
                 montoAnticipo = ficha.montoAnticipo,
-                factorCambio =ficha.factorCambio,
+                factorCambio = ficha.factorCambio,
                 montoRecibido = ficha.montoRecibido,
                 SucPrefijo = ficha.SucPrefijo,
                 Cobro = new DtoLibPos.CxC.GestionCobro.FichaCobro()
@@ -285,6 +285,7 @@ namespace ModVentaAdm.Data.Prov
                     Nota = ficha.Recibo.Nota,
                     Telefono = ficha.Recibo.Telefono,
                     Usuario = ficha.Recibo.Usuario,
+                    MontoRetencionDiv = ficha.Recibo.MontoRetencionDiv,
                 },
                 Documentos = ficha.Documentos.Select(s =>
                 {

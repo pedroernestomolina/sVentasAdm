@@ -16,6 +16,7 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Administrador.Handler
 
         public decimal ImporteMov { get; set; }
         public decimal AnticipoMov { get; set; }
+        public decimal RetencionMov { get; set; }
         public string NroRecibo { get; set; }
         public string CiRif { get; set; }
         public string Nombre { get; set; }
@@ -34,6 +35,7 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Administrador.Handler
             FechaMov = ficha.fechaEmision;
             ImporteMov = ficha.importeDiv;
             AnticipoMov = ficha.montoAnticipoDiv;
+            RetencionMov = ficha.montoRetDiv;
             MontoRec = ficha.montoRecibidoDiv;
             Estatus = ficha.estatusAnulado == "1" ? "ANULADO" : "";
             NroRecibo = ficha.numRecibo;
