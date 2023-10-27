@@ -223,6 +223,16 @@ namespace ModVentaAdm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_car_servicio_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_car_servicio_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_cobranza {
             get {
                 object obj = ResourceManager.GetObject("bt_cobranza", resourceCulture);
@@ -463,6 +473,16 @@ namespace ModVentaAdm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_hoja_servcio_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_hoja_servcio_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_imagen {
             get {
                 object obj = ResourceManager.GetObject("bt_imagen", resourceCulture);
@@ -666,6 +686,16 @@ namespace ModVentaAdm.Properties {
         internal static System.Drawing.Bitmap bt_presup_24 {
             get {
                 object obj = ResourceManager.GetObject("bt_presup_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_presupuesto_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_presupuesto_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

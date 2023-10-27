@@ -18,6 +18,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         private decimal _factorDivisa;
         private decimal _tasaDivisa;
         private string _notasDelDoc;
+        protected bool _tipoDocIsFactura;
 
 
         public BindingSource SourceItems_Get { get { return _dataGen.Items.Source_Get; } }
@@ -180,6 +181,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _itemAgregar.setCliente(_dataGen.DatosDoc.Cliente.id);
             _itemAgregar.setSolicitadoPor(_dataGen.DatosDoc.SolicitadoPor_Get);
             _itemAgregar.setModuloCargar(_dataGen.DatosDoc.ModuloCargar_Get);
+            _itemAgregar.setTipoDocumentoIsFactura(_tipoDocIsFactura);
             _itemAgregar.Inicia();
             if (_itemAgregar.ProcesarIsOK)
             {
@@ -213,7 +215,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 _itemEditar = new Item.Editar.Editar();
                 _itemEditar.Inicializa();
                 _itemEditar.setTasaFiscal(_tasasFiscal);
+                _itemEditar.setCliente(_dataGen.DatosDoc.Cliente.id);
                 _itemEditar.setItemEditar(_dataGen.Items.ItemActual.Item);
+                _itemEditar.setTipoDocumentoIsFactura(_tipoDocIsFactura);
                 _itemEditar.Inicia();
                 if (_itemEditar.ProcesarIsOK)
                 {

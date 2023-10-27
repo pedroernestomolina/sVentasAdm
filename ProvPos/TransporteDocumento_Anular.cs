@@ -248,19 +248,22 @@ namespace ProvPos
                         cn.SaveChanges();
 
                         //DOCUMENTO
-                        sql = @"update cxc set estatus_anulado='1' 
+                        if (ficha.idDocCxC.Trim() != "")
+                        {
+                            sql = @"update cxc set estatus_anulado='1' 
                                     where auto=@autoCxC and 
                                         estatus_anulado<>'1' and
                                         acumulado_divisa=0";
-                        var t1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxC", ficha.idDocCxC);
-                        var v1 = cn.Database.ExecuteSqlCommand(sql, t1);
-                        if (v1 == 0)
-                        {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR ESTATUS DEL DOCUMENTO CXC";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            var t1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxC", ficha.idDocCxC);
+                            var v1 = cn.Database.ExecuteSqlCommand(sql, t1);
+                            if (v1 == 0)
+                            {
+                                result.Mensaje = "PROBLEMA AL ACTUALIZAR ESTATUS DEL DOCUMENTO CXC";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cn.SaveChanges();
                         }
-                        cn.SaveChanges();
 
                         sql = @"update ventas set estatus_anulado='1' 
                                     where auto=@p1 and 
@@ -318,7 +321,7 @@ namespace ProvPos
 
                         //
                         sql = "update ventas_transp_item set estatus_anulado='1' where id_item=@p1";
-                        foreach (var rg in ficha.itemsServicio) 
+                        foreach (var rg in ficha.itemsServicio)
                         {
                             p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", rg.idItem);
                             var v3d = cn.Database.ExecuteSqlCommand(sql, p1);
@@ -330,22 +333,25 @@ namespace ProvPos
                             }
                             cn.SaveChanges();
                         }
-
+                        //
                         //SALDO DEL CLIENTE EN DIVISA
-                        var xcli_1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
-                        var xcli_2 = new MySql.Data.MySqlClient.MySqlParameter("@debito", ficha.montoDivisa);
-                        var xsql_cli = @"update clientes set 
+                        if (ficha.idDocCxC.Trim() != "")
+                        {
+                            var xcli_1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
+                            var xcli_2 = new MySql.Data.MySqlClient.MySqlParameter("@debito", ficha.montoDivisa);
+                            var xsql_cli = @"update clientes set 
                                                 debitos=debitos-@debito,
                                                 saldo=saldo-@debito
                                                 where auto=@idCliente";
-                        var r_cli = cn.Database.ExecuteSqlCommand(xsql_cli, xcli_1, xcli_2);
-                        if (r_cli == 0)
-                        {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR SALDO CLIENTE";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            var r_cli = cn.Database.ExecuteSqlCommand(xsql_cli, xcli_1, xcli_2);
+                            if (r_cli == 0)
+                            {
+                                result.Mensaje = "PROBLEMA AL ACTUALIZAR SALDO CLIENTE";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cn.SaveChanges();
                         }
-                        cn.SaveChanges();
 
                         sql = @"update transp_aliado 
                                 set monto_debitos_anulado_mon_divisa=monto_debitos_anulado_mon_divisa+@montoAliado
@@ -442,7 +448,7 @@ namespace ProvPos
             }
             return result;
         }
-        public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Anular.NotaEntrega.dataAnular> 
+        public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Anular.NotaEntrega.dataAnular>
             TransporteDocumento_AnularNotaEntrega_GetDataAnular(string idDoc)
         {
             var result = new DtoLib.ResultadoEntidad<DtoTransporte.Documento.Anular.NotaEntrega.dataAnular>();
@@ -512,33 +518,36 @@ namespace ProvPos
                 {
                     using (var ts = new TransactionScope())
                     {
-                        //DOCUMENTO
-                        var _sql = @"select 
+                        var _sql = "";
+                        if (ficha.idDocCxC.Trim() != "")
+                        {
+                            //DOCUMENTO
+                            _sql = @"select 
                                         estatus_anulado as estatus,
                                         acumulado_divisa as monto
                                     from cxc
                                     where auto=@autoCxC";
-                        var t1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxC", ficha.idDocCxC);
-                        var _docCxC = cn.Database.SqlQuery<docVtaVerifAnular>(_sql, t1).FirstOrDefault();
-                        if (_docCxC == null)
-                        {
-                            result.Mensaje = "DOCUMENTO [ CXC ] NO ENCONTRADO";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            var t1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxC", ficha.idDocCxC);
+                            var _docCxC = cn.Database.SqlQuery<docVtaVerifAnular>(_sql, t1).FirstOrDefault();
+                            if (_docCxC == null)
+                            {
+                                result.Mensaje = "DOCUMENTO [ CXC ] NO ENCONTRADO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            if (_docCxC.estatus.Trim().ToUpper() == "1")
+                            {
+                                result.Mensaje = "DOCUMENTO [ CXC ] ESTATUS INCORRECTO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            if (_docCxC.monto > 0)
+                            {
+                                result.Mensaje = "DOCUMENTO [ CXC ] POSSE UN PAGO REGISTRADO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
                         }
-                        if (_docCxC.estatus.Trim().ToUpper()=="1")
-                        {
-                            result.Mensaje = "DOCUMENTO [ CXC ] ESTATUS INCORRECTO";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
-                        }
-                        if (_docCxC.monto >0)
-                        {
-                            result.Mensaje = "DOCUMENTO [ CXC ] POSSE UN PAGO REGISTRADO";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
-                        }
-
                         _sql = @"select 
                                     estatus_anulado as estatus,
                                     auto_remision as autoRemision
@@ -546,13 +555,13 @@ namespace ProvPos
                                 where auto=@p1";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", ficha.idDocVenta);
                         var _docVta = cn.Database.SqlQuery<docVtaVerifAnular>(_sql, p1).FirstOrDefault();
-                        if (_docVta ==null)
+                        if (_docVta == null)
                         {
                             result.Mensaje = "DOCUMENTO [ VENTA ] NO ENCONTRADO";
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
                             return result;
                         }
-                        if (_docVta.estatus.Trim().ToUpper()=="1")
+                        if (_docVta.estatus.Trim().ToUpper() == "1")
                         {
                             result.Mensaje = "DOCUMENTO [ VENTA ] ESTATUS INCORRECTO";
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -567,13 +576,13 @@ namespace ProvPos
                             var y1 = new MySql.Data.MySqlClient.MySqlParameter("@idReg", rg.idReg);
                             var y2 = new MySql.Data.MySqlClient.MySqlParameter("@idDocVenta", ficha.idDocVenta);
                             var _monto = cn.Database.SqlQuery<decimal?>(sql, y1, y2).FirstOrDefault();
-                            if (_monto==null)
+                            if (_monto == null)
                             {
                                 result.Mensaje = "PROBLEMA AL ANULAR DOCUMENTO, ALIADO-DOCUMENTO NO ENCONTRADO / YA SE ENCUENTRA ANULADO";
                                 result.Result = DtoLib.Enumerados.EnumResult.isError;
                                 return result;
                             }
-                            if (_monto > 0m) 
+                            if (_monto > 0m)
                             {
                                 result.Mensaje = "PROBLEMA AL ANULAR DOCUMENTO, EXISTE UN ANTICIPO A UN ALIADO EN ESTE DOCUMENTO";
                                 result.Result = DtoLib.Enumerados.EnumResult.isError;

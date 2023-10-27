@@ -13,5 +13,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
         void setCliente(string idCliente);
         void setSolicitadoPor(string desc);
         void setModuloCargar(string desc);
+        void setTipoDocumentoIsFactura(bool tipoDocIsFactura);
     }
 }

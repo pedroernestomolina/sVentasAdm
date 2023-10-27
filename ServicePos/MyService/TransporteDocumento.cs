@@ -132,5 +132,12 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteDocumento_Presupuesto_GetServicios(idDoc);
         }
+
+        //
+        public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado> 
+            TransporteDocumento_AgregarFactura_From_HojasServicio(DtoTransporte.Documento.Agregar.FacturaFromHojaServ.Ficha ficha)
+        {
+            return ServiceProv.TransporteDocumento_AgregarFactura_From_HojasServicio(ficha);
+        }
     }
 }

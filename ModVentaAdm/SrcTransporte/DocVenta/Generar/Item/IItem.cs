@@ -26,5 +26,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
 
         void HabilitarPresupuesto();
         void HabilitarServicio();
+        void HabilitarHojasServicio();
     }
 }

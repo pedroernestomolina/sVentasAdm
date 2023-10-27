@@ -52,6 +52,15 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                     rt = false;
                 }
             }
+            if (item.Item.Get_ItemHojaServ != null)
+            {
+                var _cnt = _lst.Count(c => c.Item.Get_ItemHojaServ != null && c.Item.Get_ItemHojaServ.DocId == item.Item.Get_ItemHojaServ.DocId);
+                if (_cnt > 0)
+                {
+                    Helpers.Msg.Alerta("DOCUMENTO YA FUE REGISTRADO POR OTRO ITEM");
+                    rt = false;
+                }
+            }
             return rt;
         }
         public void AgregarItem(Item.IItem item)

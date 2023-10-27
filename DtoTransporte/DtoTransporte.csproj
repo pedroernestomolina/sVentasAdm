@@ -66,6 +66,9 @@
     <Compile Include="CxcMovCobro\ListaMov\Filtro.cs" />
     <Compile Include="Documento\Agregar\baseDetalle.cs" />
     <Compile Include="Documento\Agregar\baseFecha.cs" />
+    <Compile Include="Documento\Agregar\FacturaFromHojaServ\Ficha.cs" />
+    <Compile Include="Documento\Agregar\FacturaFromHojaServ\FichaDocRef.cs" />
+    <Compile Include="Documento\Agregar\FacturaFromHojaServ\FichaItem.cs" />
     <Compile Include="Documento\Agregar\Factura\Ficha.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaAliadoDocRef.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaAliadoResumen.cs" />

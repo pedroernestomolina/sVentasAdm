@@ -15,6 +15,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
         public Imp()
             :base()
         {
+            _tipoDocIsFactura = false;
         }
 
         protected override void GuardarDoc()

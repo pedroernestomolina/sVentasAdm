@@ -288,6 +288,9 @@
     <Compile Include="OOB\Transporte\Documento\Agregar\baseDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseFicha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\FacturaFromHojaServ\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\FacturaFromHojaServ\FichaDocRef.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\FacturaFromHojaServ\FichaItem.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaAliadoDocRef.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaAliadoResumen.cs" />
@@ -1523,6 +1526,9 @@
     <None Include="Resources\logo_transp_3.jpeg" />
     <None Include="Resources\manager_doc_48.png" />
     <None Include="Resources\avance_dinero_48.png" />
+    <None Include="Resources\bt_hoja_servcio_48.png" />
+    <None Include="Resources\bt_presupuesto_48.png" />
+    <None Include="Resources\bt_car_servicio_48.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1539,6 +1545,7 @@
     <Content Include="Src\Imagenes\bt_borrar.png" />
     <Content Include="Src\Imagenes\bt_buscar.png" />
     <Content Include="Src\Imagenes\bt_campana.png" />
+    <Content Include="Src\Imagenes\bt_car_servicio_48.png" />
     <Content Include="Src\Imagenes\bt_cobranza.png" />
     <Content Include="Src\Imagenes\bt_compra.png" />
     <Content Include="Src\Imagenes\bt_configuracion.png" />
@@ -1563,6 +1570,7 @@
     <Content Include="Src\Imagenes\bt_guardar.png" />
     <Content Include="Src\Imagenes\bt_guardar_disco.png" />
     <Content Include="Src\Imagenes\bt_historico_32.png" />
+    <Content Include="Src\Imagenes\bt_hoja_servcio_48.png" />
     <Content Include="Src\Imagenes\bt_imagen.png" />
     <Content Include="Src\Imagenes\bt_imagen_2.png" />
     <Content Include="Src\Imagenes\bt_imprimir.png" />
@@ -1584,6 +1592,7 @@
     <Content Include="Src\Imagenes\bt_notificacion.png" />
     <Content Include="Src\Imagenes\bt_ok_2.png" />
     <Content Include="Src\Imagenes\bt_ok_3.png" />
+    <Content Include="Src\Imagenes\bt_presupuesto_48.png" />
     <Content Include="Src\Imagenes\bt_presup_24.png" />
     <Content Include="Src\Imagenes\bt_price.png" />
     <Content Include="Src\Imagenes\bt_proceso.png" />

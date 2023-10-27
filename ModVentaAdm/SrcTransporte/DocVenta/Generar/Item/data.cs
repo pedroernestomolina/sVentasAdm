@@ -21,7 +21,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
         private decimal _dsctoMontoDivisa; 
         private Presupuesto.Generar.alicuota _alicuota;
         private Presupuesto.Generar.Item.IItem _itemServicio;
-        private Utils.DocLista.Remision.data _itemPresupuesto; 
+        private Utils.DocLista.Remision.data _itemPresupuesto;
+        private Utils.DocLista.Remision.data _itemHojaServ;
 
 
         public string Get_Descripcion { get { return _desc; } }
@@ -31,9 +32,28 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
         public decimal Get_Dscto { get { return _dscto; } }
         public decimal Get_DsctoMontoDivisa { get { return _dsctoMontoDivisa; } }
         public decimal Get_Importe { get { return _importe; } }
-        public string Get_PresupuestoNumero { get { return _itemPresupuesto == null ? "" : _itemPresupuesto.DocNumero; } }
         public Presupuesto.Generar.Item.IItem Get_ItemServicio { get { return _itemServicio; } }
         public bool IsItemPresupuesto { get { return _itemPresupuesto != null; } }
+        public bool IsItemHojaServ { get { return _itemHojaServ != null; } }
+        public string Get_PresupuestoNumero 
+        {
+            get 
+            {
+                var rt = "";
+                if (_itemPresupuesto != null)
+                {
+                    rt = _itemPresupuesto.DocNumero;
+                }
+                if (_itemHojaServ != null)
+                {
+                    rt = _itemHojaServ.DocNumero;
+                }
+                return rt;
+                //return _itemPresupuesto == null ? "" : _itemPresupuesto.DocNumero; 
+            }
+        }
+
+
         public decimal Get_Iva 
         {
             get 
@@ -108,6 +128,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
             _itemServicio=null;
             _dsctoMontoDivisa = 0m;
             _itemPresupuesto = null;
+            _itemHojaServ = null;
         }
 
         public bool VerificarDatosIsOK()
@@ -156,6 +177,11 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
         public void setItemPresupuesto(Utils.DocLista.Remision.data doc)
         {
             _itemPresupuesto = doc;
+        }
+        public Utils.DocLista.Remision.data Get_ItemHojaServ { get { return _itemHojaServ; } }
+        public void setItemHojaServicio(Utils.DocLista.Remision.data doc)
+        {
+            _itemHojaServ = doc;
         }
     }
 }

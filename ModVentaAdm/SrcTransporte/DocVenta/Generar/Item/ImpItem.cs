@@ -108,5 +108,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
 
         abstract public void HabilitarPresupuesto();
         abstract public void HabilitarServicio();
+        abstract public void HabilitarHojasServicio();
     }
 }

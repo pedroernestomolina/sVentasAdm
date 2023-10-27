@@ -183,5 +183,17 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
             L_IMPORTE.Text = _controlador.Item.Get_Importe.ToString("n2", _cult);
             this.Refresh();
         }
+
+        //
+        //
+        private void BT_SERVICIOS_Click(object sender, EventArgs e)
+        {
+            HabilitarHojasServicio();
+        }
+        private void HabilitarHojasServicio()
+        {
+            _controlador.HabilitarHojasServicio();
+            ActualizarDatosFicha();
+        }
     }
 }

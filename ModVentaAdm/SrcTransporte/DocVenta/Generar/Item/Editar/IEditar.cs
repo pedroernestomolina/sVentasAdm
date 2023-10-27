@@ -12,5 +12,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Editar
         void setTasaFiscal(List<OOB.Sistema.Fiscal.Entidad.Ficha> _tasasFiscal);
         void setItemEditar(data data);
         void setCliente(string idCliente);
+        void setTipoDocumentoIsFactura(bool tipoDocIsFactura);
     }
 }

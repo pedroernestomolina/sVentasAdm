@@ -49,5 +49,9 @@ namespace ModVentaAdm.Data.Infra.Transporte
 
         OOB.Resultado.Lista<OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha>
             TransporteDocumento_Presupuesto_GetServicios(string idDoc);
+
+        //
+        OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Agregar.Resultado>
+            TransporteDocumento_AgregarFactura_From_HojaServ(OOB.Transporte.Documento.Agregar.FacturaFromHojaServ.Ficha ficha);
     }
 }

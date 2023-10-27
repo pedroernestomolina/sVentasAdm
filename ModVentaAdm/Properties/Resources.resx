@@ -457,4 +457,13 @@
   <data name="manager_doc_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\manager_doc_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bt_car_servicio_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_car_servicio_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bt_hoja_servcio_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_hoja_servcio_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bt_presupuesto_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_presupuesto_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

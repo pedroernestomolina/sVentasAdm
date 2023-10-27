@@ -88,7 +88,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
 
             var c7 = new DataGridViewTextBoxColumn();
             c7.DataPropertyName = "PresupuestoMostrar";
-            c7.HeaderText = "Presupuesto #";
+            c7.HeaderText = "Pres/HojaServ";
             c7.Visible = true;
             c7.Width = 120;
             c7.HeaderCell.Style.Font = f;
