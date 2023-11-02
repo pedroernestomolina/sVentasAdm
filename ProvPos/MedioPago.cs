@@ -8,15 +8,12 @@ using System.Threading.Tasks;
 
 namespace ProvPos
 {
-
     public partial class Provider: IPos.IProvider
     {
-
         public DtoLib.ResultadoLista<DtoLibPos.MedioPago.Lista.Ficha> 
             MedioPago_GetLista(DtoLibPos.MedioPago.Lista.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.MedioPago.Lista.Ficha>();
-
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
@@ -34,14 +31,12 @@ namespace ProvPos
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return result;
         }
         public DtoLib.ResultadoEntidad<DtoLibPos.MedioPago.Entidad.Ficha> 
             MedioPago_GetFichaById(string id)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.MedioPago.Entidad.Ficha>();
-
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
@@ -53,7 +48,6 @@ namespace ProvPos
                         result.Mensaje = "[ ID ] MEDIO DE PAGO NO ENCONTRADO";
                         return result;
                     }
-
                     var nr = new DtoLibPos.MedioPago.Entidad.Ficha()
                     {
                         id = ent.auto,
@@ -68,10 +62,7 @@ namespace ProvPos
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return result;
         }
-
     }
-
 }
