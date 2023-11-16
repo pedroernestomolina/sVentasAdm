@@ -38,6 +38,16 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
             aliadosResumen = new List<FichaAliadoResumen>();
             aliadosDocRef = new List<FichaAliadoDocRef>();
             turnos= new List<Turno>();
+            //
+            montoIGTFMonAct = 0m;
+            montoIGTFMonDiv = 0m;
+            tasaIGTF = 0m;
+            aplicaIGTF = false;
         }
+        //
+        public decimal montoIGTFMonAct { get; set; }
+        public decimal montoIGTFMonDiv { get; set; }
+        public decimal tasaIGTF { get; set; }
+        public bool aplicaIGTF { get; set; }
     }
 }

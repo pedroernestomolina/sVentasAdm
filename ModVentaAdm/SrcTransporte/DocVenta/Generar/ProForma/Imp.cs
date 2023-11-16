@@ -449,5 +449,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
             _doc.setIdDocVisualizar(id);
             _doc.Generar();
         }
+
+        public override void ActivarIGTF()
+        {
+            Helpers.Msg.Alerta("OPCION NO DISPONIBLE");
+        }
     }
 }

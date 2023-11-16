@@ -76,6 +76,10 @@ namespace ModVentaAdm.Data.Prov
                 tipoDocSiglas = ficha.tipoDocSiglas,
                 fechaEmision = ficha.fechaEmision,
                 fechaVencimiento = ficha.fechaVencimiento,
+                aplicaIGTF = ficha.aplicaIGTF,
+                montoIGTFMonAct = ficha.montoIGTFMonAct,
+                montoIGTFMonDiv = ficha.montoIGTFMonDiv,
+                tasaIGTF = ficha.tasaIGTF,
                 items = ficha.items.Select(z =>
                 {
                     DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle _servicioDetalle = null;
@@ -159,7 +163,7 @@ namespace ModVentaAdm.Data.Prov
                         totalMonLocal = z.totalMonLocal,
                         tipoProcedenciaItem = z.tipoItemProcedencia,
                         servicioDetalle = _servicioDetalle,
-                        mostrarItemDocFinal= z.mostrarItemDocFinal,
+                        mostrarItemDocFinal = z.mostrarItemDocFinal,
                     };
                     return zr;
                 }).ToList(),
@@ -297,6 +301,10 @@ namespace ModVentaAdm.Data.Prov
                 tipoDocSiglas = ficha.tipoDocSiglas,
                 fechaEmision = ficha.fechaEmision,
                 fechaVencimiento = ficha.fechaVencimiento,
+                aplicaIGTF = ficha.aplicaIGTF,
+                montoIGTFMonAct = ficha.montoIGTFMonAct,
+                montoIGTFMonDiv = ficha.montoIGTFMonDiv,
+                tasaIGTF = ficha.tasaIGTF,
                 items = ficha.items.Select(z =>
                 {
                     var zr = new DtoTransporte.Documento.Agregar.FacturaFromHojaServ.FichaItem()

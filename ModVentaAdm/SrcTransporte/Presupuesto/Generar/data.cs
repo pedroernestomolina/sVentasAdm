@@ -91,7 +91,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 Helpers.Msg.Alerta("PROBLEMA CON LOS MONTOS TOTALES DEL DOCUMENTO, VERIFIQUE POR FAVOR");
                 return false;
             }
-            if (_items.GetItems.Count(g => g.Item.Get_TurnoIsActivo) != _items.GetItems.Count())
+            var _cntTurnAct = _items.GetItems.Where(g => g.Item.Get_TurnoIsActivo).Count();
+            var _cntServ = _items.GetItems.Where(g => !g.Item.Get_TurnoIsActivo).Count();
+            if (_cntTurnAct >0 && _cntServ >0)
             {
                 Helpers.Msg.Alerta("NO PUEDEN HABER ITEMS CON TURNO Y SIN TURNO");
                 return false;

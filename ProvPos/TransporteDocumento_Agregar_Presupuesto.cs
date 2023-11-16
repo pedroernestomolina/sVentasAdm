@@ -181,6 +181,7 @@ namespace ProvPos
                                         docEstatusPendiente,
                                         igtf_tasa,
                                         igtf_monto_mon_act,
+                                        igtf_monto_mon_div,
                                         igtf_aplica) 
                                     VALUES 
                                     (
@@ -303,6 +304,7 @@ namespace ProvPos
                                         @docSolicitadoPor,
                                         @docModuloCargar,
                                         @docEstatusPendiente,
+                                        0,
                                         0,
                                         0,
                                         '0')";
@@ -773,6 +775,7 @@ namespace ProvPos
                                         docModuloCargar,
                                         igtf_tasa,
                                         igtf_monto_mon_act,
+                                        igtf_monto_mon_div,
                                         igtf_aplica) 
                                     VALUES 
                                     (
@@ -894,6 +897,7 @@ namespace ProvPos
                                         '0',
                                         @docSolicitadoPor,
                                         @docModuloCargar,
+                                        0,
                                         0,
                                         0,
                                         '0')";

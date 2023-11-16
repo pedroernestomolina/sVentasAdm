@@ -174,8 +174,11 @@ namespace ProvPos
                                         `estatus_fiscal`, 
                                         `z_fiscal`,
                                         docSolicitadoPor,
-                                        docModuloCargar
-                                    ) 
+                                        docModuloCargar,
+                                        igtf_tasa,
+                                        igtf_monto_mon_act,
+                                        igtf_monto_mon_div,
+                                        igtf_aplica) 
                                     VALUES 
                                     (
                                         @autoDoc, 
@@ -295,7 +298,11 @@ namespace ProvPos
                                         '', 
                                         '0',
                                         @docSolicitadoPor,
-                                        @docModuloCargar)";
+                                        @docModuloCargar,
+                                        @igtf_tasa,
+                                        @igtf_monto_mon_act,
+                                        @igtf_monto_mon_div,
+                                        @igtf_aplica)";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
                         var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.fechaEmision);
@@ -360,6 +367,10 @@ namespace ProvPos
                         var p63 = new MySql.Data.MySqlClient.MySqlParameter("@docModuloCargar", ficha.docModuloCargar);
                         var p64 = new MySql.Data.MySqlClient.MySqlParameter("@serieDoc", ficha.serieDocDesc);
                         var p65 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCxC", autoCxC);
+                        var p66 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_tasa", ficha.tasaIGTF);
+                        var p67 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_monto_mon_act", ficha.montoIGTFMonAct);
+                        var p68 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_monto_mon_div", ficha.montoIGTFMonDiv);
+                        var p69 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_aplica", ficha.aplicaIGTF ? "1" : "0");
                         var r = cn.Database.ExecuteSqlCommand(_sql,
                                                                 p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
                                                                 p11, p12, p13, p14, p15, p16, p17, p18, p19, p20,
@@ -367,7 +378,7 @@ namespace ProvPos
                                                                 p31, p32, p33, p34, p35, p36, p37, p38, p39, p40,
                                                                 p41, p42, p43, p44, p45, p46, p47, p48, p49, p50,
                                                                 p51, p53, p54, p55, p56, p57, p58, p59, p60,
-                                                                p61, p62, p63, p64, p65);
+                                                                p61, p62, p63, p64, p65, p66, p67, p68, p69);
                         if (r == 0)
                         {
                             throw new Exception("PROBLEMA AL INSERTAR DOCUMENTO DE VENTA");
@@ -1330,6 +1341,7 @@ namespace ProvPos
                                         docModuloCargar,
                                         igtf_tasa,
                                         igtf_monto_mon_act,
+                                        igtf_monto_mon_div,
                                         igtf_aplica) 
                                     VALUES 
                                     (
@@ -1451,9 +1463,10 @@ namespace ProvPos
                                         '0',
                                         @docSolicitadoPor,
                                         @docModuloCargar,
-                                        0,
-                                        0,
-                                        '0')";
+                                        @igtf_tasa,
+                                        @igtf_monto_mon_act,
+                                        @igtf_monto_mon_div,
+                                        @igtf_aplica)";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
                         var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.fechaEmision);
@@ -1518,6 +1531,10 @@ namespace ProvPos
                         var p63 = new MySql.Data.MySqlClient.MySqlParameter("@docModuloCargar", ficha.docModuloCargar);
                         var p64 = new MySql.Data.MySqlClient.MySqlParameter("@serieDoc", ficha.serieDocDesc);
                         var p65 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCxC","");
+                        var p66 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_tasa", ficha.tasaIGTF);
+                        var p67 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_monto_mon_act", ficha.montoIGTFMonAct);
+                        var p68 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_monto_mon_div", ficha.montoIGTFMonDiv);
+                        var p69 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_aplica", ficha.aplicaIGTF ? "1" : "0");
                         var r = cn.Database.ExecuteSqlCommand(_sql,
                                                                 p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
                                                                 p11, p12, p13, p14, p15, p16, p17, p18, p19, p20,
@@ -1525,7 +1542,7 @@ namespace ProvPos
                                                                 p31, p32, p33, p34, p35, p36, p37, p38, p39, p40,
                                                                 p41, p42, p43, p44, p45, p46, p47, p48, p49, p50,
                                                                 p51, p53, p54, p55, p56, p57, p58, p59, p60,
-                                                                p61, p62, p63, p64, p65);
+                                                                p61, p62, p63, p64, p65, p66, p67, p68, p69);
                         if (r == 0)
                         {
                             throw new Exception("PROBLEMA AL INSERTAR DOCUMENTO DE VENTA");

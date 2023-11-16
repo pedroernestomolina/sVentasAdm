@@ -166,7 +166,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panel51 = new System.Windows.Forms.Panel();
             this.L_CNT_ITEM = new System.Windows.Forms.Label();
-            this.P_ITEM_TOTALES_2 = new System.Windows.Forms.Panel();
+            this.P_IGTF = new System.Windows.Forms.Panel();
+            this.L_TASA_IGTF = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.P_ITEM_TOTALES_TOTAL = new System.Windows.Forms.Panel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.panel26 = new System.Windows.Forms.Panel();
@@ -312,6 +314,7 @@
             this.panel49.SuspendLayout();
             this.panel50.SuspendLayout();
             this.panel51.SuspendLayout();
+            this.P_IGTF.SuspendLayout();
             this.P_ITEM_TOTALES_TOTAL.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.panel26.SuspendLayout();
@@ -1926,7 +1929,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel12.Controls.Add(this.P_ITEM_TOTALES_1, 0, 0);
-            this.tableLayoutPanel12.Controls.Add(this.P_ITEM_TOTALES_2, 1, 0);
+            this.tableLayoutPanel12.Controls.Add(this.P_IGTF, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.P_ITEM_TOTALES_TOTAL, 2, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 0);
@@ -2051,14 +2054,37 @@
             this.L_CNT_ITEM.Text = "9.999.999";
             this.L_CNT_ITEM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // P_ITEM_TOTALES_2
+            // P_IGTF
             // 
-            this.P_ITEM_TOTALES_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.P_ITEM_TOTALES_2.Location = new System.Drawing.Point(105, 1);
-            this.P_ITEM_TOTALES_2.Margin = new System.Windows.Forms.Padding(1);
-            this.P_ITEM_TOTALES_2.Name = "P_ITEM_TOTALES_2";
-            this.P_ITEM_TOTALES_2.Size = new System.Drawing.Size(137, 79);
-            this.P_ITEM_TOTALES_2.TabIndex = 1;
+            this.P_IGTF.Controls.Add(this.L_TASA_IGTF);
+            this.P_IGTF.Controls.Add(this.label4);
+            this.P_IGTF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.P_IGTF.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.P_IGTF.Location = new System.Drawing.Point(105, 1);
+            this.P_IGTF.Margin = new System.Windows.Forms.Padding(1);
+            this.P_IGTF.Name = "P_IGTF";
+            this.P_IGTF.Size = new System.Drawing.Size(137, 79);
+            this.P_IGTF.TabIndex = 1;
+            this.P_IGTF.Click += new System.EventHandler(this.P_ITGTF);
+            // 
+            // L_TASA_IGTF
+            // 
+            this.L_TASA_IGTF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_TASA_IGTF.Location = new System.Drawing.Point(37, 24);
+            this.L_TASA_IGTF.Name = "L_TASA_IGTF";
+            this.L_TASA_IGTF.Size = new System.Drawing.Size(83, 25);
+            this.L_TASA_IGTF.TabIndex = 3;
+            this.L_TASA_IGTF.Text = "0.00%";
+            this.L_TASA_IGTF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(3, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 19);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Tasa IGTF:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // P_ITEM_TOTALES_TOTAL
             // 
@@ -2896,6 +2922,7 @@
             this.panel49.ResumeLayout(false);
             this.panel50.ResumeLayout(false);
             this.panel51.ResumeLayout(false);
+            this.P_IGTF.ResumeLayout(false);
             this.P_ITEM_TOTALES_TOTAL.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
@@ -3005,7 +3032,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel51;
         private System.Windows.Forms.Label L_CNT_ITEM;
-        private System.Windows.Forms.Panel P_ITEM_TOTALES_2;
+        private System.Windows.Forms.Panel P_IGTF;
         private System.Windows.Forms.Panel P_ITEM_TOTALES_TOTAL;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.Panel panel26;
@@ -3137,5 +3164,7 @@
         private System.Windows.Forms.Button BT_EDITAR;
         private System.Windows.Forms.Button BT_LIMPIAR;
         private System.Windows.Forms.Button BT_FACTOR_DIVISA;
+        private System.Windows.Forms.Label L_TASA_IGTF;
+        private System.Windows.Forms.Label label4;
     }
 }

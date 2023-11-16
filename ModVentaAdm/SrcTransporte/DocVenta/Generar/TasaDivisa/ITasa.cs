@@ -13,5 +13,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.TasaDivisa
         decimal  TasaActual_Get { get; }
 
         void setTasaDivisa(decimal tasa);
+        void setTexto(string texto);
     }
 }

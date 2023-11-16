@@ -266,7 +266,7 @@
         <DataSetName>PresupItem</DataSetName>
         <Top>0.17639cm</Top>
         <Height>0.6cm</Height>
-        <Width>19.98373cm</Width>
+        <Width>19.98375cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -978,7 +978,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!total.Value, "PresupuestoPie")</Value>
+                      <Value>=First(Fields!sTotal.Value, "PresupuestoPie")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1015,7 +1015,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!total.Value, "PresupuestoPie")</Value>
+                      <Value>=First(Fields!sTotal.Value, "PresupuestoPie")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1361,10 +1361,34 @@
       <Fields>
         <Field Name="total">
           <DataField>total</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="notas">
           <DataField>notas</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="subTotal">
+          <DataField>subTotal</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="exento">
+          <DataField>exento</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="iva">
+          <DataField>iva</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="igtfTasa">
+          <DataField>igtfTasa</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="igtfMono">
+          <DataField>igtfMono</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="sTotal">
+          <DataField>sTotal</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

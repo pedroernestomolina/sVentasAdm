@@ -113,6 +113,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             L_ITEMS_CNT.Text = "Items Registrados";
             L_CNT_ITEM.Text =  _controlador.Ficha.Items.Cnt_Get.ToString("n0");
             L_TASA_DIVISA.Text = _controlador.Ficha.Totales.TasaDivisaActual_Get.ToString("n2", _cult);
+            L_TASA_IGTF.Text = _controlador.Ficha.Get_TasaIGTF.ToString("n2") + "%";
             L_MONTO_NETO.Text = _controlador.Ficha.Totales.MontoNeto_MonedaActual_Get.ToString("n2", _cult);
             L_MONTO_IVA.Text = _controlador.Ficha.Totales.MontoIva_MonedaActual_Get.ToString("n2", _cult);
             L_MONTO.Text = _controlador.Ficha.Totales.MontoTotal_MonedaActual_Get.ToString("n2", _cult);
@@ -324,6 +325,16 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _controlador.EditarFactorDivisa();
             L_TASA_DIVISA.Text = _controlador.Ficha.Totales.TasaDivisaActual_Get.ToString("n2", _cult);
             ActualizarTotales();
+        }
+
+        private void P_ITGTF(object sender, EventArgs e)
+        {
+            ActivarIGTF();
+        }
+        private void ActivarIGTF()
+        {
+            _controlador.ActivarIGTF();
+            L_TASA_IGTF.Text = _controlador.Ficha.Get_TasaIGTF.ToString("n2") + "%";
         }
     }
 }

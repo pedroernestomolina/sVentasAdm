@@ -60,7 +60,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.ProForma
             ds.Tables["PresupuestoEnc"].Rows.Add(re);
 
             DataRow rp = ds.Tables["PresupuestoPie"].NewRow();
-            rp["total"] = ficha.encabezado.montoDivisa.ToString("n2", clt) + "$";
+            rp["sTotal"] = ficha.encabezado.montoDivisa.ToString("n2", clt) + "$";
             rp["notas"] = ficha.encabezado.notasObs;
             ds.Tables["PresupuestoPie"].Rows.Add(rp);
 

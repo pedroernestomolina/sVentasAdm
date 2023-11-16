@@ -291,10 +291,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         }
 
 
-        abstract public string TipoDocumento_Get { get; }
-        abstract protected void GuardarDoc();
-
-
         TasaDivisa.ITasa _gDivisa;
         public void EditarFactorDivisa()
         {
@@ -303,6 +299,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 _gDivisa = new TasaDivisa.Imp();
             }
             _gDivisa.Inicializa();
+            _gDivisa.setTexto("Tasa Divisa Actual ?");
             _gDivisa.setTasaDivisa(_tasaDivisa);
             _gDivisa.Inicia();
             if (_gDivisa.ProcesarIsOK) 
@@ -311,5 +308,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 _tasaDivisa=_gDivisa.TasaActual_Get;
             }
         }
+
+        //CLASES ABSTRACTAS
+        abstract public string TipoDocumento_Get { get; }
+        abstract protected void GuardarDoc();
+        abstract public void ActivarIGTF();
     }
 }

@@ -16,6 +16,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         private OOB.Sistema.Fiscal.Entidad.Ficha _tasaFiscal_1;
         private OOB.Sistema.Fiscal.Entidad.Ficha _tasaFiscal_2;
         private OOB.Sistema.Fiscal.Entidad.Ficha _tasaFiscal_3;
+        private decimal _tasaIGTF;
 
 
         public decimal TasaDivisa_Get { get { return _tasaDivisa; } }
@@ -36,6 +37,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
 
         public data()
         {
+            _tasaIGTF = 0m;
             _tasaDivisa = 0m;
             _tasaFiscal_1 = null;
             _tasaFiscal_2 = null;
@@ -110,6 +112,13 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _tasaFiscal_1 = list[0];
             _tasaFiscal_2 = list[1];
             _tasaFiscal_3 = list[2];
+        }
+
+        //
+        public decimal Get_TasaIGTF { get { return _tasaIGTF; } }
+        public void setTasaIgtf(decimal tasa)
+        {
+            _tasaIGTF = tasa;
         }
     }
 }

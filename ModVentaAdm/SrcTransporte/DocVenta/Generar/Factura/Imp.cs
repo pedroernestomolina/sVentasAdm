@@ -313,6 +313,18 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                 }
                 var _grupoAliados = _aliados.GroupBy(g => g.idAliado).Select(s => new { key = s.Key, lst = s.ToList() }).ToList();
                 //
+                var _montoIGTFMonAct = 0m;
+                var _montoIGTFMonDiv = 0m;
+                var _tasaIGTF = 0m;
+                var _aplicaIGTF = false;
+                if (Ficha.Get_TasaIGTF > 0m)
+                {
+                    _aplicaIGTF = true;
+                    _tasaIGTF = Ficha.Get_TasaIGTF;
+                    _montoIGTFMonAct = _montoTotal * Ficha.Get_TasaIGTF / 100;
+                    _montoIGTFMonDiv = _montoDivisa * Ficha.Get_TasaIGTF / 100;
+                }
+                //
                 var fichaOOB = new OOB.Transporte.Documento.Agregar.Factura.Ficha()
                 {
                     cargos = 0m,
@@ -345,7 +357,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     montoBase1 = _montoBase1,
                     montoBase2 = _montoBase2,
                     montoBase3 = _montoBase3,
-                    montoDivisa = _montoDivisa,
+                    montoDivisa = (_montoDivisa+_montoIGTFMonDiv),
                     montoExento = _montoExento,
                     montoImpuesto = _montoIva,
                     montoImpuesto1 = _montoIva1,
@@ -363,7 +375,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     telefono = _telefonoCliente,
                     TipoDoc = _tipoDcumento,
                     tipoRemision = _tipoDocRemision,
-                    Total = _montoTotal,
+                    Total = (_montoTotal+_montoIGTFMonAct),
                     usuario = _nombreUsuario,
                     vendedor = _nombreVendedor,
                     nota = _notasObs,
@@ -377,6 +389,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     fechaEmision = _fechaEmision,
                     fechaVencimiento = _fechaVencimiento,
                     aliadosDocRef = _aliadosDocRef,
+                    montoIGTFMonAct=_montoIGTFMonAct,
+                    montoIGTFMonDiv=_montoIGTFMonDiv,
+                    tasaIGTF=_tasaIGTF,
+                    aplicaIGTF = _aplicaIGTF,
                     aliadosResumen = _grupoAliados.Select(s =>
                     {
                         var nr = new OOB.Transporte.Documento.Agregar.Factura.FichaAliadoResumen()
@@ -575,6 +591,18 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     return ni;
                 }).ToList();
                 //
+                var _montoIGTFMonAct = 0m;
+                var _montoIGTFMonDiv = 0m;
+                var _tasaIGTF = 0m;
+                var _aplicaIGTF = false;
+                if (Ficha.Get_TasaIGTF > 0m)
+                {
+                    _aplicaIGTF = true;
+                    _tasaIGTF = Ficha.Get_TasaIGTF;
+                    _montoIGTFMonAct = _montoTotal * Ficha.Get_TasaIGTF / 100;
+                    _montoIGTFMonDiv = _montoDivisa * Ficha.Get_TasaIGTF / 100;
+                }
+                //
                 var fichaOOB = new OOB.Transporte.Documento.Agregar.FacturaFromHojaServ.Ficha()
                 {
                     cargos = 0m,
@@ -607,7 +635,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     montoBase1 = _montoBase1,
                     montoBase2 = _montoBase2,
                     montoBase3 = _montoBase3,
-                    montoDivisa = _montoDivisa,
+                    montoDivisa = (_montoDivisa+_montoIGTFMonDiv),
                     montoExento = _montoExento,
                     montoImpuesto = _montoIva,
                     montoImpuesto1 = _montoIva1,
@@ -625,7 +653,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     telefono = _telefonoCliente,
                     TipoDoc = _tipoDcumento,
                     tipoRemision = _tipoDocRemision,
-                    Total = _montoTotal,
+                    Total = (_montoTotal+_montoIGTFMonAct),
                     usuario = _nombreUsuario,
                     vendedor = _nombreVendedor,
                     nota = _notasObs,
@@ -640,6 +668,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     items = itemsDet,
                     docRef = _docRef,
                     turnos = _lstTurnos,
+                    montoIGTFMonAct = _montoIGTFMonAct,
+                    montoIGTFMonDiv = _montoIGTFMonDiv,
+                    tasaIGTF = _tasaIGTF,
+                    aplicaIGTF = _aplicaIGTF,
                 };
                 var r01 = Sistema.MyData.TransporteDocumento_AgregarFactura_From_HojaServ(fichaOOB);
                 _procesarIsOK = true;
@@ -657,6 +689,23 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
             SrcTransporte.Reportes.Factura.IFactura _doc = new SrcTransporte.Reportes.Factura.Gestion();
             _doc.setIdDocVisualizar(id);
             _doc.Generar();
+        }
+
+        TasaDivisa.ITasa _gDivisa;
+        public override void ActivarIGTF()
+        {
+            if (_gDivisa == null)
+            {
+                _gDivisa = new TasaDivisa.Imp();
+            }
+            _gDivisa.Inicializa();
+            _gDivisa.setTexto("Tasa IGTF Actual ?");
+            _gDivisa.setTasaDivisa(Ficha.Get_TasaIGTF);
+            _gDivisa.Inicia();
+            if (_gDivisa.ProcesarIsOK)
+            {
+                Ficha.setTasaIgtf(_gDivisa.TasaActual_Get);
+            }
         }
     }
 }

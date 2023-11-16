@@ -10,15 +10,17 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.TasaDivisa
     public class Imp: ITasa
     {
         private decimal _tasaActual;
+        private string _textoPublicar;
 
 
-        public string Titulo_Get { get { return "TASA ACTUAL ?"; } }
+        public string Titulo_Get { get { return _textoPublicar; } }
         public decimal TasaActual_Get { get { return _tasaActual; } }
 
 
         public Imp()
         {
             _tasaActual = 0m;
+            _textoPublicar = "";
             _abandonarIsOK = false;
             _procesarIsOK = false;
         }
@@ -45,6 +47,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.TasaDivisa
         public void setTasaDivisa(decimal tasa)
         {
             _tasaActual = tasa;
+        }
+        public void setTexto(string texto)
+        {
+            _textoPublicar = texto;
         }
 
 
