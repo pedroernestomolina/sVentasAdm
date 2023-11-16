@@ -56,7 +56,7 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Agregar.Handler
             if (_data.VerificarData()) 
             {
                 var _monto = _data.Get_MontoAbonoMonAct;
-                if ((caja.MontoCajaPago-_monto)<1m)
+                if ((caja.MontoCajaPago-_monto)==0m)
                 {
                     if (Helpers.Msg.ProcesarGuardar())
                     {

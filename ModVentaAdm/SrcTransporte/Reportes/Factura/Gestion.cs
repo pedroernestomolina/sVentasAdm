@@ -70,6 +70,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Factura
             rp["igtfTasa"] = ficha.encabezado.igtfTasa;
             rp["igtfMono"] = ficha.encabezado.igtfMontoMonAct;
             rp["notas"] = ficha.encabezado.notasObs;
+            rp["totalDiv"] = ficha.encabezado.montoDivisa;
             ds.Tables["PresupuestoPie"].Rows.Add(rp);
 
             var i = 0;

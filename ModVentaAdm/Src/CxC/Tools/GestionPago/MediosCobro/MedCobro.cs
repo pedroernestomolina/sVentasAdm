@@ -22,6 +22,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
         private bool _generarNotaCredito;
         private MetodoCobro.Agregar.IMetAgregar _gMetCobroAgregar;
         private MetodoCobro.Editar.IMetEditar _gMetCobroEditar;
+        private decimal _factorCambio;
 
 
         public BindingSource Source { get { return _bs; } }
@@ -50,6 +51,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
             _generarNotaCredito = false;
             _gMetCobroAgregar= new MetodoCobro.Agregar.MetAgregar();
             _gMetCobroEditar = new MetodoCobro.Editar.MetEditar();
+            _factorCambio = 1m;
         }
 
 
@@ -178,6 +180,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
                 _retCaja = new SrcTransporte.CajaRetencion.Handler.Imp();
             }
             _retCaja.Inicializa();
+            _retCaja.setFactorCambio(_factorCambio);
+
             _retCaja.setMontoCajaProcesarMonDiv(_saldoCaja);
             _retCaja.Inicia();
             if (_retCaja.ProcesarIsOK)
@@ -233,6 +237,13 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
 
         private bool CargarData()
         {
+            var r01 = Sistema.MyData.Configuracion_FactorDivisa();
+            if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r01.Mensaje);
+                return false;
+            }
+            _factorCambio = r01.Entidad;
             return true;
         }
         private void AgregarItem(MetodoCobro.dataItem item)

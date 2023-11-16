@@ -2160,6 +2160,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             private global::System.Data.DataColumn columnsTotal;
             
+            private global::System.Data.DataColumn columntotalDiv;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PresupuestoPieDataTable() {
@@ -2259,6 +2261,14 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn totalDivColumn {
+                get {
+                    return this.columntotalDiv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2294,7 +2304,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PresupuestoPieRow AddPresupuestoPieRow(decimal total, string notas, decimal subTotal, decimal exento, decimal iva, decimal igtfTasa, decimal igtfMono, string sTotal) {
+            public PresupuestoPieRow AddPresupuestoPieRow(decimal total, string notas, decimal subTotal, decimal exento, decimal iva, decimal igtfTasa, decimal igtfMono, string sTotal, decimal totalDiv) {
                 PresupuestoPieRow rowPresupuestoPieRow = ((PresupuestoPieRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         total,
@@ -2304,7 +2314,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                         iva,
                         igtfTasa,
                         igtfMono,
-                        sTotal};
+                        sTotal,
+                        totalDiv};
                 rowPresupuestoPieRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPresupuestoPieRow);
                 return rowPresupuestoPieRow;
@@ -2335,6 +2346,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 this.columnigtfTasa = base.Columns["igtfTasa"];
                 this.columnigtfMono = base.Columns["igtfMono"];
                 this.columnsTotal = base.Columns["sTotal"];
+                this.columntotalDiv = base.Columns["totalDiv"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2356,6 +2368,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 base.Columns.Add(this.columnigtfMono);
                 this.columnsTotal = new global::System.Data.DataColumn("sTotal", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsTotal);
+                this.columntotalDiv = new global::System.Data.DataColumn("totalDiv", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotalDiv);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4026,6 +4040,22 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal totalDiv {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupuestoPie.totalDivColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'totalDiv\' in table \'PresupuestoPie\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoPie.totalDivColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IstotalNull() {
                 return this.IsNull(this.tablePresupuestoPie.totalColumn);
             }
@@ -4118,6 +4148,18 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetsTotalNull() {
                 this[this.tablePresupuestoPie.sTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstotalDivNull() {
+                return this.IsNull(this.tablePresupuestoPie.totalDivColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettotalDivNull() {
+                this[this.tablePresupuestoPie.totalDivColumn] = global::System.Convert.DBNull;
             }
         }
         

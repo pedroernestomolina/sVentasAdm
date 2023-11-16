@@ -57,10 +57,12 @@ namespace ModVentaAdm.SrcTransporte.CajaRetencion.Handler
             _retencion.setFactorCambio(factor);
             _retencion.setMontoAplicarRetencionMonAct(_montoProcesarMonDiv * _factorCambio);
             _caja.setFactorCambio(factor);
+            ActualizarSaldoCaja();
         }
         public void setMontoCajaProcesarMonDiv(decimal montoCaja)
         {
             _montoProcesarMonDiv = montoCaja;
+            ActualizarSaldoCaja();
         }
         public void ActualizarSaldoCaja()
         {
