@@ -10,17 +10,17 @@ namespace ModVentaAdm.Data.Prov
 {
     public partial class DataPrv : IData
     {
-        public OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Presupuesto.Ficha> 
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Presupuesto.Ficha>
             TransporteDocumento_EntidadPresupuesto_GetById(string idDoc)
         {
             var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Presupuesto.Ficha>();
-            var r01 = MyData.TransporteDocumento_EntidadPresupuesto_GetById (idDoc);
+            var r01 = MyData.TransporteDocumento_EntidadPresupuesto_GetById(idDoc);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
             var e = r01.Entidad.encabezado;
-            var d= r01.Entidad.items;
+            var d = r01.Entidad.items;
             result.Entidad = new OOB.Transporte.Documento.Entidad.Presupuesto.Ficha()
             {
                 encabezado = new OOB.Transporte.Documento.Entidad.Presupuesto.FichaEncabezado()
@@ -83,9 +83,9 @@ namespace ModVentaAdm.Data.Prov
                     vendedorId = e.vendedorId,
                     vendedorNombre = e.vendedorNombre,
                     docSolicitadoPor = e.docSolicitadoPor,
-                    docModuloCargar= e.docModuloCargar,
+                    docModuloCargar = e.docModuloCargar,
                 },
-                items = d.Select(s => 
+                items = d.Select(s =>
                 {
                     var nr = new OOB.Transporte.Documento.Entidad.Presupuesto.FichaDetalle()
                     {
@@ -148,9 +148,9 @@ namespace ModVentaAdm.Data.Prov
                 throw new Exception(r01.Mensaje);
             }
             var lst = new List<OOB.Transporte.Documento.Entidad.Presupuesto.FichaAliado>();
-            if (r01.Lista !=null)
+            if (r01.Lista != null)
             {
-                if (r01.Lista.Count>0)
+                if (r01.Lista.Count > 0)
                 {
                     lst = r01.Lista.Select(xx =>
                         {
@@ -171,7 +171,7 @@ namespace ModVentaAdm.Data.Prov
             result.ListaD = lst;
             return result;
         }
-        public OOB.Resultado.Lista<OOB.Transporte.Documento.Remision.Lista.Ficha> 
+        public OOB.Resultado.Lista<OOB.Transporte.Documento.Remision.Lista.Ficha>
             TransporteDocumento_Remision_ListaBy(OOB.Transporte.Documento.Remision.Lista.Filtro filtro)
         {
             var result = new OOB.Resultado.Lista<OOB.Transporte.Documento.Remision.Lista.Ficha>();
@@ -179,6 +179,7 @@ namespace ModVentaAdm.Data.Prov
             {
                 codTipoDoc = filtro.codTipoDoc,
                 idCliente = filtro.idCliente,
+                esPorRemision=filtro.esPorRemision,
             };
             var r01 = MyData.TransporteDocumento_Remision_ListaBy(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -186,9 +187,9 @@ namespace ModVentaAdm.Data.Prov
                 throw new Exception(r01.Mensaje);
             }
             var lst = new List<OOB.Transporte.Documento.Remision.Lista.Ficha>();
-            if (r01.Lista!= null) 
+            if (r01.Lista != null)
             {
-                if (r01.Lista.Count > 0) 
+                if (r01.Lista.Count > 0)
                 {
                     lst = r01.Lista.Select(s =>
                     {
@@ -207,9 +208,9 @@ namespace ModVentaAdm.Data.Prov
                             docNumero = s.docNumero,
                             docSigno = s.docSigno,
                             factorCambio = s.factorCambio,
-                            estatusAnulado=s.estatusAnulado,
-                            docSolicitadoPor= s.docSolicitadoPor,
-                            docModuloCargar=s.docModuloCargar,
+                            estatusAnulado = s.estatusAnulado,
+                            docSolicitadoPor = s.docSolicitadoPor,
+                            docModuloCargar = s.docModuloCargar,
                         };
                         return nr;
                     }).ToList();
@@ -218,7 +219,7 @@ namespace ModVentaAdm.Data.Prov
             result.ListaD = lst;
             return result;
         }
-        public OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Venta.Ficha> 
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Venta.Ficha>
             TransporteDocumento_EntidadVenta_GetById(string idDoc)
         {
             var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Entidad.Venta.Ficha>();
@@ -292,6 +293,8 @@ namespace ModVentaAdm.Data.Prov
                     vendedorNombre = e.vendedorNombre,
                     docSolicitadoPor = e.docSolicitadoPor,
                     docModuloCargar = e.docModuloCargar,
+                    igtfMontoMonAct = e.igtfMontoMonAct,
+                    igtfTasa = e.igtfTasa,
                 },
                 detalles = d.Select(s =>
                 {
@@ -326,13 +329,24 @@ namespace ModVentaAdm.Data.Prov
                         tipoProcedenciaItem = s.tipoProcedenciaItem,
                         totalMonDivisa = s.totalMonDivisa,
                         totalMonLocal = s.totalMonLocal,
+                        mostrarItemDocFinal= s.mostrarItemDocFinal,
                     };
                     return nr;
+                }).ToList(),
+                turnos = r01.Entidad.turnos.Select(s => 
+                {
+                    var _turno = new OOB.Transporte.Documento.Entidad.Venta.Turno()
+                    {
+                        detalle = s.detalle,
+                        importe = s.importe,
+                        ruta = s.ruta,
+                    };
+                    return _turno;
                 }).ToList(),
             };
             return result;
         }
-        public OOB.Resultado.FichaEntidad<int> 
+        public OOB.Resultado.FichaEntidad<int>
             TransporteDocumento_Presupuesto_Pendiente_Cnt()
         {
             var result = new OOB.Resultado.FichaEntidad<int>();
@@ -386,7 +400,7 @@ namespace ModVentaAdm.Data.Prov
             result.ListaD = lst;
             return result;
         }
-        public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> 
+        public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha>
             TransporteDocumento_GetLista(OOB.Documento.Lista.Filtro filtro)
         {
             var result = new OOB.Resultado.Lista<OOB.Documento.Lista.Ficha>();
@@ -456,16 +470,14 @@ namespace ModVentaAdm.Data.Prov
             return result;
         }
 
-        public OOB.Resultado.Lista<OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha> 
+        public OOB.Resultado.Lista<OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha>
             TransporteDocumento_GetAliados_Presupuesto(string idDoc)
         {
-            var result = new OOB.Resultado.Lista<OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha> ();
+            var result = new OOB.Resultado.Lista<OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha>();
             var r01 = MyData.TransporteDocumento_Presupuesto_GetAliados(idDoc);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                result.Mensaje = r01.Mensaje;
-                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return result;
+                throw new Exception(r01.Mensaje);
             }
             var lst = new List<OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha>();
             if (r01.Lista != null)
@@ -489,16 +501,14 @@ namespace ModVentaAdm.Data.Prov
             return result;
         }
 
-        public OOB.Resultado.Lista<OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha> 
+        public OOB.Resultado.Lista<OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha>
             TransporteDocumento_Presupuesto_GetServicios(string idDoc)
         {
             var result = new OOB.Resultado.Lista<OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha>();
             var r01 = MyData.TransporteDocumento_Presupuesto_GetServicios(idDoc);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                result.Mensaje = r01.Mensaje;
-                result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return result;
+                throw new Exception(r01.Mensaje);
             }
             var lst = new List<OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha>();
             if (r01.Lista != null)
@@ -515,6 +525,68 @@ namespace ModVentaAdm.Data.Prov
                             idAliado = s.idAliado,
                             idServ = s.idServ,
                             importeServ = s.importeServ,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.ListaD = lst;
+            return result;
+        }
+
+        public OOB.Resultado.Lista<OOB.Transporte.Documento.GetTurnos.Presupuesto.Ficha> 
+            TransporteDocumento_Presupuesto_GetTurnos(string idDoc)
+        {
+            var result = new OOB.Resultado.Lista<OOB.Transporte.Documento.GetTurnos.Presupuesto.Ficha>();
+            var r01 = MyData.TransporteDocumento_Presupuesto_GetTurnos(idDoc);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.Transporte.Documento.GetTurnos.Presupuesto.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Transporte.Documento.GetTurnos.Presupuesto.Ficha()
+                        {
+                            importeMonDiv = s.importeMonDiv,
+                            turnoDesc = s.turnoDesc,
+                            turnoId = s.turnoId,
+                            turnoRuta = s.turnoRuta,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.ListaD = lst;
+            return result;
+        }
+
+        //
+        public OOB.Resultado.Lista<OOB.Transporte.Documento.GetTurnos.Documento.Ficha> 
+            TransporteDocumento_Documento_GetTurnos(string idDoc)
+        {
+            var result = new OOB.Resultado.Lista<OOB.Transporte.Documento.GetTurnos.Documento.Ficha>();
+            var r01 = MyData.TransporteDocumento_Documento_GetTurnos(idDoc);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.Transporte.Documento.GetTurnos.Documento.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Transporte.Documento.GetTurnos.Documento.Ficha()
+                        {
+                            importeMonDiv = s.importeMonDiv,
+                            turnoDesc = s.turnoDesc,
+                            turnoRuta = s.turnoRuta,
                         };
                         return nr;
                     }).ToList();

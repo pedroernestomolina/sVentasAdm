@@ -19,6 +19,7 @@ namespace DtoTransporte.Documento.Agregar.FacturaFromHojaServ
         public string tipoDocSiglas { get; set; }
         public List<FichaItem> items { get; set; }
         public List<FichaDocRef> docRef { get; set; }
+        public List<Turno> turnos { get; set; }
         public Ficha()
             :base()
         {
@@ -32,6 +33,7 @@ namespace DtoTransporte.Documento.Agregar.FacturaFromHojaServ
             tipoDocSiglas = "";
             items = new List<FichaItem>();
             docRef = new List<FichaDocRef>();
+            turnos = new List<Turno>();
         }
     }
 }

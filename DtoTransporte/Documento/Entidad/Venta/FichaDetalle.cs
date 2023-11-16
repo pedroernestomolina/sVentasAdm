@@ -38,6 +38,7 @@ namespace DtoTransporte.Documento.Entidad.Venta
         public string codigoDocRef { get; set; }
         public string tipoProcedenciaItem { get; set; }
         public int idItemServicio { get; set; }
+        public string mostrarItemDocFinal { get; set; }
         public FichaDetalle()
         {
             detalle = "";
@@ -69,6 +70,7 @@ namespace DtoTransporte.Documento.Entidad.Venta
             codigoDocRef = "";
             tipoProcedenciaItem = "";
             idItemServicio = -1;
+            mostrarItemDocFinal = "";
         }
     }
 }

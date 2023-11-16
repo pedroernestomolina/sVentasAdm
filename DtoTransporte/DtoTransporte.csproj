@@ -69,12 +69,14 @@
     <Compile Include="Documento\Agregar\FacturaFromHojaServ\Ficha.cs" />
     <Compile Include="Documento\Agregar\FacturaFromHojaServ\FichaDocRef.cs" />
     <Compile Include="Documento\Agregar\FacturaFromHojaServ\FichaItem.cs" />
+    <Compile Include="Documento\Agregar\FacturaFromHojaServ\Turno.cs" />
     <Compile Include="Documento\Agregar\Factura\Ficha.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaAliadoDocRef.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaAliadoResumen.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaItem.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaDocRef.cs" />
     <Compile Include="Documento\Agregar\Factura\Servicio.cs" />
+    <Compile Include="Documento\Agregar\Factura\Turno.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Aliado.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Fecha.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Ficha.cs" />
@@ -101,8 +103,12 @@
     <Compile Include="Documento\Entidad\Venta\Ficha.cs" />
     <Compile Include="Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="Documento\Entidad\Venta\FichaEncabezado.cs" />
+    <Compile Include="Documento\Entidad\Venta\Turno.cs" />
     <Compile Include="Documento\GetAliados\Presupuesto\Ficha.cs" />
     <Compile Include="Documento\GetServicios\Presupuesto\Ficha.cs" />
+    <Compile Include="Documento\GetTurnos\baseFicha.cs" />
+    <Compile Include="Documento\GetTurnos\Documento\Ficha.cs" />
+    <Compile Include="Documento\GetTurnos\Presupuesto\Ficha.cs" />
     <Compile Include="Documento\Lista\base.cs" />
     <Compile Include="Documento\Lista\Pendiente\Presupuesto\Ficha.cs" />
     <Compile Include="Documento\Remision\Lista\Ficha.cs" />

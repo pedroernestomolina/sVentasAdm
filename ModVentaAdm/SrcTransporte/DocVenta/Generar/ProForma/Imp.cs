@@ -119,6 +119,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                 //
                 var _aliadosDocRef = new List<OOB.Transporte.Documento.Agregar.Factura.FichaAliadoDocRef>();
                 var _lstServAliado = new List<servAliado>();
+                var _lstServTurno= new List<servTurno>();
                 var itemsDet = Ficha.Items.GetItems.Select(s =>
                 {
                     var _idDocRef = "";
@@ -127,6 +128,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     var _montoDocRef = 0m;
                     var _fecDocRef = DateTime.Now.Date;
                     var _tipoItemProcedencia = "";
+                    var _mostrarItemDocFinal = true;
                     OOB.Transporte.Documento.Agregar.Presupuesto.FichaDetalle _servdetalle=null;
 
                     if (s.Item.IsItemPresupuesto)
@@ -160,6 +162,22 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                                 importeSev = rg.importeServ,
                             };
                             _lstServAliado.Add(_aliadoServ);
+                        }
+                        var turnos = Sistema.MyData.TransporteDocumento_Presupuesto_GetTurnos(_idDocRef);
+                        if (turnos.ListaD.Count > 0)
+                        {
+                            _mostrarItemDocFinal = false;
+                            foreach (var rg in turnos.ListaD)
+                            {
+                                var _turnoServ = new servTurno()
+                                {
+                                    turnoId = rg.turnoId,
+                                    turnoDesc = rg.turnoDesc,
+                                    detalleRuta = rg.turnoRuta,
+                                    importeMonDiv = rg.importeMonDiv,
+                                };
+                                _lstServTurno.Add(_turnoServ);
+                            }
                         }
                     }
                     if (s.Item.Get_ItemServicio!=null) 
@@ -283,6 +301,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     ni.precioFinalMonLocal = ni.precioFinalMonDivisa * _factorCambio;
                     ni.servDetalle = _servdetalle;
                     ni.tipoItemProcedencia = _tipoItemProcedencia;
+                    ni.mostrarItemDocFinal = _mostrarItemDocFinal;
                     return ni;
                 }).ToList();
                 //
@@ -300,7 +319,32 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     }
                 }
                 var _grupoAliados = _aliados.GroupBy(g => g.idAliado).Select(s => new { key = s.Key, lst = s.ToList() }).ToList();
+
                 //
+                //TURNOS
+                var _grpTurnos = _lstServTurno.GroupBy(g => g.turnoId).Select(s => new { key = s.Key, lst = s.ToList() }).ToList();
+                var _lstTurnos = new List<OOB.Transporte.Documento.Agregar.Factura.Turno>();
+                foreach (var rg in _grpTurnos)
+                {
+                    var _ruta = "";
+                    var _importeTurno = 0m;
+                    var _descTurno = "";
+                    foreach (var det in rg.lst)
+                    {
+                        _descTurno = det.turnoDesc;
+                        _ruta += det.detalleRuta+Environment.NewLine;
+                        _importeTurno += det.importeMonDiv;
+                    }
+                    var _turno = new OOB.Transporte.Documento.Agregar.Factura.Turno() 
+                    {
+                        detalle= _descTurno,
+                        importe=_importeTurno,
+                        ruta=_ruta,
+                    };
+                    _lstTurnos.Add(_turno);
+                }
+                //
+
                 var fichaOOB = new OOB.Transporte.Documento.Agregar.Factura.Ficha()
                 {
                     cargos = 0m,
@@ -387,6 +431,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                         return nr;
                     }).ToList(),
                     docRef = _docRef,
+                    turnos= _lstTurnos
                 };
                 var r01 = Sistema.MyData.TransporteDocumento_AgregarFactura(fichaOOB);
                 _procesarIsOK = true;

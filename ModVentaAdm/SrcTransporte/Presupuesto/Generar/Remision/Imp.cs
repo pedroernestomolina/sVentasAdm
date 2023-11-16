@@ -113,6 +113,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Remision
                 {
                     codTipoDoc = s01.Entidad.codigo,
                     idCliente = _cliente.id,
+                    esPorRemision = _esPorRemisionLaCargaDocumento,
                 };
                 var r01 =Sistema.MyData.TransporteDocumento_Remision_ListaBy(filtroOOB);
                 return r01.ListaD.Where(w=>!w.isAnulado).ToList();

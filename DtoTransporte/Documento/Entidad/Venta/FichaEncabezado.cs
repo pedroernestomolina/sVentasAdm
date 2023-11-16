@@ -11,11 +11,15 @@ namespace DtoTransporte.Documento.Entidad.Venta
     {
         public string docSolicitadoPor { get; set; }
         public string docModuloCargar { get; set; }
+        public decimal igtfTasa { get; set; }
+        public decimal igtfMontoMonAct { get; set; }
         public FichaEncabezado()
             :base()
         {
             docSolicitadoPor = "";
             docModuloCargar = "";
+            igtfTasa = 0m;
+            igtfMontoMonAct = 0m;
         }
     }
 }

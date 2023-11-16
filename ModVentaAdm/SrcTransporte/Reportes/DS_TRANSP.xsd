@@ -70,6 +70,10 @@
               <xs:element name="modulo" msprop:Generator_ColumnVarNameInTable="columnmodulo" msprop:Generator_ColumnPropNameInRow="modulo" msprop:Generator_ColumnPropNameInTable="moduloColumn" msprop:Generator_UserColumnName="modulo" type="xs:string" minOccurs="0" />
               <xs:element name="tasaDivisa" msprop:Generator_ColumnVarNameInTable="columntasaDivisa" msprop:Generator_ColumnPropNameInRow="tasaDivisa" msprop:Generator_ColumnPropNameInTable="tasaDivisaColumn" msprop:Generator_UserColumnName="tasaDivisa" type="xs:decimal" minOccurs="0" />
               <xs:element name="condicionPago" msprop:Generator_ColumnVarNameInTable="columncondicionPago" msprop:Generator_ColumnPropNameInRow="condicionPago" msprop:Generator_ColumnPropNameInTable="condicionPagoColumn" msprop:Generator_UserColumnName="condicionPago" type="xs:string" minOccurs="0" />
+              <xs:element name="nombreRazonSocial" msprop:Generator_ColumnVarNameInTable="columnnombreRazonSocial" msprop:Generator_ColumnPropNameInRow="nombreRazonSocial" msprop:Generator_ColumnPropNameInTable="nombreRazonSocialColumn" msprop:Generator_UserColumnName="nombreRazonSocial" type="xs:string" minOccurs="0" />
+              <xs:element name="ciRif" msprop:Generator_ColumnVarNameInTable="columnciRif" msprop:Generator_ColumnPropNameInRow="ciRif" msprop:Generator_ColumnPropNameInTable="ciRifColumn" msprop:Generator_UserColumnName="ciRif" type="xs:string" minOccurs="0" />
+              <xs:element name="dirFiscal" msprop:Generator_ColumnVarNameInTable="columndirFiscal" msprop:Generator_ColumnPropNameInRow="dirFiscal" msprop:Generator_ColumnPropNameInTable="dirFiscalColumn" msprop:Generator_UserColumnName="dirFiscal" type="xs:string" minOccurs="0" />
+              <xs:element name="telefono" msprop:Generator_ColumnVarNameInTable="columntelefono" msprop:Generator_ColumnPropNameInRow="telefono" msprop:Generator_ColumnPropNameInTable="telefonoColumn" msprop:Generator_UserColumnName="telefono" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -78,6 +82,11 @@
             <xs:sequence>
               <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:string" minOccurs="0" />
               <xs:element name="notas" msprop:Generator_ColumnVarNameInTable="columnnotas" msprop:Generator_ColumnPropNameInRow="notas" msprop:Generator_ColumnPropNameInTable="notasColumn" msprop:Generator_UserColumnName="notas" type="xs:string" minOccurs="0" />
+              <xs:element name="subTotal" msprop:Generator_ColumnVarNameInTable="columnsubTotal" msprop:Generator_ColumnPropNameInRow="subTotal" msprop:Generator_ColumnPropNameInTable="subTotalColumn" msprop:Generator_UserColumnName="subTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="exento" msprop:Generator_ColumnVarNameInTable="columnexento" msprop:Generator_ColumnPropNameInRow="exento" msprop:Generator_ColumnPropNameInTable="exentoColumn" msprop:Generator_UserColumnName="exento" type="xs:decimal" minOccurs="0" />
+              <xs:element name="iva" msprop:Generator_ColumnVarNameInTable="columniva" msprop:Generator_ColumnPropNameInRow="iva" msprop:Generator_ColumnPropNameInTable="ivaColumn" msprop:Generator_UserColumnName="iva" type="xs:decimal" minOccurs="0" />
+              <xs:element name="igtfTasa" msprop:Generator_ColumnVarNameInTable="columnigtfTasa" msprop:Generator_ColumnPropNameInRow="igtfTasa" msprop:Generator_ColumnPropNameInTable="igtfTasaColumn" msprop:Generator_UserColumnName="igtfTasa" type="xs:decimal" minOccurs="0" />
+              <xs:element name="igtfMono" msprop:Generator_ColumnVarNameInTable="columnigtfMono" msprop:Generator_ColumnPropNameInRow="igtfMono" msprop:Generator_ColumnPropNameInTable="igtfMonoColumn" msprop:Generator_UserColumnName="igtfMono" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

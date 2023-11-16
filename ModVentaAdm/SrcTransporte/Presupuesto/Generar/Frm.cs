@@ -105,12 +105,45 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c6.DefaultCellStyle.Format = "n2";
 
+            var c7 = new DataGridViewTextBoxColumn();
+            c7.DataPropertyName = "TurnoMostrar";
+            c7.HeaderText = "Turno";
+            c7.Visible = true;
+            c7.Width = 100;
+            c7.HeaderCell.Style.Font = f;
+            c7.DefaultCellStyle.Font = f1;
+            c7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            var c8 = new DataGridViewTextBoxColumn();
+            c8.DataPropertyName = "TurnoDescMostrar";
+            c8.HeaderText = "Ruta/Detalle";
+            c8.Visible = true;
+            c8.HeaderCell.Style.Font = f;
+            c8.DefaultCellStyle.Font = f1;
+            c8.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c8.DefaultCellStyle.Format = "n2";
+            c8.MinimumWidth = 120;
+            c8.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            var c9 = new DataGridViewTextBoxColumn();
+            c9.DataPropertyName = "AliadoMontoMostrar";
+            c9.HeaderText = "Aliado/Monto($)";
+            c9.Visible = true;
+            c9.Width = 100;
+            c9.HeaderCell.Style.Font = f;
+            c9.DefaultCellStyle.Font = f1;
+            c9.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c9.DefaultCellStyle.Format = "n2";
+
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c2);
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
             DGV.Columns.Add(c5);
             DGV.Columns.Add(c6);
+            DGV.Columns.Add(c7);
+            DGV.Columns.Add(c8);
+            DGV.Columns.Add(c9);
         }
         private bool _modoInicializa;
         private void Frm_Load(object sender, EventArgs e)

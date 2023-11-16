@@ -91,6 +91,11 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 Helpers.Msg.Alerta("PROBLEMA CON LOS MONTOS TOTALES DEL DOCUMENTO, VERIFIQUE POR FAVOR");
                 return false;
             }
+            if (_items.GetItems.Count(g => g.Item.Get_TurnoIsActivo) != _items.GetItems.Count())
+            {
+                Helpers.Msg.Alerta("NO PUEDEN HABER ITEMS CON TURNO Y SIN TURNO");
+                return false;
+            }
             return true;
         }
         public bool DataPendienteIsOK()

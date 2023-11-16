@@ -87,6 +87,17 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 Helpers.Msg.Alerta("PROBLEMA CON LOS MONTOS TOTALES DEL DOCUMENTO, VERIFIQUE POR FAVOR");
                 return false;
             }
+            foreach (var rg in _items.GetItems)
+            {
+                if (rg.Item.Get_ItemServicio != null) 
+                {
+                    if (rg.Item.Get_ItemServicio.Item.Get_TurnoIsActivo) 
+                    {
+                        Helpers.Msg.Alerta("NO PUEDEN HABER SERVICIOS POR TURNO CARGADOS MANUALMENTE YA SEA PARA UNA HOJA DE SERVICIO/ FACTURA, DEBEN VENIR POR UN PRESUPUESTO/HOJA DE SERVICIO");
+                        return false;
+                    }
+                }
+            }
             return true;
         }
         public void setTasaDivisa(decimal factor)

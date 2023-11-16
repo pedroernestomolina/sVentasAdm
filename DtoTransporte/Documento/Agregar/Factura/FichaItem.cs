@@ -37,6 +37,7 @@ namespace DtoTransporte.Documento.Agregar.Factura
         public decimal montoDocRef { get; set; }
         public string codigoDocRef { get; set; }
         public string tipoProcedenciaItem { get; set; }
+        public bool mostrarItemDocFinal { get; set; }
         public Presupuesto.FichaDetalle servicioDetalle { get; set; }
         public FichaItem()
         {
@@ -69,6 +70,7 @@ namespace DtoTransporte.Documento.Agregar.Factura
             codigoDocRef = "";
             tipoProcedenciaItem = "";
             servicioDetalle = null;
+            mostrarItemDocFinal = true;
         }
     }
 }

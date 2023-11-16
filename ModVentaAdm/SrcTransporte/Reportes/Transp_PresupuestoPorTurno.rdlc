@@ -415,25 +415,24 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox102">
+                    <Textbox Name="Textbox9">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!precio_unit.Value)</Value>
+                              <Value />
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
-                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox102</rd:DefaultName>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -602,7 +601,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>6.40625in</Height>
+    <Height>3.80208in</Height>
     <Style />
   </Body>
   <Width>8.44141in</Width>
@@ -632,7 +631,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Descripcion</Value>
+                  <Value>TURNO / Descripcion</Value>
                   <Style>
                     <FontSize>8pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -648,7 +647,7 @@
           <Top>5.56656cm</Top>
           <Left>0.07055cm</Left>
           <Height>0.6cm</Height>
-          <Width>3.72716cm</Width>
+          <Width>4.67966cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -683,9 +682,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>5.56656cm</Top>
-          <Left>3.83299cm</Left>
+          <Left>4.78549cm</Left>
           <Height>0.6cm</Height>
-          <Width>6.68797cm</Width>
+          <Width>6.83579cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -719,10 +718,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>5.56656cm</Top>
-          <Left>10.55624cm</Left>
+          <Top>5.58836cm</Top>
+          <Left>11.65656cm</Left>
           <Height>0.6cm</Height>
-          <Width>1.69496cm</Width>
+          <Width>1.13472cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -757,9 +756,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
           <Top>5.56656cm</Top>
-          <Left>12.28648cm</Left>
+          <Left>12.82656cm</Left>
           <Height>0.6cm</Height>
-          <Width>1.66976cm</Width>
+          <Width>1.12968cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>

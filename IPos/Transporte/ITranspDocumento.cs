@@ -67,5 +67,12 @@ namespace IPos.Transporte
 
         DtoLib.ResultadoLista<DtoTransporte.Documento.GetServicios.Presupuesto.Ficha>
             TransporteDocumento_Presupuesto_GetServicios(string idDoc);
+
+        DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_GetTurnos(string idDoc);
+
+        //
+        DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Documento.Ficha>
+            TransporteDocumento_Documento_GetTurnos(string idDoc);
     }
 }

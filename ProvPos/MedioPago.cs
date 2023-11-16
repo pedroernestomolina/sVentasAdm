@@ -20,7 +20,7 @@ namespace ProvPos
                 {
                     var sql_1 = @"select auto as id, codigo, nombre 
                                     from empresa_medios 
-                                    where estatus_cobro=1 ";
+                                    where estatus_cobro='1'";
                     var sql = sql_1;
                     var list = cnn.Database.SqlQuery<DtoLibPos.MedioPago.Lista.Ficha>(sql).ToList();
                     result.Lista = list;

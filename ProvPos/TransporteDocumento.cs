@@ -215,7 +215,7 @@ namespace ProvPos
                                         docSolicitadoPor as docSolicitadoPor,
                                         docModuloCargar as docModuloCargar
                                     FROM ventas ";
-                    var _sql_2 = @" where 1=1 and estatus_anulado<>'1' and auto_remision='' and docEstatusPendiente<>'1' ";
+                    var _sql_2 = @" where 1=1 and docEstatusPendiente<>'1' ";
                     if (filtro.idCliente != "")
                     {
                         p1.ParameterName = "@idCliente";
@@ -227,6 +227,10 @@ namespace ProvPos
                         p2.ParameterName = "@codTipoDoc";
                         p2.Value = filtro.codTipoDoc;
                         _sql_2 += " and tipo = @codTipoDoc ";
+                    }
+                    if (filtro.esPorRemision)
+                    {
+                        _sql_2 += " and estatus_anulado<>'1' and auto_remision='' ";
                     }
                     var _sql = _sql_1 + _sql_2;
                     var _lst = cnn.Database.SqlQuery<DtoTransporte.Documento.Remision.Lista.Ficha>(_sql, p1, p2).ToList();
@@ -309,7 +313,9 @@ namespace ProvPos
                                         neto as montoNeto,
                                         documento_tipo as docModulo,
                                         docSolicitadoPor as docSolicitadoPor,
-                                        docModuloCargar as docModuloCargar
+                                        docModuloCargar as docModuloCargar,
+                                        igtf_tasa as igtfTasa,
+                                        igtf_monto_mon_act as igtfMontoMonAct
                                     FROM ventas where auto=@idDoc";
                     var _sql = _sql_1;
                     var _ent = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.FichaEncabezado>(_sql, p1).FirstOrDefault();
@@ -317,7 +323,7 @@ namespace ProvPos
                     {
                         throw new Exception("DOCUMENTO [ ID ] NO ENCONTRADO");
                     }
-
+                    //
                     _sql = @"select 
                                 detalle as detalle,
                                 cnt_dias as cntDias,
@@ -347,7 +353,8 @@ namespace ProvPos
                                 doc_monto_ref as montoDocRef,
                                 doc_codigo_ref as codigoDocRef,
                                 tipo_procedencia_item as tipoProcedenciaItem,
-                                id_item_servicio as idItemServicio
+                                id_item_servicio as idItemServicio,
+                                mostrar_item_doc_final as mostrarItemDocFinal
                             FROM ventas_transp_detalle where id_venta=@idDoc";
                     var xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
                     var _det = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.FichaDetalle>(_sql, xp1).ToList();
@@ -355,10 +362,20 @@ namespace ProvPos
                     {
                         throw new Exception("ITEMS DOCUMENTO NO ENCONTRADOS");
                     }
+                    //
+                    _sql = @"select 
+                                turno_detalle as detalle,
+                                turno_importe as importe,
+                                turno_ruta as ruta
+                            FROM ventas_transp_turno where id_venta=@idDoc";
+                    xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var _lstTurno= cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.Turno>(_sql, xp1).ToList();
+                    //
                     result.Entidad = new DtoTransporte.Documento.Entidad.Venta.Ficha()
                     {
                         encabezado = _ent,
                         detalles = _det,
+                        turnos= _lstTurno
                     };
                 }
             }
@@ -601,6 +618,71 @@ namespace ProvPos
                     var sql = sql_1;
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
                     var lst = cnn.Database.SqlQuery<DtoTransporte.Documento.GetServicios.Presupuesto.Ficha>(sql, p1).ToList();
+                    rt.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return rt;
+        }
+
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Presupuesto.Ficha> 
+            TransporteDocumento_Presupuesto_GetTurnos(string idDoc)
+        {
+            var rt = new DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Presupuesto.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql_1 = @"SELECT 
+                                    it.importe as importeMonDiv,
+                                    it.turno_id as turnoId,
+                                    it.turno_desc as turnoDesc,
+                                    it.servicio_detalle as turnoRuta
+                                FROM ventas_transp_item as it
+                                where it.id_venta=@idDoc and it.turno_estatus='1'";
+                    var sql = sql_1;
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var lst = cnn.Database.SqlQuery<DtoTransporte.Documento.GetTurnos.Presupuesto.Ficha>(sql, p1).ToList();
+                    rt.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return rt;
+        }
+
+        //
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Documento.Ficha> 
+            TransporteDocumento_Documento_GetTurnos(string idDoc)
+        {
+            var rt = new DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Documento.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql_1 = @"SELECT 
+                                    it.turno_importe as importeMonDiv,
+                                    it.turno_detalle as turnoDesc,
+                                    it.turno_ruta as turnoRuta
+                                FROM ventas_transp_turno as it
+                                where it.id_venta=@idDoc
+                                union (
+                                    select 
+                                        dt.importe_total_mon_divisa as importeMonDiv,
+                                        '' as turnoDesc,
+                                        dt.detalle as turnoRuta
+                                    FROM ventas_transp_detalle as dt
+                                    where dt.id_venta=@idDoc and mostrar_item_doc_final='1')";
+                    var sql = sql_1;
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var lst = cnn.Database.SqlQuery<DtoTransporte.Documento.GetTurnos.Documento.Ficha>(sql, p1).ToList();
                     rt.Lista = lst;
                 }
             }

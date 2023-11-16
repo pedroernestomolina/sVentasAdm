@@ -159,6 +159,7 @@ namespace ModVentaAdm.Data.Prov
                         totalMonLocal = z.totalMonLocal,
                         tipoProcedenciaItem = z.tipoItemProcedencia,
                         servicioDetalle = _servicioDetalle,
+                        mostrarItemDocFinal= z.mostrarItemDocFinal,
                     };
                     return zr;
                 }).ToList(),
@@ -181,7 +182,7 @@ namespace ModVentaAdm.Data.Prov
                     {
                         idAliado = ss.idAliado,
                         montoDivisa = ss.montoDivisa,
-                        servicios = ss.servicios.Select(svc => 
+                        servicios = ss.servicios.Select(svc =>
                         {
                             var xnr = new DtoTransporte.Documento.Agregar.Factura.Servicio()
                             {
@@ -196,7 +197,7 @@ namespace ModVentaAdm.Data.Prov
                     };
                     return nr;
                 }).ToList(),
-                aliadosDocRef = ficha.aliadosDocRef.Select(xx => 
+                aliadosDocRef = ficha.aliadosDocRef.Select(xx =>
                 {
                     var nr = new DtoTransporte.Documento.Agregar.Factura.FichaAliadoDocRef()
                     {
@@ -204,6 +205,16 @@ namespace ModVentaAdm.Data.Prov
                         idDocRef = xx.idDocRef,
                     };
                     return nr;
+                }).ToList(),
+                turnos = ficha.turnos.Select(tr =>
+                {
+                    var tnr = new DtoTransporte.Documento.Agregar.Factura.Turno()
+                    {
+                        detalle = tr.detalle,
+                        importe = tr.importe,
+                        ruta = tr.ruta,
+                    };
+                    return tnr;
                 }).ToList(),
             };
             var r01 = MyData.TransporteDocumento_AgregarFactura(fichaDTO);
@@ -333,6 +344,16 @@ namespace ModVentaAdm.Data.Prov
                         tipoDoc = s.tipoDoc,
                     };
                     return nr;
+                }).ToList(),
+                turnos = ficha.turnos.Select(tr =>
+                {
+                    var tnr = new DtoTransporte.Documento.Agregar.FacturaFromHojaServ.Turno()
+                    {
+                        detalle = tr.detalle,
+                        importe = tr.importe,
+                        ruta = tr.ruta,
+                    };
+                    return tnr;
                 }).ToList(),
             };
             var r01 = MyData.TransporteDocumento_AgregarFactura_From_HojasServicio(fichaDTO);

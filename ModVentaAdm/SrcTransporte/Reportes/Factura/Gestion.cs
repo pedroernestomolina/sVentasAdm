@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.SrcTransporte.Reportes.ProForma
+namespace ModVentaAdm.SrcTransporte.Reportes.Factura
 {
-    public class Gestion: IProForma
+    public class Gestion: IFactura
     {
         private string _idDoc;
 
@@ -45,7 +45,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.ProForma
         private void generarDoc(OOB.Transporte.Documento.Entidad.Venta.Ficha ficha)
         {
             var clt = CultureInfo.CurrentCulture;
-            var pt = AppDomain.CurrentDomain.BaseDirectory + @"\SrcTransporte\Reportes\Transp_ProForma.rdlc";
+            var pt = AppDomain.CurrentDomain.BaseDirectory + @"\SrcTransporte\Reportes\Transp_Factura.rdlc";
             var ds = new DS_TRANSP();
 
             DataRow re = ds.Tables["PresupuestoEnc"].NewRow();
@@ -56,11 +56,19 @@ namespace ModVentaAdm.SrcTransporte.Reportes.ProForma
             re["modulo"] = ficha.encabezado.docModulo;
             re["tasaDivisa"] = ficha.encabezado.factorCambio.ToString("n2", clt);
             re["condicionPago"] = ficha.encabezado.condPago + " ("+ficha.encabezado.diasCredito.ToString()+") Dia(s)";
+            re["cirif"] = ficha.encabezado.clienteCiRif;
+            re["nombreRazonSocial"] = ficha.encabezado.clienteNombre ;
+            re["dirFiscal"] = ficha.encabezado.clienteDirFiscal;
 
             ds.Tables["PresupuestoEnc"].Rows.Add(re);
 
             DataRow rp = ds.Tables["PresupuestoPie"].NewRow();
-            rp["total"] = ficha.encabezado.montoDivisa.ToString("n2", clt) + "$";
+            rp["subTotal"] = ficha.encabezado.subTotal ;
+            rp["exento"] = ficha.encabezado.montoExento ;
+            rp["iva"] = ficha.encabezado.montoImpuesto ;
+            rp["total"] = ficha.encabezado.docTotal ;
+            rp["igtfTasa"] = ficha.encabezado.igtfTasa;
+            rp["igtfMono"] = ficha.encabezado.igtfMontoMonAct;
             rp["notas"] = ficha.encabezado.notasObs;
             ds.Tables["PresupuestoPie"].Rows.Add(rp);
 
@@ -77,8 +85,10 @@ namespace ModVentaAdm.SrcTransporte.Reportes.ProForma
                     rt["cnt_und"] = 0;
                     rt["cnt"] = it.cntDias;
                     rt["item"] = i;
-                    rt["precio_unit"] = it.precioNetoMonDivisa;
-                    rt["importe"] = it.importeTotalMonDivisa;
+                    //rt["precio_unit"] = it.precioNetoMonDivisa;
+                    //rt["importe"] = it.importeTotalMonDivisa;
+                    rt["precio_unit"] = it.precioNetoMonLocal;
+                    rt["importe"] = it.importeTotalMonLocal;
                     rt["desc_und"] = "";
                     ds.Tables["PresupItem"].Rows.Add(rt);
                 }
@@ -89,13 +99,13 @@ namespace ModVentaAdm.SrcTransporte.Reportes.ProForma
                 i++;
                 DataRow rt = ds.Tables["PresupItem"].NewRow();
                 rt["descripcion"] = "";
-                rt["detalle"] = it.detalle+Environment.NewLine+it.ruta;
+                rt["detalle"] = it.detalle + Environment.NewLine + it.ruta;
                 rt["cnt_dias"] = 0;
                 rt["cnt_und"] = 0;
                 rt["cnt"] = 1;
                 rt["item"] = i;
-                rt["precio_unit"] = it.importe;
-                rt["importe"] = it.importe;
+                rt["precio_unit"] = it.importe * ficha.encabezado.factorCambio;
+                rt["importe"] = it.importe * ficha.encabezado.factorCambio;
                 rt["desc_und"] = "";
                 ds.Tables["PresupItem"].Rows.Add(rt);
             }

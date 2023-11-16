@@ -37,6 +37,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
         public decimal montoDocRef { get; set; }
         public string codigoDocRef { get; set; }
         public string tipoItemProcedencia { get; set; }
+        public bool mostrarItemDocFinal { get; set; }
         public Presupuesto.FichaDetalle servDetalle { get; set; }
         public FichaItem()
         {
@@ -69,6 +70,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
             codigoDocRef = "";
             servDetalle = null;
             tipoItemProcedencia = "";
+            mostrarItemDocFinal=true;
         }
     }
 }

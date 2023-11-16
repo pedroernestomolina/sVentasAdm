@@ -29,6 +29,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         public int CantDiasItemMostrar { get { return _data.Get_CntDias; } }
         public int CantVehicItemMostrar { get { return _data.Get_CntUnidades; } }
         public decimal ImporteItemMostrar { get { return _data.Get_Importe; } }
+        public string TurnoMostrar { get { return _data.Get_TipoTurno != null ? _data.Get_TipoTurno.desc : ""; } }
+        public string TurnoDescMostrar { get { return _data.Get_Descripcion; } }
+        public decimal AliadoMontoMostrar { get { return _data.Get_ImporteAliadosLLamados; } }
 
 
         public ImpItem()

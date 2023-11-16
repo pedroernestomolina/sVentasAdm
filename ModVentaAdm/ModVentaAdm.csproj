@@ -291,12 +291,14 @@
     <Compile Include="OOB\Transporte\Documento\Agregar\FacturaFromHojaServ\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\FacturaFromHojaServ\FichaDocRef.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\FacturaFromHojaServ\FichaItem.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\FacturaFromHojaServ\Turno.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaAliadoDocRef.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaAliadoResumen.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaDocRef.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaItem.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\Servicio.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\Factura\Turno.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Aliado.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Fecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Ficha.cs" />
@@ -319,8 +321,12 @@
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaEncabezado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Turno.cs" />
     <Compile Include="OOB\Transporte\Documento\GetAliados\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\GetServicios\Presupuesto\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\GetTurnos\baseFicha.cs" />
+    <Compile Include="OOB\Transporte\Documento\GetTurnos\Documento\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\GetTurnos\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Lista\baseLista.cs" />
     <Compile Include="OOB\Transporte\Documento\Lista\Pendiente\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Ficha.cs" />
@@ -489,6 +495,7 @@
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\Imp.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\IRemision.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\servAliado.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\servTurno.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Imp.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\ITasa.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Frm.cs">
@@ -605,6 +612,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_TRANSP.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SrcTransporte\Reportes\Factura\Gestion.cs" />
+    <Compile Include="SrcTransporte\Reportes\Factura\IFactura.cs" />
     <Compile Include="SrcTransporte\Reportes\Presupuesto\Gestion.cs" />
     <Compile Include="SrcTransporte\Reportes\Presupuesto\IPresupuesto.cs" />
     <Compile Include="SrcTransporte\Reportes\ProForma\Gestion.cs" />
@@ -1223,7 +1232,9 @@
     <EmbeddedResource Include="SrcTransporte\Reportes\AliadoResumen.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Factura.rdlc" />
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Factura.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_PresupuestoPorTurno.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

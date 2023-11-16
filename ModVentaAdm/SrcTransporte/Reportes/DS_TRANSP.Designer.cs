@@ -1771,6 +1771,14 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             private global::System.Data.DataColumn columncondicionPago;
             
+            private global::System.Data.DataColumn columnnombreRazonSocial;
+            
+            private global::System.Data.DataColumn columnciRif;
+            
+            private global::System.Data.DataColumn columndirFiscal;
+            
+            private global::System.Data.DataColumn columntelefono;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PresupuestoEncDataTable() {
@@ -1862,6 +1870,38 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nombreRazonSocialColumn {
+                get {
+                    return this.columnnombreRazonSocial;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ciRifColumn {
+                get {
+                    return this.columnciRif;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn dirFiscalColumn {
+                get {
+                    return this.columndirFiscal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn telefonoColumn {
+                get {
+                    return this.columntelefono;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1897,7 +1937,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PresupuestoEncRow AddPresupuestoEncRow(string numeroDoc, System.DateTime fechaDoc, string cliente, string solicitadoPor, string modulo, decimal tasaDivisa, string condicionPago) {
+            public PresupuestoEncRow AddPresupuestoEncRow(string numeroDoc, System.DateTime fechaDoc, string cliente, string solicitadoPor, string modulo, decimal tasaDivisa, string condicionPago, string nombreRazonSocial, string ciRif, string dirFiscal, string telefono) {
                 PresupuestoEncRow rowPresupuestoEncRow = ((PresupuestoEncRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         numeroDoc,
@@ -1906,7 +1946,11 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                         solicitadoPor,
                         modulo,
                         tasaDivisa,
-                        condicionPago};
+                        condicionPago,
+                        nombreRazonSocial,
+                        ciRif,
+                        dirFiscal,
+                        telefono};
                 rowPresupuestoEncRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPresupuestoEncRow);
                 return rowPresupuestoEncRow;
@@ -1936,6 +1980,10 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 this.columnmodulo = base.Columns["modulo"];
                 this.columntasaDivisa = base.Columns["tasaDivisa"];
                 this.columncondicionPago = base.Columns["condicionPago"];
+                this.columnnombreRazonSocial = base.Columns["nombreRazonSocial"];
+                this.columnciRif = base.Columns["ciRif"];
+                this.columndirFiscal = base.Columns["dirFiscal"];
+                this.columntelefono = base.Columns["telefono"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1955,6 +2003,14 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 base.Columns.Add(this.columntasaDivisa);
                 this.columncondicionPago = new global::System.Data.DataColumn("condicionPago", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncondicionPago);
+                this.columnnombreRazonSocial = new global::System.Data.DataColumn("nombreRazonSocial", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombreRazonSocial);
+                this.columnciRif = new global::System.Data.DataColumn("ciRif", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnciRif);
+                this.columndirFiscal = new global::System.Data.DataColumn("dirFiscal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndirFiscal);
+                this.columntelefono = new global::System.Data.DataColumn("telefono", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntelefono);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2092,6 +2148,16 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             private global::System.Data.DataColumn columnnotas;
             
+            private global::System.Data.DataColumn columnsubTotal;
+            
+            private global::System.Data.DataColumn columnexento;
+            
+            private global::System.Data.DataColumn columniva;
+            
+            private global::System.Data.DataColumn columnigtfTasa;
+            
+            private global::System.Data.DataColumn columnigtfMono;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PresupuestoPieDataTable() {
@@ -2143,6 +2209,46 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn subTotalColumn {
+                get {
+                    return this.columnsubTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn exentoColumn {
+                get {
+                    return this.columnexento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ivaColumn {
+                get {
+                    return this.columniva;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn igtfTasaColumn {
+                get {
+                    return this.columnigtfTasa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn igtfMonoColumn {
+                get {
+                    return this.columnigtfMono;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2178,11 +2284,16 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PresupuestoPieRow AddPresupuestoPieRow(string total, string notas) {
+            public PresupuestoPieRow AddPresupuestoPieRow(string total, string notas, decimal subTotal, decimal exento, decimal iva, decimal igtfTasa, decimal igtfMono) {
                 PresupuestoPieRow rowPresupuestoPieRow = ((PresupuestoPieRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         total,
-                        notas};
+                        notas,
+                        subTotal,
+                        exento,
+                        iva,
+                        igtfTasa,
+                        igtfMono};
                 rowPresupuestoPieRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPresupuestoPieRow);
                 return rowPresupuestoPieRow;
@@ -2207,6 +2318,11 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             internal void InitVars() {
                 this.columntotal = base.Columns["total"];
                 this.columnnotas = base.Columns["notas"];
+                this.columnsubTotal = base.Columns["subTotal"];
+                this.columnexento = base.Columns["exento"];
+                this.columniva = base.Columns["iva"];
+                this.columnigtfTasa = base.Columns["igtfTasa"];
+                this.columnigtfMono = base.Columns["igtfMono"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2216,6 +2332,16 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 base.Columns.Add(this.columntotal);
                 this.columnnotas = new global::System.Data.DataColumn("notas", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnotas);
+                this.columnsubTotal = new global::System.Data.DataColumn("subTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsubTotal);
+                this.columnexento = new global::System.Data.DataColumn("exento", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexento);
+                this.columniva = new global::System.Data.DataColumn("iva", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columniva);
+                this.columnigtfTasa = new global::System.Data.DataColumn("igtfTasa", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnigtfTasa);
+                this.columnigtfMono = new global::System.Data.DataColumn("igtfMono", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnigtfMono);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3547,6 +3673,70 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nombreRazonSocial {
+                get {
+                    try {
+                        return ((string)(this[this.tablePresupuestoEnc.nombreRazonSocialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nombreRazonSocial\' in table \'PresupuestoEnc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoEnc.nombreRazonSocialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ciRif {
+                get {
+                    try {
+                        return ((string)(this[this.tablePresupuestoEnc.ciRifColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ciRif\' in table \'PresupuestoEnc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoEnc.ciRifColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string dirFiscal {
+                get {
+                    try {
+                        return ((string)(this[this.tablePresupuestoEnc.dirFiscalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dirFiscal\' in table \'PresupuestoEnc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoEnc.dirFiscalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string telefono {
+                get {
+                    try {
+                        return ((string)(this[this.tablePresupuestoEnc.telefonoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'telefono\' in table \'PresupuestoEnc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoEnc.telefonoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsnumeroDocNull() {
                 return this.IsNull(this.tablePresupuestoEnc.numeroDocColumn);
             }
@@ -3628,6 +3818,54 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             public void SetcondicionPagoNull() {
                 this[this.tablePresupuestoEnc.condicionPagoColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnombreRazonSocialNull() {
+                return this.IsNull(this.tablePresupuestoEnc.nombreRazonSocialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnombreRazonSocialNull() {
+                this[this.tablePresupuestoEnc.nombreRazonSocialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsciRifNull() {
+                return this.IsNull(this.tablePresupuestoEnc.ciRifColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetciRifNull() {
+                this[this.tablePresupuestoEnc.ciRifColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdirFiscalNull() {
+                return this.IsNull(this.tablePresupuestoEnc.dirFiscalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdirFiscalNull() {
+                this[this.tablePresupuestoEnc.dirFiscalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstelefonoNull() {
+                return this.IsNull(this.tablePresupuestoEnc.telefonoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettelefonoNull() {
+                this[this.tablePresupuestoEnc.telefonoColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -3678,6 +3916,86 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal subTotal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupuestoPie.subTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'subTotal\' in table \'PresupuestoPie\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoPie.subTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal exento {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupuestoPie.exentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'exento\' in table \'PresupuestoPie\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoPie.exentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal iva {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupuestoPie.ivaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'iva\' in table \'PresupuestoPie\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoPie.ivaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal igtfTasa {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupuestoPie.igtfTasaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'igtfTasa\' in table \'PresupuestoPie\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoPie.igtfTasaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal igtfMono {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePresupuestoPie.igtfMonoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'igtfMono\' in table \'PresupuestoPie\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoPie.igtfMonoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IstotalNull() {
                 return this.IsNull(this.tablePresupuestoPie.totalColumn);
             }
@@ -3698,6 +4016,66 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetnotasNull() {
                 this[this.tablePresupuestoPie.notasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssubTotalNull() {
+                return this.IsNull(this.tablePresupuestoPie.subTotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsubTotalNull() {
+                this[this.tablePresupuestoPie.subTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsexentoNull() {
+                return this.IsNull(this.tablePresupuestoPie.exentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetexentoNull() {
+                this[this.tablePresupuestoPie.exentoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsivaNull() {
+                return this.IsNull(this.tablePresupuestoPie.ivaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetivaNull() {
+                this[this.tablePresupuestoPie.ivaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsigtfTasaNull() {
+                return this.IsNull(this.tablePresupuestoPie.igtfTasaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetigtfTasaNull() {
+                this[this.tablePresupuestoPie.igtfTasaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsigtfMonoNull() {
+                return this.IsNull(this.tablePresupuestoPie.igtfMonoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetigtfMonoNull() {
+                this[this.tablePresupuestoPie.igtfMonoColumn] = global::System.Convert.DBNull;
             }
         }
         

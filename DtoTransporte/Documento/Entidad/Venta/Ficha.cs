@@ -11,6 +11,7 @@ namespace DtoTransporte.Documento.Entidad.Venta
     {
         public FichaEncabezado encabezado { get; set; }
         public List<FichaDetalle> detalles { get; set; }
+        public List<Turno> turnos { get; set; }
         public Ficha()
         {
             encabezado = new FichaEncabezado();

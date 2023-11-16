@@ -31,9 +31,7 @@ namespace ProvPos
                         var r1 = cn.Database.ExecuteSqlCommand(sql);
                         if (r1 == 0)
                         {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR TABLA CONTADORES";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL ACTUALIZAR TABLA CONTADORES");
                         }
 
                         var largo = 10;
@@ -47,16 +45,12 @@ namespace ProvPos
                         r1 = cn.Database.ExecuteSqlCommand(sql, pSerie);
                         if (r1 == 0)
                         {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
                         }
                         var nDoc = cn.Database.SqlQuery<int?>("select correlativo from empresa_series_fiscales where auto=@autoSerie", pSerie).FirstOrDefault();
                         if (!nDoc.HasValue)
                         {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
                         }
                         var fechaVenc = fechaSistema.AddDays(ficha.diasCredito);
                         var docNumero = nDoc.Value.ToString().Trim().PadLeft(largo, '0');
@@ -376,9 +370,7 @@ namespace ProvPos
                                                                 p61, p62, p63, p64, p65);
                         if (r == 0)
                         {
-                            result.Mensaje = "PROBLEMA AL INSERTAR DOCUMENTO DE VENTA";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL INSERTAR DOCUMENTO DE VENTA");
                         }
                         cn.SaveChanges();
 
@@ -492,9 +484,7 @@ namespace ProvPos
                                                         t21, t22, t23);
                         if (r == 0)
                         {
-                            result.Mensaje = "PROBLEMA AL INSERTAR DOCUMENTO CXC";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL INSERTAR DOCUMENTO CXC");
                         }
                         cn.SaveChanges();
 
@@ -534,8 +524,8 @@ namespace ProvPos
                                         doc_monto_ref ,
                                         doc_codigo_ref,
                                         tipo_procedencia_item,
-                                        id_item_servicio
-                                    )
+                                        id_item_servicio,
+                                        mostrar_item_doc_final)
                                 VALUES
                                     (
                                         @id_venta ,
@@ -572,8 +562,8 @@ namespace ProvPos
                                         @doc_monto_ref ,
                                         @doc_codigo_ref,
                                         @tipo_procedencia_item,
-                                        @id_item_servicio
-                                    )";
+                                        @id_item_servicio,
+                                        @mostrar_item_doc_final)";
                         foreach (var rg in ficha.items)
                         {
                             var _idItemServicio = -1;
@@ -654,9 +644,7 @@ namespace ProvPos
                                                                         xp21, xp22, xp23, xp24, xp25, xp26, xp27);
                                 if (r2 == 0)
                                 {
-                                    result.Mensaje = "PROBLEMA AL INSERTAR ITEM SERVICIO";
-                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                    return result;
+                                    throw new Exception("PROBLEMA AL INSERTAR ITEM SERVICIO");
                                 }
                                 cn.SaveChanges();
                                 //
@@ -681,9 +669,7 @@ namespace ProvPos
                                     var r3 = cn.Database.ExecuteSqlCommand(_sql_F, yp1, yp2, yp3, yp4, yp5);
                                     if (r3 == 0)
                                     {
-                                        result.Mensaje = "PROBLEMA AL INSERTAR FECHA SERVICIO";
-                                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                        return result;
+                                        throw new Exception("PROBLEMA AL INSERTAR FECHA SERVICIO");
                                     }
                                     cn.SaveChanges();
                                 }
@@ -726,9 +712,7 @@ namespace ProvPos
                                     var r4 = cn.Database.ExecuteSqlCommand(_sql_G, zp1, zp2, zp3, zp4, zp5, zp6, zp7, zp8, zp9);
                                     if (r4 == 0)
                                     {
-                                        result.Mensaje = "PROBLEMA AL INSERTAR ALIADO SERVICIO";
-                                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                        return result;
+                                        throw new Exception("PROBLEMA AL INSERTAR ALIADO SERVICIO");
                                     }
                                     cn.SaveChanges();
                                 }
@@ -770,15 +754,14 @@ namespace ProvPos
                             var ld33 = new MySql.Data.MySqlClient.MySqlParameter("@doc_codigo_ref", rg.codigoDocRef);
                             var ld34 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_procedencia_item", rg.tipoProcedenciaItem);
                             var ld35 = new MySql.Data.MySqlClient.MySqlParameter("@id_item_servicio", _idItemServicio);
+                            var ld36 = new MySql.Data.MySqlClient.MySqlParameter("@mostrar_item_doc_final", rg.mostrarItemDocFinal ? "1" : "0");
                             var r_det = cn.Database.ExecuteSqlCommand(_sqlDetFct, ld1, ld2, ld3, ld4, ld5, ld6, ld7, ld8, ld9, ld10,
                                                                             ld11, ld12, ld13, ld14, ld15, ld16, ld17, ld18, ld19, ld20,
                                                                             ld21, ld22, ld23, ld24, ld25, ld26, ld27, ld28, ld29, ld30,
-                                                                            ld31, ld32, ld33, ld34, ld35);
+                                                                            ld31, ld32, ld33, ld34, ld35, ld36);
                             if (r_det == 0)
                             {
-                                result.Mensaje = "PROBLEMA AL INSERTAR ITEM ";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("PROBLEMA AL INSERTAR ITEM");
                             }
                             cn.SaveChanges();
                         }
@@ -793,9 +776,7 @@ namespace ProvPos
                         var r_cli = cn.Database.ExecuteSqlCommand(xsql_cli, xcli_1, xcli_2);
                         if (r_cli == 0)
                         {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR SALDO CLIENTE";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL ACTUALIZAR SALDO CLIENTE");
                         }
                         cn.SaveChanges();
 
@@ -843,9 +824,7 @@ namespace ProvPos
                                                                     lp7, lp8, lp9, lp10);
                             if (r3 == 0)
                             {
-                                result.Mensaje = "PROBLEMA AL INSERTAR VENTA - DOCUMENTO - REF";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("PROBLEMA AL INSERTAR VENTA - DOCUMENTO - REF");
                             }
                             cn.SaveChanges();
 
@@ -864,9 +843,7 @@ namespace ProvPos
                             var xr3 = cn.Database.ExecuteSqlCommand(_sql_2, xlp1, xlp2, xlp3, xlp4, xlp5);
                             if (xr3 == 0)
                             {
-                                result.Mensaje = "PROBLEMA AL ACTUALIZAR REMISION DOCUMENTO";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("PROBLEMA AL ACTUALIZAR REMISION DOCUMENTO");
                             }
                             cn.SaveChanges();
                         }
@@ -882,9 +859,7 @@ namespace ProvPos
                             var xr4 = cn.Database.ExecuteSqlCommand(_sql, ylp1, ylp2);
                             if (xr4 == 0)
                             {
-                                result.Mensaje = "PROBLEMA AL ACTUALIZAR SALDO ALIADO";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("PROBLEMA AL ACTUALIZAR SALDO ALIADO");
                             }
                             cn.SaveChanges();
 
@@ -917,9 +892,7 @@ namespace ProvPos
                             cn.SaveChanges();
                             if (xr5 == 0)
                             {
-                                result.Mensaje = "PROBLEMA AL INSERTAR VENTA - ALIADO - REF";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("PROBLEMA AL INSERTAR VENTA - ALIADO - REF");
                             }
                             //
                             // INSERTAR ALIADO DOCUMENTO 
@@ -964,9 +937,7 @@ namespace ProvPos
                             cn.SaveChanges();
                             if (xr6 == 0)
                             {
-                                result.Mensaje = "PROBLEMA AL INSERTAR ALIADO - DOCUMENTO";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("PROBLEMA AL INSERTAR ALIADO - DOCUMENTO");
                             }
                             //
                             sql = "SELECT LAST_INSERT_ID()";
@@ -1005,9 +976,7 @@ namespace ProvPos
                                 cn.SaveChanges();
                                 if (xsv == 0)
                                 {
-                                    result.Mensaje = "PROBLEMA AL INSERTAR ALIADO - DOCUMENTO - SERVICIO";
-                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                    return result;
+                                    throw new Exception("PROBLEMA AL INSERTAR ALIADO - DOCUMENTO - SERVICIO");
                                 }
                             }
                         }
@@ -1031,13 +1000,39 @@ namespace ProvPos
                             var zr1 = cn.Database.ExecuteSqlCommand(_sql, zlp1, zlp2, zlp3);
                             if (zr1 == 0)
                             {
-                                result.Mensaje = "PROBLEMA AL INSERTAR ALIADO DETALLE DOC REFERENCIA";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("PROBLEMA AL INSERTAR ALIADO DETALLE DOC REFERENCIA");
                             }
                             cn.SaveChanges();
                         }
-
+                        //
+                        //TURNOS 
+                        if (ficha.turnos != null)
+                        {
+                            foreach (var turno in ficha.turnos)
+                            {
+                                _sql = @"insert into ventas_transp_turno (
+                                        id_venta,
+                                        turno_detalle,
+                                        turno_importe,
+                                        turno_ruta)
+                                    VALUES (
+                                        @idVenta, 
+                                        @turno_detalle,
+                                        @turno_importe,
+                                        @turno_ruta)";
+                                var tur1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
+                                var tur2 = new MySql.Data.MySqlClient.MySqlParameter("@turno_detalle", turno.detalle);
+                                var tur3 = new MySql.Data.MySqlClient.MySqlParameter("@turno_importe", turno.importe);
+                                var tur4 = new MySql.Data.MySqlClient.MySqlParameter("@turno_ruta", turno.ruta );
+                                var tur = cn.Database.ExecuteSqlCommand(_sql, tur1, tur2, tur3, tur4);
+                                if (tur== 0)
+                                {
+                                    throw new Exception("PROBLEMA AL INSERTAR TURNOS");
+                                }
+                                cn.SaveChanges();
+                            }
+                        }
+                        //
                         ts.Complete();
                         var ret = new DtoTransporte.Documento.Agregar.Resultado()
                         {
@@ -1174,7 +1169,6 @@ namespace ProvPos
             return result;
         }
 
-
         public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>
             TransporteDocumento_AgregarFactura_From_HojasServicio(DtoTransporte.Documento.Agregar.FacturaFromHojaServ.Ficha ficha)
         {
@@ -1194,9 +1188,7 @@ namespace ProvPos
                         var r1 = cn.Database.ExecuteSqlCommand(sql);
                         if (r1 == 0)
                         {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR TABLA CONTADORES";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL ACTUALIZAR TABLA CONTADORES");
                         }
                         //
                         var largo = 10;
@@ -1207,16 +1199,12 @@ namespace ProvPos
                         r1 = cn.Database.ExecuteSqlCommand(sql, pSerie);
                         if (r1 == 0)
                         {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
                         }
                         var nDoc = cn.Database.SqlQuery<int?>("select correlativo from empresa_series_fiscales where auto=@autoSerie", pSerie).FirstOrDefault();
                         if (!nDoc.HasValue)
                         {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
                         }
                         var fechaVenc = fechaSistema.AddDays(ficha.diasCredito);
                         var docNumero = nDoc.Value.ToString().Trim().PadLeft(largo, '0');
@@ -1339,8 +1327,10 @@ namespace ProvPos
                                         `estatus_fiscal`, 
                                         `z_fiscal`,
                                         docSolicitadoPor,
-                                        docModuloCargar
-                                    ) 
+                                        docModuloCargar,
+                                        igtf_tasa,
+                                        igtf_monto_mon_act,
+                                        igtf_aplica) 
                                     VALUES 
                                     (
                                         @autoDoc, 
@@ -1460,7 +1450,10 @@ namespace ProvPos
                                         '', 
                                         '0',
                                         @docSolicitadoPor,
-                                        @docModuloCargar)";
+                                        @docModuloCargar,
+                                        0,
+                                        0,
+                                        '0')";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
                         var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.fechaEmision);
@@ -1535,9 +1528,7 @@ namespace ProvPos
                                                                 p61, p62, p63, p64, p65);
                         if (r == 0)
                         {
-                            result.Mensaje = "PROBLEMA AL INSERTAR DOCUMENTO DE VENTA";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL INSERTAR DOCUMENTO DE VENTA");
                         }
                         cn.SaveChanges();
                         //
@@ -1578,8 +1569,8 @@ namespace ProvPos
                                         doc_monto_ref ,
                                         doc_codigo_ref,
                                         tipo_procedencia_item,
-                                        id_item_servicio
-                                    )
+                                        id_item_servicio,
+                                        mostrar_item_doc_final)
                                 VALUES
                                     (
                                         @id_venta ,
@@ -1616,8 +1607,8 @@ namespace ProvPos
                                         @doc_monto_ref ,
                                         @doc_codigo_ref,
                                         @tipo_procedencia_item,
-                                        @id_item_servicio
-                                    )";
+                                        @id_item_servicio,
+                                        '0')";
                         var _idItemServicio = -1;
                         foreach (var rg in ficha.items)
                         {
@@ -1663,9 +1654,7 @@ namespace ProvPos
                                                                             ld31, ld32, ld33, ld34, ld35);
                             if (r_det == 0)
                             {
-                                result.Mensaje = "PROBLEMA AL INSERTAR ITEM ";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("PROBLEMA AL INSERTAR ITEM");
                             }
                             cn.SaveChanges();
                         }
@@ -1714,9 +1703,7 @@ namespace ProvPos
                                                                     lp7, lp8, lp9, lp10);
                             if (r3 == 0)
                             {
-                                result.Mensaje = "PROBLEMA AL INSERTAR VENTA - DOCUMENTO - REF";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("PROBLEMA AL INSERTAR VENTA - DOCUMENTO - REF");
                             }
                             cn.SaveChanges();
                             //
@@ -1735,12 +1722,39 @@ namespace ProvPos
                             var xr3 = cn.Database.ExecuteSqlCommand(_sql_2, xlp1, xlp2, xlp3, xlp4, xlp5);
                             if (xr3 == 0)
                             {
-                                result.Mensaje = "PROBLEMA AL ACTUALIZAR REMISION DOCUMENTO";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("PROBLEMA AL ACTUALIZAR REMISION DOCUMENTO");
                             }
                             cn.SaveChanges();
                         }
+                        //
+                        //TURNOS 
+                        if (ficha.turnos != null)
+                        {
+                            foreach (var turno in ficha.turnos)
+                            {
+                                _sql = @"insert into ventas_transp_turno (
+                                        id_venta,
+                                        turno_detalle,
+                                        turno_importe,
+                                        turno_ruta)
+                                    VALUES (
+                                        @idVenta, 
+                                        @turno_detalle,
+                                        @turno_importe,
+                                        @turno_ruta)";
+                                var tur1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
+                                var tur2 = new MySql.Data.MySqlClient.MySqlParameter("@turno_detalle", turno.detalle);
+                                var tur3 = new MySql.Data.MySqlClient.MySqlParameter("@turno_importe", turno.importe);
+                                var tur4 = new MySql.Data.MySqlClient.MySqlParameter("@turno_ruta", turno.ruta);
+                                var tur = cn.Database.ExecuteSqlCommand(_sql, tur1, tur2, tur3, tur4);
+                                if (tur == 0)
+                                {
+                                    throw new Exception("PROBLEMA AL INSERTAR TURNOS");
+                                }
+                                cn.SaveChanges();
+                            }
+                        }
+                        //
                         ts.Complete();
                         var ret = new DtoTransporte.Documento.Agregar.Resultado()
                         {

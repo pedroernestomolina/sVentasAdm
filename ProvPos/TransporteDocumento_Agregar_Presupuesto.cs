@@ -178,8 +178,10 @@ namespace ProvPos
                                         `z_fiscal`,
                                         docSolicitadoPor,
                                         docModuloCargar,
-                                        docEstatusPendiente
-                                    ) 
+                                        docEstatusPendiente,
+                                        igtf_tasa,
+                                        igtf_monto_mon_act,
+                                        igtf_aplica) 
                                     VALUES 
                                     (
                                         @autoDoc, 
@@ -300,7 +302,10 @@ namespace ProvPos
                                         '0',
                                         @docSolicitadoPor,
                                         @docModuloCargar,
-                                        @docEstatusPendiente)";
+                                        @docEstatusPendiente,
+                                        0,
+                                        0,
+                                        '0')";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
                         var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.fechaEmision);
@@ -765,8 +770,10 @@ namespace ProvPos
                                         `estatus_fiscal`, 
                                         `z_fiscal`,
                                         docSolicitadoPor,
-                                        docModuloCargar
-                                    ) 
+                                        docModuloCargar,
+                                        igtf_tasa,
+                                        igtf_monto_mon_act,
+                                        igtf_aplica) 
                                     VALUES 
                                     (
                                         @autoDoc, 
@@ -886,7 +893,10 @@ namespace ProvPos
                                         '', 
                                         '0',
                                         @docSolicitadoPor,
-                                        @docModuloCargar)";
+                                        @docModuloCargar,
+                                        0,
+                                        0,
+                                        '0')";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
                         var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.fechaEmision);

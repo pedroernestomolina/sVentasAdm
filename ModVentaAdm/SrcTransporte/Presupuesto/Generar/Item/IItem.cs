@@ -23,6 +23,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         int CantDiasItemMostrar { get; }
         int CantVehicItemMostrar { get; }
         decimal ImporteItemMostrar { get; }
+        string TurnoMostrar { get; }
+        string TurnoDescMostrar { get; }
+        decimal AliadoMontoMostrar { get; }
 
         void Aliados();
         void setId(int id);
