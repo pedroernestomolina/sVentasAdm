@@ -276,7 +276,17 @@ namespace ModVentaAdm.Src.Cliente.Administrador
                 _gestionVisualizar.Inicia();
             }
         }
-
+        public void EdoCta()
+        {
+            if (Item != null)
+            {
+                SrcTransporte.Reportes.Filtro.Vista.IFiltro _filtro = new SrcTransporte.Reportes.Filtro.Handler.Filtro();
+                _filtro.idCliente = Item.Id;
+                //
+                SrcTransporte.Reportes.IReporteConFiltro _rep = new SrcTransporte.Reportes.Cxc.EdoCta.Imp();
+                _rep.setFiltros(_filtro);
+                _rep.Generar();
+            }
+        }
     }
-
 }

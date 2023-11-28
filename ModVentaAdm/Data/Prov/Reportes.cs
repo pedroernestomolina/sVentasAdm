@@ -498,8 +498,9 @@ namespace ModVentaAdm.Data.Prov
                             tasaIva1 = s.tasaIva1,
                             tasaIva2 = s.tasaIva2,
                             tasaRetencionIva = s.tasaRetencionIva,
-                            comprobanteRetencionIva=s.comprobanteRetencionIva,
-                            auto=s.auto,
+                            comprobanteRetencionIva = s.comprobanteRetencionIva,
+                            auto = s.auto,
+                            estatus = s.estatus,
                         };
                         return nr;
                     }).ToList();

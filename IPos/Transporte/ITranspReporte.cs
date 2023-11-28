@@ -15,5 +15,8 @@ namespace IPos.Transporte
             TransporteReporte_AliadoDetalleDoc();
         DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleServ>
             TransporteReporte_AliadoDetalleServ();
+        //
+        DtoLib.ResultadoEntidad<DtoTransporte.Reporte.Cxc.EdoCta.Ficha>
+            TransporteReporte_Cxc_EdoCta(string idCliente);
     }
 }

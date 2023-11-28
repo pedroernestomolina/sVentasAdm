@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibPos.Reportes.VentaAdministrativa.LibroVenta
 {
-    
     public class Ficha
     {
-
         public string codigoSucursalDoc { get; set; }
         public DateTime fechaDoc { get; set; }
         public string ciRifDoc { get; set; }
@@ -33,8 +31,7 @@ namespace DtoLibPos.Reportes.VentaAdministrativa.LibroVenta
         public DateTime fechaRetencionIva { get; set; }
         public string comprobanteRetencionIva {get;set;}
         public string auto { get; set; }
-
-
+        public string estatus { get; set; }
         public Ficha() 
         {
             codigoSucursalDoc = "";
@@ -59,8 +56,7 @@ namespace DtoLibPos.Reportes.VentaAdministrativa.LibroVenta
             fechaRetencionIva = DateTime.Now.Date;
             comprobanteRetencionIva = "";
             auto = "";
+            estatus = "";
         }
-
     }
-
 }

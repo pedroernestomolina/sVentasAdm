@@ -121,5 +121,55 @@ namespace ModVentaAdm.Data.Prov
             rt.ListaD = _lst;
             return rt;
         }
+        //
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.EdoCta.Ficha> 
+            TransporteReporte_Cxc_EdoCta(string idCliente)
+        {
+            var rt = new OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.EdoCta.Ficha>();
+            var r01 = MyData.TransporteReporte_Cxc_EdoCta(idCliente);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            if (r01.Entidad == null) 
+            {
+                throw new Exception("PROBLEMA AL CARGAR DATA");
+            }
+            var _ent = new OOB.Transporte.Reporte.Cxc.EdoCta.Cliente()
+            {
+                ciRifCli = r01.Entidad.entidad.ciRifCli,
+                codCli = r01.Entidad.entidad.codCli,
+                dirCli = r01.Entidad.entidad.dirCli,
+                nombreCli = r01.Entidad.entidad.nombreCli,
+                telCli = r01.Entidad.entidad.telCli,
+            };
+            var _lst = new List<OOB.Transporte.Reporte.Cxc.EdoCta.Movimiento>();
+            if (r01.Entidad.movimientos != null)
+            {
+                if (r01.Entidad.movimientos.Count > 0)
+                {
+                    _lst = r01.Entidad.movimientos.Select(s =>
+                    {
+                        var nr = new OOB.Transporte.Reporte.Cxc.EdoCta.Movimiento()
+                        {
+                            fechaDoc = s.fechaDoc,
+                            fechaVencDoc = s.fechaVencDoc,
+                            importeDiv = s.importeDiv,
+                            notasDoc = s.notasDoc,
+                            nroDoc = s.nroDoc,
+                            signoDoc = s.signoDoc,
+                            tipoDoc = s.tipoDoc,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            rt.Entidad = new OOB.Transporte.Reporte.Cxc.EdoCta.Ficha()
+            {
+                entidad = _ent,
+                movimientos = _lst,
+            };
+            return rt;
+        }
     }
 }

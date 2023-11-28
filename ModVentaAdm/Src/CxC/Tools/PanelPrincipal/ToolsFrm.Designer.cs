@@ -56,9 +56,13 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.BT_VER_DETALLES_CTA = new System.Windows.Forms.Button();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.BT_VER_DETALLES_CTA = new System.Windows.Forms.Button();
+            this.panel25 = new System.Windows.Forms.Panel();
             this.BT_REPORTE_CTAS = new System.Windows.Forms.Button();
+            this.panel26 = new System.Windows.Forms.Panel();
+            this.BT_EDO_CTA = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
             this.BT_AGREGAR_CTA = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -73,6 +77,8 @@
             this.BT_AGREGAR_ANTICIPO = new System.Windows.Forms.Button();
             this.panel23 = new System.Windows.Forms.Panel();
             this.BT_ADM_DOC_ANTICIPO = new System.Windows.Forms.Button();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.BT_ADM_PAGOS_REC = new System.Windows.Forms.Button();
             this.P_PIE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -80,8 +86,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_SALIDA = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.BT_ADM_PAGOS_REC = new System.Windows.Forms.Button();
             this.MenuP.SuspendLayout();
             this.P_PRINCIPAL.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -102,7 +106,10 @@
             this.panel14.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.panel15.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
             this.panel16.SuspendLayout();
+            this.panel25.SuspendLayout();
+            this.panel26.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel18.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -111,10 +118,10 @@
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
             this.panel23.SuspendLayout();
+            this.panel24.SuspendLayout();
             this.P_PIE.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel24.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuP
@@ -414,7 +421,6 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
             this.tableLayoutPanel7.Controls.Add(this.panel15, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.panel16, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel17, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.panel18, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.panel21, 0, 3);
@@ -439,14 +445,43 @@
             // 
             // panel15
             // 
-            this.panel15.Controls.Add(this.BT_VER_DETALLES_CTA);
+            this.tableLayoutPanel7.SetColumnSpan(this.panel15, 2);
+            this.panel15.Controls.Add(this.tableLayoutPanel9);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(1, 1);
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
-            this.panel15.Padding = new System.Windows.Forms.Padding(2);
-            this.panel15.Size = new System.Drawing.Size(78, 77);
+            this.panel15.Size = new System.Drawing.Size(180, 77);
             this.panel15.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.Controls.Add(this.panel16, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.panel25, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.panel26, 2, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 1;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(180, 77);
+            this.tableLayoutPanel9.TabIndex = 0;
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.BT_VER_DETALLES_CTA);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel16.Location = new System.Drawing.Point(1, 1);
+            this.panel16.Margin = new System.Windows.Forms.Padding(1);
+            this.panel16.Name = "panel16";
+            this.panel16.Padding = new System.Windows.Forms.Padding(2);
+            this.panel16.Size = new System.Drawing.Size(58, 75);
+            this.panel16.TabIndex = 0;
             // 
             // BT_VER_DETALLES_CTA
             // 
@@ -457,22 +492,22 @@
             this.BT_VER_DETALLES_CTA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_VER_DETALLES_CTA.Location = new System.Drawing.Point(2, 2);
             this.BT_VER_DETALLES_CTA.Name = "BT_VER_DETALLES_CTA";
-            this.BT_VER_DETALLES_CTA.Size = new System.Drawing.Size(74, 73);
-            this.BT_VER_DETALLES_CTA.TabIndex = 2;
+            this.BT_VER_DETALLES_CTA.Size = new System.Drawing.Size(54, 71);
+            this.BT_VER_DETALLES_CTA.TabIndex = 3;
             this.toolTip1.SetToolTip(this.BT_VER_DETALLES_CTA, "VISUALIZAR DOCUMENTOS PENDIENTES POR COBRAR");
             this.BT_VER_DETALLES_CTA.UseVisualStyleBackColor = true;
             this.BT_VER_DETALLES_CTA.Click += new System.EventHandler(this.BT_VER_DETALLES_CTA_Click);
             // 
-            // panel16
+            // panel25
             // 
-            this.panel16.Controls.Add(this.BT_REPORTE_CTAS);
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(81, 1);
-            this.panel16.Margin = new System.Windows.Forms.Padding(1);
-            this.panel16.Name = "panel16";
-            this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(100, 77);
-            this.panel16.TabIndex = 1;
+            this.panel25.Controls.Add(this.BT_REPORTE_CTAS);
+            this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel25.Location = new System.Drawing.Point(61, 1);
+            this.panel25.Margin = new System.Windows.Forms.Padding(1);
+            this.panel25.Name = "panel25";
+            this.panel25.Padding = new System.Windows.Forms.Padding(2);
+            this.panel25.Size = new System.Drawing.Size(58, 75);
+            this.panel25.TabIndex = 1;
             // 
             // BT_REPORTE_CTAS
             // 
@@ -483,11 +518,37 @@
             this.BT_REPORTE_CTAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_REPORTE_CTAS.Location = new System.Drawing.Point(2, 2);
             this.BT_REPORTE_CTAS.Name = "BT_REPORTE_CTAS";
-            this.BT_REPORTE_CTAS.Size = new System.Drawing.Size(96, 73);
-            this.BT_REPORTE_CTAS.TabIndex = 2;
+            this.BT_REPORTE_CTAS.Size = new System.Drawing.Size(54, 71);
+            this.BT_REPORTE_CTAS.TabIndex = 4;
             this.toolTip1.SetToolTip(this.BT_REPORTE_CTAS, "REPORTE DE CTAS PENDIENTES POR COBRAR");
             this.BT_REPORTE_CTAS.UseVisualStyleBackColor = true;
             this.BT_REPORTE_CTAS.Click += new System.EventHandler(this.BT_REPORTE_CTAS_Click);
+            // 
+            // panel26
+            // 
+            this.panel26.Controls.Add(this.BT_EDO_CTA);
+            this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel26.Location = new System.Drawing.Point(121, 1);
+            this.panel26.Margin = new System.Windows.Forms.Padding(1);
+            this.panel26.Name = "panel26";
+            this.panel26.Padding = new System.Windows.Forms.Padding(2);
+            this.panel26.Size = new System.Drawing.Size(58, 75);
+            this.panel26.TabIndex = 2;
+            // 
+            // BT_EDO_CTA
+            // 
+            this.BT_EDO_CTA.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_edoCta_48;
+            this.BT_EDO_CTA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BT_EDO_CTA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_EDO_CTA.FlatAppearance.BorderSize = 0;
+            this.BT_EDO_CTA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_EDO_CTA.Location = new System.Drawing.Point(2, 2);
+            this.BT_EDO_CTA.Name = "BT_EDO_CTA";
+            this.BT_EDO_CTA.Size = new System.Drawing.Size(54, 71);
+            this.BT_EDO_CTA.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.BT_EDO_CTA, "REPORTE DE CTAS PENDIENTES POR COBRAR");
+            this.BT_EDO_CTA.UseVisualStyleBackColor = true;
+            this.BT_EDO_CTA.Click += new System.EventHandler(this.BT_EDO_CTA_Click);
             // 
             // panel17
             // 
@@ -675,6 +736,33 @@
             this.BT_ADM_DOC_ANTICIPO.UseVisualStyleBackColor = true;
             this.BT_ADM_DOC_ANTICIPO.Click += new System.EventHandler(this.BT_ADM_DOC_ANTICIPO_Click);
             // 
+            // panel24
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.panel24, 2);
+            this.panel24.Controls.Add(this.BT_ADM_PAGOS_REC);
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel24.Location = new System.Drawing.Point(1, 396);
+            this.panel24.Margin = new System.Windows.Forms.Padding(1);
+            this.panel24.Name = "panel24";
+            this.panel24.Padding = new System.Windows.Forms.Padding(2);
+            this.panel24.Size = new System.Drawing.Size(180, 77);
+            this.panel24.TabIndex = 7;
+            // 
+            // BT_ADM_PAGOS_REC
+            // 
+            this.BT_ADM_PAGOS_REC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ADM_PAGOS_REC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_ADM_PAGOS_REC.Image = global::ModVentaAdm.Properties.Resources.manager_doc_48;
+            this.BT_ADM_PAGOS_REC.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_ADM_PAGOS_REC.Location = new System.Drawing.Point(2, 2);
+            this.BT_ADM_PAGOS_REC.Name = "BT_ADM_PAGOS_REC";
+            this.BT_ADM_PAGOS_REC.Size = new System.Drawing.Size(176, 73);
+            this.BT_ADM_PAGOS_REC.TabIndex = 2;
+            this.BT_ADM_PAGOS_REC.Text = "Adm\r\nPagos Recibios";
+            this.BT_ADM_PAGOS_REC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BT_ADM_PAGOS_REC.UseVisualStyleBackColor = true;
+            this.BT_ADM_PAGOS_REC.Click += new System.EventHandler(this.BT_ADM_PAGOS_REC_Click);
+            // 
             // P_PIE
             // 
             this.P_PIE.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -751,33 +839,6 @@
             this.BT_SALIDA.UseVisualStyleBackColor = true;
             this.BT_SALIDA.Click += new System.EventHandler(this.BT_SALIDA_Click);
             // 
-            // panel24
-            // 
-            this.tableLayoutPanel7.SetColumnSpan(this.panel24, 2);
-            this.panel24.Controls.Add(this.BT_ADM_PAGOS_REC);
-            this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel24.Location = new System.Drawing.Point(1, 396);
-            this.panel24.Margin = new System.Windows.Forms.Padding(1);
-            this.panel24.Name = "panel24";
-            this.panel24.Padding = new System.Windows.Forms.Padding(2);
-            this.panel24.Size = new System.Drawing.Size(180, 77);
-            this.panel24.TabIndex = 7;
-            // 
-            // BT_ADM_PAGOS_REC
-            // 
-            this.BT_ADM_PAGOS_REC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_ADM_PAGOS_REC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_ADM_PAGOS_REC.Image = global::ModVentaAdm.Properties.Resources.manager_doc_48;
-            this.BT_ADM_PAGOS_REC.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.BT_ADM_PAGOS_REC.Location = new System.Drawing.Point(2, 2);
-            this.BT_ADM_PAGOS_REC.Name = "BT_ADM_PAGOS_REC";
-            this.BT_ADM_PAGOS_REC.Size = new System.Drawing.Size(176, 73);
-            this.BT_ADM_PAGOS_REC.TabIndex = 2;
-            this.BT_ADM_PAGOS_REC.Text = "Adm\r\nPagos Recibios";
-            this.BT_ADM_PAGOS_REC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BT_ADM_PAGOS_REC.UseVisualStyleBackColor = true;
-            this.BT_ADM_PAGOS_REC.Click += new System.EventHandler(this.BT_ADM_PAGOS_REC_Click);
-            // 
             // ToolsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -814,7 +875,10 @@
             this.panel14.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
+            this.panel25.ResumeLayout(false);
+            this.panel26.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
@@ -823,10 +887,10 @@
             this.panel21.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
             this.panel23.ResumeLayout(false);
+            this.panel24.ResumeLayout(false);
             this.P_PIE.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel24.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -867,11 +931,8 @@
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Button BT_VER_DETALLES_CTA;
-        private System.Windows.Forms.Button BT_REPORTE_CTAS;
         private System.Windows.Forms.Button BT_AGREGAR_CTA;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Panel panel19;
@@ -887,6 +948,13 @@
         private System.Windows.Forms.Button BT_ADM_DOC_ANTICIPO;
         private System.Windows.Forms.Panel panel24;
         private System.Windows.Forms.Button BT_ADM_PAGOS_REC;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Button BT_VER_DETALLES_CTA;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Button BT_REPORTE_CTAS;
+        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.Button BT_EDO_CTA;
 
     }
 }

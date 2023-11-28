@@ -25,5 +25,11 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteReporte_AliadoDetalleServ();
         }
+        //
+        public DtoLib.ResultadoEntidad<DtoTransporte.Reporte.Cxc.EdoCta.Ficha> 
+            TransporteReporte_Cxc_EdoCta(string idCliente)
+        {
+            return ServiceProv.TransporteReporte_Cxc_EdoCta(idCliente);
+        }
     }
 }

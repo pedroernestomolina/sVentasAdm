@@ -117,6 +117,9 @@
     <Compile Include="Reporte\AliadoDetalleDoc.cs" />
     <Compile Include="Reporte\AliadoDetalleServ.cs" />
     <Compile Include="Reporte\AliadoResumen.cs" />
+    <Compile Include="Reporte\Cxc\EdoCta\Cliente.cs" />
+    <Compile Include="Reporte\Cxc\EdoCta\Ficha.cs" />
+    <Compile Include="Reporte\Cxc\EdoCta\Movimiento.cs" />
     <Compile Include="ServPrest\Agregar\Ficha.cs" />
     <Compile Include="ServPrest\baseFicha.cs" />
     <Compile Include="ServPrest\Busqueda\Filtro.cs" />

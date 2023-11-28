@@ -273,5 +273,18 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             _transpAdmDocCxC.Inicializa();
             _transpAdmDocCxC.Inicia();
         }
+        public void EdoCta()
+        {
+            if (_gListaCtasPend.ItemActual != null)
+            {
+                var item = _gListaCtasPend.ItemActual;
+                SrcTransporte.Reportes.Filtro.Vista.IFiltro _filtro = new SrcTransporte.Reportes.Filtro.Handler.Filtro();
+                _filtro.idCliente = item.idCliente;
+                //
+                SrcTransporte.Reportes.IReporteConFiltro _rep = new SrcTransporte.Reportes.Cxc.EdoCta.Imp();
+                _rep.setFiltros(_filtro);
+                _rep.Generar();
+            }
+        }
     }
 }

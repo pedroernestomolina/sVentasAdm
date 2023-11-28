@@ -201,6 +201,15 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             _controlador.ListadoCtasPend();
         }
 
+        private void BT_EDO_CTA_Click(object sender, EventArgs e)
+        {
+            EdoCta();
+        }
+        private void EdoCta()
+        {
+            _controlador.EdoCta();
+        }
+
         private void BT_AGREGAR_CTA_Click(object sender, EventArgs e)
         {
             AgregarCta();

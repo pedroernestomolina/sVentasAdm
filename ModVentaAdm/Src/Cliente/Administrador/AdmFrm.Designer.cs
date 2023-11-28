@@ -78,6 +78,8 @@
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.panel24 = new System.Windows.Forms.Panel();
             this.BT_ESTATUS = new System.Windows.Forms.Button();
+            this.panel27 = new System.Windows.Forms.Panel();
+            this.BT_EDO_CTA = new System.Windows.Forms.Button();
             this.panel40 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.panel21 = new System.Windows.Forms.Panel();
@@ -133,6 +135,7 @@
             this.panel22.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.panel24.SuspendLayout();
+            this.panel27.SuspendLayout();
             this.panel40.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.panel21.SuspendLayout();
@@ -761,6 +764,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.Controls.Add(this.panel24, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.panel27, 1, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
@@ -796,6 +800,33 @@
             this.toolTip1.SetToolTip(this.BT_ESTATUS, "Estatus Del Cliente");
             this.BT_ESTATUS.UseVisualStyleBackColor = true;
             this.BT_ESTATUS.Click += new System.EventHandler(this.BT_ESTATUS_Click);
+            // 
+            // panel27
+            // 
+            this.panel27.Controls.Add(this.BT_EDO_CTA);
+            this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel27.Location = new System.Drawing.Point(43, 1);
+            this.panel27.Margin = new System.Windows.Forms.Padding(1);
+            this.panel27.Name = "panel27";
+            this.panel27.Padding = new System.Windows.Forms.Padding(2);
+            this.panel27.Size = new System.Drawing.Size(40, 72);
+            this.panel27.TabIndex = 1;
+            // 
+            // BT_EDO_CTA
+            // 
+            this.BT_EDO_CTA.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_edoCta_32;
+            this.BT_EDO_CTA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BT_EDO_CTA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_EDO_CTA.FlatAppearance.BorderSize = 0;
+            this.BT_EDO_CTA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_EDO_CTA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_EDO_CTA.Location = new System.Drawing.Point(2, 2);
+            this.BT_EDO_CTA.Name = "BT_EDO_CTA";
+            this.BT_EDO_CTA.Size = new System.Drawing.Size(36, 68);
+            this.BT_EDO_CTA.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.BT_EDO_CTA, "Estado De Cuenta");
+            this.BT_EDO_CTA.UseVisualStyleBackColor = true;
+            this.BT_EDO_CTA.Click += new System.EventHandler(this.BT_EDO_CTA_Click);
             // 
             // panel40
             // 
@@ -1135,6 +1166,7 @@
             this.panel22.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
+            this.panel27.ResumeLayout(false);
             this.panel40.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
             this.panel21.ResumeLayout(false);
@@ -1227,5 +1259,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel26;
         private System.Windows.Forms.TextBox TB_CADENA;
+        private System.Windows.Forms.Panel panel27;
+        private System.Windows.Forms.Button BT_EDO_CTA;
     }
 }

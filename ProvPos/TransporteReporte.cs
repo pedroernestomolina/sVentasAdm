@@ -121,5 +121,55 @@ namespace ProvPos
             }
             return result;
         }
+        //
+        public DtoLib.ResultadoEntidad<DtoTransporte.Reporte.Cxc.EdoCta.Ficha> 
+            TransporteReporte_Cxc_EdoCta(string idCliente)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoTransporte.Reporte.Cxc.EdoCta.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var _sql = @"SELECT 
+                                    codigo as codigoCli,
+                                    razon_social as nombreCli,
+                                    ci_rif as ciRifCli,
+                                    dir_fiscal as dirCli,
+                                    telefono as telCli
+                                FROM clientes
+                                where auto=@idCliente";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", idCliente);
+                    var _ent = cnn.Database.SqlQuery<DtoTransporte.Reporte.Cxc.EdoCta.Cliente>(_sql, p1).FirstOrDefault();
+                    if (_ent == null) 
+                    {
+                        throw new Exception("FICHA CLENTE NO ENCONTRADA");
+                    }
+                    _sql = @"SELECT 
+                                    fecha as fechaDoc,
+                                    documento as nroDoc,
+                                    tipo_documento as tipoDoc,
+                                    fecha_vencimiento as fechaVencDoc,
+                                    monto_divisa as importeDiv,
+                                    signo as signoDoc,
+                                    nota as notasDoc
+                                FROM cxc 
+                                where auto_cliente=@idCliente
+                                    and estatus_anulado='0'";
+                    p1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", idCliente);
+                    var _lst = cnn.Database.SqlQuery<DtoTransporte.Reporte.Cxc.EdoCta.Movimiento>(_sql, p1).ToList();
+                    result.Entidad = new DtoTransporte.Reporte.Cxc.EdoCta.Ficha()
+                    {
+                        entidad = _ent,
+                        movimientos = _lst,
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
     }
 }

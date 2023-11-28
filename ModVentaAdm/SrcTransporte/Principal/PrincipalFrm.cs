@@ -369,5 +369,10 @@ namespace ModVentaAdm.SrcTransporte.Principal
         {
             _controlador.Cnf_NotasFactura();
         }
+
+        private void REP_CLIENTE_MAESTRO_Click(object sender, EventArgs e)
+        {
+            MaestroCliente();
+        }
     }
 }

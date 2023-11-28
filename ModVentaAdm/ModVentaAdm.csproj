@@ -334,6 +334,9 @@
     <Compile Include="OOB\Transporte\Reporte\AliadoDetalleDoc.cs" />
     <Compile Include="OOB\Transporte\Reporte\AliadoDetalleServ.cs" />
     <Compile Include="OOB\Transporte\Reporte\AliadoResumen.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Cliente.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Movimiento.cs" />
     <Compile Include="OOB\Transporte\ServPrest\Agregar\Ficha.cs" />
     <Compile Include="OOB\Transporte\ServPrest\baseFicha.cs" />
     <Compile Include="OOB\Transporte\ServPrest\Busqueda\Filtro.cs" />
@@ -603,6 +606,7 @@
     <Compile Include="SrcTransporte\Reportes\Aliado\DetalleDoc.cs" />
     <Compile Include="SrcTransporte\Reportes\Aliado\DetalleServ.cs" />
     <Compile Include="SrcTransporte\Reportes\Aliado\Resumen.cs" />
+    <Compile Include="SrcTransporte\Reportes\Cxc\EdoCta\Imp.cs" />
     <Compile Include="SrcTransporte\Reportes\DS_TRANSP.cs">
       <DependentUpon>DS_TRANSP.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -614,6 +618,10 @@
     </Compile>
     <Compile Include="SrcTransporte\Reportes\Factura\Gestion.cs" />
     <Compile Include="SrcTransporte\Reportes\Factura\IFactura.cs" />
+    <Compile Include="SrcTransporte\Reportes\Filtro\Handler\Filtro.cs" />
+    <Compile Include="SrcTransporte\Reportes\Filtro\Handler\Imp.cs" />
+    <Compile Include="SrcTransporte\Reportes\Filtro\Vista\IFiltro.cs" />
+    <Compile Include="SrcTransporte\Reportes\IReporteConFiltro.cs" />
     <Compile Include="SrcTransporte\Reportes\Presupuesto\Gestion.cs" />
     <Compile Include="SrcTransporte\Reportes\Presupuesto\IPresupuesto.cs" />
     <Compile Include="SrcTransporte\Reportes\ProForma\Gestion.cs" />
@@ -1232,6 +1240,9 @@
     <EmbeddedResource Include="SrcTransporte\Reportes\AliadoResumen.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Cxc_EdoCtaCliente.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Factura.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1540,6 +1551,11 @@
     <None Include="Resources\bt_hoja_servcio_48.png" />
     <None Include="Resources\bt_presupuesto_48.png" />
     <None Include="Resources\bt_car_servicio_48.png" />
+    <None Include="Resources\bt_tools_48.png" />
+    <None Include="Resources\bt_tools_24.png" />
+    <None Include="Resources\bt_tools_32.png" />
+    <None Include="Resources\bt_edoCta_48.png" />
+    <None Include="Resources\bt_edoCta_32.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1570,6 +1586,8 @@
     <Content Include="Src\Imagenes\bt_editar_32.png" />
     <Content Include="Src\Imagenes\bt_editar_48.png" />
     <Content Include="Src\Imagenes\bt_editar_ficha.png" />
+    <Content Include="Src\Imagenes\bt_edoCta_32.png" />
+    <Content Include="Src\Imagenes\bt_edoCta_48.png" />
     <Content Include="Src\Imagenes\bt_eliminar.png" />
     <Content Include="Src\Imagenes\bt_enEspera.png" />
     <Content Include="Src\Imagenes\bt_exchange.png" />
@@ -1618,6 +1636,9 @@
     <Content Include="Src\Imagenes\bt_status.png" />
     <Content Include="Src\Imagenes\bt_sumar.png" />
     <Content Include="Src\Imagenes\bt_sumar_2.png" />
+    <Content Include="Src\Imagenes\bt_tools_24.png" />
+    <Content Include="Src\Imagenes\bt_tools_32.png" />
+    <Content Include="Src\Imagenes\bt_tools_48.png" />
     <Content Include="Src\Imagenes\bt_transporte.png" />
     <Content Include="Src\Imagenes\bt_usuario %282%29.png" />
     <Content Include="Src\Imagenes\bt_usuario.png" />

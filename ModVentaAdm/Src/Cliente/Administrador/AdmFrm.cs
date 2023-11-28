@@ -261,6 +261,13 @@ namespace ModVentaAdm.Src.Cliente.Administrador
             _controlador.VisualizarFicha();
         }
 
+        private void BT_EDO_CTA_Click(object sender, EventArgs e)
+        {
+            EdoCta();
+        }
+        private void EdoCta()
+        {
+            _controlador.EdoCta();
+        }
     }
-
 }

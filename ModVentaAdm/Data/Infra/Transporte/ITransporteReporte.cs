@@ -15,5 +15,8 @@ namespace ModVentaAdm.Data.Infra.Transporte
             TransporteReporte_AliadoDetalleDoc();
         OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleServ>
             TransporteReporte_AliadoDetalleServ();
+        //
+        OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.EdoCta.Ficha>
+            TransporteReporte_Cxc_EdoCta(string idCliente);
     }
 }

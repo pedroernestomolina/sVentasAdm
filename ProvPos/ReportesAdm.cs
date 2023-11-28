@@ -476,23 +476,38 @@ namespace ProvPos
                 {
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var sql_1 = @"SELECT v.codigo_sucursal as codigoSucursalDoc, v.fecha as fechaDoc, v.ci_rif as cirifDoc, 
-                                    v.razon_social as nombreRazonSocialDoc, v.documento as numDoc, v.control as numControlDoc, 
-                                    v.tipo as codigoDoc, v.aplica as numAplicaDoc, v.total as montoTotal, v.exento as montoExento,
-                                    v.base1 as montoBase1, v.impuesto1 as montoImpuesto1, v.base2 as montoBase2, 
-                                    v.impuesto2 as montoImpuesto2, v.tasa1 as tasaIva1, v.tasa2 as tasaIva2, 
-                                    v.retencion_iva as montoRetencionIva, v.signo as signoDoc, 
-                                    v.tasa_retencion_iva as tasaRetencionIva, v.fecha_retencion as fechaRetencionIva,
-                                    v.comprobante_retencion as comprobanteRetencionIva, v.auto
+                    var sql_1 = @"SELECT 
+                                        v.codigo_sucursal as codigoSucursalDoc, 
+                                        v.fecha as fechaDoc, 
+                                        v.ci_rif as cirifDoc, 
+                                        v.razon_social as nombreRazonSocialDoc, 
+                                        v.documento as numDoc, 
+                                        v.control as numControlDoc, 
+                                        v.tipo as codigoDoc, 
+                                        v.aplica as numAplicaDoc, 
+                                        v.total as montoTotal, 
+                                        v.exento as montoExento,
+                                        v.base1 as montoBase1, 
+                                        v.impuesto1 as montoImpuesto1, 
+                                        v.base2 as montoBase2, 
+                                        v.impuesto2 as montoImpuesto2, 
+                                        v.tasa1 as tasaIva1, 
+                                        v.tasa2 as tasaIva2, 
+                                        v.retencion_iva as montoRetencionIva, 
+                                        v.signo as signoDoc, 
+                                        v.tasa_retencion_iva as tasaRetencionIva, 
+                                        v.fecha_retencion as fechaRetencionIva,
+                                        v.comprobante_retencion as comprobanteRetencionIva, 
+                                        v.auto,
+                                        v.estatus_anulado as estatus
                                     FROM ventas as v ";
                     var sql_2 = @" WHERE 1=1 and 
-                                    estatus_anulado='0' and mes_relacion=@mes and ano_relacion=@ano
-                                    and tipo in ('01','02','03') ";
+                                        mes_relacion=@mes and ano_relacion=@ano
+                                        and tipo in ('01','02','03') ";
                     p1.ParameterName = "@mes";
                     p1.Value = filtro.mesRelacion;
                     p2.ParameterName = "@ano";
                     p2.Value = filtro.anoRelacion;
-
                     var sql = sql_1 + sql_2 ;
                     var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Ficha>(sql, p1, p2).ToList();
                     rt.Lista = lst;
@@ -503,9 +518,7 @@ namespace ProvPos
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return rt;
-
         }
         public DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.Utilidad.Venta.Ficha> 
             ReportesAdm_UtilidadVenta(DtoLibPos.Reportes.VentaAdministrativa.Utilidad.Filtro filtro)

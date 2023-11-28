@@ -28,8 +28,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         void ListadoCtasPend();
         void DocDetallesPend();
         void GestionPago();
-
-
+        void EdoCta();
         //
         void AgregarAnticipo();
         void AdmDocAnticipos();

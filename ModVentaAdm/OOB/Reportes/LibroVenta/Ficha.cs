@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.Reportes.LibroVenta
 {
-    
     public class Ficha
     {
-
         public string codigoSucursalDoc { get; set; }
         public DateTime fechaDoc { get; set; }
         public string ciRifDoc { get; set; }
@@ -33,20 +31,8 @@ namespace ModVentaAdm.OOB.Reportes.LibroVenta
         public DateTime fechaRetencionIva { get; set; }
         public string comprobanteRetencionIva { get; set; }
         public string auto { get; set; }
-        public bool isResumen 
-        {
-            get 
-            {
-                var rt = true;
-                if (codigoDoc == "02" || codigoDoc == "03") { return false; }
-                if (ciRifDoc.Substring(0, 1).Trim().ToUpper() == "J" || ciRifDoc.Trim().Length >= 10) { return false; }
-                if (comprobanteRetencionIva.Trim()!="") { return false; }
-                return rt;
-            } 
-        }
         public string estacion { get { return auto.Substring(0, 4); } }
-
-
+        public string estatus { get; set; }
         public Ficha()
         {
             codigoSucursalDoc = "";
@@ -71,8 +57,7 @@ namespace ModVentaAdm.OOB.Reportes.LibroVenta
             fechaRetencionIva = DateTime.Now.Date;
             comprobanteRetencionIva = "";
             auto = "";
+            estatus = "";
         }
-
     }
-
 }

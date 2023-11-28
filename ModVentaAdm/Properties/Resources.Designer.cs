@@ -363,6 +363,26 @@ namespace ModVentaAdm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_edoCta_32 {
+            get {
+                object obj = ResourceManager.GetObject("bt_edoCta_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_edoCta_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_edoCta_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_eliminar {
             get {
                 object obj = ResourceManager.GetObject("bt_eliminar", resourceCulture);
@@ -826,6 +846,36 @@ namespace ModVentaAdm.Properties {
         internal static System.Drawing.Bitmap bt_sumar_2 {
             get {
                 object obj = ResourceManager.GetObject("bt_sumar_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_tools_24 {
+            get {
+                object obj = ResourceManager.GetObject("bt_tools_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_tools_32 {
+            get {
+                object obj = ResourceManager.GetObject("bt_tools_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_tools_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_tools_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
