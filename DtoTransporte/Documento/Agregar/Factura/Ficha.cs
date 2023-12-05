@@ -43,10 +43,13 @@ namespace DtoTransporte.Documento.Agregar.Factura
             montoIGTFMonDiv = 0m;
             tasaIGTF = 0m;
             aplicaIGTF = false;
+            notasPeriodoLapso = "";
         }
         public decimal montoIGTFMonAct { get; set; }
         public decimal montoIGTFMonDiv { get; set; }
         public decimal tasaIGTF { get; set; }
         public bool aplicaIGTF { get; set; }
+        //
+        public string notasPeriodoLapso { get; set; }
     }
 }

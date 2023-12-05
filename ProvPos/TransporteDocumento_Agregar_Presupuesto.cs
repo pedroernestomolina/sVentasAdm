@@ -182,7 +182,8 @@ namespace ProvPos
                                         igtf_tasa,
                                         igtf_monto_mon_act,
                                         igtf_monto_mon_div,
-                                        igtf_aplica) 
+                                        igtf_aplica,
+                                        notas_periodo_lapso) 
                                     VALUES 
                                     (
                                         @autoDoc, 
@@ -307,7 +308,8 @@ namespace ProvPos
                                         0,
                                         0,
                                         0,
-                                        '0')";
+                                        '0',
+                                        '')";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
                         var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.fechaEmision);
@@ -776,7 +778,8 @@ namespace ProvPos
                                         igtf_tasa,
                                         igtf_monto_mon_act,
                                         igtf_monto_mon_div,
-                                        igtf_aplica) 
+                                        igtf_aplica,
+                                        notas_periodo_lapso) 
                                     VALUES 
                                     (
                                         @autoDoc, 
@@ -900,7 +903,8 @@ namespace ProvPos
                                         0,
                                         0,
                                         0,
-                                        '0')";
+                                        '0',
+                                        '')";
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
                         var p2 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", docNumero);
                         var p3 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.fechaEmision);

@@ -13,6 +13,7 @@ namespace DtoTransporte.Documento.Entidad.Venta
         public string docModuloCargar { get; set; }
         public decimal igtfTasa { get; set; }
         public decimal igtfMontoMonAct { get; set; }
+        public string notasPeriodoLapso { get; set; }
         public FichaEncabezado()
             :base()
         {
@@ -20,6 +21,7 @@ namespace DtoTransporte.Documento.Entidad.Venta
             docModuloCargar = "";
             igtfTasa = 0m;
             igtfMontoMonAct = 0m;
+            notasPeriodoLapso = "";
         }
     }
 }

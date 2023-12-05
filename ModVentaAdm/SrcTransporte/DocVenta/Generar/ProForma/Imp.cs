@@ -344,7 +344,11 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     _lstTurnos.Add(_turno);
                 }
                 //
-
+                var _notasPeriodoLapso = "";
+                if (NotasPeriodo != null) 
+                {
+                    _notasPeriodoLapso = NotasPeriodo.Notas_Get;
+                }
                 var fichaOOB = new OOB.Transporte.Documento.Agregar.Factura.Ficha()
                 {
                     cargos = 0m,
@@ -409,6 +413,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     fechaEmision=_fechaEmision,
                     fechaVencimiento=_fechaVencimiento,
                     aliadosDocRef= _aliadosDocRef,
+                    notasPeriodoLapso= _notasPeriodoLapso,
                     aliadosResumen = _grupoAliados.Select(s =>
                     {
                         var nr = new OOB.Transporte.Documento.Agregar.Factura.FichaAliadoResumen()
@@ -452,7 +457,11 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
 
         public override void ActivarIGTF()
         {
-            Helpers.Msg.Alerta("OPCION NO DISPONIBLE");
+            Helpers.Msg.Alerta("OPCION NO DISPONIBLE OARA ESTE TIPO DE DOCUMENTO");
+        }
+        public override void ActivarISLR()
+        {
+            Helpers.Msg.Alerta("OPCION NO DISPONIBLE OARA ESTE TIPO DE DOCUMENTO");
         }
     }
 }

@@ -33,5 +33,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         string TipoDocumento_Get { get; }
         void EditarFactorDivisa();
         void ActivarIGTF();
+        void PeriodoLapso();
+
+        void ActivarISLR();
     }
 }

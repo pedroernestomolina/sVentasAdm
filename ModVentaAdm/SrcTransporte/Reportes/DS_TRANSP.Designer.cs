@@ -1849,6 +1849,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             private global::System.Data.DataColumn columntelefono;
             
+            private global::System.Data.DataColumn columnnotasPeriodoLapso;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PresupuestoEncDataTable() {
@@ -1972,6 +1974,14 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn notasPeriodoLapsoColumn {
+                get {
+                    return this.columnnotasPeriodoLapso;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2007,7 +2017,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PresupuestoEncRow AddPresupuestoEncRow(string numeroDoc, System.DateTime fechaDoc, string cliente, string solicitadoPor, string modulo, decimal tasaDivisa, string condicionPago, string nombreRazonSocial, string ciRif, string dirFiscal, string telefono) {
+            public PresupuestoEncRow AddPresupuestoEncRow(string numeroDoc, System.DateTime fechaDoc, string cliente, string solicitadoPor, string modulo, decimal tasaDivisa, string condicionPago, string nombreRazonSocial, string ciRif, string dirFiscal, string telefono, string notasPeriodoLapso) {
                 PresupuestoEncRow rowPresupuestoEncRow = ((PresupuestoEncRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         numeroDoc,
@@ -2020,7 +2030,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                         nombreRazonSocial,
                         ciRif,
                         dirFiscal,
-                        telefono};
+                        telefono,
+                        notasPeriodoLapso};
                 rowPresupuestoEncRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPresupuestoEncRow);
                 return rowPresupuestoEncRow;
@@ -2054,6 +2065,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 this.columnciRif = base.Columns["ciRif"];
                 this.columndirFiscal = base.Columns["dirFiscal"];
                 this.columntelefono = base.Columns["telefono"];
+                this.columnnotasPeriodoLapso = base.Columns["notasPeriodoLapso"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2081,6 +2093,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
                 base.Columns.Add(this.columndirFiscal);
                 this.columntelefono = new global::System.Data.DataColumn("telefono", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntelefono);
+                this.columnnotasPeriodoLapso = new global::System.Data.DataColumn("notasPeriodoLapso", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnotasPeriodoLapso);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4525,6 +4539,22 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string notasPeriodoLapso {
+                get {
+                    try {
+                        return ((string)(this[this.tablePresupuestoEnc.notasPeriodoLapsoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'notasPeriodoLapso\' in table \'PresupuestoEnc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePresupuestoEnc.notasPeriodoLapsoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsnumeroDocNull() {
                 return this.IsNull(this.tablePresupuestoEnc.numeroDocColumn);
             }
@@ -4653,6 +4683,18 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SettelefonoNull() {
                 this[this.tablePresupuestoEnc.telefonoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnotasPeriodoLapsoNull() {
+                return this.IsNull(this.tablePresupuestoEnc.notasPeriodoLapsoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnotasPeriodoLapsoNull() {
+                this[this.tablePresupuestoEnc.notasPeriodoLapsoColumn] = global::System.Convert.DBNull;
             }
         }
         

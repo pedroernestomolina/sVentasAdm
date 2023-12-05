@@ -47,7 +47,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Factura
             var clt = CultureInfo.CurrentCulture;
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"\SrcTransporte\Reportes\Transp_Factura.rdlc";
             var ds = new DS_TRANSP();
-
+            //
             DataRow re = ds.Tables["PresupuestoEnc"].NewRow();
             re["numeroDoc"] = ficha.encabezado.docNumero;
             re["fechaDoc"] = ficha.encabezado.docFechaEmision;
@@ -59,9 +59,9 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Factura
             re["cirif"] = ficha.encabezado.clienteCiRif;
             re["nombreRazonSocial"] = ficha.encabezado.clienteNombre ;
             re["dirFiscal"] = ficha.encabezado.clienteDirFiscal;
-
+            re["notasPeriodoLapso"] = ficha.encabezado.notasPeriodoLapso;
             ds.Tables["PresupuestoEnc"].Rows.Add(re);
-
+            //
             DataRow rp = ds.Tables["PresupuestoPie"].NewRow();
             rp["subTotal"] = ficha.encabezado.subTotal ;
             rp["exento"] = ficha.encabezado.montoExento ;
@@ -72,7 +72,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Factura
             rp["notas"] = ficha.encabezado.notasObs;
             rp["totalDiv"] = ficha.encabezado.montoDivisa;
             ds.Tables["PresupuestoPie"].Rows.Add(rp);
-
+            //
             var i = 0;
             foreach (var it in ficha.detalles)
             {
@@ -110,7 +110,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Factura
                 rt["desc_und"] = "";
                 ds.Tables["PresupItem"].Rows.Add(rt);
             }
-
+            //
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
             //pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
@@ -121,7 +121,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Factura
             Rds.Add(new ReportDataSource("PresupuestoEnc", ds.Tables["PresupuestoEnc"]));
             Rds.Add(new ReportDataSource("PresupItem", ds.Tables["PresupItem"]));
             Rds.Add(new ReportDataSource("PresupuestoPie", ds.Tables["PresupuestoPie"]));
-
+            //
             var frp = new ReporteFrm();
             frp.rds = Rds;
             frp.prmts = pmt;

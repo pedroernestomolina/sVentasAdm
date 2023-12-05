@@ -80,6 +80,7 @@ namespace ModVentaAdm.Data.Prov
                 montoIGTFMonAct = ficha.montoIGTFMonAct,
                 montoIGTFMonDiv = ficha.montoIGTFMonDiv,
                 tasaIGTF = ficha.tasaIGTF,
+                notasPeriodoLapso= ficha.notasPeriodoLapso,
                 items = ficha.items.Select(z =>
                 {
                     DtoTransporte.Documento.Agregar.Presupuesto.FichaDetalle _servicioDetalle = null;
@@ -305,6 +306,7 @@ namespace ModVentaAdm.Data.Prov
                 montoIGTFMonAct = ficha.montoIGTFMonAct,
                 montoIGTFMonDiv = ficha.montoIGTFMonDiv,
                 tasaIGTF = ficha.tasaIGTF,
+                notasPeriodoLapso=ficha.notasPeriodoLapso,
                 items = ficha.items.Select(z =>
                 {
                     var zr = new DtoTransporte.Documento.Agregar.FacturaFromHojaServ.FichaItem()

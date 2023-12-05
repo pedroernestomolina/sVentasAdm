@@ -49,5 +49,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
         public decimal montoIGTFMonDiv { get; set; }
         public decimal tasaIGTF { get; set; }
         public bool aplicaIGTF { get; set; }
+        //
+        public string notasPeriodoLapso { get; set; }
     }
 }

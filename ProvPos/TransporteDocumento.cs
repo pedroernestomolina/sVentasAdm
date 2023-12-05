@@ -315,7 +315,8 @@ namespace ProvPos
                                         docSolicitadoPor as docSolicitadoPor,
                                         docModuloCargar as docModuloCargar,
                                         igtf_tasa as igtfTasa,
-                                        igtf_monto_mon_act as igtfMontoMonAct
+                                        igtf_monto_mon_act as igtfMontoMonAct,
+                                        notas_periodo_lapso as notasPeriodoLapso
                                     FROM ventas where auto=@idDoc";
                     var _sql = _sql_1;
                     var _ent = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.FichaEncabezado>(_sql, p1).FirstOrDefault();

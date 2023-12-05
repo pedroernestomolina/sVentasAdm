@@ -703,6 +703,36 @@ namespace ModVentaAdm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_periodo_itempo_24 {
+            get {
+                object obj = ResourceManager.GetObject("bt_periodo_itempo_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_periodo_itempo_32 {
+            get {
+                object obj = ResourceManager.GetObject("bt_periodo_itempo_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_periodo_itempo_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_periodo_itempo_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_presup_24 {
             get {
                 object obj = ResourceManager.GetObject("bt_presup_24", resourceCulture);

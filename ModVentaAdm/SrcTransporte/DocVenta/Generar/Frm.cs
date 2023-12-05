@@ -113,6 +113,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             L_ITEMS_CNT.Text = "Items Registrados";
             L_CNT_ITEM.Text =  _controlador.Ficha.Items.Cnt_Get.ToString("n0");
             L_TASA_DIVISA.Text = _controlador.Ficha.Totales.TasaDivisaActual_Get.ToString("n2", _cult);
+            L_TASA_ISLR.Text = _controlador.Ficha.Get_TasaISLR.ToString("n2") + "%";
             L_TASA_IGTF.Text = _controlador.Ficha.Get_TasaIGTF.ToString("n2") + "%";
             L_MONTO_NETO.Text = _controlador.Ficha.Totales.MontoNeto_MonedaActual_Get.ToString("n2", _cult);
             L_MONTO_IVA.Text = _controlador.Ficha.Totales.MontoIva_MonedaActual_Get.ToString("n2", _cult);
@@ -327,14 +328,32 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             ActualizarTotales();
         }
 
-        private void P_ITGTF(object sender, EventArgs e)
+        private void BT_IGTF_Click(object sender, EventArgs e)
         {
             ActivarIGTF();
+        }
+        private void BT_APLICAR_ISLR_Click(object sender, EventArgs e)
+        {
+            ActivarISLR();
+        }
+        private void ActivarISLR()
+        {
+            _controlador.ActivarISLR();
+            L_TASA_ISLR.Text = _controlador.Ficha.Get_TasaISLR.ToString("n2") + "%";
         }
         private void ActivarIGTF()
         {
             _controlador.ActivarIGTF();
             L_TASA_IGTF.Text = _controlador.Ficha.Get_TasaIGTF.ToString("n2") + "%";
+        }
+
+        private void BT_PERIODO_LAPSO_Click(object sender, EventArgs e)
+        {
+            PeriodoLapso();
+        }
+        private void PeriodoLapso()
+        {
+            _controlador.PeriodoLapso();
         }
     }
 }

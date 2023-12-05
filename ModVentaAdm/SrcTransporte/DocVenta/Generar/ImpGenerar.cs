@@ -19,6 +19,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         private decimal _tasaDivisa;
         private string _notasDelDoc;
         protected bool _tipoDocIsFactura;
+        private string _notasPeriodoLapso;
 
 
         public BindingSource SourceItems_Get { get { return _dataGen.Items.Source_Get; } }
@@ -39,6 +40,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _factorDivisa=0m;
             _tasaDivisa = 0m;
             _notasDelDoc = "";
+            _notasPeriodoLapso="";
         }
 
 
@@ -53,6 +55,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _tasasFiscal = null;
             _remision.Inicializa();
             _tasaDivisa = _factorDivisa;
+            _notasPeriodoLapso="";
         }
         Frm frm;
         public void Inicia()
@@ -254,6 +257,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 _tasaDivisa = _factorDivisa;
                 _dataGen.setTasaDivisa(_tasaDivisa);
                 setNotas(_notasDelDoc);
+                _notasPeriodoLapso = "";
             }
         }
 
@@ -313,5 +317,24 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         abstract public string TipoDocumento_Get { get; }
         abstract protected void GuardarDoc();
         abstract public void ActivarIGTF();
+        abstract public void ActivarISLR();
+
+
+        private NotasPeriodo.Vista.INotas _notasPeriodo;
+        public NotasPeriodo.Vista.INotas NotasPeriodo { get { return _notasPeriodo; } }
+        public void PeriodoLapso()
+        {
+            if (_notasPeriodo == null) 
+            {
+                _notasPeriodo = new NotasPeriodo.Handler.Imp();
+            }
+            _notasPeriodo.Inicializa();
+            _notasPeriodo.setNotas(_notasPeriodoLapso);
+            _notasPeriodo.Inicia();
+            if (_notasPeriodo.ProcesarIsOK) 
+            {
+                _notasPeriodoLapso = _notasPeriodo.Notas_Get;
+            }
+        }
     }
 }

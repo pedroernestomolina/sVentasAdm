@@ -125,12 +125,14 @@
                             <TextRun>
                               <Value>=Fields!cnt.Value</Value>
                               <Style>
-                                <FontSize>7pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <Format>n0</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>cnt</rd:DefaultName>
@@ -577,7 +579,7 @@
                     <TextRun>
                       <Value>=First(Fields!cliente.Value, "PresupuestoEnc")</Value>
                       <Style>
-                        <FontSize>9pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -590,7 +592,7 @@
               <rd:DefaultName>cliente</rd:DefaultName>
               <Top>0.06174cm</Top>
               <Left>0.28921cm</Left>
-              <Height>2.34125cm</Height>
+              <Height>1.62361cm</Height>
               <Width>11.81333cm</Width>
               <Style>
                 <Border>
@@ -607,7 +609,7 @@
           <KeepTogether>true</KeepTogether>
           <Top>4.02264cm</Top>
           <Left>0.36723cm</Left>
-          <Height>2.40299cm</Height>
+          <Height>1.75591cm</Height>
           <Width>12.46604cm</Width>
           <ZIndex>9</ZIndex>
           <Style>
@@ -809,6 +811,76 @@
             </Border>
           </Style>
         </Rectangle>
+        <Textbox Name="notasPeriodoLapso">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!notasPeriodoLapso.Value, "PresupuestoEnc")</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>notasPeriodoLapso</rd:DefaultName>
+          <Top>5.88438cm</Top>
+          <Left>4.00938cm</Left>
+          <Height>0.77579cm</Height>
+          <Width>8.82389cm</Width>
+          <ZIndex>12</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox56">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Periodo/Lapso:</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox55</rd:DefaultName>
+          <Top>5.84911cm</Top>
+          <Left>0.36723cm</Left>
+          <Height>0.52062cm</Height>
+          <Width>3.46576cm</Width>
+          <ZIndex>13</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
       </ReportItems>
       <Style>
         <Border>
@@ -1341,6 +1413,26 @@
         </Field>
         <Field Name="condicionPago">
           <DataField>condicionPago</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nombreRazonSocial">
+          <DataField>nombreRazonSocial</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ciRif">
+          <DataField>ciRif</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dirFiscal">
+          <DataField>dirFiscal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="telefono">
+          <DataField>telefono</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="notasPeriodoLapso">
+          <DataField>notasPeriodoLapso</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

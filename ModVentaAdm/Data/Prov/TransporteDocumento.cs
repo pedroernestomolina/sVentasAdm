@@ -295,6 +295,7 @@ namespace ModVentaAdm.Data.Prov
                     docModuloCargar = e.docModuloCargar,
                     igtfMontoMonAct = e.igtfMontoMonAct,
                     igtfTasa = e.igtfTasa,
+                    notasPeriodoLapso = e.notasPeriodoLapso,
                 },
                 detalles = d.Select(s =>
                 {
@@ -329,11 +330,11 @@ namespace ModVentaAdm.Data.Prov
                         tipoProcedenciaItem = s.tipoProcedenciaItem,
                         totalMonDivisa = s.totalMonDivisa,
                         totalMonLocal = s.totalMonLocal,
-                        mostrarItemDocFinal= s.mostrarItemDocFinal,
+                        mostrarItemDocFinal = s.mostrarItemDocFinal,
                     };
                     return nr;
                 }).ToList(),
-                turnos = r01.Entidad.turnos.Select(s => 
+                turnos = r01.Entidad.turnos.Select(s =>
                 {
                     var _turno = new OOB.Transporte.Documento.Entidad.Venta.Turno()
                     {

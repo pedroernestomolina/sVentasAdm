@@ -492,6 +492,14 @@
     </Compile>
     <Compile Include="SrcTransporte\DocVenta\Generar\Item\IItem.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\Item\ImpItem.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\NotasPeriodo\Handler\Imp.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\NotasPeriodo\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\NotasPeriodo\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\NotasPeriodo\Vista\INotas.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\ProForma\Imp.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\ProForma\IProForma.cs" />
     <Compile Include="SrcTransporte\DocVenta\Generar\Remision\data.cs" />
@@ -1207,6 +1215,9 @@
     <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\Item\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\NotasPeriodo\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1556,6 +1567,9 @@
     <None Include="Resources\bt_tools_32.png" />
     <None Include="Resources\bt_edoCta_48.png" />
     <None Include="Resources\bt_edoCta_32.png" />
+    <None Include="Resources\bt_periodo_itempo_48.png" />
+    <None Include="Resources\bt_periodo_itempo_24.png" />
+    <None Include="Resources\bt_periodo_itempo_32.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1621,6 +1635,9 @@
     <Content Include="Src\Imagenes\bt_notificacion.png" />
     <Content Include="Src\Imagenes\bt_ok_2.png" />
     <Content Include="Src\Imagenes\bt_ok_3.png" />
+    <Content Include="Src\Imagenes\bt_periodo_itempo_24.png" />
+    <Content Include="Src\Imagenes\bt_periodo_itempo_32.png" />
+    <Content Include="Src\Imagenes\bt_periodo_itempo_48.png" />
     <Content Include="Src\Imagenes\bt_presupuesto_48.png" />
     <Content Include="Src\Imagenes\bt_presup_24.png" />
     <Content Include="Src\Imagenes\bt_price.png" />

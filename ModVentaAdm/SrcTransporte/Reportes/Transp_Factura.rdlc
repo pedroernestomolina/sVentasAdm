@@ -124,12 +124,14 @@
                             <TextRun>
                               <Value>=Fields!cnt.Value</Value>
                               <Style>
-                                <FontSize>7pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <Format>n0</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>cnt</rd:DefaultName>
@@ -273,13 +275,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>3.52084in</Height>
+    <Height>3.09376in</Height>
     <Style />
   </Body>
   <Width>8.2247in</Width>
   <Page>
     <PageHeader>
-      <Height>6.76629cm</Height>
+      <Height>7.47187cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -303,7 +305,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>5.88409cm</Top>
+          <Top>6.80132cm</Top>
           <Left>0.07055cm</Left>
           <Height>0.6cm</Height>
           <Width>1.41647cm</Width>
@@ -339,7 +341,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>5.88409cm</Top>
+          <Top>6.80132cm</Top>
           <Left>1.55507cm</Left>
           <Height>0.6cm</Height>
           <Width>12.9918cm</Width>
@@ -376,7 +378,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>5.88409cm</Top>
+          <Top>6.80132cm</Top>
           <Left>14.58214cm</Left>
           <Height>0.6cm</Height>
           <Width>1.6748cm</Width>
@@ -413,7 +415,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>5.88409cm</Top>
+          <Top>6.80132cm</Top>
           <Left>16.29222cm</Left>
           <Height>0.6cm</Height>
           <Width>2.0748cm</Width>
@@ -450,7 +452,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox6</rd:DefaultName>
-          <Top>5.88409cm</Top>
+          <Top>6.80132cm</Top>
           <Left>18.4023cm</Left>
           <Height>0.6cm</Height>
           <Width>2.33991cm</Width>
@@ -468,7 +470,7 @@
           </Style>
         </Textbox>
         <Line Name="Line1">
-          <Top>6.51937cm</Top>
+          <Top>7.4366cm</Top>
           <Left>0.07056cm</Left>
           <Height>0cm</Height>
           <Width>20.67165cm</Width>
@@ -494,15 +496,15 @@
                 </TextRun>
               </TextRuns>
               <Style>
-                <TextAlign>Center</TextAlign>
+                <TextAlign>Right</TextAlign>
               </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.5579cm</Top>
-          <Left>16.10664cm</Left>
-          <Height>0.73588cm</Height>
-          <Width>4.63557cm</Width>
+          <Top>2.29378cm</Top>
+          <Left>13.24779cm</Left>
+          <Height>0.6cm</Height>
+          <Width>2.75302cm</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
@@ -551,176 +553,6 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Rectangle Name="Rectangle7">
-          <ReportItems>
-            <Textbox Name="fechaDoc">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!fechaDoc.Value, "PresupuestoEnc")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <Format>d</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>fechaDoc</rd:DefaultName>
-              <Top>0.34425cm</Top>
-              <Left>3.18551cm</Left>
-              <Height>0.6cm</Height>
-              <Width>3.59544cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox11">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>De Fecha:</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox11</rd:DefaultName>
-              <Top>0.31779cm</Top>
-              <Left>0.37039cm</Left>
-              <Height>0.62646cm</Height>
-              <Width>2.63873cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <BottomBorder>
-                  <Style>Solid</Style>
-                </BottomBorder>
-                <RightBorder>
-                  <Style>Solid</Style>
-                </RightBorder>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox12">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Condición</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>de Pago:</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox11</rd:DefaultName>
-              <Top>1.02363cm</Top>
-              <Left>0.37042cm</Left>
-              <Height>1.1027cm</Height>
-              <Width>2.63873cm</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <BottomBorder>
-                  <Style>Solid</Style>
-                </BottomBorder>
-                <RightBorder>
-                  <Style>Solid</Style>
-                </RightBorder>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="condicionPago">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!condicionPago.Value, "PresupuestoEnc")</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>condicionPago</rd:DefaultName>
-              <Top>1.05008cm</Top>
-              <Left>3.22082cm</Left>
-              <Height>1.07625cm</Height>
-              <Width>3.56013cm</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <KeepTogether>true</KeepTogether>
-          <Top>3.07017cm</Top>
-          <Left>13.24779cm</Left>
-          <Height>2.46145cm</Height>
-          <Width>7.49443cm</Width>
-          <ZIndex>8</ZIndex>
-          <Style>
-            <Border>
-              <Style>Solid</Style>
-            </Border>
-          </Style>
-        </Rectangle>
         <Textbox Name="Textbox4">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -753,11 +585,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>3.3615cm</Top>
+          <Top>4.37573cm</Top>
           <Left>0.07056cm</Left>
           <Height>1.08506cm</Height>
           <Width>3.05562cm</Width>
-          <ZIndex>9</ZIndex>
+          <ZIndex>8</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -801,11 +633,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>4.44656cm</Top>
+          <Top>5.46079cm</Top>
           <Left>0.07056cm</Left>
           <Height>1.08506cm</Height>
           <Width>3.05562cm</Width>
-          <ZIndex>10</ZIndex>
+          <ZIndex>9</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -836,11 +668,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.72622cm</Top>
+          <Top>3.74045cm</Top>
           <Left>0.07056cm</Left>
           <Height>0.6cm</Height>
           <Width>3.05563cm</Width>
-          <ZIndex>11</ZIndex>
+          <ZIndex>10</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -872,11 +704,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>ciRif</rd:DefaultName>
-          <Top>2.72622cm</Top>
+          <Top>3.74045cm</Top>
           <Left>3.16146cm</Left>
           <Height>0.6cm</Height>
           <Width>6.87544cm</Width>
-          <ZIndex>12</ZIndex>
+          <ZIndex>11</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -909,11 +741,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>nombreRazonSocial</rd:DefaultName>
-          <Top>3.3615cm</Top>
+          <Top>4.37573cm</Top>
           <Left>3.16146cm</Left>
           <Height>1.02333cm</Height>
           <Width>6.87544cm</Width>
-          <ZIndex>13</ZIndex>
+          <ZIndex>12</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -946,16 +778,242 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>dirFiscal</rd:DefaultName>
-          <Top>4.44656cm</Top>
+          <Top>5.46079cm</Top>
           <Left>3.16146cm</Left>
           <Height>1.08506cm</Height>
           <Width>6.87544cm</Width>
-          <ZIndex>14</ZIndex>
+          <ZIndex>13</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
             </Border>
             <BackgroundColor>LightGrey</BackgroundColor>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="fechaDoc">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!fechaDoc.Value, "PresupuestoEnc")</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <Format>d</Format>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>fechaDoc</rd:DefaultName>
+          <Top>3.38796cm</Top>
+          <Left>16.17717cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.59544cm</Width>
+          <ZIndex>14</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox11">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>De Fecha:</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox11</rd:DefaultName>
+          <Top>3.3615cm</Top>
+          <Left>13.36205cm</Left>
+          <Height>0.62646cm</Height>
+          <Width>2.63873cm</Width>
+          <ZIndex>15</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BottomBorder>
+              <Style>Solid</Style>
+            </BottomBorder>
+            <RightBorder>
+              <Style>Solid</Style>
+            </RightBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox12">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Condición</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>de Pago:</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox11</rd:DefaultName>
+          <Top>4.06734cm</Top>
+          <Left>13.36208cm</Left>
+          <Height>1.1027cm</Height>
+          <Width>2.63873cm</Width>
+          <ZIndex>16</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BottomBorder>
+              <Style>Solid</Style>
+            </BottomBorder>
+            <RightBorder>
+              <Style>Solid</Style>
+            </RightBorder>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="condicionPago">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!condicionPago.Value, "PresupuestoEnc")</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>condicionPago</rd:DefaultName>
+          <Top>4.09379cm</Top>
+          <Left>16.21248cm</Left>
+          <Height>1.07625cm</Height>
+          <Width>3.56013cm</Width>
+          <ZIndex>17</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="notasPeriodoLapso">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!notasPeriodoLapso.Value, "PresupuestoEnc")</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>notasPeriodoLapso</rd:DefaultName>
+          <Top>5.46079cm</Top>
+          <Left>13.36205cm</Left>
+          <Height>1.08506cm</Height>
+          <Width>7.38016cm</Width>
+          <ZIndex>18</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox56">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Periodo/Lapso:</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox55</rd:DefaultName>
+          <Top>5.46079cm</Top>
+          <Left>10.24801cm</Left>
+          <Height>0.52062cm</Height>
+          <Width>3.04349cm</Width>
+          <ZIndex>19</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
             <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -971,7 +1029,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>5.50333cm</Height>
+      <Height>6.87916cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1823,6 +1881,10 @@
         </Field>
         <Field Name="telefono">
           <DataField>telefono</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="notasPeriodoLapso">
+          <DataField>notasPeriodoLapso</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
