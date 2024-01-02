@@ -10,5 +10,6 @@ namespace ModVentaAdm.SrcTransporte.Reportes
     public interface IReporteConFiltro: Src.IReporte
     {
         void setFiltros(Filtro.Vista.IFiltro filtros);
+        void setFiltros(SrcTransporte.Filtro.Vistas.IdataFiltrar dataFiltrar);
     }
 }

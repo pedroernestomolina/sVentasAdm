@@ -280,9 +280,13 @@
     <Compile Include="OOB\Transporte\ClienteAnticipo\Agregar\CajaMov.cs" />
     <Compile Include="OOB\Transporte\ClienteAnticipo\Agregar\Ficha.cs" />
     <Compile Include="OOB\Transporte\ClienteAnticipo\Agregar\Movimiento.cs" />
+    <Compile Include="OOB\Transporte\ClienteAnticipo\Entidad\Caja.cs" />
+    <Compile Include="OOB\Transporte\ClienteAnticipo\Entidad\Ficha.cs" />
+    <Compile Include="OOB\Transporte\ClienteAnticipo\Entidad\Movimiento.cs" />
     <Compile Include="OOB\Transporte\ClienteAnticipo\ListaMov\Ficha.cs" />
     <Compile Include="OOB\Transporte\ClienteAnticipo\ListaMov\Filtro.cs" />
     <Compile Include="OOB\Transporte\ClienteAnticipo\Obtener\Ficha.cs" />
+    <Compile Include="OOB\Transporte\CxcMovCobro\Entidad\Ficha.cs" />
     <Compile Include="OOB\Transporte\CxcMovCobro\ListaMov\Ficha.cs" />
     <Compile Include="OOB\Transporte\CxcMovCobro\ListaMov\Filtro.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\baseDetalle.cs" />
@@ -331,9 +335,13 @@
     <Compile Include="OOB\Transporte\Documento\Lista\Pendiente\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Remision\Lista\Filtro.cs" />
-    <Compile Include="OOB\Transporte\Reporte\AliadoDetalleDoc.cs" />
-    <Compile Include="OOB\Transporte\Reporte\AliadoDetalleServ.cs" />
-    <Compile Include="OOB\Transporte\Reporte\AliadoResumen.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Aliado\DetalleDoc\Filtro.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Aliado\DetalleDoc\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Aliado\DetalleServ\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Aliado\DetalleServ\Filtro.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Aliado\Resumen\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Aliado\baseFiltro.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Aliado\Resumen\Filtro.cs" />
     <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Cliente.cs" />
     <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Ficha.cs" />
     <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Movimiento.cs" />
@@ -420,6 +428,7 @@
     </Compile>
     <Compile Include="SrcTransporte\CajaRetencion\Vista\IHnd.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Administrador\Handler\dataItem.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Administrador\Handler\FiltrarPor.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Administrador\Handler\HndBusqDoc.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Administrador\Handler\hndBusqueda.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Administrador\Handler\HndLista.cs" />
@@ -448,6 +457,16 @@
     <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\IHndCaja.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\Idata.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\IdataCaja.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\IRepAdm.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\IReporte.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\IRepPlanilla.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Reportes\DS_AnticipoCliente.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_AnticipoCliente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\ClienteAnticipo\Reportes\ListaAdm\Imp.cs" />
+    <Compile Include="SrcTransporte\ClienteAnticipo\Reportes\Planilla\Imp.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\UsarDisponer\Handler\Imp.cs" />
     <Compile Include="SrcTransporte\ClienteAnticipo\UsarDisponer\Vista\Frm.cs">
       <SubType>Form</SubType>
@@ -515,15 +534,16 @@
     <Compile Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Frm.designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SrcTransporte\Filtro\AnticipoCliente\Frm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SrcTransporte\Filtro\AnticipoCliente\Frm.Designer.cs">
-      <DependentUpon>Frm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SrcTransporte\Filtro\AnticipoCliente\Imp.cs" />
     <Compile Include="SrcTransporte\Filtro\Handler\dataFiltrar.cs" />
     <Compile Include="SrcTransporte\Filtro\Handler\HndFiltro.cs" />
+    <Compile Include="SrcTransporte\Filtro\Reportes\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\Filtro\Reportes\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\Filtro\Reportes\Imp.cs" />
+    <Compile Include="SrcTransporte\Filtro\Vistas\IActivarFiltroPor.cs" />
     <Compile Include="SrcTransporte\Filtro\Vistas\IdataFiltrar.cs" />
     <Compile Include="SrcTransporte\Filtro\Vistas\IFiltro.cs" />
     <Compile Include="SrcTransporte\Filtro\Vistas\IHndFiltro.cs" />
@@ -611,9 +631,14 @@
     <Compile Include="SrcTransporte\Principal\PrincipalFrm.Designer.cs">
       <DependentUpon>PrincipalFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SrcTransporte\Reportes\Aliado\DetalleDoc.cs" />
-    <Compile Include="SrcTransporte\Reportes\Aliado\DetalleServ.cs" />
-    <Compile Include="SrcTransporte\Reportes\Aliado\Resumen.cs" />
+    <Compile Include="SrcTransporte\Reportes\Aliado\PorDetalleDoc\FiltrarPor.cs" />
+    <Compile Include="SrcTransporte\Reportes\Aliado\PorDetalleDoc\Imp.cs" />
+    <Compile Include="SrcTransporte\Reportes\Aliado\PorDetalleServ\FiltrarPor.cs" />
+    <Compile Include="SrcTransporte\Reportes\Aliado\PorDetalleServ\Imp.cs" />
+    <Compile Include="SrcTransporte\Reportes\Aliado\PorCliente\FiltrarPor.cs" />
+    <Compile Include="SrcTransporte\Reportes\Aliado\PorCliente\Imp.cs" />
+    <Compile Include="SrcTransporte\Reportes\Aliado\PorResumen\FiltrarPor.cs" />
+    <Compile Include="SrcTransporte\Reportes\Aliado\PorResumen\Imp.cs" />
     <Compile Include="SrcTransporte\Reportes\Cxc\EdoCta\Imp.cs" />
     <Compile Include="SrcTransporte\Reportes\DS_TRANSP.cs">
       <DependentUpon>DS_TRANSP.xsd</DependentUpon>
@@ -648,10 +673,13 @@
     <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Agregar\Agregar.cs" />
     <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Agregar\IAgregar.cs" />
     <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\dataItem.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\FiltrarPor.cs" />
     <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\HndBusqDoc.cs" />
     <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\hndBusqueda.cs" />
     <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\HndLista.cs" />
     <Compile Include="SrcTransporte\ToolsCxC\Administrador\Handler\Imp.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\IRepAdm.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\IReporte.cs" />
     <Compile Include="SrcTransporte\ToolsCxC\Administrador\Vistas\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -662,6 +690,14 @@
     <Compile Include="SrcTransporte\ToolsCxC\Administrador\Vistas\IBusqDocAdm.cs" />
     <Compile Include="SrcTransporte\ToolsCxC\Administrador\Vistas\IdataItem.cs" />
     <Compile Include="SrcTransporte\ToolsCxC\Administrador\Vistas\IListaAdm.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\IRepPlanilla.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Reportes\DS_TOOLS_CXC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_TOOLS_CXC.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\ToolsCxC\Reportes\ListaAdm\Imp.cs" />
+    <Compile Include="SrcTransporte\ToolsCxC\Reportes\Planilla\Imp.cs" />
     <Compile Include="Src\Administrador\data.cs" />
     <Compile Include="Src\Administrador\Documentos\AdmDocFrm.cs">
       <SubType>Form</SubType>
@@ -1162,6 +1198,8 @@
     <Compile Include="Utils\DocLista\Remision\IRemisionLista.cs" />
     <Compile Include="Utils\FiltroFecha\IFecha.cs" />
     <Compile Include="Utils\FiltroFecha\Imp.cs" />
+    <Compile Include="Utils\FiltrosCB\ConBusqueda\Aliado\data.cs" />
+    <Compile Include="Utils\FiltrosCB\ConBusqueda\Aliado\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Caja\data.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Caja\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Cliente\data.cs" />
@@ -1203,6 +1241,12 @@
     <EmbeddedResource Include="SrcTransporte\ClienteAnticipo\Agregar\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\ClienteAnticipo\Reportes\RepAdm_AnticipoCliente.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\ClienteAnticipo\Reportes\RepPlanilla_AnticipoCliente.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\ClienteAnticipo\UsarDisponer\Vista\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1221,7 +1265,7 @@
     <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SrcTransporte\Filtro\AnticipoCliente\Frm.resx">
+    <EmbeddedResource Include="SrcTransporte\Filtro\Reportes\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Presupuesto\Generar\Aliado\Frm.resx">
@@ -1271,6 +1315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\ToolsCxC\Administrador\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\ToolsCxC\Reportes\RepAdm_Cobro.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Administrador\Documentos\AdmDocFrm.resx">
       <DependentUpon>AdmDocFrm.cs</DependentUpon>
@@ -1479,6 +1526,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SrcTransporte\ClienteAnticipo\Reportes\DS_AnticipoCliente.xsc">
+      <DependentUpon>DS_AnticipoCliente.xsd</DependentUpon>
+    </None>
+    <None Include="SrcTransporte\ClienteAnticipo\Reportes\DS_AnticipoCliente.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_AnticipoCliente.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SrcTransporte\ClienteAnticipo\Reportes\DS_AnticipoCliente.xss">
+      <DependentUpon>DS_AnticipoCliente.xsd</DependentUpon>
+    </None>
     <None Include="SrcTransporte\Reportes\DS_TRANSP.xsc">
       <DependentUpon>DS_TRANSP.xsd</DependentUpon>
     </None>
@@ -1489,6 +1547,17 @@
     </None>
     <None Include="SrcTransporte\Reportes\DS_TRANSP.xss">
       <DependentUpon>DS_TRANSP.xsd</DependentUpon>
+    </None>
+    <None Include="SrcTransporte\ToolsCxC\Reportes\DS_TOOLS_CXC.xsc">
+      <DependentUpon>DS_TOOLS_CXC.xsd</DependentUpon>
+    </None>
+    <None Include="SrcTransporte\ToolsCxC\Reportes\DS_TOOLS_CXC.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_TOOLS_CXC.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SrcTransporte\ToolsCxC\Reportes\DS_TOOLS_CXC.xss">
+      <DependentUpon>DS_TOOLS_CXC.xsd</DependentUpon>
     </None>
     <None Include="Src\CxC\Tools\Reportes\DS_CxC.xsc">
       <DependentUpon>DS_CxC.xsd</DependentUpon>
@@ -1570,6 +1639,9 @@
     <None Include="Resources\bt_periodo_itempo_48.png" />
     <None Include="Resources\bt_periodo_itempo_24.png" />
     <None Include="Resources\bt_periodo_itempo_32.png" />
+    <None Include="Resources\bt_avance_anticipo_48.png" />
+    <None Include="Resources\bt_avance_anticipo_24.png" />
+    <None Include="Resources\bt_avance_anticipo_32.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1579,6 +1651,9 @@
     <Content Include="Src\Imagenes\bt_agregar_nuevo.png" />
     <Content Include="Src\Imagenes\bt_alerta.png" />
     <Content Include="Src\Imagenes\bt_asignar.png" />
+    <Content Include="Src\Imagenes\bt_avance_anticipo_24.png" />
+    <Content Include="Src\Imagenes\bt_avance_anticipo_32.png" />
+    <Content Include="Src\Imagenes\bt_avance_anticipo_48.png" />
     <Content Include="Src\Imagenes\bt_billetera_24.png" />
     <Content Include="Src\Imagenes\bt_billetera_48.png" />
     <Content Include="Src\Imagenes\bt_bombillo.png" />

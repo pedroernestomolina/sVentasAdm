@@ -15,6 +15,14 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Handler
         private Utils.FiltrosCB.ICtrlSinBusqueda _estatusDoc;
         private Utils.FiltrosCB.ICtrlConBusqueda _caja;
         private Utils.FiltrosCB.ICtrlConBusqueda _cliente;
+        private Utils.FiltrosCB.ICtrlConBusqueda _aliado;
+
+
+        public Utils.FiltrosCB.ICtrlConBusqueda Aliado { get { return _aliado; } }
+        public Utils.FiltrosCB.ICtrlConBusqueda Cliente { get { return _cliente; } }
+        public Utils.FiltrosCB.ICtrlSinBusqueda EstatusDoc { get { return _estatusDoc; } }
+        public Utils.FiltroFecha.IFecha Desde { get { return _desde; } }
+        public Utils.FiltroFecha.IFecha Hasta { get { return _hasta; } }
 
 
         public HndFiltro()
@@ -24,6 +32,7 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Handler
             _estatusDoc = new Utils.FiltrosCB.SinBusqueda.EstatusDoc.Imp();
             _caja = new Utils.FiltrosCB.ConBusqueda.Caja.Imp();
             _cliente = new Utils.FiltrosCB.ConBusqueda.Cliente.Imp();
+            _aliado = new Utils.FiltrosCB.ConBusqueda.Aliado.Imp();
         }
         public void Inicializa()
         {
@@ -32,13 +41,14 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Handler
             _estatusDoc.Inicializa();
             _caja.Inicializa();
             _cliente.Inicializa();
+            _aliado.Inicializa();
         }
         public void CargarData()
         {
             _estatusDoc.ObtenerData();
             _caja.ObtenerData();
             _cliente.ObtenerData();
-
+            _aliado.ObtenerData();
         }
         public void Limpiar()
         {
@@ -47,6 +57,7 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Handler
             _estatusDoc.LimpiarOpcion();
             _caja.LimpiarOpcion();
             _cliente.LimpiarOpcion();
+            _aliado.LimpiarOpcion();
         }
 
 
@@ -146,6 +157,12 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Handler
             if (_cliente.GetItem != null)
             {
                 _filtroRet.IdCliente = _cliente.GetId;
+            }
+            if (_aliado.GetItem != null)
+            {
+                var _aliadoItem = (Utils.FiltrosCB.Idata)_aliado.GetItem;
+                var fichaOOB = (OOB.Transporte.Aliado.Entidad.Ficha)_aliadoItem.Ficha;
+                _filtroRet.IdAliado = fichaOOB.id;
             }
             return _filtroRet;
         }

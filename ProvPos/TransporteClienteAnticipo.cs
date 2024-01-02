@@ -25,8 +25,20 @@ namespace ProvPos
                         var mesRelacion = fechaSistema.Month.ToString().Trim().PadLeft(2, '0');
                         var anoRelacion = fechaSistema.Year.ToString().Trim().PadLeft(4, '0');
                         //
+                        var sql = @"update sistema_contadores set 
+                                        a_transp_cliente_anticipo_recnumero=a_transp_cliente_anticipo_recnumero+1";
+                        var rt1 = cnn.Database.ExecuteSqlCommand(sql);
+                        if (rt1 == 0)
+                        {
+                            result.Mensaje = "PROBLEMA AL ACTUALIZAR TABLA CONTADORES";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        var aRecibo = cnn.Database.SqlQuery<int>("select a_transp_cliente_anticipo_recnumero from sistema_contadores").FirstOrDefault();
+                        var autoRecibo = aRecibo.ToString().Trim().PadLeft(10, '0');
+                        //
                         //INSERTAR ANTICIPO CLIENTE
-                        var sql = @"INSERT INTO clientes_anticipo_mov (
+                        sql = @"INSERT INTO clientes_anticipo_mov (
                                     id, 
                                     id_cliente,
                                     fecha_emision, 
@@ -65,7 +77,7 @@ namespace ProvPos
                                     @monto_recibido_mon_act,
                                     @monto_recibido_mon_div, 
                                     '0',
-                                    recibo_numero)";
+                                    @recibo_numero)";
                         var mov = ficha.mov;
                         var p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_cliente", mov.idCliente);
                         var p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_emision", mov.fechaEmision);
@@ -84,7 +96,7 @@ namespace ProvPos
                         var p13 = new MySql.Data.MySqlClient.MySqlParameter("@total_retencion", mov.totalRet);
                         var p14 = new MySql.Data.MySqlClient.MySqlParameter("@monto_recibido_mon_act", mov.montoRecibidoMonAct);
                         var p15 = new MySql.Data.MySqlClient.MySqlParameter("@monto_recibido_mon_div", mov.montoRecibidoMonDiv);
-                        var p16 = new MySql.Data.MySqlClient.MySqlParameter("@recibo_numero", mov.reciboNumero);
+                        var p16 = new MySql.Data.MySqlClient.MySqlParameter("@recibo_numero", autoRecibo);
                         //
                         var r1 = cnn.Database.ExecuteSqlCommand(sql,
                             p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
@@ -109,7 +121,7 @@ namespace ProvPos
                         var r2 = cnn.Database.ExecuteSqlCommand(sql, p01, p02);
                         if (r2 == 0)
                         {
-                            result.Mensaje = "ERROR AL ACTUALIZAR ANTICPO-CLIENTE";
+                            result.Mensaje = "ERROR AL ACTUALIZAR ANTICIPO-CLIENTE";
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
                             return result;
                         }
@@ -483,6 +495,66 @@ namespace ProvPos
                     var _lst = cnn.Database.SqlQuery<DtoTransporte.ClienteAnticipo.Anular.Caja>(sql, p1).ToList();
                     _ent.cajas = _lst;
                     result.Entidad = _ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        //
+        public DtoLib.ResultadoEntidad<DtoTransporte.ClienteAnticipo.Entidad.Ficha> 
+            Transporte_Cliente_Anticipo_Movimiento_GetById(int idMov)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoTransporte.ClienteAnticipo.Entidad.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var _sql_1 = @"select 
+                                        id as idMov,
+                                        id_cliente as idCliente,
+                                        fecha_emision as fechaEmision,
+                                        cirif_cliente as ciRifCliente,
+                                        nombre_razonsocial_cliente as nombreCliente,
+                                        monto_anticipo_mon_act as montoMovMonAct,
+                                        monto_anticipo_mon_div as montoMovMonDiv,
+                                        tasa_factor as tasaFactor,
+                                        motivo as motivo,
+                                        aplica_ret as aplicaRet,
+                                        tasa_ret as tasaRet,
+                                        sustraendo_ret as sustraendoRet,
+                                        retencion as montoRet,
+                                        total_retencion as totalRet,
+                                        monto_recibido_mon_act as montoRecMonAct,
+                                        monto_recibido_mon_div as montoRecMonDiv,
+                                        estatus_anulado as estatus,
+                                        recibo_numero as reciboNro
+                                    from clientes_anticipo_mov
+                                    where id=@idMov";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var _sql = _sql_1;
+                    var _ent = cnn.Database.SqlQuery<DtoTransporte.ClienteAnticipo.Entidad.Movimiento>(_sql, p1).FirstOrDefault();
+                    if (_ent == null) 
+                    {
+                        throw new Exception("MOVIMIENTO NO ENCONTRADO");
+                    }
+                    _sql_1 = @"SELECT 
+                                    cod_caja as cjCodigo,
+                                    desc_caja as cjDesc,
+                                    monto_mov as monto,
+                                    mov_fue_div as esDivisa
+                                FROM clientes_anticipo_caj
+                                where id_cliente_anticipo_mov=@idMov";
+                    p1 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var _lst= cnn.Database.SqlQuery<DtoTransporte.ClienteAnticipo.Entidad.Caja>(_sql_1, p1).ToList();
+                    result.Entidad = new DtoTransporte.ClienteAnticipo.Entidad.Ficha()
+                    {
+                        Mov = _ent,
+                        CajMov = _lst,
+                    };
                 }
             }
             catch (Exception e)

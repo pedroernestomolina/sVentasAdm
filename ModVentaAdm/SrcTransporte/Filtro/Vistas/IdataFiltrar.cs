@@ -18,7 +18,8 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Vistas
         Enumerados.EstatusDoc EstatusDoc { get; set; }
         int IdCaja { get; set; }
         string IdCliente { get; set; }
-        
+        int IdAliado { get; set; }
+        //
         void Inicializa();
     }
 }

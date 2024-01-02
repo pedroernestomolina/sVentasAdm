@@ -10,28 +10,44 @@ namespace ProvPos
 {
     public partial class Provider : IPos.IProvider
     {
-        public DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoResumen> 
-            TransporteReporte_AliadoResumen()
+        public DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.Resumen.Ficha> 
+            TransporteReporte_AliadoResumen(DtoTransporte.Reporte.Aliado.Resumen.Filtro filtro)
         {
-            var result = new DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoResumen>();
+            var result = new DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.Resumen.Ficha>();
+            var sql_1 = @"SELECT 
+                        aliado.cirif as ciRif, 
+                        aliado.nombreRazonSocial as aliado,
+                        aliado.codigo as codigo,
+                        sum(aliadoDoc.importe_divisa) as importe,
+                        sum(aliadoDoc.acumulado_divisa) as acumulado
+                    FROM transp_aliado_doc as aliadoDoc
+                    join transp_aliado as aliado on aliado.id=aliadoDoc.id_aliado ";
+            var sql_2 = @" where aliadoDoc.estatus_anulado<>'1' ";
+            var sql_3 = @" group by aliado.cirif, aliado.nombreRazonSocial, aliado.codigo ";
+            var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+            var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+            var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+            if (filtro != null)
+            {
+                if (filtro.Desde.HasValue)
+                {
+                    p2.Value = filtro.Desde.Value;
+                    p2.ParameterName = "@desde";
+                    sql_2 += "and aliadoDoc.doc_fecha>=@desde ";
+                }
+                if (filtro.Hasta.HasValue)
+                {
+                    p3.Value = filtro.Hasta.Value;
+                    p3.ParameterName = "@hasta";
+                    sql_2 += "and aliadoDoc.doc_fecha<=@hasta ";
+                }
+            }
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
                 {
-                    var _sql_1 = @"select 
-                                    codigo as codigo,
-                                    ciRif as ciRif,
-                                    nombreRazonSocial as aliado,
-                                    monto_debitos_mon_divisa as montoDebitoMonDivisa,
-                                    monto_creditos_mon_divisa as montoCreditoMonDivisa,
-                                    monto_anticipos_mon_divisa as montoAnticiposMonDivisa,
-                                    monto_debitos_anulado_mon_divisa as montoDebitoAnuladoMonDivisa,
-                                    monto_creditos_anulado_mon_divisa as montoCreditoAnuladoMonDivisa,
-                                    monto_anticipos_anulado_mon_divisa as montoAnticiposAnuladoMonDivisa
-                                from transp_aliado";
-                    var _sql_2 = @"";
-                    var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoTransporte.Reporte.AliadoResumen>(_sql).ToList();
+                    var sql = sql_1 + sql_2 + sql_3;
+                    var _lst = cnn.Database.SqlQuery<DtoTransporte.Reporte.Aliado.Resumen.Ficha>(sql, p1, p2, p3).ToList();
                     result.Lista = _lst;
                 }
             }
@@ -42,10 +58,10 @@ namespace ProvPos
             }
             return result;
         }
-        public DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleDoc> 
-            TransporteReporte_AliadoDetalleDoc()
+        public DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.DetalleDoc.Ficha> 
+            TransporteReporte_AliadoDetalleDoc(DtoTransporte.Reporte.Aliado.DetalleDoc.Filtro filtro)
         {
-            var sql = @"SELECT 
+            var sql_1 = @"SELECT 
                         aliado.cirif as rifAliado, 
                         aliado.nombreRazonSocial as nombreAliado,
                         aliado.codigo as codigoAliado,
@@ -58,17 +74,46 @@ namespace ProvPos
                         aliadoDoc.acumulado_divisa as acumulado
                     FROM transp_aliado_doc as aliadoDoc
                     join transp_aliado as aliado on aliado.id=aliadoDoc.id_aliado
-                    join clientes as cli on aliadoDoc.id_cliente=cli.auto
-                    where aliadoDoc.estatus_anulado<>'1'";
-            var result = new DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleDoc>();
+                    join clientes as cli on aliadoDoc.id_cliente=cli.auto ";
+            var sql_2=@" where aliadoDoc.estatus_anulado<>'1' ";
+            var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+            var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+            var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+            var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+            if (filtro != null) 
+            {
+                if (filtro.IdAliado != -1) 
+                {
+                    p1.Value = filtro.IdAliado;
+                    p1.ParameterName = "@idAliado";
+                    sql_2 += "and aliado.id=@idAliado ";
+                }
+                if (filtro.IdCliente!="")
+                {
+                    p4.Value = filtro.IdCliente;
+                    p4.ParameterName = "@idCliente";
+                    sql_2 += "and cli.auto=@idCliente ";
+                }
+                if (filtro.Desde.HasValue)
+                {
+                    p2.Value = filtro.Desde.Value;
+                    p2.ParameterName = "@desde";
+                    sql_2 += "and aliadoDoc.doc_fecha>=@desde ";
+                }
+                if (filtro.Hasta.HasValue)
+                {
+                    p3.Value = filtro.Hasta.Value;
+                    p3.ParameterName = "@hasta";
+                    sql_2 += "and aliadoDoc.doc_fecha<=@hasta ";
+                }
+            }
+            var result = new DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.DetalleDoc.Ficha>();
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
                 {
-                    var _sql_1 = sql;
-                    var _sql_2 = @"";
-                    var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoTransporte.Reporte.AliadoDetalleDoc>(_sql).ToList();
+                    var sql = sql_1 + sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoTransporte.Reporte.Aliado.DetalleDoc.Ficha>(sql, p1, p2, p3, p4).ToList();
                     result.Lista = _lst;
                 }
             }
@@ -79,10 +124,10 @@ namespace ProvPos
             }
             return result;
         }
-        public DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleServ> 
-            TransporteReporte_AliadoDetalleServ()
+        public DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.DetalleServ.Ficha> 
+            TransporteReporte_AliadoDetalleServ(DtoTransporte.Reporte.Aliado.DetalleServ.Filtro filtro)
         {
-            var sql = @"SELECT 
+            var sql_1 = @"SELECT 
                             aliado.id as aliadoId,
                             aliado.ciRif as aliadoCiRif,
                             aliado.nombreRazonSocial as aliadoNombre,
@@ -100,17 +145,39 @@ namespace ProvPos
                         from transp_aliado_doc as aliadoDoc 
                         join transp_aliado_doc_servicio as aliadoServ on aliadoServ.id_aliado_doc=aliadoDoc.id
                         join transp_aliado as aliado on aliado.id=aliadoDoc.id_aliado
-                        join ventas as vta on vta.auto=aliadoDoc.id_doc_ref
-                        where aliadoDoc.estatus_anulado='0'";
-            var result = new DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleServ>();
+                        join ventas as vta on vta.auto=aliadoDoc.id_doc_ref ";
+            var sql_2=@" where aliadoDoc.estatus_anulado<>'1' ";
+            var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+            var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+            var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+            if (filtro != null)
+            {
+                if (filtro.IdAliado != -1)
+                {
+                    p1.Value = filtro.IdAliado;
+                    p1.ParameterName = "@idAliado";
+                    sql_2 += "and aliado.id=@idAliado ";
+                }
+                if (filtro.Desde.HasValue)
+                {
+                    p2.Value = filtro.Desde.Value;
+                    p2.ParameterName = "@desde";
+                    sql_2 += "and aliadoDoc.doc_fecha>=@desde ";
+                }
+                if (filtro.Hasta.HasValue)
+                {
+                    p3.Value = filtro.Hasta.Value;
+                    p3.ParameterName = "@hasta";
+                    sql_2 += "and aliadoDoc.doc_fecha<=@hasta ";
+                }
+            }
+            var result = new DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.DetalleServ.Ficha>();
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
                 {
-                    var _sql_1 = sql;
-                    var _sql_2 = @"";
-                    var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoTransporte.Reporte.AliadoDetalleServ>(_sql).ToList();
+                    var _sql = sql_1 + sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoTransporte.Reporte.Aliado.DetalleServ.Ficha>(_sql, p1, p2, p3).ToList();
                     result.Lista = _lst;
                 }
             }

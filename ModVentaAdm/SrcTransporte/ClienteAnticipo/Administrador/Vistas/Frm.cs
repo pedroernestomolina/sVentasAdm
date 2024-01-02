@@ -83,6 +83,7 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Vistas
             c5.Width = 80;
             c5.HeaderCell.Style.Font = f;
             c5.DefaultCellStyle.Font = f1;
+            c5.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             var c6 = new DataGridViewTextBoxColumn();
             c6.DataPropertyName = "AplicaRet";
@@ -129,11 +130,7 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Vistas
             L_TITULO.Text = _controlador.Get_TituloAdm;
             DGV.DataSource = _controlador.data.Get_Source;
             DGV.Refresh();
-
-            DTP_DESDE.Checked = _controlador.Get_IsActivoDesde;
-            DTP_HASTA.Checked = _controlador.Get_IsActivoHasta;
-            DTP_DESDE.Value = _controlador.Get_Desde;
-            DTP_HASTA.Value = _controlador.Get_Hasta;
+            ActualizarPant();
             Actualizar();
         }
         public void setControlador(Vistas.IAdm ctr)
@@ -141,31 +138,6 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Vistas
             _controlador = ctr;
         }
 
-
-        private void DTP_DESDE_ValueChanged(object sender, EventArgs e)
-        {
-            if (DTP_DESDE.Checked)
-            {
-                _controlador.setDesde(DTP_DESDE.Value);
-                _controlador.ActivarDesde(true);
-            }
-            else 
-            {
-                _controlador.ActivarDesde(false);
-            }
-        }
-        private void DTP_HASTA_ValueChanged(object sender, EventArgs e)
-        {
-            if (DTP_HASTA.Checked)
-            {
-                _controlador.setHasta(DTP_HASTA.Value);
-                _controlador.ActivarHasta(true);
-            }
-            else 
-            {
-                _controlador.ActivarHasta(false);
-            }
-        }
 
         private void BT_BUSCAR_Click(object sender, EventArgs e)
         {
@@ -180,6 +152,7 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Vistas
         private void BT_FILTROS_BUSQ_Click(object sender, EventArgs e)
         {
             FitrosBusqueda();
+            ActualizarPant();
         }
         private void BT_LIMPIAR_FILTROS_Click(object sender, EventArgs e)
         {
@@ -255,10 +228,16 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Vistas
         }
         private void ActualizarPant()
         {
-            DTP_DESDE.Checked = _controlador.Get_IsActivoDesde;
-            DTP_HASTA.Checked = _controlador.Get_IsActivoHasta;
-            DTP_DESDE.Value = _controlador.Get_Desde;
-            DTP_HASTA.Value = _controlador.Get_Hasta;
+            L_DESDE.Text = "";
+            L_HASTA.Text = "";
+            if (_controlador.CtrlFiltro.HndFiltro.Get_IsActivoDesde)
+            {
+                L_DESDE.Text = _controlador.CtrlFiltro.HndFiltro.Get_Desde.ToShortDateString();
+            }
+            if (_controlador.CtrlFiltro.HndFiltro.Get_IsActivoHasta)
+            {
+                L_HASTA.Text = _controlador.CtrlFiltro.HndFiltro.Get_Hasta.ToShortDateString();
+            }
         }
     }
 }

@@ -2,5 +2,8 @@
     
     
     public partial class DS_TRANSP {
+        partial class AliadoResumenDataTable
+        {
+        }
     }
 }

@@ -232,26 +232,15 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 }
             }
         }
-
-        
         //
-        //
-        private SrcTransporte.ClienteAnticipo.Agregar.Vistas.IHnd _anticipo;
         public void AgregarAnticipo()
         {
             if (_gListaCtasPend.ItemActual != null)
             {
-                if (_anticipo == null)
-                {
-                    _anticipo = new SrcTransporte.ClienteAnticipo.Agregar.Handler.Imp();
-                }
                 var item = _gListaCtasPend.ItemActual;
-                _anticipo.Inicializa();
-                _anticipo.setClienteCargar(item.idCliente);
-                _anticipo.Inicia();
+                Sistema.Fabrica.ClienteAnticipos(item.idCliente);
             }
         }
-        //
         //
         private SrcTransporte.ClienteAnticipo.Administrador.Vistas.IAdm _admAnticipo;
         public void AdmDocAnticipos()

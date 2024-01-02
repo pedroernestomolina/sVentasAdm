@@ -9,12 +9,12 @@ namespace IPos.Transporte
 {
     public interface ITranspReporte
     {
-        DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoResumen>
-            TransporteReporte_AliadoResumen();
-        DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleDoc>
-            TransporteReporte_AliadoDetalleDoc();
-        DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleServ>
-            TransporteReporte_AliadoDetalleServ();
+        DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.Resumen.Ficha>
+            TransporteReporte_AliadoResumen(DtoTransporte.Reporte.Aliado.Resumen.Filtro filtro);
+        DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.DetalleDoc.Ficha>
+            TransporteReporte_AliadoDetalleDoc(DtoTransporte.Reporte.Aliado.DetalleDoc.Filtro filtro);
+        DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.DetalleServ.Ficha>
+            TransporteReporte_AliadoDetalleServ(DtoTransporte.Reporte.Aliado.DetalleServ.Filtro filtro);
         //
         DtoLib.ResultadoEntidad<DtoTransporte.Reporte.Cxc.EdoCta.Ficha>
             TransporteReporte_Cxc_EdoCta(string idCliente);

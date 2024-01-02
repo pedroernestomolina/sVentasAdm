@@ -69,5 +69,22 @@ namespace ModVentaAdm.Data.Prov
             }
             return rt;
         }
+        //
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.CxcMovCobro.Entidad.Ficha> 
+            Transporte_CxcMovCobro_GetById(string idMov)
+        {
+            var rt = new OOB.Resultado.FichaEntidad<OOB.Transporte.CxcMovCobro.Entidad.Ficha>();
+            var r01 = MyData.Transporte_CxcMovCobro_GetById(idMov);
+            //if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            //{
+            //    throw new Exception(r01.Mensaje);
+            //}
+            //var r02 = MyData.Transporte_CxcMovCobro_Anular(r01.Entidad);
+            //if (r02.Result == DtoLib.Enumerados.EnumResult.isError)
+            //{
+            //    throw new Exception(r02.Mensaje);
+            //}
+            return rt;
+        }
     }
 }

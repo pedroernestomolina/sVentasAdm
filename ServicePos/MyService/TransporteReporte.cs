@@ -10,20 +10,20 @@ namespace ServicePos.MyService
 {
     public partial class Service : IService
     {
-        public DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoResumen> 
-            TransporteReporte_AliadoResumen()
+        public DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.Resumen.Ficha>
+            TransporteReporte_AliadoResumen(DtoTransporte.Reporte.Aliado.Resumen.Filtro filtro)
         {
-            return ServiceProv.TransporteReporte_AliadoResumen();
+            return ServiceProv.TransporteReporte_AliadoResumen(filtro);
         }
-        public DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleDoc> 
-            TransporteReporte_AliadoDetalleDoc()
+        public DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.DetalleDoc.Ficha > 
+            TransporteReporte_AliadoDetalleDoc(DtoTransporte.Reporte.Aliado.DetalleDoc.Filtro filtro)
         {
-            return ServiceProv.TransporteReporte_AliadoDetalleDoc();
+            return ServiceProv.TransporteReporte_AliadoDetalleDoc(filtro);
         }
-        public DtoLib.ResultadoLista<DtoTransporte.Reporte.AliadoDetalleServ> 
-            TransporteReporte_AliadoDetalleServ()
+        public DtoLib.ResultadoLista<DtoTransporte.Reporte.Aliado.DetalleServ.Ficha> 
+            TransporteReporte_AliadoDetalleServ(DtoTransporte.Reporte.Aliado.DetalleServ.Filtro filtro)
         {
-            return ServiceProv.TransporteReporte_AliadoDetalleServ();
+            return ServiceProv.TransporteReporte_AliadoDetalleServ(filtro);
         }
         //
         public DtoLib.ResultadoEntidad<DtoTransporte.Reporte.Cxc.EdoCta.Ficha> 

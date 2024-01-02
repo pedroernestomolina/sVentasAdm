@@ -469,7 +469,7 @@ namespace ProvPos
             ReportesAdm_LibroVenta(DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Filtro filtro)
         {
             var rt = new DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
@@ -502,12 +502,12 @@ namespace ProvPos
                                         v.estatus_anulado as estatus
                                     FROM ventas as v ";
                     var sql_2 = @" WHERE 1=1 and 
-                                        mes_relacion=@mes and ano_relacion=@ano
+                                        v.fecha>=@desde and v.fecha<=@hasta
                                         and tipo in ('01','02','03') ";
-                    p1.ParameterName = "@mes";
-                    p1.Value = filtro.mesRelacion;
-                    p2.ParameterName = "@ano";
-                    p2.Value = filtro.anoRelacion;
+                    p1.ParameterName = "@desde";
+                    p1.Value = filtro.desde;
+                    p2.ParameterName = "@hasta";
+                    p2.Value = filtro.hasta;
                     var sql = sql_1 + sql_2 ;
                     var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Ficha>(sql, p1, p2).ToList();
                     rt.Lista = lst;

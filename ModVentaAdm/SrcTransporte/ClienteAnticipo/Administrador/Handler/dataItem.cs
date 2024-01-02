@@ -17,7 +17,7 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Handler
         public string CiRif { get; set; }
         public string Nombre { get; set; }
         public DateTime FechaMov { get; set; }
-        public bool AplicaRet { get; set; }
+        public string AplicaRet { get; set; }
         public decimal MontoMov { get; set; }
         public decimal MontoRec { get; set; }
         public string Estatus { get; set; }
@@ -30,7 +30,7 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Handler
             _ficha = ficha;
             CiRif = ficha.ciRifCliente;
             Nombre = ficha.nombreCliente;
-            AplicaRet = ficha.aplicaRet.Trim().ToUpper() == "1";
+            AplicaRet = ficha.aplicaRet.Trim().ToUpper() == "1" ? "SI" : "NO";
             FechaMov = ficha.fechaReg;
             MontoMov = ficha.montoMonDiv;
             MontoRec = ficha.montoRecMonDiv;

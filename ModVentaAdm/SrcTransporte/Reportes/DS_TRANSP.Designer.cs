@@ -561,11 +561,11 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             private global::System.Data.DataColumn columnaliado;
             
-            private global::System.Data.DataColumn columnmontoDebito;
+            private global::System.Data.DataColumn columnimporte;
             
-            private global::System.Data.DataColumn columnmontoCredito;
+            private global::System.Data.DataColumn columnacumulado;
             
-            private global::System.Data.DataColumn columnmontoAnticipo;
+            private global::System.Data.DataColumn columnsaldo;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -610,25 +610,25 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn montoDebitoColumn {
+            public global::System.Data.DataColumn importeColumn {
                 get {
-                    return this.columnmontoDebito;
+                    return this.columnimporte;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn montoCreditoColumn {
+            public global::System.Data.DataColumn acumuladoColumn {
                 get {
-                    return this.columnmontoCredito;
+                    return this.columnacumulado;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn montoAnticipoColumn {
+            public global::System.Data.DataColumn saldoColumn {
                 get {
-                    return this.columnmontoAnticipo;
+                    return this.columnsaldo;
                 }
             }
             
@@ -669,13 +669,13 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AliadoResumenRow AddAliadoResumenRow(string aliado, decimal montoDebito, decimal montoCredito, decimal montoAnticipo) {
+            public AliadoResumenRow AddAliadoResumenRow(string aliado, decimal importe, decimal acumulado, decimal saldo) {
                 AliadoResumenRow rowAliadoResumenRow = ((AliadoResumenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         aliado,
-                        montoDebito,
-                        montoCredito,
-                        montoAnticipo};
+                        importe,
+                        acumulado,
+                        saldo};
                 rowAliadoResumenRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAliadoResumenRow);
                 return rowAliadoResumenRow;
@@ -699,9 +699,9 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnaliado = base.Columns["aliado"];
-                this.columnmontoDebito = base.Columns["montoDebito"];
-                this.columnmontoCredito = base.Columns["montoCredito"];
-                this.columnmontoAnticipo = base.Columns["montoAnticipo"];
+                this.columnimporte = base.Columns["importe"];
+                this.columnacumulado = base.Columns["acumulado"];
+                this.columnsaldo = base.Columns["saldo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -709,12 +709,12 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             private void InitClass() {
                 this.columnaliado = new global::System.Data.DataColumn("aliado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnaliado);
-                this.columnmontoDebito = new global::System.Data.DataColumn("montoDebito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmontoDebito);
-                this.columnmontoCredito = new global::System.Data.DataColumn("montoCredito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmontoCredito);
-                this.columnmontoAnticipo = new global::System.Data.DataColumn("montoAnticipo", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmontoAnticipo);
+                this.columnimporte = new global::System.Data.DataColumn("importe", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimporte);
+                this.columnacumulado = new global::System.Data.DataColumn("acumulado", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnacumulado);
+                this.columnsaldo = new global::System.Data.DataColumn("saldo", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsaldo);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3647,49 +3647,49 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal montoDebito {
+            public decimal importe {
                 get {
                     try {
-                        return ((decimal)(this[this.tableAliadoResumen.montoDebitoColumn]));
+                        return ((decimal)(this[this.tableAliadoResumen.importeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'montoDebito\' in table \'AliadoResumen\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'importe\' in table \'AliadoResumen\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAliadoResumen.montoDebitoColumn] = value;
+                    this[this.tableAliadoResumen.importeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal montoCredito {
+            public decimal acumulado {
                 get {
                     try {
-                        return ((decimal)(this[this.tableAliadoResumen.montoCreditoColumn]));
+                        return ((decimal)(this[this.tableAliadoResumen.acumuladoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'montoCredito\' in table \'AliadoResumen\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'acumulado\' in table \'AliadoResumen\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAliadoResumen.montoCreditoColumn] = value;
+                    this[this.tableAliadoResumen.acumuladoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal montoAnticipo {
+            public decimal saldo {
                 get {
                     try {
-                        return ((decimal)(this[this.tableAliadoResumen.montoAnticipoColumn]));
+                        return ((decimal)(this[this.tableAliadoResumen.saldoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'montoAnticipo\' in table \'AliadoResumen\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'saldo\' in table \'AliadoResumen\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAliadoResumen.montoAnticipoColumn] = value;
+                    this[this.tableAliadoResumen.saldoColumn] = value;
                 }
             }
             
@@ -3707,38 +3707,38 @@ namespace ModVentaAdm.SrcTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsmontoDebitoNull() {
-                return this.IsNull(this.tableAliadoResumen.montoDebitoColumn);
+            public bool IsimporteNull() {
+                return this.IsNull(this.tableAliadoResumen.importeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetmontoDebitoNull() {
-                this[this.tableAliadoResumen.montoDebitoColumn] = global::System.Convert.DBNull;
+            public void SetimporteNull() {
+                this[this.tableAliadoResumen.importeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsmontoCreditoNull() {
-                return this.IsNull(this.tableAliadoResumen.montoCreditoColumn);
+            public bool IsacumuladoNull() {
+                return this.IsNull(this.tableAliadoResumen.acumuladoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetmontoCreditoNull() {
-                this[this.tableAliadoResumen.montoCreditoColumn] = global::System.Convert.DBNull;
+            public void SetacumuladoNull() {
+                this[this.tableAliadoResumen.acumuladoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsmontoAnticipoNull() {
-                return this.IsNull(this.tableAliadoResumen.montoAnticipoColumn);
+            public bool IssaldoNull() {
+                return this.IsNull(this.tableAliadoResumen.saldoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetmontoAnticipoNull() {
-                this[this.tableAliadoResumen.montoAnticipoColumn] = global::System.Convert.DBNull;
+            public void SetsaldoNull() {
+                this[this.tableAliadoResumen.saldoColumn] = global::System.Convert.DBNull;
             }
         }
         

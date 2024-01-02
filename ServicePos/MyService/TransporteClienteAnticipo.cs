@@ -36,5 +36,11 @@ namespace ServicePos.MyService
         {
             return ServiceProv.Transporte_Cliente_Anticipo_Anular(ficha);
         }
+        //
+        public DtoLib.ResultadoEntidad<DtoTransporte.ClienteAnticipo.Entidad.Ficha> 
+            Transporte_Cliente_Anticipo_Movimiento_GetById(int idMov)
+        {
+            return ServiceProv.Transporte_Cliente_Anticipo_Movimiento_GetById(idMov);
+        }
     }
 }

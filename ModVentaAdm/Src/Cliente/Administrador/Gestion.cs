@@ -8,11 +8,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.Cliente.Administrador
 {
-
     public class Gestion
     {
-
-
         private OOB.Configuracion.BusquedaCliente.Entidad.Ficha _metodoBusqPred;
         private dataFiltro _filtrar;
         private GestionLista _gestionLista;
@@ -178,7 +175,6 @@ namespace ModVentaAdm.Src.Cliente.Administrador
             }
             _gestionLista.AgregarFicha(r01.Entidad);
         }
-
         public void EditarFicha()
         {
             if (Item != null)
@@ -209,7 +205,6 @@ namespace ModVentaAdm.Src.Cliente.Administrador
                 }
             }
         }
-
         private void ActualizarFichaLista(string autoId)
         {
             var r01 = Sistema.MyData.Cliente_GetFicha(autoId);
@@ -220,7 +215,6 @@ namespace ModVentaAdm.Src.Cliente.Administrador
             }
             _gestionLista.ActualizarFicha(r01.Entidad);
         }
-
         public void CompraArticulos()
         {
             if (Item != null)
@@ -230,7 +224,6 @@ namespace ModVentaAdm.Src.Cliente.Administrador
                 _gestionArticulos.Inicia();
             }
         }
-
         public void Documentos()
         {
             if (Item != null)
@@ -242,7 +235,6 @@ namespace ModVentaAdm.Src.Cliente.Administrador
                 _gestionDocumentos.Inicia();
             }
         }
-
         public void ActualizarEstatus()
         {
             if (Item != null)
@@ -266,7 +258,6 @@ namespace ModVentaAdm.Src.Cliente.Administrador
                 }
             }
         }
-
         public void VisualizarFicha()
         {
             if (Item != null)
@@ -286,6 +277,13 @@ namespace ModVentaAdm.Src.Cliente.Administrador
                 SrcTransporte.Reportes.IReporteConFiltro _rep = new SrcTransporte.Reportes.Cxc.EdoCta.Imp();
                 _rep.setFiltros(_filtro);
                 _rep.Generar();
+            }
+        }
+        public void Anticipo()
+        {
+            if (Item != null)
+            {
+                Sistema.Fabrica.ClienteAnticipos(Item.Id);
             }
         }
     }

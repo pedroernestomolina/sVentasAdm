@@ -10,33 +10,34 @@ namespace ModVentaAdm.Data.Prov
 {
     public partial class DataPrv : IData
     {
-        public OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoResumen> 
-            TransporteReporte_AliadoResumen()
+        public OOB.Resultado.Lista<OOB.Transporte.Reporte.Aliado.Resumen.Ficha>
+            TransporteReporte_AliadoResumen(OOB.Transporte.Reporte.Aliado.Resumen.Filtro filtro)
         {
-            var rt = new OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoResumen>();
-            var r01 = MyData.TransporteReporte_AliadoResumen();
+            var rt = new OOB.Resultado.Lista<OOB.Transporte.Reporte.Aliado.Resumen.Ficha>();
+            var filtroDTO = new DtoTransporte.Reporte.Aliado.Resumen.Filtro()
+            {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+            };
+            var r01 = MyData.TransporteReporte_AliadoResumen(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
-            var _lst = new List<OOB.Transporte.Reporte.AliadoResumen>();
+            var _lst = new List<OOB.Transporte.Reporte.Aliado.Resumen.Ficha>();
             if (r01.Lista != null)
             {
                 if (r01.Lista.Count > 0)
                 {
                     _lst = r01.Lista.Select(s =>
                     {
-                        var nr = new OOB.Transporte.Reporte.AliadoResumen()
+                        var nr = new OOB.Transporte.Reporte.Aliado.Resumen.Ficha()
                         {
                             aliado = s.aliado,
                             ciRif = s.ciRif,
                             codigo = s.codigo,
-                            montoAnticiposAnuladoMonDivisa = s.montoAnticiposAnuladoMonDivisa,
-                            montoAnticiposMonDivisa = s.montoAnticiposMonDivisa,
-                            montoCreditoAnuladoMonDivisa = s.montoCreditoAnuladoMonDivisa,
-                            montoCreditoMonDivisa = s.montoCreditoMonDivisa,
-                            montoDebitoAnuladoMonDivisa = s.montoDebitoAnuladoMonDivisa,
-                            montoDebitoMonDivisa = s.montoDebitoMonDivisa,
+                            importe = s.importe,
+                            acumulado = s.acumulado,
                         };
                         return nr;
                     }).ToList();
@@ -45,23 +46,30 @@ namespace ModVentaAdm.Data.Prov
             rt.ListaD = _lst;
             return rt;
         }
-        public OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleDoc> 
-            TransporteReporte_AliadoDetalleDoc()
+        public OOB.Resultado.Lista<OOB.Transporte.Reporte.Aliado.DetalleDoc.Ficha>
+            TransporteReporte_AliadoDetalleDoc(OOB.Transporte.Reporte.Aliado.DetalleDoc.Filtro filtro)
         {
-            var rt = new OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleDoc>();
-            var r01 = MyData.TransporteReporte_AliadoDetalleDoc();
+            var rt = new OOB.Resultado.Lista<OOB.Transporte.Reporte.Aliado.DetalleDoc.Ficha>();
+            var filtroDTO = new DtoTransporte.Reporte.Aliado.DetalleDoc.Filtro()
+            {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                IdAliado = filtro.IdAliado,
+                IdCliente = filtro.IdCliente,
+            };
+            var r01 = MyData.TransporteReporte_AliadoDetalleDoc(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
-            var _lst = new List<OOB.Transporte.Reporte.AliadoDetalleDoc>();
+            var _lst = new List<OOB.Transporte.Reporte.Aliado.DetalleDoc.Ficha>();
             if (r01.Lista != null)
             {
                 if (r01.Lista.Count > 0)
                 {
                     _lst = r01.Lista.Select(s =>
                     {
-                        var nr = new OOB.Transporte.Reporte.AliadoDetalleDoc()
+                        var nr = new OOB.Transporte.Reporte.Aliado.DetalleDoc.Ficha()
                         {
                             acumulado = s.acumulado,
                             codigoAliado = s.codigoAliado,
@@ -81,23 +89,29 @@ namespace ModVentaAdm.Data.Prov
             rt.ListaD = _lst;
             return rt;
         }
-        public OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleServ> 
-            TransporteReporte_AliadoDetalleServ()
+        public OOB.Resultado.Lista<OOB.Transporte.Reporte.Aliado.DetalleServ.Ficha>
+            TransporteReporte_AliadoDetalleServ(OOB.Transporte.Reporte.Aliado.DetalleServ.Filtro filtro)
         {
-            var rt = new OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleServ>();
-            var r01 = MyData.TransporteReporte_AliadoDetalleServ();
+            var rt = new OOB.Resultado.Lista<OOB.Transporte.Reporte.Aliado.DetalleServ.Ficha>();
+            var filtroDTO = new DtoTransporte.Reporte.Aliado.DetalleServ.Filtro()
+            {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                IdAliado = filtro.IdAliado,
+            };
+            var r01 = MyData.TransporteReporte_AliadoDetalleServ(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
-            var _lst = new List<OOB.Transporte.Reporte.AliadoDetalleServ>();
+            var _lst = new List<OOB.Transporte.Reporte.Aliado.DetalleServ.Ficha>();
             if (r01.Lista != null)
             {
                 if (r01.Lista.Count > 0)
                 {
                     _lst = r01.Lista.Select(s =>
                     {
-                        var nr = new OOB.Transporte.Reporte.AliadoDetalleServ()
+                        var nr = new OOB.Transporte.Reporte.Aliado.DetalleServ.Ficha()
                         {
                             aliadoCiRif = s.aliadoCiRif,
                             aliadoId = s.aliadoId,
@@ -122,7 +136,7 @@ namespace ModVentaAdm.Data.Prov
             return rt;
         }
         //
-        public OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.EdoCta.Ficha> 
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.EdoCta.Ficha>
             TransporteReporte_Cxc_EdoCta(string idCliente)
         {
             var rt = new OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.EdoCta.Ficha>();
@@ -131,7 +145,7 @@ namespace ModVentaAdm.Data.Prov
             {
                 throw new Exception(r01.Mensaje);
             }
-            if (r01.Entidad == null) 
+            if (r01.Entidad == null)
             {
                 throw new Exception("PROBLEMA AL CARGAR DATA");
             }

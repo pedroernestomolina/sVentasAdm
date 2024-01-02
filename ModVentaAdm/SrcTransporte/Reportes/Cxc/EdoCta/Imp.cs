@@ -83,5 +83,10 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
             frp.Path = pt;
             frp.ShowDialog();
         }
+
+
+        public void setFiltros(SrcTransporte.Filtro.Vistas.IdataFiltrar dataFiltrar)
+        {
+        }
     }
 }

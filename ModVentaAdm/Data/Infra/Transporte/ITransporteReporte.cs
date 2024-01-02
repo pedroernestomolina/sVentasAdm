@@ -9,14 +9,15 @@ namespace ModVentaAdm.Data.Infra.Transporte
 {
     public interface ITransporteReporte
     {
-        OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoResumen>
-            TransporteReporte_AliadoResumen();
-        OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleDoc>
-            TransporteReporte_AliadoDetalleDoc();
-        OOB.Resultado.Lista<OOB.Transporte.Reporte.AliadoDetalleServ>
-            TransporteReporte_AliadoDetalleServ();
+        OOB.Resultado.Lista<OOB.Transporte.Reporte.Aliado.Resumen.Ficha>
+            TransporteReporte_AliadoResumen(OOB.Transporte.Reporte.Aliado.Resumen.Filtro filtro);
+        OOB.Resultado.Lista<OOB.Transporte.Reporte.Aliado.DetalleDoc.Ficha>
+            TransporteReporte_AliadoDetalleDoc(OOB.Transporte.Reporte.Aliado.DetalleDoc.Filtro filtro);
+        OOB.Resultado.Lista<OOB.Transporte.Reporte.Aliado.DetalleServ.Ficha>
+            TransporteReporte_AliadoDetalleServ(OOB.Transporte.Reporte.Aliado.DetalleServ.Filtro filtro);
         //
         OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.EdoCta.Ficha>
             TransporteReporte_Cxc_EdoCta(string idCliente);
+        //
     }
 }

@@ -455,11 +455,11 @@ namespace ModVentaAdm.Data.Prov
             ReportesAdm_LibroVenta(OOB.Reportes.LibroVenta.Filtro filtro)
         {
             var rt = new OOB.Resultado.Lista<OOB.Reportes.LibroVenta.Ficha>();
-
+            //
             var filtroDTO = new DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Filtro()
             {
-                anoRelacion = filtro.anoRelacion,
-                mesRelacion = filtro.mesRelacion,
+                desde = filtro.desde,
+                hasta = filtro.hasta,
             };
             var r01 = MyData.ReportesAdm_LibroVenta(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -467,8 +467,7 @@ namespace ModVentaAdm.Data.Prov
                 rt.Mensaje = r01.Mensaje;
                 rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
                 return rt;
-            }
-
+            }//
             var list = new List<OOB.Reportes.LibroVenta.Ficha>();
             if (r01.Lista != null)
             {
@@ -507,7 +506,7 @@ namespace ModVentaAdm.Data.Prov
                 }
             }
             rt.ListaD = list;
-
+            //
             return rt;
         }
         public OOB.Resultado.Lista<OOB.Reportes.Utilidad.Consolidado.Ficha>

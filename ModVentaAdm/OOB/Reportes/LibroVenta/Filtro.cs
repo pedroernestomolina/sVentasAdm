@@ -7,20 +7,14 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.Reportes.LibroVenta
 {
-    
     public class Filtro
     {
-
-        public string mesRelacion { get; set; }
-        public string anoRelacion { get; set; }
-
-
+        public DateTime desde { get; set; }
+        public DateTime hasta { get; set; }
         public Filtro()
         {
-            mesRelacion = "";
-            anoRelacion = "";
+            desde = DateTime.Now.Date;
+            hasta = DateTime.Now.Date;
         }
-
     }
-
 }

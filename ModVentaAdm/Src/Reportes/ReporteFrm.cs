@@ -12,10 +12,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.Reportes
 {
-
     public partial class ReporteFrm : Form
     {
-
         public string Path { get; set; }
         public IEnumerable<ReportDataSource> rds { get; set; }
         public IEnumerable<ReportParameter> prmts { get; set; }
@@ -25,7 +23,6 @@ namespace ModVentaAdm.Src.Reportes
         {
             InitializeComponent();
         }
-
         private void ReporteFrm_Load(object sender, EventArgs e)
         {
             this.reportViewer1.ProcessingMode = ProcessingMode.Local;
@@ -48,7 +45,5 @@ namespace ModVentaAdm.Src.Reportes
             }
             this.reportViewer1.RefreshReport();
         }
-
     }
-
 }

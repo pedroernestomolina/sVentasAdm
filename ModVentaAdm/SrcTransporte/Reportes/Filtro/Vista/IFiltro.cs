@@ -9,6 +9,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Filtro.Vista
 {
     public interface IFiltro
     {
+        int idAliado { get; set; }
         string idCliente { get; set; }
     }
 }

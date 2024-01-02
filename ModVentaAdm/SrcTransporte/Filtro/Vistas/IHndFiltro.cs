@@ -40,6 +40,13 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Vistas
         void setClienteBuscar(string desc);
 
         //
+        Utils.FiltrosCB.ICtrlConBusqueda Cliente { get; }
+        Utils.FiltrosCB.ICtrlConBusqueda Aliado { get; }
+        Utils.FiltrosCB.ICtrlSinBusqueda EstatusDoc { get; }
+        Utils.FiltroFecha.IFecha Desde { get; }
+        Utils.FiltroFecha.IFecha Hasta { get; }
+
+        //
         void Inicializa();
         void CargarData();
         void Limpiar();

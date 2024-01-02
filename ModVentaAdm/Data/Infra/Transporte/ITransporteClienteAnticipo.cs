@@ -18,5 +18,8 @@ namespace ModVentaAdm.Data.Infra.Transporte
         //
         OOB.Resultado.Ficha
             Transporte_Cliente_Anticipo_Anular(int idMov);
+        //
+        OOB.Resultado.FichaEntidad<OOB.Transporte.ClienteAnticipo.Entidad.Ficha>
+            Transporte_Cliente_Anticipo_Movimiento_GetById(int idMov);
     }
 }

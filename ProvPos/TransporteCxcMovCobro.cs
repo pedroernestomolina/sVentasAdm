@@ -346,5 +346,85 @@ namespace ProvPos
             }
             return result;
         }
+        //
+        public DtoLib.ResultadoEntidad<DtoTransporte.CxcMovCobro.Entidad.Ficha> 
+            Transporte_CxcMovCobro_GetById(string id)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoTransporte.CxcMovCobro.Entidad.Ficha>();
+//            try
+//            {
+//                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+//                {
+//                    var sql = @"SELECT 
+//                                    rec.documento as reciboNro,
+//                                    rec.fecha as fechaMov,
+//                                    rec.importe_divisa as importeDiv,
+//                                    rec.monto_recibido_divisa as montoRecDiv,
+//                                    rec.tasa_cambio as tasaCambio,
+//                                    rec.nota as notasMov,
+//                                    rec.proveedor as nombreProv,
+//                                    rec.ci_rif as ciRifProv,
+//                                    rec.direccion as dirProv,
+//                                    rec.estatus_anulado as estatusMov
+//                                FROM cxp_recibos as rec
+//                                where auto=@idMov";
+//                    var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+//                    var ent = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Planilla.Ficha>(sql, p0).FirstOrDefault();
+//                    if (ent == null)
+//                    {
+//                        throw new Exception("MOVIMIENTO NO ENCONTRADO");
+//                    }
+//                    //
+//                    sql = @"SELECT 
+//                                doc.tipo_documento as siglasDoc,
+//                                doc.fecha as fechaEmisionDoc,
+//                                doc.documento as numeroDoc,
+//                                doc.importe as montoDiv
+//                            FROM cxp_documentos as doc
+//                            WHERE auto_cxp_recibo=@idMov";
+//                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+//                    var _doc = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Planilla.Documento>(sql, p0).ToList();
+//                    //
+//                    sql = @"SELECT 
+//                                met.medio as descMet,
+//                                met.codigo as codMet,
+//                                met.opLote,
+//                                met.opRef,
+//                                met.opBanco,
+//                                met.opNroCta,
+//                                met.opNroTransf,
+//                                met.opFecha,
+//                                met.opDetalle,
+//                                met.opMonto,
+//                                met.opTasa,
+//                                met.opAplicaConversion
+//                            FROM cxp_medio_pago as met
+//                            where auto_recibo=@idMov";
+//                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+//                    var _met = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Planilla.MetodoPago>(sql, p0).ToList();
+//                    //
+//                    sql = @"SELECT 
+//                                cj.desc_caja as cjDesc,
+//                                cj.monto as monto,
+//                                cj.es_divisa as esDivisa,
+//                                cj.cod_caja as cjCod
+//                            FROM cxp_recibos_caj as cj
+//                            where auto_recibo=@idMov";
+//                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+//                    var _cjs = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Planilla.Caja>(sql, p0).ToList();
+//                    //
+//                    ent.doc = _doc;
+//                    ent.metPago = _met;
+//                    ent.caja = _cjs;
+//                    result.Entidad = ent;
+//                }
+//            }
+//            catch (Exception e)
+//            {
+//                result.Mensaje = e.Message;
+//                result.Result = DtoLib.Enumerados.EnumResult.isError;
+//            }
+            return result;
+        }
     }
 }

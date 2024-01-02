@@ -393,23 +393,60 @@ namespace ModVentaAdm.Src.Principal
 
         public void ReporteTransporte_AliadoResumen()
         {
-            IReporte _rep;
-            _rep = new SrcTransporte.Reportes.Aliado.Resumen();
-            _rep.Generar();
+            SrcTransporte.Filtro.Vistas.IFiltro _filtro = new SrcTransporte.Filtro.Reportes.Imp();
+            _filtro.Inicializa();
+            _filtro.setActivarFiltrosPor(new SrcTransporte.Reportes.Aliado.PorResumen.FiltrarPor());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                SrcTransporte.Reportes.IReporteConFiltro _rep;
+                _rep = new SrcTransporte.Reportes.Aliado.PorResumen.Imp();
+                _rep.setFiltros(_filtro.HndFiltro.Get_Filtros);
+                _rep.Generar();
+            }
         }
         public void ReporteTransporte_AliadoDetalleDoc()
         {
-            IReporte _rep;
-            _rep = new SrcTransporte.Reportes.Aliado.DetalleDoc();
-            _rep.Generar();
+            SrcTransporte.Filtro.Vistas.IFiltro _filtro = new SrcTransporte.Filtro.Reportes.Imp();
+            _filtro.Inicializa();
+            _filtro.setActivarFiltrosPor(new SrcTransporte.Reportes.Aliado.PorDetalleDoc.FiltrarPor());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                SrcTransporte.Reportes.IReporteConFiltro _rep;
+                _rep = new SrcTransporte.Reportes.Aliado.PorDetalleDoc.Imp();
+                _rep.setFiltros(_filtro.HndFiltro.Get_Filtros);
+                _rep.Generar();
+            }
         }
         public void ReporteTransporte_AliadoDetalleServ()
         {
-            IReporte _rep;
-            _rep = new SrcTransporte.Reportes.Aliado.DetalleServ();
-            _rep.Generar();
+            SrcTransporte.Filtro.Vistas.IFiltro _filtro = new SrcTransporte.Filtro.Reportes.Imp();
+            _filtro.Inicializa();
+            _filtro.setActivarFiltrosPor(new SrcTransporte.Reportes.Aliado.PorDetalleServ.FiltrarPor());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                SrcTransporte.Reportes.IReporteConFiltro _rep;
+                _rep = new SrcTransporte.Reportes.Aliado.PorDetalleServ.Imp();
+                _rep.setFiltros(_filtro.HndFiltro.Get_Filtros);
+                _rep.Generar();
+            }
         }
-
+        public void ReporteTransporte_AliadoPorCliente()
+        {
+            SrcTransporte.Filtro.Vistas.IFiltro _filtro = new SrcTransporte.Filtro.Reportes.Imp();
+            _filtro.Inicializa();
+            _filtro.setActivarFiltrosPor(new SrcTransporte.Reportes.Aliado.PorCliente.FiltrarPor());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                SrcTransporte.Reportes.IReporteConFiltro _rep;
+                _rep = new SrcTransporte.Reportes.Aliado.PorCliente.Imp();
+                _rep.setFiltros(_filtro.HndFiltro.Get_Filtros);
+                _rep.Generar();
+            }
+        }
 
         SrcTransporte.Configuracion.Notas.INotas _gNotasPresup;
         public void Cnf_NotasPresupuesto()

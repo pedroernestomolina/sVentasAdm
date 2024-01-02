@@ -733,7 +733,7 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.3487F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.6513F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tableLayoutPanel10.Controls.Add(this.panel37, 1, 0);
             this.tableLayoutPanel10.Controls.Add(this.panel38, 2, 0);
             this.tableLayoutPanel10.Controls.Add(this.panel39, 1, 1);
@@ -757,7 +757,7 @@
             this.panel37.Margin = new System.Windows.Forms.Padding(0);
             this.panel37.Name = "panel37";
             this.panel37.Padding = new System.Windows.Forms.Padding(2);
-            this.panel37.Size = new System.Drawing.Size(184, 35);
+            this.panel37.Size = new System.Drawing.Size(183, 35);
             this.panel37.TabIndex = 0;
             // 
             // label13
@@ -766,7 +766,7 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(2, 2);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(180, 31);
+            this.label13.Size = new System.Drawing.Size(179, 31);
             this.label13.TabIndex = 3;
             this.label13.Text = "Pendiente En ($):";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -775,7 +775,7 @@
             // 
             this.panel38.Controls.Add(this.L_MONTO_PEND_MON_DIV);
             this.panel38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel38.Location = new System.Drawing.Point(399, 0);
+            this.panel38.Location = new System.Drawing.Point(398, 0);
             this.panel38.Margin = new System.Windows.Forms.Padding(0);
             this.panel38.Name = "panel38";
             this.panel38.Padding = new System.Windows.Forms.Padding(2);
@@ -801,7 +801,7 @@
             this.panel39.Margin = new System.Windows.Forms.Padding(0);
             this.panel39.Name = "panel39";
             this.panel39.Padding = new System.Windows.Forms.Padding(2);
-            this.panel39.Size = new System.Drawing.Size(184, 35);
+            this.panel39.Size = new System.Drawing.Size(183, 35);
             this.panel39.TabIndex = 2;
             // 
             // label15
@@ -810,7 +810,7 @@
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(2, 2);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(180, 31);
+            this.label15.Size = new System.Drawing.Size(179, 31);
             this.label15.TabIndex = 3;
             this.label15.Text = "Pendiente En  Bs:";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -819,7 +819,7 @@
             // 
             this.panel40.Controls.Add(this.L_MONTO_PEND_MON_ACT);
             this.panel40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel40.Location = new System.Drawing.Point(399, 35);
+            this.panel40.Location = new System.Drawing.Point(398, 35);
             this.panel40.Margin = new System.Windows.Forms.Padding(0);
             this.panel40.Name = "panel40";
             this.panel40.Padding = new System.Windows.Forms.Padding(2);

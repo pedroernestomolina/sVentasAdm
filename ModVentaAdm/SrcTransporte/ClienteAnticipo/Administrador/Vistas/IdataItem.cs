@@ -15,6 +15,6 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Vistas
         decimal MontoMov { get; set; }
         decimal MontoRec { get; set; }
         string Estatus { get; set; }
-        bool AplicaRet { get; set; }
+        string AplicaRet { get; set; }
     }
 }

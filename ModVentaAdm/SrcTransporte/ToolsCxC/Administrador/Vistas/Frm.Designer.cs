@@ -50,11 +50,9 @@
             this.panel17 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.panel25 = new System.Windows.Forms.Panel();
-            this.DTP_HASTA = new System.Windows.Forms.DateTimePicker();
             this.panel24 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel23 = new System.Windows.Forms.Panel();
-            this.DTP_DESDE = new System.Windows.Forms.DateTimePicker();
             this.panel22 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
@@ -84,6 +82,8 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.DGV = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.L_DESDE = new System.Windows.Forms.Label();
+            this.L_HASTA = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.panel45.SuspendLayout();
@@ -408,7 +408,7 @@
             // 
             // panel25
             // 
-            this.panel25.Controls.Add(this.DTP_HASTA);
+            this.panel25.Controls.Add(this.L_HASTA);
             this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel25.Location = new System.Drawing.Point(78, 45);
             this.panel25.Margin = new System.Windows.Forms.Padding(1);
@@ -416,18 +416,6 @@
             this.panel25.Padding = new System.Windows.Forms.Padding(2);
             this.panel25.Size = new System.Drawing.Size(113, 27);
             this.panel25.TabIndex = 4;
-            // 
-            // DTP_HASTA
-            // 
-            this.DTP_HASTA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DTP_HASTA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTP_HASTA.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTP_HASTA.Location = new System.Drawing.Point(2, 2);
-            this.DTP_HASTA.Name = "DTP_HASTA";
-            this.DTP_HASTA.ShowCheckBox = true;
-            this.DTP_HASTA.Size = new System.Drawing.Size(109, 22);
-            this.DTP_HASTA.TabIndex = 2;
-            this.DTP_HASTA.ValueChanged += new System.EventHandler(this.DTP_HASTA_ValueChanged);
             // 
             // panel24
             // 
@@ -453,7 +441,7 @@
             // 
             // panel23
             // 
-            this.panel23.Controls.Add(this.DTP_DESDE);
+            this.panel23.Controls.Add(this.L_DESDE);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel23.Location = new System.Drawing.Point(78, 16);
             this.panel23.Margin = new System.Windows.Forms.Padding(1);
@@ -461,18 +449,6 @@
             this.panel23.Padding = new System.Windows.Forms.Padding(2);
             this.panel23.Size = new System.Drawing.Size(113, 27);
             this.panel23.TabIndex = 2;
-            // 
-            // DTP_DESDE
-            // 
-            this.DTP_DESDE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DTP_DESDE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTP_DESDE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTP_DESDE.Location = new System.Drawing.Point(2, 2);
-            this.DTP_DESDE.Name = "DTP_DESDE";
-            this.DTP_DESDE.ShowCheckBox = true;
-            this.DTP_DESDE.Size = new System.Drawing.Size(109, 22);
-            this.DTP_DESDE.TabIndex = 1;
-            this.DTP_DESDE.ValueChanged += new System.EventHandler(this.DTP_DESDE_ValueChanged);
             // 
             // panel22
             // 
@@ -708,7 +684,6 @@
             this.BT_VISUALIZAR.TabIndex = 1;
             this.toolTip1.SetToolTip(this.BT_VISUALIZAR, "Visualizar Documento");
             this.BT_VISUALIZAR.UseVisualStyleBackColor = true;
-            this.BT_VISUALIZAR.Visible = false;
             this.BT_VISUALIZAR.Click += new System.EventHandler(this.BT_VISUALIZAR_Click);
             // 
             // panel10
@@ -836,6 +811,30 @@
             this.DGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellDoubleClick);
             this.DGV.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DGV_DataBindingComplete);
             // 
+            // L_DESDE
+            // 
+            this.L_DESDE.BackColor = System.Drawing.Color.Yellow;
+            this.L_DESDE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_DESDE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_DESDE.Location = new System.Drawing.Point(2, 2);
+            this.L_DESDE.Name = "L_DESDE";
+            this.L_DESDE.Size = new System.Drawing.Size(109, 23);
+            this.L_DESDE.TabIndex = 0;
+            this.L_DESDE.Text = "label4";
+            this.L_DESDE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_HASTA
+            // 
+            this.L_HASTA.BackColor = System.Drawing.Color.Yellow;
+            this.L_HASTA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_HASTA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_HASTA.Location = new System.Drawing.Point(2, 2);
+            this.L_HASTA.Name = "L_HASTA";
+            this.L_HASTA.Size = new System.Drawing.Size(109, 23);
+            this.L_HASTA.TabIndex = 0;
+            this.L_HASTA.Text = "label5";
+            this.L_HASTA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -932,11 +931,9 @@
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Panel panel25;
-        private System.Windows.Forms.DateTimePicker DTP_HASTA;
         private System.Windows.Forms.Panel panel24;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel23;
-        private System.Windows.Forms.DateTimePicker DTP_DESDE;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel26;
@@ -949,5 +946,7 @@
         private System.Windows.Forms.Button BT_FILTROS_BUSQ;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button BT_BUSCAR;
+        private System.Windows.Forms.Label L_HASTA;
+        private System.Windows.Forms.Label L_DESDE;
     }
 }

@@ -19,6 +19,7 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Handler
         public Vistas.IBusqDocAdm BusqDoc { get { return _busqDoc; } }
         public string Get_TituloAdm { get { return "Administrador Documentos: ANTICIPOS DE CLIENTES"; } }
         public int Get_CntItem { get { return _lista.Get_CntItem; } }
+        public Filtro.Vistas.IFiltro CtrlFiltro { get { return _ctrFiltro; } }
         
 
         public Imp()
@@ -26,7 +27,8 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Handler
             _abandonarIsOK = false;
             _lista = new HndLista();
             _busqDoc = new HndBusqDoc();
-            _ctrFiltro = new SrcTransporte.Filtro.AnticipoCliente.Imp();
+            _ctrFiltro = new SrcTransporte.Filtro.Reportes.Imp();
+            _ctrFiltro.setActivarFiltrosPor(new FiltrarPor());
         }
         public void Inicializa()
         {
@@ -150,35 +152,16 @@ namespace ModVentaAdm.SrcTransporte.ClienteAnticipo.Administrador.Handler
         }
         private void visualizarItem(dataItem it)
         {
+            IRepPlanilla _rep = new Reportes.Planilla.Imp();
+            _rep.setItemCargar(it.idMov);
+            _rep.Generar();
         }
         private void imprimirItems()
         {
-            //srcTransporte.Reportes.IRepListAdm _rep = new srcTransporte.Reportes.ListaAdm.CajaMov.Imp();
-            //_rep.setFiltrosBusq("");
-            //_rep.setDataCargar(_lista.Get_Items);
-            //_rep.Generar();
-        }
-        //
-        //
-        public DateTime Get_Desde { get { return _ctrFiltro.HndFiltro.Get_Desde; } }
-        public DateTime Get_Hasta { get { return _ctrFiltro.HndFiltro.Get_Hasta; } }
-        public bool Get_IsActivoDesde { get { return _ctrFiltro.HndFiltro.Get_IsActivoDesde; } }
-        public bool Get_IsActivoHasta { get { return _ctrFiltro.HndFiltro.Get_IsActivoDesde; } }
-        public void setDesde(DateTime fecha)
-        {
-            _ctrFiltro.HndFiltro.setDesde(fecha);
-        }
-        public void setHasta(DateTime fecha)
-        {
-            _ctrFiltro.HndFiltro.setHasta(fecha);
-        }
-        public void ActivarDesde(bool modo)
-        {
-            _ctrFiltro.HndFiltro.ActivarDesde(modo);
-        }
-        public void ActivarHasta(bool modo)
-        {
-            _ctrFiltro.HndFiltro.ActivarHasta(modo);
+            IRepAdm _rep = new Reportes.ListaAdm.Imp();
+            _rep.setFiltrosBusq("");
+            _rep.setDataCargar(_lista.Get_Items);
+            _rep.Generar();
         }
     }
 }

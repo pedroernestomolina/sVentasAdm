@@ -326,31 +326,41 @@ namespace ModVentaAdm.SrcTransporte.Principal
             _controlador.TransporteFacturaGenerar();
         }
 
+        //
         private void REP_TRANS_ALIADO_RESUMEN_Click(object sender, EventArgs e)
         {
             ReporteTransporte_AliadoResumen();
-        }
-        private void ReporteTransporte_AliadoResumen()
-        {
-            _controlador.ReporteTransporte_AliadoResumen();
         }
         private void REP_TRANS_ALIADO_DETALLE_Click(object sender, EventArgs e)
         {
             ReporteTransporte_AliadoDetalleDoc();
         }
-        private void ReporteTransporte_AliadoDetalleDoc()
-        {
-            _controlador.ReporteTransporte_AliadoDetalleDoc();
-        }
-
         private void REP_TRANS_ALIADO_POR_SERVICIO_Click(object sender, EventArgs e)
         {
             ReporteTransporte_AliadoDetalleServ();
+        }
+        private void REP_TRANS_ALIADO_POR_CLIENTE_Click(object sender, EventArgs e)
+        {
+            ReporteTransporte_AliadoPorCliente();
+        }
+
+        private void ReporteTransporte_AliadoResumen()
+        {
+            _controlador.ReporteTransporte_AliadoResumen();
+        }
+        private void ReporteTransporte_AliadoDetalleDoc()
+        {
+            _controlador.ReporteTransporte_AliadoDetalleDoc();
         }
         private void ReporteTransporte_AliadoDetalleServ()
         {
             _controlador.ReporteTransporte_AliadoDetalleServ();
         }
+        private void ReporteTransporte_AliadoPorCliente()
+        {
+            _controlador.ReporteTransporte_AliadoPorCliente();
+        }
+        //
 
         private void MNU_CNF_NOTAS_PRESUP_Click(object sender, EventArgs e)
         {

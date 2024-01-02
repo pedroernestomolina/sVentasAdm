@@ -10,6 +10,8 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Vistas
     public interface IFiltro: Src.IGestion, Src.Gestion.IAbandonar, Src.Gestion.IProcesar 
     {
         IHndFiltro HndFiltro { get; }
+        IActivarFiltroPor ActivarFiltroPor { get; }
+        void setActivarFiltrosPor(SrcTransporte.Filtro.Vistas.IActivarFiltroPor filtrarPor);
         void Limpiar();
     }
 }

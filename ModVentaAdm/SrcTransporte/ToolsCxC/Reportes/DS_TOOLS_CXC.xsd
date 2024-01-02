@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_TOOLS_CXC" targetNamespace="http://tempuri.org/DS_TOOLS_CXC.xsd" xmlns:mstns="http://tempuri.org/DS_TOOLS_CXC.xsd" xmlns="http://tempuri.org/DS_TOOLS_CXC.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_TOOLS_CXC" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_TOOLS_CXC" msprop:Generator_UserDSName="DS_TOOLS_CXC">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ListaAdm" msprop:Generator_TableClassName="ListaAdmDataTable" msprop:Generator_TableVarName="tableListaAdm" msprop:Generator_TablePropName="ListaAdm" msprop:Generator_RowDeletingName="ListaAdmRowDeleting" msprop:Generator_RowChangingName="ListaAdmRowChanging" msprop:Generator_RowEvHandlerName="ListaAdmRowChangeEventHandler" msprop:Generator_RowDeletedName="ListaAdmRowDeleted" msprop:Generator_UserTableName="ListaAdm" msprop:Generator_RowChangedName="ListaAdmRowChanged" msprop:Generator_RowEvArgName="ListaAdmRowChangeEvent" msprop:Generator_RowClassName="ListaAdmRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cliente" msprop:Generator_ColumnVarNameInTable="columncliente" msprop:Generator_ColumnPropNameInRow="cliente" msprop:Generator_ColumnPropNameInTable="clienteColumn" msprop:Generator_UserColumnName="cliente" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="montoMov" msprop:Generator_ColumnVarNameInTable="columnmontoMov" msprop:Generator_ColumnPropNameInRow="montoMov" msprop:Generator_ColumnPropNameInTable="montoMovColumn" msprop:Generator_UserColumnName="montoMov" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoRec" msprop:Generator_ColumnVarNameInTable="columnmontoRec" msprop:Generator_ColumnPropNameInRow="montoRec" msprop:Generator_ColumnPropNameInTable="montoRecColumn" msprop:Generator_UserColumnName="montoRec" type="xs:decimal" minOccurs="0" />
+              <xs:element name="estatus" msprop:Generator_ColumnVarNameInTable="columnestatus" msprop:Generator_ColumnPropNameInRow="estatus" msprop:Generator_ColumnPropNameInTable="estatusColumn" msprop:Generator_UserColumnName="estatus" type="xs:string" minOccurs="0" />
+              <xs:element name="recibo" msprop:Generator_ColumnVarNameInTable="columnrecibo" msprop:Generator_ColumnPropNameInRow="recibo" msprop:Generator_ColumnPropNameInTable="reciboColumn" msprop:Generator_UserColumnName="recibo" type="xs:string" minOccurs="0" />
+              <xs:element name="montoAnticipo" msprop:Generator_ColumnVarNameInTable="columnmontoAnticipo" msprop:Generator_ColumnPropNameInRow="montoAnticipo" msprop:Generator_ColumnPropNameInTable="montoAnticipoColumn" msprop:Generator_UserColumnName="montoAnticipo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoRet" msprop:Generator_ColumnVarNameInTable="columnmontoRet" msprop:Generator_ColumnPropNameInRow="montoRet" msprop:Generator_ColumnPropNameInTable="montoRetColumn" msprop:Generator_UserColumnName="montoRet" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

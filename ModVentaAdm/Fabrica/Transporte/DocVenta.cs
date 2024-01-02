@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Fabrica.Transporte
 {
-    public partial class ModoTransporte: IFabrica
+    public partial class ModoTransporte : IFabrica
     {
         public bool AnularDocumentoVenta(Src.Administrador.data GetItemActual, Src.Anular.Gestion _gAnular)
         {
@@ -65,7 +65,7 @@ namespace ModVentaAdm.Fabrica.Transporte
                 return false;
             }
         }
-        private bool AnularPresupuesto(Src.Administrador.data doc , string motivo)
+        private bool AnularPresupuesto(Src.Administrador.data doc, string motivo)
         {
             var ficha = new OOB.Transporte.Documento.Anular.Presupuesto.Ficha()
             {
@@ -86,7 +86,7 @@ namespace ModVentaAdm.Fabrica.Transporte
         private bool AnularVenta(Src.Administrador.data doc, string motivo)
         {
             var _idSistDoc = "";
-            switch (doc.DocCodigo) 
+            switch (doc.DocCodigo)
             {
                 case "01":
                     _idSistDoc = Sistema.Id_SistDocumento_Factura;
@@ -117,7 +117,7 @@ namespace ModVentaAdm.Fabrica.Transporte
             {
                 return;
             }
-            switch (doc.DocCodigo.Trim().ToUpper()) 
+            switch (doc.DocCodigo.Trim().ToUpper())
             {
                 case "05":
                     CargarPresupuesto(doc.idDocumento);
@@ -133,7 +133,7 @@ namespace ModVentaAdm.Fabrica.Transporte
 
         private void CargarFactura(string idDoc)
         {
-            SrcTransporte.Reportes.Factura.IFactura  _doc = new SrcTransporte.Reportes.Factura.Gestion(); ;
+            SrcTransporte.Reportes.Factura.IFactura _doc = new SrcTransporte.Reportes.Factura.Gestion(); ;
             _doc.setIdDocVisualizar(idDoc);
             _doc.Generar();
         }
@@ -161,10 +161,20 @@ namespace ModVentaAdm.Fabrica.Transporte
             _presup.setIdDocVisualizar(idDoc);
             _presup.Generar();
         }
-
         public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> DocumentosGetLista(OOB.Documento.Lista.Filtro filtro)
         {
             return Sistema.MyData.TransporteDocumento_GetLista(filtro);
+        }
+        private SrcTransporte.ClienteAnticipo.Agregar.Vistas.IHnd _anticipo;
+        public void ClienteAnticipos(object idCliente)
+        {
+            if (_anticipo == null)
+            {
+                _anticipo = new SrcTransporte.ClienteAnticipo.Agregar.Handler.Imp();
+            }
+            _anticipo.Inicializa();
+            _anticipo.setClienteCargar((string)idCliente);
+            _anticipo.Inicia();
         }
     }
 }

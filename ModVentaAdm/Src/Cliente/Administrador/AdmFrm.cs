@@ -269,5 +269,14 @@ namespace ModVentaAdm.Src.Cliente.Administrador
         {
             _controlador.EdoCta();
         }
+        //
+        private void BT_ANTICIPO_Click(object sender, EventArgs e)
+        {
+            Anticipo();
+        }
+        private void Anticipo()
+        {
+            _controlador.Anticipo();
+        }
     }
 }

@@ -74,6 +74,9 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.panel23 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel29 = new System.Windows.Forms.Panel();
+            this.BT_ANTICIPO = new System.Windows.Forms.Button();
             this.panel22 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.panel24 = new System.Windows.Forms.Panel();
@@ -132,6 +135,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.panel6.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
+            this.panel23.SuspendLayout();
+            this.tableLayoutPanel16.SuspendLayout();
+            this.panel29.SuspendLayout();
             this.panel22.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.panel24.SuspendLayout();
@@ -740,6 +746,7 @@
             // 
             // panel23
             // 
+            this.panel23.Controls.Add(this.tableLayoutPanel16);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel23.Location = new System.Drawing.Point(2, 154);
             this.panel23.Margin = new System.Windows.Forms.Padding(1);
@@ -747,6 +754,49 @@
             this.panel23.Padding = new System.Windows.Forms.Padding(1);
             this.panel23.Size = new System.Drawing.Size(84, 74);
             this.panel23.TabIndex = 1;
+            // 
+            // tableLayoutPanel16
+            // 
+            this.tableLayoutPanel16.ColumnCount = 2;
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.Controls.Add(this.panel29, 0, 0);
+            this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(1, 1);
+            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
+            this.tableLayoutPanel16.RowCount = 1;
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(82, 72);
+            this.tableLayoutPanel16.TabIndex = 2;
+            // 
+            // panel29
+            // 
+            this.tableLayoutPanel16.SetColumnSpan(this.panel29, 2);
+            this.panel29.Controls.Add(this.BT_ANTICIPO);
+            this.panel29.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel29.Location = new System.Drawing.Point(1, 1);
+            this.panel29.Margin = new System.Windows.Forms.Padding(1);
+            this.panel29.Name = "panel29";
+            this.panel29.Padding = new System.Windows.Forms.Padding(2);
+            this.panel29.Size = new System.Drawing.Size(80, 70);
+            this.panel29.TabIndex = 0;
+            // 
+            // BT_ANTICIPO
+            // 
+            this.BT_ANTICIPO.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_avance_anticipo_48;
+            this.BT_ANTICIPO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BT_ANTICIPO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ANTICIPO.FlatAppearance.BorderSize = 0;
+            this.BT_ANTICIPO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_ANTICIPO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_ANTICIPO.Location = new System.Drawing.Point(2, 2);
+            this.BT_ANTICIPO.Name = "BT_ANTICIPO";
+            this.BT_ANTICIPO.Size = new System.Drawing.Size(76, 66);
+            this.BT_ANTICIPO.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.BT_ANTICIPO, "Entrada Por Anticipos");
+            this.BT_ANTICIPO.UseVisualStyleBackColor = true;
+            this.BT_ANTICIPO.Click += new System.EventHandler(this.BT_ANTICIPO_Click);
             // 
             // panel22
             // 
@@ -1163,6 +1213,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             this.panel6.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
+            this.panel23.ResumeLayout(false);
+            this.tableLayoutPanel16.ResumeLayout(false);
+            this.panel29.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
@@ -1261,5 +1314,8 @@
         private System.Windows.Forms.TextBox TB_CADENA;
         private System.Windows.Forms.Panel panel27;
         private System.Windows.Forms.Button BT_EDO_CTA;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.Panel panel29;
+        private System.Windows.Forms.Button BT_ANTICIPO;
     }
 }

@@ -14,6 +14,7 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Handler
         public Vistas.Enumerados.EstatusDoc EstatusDoc { get; set; }
         public int IdCaja { get; set; }
         public string IdCliente { get; set; }
+        public int IdAliado { get; set; }
 
 
         public dataFiltrar()
@@ -23,6 +24,7 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Handler
             EstatusDoc = Vistas.Enumerados.EstatusDoc.SinDefinir;
             IdCaja = -1;
             IdCliente= "";
+            IdAliado = -1;
         }
         public void Inicializa()
         {
@@ -31,6 +33,7 @@ namespace ModVentaAdm.SrcTransporte.Filtro.Handler
             EstatusDoc = Vistas.Enumerados.EstatusDoc.SinDefinir;
             IdCaja = -1;
             IdCliente = "";
+            IdAliado = -1;
         }
     }
 }

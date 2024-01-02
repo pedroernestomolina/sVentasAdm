@@ -141,5 +141,72 @@ namespace ModVentaAdm.Data.Prov
             }
             return rt;
         }
+        //
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.ClienteAnticipo.Entidad.Ficha> 
+            Transporte_Cliente_Anticipo_Movimiento_GetById(int idMov)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.ClienteAnticipo.Entidad.Ficha>();
+            var r01 = MyData.Transporte_Cliente_Anticipo_Movimiento_GetById(idMov);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            OOB.Transporte.ClienteAnticipo.Entidad.Movimiento mov;
+            List<OOB.Transporte.ClienteAnticipo.Entidad.Caja> lst;
+            if (r01.Entidad.Mov != null)
+            {
+                var _mov = r01.Entidad.Mov;
+                mov = new OOB.Transporte.ClienteAnticipo.Entidad.Movimiento()
+                {
+                    aplicaRet = _mov.aplicaRet,
+                    ciRifCliente = _mov.ciRifCliente,
+                    estatus = _mov.estatus,
+                    fechaEmision = _mov.fechaEmision,
+                    idCliente = _mov.idCliente,
+                    idMov = _mov.idMov,
+                    montoMovMonAct = _mov.montoMovMonAct,
+                    montoMovMonDiv = _mov.montoMovMonDiv,
+                    montoRecMonAct = _mov.montoRecMonAct,
+                    montoRecMonDiv = _mov.montoRecMonDiv,
+                    montoRet = _mov.montoRet,
+                    motivo = _mov.motivo,
+                    nombreCliente = _mov.nombreCliente,
+                    reciboNro = _mov.reciboNro,
+                    sustraendoRet = _mov.sustraendoRet,
+                    tasaFactor = _mov.tasaFactor,
+                    tasaRet = _mov.tasaRet,
+                    totalRet = _mov.totalRet,
+                };
+                lst = new List<OOB.Transporte.ClienteAnticipo.Entidad.Caja>();
+                if (r01.Entidad.CajMov != null)
+                {
+                    if (r01.Entidad.CajMov.Count > 0)
+                    {
+                        lst = r01.Entidad.CajMov.Select(s =>
+                        {
+                            var nr = new OOB.Transporte.ClienteAnticipo.Entidad.Caja()
+                            {
+                                cjCodigo = s.cjCodigo,
+                                cjDesc = s.cjDesc,
+                                esDivisa = s.esDivisa,
+                                monto = s.monto,
+                            };
+                            return nr;
+                        }).ToList();
+                    }
+                }
+            }
+            else 
+            {
+                mov = new OOB.Transporte.ClienteAnticipo.Entidad.Movimiento();
+                lst = new List<OOB.Transporte.ClienteAnticipo.Entidad.Caja>();
+            }
+            result.Entidad = new OOB.Transporte.ClienteAnticipo.Entidad.Ficha()
+            {
+                CajMov = lst,
+                Mov = mov,
+            };
+            return result;
+        }
     }
 }

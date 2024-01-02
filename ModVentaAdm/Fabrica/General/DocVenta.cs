@@ -111,5 +111,8 @@ namespace ModVentaAdm.Fabrica.General
         {
             return Sistema.MyData.Documento_Get_Lista(filtro);
         }
+        public void ClienteAnticipos(object idCliente)
+        {
+        }
     }
 }

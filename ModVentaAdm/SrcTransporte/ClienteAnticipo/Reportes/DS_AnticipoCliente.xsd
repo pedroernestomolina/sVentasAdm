@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_AnticipoCliente" targetNamespace="http://tempuri.org/DS_AnticipoCliente.xsd" xmlns:mstns="http://tempuri.org/DS_AnticipoCliente.xsd" xmlns="http://tempuri.org/DS_AnticipoCliente.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_AnticipoCliente" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_AnticipoCliente" msprop:Generator_UserDSName="DS_AnticipoCliente">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ListaAdm" msprop:Generator_TableClassName="ListaAdmDataTable" msprop:Generator_TableVarName="tableListaAdm" msprop:Generator_RowChangedName="ListaAdmRowChanged" msprop:Generator_TablePropName="ListaAdm" msprop:Generator_RowDeletingName="ListaAdmRowDeleting" msprop:Generator_RowChangingName="ListaAdmRowChanging" msprop:Generator_RowEvHandlerName="ListaAdmRowChangeEventHandler" msprop:Generator_RowDeletedName="ListaAdmRowDeleted" msprop:Generator_RowClassName="ListaAdmRow" msprop:Generator_UserTableName="ListaAdm" msprop:Generator_RowEvArgName="ListaAdmRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cliente" msprop:Generator_ColumnVarNameInTable="columncliente" msprop:Generator_ColumnPropNameInRow="cliente" msprop:Generator_ColumnPropNameInTable="clienteColumn" msprop:Generator_UserColumnName="cliente" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="montoMov" msprop:Generator_ColumnVarNameInTable="columnmontoMov" msprop:Generator_ColumnPropNameInRow="montoMov" msprop:Generator_ColumnPropNameInTable="montoMovColumn" msprop:Generator_UserColumnName="montoMov" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoRec" msprop:Generator_ColumnVarNameInTable="columnmontoRec" msprop:Generator_ColumnPropNameInRow="montoRec" msprop:Generator_ColumnPropNameInTable="montoRecColumn" msprop:Generator_UserColumnName="montoRec" type="xs:decimal" minOccurs="0" />
+              <xs:element name="aplicaRet" msprop:Generator_ColumnVarNameInTable="columnaplicaRet" msprop:Generator_ColumnPropNameInRow="aplicaRet" msprop:Generator_ColumnPropNameInTable="aplicaRetColumn" msprop:Generator_UserColumnName="aplicaRet" type="xs:string" minOccurs="0" />
+              <xs:element name="estatus" msprop:Generator_ColumnVarNameInTable="columnestatus" msprop:Generator_ColumnPropNameInRow="estatus" msprop:Generator_ColumnPropNameInTable="estatusColumn" msprop:Generator_UserColumnName="estatus" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AnticipoMov" msprop:Generator_TableClassName="AnticipoMovDataTable" msprop:Generator_TableVarName="tableAnticipoMov" msprop:Generator_TablePropName="AnticipoMov" msprop:Generator_RowDeletingName="AnticipoMovRowDeleting" msprop:Generator_RowChangingName="AnticipoMovRowChanging" msprop:Generator_RowEvHandlerName="AnticipoMovRowChangeEventHandler" msprop:Generator_RowDeletedName="AnticipoMovRowDeleted" msprop:Generator_UserTableName="AnticipoMov" msprop:Generator_RowChangedName="AnticipoMovRowChanged" msprop:Generator_RowEvArgName="AnticipoMovRowChangeEvent" msprop:Generator_RowClassName="AnticipoMovRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="reciboNro" msprop:Generator_ColumnVarNameInTable="columnreciboNro" msprop:Generator_ColumnPropNameInRow="reciboNro" msprop:Generator_ColumnPropNameInTable="reciboNroColumn" msprop:Generator_UserColumnName="reciboNro" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="tasaFactor" msprop:Generator_ColumnVarNameInTable="columntasaFactor" msprop:Generator_ColumnPropNameInRow="tasaFactor" msprop:Generator_ColumnPropNameInTable="tasaFactorColumn" msprop:Generator_UserColumnName="tasaFactor" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoPago" msprop:Generator_ColumnVarNameInTable="columnmontoPago" msprop:Generator_ColumnPropNameInRow="montoPago" msprop:Generator_ColumnPropNameInTable="montoPagoColumn" msprop:Generator_UserColumnName="montoPago" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cliente" msprop:Generator_ColumnVarNameInTable="columncliente" msprop:Generator_ColumnPropNameInRow="cliente" msprop:Generator_ColumnPropNameInTable="clienteColumn" msprop:Generator_UserColumnName="cliente" type="xs:string" minOccurs="0" />
+              <xs:element name="motivo" msprop:Generator_ColumnVarNameInTable="columnmotivo" msprop:Generator_ColumnPropNameInRow="motivo" msprop:Generator_ColumnPropNameInTable="motivoColumn" msprop:Generator_UserColumnName="motivo" type="xs:string" minOccurs="0" />
+              <xs:element name="retTasa" msprop:Generator_ColumnVarNameInTable="columnretTasa" msprop:Generator_ColumnPropNameInRow="retTasa" msprop:Generator_ColumnPropNameInTable="retTasaColumn" msprop:Generator_UserColumnName="retTasa" type="xs:decimal" minOccurs="0" />
+              <xs:element name="retSustraendo" msprop:Generator_ColumnVarNameInTable="columnretSustraendo" msprop:Generator_ColumnPropNameInRow="retSustraendo" msprop:Generator_ColumnPropNameInTable="retSustraendoColumn" msprop:Generator_UserColumnName="retSustraendo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="retencion" msprop:Generator_ColumnVarNameInTable="columnretencion" msprop:Generator_ColumnPropNameInRow="retencion" msprop:Generator_ColumnPropNameInTable="retencionColumn" msprop:Generator_UserColumnName="retencion" type="xs:decimal" minOccurs="0" />
+              <xs:element name="retMonto" msprop:Generator_ColumnVarNameInTable="columnretMonto" msprop:Generator_ColumnPropNameInRow="retMonto" msprop:Generator_ColumnPropNameInTable="retMontoColumn" msprop:Generator_UserColumnName="retMonto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoPagado" msprop:Generator_ColumnVarNameInTable="columnmontoPagado" msprop:Generator_ColumnPropNameInRow="montoPagado" msprop:Generator_ColumnPropNameInTable="montoPagadoColumn" msprop:Generator_UserColumnName="montoPagado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="isAnulado" msprop:Generator_ColumnVarNameInTable="columnisAnulado" msprop:Generator_ColumnPropNameInRow="isAnulado" msprop:Generator_ColumnPropNameInTable="isAnuladoColumn" msprop:Generator_UserColumnName="isAnulado" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AnticipoCaj" msprop:Generator_TableClassName="AnticipoCajDataTable" msprop:Generator_TableVarName="tableAnticipoCaj" msprop:Generator_TablePropName="AnticipoCaj" msprop:Generator_RowDeletingName="AnticipoCajRowDeleting" msprop:Generator_RowChangingName="AnticipoCajRowChanging" msprop:Generator_RowEvHandlerName="AnticipoCajRowChangeEventHandler" msprop:Generator_RowDeletedName="AnticipoCajRowDeleted" msprop:Generator_UserTableName="AnticipoCaj" msprop:Generator_RowChangedName="AnticipoCajRowChanged" msprop:Generator_RowEvArgName="AnticipoCajRowChangeEvent" msprop:Generator_RowClassName="AnticipoCajRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="desc" msprop:Generator_ColumnVarNameInTable="columndesc" msprop:Generator_ColumnPropNameInRow="desc" msprop:Generator_ColumnPropNameInTable="descColumn" msprop:Generator_UserColumnName="desc" type="xs:string" minOccurs="0" />
+              <xs:element name="monto" msprop:Generator_ColumnVarNameInTable="columnmonto" msprop:Generator_ColumnPropNameInRow="monto" msprop:Generator_ColumnPropNameInTable="montoColumn" msprop:Generator_UserColumnName="monto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="esDivisa" msprop:Generator_ColumnVarNameInTable="columnesDivisa" msprop:Generator_ColumnPropNameInRow="esDivisa" msprop:Generator_ColumnPropNameInTable="esDivisaColumn" msprop:Generator_UserColumnName="esDivisa" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
