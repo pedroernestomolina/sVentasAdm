@@ -128,6 +128,10 @@
     <Compile Include="Reporte\Cxc\EdoCta\Cliente.cs" />
     <Compile Include="Reporte\Cxc\EdoCta\Ficha.cs" />
     <Compile Include="Reporte\Cxc\EdoCta\Movimiento.cs" />
+    <Compile Include="Reporte\Cxc\PlanillaCobro\Caja.cs" />
+    <Compile Include="Reporte\Cxc\PlanillaCobro\Documento.cs" />
+    <Compile Include="Reporte\Cxc\PlanillaCobro\Ficha.cs" />
+    <Compile Include="Reporte\Cxc\PlanillaCobro\MetodoPago.cs" />
     <Compile Include="ServPrest\Agregar\Ficha.cs" />
     <Compile Include="ServPrest\baseFicha.cs" />
     <Compile Include="ServPrest\Busqueda\Filtro.cs" />

@@ -185,5 +185,75 @@ namespace ModVentaAdm.Data.Prov
             };
             return rt;
         }
+        //
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.PlanillaCobro.Ficha> 
+            TransporteReporte_Cxc_CobroEmitido_Planilla(string idRec)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.PlanillaCobro.Ficha>();
+            var r01 = MyData.TransporteReporte_Cxc_CobroEmitido_Planilla(idRec);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var s = r01.Entidad;
+            var nr = new OOB.Transporte.Reporte.Cxc.PlanillaCobro.Ficha()
+            {
+                ciRifProv = s.ciRifProv,
+                dirProv = s.dirProv,
+                estatusMov = s.estatusMov,
+                fechaMov = s.fechaMov,
+                importeDiv = s.importeDiv,
+                montoRecDiv = s.montoRecDiv,
+                nombreProv = s.nombreProv,
+                notasMov = s.notasMov,
+                reciboNro = s.reciboNro,
+                tasaCambio = s.tasaCambio,
+                montoPorAnticipo = s.montoPorAnticipo,
+                doc = s.doc.Select(xd =>
+                {
+                    var tr = new OOB.Transporte.Reporte.Cxc.PlanillaCobro.Documento()
+                    {
+                        fechaEmisionDoc = xd.fechaEmisionDoc,
+                        numeroDoc = xd.numeroDoc,
+                        siglasDoc = xd.siglasDoc,
+                        montoDiv = xd.montoDiv,
+                        notas = xd.notas,
+                    };
+                    return tr;
+                }).ToList(),
+                metPago = s.metPago.Select(xm =>
+                {
+                    var tm = new OOB.Transporte.Reporte.Cxc.PlanillaCobro.MetodoPago()
+                    {
+                        codMet = xm.codMet,
+                        descMet = xm.descMet,
+                        opAplicaConversion = xm.opAplicaConversion,
+                        opBanco = xm.opBanco,
+                        opDetalle = xm.opDetalle,
+                        opFecha = xm.opFecha,
+                        opLote = xm.opLote,
+                        opMonto = xm.opMonto,
+                        opNroCta = xm.opNroCta,
+                        opNroTransf = xm.opNroTransf,
+                        opRef = xm.opNroRef,
+                        opTasa = xm.opTasa,
+                    };
+                    return tm;
+                }).ToList(),
+                caja = s.caja.Select(xt =>
+                {
+                    var xxr = new OOB.Transporte.Reporte.Cxc.PlanillaCobro.Caja()
+                    {
+                        cjDesc = xt.cjDesc,
+                        esDivisa = xt.esDivisa,
+                        monto = xt.monto,
+                        cjCod = xt.cjCod,
+                    };
+                    return xxr;
+                }).ToList(),
+            };
+            result.Entidad = nr;
+            return result;
+        }
     }
 }

@@ -26,11 +26,5 @@ namespace ServicePos.MyService
         {
             return ServiceProv.Transporte_CxcMovCobro_Anular(ficha);
         }
-        //
-        public DtoLib.ResultadoEntidad<DtoTransporte.CxcMovCobro.Entidad.Ficha> 
-            Transporte_CxcMovCobro_GetById(string idMov)
-        {
-            return ServiceProv.Transporte_CxcMovCobro_GetById(idMov);
-        }
     }
 }

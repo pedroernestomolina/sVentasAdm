@@ -26,6 +26,49 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="CxcRecDoc" msprop:Generator_TableClassName="CxcRecDocDataTable" msprop:Generator_TableVarName="tableCxcRecDoc" msprop:Generator_RowChangedName="CxcRecDocRowChanged" msprop:Generator_TablePropName="CxcRecDoc" msprop:Generator_RowDeletingName="CxcRecDocRowDeleting" msprop:Generator_RowChangingName="CxcRecDocRowChanging" msprop:Generator_RowEvHandlerName="CxcRecDocRowChangeEventHandler" msprop:Generator_RowDeletedName="CxcRecDocRowDeleted" msprop:Generator_RowClassName="CxcRecDocRow" msprop:Generator_UserTableName="CxcRecDoc" msprop:Generator_RowEvArgName="CxcRecDocRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="reciboNro" msprop:Generator_ColumnVarNameInTable="columnreciboNro" msprop:Generator_ColumnPropNameInRow="reciboNro" msprop:Generator_ColumnPropNameInTable="reciboNroColumn" msprop:Generator_UserColumnName="reciboNro" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="montoPago" msprop:Generator_ColumnVarNameInTable="columnmontoPago" msprop:Generator_ColumnPropNameInRow="montoPago" msprop:Generator_ColumnPropNameInTable="montoPagoColumn" msprop:Generator_UserColumnName="montoPago" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tasaCambio" msprop:Generator_ColumnVarNameInTable="columntasaCambio" msprop:Generator_ColumnPropNameInRow="tasaCambio" msprop:Generator_ColumnPropNameInTable="tasaCambioColumn" msprop:Generator_UserColumnName="tasaCambio" type="xs:decimal" minOccurs="0" />
+              <xs:element name="notas" msprop:Generator_ColumnVarNameInTable="columnnotas" msprop:Generator_ColumnPropNameInRow="notas" msprop:Generator_ColumnPropNameInTable="notasColumn" msprop:Generator_UserColumnName="notas" type="xs:string" minOccurs="0" />
+              <xs:element name="proveedor" msprop:Generator_ColumnVarNameInTable="columnproveedor" msprop:Generator_ColumnPropNameInRow="proveedor" msprop:Generator_ColumnPropNameInTable="proveedorColumn" msprop:Generator_UserColumnName="proveedor" type="xs:string" minOccurs="0" />
+              <xs:element name="isAnulado" msprop:Generator_ColumnVarNameInTable="columnisAnulado" msprop:Generator_ColumnPropNameInRow="isAnulado" msprop:Generator_ColumnPropNameInTable="isAnuladoColumn" msprop:Generator_UserColumnName="isAnulado" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CxcRecDoc_Caja" msprop:Generator_TableClassName="CxcRecDoc_CajaDataTable" msprop:Generator_TableVarName="tableCxcRecDoc_Caja" msprop:Generator_RowChangedName="CxcRecDoc_CajaRowChanged" msprop:Generator_TablePropName="CxcRecDoc_Caja" msprop:Generator_RowDeletingName="CxcRecDoc_CajaRowDeleting" msprop:Generator_RowChangingName="CxcRecDoc_CajaRowChanging" msprop:Generator_RowEvHandlerName="CxcRecDoc_CajaRowChangeEventHandler" msprop:Generator_RowDeletedName="CxcRecDoc_CajaRowDeleted" msprop:Generator_RowClassName="CxcRecDoc_CajaRow" msprop:Generator_UserTableName="CxcRecDoc_Caja" msprop:Generator_RowEvArgName="CxcRecDoc_CajaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="desc" msprop:Generator_ColumnVarNameInTable="columndesc" msprop:Generator_ColumnPropNameInRow="desc" msprop:Generator_ColumnPropNameInTable="descColumn" msprop:Generator_UserColumnName="desc" type="xs:string" minOccurs="0" />
+              <xs:element name="monto" msprop:Generator_ColumnVarNameInTable="columnmonto" msprop:Generator_ColumnPropNameInRow="monto" msprop:Generator_ColumnPropNameInTable="montoColumn" msprop:Generator_UserColumnName="monto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="esDivisa" msprop:Generator_ColumnVarNameInTable="columnesDivisa" msprop:Generator_ColumnPropNameInRow="esDivisa" msprop:Generator_ColumnPropNameInTable="esDivisaColumn" msprop:Generator_UserColumnName="esDivisa" type="xs:string" minOccurs="0" />
+              <xs:element name="montoDiv" msprop:Generator_ColumnVarNameInTable="columnmontoDiv" msprop:Generator_ColumnPropNameInRow="montoDiv" msprop:Generator_ColumnPropNameInTable="montoDivColumn" msprop:Generator_UserColumnName="montoDiv" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CxcRecDoc_Doc" msprop:Generator_TableClassName="CxcRecDoc_DocDataTable" msprop:Generator_TableVarName="tableCxcRecDoc_Doc" msprop:Generator_RowChangedName="CxcRecDoc_DocRowChanged" msprop:Generator_TablePropName="CxcRecDoc_Doc" msprop:Generator_RowDeletingName="CxcRecDoc_DocRowDeleting" msprop:Generator_RowChangingName="CxcRecDoc_DocRowChanging" msprop:Generator_RowEvHandlerName="CxcRecDoc_DocRowChangeEventHandler" msprop:Generator_RowDeletedName="CxcRecDoc_DocRowDeleted" msprop:Generator_RowClassName="CxcRecDoc_DocRow" msprop:Generator_UserTableName="CxcRecDoc_Doc" msprop:Generator_RowEvArgName="CxcRecDoc_DocRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="documento" msprop:Generator_ColumnVarNameInTable="columndocumento" msprop:Generator_ColumnPropNameInRow="documento" msprop:Generator_ColumnPropNameInTable="documentoColumn" msprop:Generator_UserColumnName="documento" type="xs:string" minOccurs="0" />
+              <xs:element name="siglas" msprop:Generator_ColumnVarNameInTable="columnsiglas" msprop:Generator_ColumnPropNameInRow="siglas" msprop:Generator_ColumnPropNameInTable="siglasColumn" msprop:Generator_UserColumnName="siglas" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="montoDiv" msprop:Generator_ColumnVarNameInTable="columnmontoDiv" msprop:Generator_ColumnPropNameInRow="montoDiv" msprop:Generator_ColumnPropNameInTable="montoDivColumn" msprop:Generator_UserColumnName="montoDiv" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CxcRecDoc_MetPag" msprop:Generator_TableClassName="CxcRecDoc_MetPagDataTable" msprop:Generator_TableVarName="tableCxcRecDoc_MetPag" msprop:Generator_TablePropName="CxcRecDoc_MetPag" msprop:Generator_RowDeletingName="CxcRecDoc_MetPagRowDeleting" msprop:Generator_RowChangingName="CxcRecDoc_MetPagRowChanging" msprop:Generator_RowEvHandlerName="CxcRecDoc_MetPagRowChangeEventHandler" msprop:Generator_RowDeletedName="CxcRecDoc_MetPagRowDeleted" msprop:Generator_UserTableName="CxcRecDoc_MetPag" msprop:Generator_RowChangedName="CxcRecDoc_MetPagRowChanged" msprop:Generator_RowEvArgName="CxcRecDoc_MetPagRowChangeEvent" msprop:Generator_RowClassName="CxcRecDoc_MetPagRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="metodo" msprop:Generator_ColumnVarNameInTable="columnmetodo" msprop:Generator_ColumnPropNameInRow="metodo" msprop:Generator_ColumnPropNameInTable="metodoColumn" msprop:Generator_UserColumnName="metodo" type="xs:string" minOccurs="0" />
+              <xs:element name="monto" msprop:Generator_ColumnVarNameInTable="columnmonto" msprop:Generator_ColumnPropNameInRow="monto" msprop:Generator_ColumnPropNameInTable="montoColumn" msprop:Generator_UserColumnName="monto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="referencia" msprop:Generator_ColumnVarNameInTable="columnreferencia" msprop:Generator_ColumnPropNameInRow="referencia" msprop:Generator_ColumnPropNameInTable="referenciaColumn" msprop:Generator_UserColumnName="referencia" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

@@ -18,5 +18,8 @@ namespace ServicePos.Interfaces.Transporte
         //
         DtoLib.ResultadoEntidad<DtoTransporte.Reporte.Cxc.EdoCta.Ficha>
             TransporteReporte_Cxc_EdoCta(string idCliente);
+        //
+        DtoLib.ResultadoEntidad<DtoTransporte.Reporte.Cxc.PlanillaCobro.Ficha>
+            TransporteReporte_Cxc_CobroEmitido_Planilla(string idRec);
     }
 }

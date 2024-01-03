@@ -10,7 +10,8 @@ namespace ProvPos
 {
     public partial class Provider: IPos.IProvider
     {
-        public DtoLib.ResultadoEntidad<DtoLibPos.Auditoria.Entidad.Ficha> Auditoria_Documento_GetFichaBy(DtoLibPos.Auditoria.Buscar.Ficha ficha)
+        public DtoLib.ResultadoEntidad<DtoLibPos.Auditoria.Entidad.Ficha> 
+            Auditoria_Documento_GetFichaBy(DtoLibPos.Auditoria.Buscar.Ficha ficha)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Auditoria.Entidad.Ficha>();
 

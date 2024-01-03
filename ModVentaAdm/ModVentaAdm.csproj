@@ -345,6 +345,11 @@
     <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Cliente.cs" />
     <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Ficha.cs" />
     <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Movimiento.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Cxc\PlanillaCobro\Caja.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Cxc\PlanillaCobro\Class1.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Cxc\PlanillaCobro\Documento.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Cxc\PlanillaCobro\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Reporte\Cxc\PlanillaCobro\MetodoPago.cs" />
     <Compile Include="OOB\Transporte\ServPrest\Agregar\Ficha.cs" />
     <Compile Include="OOB\Transporte\ServPrest\baseFicha.cs" />
     <Compile Include="OOB\Transporte\ServPrest\Busqueda\Filtro.cs" />
@@ -1317,6 +1322,9 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\ToolsCxC\Reportes\RepAdm_Cobro.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\ToolsCxC\Reportes\RepPlanilla_CxcRecPago.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Administrador\Documentos\AdmDocFrm.resx">

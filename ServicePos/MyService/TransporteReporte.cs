@@ -31,5 +31,11 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteReporte_Cxc_EdoCta(idCliente);
         }
+        //
+        public DtoLib.ResultadoEntidad<DtoTransporte.Reporte.Cxc.PlanillaCobro.Ficha> 
+            TransporteReporte_Cxc_CobroEmitido_Planilla(string idRec)
+        {
+            return ServiceProv.TransporteReporte_Cxc_CobroEmitido_Planilla(idRec);
+        }
     }
 }

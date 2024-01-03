@@ -19,5 +19,7 @@ namespace ModVentaAdm.Data.Infra.Transporte
         OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.EdoCta.Ficha>
             TransporteReporte_Cxc_EdoCta(string idCliente);
         //
+        OOB.Resultado.FichaEntidad<OOB.Transporte.Reporte.Cxc.PlanillaCobro.Ficha>
+            TransporteReporte_Cxc_CobroEmitido_Planilla(string idRec);
     }
 }
