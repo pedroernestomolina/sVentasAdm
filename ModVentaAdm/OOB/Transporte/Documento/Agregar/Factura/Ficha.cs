@@ -51,5 +51,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
         public bool aplicaIGTF { get; set; }
         //
         public string notasPeriodoLapso { get; set; }
+        //
+        public string docNumeroGenerar { get; set; }
     }
 }

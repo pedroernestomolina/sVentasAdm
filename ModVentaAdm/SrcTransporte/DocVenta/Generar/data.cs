@@ -47,6 +47,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _items = new dataItem();
             _totales = new dataTotales(_items);
             _datosDoc = null;
+            DocNumeroGenerar = "";
         }
 
 
@@ -55,6 +56,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _items.Inicializa();
             _totales.Inicializa();
             _datosDoc = null;
+            DocNumeroGenerar = "";
         }
         public void setDatosDoc(Presupuesto.Generar.DatosDocumento.data data)
         {
@@ -65,6 +67,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _datosDoc = null;
             _items.LimpiarTodo();
             _totales.LimpiarTodo();
+            DocNumeroGenerar = "";
         }
         public bool DataIsOk()
         {
@@ -127,5 +130,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         {
             _tasaISLR = tasa;
         }
+
+        public string DocNumeroGenerar { get; set; }
     }
 }

@@ -86,7 +86,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>=IIf(First(Fields!turnoDesc.Value, "PresupItem")="", "Center", "Left")</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -112,6 +112,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -262,6 +263,9 @@
           <TablixMembers>
             <TablixMember>
               <Group Name="Details" />
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
@@ -1369,6 +1373,14 @@
         </Field>
         <Field Name="item">
           <DataField>item</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="turnoDesc">
+          <DataField>turnoDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="turnoCntDias">
+          <DataField>turnoCntDias</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>

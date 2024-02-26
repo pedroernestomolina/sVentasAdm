@@ -152,5 +152,22 @@ namespace ServicePos.MyService
         {
             return ServiceProv.TransporteDocumento_Documento_GetTurnos(idDoc);
         }
+
+        //
+        public DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha> 
+            TransporteDocumento_Documento_AplicanNotaCredito_FiltradoByCliente(string cliente)
+        {
+            return ServiceProv.TransporteDocumento_Documento_AplicanNotaCredito_FiltradoByCliente(cliente);
+        }
+        public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.NotaCredito.ObtenerDataDocAplica.Ficha> 
+            TransporteDocumento_Documento_AplicaNotaCredito_GetData(string idDoc)
+        {
+            return ServiceProv.TransporteDocumento_Documento_AplicaNotaCredito_GetData(idDoc);
+        }
+        public DtoLib.ResultadoEntidad<string>
+            TransporteDocumento_Documento_NotaCredito_Agregar(DtoTransporte.Documento.Agregar.NotaCredito.Nueva.Ficha ficha)
+        {
+            return ServiceProv.TransporteDocumento_Documento_NotaCredito_Agregar(ficha);
+        }
     }
 }

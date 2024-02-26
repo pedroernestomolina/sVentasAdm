@@ -282,7 +282,7 @@
   <Width>8.29817in</Width>
   <Page>
     <PageHeader>
-      <Height>7.47187cm</Height>
+      <Height>7.5777cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -472,9 +472,9 @@
         </Textbox>
         <Line Name="Line1">
           <Top>7.4366cm</Top>
-          <Left>0.07056cm</Left>
+          <Left>0.33514cm</Left>
           <Height>0cm</Height>
-          <Width>20.67165cm</Width>
+          <Width>20.40707cm</Width>
           <ZIndex>5</ZIndex>
           <Style>
             <Border>

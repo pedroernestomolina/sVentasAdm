@@ -121,6 +121,19 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ventasToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAAZZJREFUSEvdlTlLA1EUhVMpYiFiEO1dEEQj7pg2OGSZzOAEtBAFLQxaaCNGbDSC
+        hU0KiwT0X4iNQkprBW39K35XrmTxDbwwheiBw53lLJn3Jkns/yKVSvVms9lKLpcrm8i9u0wm46u8M3ie
+        N0bIOSHJMHK/SMEHLKnNHpimCanoqRHpdDrhuu4Z84WyY71sh+YCjkcJWDERzTLzhlnnqQe+zDZoLvB9
+        f5CQERO5NywajusyrdH2BJNwNYSzoolUUCgU+ljnIRPR9YsmUgEbOcfxWgiTorEuwBBHvMTcpOSBuQv3
+        KNk3EU1RNa/iU29c41rBUnRhqiG6Yl4jrBPwbEO09+JTb81xnG6NbYCbW3BbTzuCBFIyT/gMGTvGnCgF
+        gnw+n8A/FZoTteAbv1pwwIad8n5PRCEZJcnS2Aa4eAjLCBaikI2+YMOPNLYVCG4pqcorynxnvtlQteKp
+        SobG/UQQBD18gnHEj4g3oGNDPOvMJ/FKhsaFg4ITDPLNNP5Mt5O1XxSP2u2AUTbr0oYsS+f/an8Esdgn
+        K344CrCD5wEAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="MENU_REPORTES_GENERAL_DOCUMENTOS_DETALLE.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -200,19 +213,6 @@
 </value>
   </data>
   <data name="MENU_REPORTES_RESUMEN.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAAZZJREFUSEvdlTlLA1EUhVMpYiFiEO1dEEQj7pg2OGSZzOAEtBAFLQxaaCNGbDSC
-        hU0KiwT0X4iNQkprBW39K35XrmTxDbwwheiBw53lLJn3Jkns/yKVSvVms9lKLpcrm8i9u0wm46u8M3ie
-        N0bIOSHJMHK/SMEHLKnNHpimCanoqRHpdDrhuu4Z84WyY71sh+YCjkcJWDERzTLzhlnnqQe+zDZoLvB9
-        f5CQERO5NywajusyrdH2BJNwNYSzoolUUCgU+ljnIRPR9YsmUgEbOcfxWgiTorEuwBBHvMTcpOSBuQv3
-        KNk3EU1RNa/iU29c41rBUnRhqiG6Yl4jrBPwbEO09+JTb81xnG6NbYCbW3BbTzuCBFIyT/gMGTvGnCgF
-        gnw+n8A/FZoTteAbv1pwwIad8n5PRCEZJcnS2Aa4eAjLCBaikI2+YMOPNLYVCG4pqcorynxnvtlQteKp
-        SobG/UQQBD18gnHEj4g3oGNDPOvMJ/FKhsaFg4ITDPLNNP5Mt5O1XxSP2u2AUTbr0oYsS+f/an8Esdgn
-        K344CrCD5wEAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ventasToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAAAZZJREFUSEvdlTlLA1EUhVMpYiFiEO1dEEQj7pg2OGSZzOAEtBAFLQxaaCNGbDSC

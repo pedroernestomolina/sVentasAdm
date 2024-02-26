@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibPos.Documento.Lista
 {
-
     public class Ficha
     {
-
         public string Id { get; set; }
         public string DocNumero { get; set; }
         public string Control { get; set; }
@@ -31,8 +29,6 @@ namespace DtoLibPos.Documento.Lista
         public string SucursalDesc { get; set; }
         public string DocSituacion { get; set; }
         public string ClaveSistema { get; set; }
-
-
         public Ficha()
         {
             Id = "";
@@ -56,7 +52,5 @@ namespace DtoLibPos.Documento.Lista
             SucursalDesc = "";
             ClaveSistema = "";
         }
-
     }
-
 }

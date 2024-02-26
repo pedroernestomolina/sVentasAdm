@@ -16,6 +16,7 @@ namespace ModVentaAdm.Data.Prov
             var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Agregar.Resultado>();
             var fichaDTO = new DtoTransporte.Documento.Agregar.Factura.Ficha()
             {
+                docNumeroGenerar= ficha.docNumeroGenerar,
                 cargos = ficha.cargos,
                 cargosp = ficha.cargosp,
                 cntRenglones = ficha.cntRenglones,

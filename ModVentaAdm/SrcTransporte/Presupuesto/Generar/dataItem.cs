@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -229,10 +230,18 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 
                     foreach (var xr in it.fechaServ)
                     {
-                        var hora = DateTime.Parse(xr.hora);
-                        DateTime fechaYHora = xr.fecha.Date + hora.TimeOfDay;
+                        //var hora = DateTime.Parse(xr.hora);
+                        //DateTime fechaYHora = xr.fecha.Date + hora.TimeOfDay;
+
+                        //// Convertir la cadena de fecha a un objeto DateTime
+                        //DateTime fecha = DateTime.ParseExact(xr.fecha.ToShortDateString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        //// Convertir la cadena de hora a un objeto DateTime con la misma fecha
+                        //DateTime hora = DateTime.ParseExact(xr.hora, "hh:mm tt", CultureInfo.InvariantCulture);
+                        //// Combinar fecha y hora en un solo objeto DateTime
+                        //DateTime fechaYHora = fecha.Add(hora.TimeOfDay);
+
                         _item.Item.setFecha(xr.fecha);
-                        _item.Item.setHora(fechaYHora);
+                        _item.Item.setHora(xr.fecha);
                         _item.Item.AgregarFecha();
                     }
 

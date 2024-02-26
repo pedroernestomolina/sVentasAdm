@@ -74,5 +74,15 @@ namespace IPos.Transporte
         //
         DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Documento.Ficha>
             TransporteDocumento_Documento_GetTurnos(string idDoc);
+
+        //LISTA DE DOCUMENTOS APTOS PARA APLICAR NOTA DE CREDITO
+        DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha>
+            TransporteDocumento_Documento_AplicanNotaCredito_FiltradoByCliente(string cliente);
+        //DEL DOCUMENTO SELECCIONADO PARA APLICAR NOTA DE CREDITO, OBTEN DATA
+        DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.NotaCredito.ObtenerDataDocAplica.Ficha>
+            TransporteDocumento_Documento_AplicaNotaCredito_GetData(string idDoc);
+        //AGREGAR NOTA DE CREDITO
+        DtoLib.ResultadoEntidad<string>
+            TransporteDocumento_Documento_NotaCredito_Agregar(DtoTransporte.Documento.Agregar.NotaCredito.Nueva.Ficha ficha);
     }
 }

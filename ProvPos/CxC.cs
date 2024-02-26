@@ -1004,7 +1004,8 @@ namespace ProvPos
                                         factor_cambio_mov, 
                                         estatus_anulado_mov,
                                         mov_fue_divisa,
-                                        signo)
+                                        signo, 
+                                        fecha_emision)
                                     VALUES (
                                         NULL, 
                                         @id_caja, 
@@ -1016,16 +1017,20 @@ namespace ProvPos
                                         @factor_cambio_mov, 
                                         '0',
                                         @mov_fue_divisa,
-                                        1)";
+                                        1,
+                                        @fecha_emision)";
+
+                                var _descMov = "COBRANZA A: "+ficha.Recibo.Cliente + ", SEGURN RECIBO #: "+ reciboNumero;
                                 var cjMov = rg.cajaMov;
                                 var p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", rg.idCaja);
                                 var p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_reg", fechaSistema.Date);
-                                var p02 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", cjMov.descMov);
+                                var p02 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", _descMov);
                                 var p03 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_act", cjMov.montoMovMonAct);
                                 var p04 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_div", cjMov.montoMovMonDiv);
                                 var p05 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio_mov", cjMov.factorCambio);
                                 var p06 = new MySql.Data.MySqlClient.MySqlParameter("@mov_fue_divisa", cjMov.movFueDivisa ? "1" : "0");
-                                var rp2 = cn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06);
+                                var pp07 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_emision", fechaSistema.Date);
+                                var rp2 = cn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, pp07);
                                 if (rp2 == 0)
                                 {
                                     result.Mensaje = "ERROR AL INSERTAR CAJA - MOVIMIENTO";

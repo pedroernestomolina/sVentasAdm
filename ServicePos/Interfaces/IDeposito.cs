@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 
 namespace ServicePos.Interfaces
 {
-    
     public interface IDeposito
     {
-
         DtoLib.ResultadoLista<DtoLibPos.Deposito.Lista.Ficha> Deposito_GetLista(DtoLibPos.Deposito.Lista.Filtro filtro);
         DtoLib.ResultadoEntidad<DtoLibPos.Deposito.Entidad.Ficha> Deposito_GetFichaById(string id);
         DtoLib.ResultadoEntidad<DtoLibPos.Deposito.Entidad.Ficha> Deposito_GetFicha_ByCodigo(string codigo);
-
     }
-
 }

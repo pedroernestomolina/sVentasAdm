@@ -713,6 +713,16 @@ namespace ModVentaAdm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_numero_documento_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_numero_documento_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_ok_2 {
             get {
                 object obj = ResourceManager.GetObject("bt_ok_2", resourceCulture);
@@ -1133,6 +1143,16 @@ namespace ModVentaAdm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_presup_servc_color {
+            get {
+                object obj = ResourceManager.GetObject("logo_presup_servc_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_transp {
             get {
                 object obj = ResourceManager.GetObject("logo_transp", resourceCulture);
@@ -1256,6 +1276,26 @@ namespace ModVentaAdm.Properties {
         internal static System.Drawing.Bitmap plataforma_efosearch {
             get {
                 object obj = ResourceManager.GetObject("plataforma_efosearch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rivas {
+            get {
+                object obj = ResourceManager.GetObject("rivas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rivas_2 {
+            get {
+                object obj = ResourceManager.GetObject("rivas_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

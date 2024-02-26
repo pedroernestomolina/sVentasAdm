@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
@@ -349,8 +350,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                 {
                     _notasPeriodoLapso = NotasPeriodo.Notas_Get;
                 }
+                string _docNumeroGenerar = Ficha.DocNumeroGenerar;
                 var fichaOOB = new OOB.Transporte.Documento.Agregar.Factura.Ficha()
                 {
+                    docNumeroGenerar = _docNumeroGenerar,
                     cargos = 0m,
                     cargosp = 0m,
                     CiRif = _cirif,
@@ -408,12 +411,12 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                     serieDocDesc = _serieDoc,
                     serieDocId = _serieId,
                     subTotalMonDivisa = 0m,
-                    items=itemsDet,
-                    tipoDocSiglas="HSV",
-                    fechaEmision=_fechaEmision,
-                    fechaVencimiento=_fechaVencimiento,
-                    aliadosDocRef= _aliadosDocRef,
-                    notasPeriodoLapso= _notasPeriodoLapso,
+                    items = itemsDet,
+                    tipoDocSiglas = "HSV",
+                    fechaEmision = _fechaEmision,
+                    fechaVencimiento = _fechaVencimiento,
+                    aliadosDocRef = _aliadosDocRef,
+                    notasPeriodoLapso = _notasPeriodoLapso,
                     aliadosResumen = _grupoAliados.Select(s =>
                     {
                         var nr = new OOB.Transporte.Documento.Agregar.Factura.FichaAliadoResumen()
@@ -436,7 +439,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                         return nr;
                     }).ToList(),
                     docRef = _docRef,
-                    turnos= _lstTurnos
+                    turnos = _lstTurnos
                 };
                 var r01 = Sistema.MyData.TransporteDocumento_AgregarFactura(fichaOOB);
                 _procesarIsOK = true;
@@ -457,11 +460,41 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
 
         public override void ActivarIGTF()
         {
-            Helpers.Msg.Alerta("OPCION NO DISPONIBLE OARA ESTE TIPO DE DOCUMENTO");
+            Helpers.Msg.Alerta("OPCION NO DISPONIBLE PARA ESTE TIPO DE DOCUMENTO");
         }
         public override void ActivarISLR()
         {
-            Helpers.Msg.Alerta("OPCION NO DISPONIBLE OARA ESTE TIPO DE DOCUMENTO");
+            Helpers.Msg.Alerta("OPCION NO DISPONIBLE PARA ESTE TIPO DE DOCUMENTO");
+        }
+        public override void DocumentoNumeroGenerar()
+        {
+            var msg = "Quieres Indicar/Editar Un Número De Documento ?";
+            var v = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (v == DialogResult.Yes)
+            {
+                NumeroDocGenerar();
+            }
+            else
+            {
+                Ficha.DocNumeroGenerar = "";
+            }
+        }
+
+        EntradaNumeroDoc.Vista.IVista _numdocGen;
+        public override bool DocumentoNumeroGenerarIsOk { get { return Ficha.DocNumeroGenerar.Trim() != ""; } }
+        private void NumeroDocGenerar()
+        {
+            if (_numdocGen == null) 
+            {
+                _numdocGen = new EntradaNumeroDoc.Handler.ImpVista();
+            }
+            _numdocGen.Inicializa();
+            _numdocGen.setNumeroDoc(Ficha.DocNumeroGenerar);
+            _numdocGen.Inicia();
+            if (_numdocGen.BtAceptar.OpcionIsOK) 
+            {
+                Ficha.DocNumeroGenerar = _numdocGen.Get_NumDocGenerar;
+            }
         }
     }
 }

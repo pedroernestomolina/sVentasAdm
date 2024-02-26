@@ -117,7 +117,7 @@ namespace ModVentaAdm.Utils.Buscar
         {
             if (e.KeyCode == Keys.Enter)
             {
-                this.SelectNextControl((Control)sender, true, true, true, true);
+                this.SelectNextControl((System.Windows.Forms.Control)sender, true, true, true, true);
             }
         }
         public void setControlador(IBuscar ctr)

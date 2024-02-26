@@ -40,20 +40,28 @@ namespace ProvPos
                         var aCxC = cn.Database.SqlQuery<int>("select a_cxc from sistema_contadores").FirstOrDefault();
                         var autoCxC = aCxC.ToString().Trim().PadLeft(largo, '0');
 
-                        var pSerie = new MySql.Data.MySqlClient.MySqlParameter("@autoSerie", ficha.serieDocId);
-                        sql = "update empresa_series_fiscales set correlativo=correlativo+1 where auto=@autoSerie";
-                        r1 = cn.Database.ExecuteSqlCommand(sql, pSerie);
-                        if (r1 == 0)
+                        var docNumero = "";
+                        if (ficha.docNumeroGenerar.Trim() != "")
                         {
-                            throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
+                            docNumero = ficha.docNumeroGenerar.Trim();
                         }
-                        var nDoc = cn.Database.SqlQuery<int?>("select correlativo from empresa_series_fiscales where auto=@autoSerie", pSerie).FirstOrDefault();
-                        if (!nDoc.HasValue)
+                        else 
                         {
-                            throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
+                            var pSerie = new MySql.Data.MySqlClient.MySqlParameter("@autoSerie", ficha.serieDocId);
+                            sql = "update empresa_series_fiscales set correlativo=correlativo+1 where auto=@autoSerie";
+                            r1 = cn.Database.ExecuteSqlCommand(sql, pSerie);
+                            if (r1 == 0)
+                            {
+                                throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
+                            }
+                            var nDoc = cn.Database.SqlQuery<int?>("select correlativo from empresa_series_fiscales where auto=@autoSerie", pSerie).FirstOrDefault();
+                            if (!nDoc.HasValue)
+                            {
+                                throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
+                            }
+                            docNumero = nDoc.Value.ToString().Trim().PadLeft(largo, '0');
                         }
                         var fechaVenc = fechaSistema.AddDays(ficha.diasCredito);
-                        var docNumero = nDoc.Value.ToString().Trim().PadLeft(largo, '0');
 
                         //INSERTAR FACTURA
                         var _sql = @"INSERT INTO `ventas` (
@@ -175,6 +183,7 @@ namespace ProvPos
                                         `z_fiscal`,
                                         docSolicitadoPor,
                                         docModuloCargar,
+                                        docEstatusPendiente,
                                         igtf_tasa,
                                         igtf_monto_mon_act,
                                         igtf_monto_mon_div,
@@ -300,6 +309,7 @@ namespace ProvPos
                                         '0',
                                         @docSolicitadoPor,
                                         @docModuloCargar,
+                                        '0',
                                         @igtf_tasa,
                                         @igtf_monto_mon_act,
                                         @igtf_monto_mon_div,
@@ -1096,6 +1106,32 @@ namespace ProvPos
                 {
                     using (var ts = new TransactionScope())
                     {
+                        //VERIFICA SI EL DOCUMENTO NUMERO A GENERAR EXISTE Y ESTA ACTIVO
+                        if (ficha.docNumeroGenerar.Trim() != "") 
+                        {
+                            var xver_1 = new MySql.Data.MySqlClient.MySqlParameter("@doGenerar", ficha.docNumeroGenerar);
+                            var xsql_ver = @"SELECT 1 as Ok 
+                                                FROM ventas 
+                                                WHERE documento=@doGenerar and 
+                                                    estatus_anulado='0' and 
+                                                    tipo='04'";
+                            var _estatus_ver = cn.Database.SqlQuery<int>(xsql_ver, xver_1).FirstOrDefault();
+                            if (_estatus_ver == 1)
+                            {
+                                throw new Exception("EXISTE UN DOCUMENTO ACTIVO CON EL MISMO NUMERO A GENERAR");
+                            }
+                            xsql_ver = @"SELECT 1 as Ok 
+                                                FROM ventas 
+                                                WHERE documento=@doGenerar and 
+                                                    tipo='04'";
+                            xver_1 = new MySql.Data.MySqlClient.MySqlParameter("@doGenerar", ficha.docNumeroGenerar);
+                            _estatus_ver = cn.Database.SqlQuery<int>(xsql_ver, xver_1).FirstOrDefault();
+                            if (_estatus_ver != 1)
+                            {
+                                throw new Exception("NO EXISTE NINGUN DOCUMENTO CON EL NUMERO A GENERAR");
+                            }
+                        }
+
                         //SALDO DEL CLIENTE EN DIVISA
                         var xcli_1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
                         var xsql_cli = @"select estatus from clientes

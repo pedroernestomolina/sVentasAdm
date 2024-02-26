@@ -8,16 +8,13 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Prov
 {
-
     public partial class DataPrv : IData
     {
-
-
         public OOB.Resultado.Lista<OOB.Maestro.Grupo.Entidad.Ficha> 
             ClienteGrupo_GetLista(OOB.Maestro.Grupo.Lista.Filtro filtro)
         {
             var result = new OOB.Resultado.Lista<OOB.Maestro.Grupo.Entidad.Ficha>();
-
+            //
             var filtroDTO = new DtoLibPos.ClienteGrupo.Lista.Filtro()
             {
             };
@@ -28,7 +25,7 @@ namespace ModVentaAdm.Data.Prov
                 result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
                 return result;
             }
-
+            //
             var lst = new List<OOB.Maestro.Grupo.Entidad.Ficha>();
             if (r01.Lista != null)
             {
@@ -47,7 +44,7 @@ namespace ModVentaAdm.Data.Prov
                 }
             }
             result.ListaD = lst;
-
+            //
             return result;
         }
         public OOB.Resultado.FichaEntidad<OOB.Maestro.Grupo.Entidad.Ficha> 
@@ -116,8 +113,5 @@ namespace ModVentaAdm.Data.Prov
 
             return rt;
         }
-
-
     }
-
 }

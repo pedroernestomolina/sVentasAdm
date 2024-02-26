@@ -56,6 +56,8 @@ namespace ModVentaAdm.Fabrica.Transporte
                     case Src.Administrador.data.enumTipoDoc.Factura:
                         rt = AnularVenta(GetItemActual, motivo);
                         break;
+                    case Src.Administrador.data.enumTipoDoc.NotaCredito:
+                        throw new Exception("METODO NO IMPLEMENTADO");
                 }
                 return rt;
             }

@@ -60,5 +60,15 @@ namespace ModVentaAdm.Data.Infra.Transporte
         //
         OOB.Resultado.Lista<OOB.Transporte.Documento.GetTurnos.Documento.Ficha>
             TransporteDocumento_Documento_GetTurnos(string idDoc);
+
+        //LISTA DE DOCUMENTOS APTOS PARA APLICAR NOTA DE CREDITO
+        OOB.Resultado.Lista<OOB.Documento.Lista.Ficha>
+            TransporteDocumento_Documento_AplicanNotaCredito_FiltradoByCliente(string cliente);
+        //DEL DOCUMENTO SELECCIONADO PARA APLICAR NOTA DE CREDITO, OBTEN DATA
+        OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Agregar.NotaCredito.ObtenerDataDocAplica.Ficha>
+            TransporteDocumento_Documento_AplicaNotaCredito_GetData(string idDoc);
+        //AGREGAR NOTA DE CREDITO
+        OOB.Resultado.FichaEntidad<string>
+            TransporteDocumento_Documento_NotaCredito_Agregar(OOB.Transporte.Documento.Agregar.NotaCredito.Nueva.Ficha ficha);
     }
 }

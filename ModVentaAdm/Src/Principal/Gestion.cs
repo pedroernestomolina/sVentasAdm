@@ -194,26 +194,6 @@ namespace ModVentaAdm.Src.Principal
                 _gestionAdmCliente.Inicia();
             }
         }
-        public void Reporte_Cliente_Maestro()
-        {
-            ReporteCliente(new ReportesCliente.Modo.Maestro.Gestion());
-        }
-        private void ReporteCliente(ReportesCliente.IGestion gestion)
-        {
-            var r00 = Sistema.MyData.Permiso_Cliente_Reportes(Sistema.Usuario.idGrupo);
-            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-
-            if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
-            {
-                _gestionRepCli.setGestion(gestion);
-                _gestionRepCli.Inicializa();
-                _gestionRepCli.Inicia();
-            }
-        }
         
         //
         public void Reporte_Resumen()
@@ -468,6 +448,55 @@ namespace ModVentaAdm.Src.Principal
             }
             _gNotasFact.Inicializa();
             _gNotasFact.Inicia();
+        }
+
+        //
+        public void RepCliente_Maestro()
+        {
+            ReporteCliente(new ReportesCliente.Modo.Maestro.Gestion());
+        }
+        private void ReporteCliente(ReportesCliente.IGestion gestion)
+        {
+            var r00 = Sistema.MyData.Permiso_Cliente_Reportes(Sistema.Usuario.idGrupo);
+            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+
+            if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+            {
+                _gestionRepCli.setGestion(gestion);
+                _gestionRepCli.Inicializa();
+                _gestionRepCli.Inicia();
+            }
+        }
+        private SrcComun.Clientes.Filtros.Comp.Vista.IVista _filtradoCliente;
+        public void RepCliente_SaldoPend()
+        {
+            if (_filtradoCliente == null) 
+            {
+                _filtradoCliente = Sistema.Fabrica.ClienteFiltros();
+            }
+            _filtradoCliente.Inicializa();
+            _filtradoCliente.setOpcionesFiltrado(Sistema.Fabrica.ClienteFiltrosOpciones_SaldoPend);
+            _filtradoCliente.Inicia();
+        }
+        //
+        private SrcComun.Documento.NotaCreditoAdm.Generar .Vista.IVista _notaCredAdm;
+        public void NotaCreditoAdm()
+        {
+            if (_notaCredAdm == null)
+            {
+                _notaCredAdm = Sistema.Fabrica.Documentos_Generar_NotaCreditoAdm();
+                if (_notaCredAdm == null) 
+                {
+                    Helpers.Msg.Alerta("OPCION NO IMPLEMENTADA");
+                    return;
+                }
+            }
+            _notaCredAdm.Inicializa();
+            _notaCredAdm.Inicia();
         }
     }
 }

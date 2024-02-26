@@ -134,6 +134,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             //
             TB_NOTAS.Text = _controlador.NotasObserv_Get;
             //
+            L_NUMERO_DOC_GENERAR.Text = _controlador.Ficha.DocNumeroGenerar;
+            //
             _modoInicializa = false;
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -203,6 +205,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 ActualizarTotales();
                 TB_NOTAS.Text = _controlador.NotasObserv_Get;
                 L_TASA_DIVISA.Text = _controlador.Ficha.Totales.TasaDivisaActual_Get.ToString("n2", _cult);
+                L_NUMERO_DOC_GENERAR.Text = _controlador.Ficha.DocNumeroGenerar;
             }
         }
         private void BT_EDITAR_Click(object sender, EventArgs e)
@@ -302,6 +305,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 ActualizarTotales();
                 TB_NOTAS.Text = _controlador.NotasObserv_Get;
                 _controlador.IniciarEnLimpio();
+                L_NUMERO_DOC_GENERAR.Text = _controlador.Ficha.DocNumeroGenerar;
             }
         }
         private void AbandonarFicha()
@@ -354,6 +358,20 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         private void PeriodoLapso()
         {
             _controlador.PeriodoLapso();
+        }
+
+        private void BT_DOCUMENTO_NRO_GENERAR_Click(object sender, EventArgs e)
+        {
+            DocumentoNumeroGenerar();
+        }
+        private void DocumentoNumeroGenerar()
+        {
+            _controlador.DocumentoNumeroGenerar();
+            L_NUMERO_DOC_GENERAR.Text = "";
+            if (_controlador.DocumentoNumeroGenerarIsOk)
+            {
+                L_NUMERO_DOC_GENERAR.Text = "Número Documento a Generar: " + Environment.NewLine + _controlador.Ficha.DocNumeroGenerar;
+            }
         }
     }
 }

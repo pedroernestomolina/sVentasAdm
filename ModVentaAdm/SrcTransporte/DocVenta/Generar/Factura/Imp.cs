@@ -343,6 +343,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                 }
                 var fichaOOB = new OOB.Transporte.Documento.Agregar.Factura.Ficha()
                 {
+                    docNumeroGenerar="",
                     cargos = 0m,
                     cargosp = 0m,
                     CiRif = _cirif,
@@ -751,6 +752,11 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
             {
                 Ficha.setTasaIslr(_gDivisa.TasaActual_Get);
             }
+        }
+        public override bool DocumentoNumeroGenerarIsOk { get { return false; } }
+        public override void DocumentoNumeroGenerar()
+        {
+            Helpers.Msg.Alerta("METODO NO DISPONOBLE PARA ESTE TIPO DE DOCUMENTO");
         }
     }
 }

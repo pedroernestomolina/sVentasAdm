@@ -205,10 +205,6 @@ namespace ModVentaAdm.Src.Principal
         {
             _controlador.MaestroZona();
         }
-        private void MaestroCliente()
-        {
-            _controlador.Reporte_Cliente_Maestro();
-        }
 
 
         //DOCUMENTOS
@@ -278,6 +274,24 @@ namespace ModVentaAdm.Src.Principal
         private void Reporte_Ventas_PorVendedorDetallado()
         {
             _controlador.Reporte_Vendedor_Detallado();
+        }
+
+
+        private void REP_CLIENTE_MAESTRO_Click(object sender, EventArgs e)
+        {
+            MaestroCliente();
+        }
+        private void REP_CLIENTE_SALDO_PEND_Click(object sender, EventArgs e)
+        {
+            RepCliente_SaldoPend();
+        }
+        private void MaestroCliente()
+        {
+            _controlador.RepCliente_Maestro();
+        }
+        private void RepCliente_SaldoPend()
+        {
+            _controlador.RepCliente_SaldoPend();
         }
     }
 }

@@ -81,6 +81,9 @@
     <Compile Include="Documento\Agregar\Factura\FichaDocRef.cs" />
     <Compile Include="Documento\Agregar\Factura\Servicio.cs" />
     <Compile Include="Documento\Agregar\Factura\Turno.cs" />
+    <Compile Include="Documento\Agregar\NotaCredito\Nueva\Documento.cs" />
+    <Compile Include="Documento\Agregar\NotaCredito\Nueva\Ficha.cs" />
+    <Compile Include="Documento\Agregar\NotaCredito\ObtenerDataDocAplica\Ficha.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Aliado.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Fecha.cs" />
     <Compile Include="Documento\Agregar\Presupuesto\Ficha.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="Documento\Entidad\Presupuesto\FichaDetalle.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\FichaEncabezado.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\FichaFechaServ.cs" />
+    <Compile Include="Documento\Entidad\Venta\DetTurno.cs" />
     <Compile Include="Documento\Entidad\Venta\Ficha.cs" />
     <Compile Include="Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="Documento\Entidad\Venta\FichaEncabezado.cs" />

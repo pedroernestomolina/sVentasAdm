@@ -344,6 +344,28 @@ namespace ModVentaAdm.Data.Prov
                     };
                     return _turno;
                 }).ToList(),
+                detTurnos = r01.Entidad.detTurno.Select(s =>
+                {
+                    var _detTurno = new OOB.Transporte.Documento.Entidad.Venta.DetTurno()
+                    {
+                        cntDias = s.cntDias,
+                        cntVehic = s.cntVehic,
+                        descVehic = s.descVehic,
+                        idVenta = s.idVenta,
+                        importe = s.importe,
+                        notas = s.notas,
+                        pnetoDiv = s.pnetoDiv,
+                        servCod = s.servCod,
+                        servDesc = s.servDesc,
+                        servDet = s.servDet,
+                        turnCntDias = s.turnCntDias,
+                        turnDesc = s.turnDesc,
+                        turnEstatus = s.turnEstatus,
+                        docNroRef = s.docNroRef,
+                        docTipoProcedencia = s.docTipoProcedencia,
+                    };
+                    return _detTurno;
+                }).ToList(),
             };
             return result;
         }
@@ -594,6 +616,174 @@ namespace ModVentaAdm.Data.Prov
                 }
             }
             result.ListaD = lst;
+            return result;
+        }
+
+        //
+        public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> 
+            TransporteDocumento_Documento_AplicanNotaCredito_FiltradoByCliente(string cliente)
+        {
+            var result = new OOB.Resultado.Lista<OOB.Documento.Lista.Ficha>();
+            //
+            var r01 = MyData.TransporteDocumento_Documento_AplicanNotaCredito_FiltradoByCliente(cliente);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.Documento.Lista.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Documento.Lista.Ficha()
+                        {
+                            CiRif = s.CiRif,
+                            Control = s.Control,
+                            DocCodigo = s.DocCodigo,
+                            DocNombre = s.DocNombre,
+                            DocNumero = s.DocNumero,
+                            DocSigno = s.DocSigno,
+                            Estatus = s.Estatus,
+                            FechaEmision = s.FechaEmision,
+                            HoraEmision = s.HoraEmision,
+                            Id = s.Id,
+                            Monto = s.Monto,
+                            NombreRazonSocial = s.NombreRazonSocial,
+                            Renglones = s.Renglones,
+                            Serie = s.Serie,
+                            MontoDivisa = s.MontoDivisa,
+                            DocAplica = s.DocAplica,
+                            DocSituacion = s.DocSituacion,
+                            SucursalCod = s.SucursalCod,
+                            SucursalDesc = s.SucursalDesc,
+                            ClaveSistema = s.ClaveSistema,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.ListaD = lst;
+            //
+            return result;
+        }
+        public OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Agregar.NotaCredito.ObtenerDataDocAplica.Ficha> 
+            TransporteDocumento_Documento_AplicaNotaCredito_GetData(string idDoc)
+        {
+            var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Agregar.NotaCredito.ObtenerDataDocAplica.Ficha>();
+            //
+            var r01 = MyData.TransporteDocumento_Documento_AplicaNotaCredito_GetData(idDoc);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var e = r01.Entidad;
+            result.Entidad = new OOB.Transporte.Documento.Agregar.NotaCredito.ObtenerDataDocAplica.Ficha()
+            {
+                clienteCiRif = e.clienteCiRif,
+                clienteCodigo = e.clienteCodigo,
+                clienteDirFiscal = e.clienteDirFiscal,
+                clienteId = e.clienteId,
+                clienteNombre = e.clienteNombre,
+                clienteTelefono = e.clienteTelefono,
+                docCodigoTipo = e.docCodigoTipo,
+                docFechaEmision = e.docFechaEmision,
+                docModulo = e.docModulo,
+                docNumero = e.docNumero,
+                docTotal = e.docTotal,
+                factorCambio = e.factorCambio,
+                idDoc = e.idDoc,
+                montoBase = e.montoBase,
+                montoBase1 = e.montoBase1,
+                montoBase2 = e.montoBase2,
+                montoBase3 = e.montoBase3,
+                montoDivisa = e.montoDivisa,
+                montoExento = e.montoExento,
+                montoImpuesto = e.montoImpuesto,
+                montoImpuesto1 = e.montoImpuesto1,
+                montoImpuesto2 = e.montoImpuesto2,
+                montoImpuesto3 = e.montoImpuesto3,
+                montoNeto = e.montoNeto,
+                tasa1 = e.tasa1,
+                tasa2 = e.tasa2,
+                tasa3 = e.tasa3,
+                vendedorCodigo = e.vendedorCodigo,
+                vendedorId = e.vendedorId,
+                vendedorNombre = e.vendedorNombre,
+                codigoSucursal= e.codigoSucursal,
+            };
+            //
+            return result;
+        }
+        public OOB.Resultado.FichaEntidad<string>
+            TransporteDocumento_Documento_NotaCredito_Agregar(OOB.Transporte.Documento.Agregar.NotaCredito.Nueva.Ficha ficha)
+        {
+            var result = new OOB.Resultado.FichaEntidad<string>();
+            //
+            var _doc = new DtoTransporte.Documento.Agregar.NotaCredito.Nueva.Documento()
+            {
+                cntRenglones = ficha.Doc.cntRenglones,
+                codCliente = ficha.Doc.codCliente,
+                codSucursal = ficha.Doc.codSucursal,
+                codUsuario = ficha.Doc.codUsuario,
+                codVendedor = ficha.Doc.codVendedor,
+                condPago = ficha.Doc.condPago,
+                diasValidez = ficha.Doc.diasValidez,
+                docCodigo = ficha.Doc.docCodigo,
+                docNombre = ficha.Doc.docNombre,
+                docRemision = ficha.Doc.docRemision,
+                factorCambio = ficha.Doc.factorCambio,
+                idCliente = ficha.Doc.idCliente,
+                idRemision = ficha.Doc.idRemision,
+                idUsuario = ficha.Doc.idUsuario,
+                idVendedor = ficha.Doc.idVendedor,
+                montoBase = ficha.Doc.montoBase,
+                montoBase1 = ficha.Doc.montoBase1,
+                montoBase2 = ficha.Doc.montoBase2,
+                montoBase3 = ficha.Doc.montoBase3,
+                montoDivisa = ficha.Doc.montoDivisa,
+                montoExento = ficha.Doc.montoExento,
+                montoImpuesto = ficha.Doc.montoImpuesto,
+                montoImpuesto1 = ficha.Doc.montoImpuesto1,
+                montoImpuesto2 = ficha.Doc.montoImpuesto2,
+                montoImpuesto3 = ficha.Doc.montoImpuesto3,
+                neto = ficha.Doc.neto,
+                signo = ficha.Doc.signo,
+                subTotal = ficha.Doc.subTotal,
+                subTotalImpuesto = ficha.Doc.subTotalImpuesto,
+                subTotalNeto = ficha.Doc.subTotalNeto,
+                telefono = ficha.Doc.telefono,
+                TipoDoc = ficha.Doc.TipoDoc,
+                tipoRemision = ficha.Doc.tipoRemision,
+                usuario = ficha.Doc.usuario,
+                vendedor = ficha.Doc.vendedor,
+                CiRif = ficha.Doc.CiRif,
+                DirFiscal = ficha.Doc.DirFiscal,
+                RazonSocial = ficha.Doc.RazonSocial,
+                Tasa1 = ficha.Doc.Tasa1,
+                Tasa2 = ficha.Doc.Tasa2,
+                Tasa3 = ficha.Doc.Tasa3,
+                Total = ficha.Doc.Total,
+                nota = ficha.Doc.nota,
+                subTotalMonDivisa = ficha.Doc.subTotalMonDivisa,
+                docSiglas = ficha.Doc.docSiglas,
+            };
+            var fichaDTO = new DtoTransporte.Documento.Agregar.NotaCredito.Nueva.Ficha()
+            {
+                estacion = ficha.estacion,
+                PrefijoSuc = ficha.PrefijoSuc,
+                serieDocDesc = ficha.serieDocDesc,
+                serieDocId = ficha.serieDocId,
+                Doc = _doc,
+            };
+            var r01 = MyData.TransporteDocumento_Documento_NotaCredito_Agregar(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            result.Entidad = r01.Entidad;
+            //
             return result;
         }
     }

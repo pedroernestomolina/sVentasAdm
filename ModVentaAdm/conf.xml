@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuracion>
   <Servidor>
-    <Instancia>localhost</Instancia>
-    <Catalogo>transprivas</Catalogo>
+    <Instancia>10.10.100.111</Instancia>
+    <Catalogo>rivas</Catalogo>
   </Servidor>
   <IdEquipo>01</IdEquipo>
 </Configuracion>

@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:AliadoResumen" ZOrder="9" X="484" Y="210" Height="105" Width="156" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
     <Shape ID="DesignTable:AliadoDetalleDoc" ZOrder="8" X="679" Y="203" Height="181" Width="167" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
-    <Shape ID="DesignTable:PresupItem" ZOrder="7" X="118" Y="32" Height="258" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:PresupItem" ZOrder="7" X="118" Y="32" Height="238" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="234" />
     <Shape ID="DesignTable:ProFormaItem" ZOrder="6" X="114" Y="307" Height="48" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="44" />
     <Shape ID="DesignTable:PresupuestoEnc" ZOrder="5" X="290" Y="29" Height="257" Width="157" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:PresupuestoPie" ZOrder="4" X="302" Y="299" Height="220" Width="155" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />

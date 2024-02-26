@@ -63,5 +63,13 @@ namespace ServicePos.Interfaces.Transporte
         //
         DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Documento.Ficha>
             TransporteDocumento_Documento_GetTurnos(string idDoc);
+
+        //
+        DtoLib.ResultadoLista<DtoLibPos.Documento.Lista.Ficha>
+            TransporteDocumento_Documento_AplicanNotaCredito_FiltradoByCliente(string cliente);
+        DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.NotaCredito.ObtenerDataDocAplica.Ficha>
+            TransporteDocumento_Documento_AplicaNotaCredito_GetData(string idDoc);
+        DtoLib.ResultadoEntidad<string>
+            TransporteDocumento_Documento_NotaCredito_Agregar(DtoTransporte.Documento.Agregar.NotaCredito.Nueva.Ficha ficha);
     }
 }

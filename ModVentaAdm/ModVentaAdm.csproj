@@ -127,6 +127,8 @@
     <Compile Include="Fabrica\Transporte\DocVenta.cs" />
     <Compile Include="Fabrica\Transporte\ModoTransporte.cs" />
     <Compile Include="Fabrica\IFabrica.cs" />
+    <Compile Include="Fabrica\__\Documentos\IData\IData.cs" />
+    <Compile Include="Fabrica\__\Documentos\ParaTranspRivas\ImpData.cs" />
     <Compile Include="Gestion.cs" />
     <Compile Include="Helpers\Imprimir\data.cs" />
     <Compile Include="Helpers\Imprimir\Documento.cs" />
@@ -259,6 +261,7 @@
     <Compile Include="OOB\Sistema\Empresa\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\Estado\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\Fiscal\Entidad\Ficha.cs" />
+    <Compile Include="OOB\Sistema\General.cs" />
     <Compile Include="OOB\Sistema\MedioCobro\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\SerieFiscal\Entidad\Ficha.cs" />
     <Compile Include="OOB\Sistema\TipoDocumento\Entidad\Ficha.cs" />
@@ -303,6 +306,9 @@
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\FichaItem.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\Servicio.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Factura\Turno.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\NotaCredito\Nueva\Documento.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\NotaCredito\Nueva\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\Agregar\NotaCredito\ObtenerDataDocAplica\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Aliado.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Fecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Agregar\Presupuesto\Ficha.cs" />
@@ -322,6 +328,7 @@
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaFechaServ.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Venta\DetTurno.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaEncabezado.cs" />
@@ -355,16 +362,68 @@
     <Compile Include="OOB\Transporte\ServPrest\Busqueda\Filtro.cs" />
     <Compile Include="OOB\Transporte\ServPrest\Editar\Ficha.cs" />
     <Compile Include="OOB\Transporte\ServPrest\Entidad\Ficha.cs" />
-    <Compile Include="SrcTransporte\AdmDocumentos\IGestion.cs" />
-    <Compile Include="SrcTransporte\AdmDocumentos\Ventas\Frm.cs">
+    <Compile Include="SrcComun\Clientes\Filtros\Comp\Handler\Imp.cs" />
+    <Compile Include="SrcComun\Clientes\Filtros\Comp\Vista\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SrcTransporte\AdmDocumentos\Ventas\Frm.Designer.cs">
+    <Compile Include="SrcComun\Clientes\Filtros\Comp\Vista\Frm.Designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SrcTransporte\AdmDocumentos\Ventas\filtro.cs" />
-    <Compile Include="SrcTransporte\AdmDocumentos\Ventas\Gestion.cs" />
-    <Compile Include="SrcTransporte\AdmDocumentos\Ventas\GestionLista.cs" />
+    <Compile Include="SrcComun\Clientes\Filtros\Opciones\ImpOpciones.cs" />
+    <Compile Include="SrcComun\Clientes\Filtros\Opciones\IOpciones.cs" />
+    <Compile Include="SrcComun\Clientes\Filtros\Opcion\Handler\basePorCombo.cs" />
+    <Compile Include="SrcComun\Clientes\Filtros\Opcion\Handler\dataComun.cs" />
+    <Compile Include="SrcComun\Clientes\Filtros\Opcion\Handler\ImpPor.cs" />
+    <Compile Include="SrcComun\Clientes\Filtros\Opcion\Vista\IPorCombo.cs" />
+    <Compile Include="Fabrica\__\Cliente\IData\IData.cs" />
+    <Compile Include="Fabrica\__\Cliente\ParaZufu\ImpData.cs" />
+    <Compile Include="SrcComun\Documento\ListaDoc\Handler\baseListaDoc.cs" />
+    <Compile Include="SrcComun\Documento\ListaDoc\Handler\baseVista.cs" />
+    <Compile Include="SrcComun\Documento\ListaDoc\Vista\IListaDoc.cs" />
+    <Compile Include="SrcComun\Documento\ListaDoc\Vista\IVista.cs" />
+    <Compile Include="SrcComun\Documento\NotaCreditoAdm\Generar\Handler\baseVista.cs" />
+    <Compile Include="SrcComun\Documento\NotaCreditoAdm\Generar\Vista\IVista.cs" />
+    <Compile Include="SrcComun\Lista\baseLista.cs" />
+    <Compile Include="SrcComun\Lista\ILista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\EntradaNumeroDoc\Handler\ImpVista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\EntradaNumeroDoc\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\EntradaNumeroDoc\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\EntradaNumeroDoc\Vista\IVista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\ListaDoc\Handler\data.cs" />
+    <Compile Include="SrcTransporte\DocVenta\ListaDoc\Handler\ImpVista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\ListaDoc\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\ListaDoc\Vista\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\ListaDoc\Vista\Idata.cs" />
+    <Compile Include="SrcTransporte\DocVenta\ListaDoc\Vista\IVista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\ListaDoc\Handler\ImpListDoc.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Handler\dataGuardar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Handler\ImpDoc.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Handler\ImpDocGenerar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Handler\ImpFiscal.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Handler\ImpVista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\IdataGuardar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\IDoc.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\IDocGenerar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\IFiscal.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\IVista.cs" />
+    <Compile Include="Utils\Componente\Filtro\Handler\baseOpcionCB.cs" />
+    <Compile Include="Utils\Componente\Filtro\Vista\IOpcionCB.cs" />
+    <Compile Include="Utils\Componente\Filtro\Vista\IOpciones.cs" />
+    <Compile Include="SrcComun\Clientes\Filtros\Comp\Vista\IVista.cs" />
     <Compile Include="SrcTransporte\Aliados\AgregarEditar\Telefono\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -662,6 +721,7 @@
     <Compile Include="SrcTransporte\Reportes\IReporteConFiltro.cs" />
     <Compile Include="SrcTransporte\Reportes\Presupuesto\Gestion.cs" />
     <Compile Include="SrcTransporte\Reportes\Presupuesto\IPresupuesto.cs" />
+    <Compile Include="SrcTransporte\Reportes\ProForma\Gestion - Copy.cs" />
     <Compile Include="SrcTransporte\Reportes\ProForma\Gestion.cs" />
     <Compile Include="SrcTransporte\Reportes\ProForma\IProforma.cs" />
     <Compile Include="SrcTransporte\ServPrestado\AgregarEditar\Editar\Editar.cs" />
@@ -1161,6 +1221,9 @@
     <Compile Include="Utils\Componente\CajasUtilizar\Handler\Imp.cs" />
     <Compile Include="Utils\Componente\CajasUtilizar\Vista\Idata.cs" />
     <Compile Include="Utils\Componente\CajasUtilizar\Vista\IHnd.cs" />
+    <Compile Include="Utils\Componente\Filtro\Handler\baseImp.cs" />
+    <Compile Include="Utils\Componente\Filtro\Vista\IOpcion.cs" />
+    <Compile Include="Utils\Componente\Filtro\Vista\IVista.cs" />
     <Compile Include="Utils\Componente\Monto\Handler\Imp.cs" />
     <Compile Include="Utils\Componente\Monto\Vistas\Frm.cs">
       <SubType>Form</SubType>
@@ -1169,6 +1232,15 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Componente\Monto\Vistas\IMonto.cs" />
+    <Compile Include="Utils\Control\Boton\Abandonar\IAbandonar.cs" />
+    <Compile Include="Utils\Control\Boton\Abandonar\Imp.cs" />
+    <Compile Include="Utils\Control\Boton\baseImp.cs" />
+    <Compile Include="Utils\Control\Boton\IBoton.cs" />
+    <Compile Include="Utils\Control\Boton\Procesar\Imp.cs" />
+    <Compile Include="Utils\Control\Boton\Procesar\IProcesar.cs" />
+    <Compile Include="Utils\Control\Boton\Salir\Imp.cs" />
+    <Compile Include="Utils\Control\Boton\Salir\ISalir.cs" />
+    <Compile Include="Utils\Control\ComBoBox\IComboBox.cs" />
     <Compile Include="Utils\CtrlMetodoBusq\IComp.cs" />
     <Compile Include="Utils\dataFiltro.cs" />
     <Compile Include="Utils\DocLista\ILista.cs" />
@@ -1223,7 +1295,7 @@
     <EmbeddedResource Include="Helpers\Imprimir\Grafico\ReporteFrm.resx">
       <DependentUpon>ReporteFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SrcTransporte\AdmDocumentos\Ventas\Frm.resx">
+    <EmbeddedResource Include="SrcComun\Clientes\Filtros\Comp\Vista\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Aliados\AgregarEditar\Telefono\Frm.resx">
@@ -1258,6 +1330,9 @@
     <EmbeddedResource Include="SrcTransporte\Configuracion\Notas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\EntradaNumeroDoc\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1268,6 +1343,12 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\DocVenta\ListaDoc\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Filtro\Reportes\Frm.resx">
@@ -1306,10 +1387,22 @@
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Factura.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Presupuesto - Copy.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_PresupuestoPorTurno - Copy.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_PresupuestoPorTurno.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Presupuesto.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_ProForma2 - Copy.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_ProForma2.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_ProForma.rdlc">
@@ -1474,6 +1567,7 @@
     <EmbeddedResource Include="Src\Reportes\ListaDoc.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Src\Reportes\Report1.rdlc" />
     <EmbeddedResource Include="Src\Reportes\ReporteFrm.resx">
       <DependentUpon>ReporteFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1650,6 +1744,11 @@
     <None Include="Resources\bt_avance_anticipo_48.png" />
     <None Include="Resources\bt_avance_anticipo_24.png" />
     <None Include="Resources\bt_avance_anticipo_32.png" />
+    <None Include="Resources\logo_presup_servc_color.jpeg" />
+    <None Include="Resources\logo_transp_doc.jpeg.jpeg" />
+    <None Include="Resources\rivas.jpeg" />
+    <None Include="Resources\rivas_2.png" />
+    <None Include="Resources\bt_numero_documento_48.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1716,6 +1815,7 @@
     <Content Include="Src\Imagenes\bt_mov_2.png" />
     <Content Include="Src\Imagenes\bt_new_doc.png" />
     <Content Include="Src\Imagenes\bt_notificacion.png" />
+    <Content Include="Src\Imagenes\bt_numero_documento_48.png" />
     <Content Include="Src\Imagenes\bt_ok_2.png" />
     <Content Include="Src\Imagenes\bt_ok_3.png" />
     <Content Include="Src\Imagenes\bt_periodo_itempo_24.png" />
@@ -1758,12 +1858,16 @@
     <Content Include="Src\Imagenes\inventario_2.jpg" />
     <Content Include="Src\Imagenes\libro.png" />
     <Content Include="Src\Imagenes\localizacion_48.png" />
+    <Content Include="Src\Imagenes\logo_presup_servc_color.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Src\Imagenes\logo_transp.jpeg" />
     <Content Include="Src\Imagenes\logo_transp.jpg" />
     <Content Include="Src\Imagenes\logo_transp_01.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_02.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_2.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_3.jpeg" />
+    <Content Include="Src\Imagenes\logo_transp_doc - Copy.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_doc.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_presup.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_presup_2.jpeg" />
@@ -1771,6 +1875,8 @@
     <Content Include="Src\Imagenes\manager_doc_48.png" />
     <Content Include="Src\Imagenes\mobile.ico" />
     <Content Include="Src\Imagenes\plataforma-efosearch.jpg" />
+    <Content Include="Src\Imagenes\rivas.jpeg" />
+    <Content Include="Src\Imagenes\rivas_2.png" />
     <Content Include="Src\Imagenes\sinImagen.png" />
     <Content Include="Src\Imagenes\telefono_48.png" />
     <Content Include="Src\Imagenes\TOOLS.ico" />

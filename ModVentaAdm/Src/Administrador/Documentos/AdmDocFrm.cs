@@ -45,6 +45,7 @@ namespace ModVentaAdm.Src.Administrador.Documentos
             var f1 = new Font("Serif", 8, FontStyle.Regular);
             var f2 = new Font("Serif", 10, FontStyle.Bold);
 
+            DGV.RowHeadersVisible = false;
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
             DGV.AutoGenerateColumns = false;
@@ -59,7 +60,7 @@ namespace ModVentaAdm.Src.Administrador.Documentos
             c1.DataPropertyName = "FechaHora";
             c1.HeaderText = "Fecha";
             c1.Visible = true;
-            c1.Width = 100;
+            c1.Width = 70;
             c1.HeaderCell.Style.Font = f;
             c1.DefaultCellStyle.Font = f1;
 

@@ -56,7 +56,9 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.CB_COBRADOR = new System.Windows.Forms.ComboBox();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.L_CATEGORIA = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.CB_CATEGORIA = new System.Windows.Forms.ComboBox();
             this.panel18 = new System.Windows.Forms.Panel();
             this.L_ZONA = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
@@ -66,26 +68,24 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.CB_VENDEDOR = new System.Windows.Forms.ComboBox();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.L_NIVEL = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.CB_NIVEL = new System.Windows.Forms.ComboBox();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.L_TARIFA = new System.Windows.Forms.Label();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.CB_TARIFA = new System.Windows.Forms.ComboBox();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.L_ESTATUS = new System.Windows.Forms.Label();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.CB_ESTATUS = new System.Windows.Forms.ComboBox();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.L_CREDITO = new System.Windows.Forms.Label();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.CB_CREDITO = new System.Windows.Forms.ComboBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.L_CATEGORIA = new System.Windows.Forms.Label();
-            this.L_NIVEL = new System.Windows.Forms.Label();
-            this.CB_CATEGORIA = new System.Windows.Forms.ComboBox();
-            this.CB_NIVEL = new System.Windows.Forms.ComboBox();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.panel23 = new System.Windows.Forms.Panel();
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.L_TARIFA = new System.Windows.Forms.Label();
-            this.L_ESTATUS = new System.Windows.Forms.Label();
-            this.L_CREDITO = new System.Windows.Forms.Label();
-            this.CB_TARIFA = new System.Windows.Forms.ComboBox();
-            this.CB_ESTATUS = new System.Windows.Forms.ComboBox();
-            this.CB_CREDITO = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -109,15 +109,15 @@
             this.panel6.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel16.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.panel14.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
             this.panel23.SuspendLayout();
             this.panel24.SuspendLayout();
             this.panel25.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -287,7 +287,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.54054F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.45946F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel3.Controls.Add(this.panel28, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.panel29, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.panel7, 1, 1);
@@ -361,7 +361,7 @@
             this.panel29.Margin = new System.Windows.Forms.Padding(1);
             this.panel29.Name = "panel29";
             this.panel29.Padding = new System.Windows.Forms.Padding(2);
-            this.panel29.Size = new System.Drawing.Size(215, 28);
+            this.panel29.Size = new System.Drawing.Size(214, 28);
             this.panel29.TabIndex = 6;
             // 
             // CB_ESTADO
@@ -372,7 +372,7 @@
             this.CB_ESTADO.FormattingEnabled = true;
             this.CB_ESTADO.Location = new System.Drawing.Point(2, 2);
             this.CB_ESTADO.Name = "CB_ESTADO";
-            this.CB_ESTADO.Size = new System.Drawing.Size(211, 24);
+            this.CB_ESTADO.Size = new System.Drawing.Size(210, 24);
             this.CB_ESTADO.TabIndex = 1;
             this.CB_ESTADO.SelectedIndexChanged += new System.EventHandler(this.CB_ESTADO_SelectedIndexChanged);
             // 
@@ -384,7 +384,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(1);
-            this.panel7.Size = new System.Drawing.Size(215, 28);
+            this.panel7.Size = new System.Drawing.Size(214, 28);
             this.panel7.TabIndex = 0;
             // 
             // CB_GRUPO
@@ -395,7 +395,7 @@
             this.CB_GRUPO.FormattingEnabled = true;
             this.CB_GRUPO.Location = new System.Drawing.Point(1, 1);
             this.CB_GRUPO.Name = "CB_GRUPO";
-            this.CB_GRUPO.Size = new System.Drawing.Size(213, 24);
+            this.CB_GRUPO.Size = new System.Drawing.Size(212, 24);
             this.CB_GRUPO.TabIndex = 0;
             this.CB_GRUPO.SelectedIndexChanged += new System.EventHandler(this.CB_GRUPO_SelectedIndexChanged);
             // 
@@ -457,7 +457,7 @@
             this.panel10.Margin = new System.Windows.Forms.Padding(1);
             this.panel10.Name = "panel10";
             this.panel10.Padding = new System.Windows.Forms.Padding(2);
-            this.panel10.Size = new System.Drawing.Size(215, 28);
+            this.panel10.Size = new System.Drawing.Size(214, 28);
             this.panel10.TabIndex = 11;
             // 
             // CB_COBRADOR
@@ -468,7 +468,7 @@
             this.CB_COBRADOR.FormattingEnabled = true;
             this.CB_COBRADOR.Location = new System.Drawing.Point(2, 2);
             this.CB_COBRADOR.Name = "CB_COBRADOR";
-            this.CB_COBRADOR.Size = new System.Drawing.Size(211, 24);
+            this.CB_COBRADOR.Size = new System.Drawing.Size(210, 24);
             this.CB_COBRADOR.TabIndex = 2;
             this.CB_COBRADOR.SelectedIndexChanged += new System.EventHandler(this.CB_COBRADOR_SelectedIndexChanged);
             // 
@@ -483,6 +483,20 @@
             this.panel11.Size = new System.Drawing.Size(145, 28);
             this.panel11.TabIndex = 21;
             // 
+            // L_CATEGORIA
+            // 
+            this.L_CATEGORIA.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.L_CATEGORIA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_CATEGORIA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_CATEGORIA.ForeColor = System.Drawing.Color.Blue;
+            this.L_CATEGORIA.Location = new System.Drawing.Point(2, 2);
+            this.L_CATEGORIA.Name = "L_CATEGORIA";
+            this.L_CATEGORIA.Size = new System.Drawing.Size(141, 24);
+            this.L_CATEGORIA.TabIndex = 3;
+            this.L_CATEGORIA.Text = "Categoria";
+            this.L_CATEGORIA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_CATEGORIA.Click += new System.EventHandler(this.L_CATEGORIA_Click);
+            // 
             // panel12
             // 
             this.panel12.Controls.Add(this.CB_CATEGORIA);
@@ -491,8 +505,20 @@
             this.panel12.Margin = new System.Windows.Forms.Padding(1);
             this.panel12.Name = "panel12";
             this.panel12.Padding = new System.Windows.Forms.Padding(2);
-            this.panel12.Size = new System.Drawing.Size(215, 28);
+            this.panel12.Size = new System.Drawing.Size(214, 28);
             this.panel12.TabIndex = 12;
+            // 
+            // CB_CATEGORIA
+            // 
+            this.CB_CATEGORIA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CB_CATEGORIA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_CATEGORIA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_CATEGORIA.FormattingEnabled = true;
+            this.CB_CATEGORIA.Location = new System.Drawing.Point(2, 2);
+            this.CB_CATEGORIA.Name = "CB_CATEGORIA";
+            this.CB_CATEGORIA.Size = new System.Drawing.Size(210, 24);
+            this.CB_CATEGORIA.TabIndex = 3;
+            this.CB_CATEGORIA.SelectedIndexChanged += new System.EventHandler(this.CB_CATEGORIA_SelectedIndexChanged);
             // 
             // panel18
             // 
@@ -527,7 +553,7 @@
             this.panel19.Margin = new System.Windows.Forms.Padding(1);
             this.panel19.Name = "panel19";
             this.panel19.Padding = new System.Windows.Forms.Padding(2);
-            this.panel19.Size = new System.Drawing.Size(215, 28);
+            this.panel19.Size = new System.Drawing.Size(214, 28);
             this.panel19.TabIndex = 8;
             // 
             // CB_ZONA
@@ -538,7 +564,7 @@
             this.CB_ZONA.FormattingEnabled = true;
             this.CB_ZONA.Location = new System.Drawing.Point(2, 2);
             this.CB_ZONA.Name = "CB_ZONA";
-            this.CB_ZONA.Size = new System.Drawing.Size(211, 24);
+            this.CB_ZONA.Size = new System.Drawing.Size(210, 24);
             this.CB_ZONA.TabIndex = 1;
             this.CB_ZONA.SelectedIndexChanged += new System.EventHandler(this.CB_ZONA_SelectedIndexChanged);
             // 
@@ -575,7 +601,7 @@
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(2);
-            this.panel6.Size = new System.Drawing.Size(215, 28);
+            this.panel6.Size = new System.Drawing.Size(214, 28);
             this.panel6.TabIndex = 26;
             // 
             // CB_VENDEDOR
@@ -586,7 +612,7 @@
             this.CB_VENDEDOR.FormattingEnabled = true;
             this.CB_VENDEDOR.Location = new System.Drawing.Point(2, 2);
             this.CB_VENDEDOR.Name = "CB_VENDEDOR";
-            this.CB_VENDEDOR.Size = new System.Drawing.Size(211, 24);
+            this.CB_VENDEDOR.Size = new System.Drawing.Size(210, 24);
             this.CB_VENDEDOR.TabIndex = 2;
             this.CB_VENDEDOR.SelectedIndexChanged += new System.EventHandler(this.CB_VENDEDOR_SelectedIndexChanged);
             // 
@@ -601,6 +627,20 @@
             this.panel15.Size = new System.Drawing.Size(145, 28);
             this.panel15.TabIndex = 27;
             // 
+            // L_NIVEL
+            // 
+            this.L_NIVEL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.L_NIVEL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_NIVEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_NIVEL.ForeColor = System.Drawing.Color.Blue;
+            this.L_NIVEL.Location = new System.Drawing.Point(1, 1);
+            this.L_NIVEL.Name = "L_NIVEL";
+            this.L_NIVEL.Size = new System.Drawing.Size(143, 26);
+            this.L_NIVEL.TabIndex = 4;
+            this.L_NIVEL.Text = "Nivel";
+            this.L_NIVEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_NIVEL.Click += new System.EventHandler(this.L_NIVEL_Click);
+            // 
             // panel16
             // 
             this.panel16.Controls.Add(this.CB_NIVEL);
@@ -609,8 +649,164 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(215, 28);
+            this.panel16.Size = new System.Drawing.Size(214, 28);
             this.panel16.TabIndex = 28;
+            // 
+            // CB_NIVEL
+            // 
+            this.CB_NIVEL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CB_NIVEL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_NIVEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_NIVEL.FormattingEnabled = true;
+            this.CB_NIVEL.Location = new System.Drawing.Point(2, 2);
+            this.CB_NIVEL.Name = "CB_NIVEL";
+            this.CB_NIVEL.Size = new System.Drawing.Size(210, 24);
+            this.CB_NIVEL.TabIndex = 3;
+            this.CB_NIVEL.SelectedIndexChanged += new System.EventHandler(this.CB_NIVEL_SelectedIndexChanged);
+            // 
+            // panel20
+            // 
+            this.panel20.Controls.Add(this.L_TARIFA);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel20.Location = new System.Drawing.Point(1, 219);
+            this.panel20.Margin = new System.Windows.Forms.Padding(1);
+            this.panel20.Name = "panel20";
+            this.panel20.Padding = new System.Windows.Forms.Padding(2);
+            this.panel20.Size = new System.Drawing.Size(145, 28);
+            this.panel20.TabIndex = 29;
+            // 
+            // L_TARIFA
+            // 
+            this.L_TARIFA.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.L_TARIFA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_TARIFA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_TARIFA.ForeColor = System.Drawing.Color.Blue;
+            this.L_TARIFA.Location = new System.Drawing.Point(2, 2);
+            this.L_TARIFA.Name = "L_TARIFA";
+            this.L_TARIFA.Size = new System.Drawing.Size(141, 24);
+            this.L_TARIFA.TabIndex = 5;
+            this.L_TARIFA.Text = "Tarifa";
+            this.L_TARIFA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_TARIFA.Click += new System.EventHandler(this.L_TARIFA_Click);
+            // 
+            // panel21
+            // 
+            this.panel21.Controls.Add(this.CB_TARIFA);
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel21.Location = new System.Drawing.Point(148, 219);
+            this.panel21.Margin = new System.Windows.Forms.Padding(1);
+            this.panel21.Name = "panel21";
+            this.panel21.Padding = new System.Windows.Forms.Padding(2);
+            this.panel21.Size = new System.Drawing.Size(214, 28);
+            this.panel21.TabIndex = 30;
+            // 
+            // CB_TARIFA
+            // 
+            this.CB_TARIFA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CB_TARIFA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_TARIFA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_TARIFA.FormattingEnabled = true;
+            this.CB_TARIFA.Location = new System.Drawing.Point(2, 2);
+            this.CB_TARIFA.Name = "CB_TARIFA";
+            this.CB_TARIFA.Size = new System.Drawing.Size(210, 24);
+            this.CB_TARIFA.TabIndex = 4;
+            this.CB_TARIFA.SelectedIndexChanged += new System.EventHandler(this.CB_TARIFA_SelectedIndexChanged);
+            // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.L_ESTATUS);
+            this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel22.Location = new System.Drawing.Point(1, 249);
+            this.panel22.Margin = new System.Windows.Forms.Padding(1);
+            this.panel22.Name = "panel22";
+            this.panel22.Padding = new System.Windows.Forms.Padding(2);
+            this.panel22.Size = new System.Drawing.Size(145, 28);
+            this.panel22.TabIndex = 31;
+            // 
+            // L_ESTATUS
+            // 
+            this.L_ESTATUS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.L_ESTATUS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_ESTATUS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_ESTATUS.ForeColor = System.Drawing.Color.Blue;
+            this.L_ESTATUS.Location = new System.Drawing.Point(2, 2);
+            this.L_ESTATUS.Name = "L_ESTATUS";
+            this.L_ESTATUS.Size = new System.Drawing.Size(141, 24);
+            this.L_ESTATUS.TabIndex = 5;
+            this.L_ESTATUS.Text = "Estatus";
+            this.L_ESTATUS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_ESTATUS.Click += new System.EventHandler(this.L_ESTATUS_Click);
+            // 
+            // panel23
+            // 
+            this.panel23.Controls.Add(this.CB_ESTATUS);
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel23.Location = new System.Drawing.Point(148, 249);
+            this.panel23.Margin = new System.Windows.Forms.Padding(1);
+            this.panel23.Name = "panel23";
+            this.panel23.Padding = new System.Windows.Forms.Padding(2);
+            this.panel23.Size = new System.Drawing.Size(214, 28);
+            this.panel23.TabIndex = 32;
+            // 
+            // CB_ESTATUS
+            // 
+            this.CB_ESTATUS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CB_ESTATUS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_ESTATUS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_ESTATUS.FormattingEnabled = true;
+            this.CB_ESTATUS.Location = new System.Drawing.Point(2, 2);
+            this.CB_ESTATUS.Name = "CB_ESTATUS";
+            this.CB_ESTATUS.Size = new System.Drawing.Size(210, 24);
+            this.CB_ESTATUS.TabIndex = 4;
+            this.CB_ESTATUS.SelectedIndexChanged += new System.EventHandler(this.CB_ESTATUS_SelectedIndexChanged);
+            // 
+            // panel24
+            // 
+            this.panel24.Controls.Add(this.L_CREDITO);
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel24.Location = new System.Drawing.Point(1, 279);
+            this.panel24.Margin = new System.Windows.Forms.Padding(1);
+            this.panel24.Name = "panel24";
+            this.panel24.Padding = new System.Windows.Forms.Padding(2);
+            this.panel24.Size = new System.Drawing.Size(145, 28);
+            this.panel24.TabIndex = 33;
+            // 
+            // L_CREDITO
+            // 
+            this.L_CREDITO.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.L_CREDITO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_CREDITO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_CREDITO.ForeColor = System.Drawing.Color.Blue;
+            this.L_CREDITO.Location = new System.Drawing.Point(2, 2);
+            this.L_CREDITO.Name = "L_CREDITO";
+            this.L_CREDITO.Size = new System.Drawing.Size(141, 24);
+            this.L_CREDITO.TabIndex = 5;
+            this.L_CREDITO.Text = "Credito";
+            this.L_CREDITO.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_CREDITO.Click += new System.EventHandler(this.L_CREDITO_Click);
+            // 
+            // panel25
+            // 
+            this.panel25.Controls.Add(this.CB_CREDITO);
+            this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel25.Location = new System.Drawing.Point(148, 279);
+            this.panel25.Margin = new System.Windows.Forms.Padding(1);
+            this.panel25.Name = "panel25";
+            this.panel25.Padding = new System.Windows.Forms.Padding(2);
+            this.panel25.Size = new System.Drawing.Size(214, 28);
+            this.panel25.TabIndex = 34;
+            // 
+            // CB_CREDITO
+            // 
+            this.CB_CREDITO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CB_CREDITO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_CREDITO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_CREDITO.FormattingEnabled = true;
+            this.CB_CREDITO.Location = new System.Drawing.Point(2, 2);
+            this.CB_CREDITO.Name = "CB_CREDITO";
+            this.CB_CREDITO.Size = new System.Drawing.Size(210, 24);
+            this.CB_CREDITO.TabIndex = 4;
+            this.CB_CREDITO.SelectedIndexChanged += new System.EventHandler(this.CB_CREDITO_SelectedIndexChanged);
             // 
             // panel13
             // 
@@ -650,202 +846,6 @@
             this.panel14.Size = new System.Drawing.Size(46, 50);
             this.panel14.TabIndex = 0;
             // 
-            // L_CATEGORIA
-            // 
-            this.L_CATEGORIA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.L_CATEGORIA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_CATEGORIA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_CATEGORIA.ForeColor = System.Drawing.Color.Blue;
-            this.L_CATEGORIA.Location = new System.Drawing.Point(2, 2);
-            this.L_CATEGORIA.Name = "L_CATEGORIA";
-            this.L_CATEGORIA.Size = new System.Drawing.Size(141, 24);
-            this.L_CATEGORIA.TabIndex = 3;
-            this.L_CATEGORIA.Text = "Categoria";
-            this.L_CATEGORIA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_CATEGORIA.Click += new System.EventHandler(this.L_CATEGORIA_Click);
-            // 
-            // L_NIVEL
-            // 
-            this.L_NIVEL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.L_NIVEL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_NIVEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_NIVEL.ForeColor = System.Drawing.Color.Blue;
-            this.L_NIVEL.Location = new System.Drawing.Point(1, 1);
-            this.L_NIVEL.Name = "L_NIVEL";
-            this.L_NIVEL.Size = new System.Drawing.Size(143, 26);
-            this.L_NIVEL.TabIndex = 4;
-            this.L_NIVEL.Text = "Nivel";
-            this.L_NIVEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_NIVEL.Click += new System.EventHandler(this.L_NIVEL_Click);
-            // 
-            // CB_CATEGORIA
-            // 
-            this.CB_CATEGORIA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CB_CATEGORIA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_CATEGORIA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_CATEGORIA.FormattingEnabled = true;
-            this.CB_CATEGORIA.Location = new System.Drawing.Point(2, 2);
-            this.CB_CATEGORIA.Name = "CB_CATEGORIA";
-            this.CB_CATEGORIA.Size = new System.Drawing.Size(211, 24);
-            this.CB_CATEGORIA.TabIndex = 3;
-            this.CB_CATEGORIA.SelectedIndexChanged += new System.EventHandler(this.CB_CATEGORIA_SelectedIndexChanged);
-            // 
-            // CB_NIVEL
-            // 
-            this.CB_NIVEL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CB_NIVEL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_NIVEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_NIVEL.FormattingEnabled = true;
-            this.CB_NIVEL.Location = new System.Drawing.Point(2, 2);
-            this.CB_NIVEL.Name = "CB_NIVEL";
-            this.CB_NIVEL.Size = new System.Drawing.Size(211, 24);
-            this.CB_NIVEL.TabIndex = 3;
-            this.CB_NIVEL.SelectedIndexChanged += new System.EventHandler(this.CB_NIVEL_SelectedIndexChanged);
-            // 
-            // panel20
-            // 
-            this.panel20.Controls.Add(this.L_TARIFA);
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(1, 219);
-            this.panel20.Margin = new System.Windows.Forms.Padding(1);
-            this.panel20.Name = "panel20";
-            this.panel20.Padding = new System.Windows.Forms.Padding(2);
-            this.panel20.Size = new System.Drawing.Size(145, 28);
-            this.panel20.TabIndex = 29;
-            // 
-            // panel21
-            // 
-            this.panel21.Controls.Add(this.CB_TARIFA);
-            this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel21.Location = new System.Drawing.Point(148, 219);
-            this.panel21.Margin = new System.Windows.Forms.Padding(1);
-            this.panel21.Name = "panel21";
-            this.panel21.Padding = new System.Windows.Forms.Padding(2);
-            this.panel21.Size = new System.Drawing.Size(215, 28);
-            this.panel21.TabIndex = 30;
-            // 
-            // panel22
-            // 
-            this.panel22.Controls.Add(this.L_ESTATUS);
-            this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel22.Location = new System.Drawing.Point(1, 249);
-            this.panel22.Margin = new System.Windows.Forms.Padding(1);
-            this.panel22.Name = "panel22";
-            this.panel22.Padding = new System.Windows.Forms.Padding(2);
-            this.panel22.Size = new System.Drawing.Size(145, 28);
-            this.panel22.TabIndex = 31;
-            // 
-            // panel23
-            // 
-            this.panel23.Controls.Add(this.CB_ESTATUS);
-            this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel23.Location = new System.Drawing.Point(148, 249);
-            this.panel23.Margin = new System.Windows.Forms.Padding(1);
-            this.panel23.Name = "panel23";
-            this.panel23.Padding = new System.Windows.Forms.Padding(2);
-            this.panel23.Size = new System.Drawing.Size(215, 28);
-            this.panel23.TabIndex = 32;
-            // 
-            // panel24
-            // 
-            this.panel24.Controls.Add(this.L_CREDITO);
-            this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel24.Location = new System.Drawing.Point(1, 279);
-            this.panel24.Margin = new System.Windows.Forms.Padding(1);
-            this.panel24.Name = "panel24";
-            this.panel24.Padding = new System.Windows.Forms.Padding(2);
-            this.panel24.Size = new System.Drawing.Size(145, 28);
-            this.panel24.TabIndex = 33;
-            // 
-            // panel25
-            // 
-            this.panel25.Controls.Add(this.CB_CREDITO);
-            this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel25.Location = new System.Drawing.Point(148, 279);
-            this.panel25.Margin = new System.Windows.Forms.Padding(1);
-            this.panel25.Name = "panel25";
-            this.panel25.Padding = new System.Windows.Forms.Padding(2);
-            this.panel25.Size = new System.Drawing.Size(215, 28);
-            this.panel25.TabIndex = 34;
-            // 
-            // L_TARIFA
-            // 
-            this.L_TARIFA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.L_TARIFA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_TARIFA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_TARIFA.ForeColor = System.Drawing.Color.Blue;
-            this.L_TARIFA.Location = new System.Drawing.Point(2, 2);
-            this.L_TARIFA.Name = "L_TARIFA";
-            this.L_TARIFA.Size = new System.Drawing.Size(141, 24);
-            this.L_TARIFA.TabIndex = 5;
-            this.L_TARIFA.Text = "Tarifa";
-            this.L_TARIFA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_TARIFA.Click += new System.EventHandler(this.L_TARIFA_Click);
-            // 
-            // L_ESTATUS
-            // 
-            this.L_ESTATUS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.L_ESTATUS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_ESTATUS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_ESTATUS.ForeColor = System.Drawing.Color.Blue;
-            this.L_ESTATUS.Location = new System.Drawing.Point(2, 2);
-            this.L_ESTATUS.Name = "L_ESTATUS";
-            this.L_ESTATUS.Size = new System.Drawing.Size(141, 24);
-            this.L_ESTATUS.TabIndex = 5;
-            this.L_ESTATUS.Text = "Estatus";
-            this.L_ESTATUS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_ESTATUS.Click += new System.EventHandler(this.L_ESTATUS_Click);
-            // 
-            // L_CREDITO
-            // 
-            this.L_CREDITO.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.L_CREDITO.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_CREDITO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_CREDITO.ForeColor = System.Drawing.Color.Blue;
-            this.L_CREDITO.Location = new System.Drawing.Point(2, 2);
-            this.L_CREDITO.Name = "L_CREDITO";
-            this.L_CREDITO.Size = new System.Drawing.Size(141, 24);
-            this.L_CREDITO.TabIndex = 5;
-            this.L_CREDITO.Text = "Credito";
-            this.L_CREDITO.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_CREDITO.Click += new System.EventHandler(this.L_CREDITO_Click);
-            // 
-            // CB_TARIFA
-            // 
-            this.CB_TARIFA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CB_TARIFA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_TARIFA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_TARIFA.FormattingEnabled = true;
-            this.CB_TARIFA.Location = new System.Drawing.Point(2, 2);
-            this.CB_TARIFA.Name = "CB_TARIFA";
-            this.CB_TARIFA.Size = new System.Drawing.Size(211, 24);
-            this.CB_TARIFA.TabIndex = 4;
-            this.CB_TARIFA.SelectedIndexChanged += new System.EventHandler(this.CB_TARIFA_SelectedIndexChanged);
-            // 
-            // CB_ESTATUS
-            // 
-            this.CB_ESTATUS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CB_ESTATUS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_ESTATUS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_ESTATUS.FormattingEnabled = true;
-            this.CB_ESTATUS.Location = new System.Drawing.Point(2, 2);
-            this.CB_ESTATUS.Name = "CB_ESTATUS";
-            this.CB_ESTATUS.Size = new System.Drawing.Size(211, 24);
-            this.CB_ESTATUS.TabIndex = 4;
-            this.CB_ESTATUS.SelectedIndexChanged += new System.EventHandler(this.CB_ESTATUS_SelectedIndexChanged);
-            // 
-            // CB_CREDITO
-            // 
-            this.CB_CREDITO.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CB_CREDITO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_CREDITO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_CREDITO.FormattingEnabled = true;
-            this.CB_CREDITO.Location = new System.Drawing.Point(2, 2);
-            this.CB_CREDITO.Name = "CB_CREDITO";
-            this.CB_CREDITO.Size = new System.Drawing.Size(211, 24);
-            this.CB_CREDITO.TabIndex = 4;
-            this.CB_CREDITO.SelectedIndexChanged += new System.EventHandler(this.CB_CREDITO_SelectedIndexChanged);
-            // 
             // FiltroFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -884,15 +884,15 @@
             this.panel6.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.panel14.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
             this.panel21.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
             this.panel23.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
             this.panel25.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -18,7 +18,7 @@ namespace ModVentaAdm.Src.Administrador
 
 
         public string idDocumento { get { return doc.Id; } }
-        public string FechaHora { get { return doc.FechaEmision.ToShortDateString() + ", " + doc.HoraEmision; } }
+        public string FechaHora { get { return doc.FechaEmision.ToShortDateString(); } }//+ ", " + doc.HoraEmision; } }
         public string Serie { get { return doc.Serie; } }
         public string Documento { get { return doc.DocNumero; } }
         public string Renglones { get { return doc.Renglones.ToString().Trim(); } }

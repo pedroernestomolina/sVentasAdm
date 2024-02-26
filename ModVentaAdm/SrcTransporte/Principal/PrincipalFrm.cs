@@ -205,7 +205,7 @@ namespace ModVentaAdm.SrcTransporte.Principal
         }
         private void MaestroCliente()
         {
-            _controlador.Reporte_Cliente_Maestro();
+            _controlador.RepCliente_Maestro();
         }
 
 
@@ -383,6 +383,11 @@ namespace ModVentaAdm.SrcTransporte.Principal
         private void REP_CLIENTE_MAESTRO_Click(object sender, EventArgs e)
         {
             MaestroCliente();
+        }
+
+        private void MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_Click(object sender, EventArgs e)
+        {
+            _controlador.NotaCreditoAdm();
         }
     }
 }

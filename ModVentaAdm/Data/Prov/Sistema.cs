@@ -176,7 +176,7 @@ namespace ModVentaAdm.Data.Prov
             Sistema_Estado_GetLista()
         {
             var result = new OOB.Resultado.Lista<OOB.Sistema.Estado.Entidad.Ficha>();
-
+            //
             var r01 = MyData.Sistema_Estado_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -184,7 +184,6 @@ namespace ModVentaAdm.Data.Prov
                 result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
                 return result;
             }
-
             var lst = new List<OOB.Sistema.Estado.Entidad.Ficha>();
             if (r01.Lista != null)
             {
@@ -202,7 +201,7 @@ namespace ModVentaAdm.Data.Prov
                 }
             }
             result.ListaD = lst;
-
+            //
             return result;
         }
         public OOB.Resultado.Lista<OOB.Sistema.Transporte.Entidad.Ficha> 
