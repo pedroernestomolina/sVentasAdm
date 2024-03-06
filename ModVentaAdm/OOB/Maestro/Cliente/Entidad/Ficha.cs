@@ -47,15 +47,14 @@ namespace ModVentaAdm.OOB.Maestro.Cliente.Entidad
         public string denFiscal { get; set; }
         public DateTime fechaAlta { get; set; }
         public DateTime fechaBaja { get; set; }
+        public string vendedorCodigo { get; set; }
         public bool IsActivo { get { return estatus.Trim().ToUpper() == "ACTIVO" ? true : false; } }
         public bool IsCreditoActivo { get { return estatusCredito.Trim().ToUpper() == "1"; } }
-
-
+        //
         public Ficha()
         {
             Limpiar();
         }
-
         public Ficha(Venta.Temporal.Encabezado.Entidad.Ficha ficha)
             :this()
         {
@@ -65,7 +64,6 @@ namespace ModVentaAdm.OOB.Maestro.Cliente.Entidad
             dirFiscal = ficha.dirFiscalCliente;
             codigo = ficha.codigoCliente;
         }
-
         public void Limpiar()
         {
             id = "";
@@ -107,7 +105,6 @@ namespace ModVentaAdm.OOB.Maestro.Cliente.Entidad
             fechaAlta = DateTime.Now.Date;
             fechaBaja = DateTime.Now.Date;
         }
-
         //
         public string Info 
         { 

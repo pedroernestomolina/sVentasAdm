@@ -18,7 +18,8 @@ namespace ServicePos.Interfaces
         Transporte.ICnf,
         Transporte.ITranspCaja,
         Transporte.ITranspClienteAnticipo,
-        Transporte.ITranspCxcMovCobro
+        Transporte.ITranspCxcMovCobro,
+        Transporte.ITranspDocAliado
     {
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();
         DtoLib.Resultado Test();

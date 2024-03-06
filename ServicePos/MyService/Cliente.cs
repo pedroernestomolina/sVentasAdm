@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace ServicePos.MyService
 {
-    
     public partial class Service : IService
     {
-
         public DtoLib.ResultadoLista<DtoLibPos.Cliente.Lista.Ficha> Cliente_GetLista(DtoLibPos.Cliente.Lista.Filtro filtro)
         {
             return ServiceProv.Cliente_GetLista(filtro);
@@ -112,7 +110,11 @@ namespace ServicePos.MyService
             }
             return ServiceProv.Cliente_Inactivar(ficha);
         }
-
+        //
+        public DtoLib.ResultadoLista<DtoLibPos.Cliente.Lista.Ficha> 
+            Cliente_GetLista_Resumen(string filtro)
+        {
+            return ServiceProv.Cliente_GetLista_Resumen(filtro);
+        }
     }
-
 }

@@ -33,5 +33,11 @@ namespace ModVentaAdm.Fabrica.__.Documentos.ParaTranspRivas
             var r01 = Sistema.MyData.Sistema_TipoDocumento_GetFichaById(idTipoDoc);
             return r01.Entidad;
         }
+        public List<OOB.Maestro.Cliente.Lista.Ficha> 
+            ObtenerListaCliente_Resumen_FiltradoPor(string filtro)
+        {
+            var r01 = Sistema.MyData.Cliente_GetLista_Resumen(filtro);
+            return r01.ListaD.OrderBy(o => o.nombre).ToList();
+        }
     }
 }

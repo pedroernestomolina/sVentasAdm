@@ -52,6 +52,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Vista
         {
             _controlador.Doc.setCadenaBuscar(TB_CADENA.Text.Trim().ToUpper());
         }
+        private void DTP_FECHA_EMISION_Leave(object sender, EventArgs e)
+        {
+            _controlador.Doc.DocGenerar.setFechaEmision(DTP_FECHA_EMISION.Value);
+        }
         private void TB_MOTIVO_Leave(object sender, EventArgs e)
         {
             _controlador.Doc.DocGenerar.setMotivo(TB_MOTIVO.Text.Trim());

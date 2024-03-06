@@ -99,5 +99,10 @@ namespace ModVentaAdm.Fabrica.__.Cliente.ParaZufu
             _lst.Add(new OOB.Sistema.General() { id = "02", desc = "Inactivo", codigo = "" });
             return _lst;
         }
+        public OOB.Maestro.Cliente.Entidad.Ficha 
+            ObtenerFicha_Cliente_PorId(string id)
+        {
+            return null;
+        }
     }
 }

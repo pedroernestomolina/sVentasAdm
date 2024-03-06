@@ -112,6 +112,8 @@
     <Compile Include="Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="Documento\Entidad\Venta\FichaEncabezado.cs" />
     <Compile Include="Documento\Entidad\Venta\Turno.cs" />
+    <Compile Include="Documento\GetAliados\Info\Ficha.cs" />
+    <Compile Include="Documento\GetAliados\Info\Item.cs" />
     <Compile Include="Documento\GetAliados\Presupuesto\Ficha.cs" />
     <Compile Include="Documento\GetServicios\Presupuesto\Ficha.cs" />
     <Compile Include="Documento\GetTurnos\baseFicha.cs" />

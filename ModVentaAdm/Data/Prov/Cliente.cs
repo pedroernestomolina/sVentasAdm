@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Prov
 {
-    
     public partial class DataPrv : IData
     {
-
-
         public OOB.Resultado.Lista<OOB.Maestro.Cliente.Entidad.Ficha> 
             Cliente_GetLista(OOB.Maestro.Cliente.Lista.Filtro filtro)
         {
@@ -109,6 +106,7 @@ namespace ModVentaAdm.Data.Prov
                 grupo = s.grupo,
                 vendedor = s.vendedor,
                 zona = s.zona,
+                vendedorCodigo = s.vendedorCodigo,
             };
             rt.Entidad = nr;
 
@@ -458,8 +456,39 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
-
+        //
+        public OOB.Resultado.Lista<OOB.Maestro.Cliente.Lista.Ficha> 
+            Cliente_GetLista_Resumen(string filtro)
+        {
+            var rt = new OOB.Resultado.Lista<OOB.Maestro.Cliente.Lista.Ficha>();
+            //
+            var r01 = MyData.Cliente_GetLista_Resumen(filtro);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var list = new List<OOB.Maestro.Cliente.Lista.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    list = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Maestro.Cliente.Lista.Ficha()
+                        {
+                            id = s.auto,
+                            ciRif = s.ciRif,
+                            codigo = s.codigo,
+                            nombre = s.nombre,
+                            estatus = s.estatus,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            rt.ListaD = list;
+            //
+            return rt;
+        }
     }
-
 }

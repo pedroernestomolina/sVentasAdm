@@ -18,9 +18,9 @@ namespace IPos
         Transporte.ICnf,
         Transporte.ITranspCaja,
         Transporte.ITranspClienteAnticipo,
-        Transporte.ITranspCxCMovCobro
+        Transporte.ITranspCxCMovCobro,
+        Transporte.ITranspDocAliado
     {
-
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();
         DtoLib.Resultado Test();
     }

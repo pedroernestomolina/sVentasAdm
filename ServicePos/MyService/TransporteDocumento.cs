@@ -143,6 +143,17 @@ namespace ServicePos.MyService
         public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado> 
             TransporteDocumento_AgregarFactura_From_HojasServicio(DtoTransporte.Documento.Agregar.FacturaFromHojaServ.Ficha ficha)
         {
+            var r01 = ServiceProv.TransporteDocumento_AgregarFactura_Verificar_DocGenerar(ficha);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                var rt = new DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>()
+                {
+                    Entidad = null,
+                    Mensaje = r01.Mensaje,
+                    Result = DtoLib.Enumerados.EnumResult.isError
+                };
+                return rt;
+            }
             return ServiceProv.TransporteDocumento_AgregarFactura_From_HojasServicio(ficha);
         }
 

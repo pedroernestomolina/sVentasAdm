@@ -313,13 +313,17 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             }
         }
 
+
         //CLASES ABSTRACTAS
         abstract public string TipoDocumento_Get { get; }
         abstract protected void GuardarDoc();
         abstract public void ActivarIGTF();
         abstract public void ActivarISLR();
+        abstract public void LimpiarTasa_ISLR();
+        abstract public void LimpiarTasa_IGTF();
         abstract public void DocumentoNumeroGenerar();
         abstract public bool DocumentoNumeroGenerarIsOk { get; }
+
 
         private NotasPeriodo.Vista.INotas _notasPeriodo;
         public NotasPeriodo.Vista.INotas NotasPeriodo { get { return _notasPeriodo; } }

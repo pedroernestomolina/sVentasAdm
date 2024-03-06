@@ -74,6 +74,7 @@
     <Compile Include="Transporte\IAliado.cs" />
     <Compile Include="Transporte\ICnf.cs" />
     <Compile Include="Transporte\IServicioPrest.cs" />
+    <Compile Include="Transporte\ITranspDocAliado.cs" />
     <Compile Include="Transporte\ITranspCaja.cs" />
     <Compile Include="Transporte\ITranspClienteAnticipo.cs" />
     <Compile Include="Transporte\ITranspCxCMovCobro.cs" />

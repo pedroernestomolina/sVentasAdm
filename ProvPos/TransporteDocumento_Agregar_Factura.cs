@@ -1110,12 +1110,13 @@ namespace ProvPos
                         if (ficha.docNumeroGenerar.Trim() != "") 
                         {
                             var xver_1 = new MySql.Data.MySqlClient.MySqlParameter("@doGenerar", ficha.docNumeroGenerar);
+                            var xver_2 = new MySql.Data.MySqlClient.MySqlParameter("@doCodigoTipo", ficha.TipoDoc);
                             var xsql_ver = @"SELECT 1 as Ok 
                                                 FROM ventas 
                                                 WHERE documento=@doGenerar and 
                                                     estatus_anulado='0' and 
-                                                    tipo='04'";
-                            var _estatus_ver = cn.Database.SqlQuery<int>(xsql_ver, xver_1).FirstOrDefault();
+                                                    tipo=@doCodigoTipo";
+                            var _estatus_ver = cn.Database.SqlQuery<int>(xsql_ver, xver_1, xver_2).FirstOrDefault();
                             if (_estatus_ver == 1)
                             {
                                 throw new Exception("EXISTE UN DOCUMENTO ACTIVO CON EL MISMO NUMERO A GENERAR");
@@ -1123,9 +1124,10 @@ namespace ProvPos
                             xsql_ver = @"SELECT 1 as Ok 
                                                 FROM ventas 
                                                 WHERE documento=@doGenerar and 
-                                                    tipo='04'";
+                                                    tipo=@doCodigoTipo";
                             xver_1 = new MySql.Data.MySqlClient.MySqlParameter("@doGenerar", ficha.docNumeroGenerar);
-                            _estatus_ver = cn.Database.SqlQuery<int>(xsql_ver, xver_1).FirstOrDefault();
+                            xver_2 = new MySql.Data.MySqlClient.MySqlParameter("@doCodigoTipo", ficha.TipoDoc);
+                            _estatus_ver = cn.Database.SqlQuery<int>(xsql_ver, xver_1, xver_2).FirstOrDefault();
                             if (_estatus_ver != 1)
                             {
                                 throw new Exception("NO EXISTE NINGUN DOCUMENTO CON EL NUMERO A GENERAR");
@@ -1220,6 +1222,59 @@ namespace ProvPos
             return result;
         }
 
+        public DtoLib.Resultado
+            TransporteDocumento_AgregarFactura_Verificar_DocGenerar(DtoTransporte.Documento.Agregar.FacturaFromHojaServ.Ficha ficha)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>();
+            try
+            {
+                using (var cn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    //VERIFICA SI EL DOCUMENTO NUMERO A GENERAR EXISTE Y ESTA ACTIVO
+                    if (ficha.docNumeroGenerar.Trim() != "")
+                    {
+                        var xver_1 = new MySql.Data.MySqlClient.MySqlParameter("@doGenerar", ficha.docNumeroGenerar);
+                        var xsql_ver = @"SELECT 1 as Ok 
+                                                FROM ventas 
+                                                WHERE documento=@doGenerar and 
+                                                    estatus_anulado='0' and 
+                                                    tipo='01'";
+                        var _estatus_ver = cn.Database.SqlQuery<int>(xsql_ver, xver_1).FirstOrDefault();
+                        if (_estatus_ver == 1)
+                        {
+                            throw new Exception("EXISTE UN DOCUMENTO ACTIVO CON EL MISMO NUMERO A GENERAR");
+                        }
+                        xsql_ver = @"SELECT 1 as Ok 
+                                                FROM ventas 
+                                                WHERE documento=@doGenerar and 
+                                                    tipo='01'";
+                        xver_1 = new MySql.Data.MySqlClient.MySqlParameter("@doGenerar", ficha.docNumeroGenerar);
+                        _estatus_ver = cn.Database.SqlQuery<int>(xsql_ver, xver_1).FirstOrDefault();
+                        if (_estatus_ver != 1)
+                        {
+                            throw new Exception("NO EXISTE NINGUN DOCUMENTO CON EL NUMERO A GENERAR");
+                        }
+                    }
+                };
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+
         public DtoLib.ResultadoEntidad<DtoTransporte.Documento.Agregar.Resultado>
             TransporteDocumento_AgregarFactura_From_HojasServicio(DtoTransporte.Documento.Agregar.FacturaFromHojaServ.Ficha ficha)
         {
@@ -1245,20 +1300,30 @@ namespace ProvPos
                         var largo = 10;
                         var aDoc = cn.Database.SqlQuery<int>("select a_ventas from sistema_contadores").FirstOrDefault();
                         var autoDoc = aDoc.ToString().Trim().PadLeft(largo, '0');
-                        var pSerie = new MySql.Data.MySqlClient.MySqlParameter("@autoSerie", ficha.serieDocId);
-                        sql = "update empresa_series_fiscales set correlativo=correlativo+1 where auto=@autoSerie";
-                        r1 = cn.Database.ExecuteSqlCommand(sql, pSerie);
-                        if (r1 == 0)
+
+                        var docNumero = "";
+                        if (ficha.docNumeroGenerar == "") 
                         {
-                            throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
+                            var pSerie = new MySql.Data.MySqlClient.MySqlParameter("@autoSerie", ficha.serieDocId);
+                            sql = "update empresa_series_fiscales set correlativo=correlativo+1 where auto=@autoSerie";
+                            r1 = cn.Database.ExecuteSqlCommand(sql, pSerie);
+                            if (r1 == 0)
+                            {
+                                throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
+                            }
+                            var nDoc = cn.Database.SqlQuery<int?>("select correlativo from empresa_series_fiscales where auto=@autoSerie", pSerie).FirstOrDefault();
+                            if (!nDoc.HasValue)
+                            {
+                                throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
+                            }
+                            docNumero = nDoc.Value.ToString().Trim().PadLeft(largo, '0');
                         }
-                        var nDoc = cn.Database.SqlQuery<int?>("select correlativo from empresa_series_fiscales where auto=@autoSerie", pSerie).FirstOrDefault();
-                        if (!nDoc.HasValue)
+                        else
                         {
-                            throw new Exception("PROBLEMA AL ACTUALIZAR CORRELATIVO SERIE FISCAL");
+                            docNumero=ficha.docNumeroGenerar;
                         }
+
                         var fechaVenc = fechaSistema.AddDays(ficha.diasCredito);
-                        var docNumero = nDoc.Value.ToString().Trim().PadLeft(largo, '0');
                         //INSERTAR FACTURA
                         var _sql = @"INSERT INTO `ventas` (
                                         `auto`, 
@@ -1379,6 +1444,7 @@ namespace ProvPos
                                         `z_fiscal`,
                                         docSolicitadoPor,
                                         docModuloCargar,
+                                        docEstatusPendiente,
                                         igtf_tasa,
                                         igtf_monto_mon_act,
                                         igtf_monto_mon_div,
@@ -1504,6 +1570,7 @@ namespace ProvPos
                                         '0',
                                         @docSolicitadoPor,
                                         @docModuloCargar,
+                                        '0',
                                         @igtf_tasa,
                                         @igtf_monto_mon_act,
                                         @igtf_monto_mon_div,

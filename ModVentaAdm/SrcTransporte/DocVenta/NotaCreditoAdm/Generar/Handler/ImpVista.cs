@@ -69,6 +69,12 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
         {
             try
             {
+                var r01 = Sistema.MyData.FechaServidor();
+                if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError) 
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                _doc.setFechaServidor(r01.Entidad);
                 return true;
             }
             catch (Exception e)
@@ -138,7 +144,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
                         tipoRemision = data.DocAplicarNtCredito.docCodigoTipo,
                         Total = data.MontoTotal,
                         usuario = Sistema.Usuario.nombre,
-                        vendedor = data.DocAplicarNtCredito.vendedorNombre
+                        vendedor = data.DocAplicarNtCredito.vendedorNombre,
+                        fechaEmision = data.FechaEmision,
                     }
                 };
                 var r02 = Sistema.Fabrica.DataDocumentos.Agregar_Nuevo_Documento_NotaCredito(fichaOOB);

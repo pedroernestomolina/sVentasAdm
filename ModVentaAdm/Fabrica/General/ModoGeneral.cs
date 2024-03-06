@@ -60,5 +60,10 @@ namespace ModVentaAdm.Fabrica.General
         {
             return null;
         }
+        public SrcComun.Documento.NotaCreditoAdm.Generar.Vista.IVista 
+            Documentos_Generar_NotaCredito()
+        {
+            return null;
+        }
     }
 }

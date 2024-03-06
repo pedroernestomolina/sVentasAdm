@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace IPos
 {
-    
     public interface ICliente
     {
-
         DtoLib.ResultadoLista<DtoLibPos.Cliente.Lista.Ficha> Cliente_GetLista(DtoLibPos.Cliente.Lista.Filtro filtro);
         DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Entidad.Ficha> Cliente_GetFichaById(string id);
         DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Entidad.Ficha> Cliente_GetFichaByCiRif(string ciRif);
@@ -26,7 +24,8 @@ namespace IPos
         DtoLib.Resultado Cliente_Editar_Validar(DtoLibPos.Cliente.Editar.Actualizar.FichaValidar ficha);
         DtoLib.Resultado Cliente_EstatusActivar_Validar(string autoId);
         DtoLib.Resultado Cliente_EstatusInactivar_Validar(string autoId);
-
+        //
+        DtoLib.ResultadoLista<DtoLibPos.Cliente.Lista.Ficha>
+            Cliente_GetLista_Resumen(string filtro);
     }
-
 }

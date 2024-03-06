@@ -483,20 +483,28 @@ namespace ModVentaAdm.Src.Principal
             _filtradoCliente.Inicia();
         }
         //
-        private SrcComun.Documento.NotaCreditoAdm.Generar .Vista.IVista _notaCredAdm;
+        private SrcComun.Documento.NotaCreditoAdm.Generar.Vista.IVista _notaCred;
+        public void NotaCredito()
+        {
+            _notaCred = Sistema.Fabrica.Documentos_Generar_NotaCredito();
+            if (_notaCred == null)
+            {
+                Helpers.Msg.Alerta("OPCION NO IMPLEMENTADA");
+                return;
+            }
+            _notaCred.Inicializa();
+            _notaCred.Inicia();
+        }
         public void NotaCreditoAdm()
         {
-            if (_notaCredAdm == null)
+            _notaCred = Sistema.Fabrica.Documentos_Generar_NotaCreditoAdm();
+            if (_notaCred == null)
             {
-                _notaCredAdm = Sistema.Fabrica.Documentos_Generar_NotaCreditoAdm();
-                if (_notaCredAdm == null) 
-                {
-                    Helpers.Msg.Alerta("OPCION NO IMPLEMENTADA");
-                    return;
-                }
+                Helpers.Msg.Alerta("OPCION NO IMPLEMENTADA");
+                return;
             }
-            _notaCredAdm.Inicializa();
-            _notaCredAdm.Inicia();
+            _notaCred.Inicializa();
+            _notaCred.Inicia();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Vista
         IdataGuardar Get_DatosGuardar { get; }
         //
         void setCadenaBuscar(string cadena);
+        void setFechaServidor(DateTime fecha);
         void BuscarDocumentos();
         void Inicializa();
         void Limpiar();

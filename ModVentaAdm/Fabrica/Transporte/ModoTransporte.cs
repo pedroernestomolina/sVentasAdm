@@ -12,12 +12,13 @@ namespace ModVentaAdm.Fabrica.Transporte
         private __.Cliente.IData.IData _dataCliente;
         private __.Documentos.IData.IData _dataDocumentos;
         //
-        public __.Cliente.IData.IData DataCliente { get { return null; } }
+        public __.Cliente.IData.IData DataCliente { get { return _dataCliente; } }
         public __.Documentos.IData.IData DataDocumentos { get { return _dataDocumentos; } }
         //
         public ModoTransporte()
         {
             _dataDocumentos = new __.Documentos.ParaTranspRivas.ImpData();
+            _dataCliente = new __.Cliente.ParaTranspRivas.ImpData();
         }
         //
 
@@ -46,10 +47,17 @@ namespace ModVentaAdm.Fabrica.Transporte
         }
 
         //DOCUMENTOS
+        //NOTA DE CREDITO 
+        public SrcComun.Documento.NotaCreditoAdm.Generar.Vista.IVista 
+            Documentos_Generar_NotaCredito()
+        {
+            return new SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler.ImpVista();
+        }
+        //NOTA DE CREDITO ADMINISTRATIVA, DONDE NO EXISTE EL DOCUMENTO FISCAL
         public SrcComun.Documento.NotaCreditoAdm.Generar.Vista.IVista
             Documentos_Generar_NotaCreditoAdm()
         {
-            return new SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler.ImpVista();
+            return new SrcTransporte.DocVenta.NotaCreditoAdm.GenerarAdm.Handler.ImpVista();
         }
     }
 }

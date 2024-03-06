@@ -768,6 +768,7 @@ namespace ModVentaAdm.Data.Prov
                 nota = ficha.Doc.nota,
                 subTotalMonDivisa = ficha.Doc.subTotalMonDivisa,
                 docSiglas = ficha.Doc.docSiglas,
+                fechaEmision= ficha.Doc.fechaEmision,
             };
             var fichaDTO = new DtoTransporte.Documento.Agregar.NotaCredito.Nueva.Ficha()
             {

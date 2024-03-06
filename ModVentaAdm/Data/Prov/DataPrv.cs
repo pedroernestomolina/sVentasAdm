@@ -13,14 +13,12 @@ namespace ModVentaAdm.Data.Prov
     public partial class DataPrv: IData
     {
         public static  IService MyData;
-
-
+        //
         public DataPrv(string instancia, string bd)
         {
             MyData = new  Service(instancia,bd);
         }
-
-
+        //
         public OOB.Resultado.FichaEntidad<DateTime> 
             FechaServidor()
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
@@ -341,9 +342,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                 {
                     _notasPeriodoLapso = NotasPeriodo.Notas_Get;
                 }
+                string _docNumeroGenerar = Ficha.DocNumeroGenerar;
                 var fichaOOB = new OOB.Transporte.Documento.Agregar.Factura.Ficha()
                 {
-                    docNumeroGenerar="",
+                    docNumeroGenerar = _docNumeroGenerar,
                     cargos = 0m,
                     cargosp = 0m,
                     CiRif = _cirif,
@@ -615,14 +617,26 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                 var _aplicaIGTF = false;
                 if (Ficha.Get_TasaIGTF > 0m)
                 {
-                    //CALCULO EL MONTO POR ISLR
-                    var _monto = _montoTotal;
-                    _monto -= (_montoTotal * Ficha.Get_TasaISLR / 100);
-                    //CALCULO IGTF, DESCONTANDO EL ISLR 
+                    ////CALCULO EL MONTO POR ISLR
+                    //var _monto = _montoTotal;
+                    //_monto -= (_montoTotal * Ficha.Get_TasaISLR / 100);
+                    ////CALCULO IGTF, DESCONTANDO EL ISLR 
+                    //_aplicaIGTF = true;
+                    //_tasaIGTF = Ficha.Get_TasaIGTF;
+                    //_montoIGTFMonAct = _monto * Ficha.Get_TasaIGTF / 100;
+                    //if (_factorCambio > 0m) 
+                    //{
+                    //    _montoIGTFMonDiv = _montoIGTFMonAct / _factorCambio;
+                    //}
+
+
+                    //SIN NECESIDAD DE CALCULAR NADA, 
+                    //YA QUE EL USUARIO DEBE PROPORCIONAR EL MONTO YA CALCULADO PARA EL IGTF
+                    //DESCONTADO ISRL, SI PAGO UNA PARTE EN DIVISA Y LA OTRA NO, ETC...
                     _aplicaIGTF = true;
                     _tasaIGTF = Ficha.Get_TasaIGTF;
-                    _montoIGTFMonAct = _monto * Ficha.Get_TasaIGTF / 100;
-                    if (_factorCambio > 0m) 
+                    _montoIGTFMonAct = Ficha.Get_MontoAplicarIGTF;
+                    if (_factorCambio > 0m)
                     {
                         _montoIGTFMonDiv = _montoIGTFMonAct / _factorCambio;
                     }
@@ -633,8 +647,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                 {
                     _notasPeriodoLapso = NotasPeriodo.Notas_Get;
                 }
+                string _docNumeroGenerar = Ficha.DocNumeroGenerar;
                 var fichaOOB = new OOB.Transporte.Documento.Agregar.FacturaFromHojaServ.Ficha()
                 {
+                    docNumeroGenerar = _docNumeroGenerar,
                     cargos = 0m,
                     cargosp = 0m,
                     CiRif = _cirif,
@@ -722,41 +738,106 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
             _doc.Generar();
         }
 
-        TasaDivisa.ITasa _gDivisa;
+
+        //TasaDivisa.ITasa _gDivisa;
+        //public override void ActivarIGTF()
+        //{
+        //    if (_gDivisa == null)
+        //    {
+        //        _gDivisa = new TasaDivisa.Imp();
+        //    }
+        //    _gDivisa.Inicializa();
+        //    _gDivisa.setTexto("Tasa IGTF Actual ?");
+        //    _gDivisa.setTasaDivisa(Ficha.Get_TasaIGTF);
+        //    _gDivisa.Inicia();
+        //    if (_gDivisa.ProcesarIsOK)
+        //    {
+        //        Ficha.setMontoAplicarIgtf(1000);
+        //        Ficha.setTasaIgtf(_gDivisa.TasaActual_Get);
+        //    }
+        //}
+
+        IGTF.Vista.IVista _igtf;
         public override void ActivarIGTF()
         {
-            if (_gDivisa == null)
+            if (_igtf== null)
             {
-                _gDivisa = new TasaDivisa.Imp();
+                _igtf = new IGTF.Handler.ImpVista();
             }
-            _gDivisa.Inicializa();
-            _gDivisa.setTexto("Tasa IGTF Actual ?");
-            _gDivisa.setTasaDivisa(Ficha.Get_TasaIGTF);
-            _gDivisa.Inicia();
-            if (_gDivisa.ProcesarIsOK)
+            _igtf.Inicializa();
+            _igtf.setTasaIGTF(Ficha.Get_TasaIGTF);
+            _igtf.setMontoAplicarIGTF(Ficha.Get_MontoAplicarIGTF);
+            _igtf.Inicia();
+            if (_igtf.ProcesarIsOk)
             {
-                Ficha.setTasaIgtf(_gDivisa.TasaActual_Get);
+                Ficha.setTasaIgtf(_igtf.Get_TasaIGTF);
+                Ficha.setMontoAplicarIgtf(_igtf.Get_MontoAplicarIGTF);
             }
         }
         public override void ActivarISLR()
         {
-            if (_gDivisa == null)
+            //if (_gDivisa == null)
+            //{
+            //    _gDivisa = new TasaDivisa.Imp();
+            //}
+            //_gDivisa.Inicializa();
+            //_gDivisa.setTexto("Tasa ISLR Actual ?");
+            //_gDivisa.setTasaDivisa(Ficha.Get_TasaISLR);
+            //_gDivisa.Inicia();
+            //if (_gDivisa.ProcesarIsOK)
+            //{
+            //    Ficha.setTasaIslr(_gDivisa.TasaActual_Get);
+            //}
+        }
+        public override void LimpiarTasa_ISLR()
+        {
+            //var msg = "Asignar En Cero (0) Tasa ISLR ?";
+            //var ent = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            //if (ent == DialogResult.Yes) 
+            //{
+            //    Ficha.setTasaIslr(0m);
+            //}
+        }
+        public override void LimpiarTasa_IGTF()
+        {
+            var msg = "Asignar En Cero (0) Tasa IGTF ?";
+            var ent = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (ent == DialogResult.Yes) 
             {
-                _gDivisa = new TasaDivisa.Imp();
-            }
-            _gDivisa.Inicializa();
-            _gDivisa.setTexto("Tasa ISLR Actual ?");
-            _gDivisa.setTasaDivisa(Ficha.Get_TasaISLR);
-            _gDivisa.Inicia();
-            if (_gDivisa.ProcesarIsOK)
-            {
-                Ficha.setTasaIslr(_gDivisa.TasaActual_Get);
+                Ficha.setTasaIgtf(0m);
+                Ficha.setMontoAplicarIgtf(0m);
             }
         }
-        public override bool DocumentoNumeroGenerarIsOk { get { return false; } }
+
+
         public override void DocumentoNumeroGenerar()
         {
-            Helpers.Msg.Alerta("METODO NO DISPONOBLE PARA ESTE TIPO DE DOCUMENTO");
+            var msg = "Quieres Indicar/Editar Un Número De Documento ?";
+            var v = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (v == DialogResult.Yes)
+            {
+                NumeroDocGenerar();
+            }
+            else
+            {
+                Ficha.DocNumeroGenerar = "";
+            }
+        }
+        EntradaNumeroDoc.Vista.IVista _numdocGen;
+        public override bool DocumentoNumeroGenerarIsOk { get { return Ficha.DocNumeroGenerar.Trim() != ""; } }
+        private void NumeroDocGenerar()
+        {
+            if (_numdocGen == null)
+            {
+                _numdocGen = new EntradaNumeroDoc.Handler.ImpVista();
+            }
+            _numdocGen.Inicializa();
+            _numdocGen.setNumeroDoc(Ficha.DocNumeroGenerar);
+            _numdocGen.Inicia();
+            if (_numdocGen.BtAceptar.OpcionIsOK)
+            {
+                Ficha.DocNumeroGenerar = _numdocGen.Get_NumDocGenerar;
+            }
         }
     }
 }

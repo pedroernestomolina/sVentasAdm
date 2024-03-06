@@ -89,6 +89,7 @@
     <Compile Include="Data\Infra\Transporte\IAliado.cs" />
     <Compile Include="Data\Infra\Transporte\ICnf.cs" />
     <Compile Include="Data\Infra\Transporte\IServicioPrest.cs" />
+    <Compile Include="Data\Infra\Transporte\ITransporteDocAliado.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteCaja.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteClienteAnticipo.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteCxcMovCobro.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Data\Prov\TransporteClienteAnticipo.cs" />
     <Compile Include="Data\Prov\TransporteCnf.cs" />
     <Compile Include="Data\Prov\TransporteCxcMovCobro.cs" />
+    <Compile Include="Data\Prov\TransporteDocAliado.cs" />
     <Compile Include="Data\Prov\TransporteDocumento.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Anular.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Agregar_Factura.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="Fabrica\Transporte\DocVenta.cs" />
     <Compile Include="Fabrica\Transporte\ModoTransporte.cs" />
     <Compile Include="Fabrica\IFabrica.cs" />
+    <Compile Include="Fabrica\__\Cliente\ParaTranspRivas\ImpData.cs" />
     <Compile Include="Fabrica\__\Documentos\IData\IData.cs" />
     <Compile Include="Fabrica\__\Documentos\ParaTranspRivas\ImpData.cs" />
     <Compile Include="Gestion.cs" />
@@ -205,6 +208,7 @@
     <Compile Include="OOB\Maestro\Cliente\Entidad\Ficha.cs" />
     <Compile Include="OOB\Maestro\Cliente\EstatusActivarInactivar\Ficha.cs" />
     <Compile Include="OOB\Maestro\Cliente\Lista\Enumerados.cs" />
+    <Compile Include="OOB\Maestro\Cliente\Lista\Ficha.cs" />
     <Compile Include="OOB\Maestro\Cliente\Lista\Filtro.cs" />
     <Compile Include="OOB\Maestro\Grupo\Agregar\Ficha.cs" />
     <Compile Include="OOB\Maestro\Grupo\Editar\Ficha.cs" />
@@ -333,6 +337,8 @@
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Turno.cs" />
+    <Compile Include="OOB\Transporte\Documento\GetAliados\Info\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\GetAliados\Info\Item.cs" />
     <Compile Include="OOB\Transporte\Documento\GetAliados\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\GetServicios\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\GetTurnos\baseFicha.cs" />
@@ -377,6 +383,10 @@
     <Compile Include="SrcComun\Clientes\Filtros\Opcion\Vista\IPorCombo.cs" />
     <Compile Include="Fabrica\__\Cliente\IData\IData.cs" />
     <Compile Include="Fabrica\__\Cliente\ParaZufu\ImpData.cs" />
+    <Compile Include="SrcComun\Documento\ListaCliente\Handler\baseListaItem.cs" />
+    <Compile Include="SrcComun\Documento\ListaCliente\Handler\baseVista.cs" />
+    <Compile Include="SrcComun\Documento\ListaCliente\Vista\IListaItem.cs" />
+    <Compile Include="SrcComun\Documento\ListaCliente\Vista\IVista.cs" />
     <Compile Include="SrcComun\Documento\ListaDoc\Handler\baseListaDoc.cs" />
     <Compile Include="SrcComun\Documento\ListaDoc\Handler\baseVista.cs" />
     <Compile Include="SrcComun\Documento\ListaDoc\Vista\IListaDoc.cs" />
@@ -393,6 +403,25 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="SrcTransporte\DocVenta\Generar\EntradaNumeroDoc\Vista\IVista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\IGTF\Handler\ImpVista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\Generar\IGTF\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\IGTF\Vista\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\Generar\IGTF\Vista\IVista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\ListaClientes\Handler\data.cs" />
+    <Compile Include="SrcTransporte\DocVenta\ListaClientes\Handler\ImpListItem.cs" />
+    <Compile Include="SrcTransporte\DocVenta\ListaClientes\Handler\ImpVista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\ListaClientes\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\ListaClientes\Vista\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\ListaClientes\Vista\Idata.cs" />
+    <Compile Include="SrcTransporte\DocVenta\ListaClientes\Vista\IVista.cs" />
     <Compile Include="SrcTransporte\DocVenta\ListaDoc\Handler\data.cs" />
     <Compile Include="SrcTransporte\DocVenta\ListaDoc\Handler\ImpVista.cs" />
     <Compile Include="SrcTransporte\DocVenta\ListaDoc\Vista\Frm.cs">
@@ -404,6 +433,20 @@
     <Compile Include="SrcTransporte\DocVenta\ListaDoc\Vista\Idata.cs" />
     <Compile Include="SrcTransporte\DocVenta\ListaDoc\Vista\IVista.cs" />
     <Compile Include="SrcTransporte\DocVenta\ListaDoc\Handler\ImpListDoc.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Handler\dataGuardar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Handler\ImpDoc.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Handler\ImpDocGenerar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Handler\ImpVista.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Vista\IdataGuardar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Vista\IDoc.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Vista\IDocGenerar.cs" />
+    <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Vista\IVista.cs" />
     <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Handler\dataGuardar.cs" />
     <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Handler\ImpDoc.cs" />
     <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Handler\ImpDocGenerar.cs" />
@@ -1336,6 +1379,9 @@
     <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\IGTF\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\Item\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1345,7 +1391,13 @@
     <EmbeddedResource Include="SrcTransporte\DocVenta\Generar\TasaDivisa\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\DocVenta\ListaClientes\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\DocVenta\ListaDoc\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\DocVenta\NotaCreditoAdm\GenerarAdm\Vista\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\Frm.resx">

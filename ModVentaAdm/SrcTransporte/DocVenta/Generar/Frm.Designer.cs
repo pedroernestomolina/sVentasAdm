@@ -2379,7 +2379,9 @@
             // 
             // L_TASA_ISLR
             // 
+            this.L_TASA_ISLR.Cursor = System.Windows.Forms.Cursors.Hand;
             this.L_TASA_ISLR.Dock = System.Windows.Forms.DockStyle.Right;
+            this.L_TASA_ISLR.Enabled = false;
             this.L_TASA_ISLR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_TASA_ISLR.Location = new System.Drawing.Point(79, 2);
             this.L_TASA_ISLR.Name = "L_TASA_ISLR";
@@ -2387,10 +2389,12 @@
             this.L_TASA_ISLR.TabIndex = 5;
             this.L_TASA_ISLR.Text = "0.00%";
             this.L_TASA_ISLR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_TASA_ISLR.Click += new System.EventHandler(this.L_TASA_ISLR_Click);
             // 
             // BT_APLICAR_ISLR
             // 
             this.BT_APLICAR_ISLR.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BT_APLICAR_ISLR.Enabled = false;
             this.BT_APLICAR_ISLR.Location = new System.Drawing.Point(2, 2);
             this.BT_APLICAR_ISLR.Name = "BT_APLICAR_ISLR";
             this.BT_APLICAR_ISLR.Size = new System.Drawing.Size(68, 39);
@@ -2413,6 +2417,7 @@
             // 
             // L_TASA_IGTF
             // 
+            this.L_TASA_IGTF.Cursor = System.Windows.Forms.Cursors.Hand;
             this.L_TASA_IGTF.Dock = System.Windows.Forms.DockStyle.Right;
             this.L_TASA_IGTF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_TASA_IGTF.Location = new System.Drawing.Point(79, 2);
@@ -2421,6 +2426,7 @@
             this.L_TASA_IGTF.TabIndex = 3;
             this.L_TASA_IGTF.Text = "0.00%";
             this.L_TASA_IGTF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_TASA_IGTF.Click += new System.EventHandler(this.L_TASA_IGTF_Click);
             // 
             // BT_IGTF
             // 

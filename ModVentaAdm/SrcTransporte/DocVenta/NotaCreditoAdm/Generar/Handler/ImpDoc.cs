@@ -14,6 +14,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
         private OOB.Transporte.Documento.Agregar.NotaCredito.ObtenerDataDocAplica.Ficha _docVenta_AplicarNotaCredito;
         private string _docAplicaNotaCredito_DatosCliente;
         private string _docAplicaNotaCredito_DatosDocumento;
+        private DateTime _fechaServidor;
         //
         public string Get_CadenaBusq { get { return _cadenaBusq; } }
         public bool BusquedaIsOk { get { return _docVenta_AplicarNotaCredito != null; } }
@@ -25,10 +26,15 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
         public ImpDoc()
         {
             _cadenaBusq = "";
+            _fechaServidor = DateTime.Now.Date;
             _docVenta_AplicarNotaCredito = null;
             _docAplicaNotaCredito_DatosCliente = "";
             _docAplicaNotaCredito_DatosDocumento = "";
             _docGenerar = new ImpDocGenerar();
+        }
+        public void setFechaServidor(DateTime fecha)
+        {
+            _fechaServidor = fecha;
         }
         public void setCadenaBuscar(string cadena)
         {
@@ -121,6 +127,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
                 MontoFisal_1 = _docGenerar.MontoFiscal_1,
                 MontoFisal_2 = _docGenerar.MontoFiscal_2,
                 MontoFisal_3 = _docGenerar.MontoFiscal_3,
+                FechaEmision = _docGenerar.Get_FechaEmision,
             };
             return rt;
         }
@@ -129,6 +136,11 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
             try
             {
                 _docGenerar.ValidarDataIsOk();
+                if (_docGenerar.Get_FechaEmision < _docVenta_AplicarNotaCredito.docFechaEmision ||
+                    _docGenerar.Get_FechaEmision> _fechaServidor)
+                {
+                    throw new Exception("FECHA EMISION DOCUMENTO INCORRECTA");
+                }
                 if (DocGenerar.Get_Total > _docVenta_AplicarNotaCredito.docTotal)
                 {
                     throw  new Exception("MONTO NOTA CREDITO ES MAYOR AL MONTO DOCUMENTO DE VENTA");

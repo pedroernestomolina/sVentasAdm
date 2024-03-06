@@ -9,6 +9,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
 {
     public class ImpDocGenerar : Vista.IDocGenerar
     {
+        private DateTime _fechaEmision;
         private string _motivo;
         private Vista.IFiscal _mExento;
         Vista.IFiscal _m1;
@@ -22,7 +23,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
         public decimal Get_Subt_Base { get { return _m1.Get_Base + _m2.Get_Base + _m3.Get_Base; } }
         public decimal Get_Subt_Imp { get { return _m1.Get_Iva + _m2.Get_Iva + _m3.Get_Iva; } }
         public decimal Get_Total { get { return _m1.Get_Total + _m2.Get_Total + _m3.Get_Total + _mExento.Get_Total; } }
-        public string Get_Motivo { get { return _motivo; } }    
+        public string Get_Motivo { get { return _motivo; } }
+        public DateTime Get_FechaEmision { get { return _fechaEmision; } }
         //
         public ImpDocGenerar()
         {
@@ -30,6 +32,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
             _m1 = new ImpFiscal();
             _m2 = new ImpFiscal();
             _m3 = new ImpFiscal();
+            _fechaEmision = DateTime.Now.Date;
             _motivo = "";
         }
         public void Inicializa()
@@ -38,7 +41,12 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
             _m1.Inicializa();
             _m2.Inicializa();
             _m3.Inicializa();
+            _fechaEmision = DateTime.Now.Date;
             _motivo = "";
+        }
+        public void setFechaEmision(DateTime fecha)
+        {
+            _fechaEmision = fecha;
         }
         public void setMotivo(string mot)
         {
@@ -57,6 +65,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Handler
         }
         public void Limpiar()
         {
+            _fechaEmision = DateTime.Now.Date;
             _motivo = "";
             _mExento.Inicializa();
             _m1.Inicializa();

@@ -27,5 +27,7 @@ namespace ModVentaAdm.Fabrica.__.Cliente.IData
             Nivel_GetLista();
         List<OOB.Sistema.General>
             Credito_GetLista();
+        OOB.Maestro.Cliente.Entidad.Ficha
+            ObtenerFicha_Cliente_PorId(string id);
     }
 }

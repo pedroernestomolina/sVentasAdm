@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Infra
 {
-    
     public interface ICliente
     {
-
-
         OOB.Resultado.FichaEntidad<OOB.Maestro.Cliente.Entidad.Ficha> 
             Cliente_GetFicha(string autoCliente);
         OOB.Resultado.Lista<OOB.Maestro.Cliente.Entidad.Ficha> 
@@ -35,6 +32,8 @@ namespace ModVentaAdm.Data.Infra
         OOB.Resultado.Ficha 
             Cliente_Inactivar(OOB.Maestro.Cliente.EstatusActivarInactivar.Ficha ficha);
 
+        //
+        OOB.Resultado.Lista<OOB.Maestro.Cliente.Lista.Ficha>
+            Cliente_GetLista_Resumen(string filtro);
     }
-
 }

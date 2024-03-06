@@ -458,6 +458,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
             _doc.Generar();
         }
 
+
         public override void ActivarIGTF()
         {
             Helpers.Msg.Alerta("OPCION NO DISPONIBLE PARA ESTE TIPO DE DOCUMENTO");
@@ -466,6 +467,16 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
         {
             Helpers.Msg.Alerta("OPCION NO DISPONIBLE PARA ESTE TIPO DE DOCUMENTO");
         }
+        public override void LimpiarTasa_ISLR()
+        {
+            Helpers.Msg.Alerta("OPCION NO DISPONIBLE PARA ESTE TIPO DE DOCUMENTO");
+        }
+        public override void LimpiarTasa_IGTF()
+        {
+            Helpers.Msg.Alerta("OPCION NO DISPONIBLE PARA ESTE TIPO DE DOCUMENTO");
+        }
+
+
         public override void DocumentoNumeroGenerar()
         {
             var msg = "Quieres Indicar/Editar Un Número De Documento ?";

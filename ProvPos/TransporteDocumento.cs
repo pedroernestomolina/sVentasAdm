@@ -1140,8 +1140,8 @@ namespace ProvPos
                                         '')";
                         var p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoVenta);
                         var p02 = new MySql.Data.MySqlClient.MySqlParameter("@numDoc", documentoNro);
-                        var p03 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", fechaSistema.Date);
-                        var p04 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVen", fechaSistema.Date);
+                        var p03 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmi", ficha.Doc.fechaEmision);
+                        var p04 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVen", ficha.Doc.fechaEmision);
                         var p05 = new MySql.Data.MySqlClient.MySqlParameter("@razonSocial", ficha.Doc.RazonSocial);
                         var p06 = new MySql.Data.MySqlClient.MySqlParameter("@dirFiscal", ficha.Doc.DirFiscal);
                         var p07 = new MySql.Data.MySqlClient.MySqlParameter("@ciRif", ficha.Doc.CiRif);
@@ -1227,7 +1227,7 @@ namespace ProvPos
                                         auto ,
                                         c_cobranza ,
                                         c_cobranzap ,
-                                        fecha ,
+                                        fecha,
                                         tipo_documento ,
                                         documento ,
                                         fecha_vencimiento ,

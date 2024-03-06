@@ -289,6 +289,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             L_MONTO_IVA.Text = _controlador.Ficha.Totales.MontoIva_MonedaActual_Get.ToString("n2", _cult);
             L_MONTO.Text = _controlador.Ficha.Totales.MontoTotal_MonedaActual_Get.ToString("n2", _cult);
             L_MONTO_DIVISA.Text = _controlador.Ficha.Totales.MontoTotal_MonedaDivisa_Get.ToString("n2", _cult);
+            L_TASA_IGTF.Text = _controlador.Ficha.Get_TasaIGTF.ToString("n2", _cult);
+            L_TASA_ISLR.Text = _controlador.Ficha.Get_TasaISLR.ToString("n2", _cult);
         }
         private void ActualizarContadores()
         {
@@ -372,6 +374,26 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             {
                 L_NUMERO_DOC_GENERAR.Text = "Número Documento a Generar: " + Environment.NewLine + _controlador.Ficha.DocNumeroGenerar;
             }
+        }
+
+        private void L_TASA_ISLR_Click(object sender, EventArgs e)
+        {
+            LimpiarTasa_ISLR();
+        }
+        private void L_TASA_IGTF_Click(object sender, EventArgs e)
+        {
+            LimpiarTasa_IGTF();
+        }
+        //
+        private void LimpiarTasa_ISLR()
+        {
+            _controlador.LimpiarTasa_ISLR();
+            L_TASA_ISLR.Text = _controlador.Ficha.Get_TasaISLR.ToString("n2", _cult);
+        }
+        private void LimpiarTasa_IGTF()
+        {
+            _controlador.LimpiarTasa_IGTF();
+            L_TASA_IGTF.Text = _controlador.Ficha.Get_TasaIGTF.ToString("n2", _cult);
         }
     }
 }

@@ -75,6 +75,7 @@
             this.MENU_DOCUMENTOS_PEDIDO = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO = new System.Windows.Forms.ToolStripMenuItem();
+            this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.MENU_DOCUMENTOS_ADMINISTRADOR = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -196,11 +197,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(611, 1);
+            this.panel2.Location = new System.Drawing.Point(609, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(272, 52);
+            this.panel2.Size = new System.Drawing.Size(274, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -211,7 +212,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(268, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(270, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -226,7 +227,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(304, 52);
+            this.panel7.Size = new System.Drawing.Size(302, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -245,7 +246,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(300, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(298, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -279,7 +280,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(227, 22);
+            this.panel14.Size = new System.Drawing.Size(225, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -289,7 +290,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(223, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(221, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -325,7 +326,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(227, 22);
+            this.panel16.Size = new System.Drawing.Size(225, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -335,7 +336,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(223, 18);
+            this.L_HOST.Size = new System.Drawing.Size(221, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -344,7 +345,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(307, 1);
+            this.panel17.Location = new System.Drawing.Point(305, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -416,7 +417,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(509, 1);
+            this.panel20.Location = new System.Drawing.Point(507, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -586,6 +587,7 @@
             this.MENU_DOCUMENTOS_PEDIDO,
             this.toolStripMenuItem6,
             this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO,
+            this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM,
             this.toolStripMenuItem8,
             this.MENU_DOCUMENTOS_ADMINISTRADOR,
             this.toolStripMenuItem2});
@@ -596,40 +598,40 @@
             // MNU_TRANSPORTE_PRESUPUESTO_GENERAR
             // 
             this.MNU_TRANSPORTE_PRESUPUESTO_GENERAR.Name = "MNU_TRANSPORTE_PRESUPUESTO_GENERAR";
-            this.MNU_TRANSPORTE_PRESUPUESTO_GENERAR.Size = new System.Drawing.Size(237, 22);
+            this.MNU_TRANSPORTE_PRESUPUESTO_GENERAR.Size = new System.Drawing.Size(238, 22);
             this.MNU_TRANSPORTE_PRESUPUESTO_GENERAR.Text = "Generar Presupuesto";
             this.MNU_TRANSPORTE_PRESUPUESTO_GENERAR.Click += new System.EventHandler(this.MNU_TRANSPORTE_PRESUPUESTO_GENERAR_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(234, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(235, 6);
             // 
             // MENU_DOCUMENTOS_TRANS_PRO_FORMA
             // 
             this.MENU_DOCUMENTOS_TRANS_PRO_FORMA.Name = "MENU_DOCUMENTOS_TRANS_PRO_FORMA";
-            this.MENU_DOCUMENTOS_TRANS_PRO_FORMA.Size = new System.Drawing.Size(237, 22);
+            this.MENU_DOCUMENTOS_TRANS_PRO_FORMA.Size = new System.Drawing.Size(238, 22);
             this.MENU_DOCUMENTOS_TRANS_PRO_FORMA.Text = "Control de Hoja-Servicio";
             this.MENU_DOCUMENTOS_TRANS_PRO_FORMA.Click += new System.EventHandler(this.MENU_DOCUMENTOS_TRANS_PRO_FORMA_Click);
             // 
             // MNU_TRANSPORTE_FACTURA
             // 
             this.MNU_TRANSPORTE_FACTURA.Name = "MNU_TRANSPORTE_FACTURA";
-            this.MNU_TRANSPORTE_FACTURA.Size = new System.Drawing.Size(237, 22);
+            this.MNU_TRANSPORTE_FACTURA.Size = new System.Drawing.Size(238, 22);
             this.MNU_TRANSPORTE_FACTURA.Text = "Control De Factura";
             this.MNU_TRANSPORTE_FACTURA.Click += new System.EventHandler(this.MNU_TRANSPORTE_FACTURA_Click);
             // 
             // controlDeNotaDeEntregaToolStripMenuItem
             // 
             this.controlDeNotaDeEntregaToolStripMenuItem.Name = "controlDeNotaDeEntregaToolStripMenuItem";
-            this.controlDeNotaDeEntregaToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.controlDeNotaDeEntregaToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.controlDeNotaDeEntregaToolStripMenuItem.Text = "Control de Nota de Entrega";
             this.controlDeNotaDeEntregaToolStripMenuItem.Visible = false;
             // 
             // MENU_DOCUMENTOS_PEDIDO
             // 
             this.MENU_DOCUMENTOS_PEDIDO.Name = "MENU_DOCUMENTOS_PEDIDO";
-            this.MENU_DOCUMENTOS_PEDIDO.Size = new System.Drawing.Size(237, 22);
+            this.MENU_DOCUMENTOS_PEDIDO.Size = new System.Drawing.Size(238, 22);
             this.MENU_DOCUMENTOS_PEDIDO.Text = "Control de Pedido";
             this.MENU_DOCUMENTOS_PEDIDO.Visible = false;
             this.MENU_DOCUMENTOS_PEDIDO.Click += new System.EventHandler(this.MENU_DOCUMENTOS_PEDIDO_Click);
@@ -637,32 +639,39 @@
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(234, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(235, 6);
             // 
             // MENU_DOCUMENTOS_TRANS_NOTA_CREDITO
             // 
             this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO.Name = "MENU_DOCUMENTOS_TRANS_NOTA_CREDITO";
-            this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO.Size = new System.Drawing.Size(237, 22);
-            this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO.Text = "Nota de Crèdito";
+            this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO.Size = new System.Drawing.Size(238, 22);
+            this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO.Text = "Nota de Crédito";
             this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO.Click += new System.EventHandler(this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_Click);
+            // 
+            // MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM
+            // 
+            this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM.Name = "MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM";
+            this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM.Size = new System.Drawing.Size(238, 22);
+            this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM.Text = "Nota de Crédito Administrativa";
+            this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM.Click += new System.EventHandler(this.MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(234, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(235, 6);
             // 
             // MENU_DOCUMENTOS_ADMINISTRADOR
             // 
             this.MENU_DOCUMENTOS_ADMINISTRADOR.Image = global::ModVentaAdm.Properties.Resources.administrador;
             this.MENU_DOCUMENTOS_ADMINISTRADOR.Name = "MENU_DOCUMENTOS_ADMINISTRADOR";
-            this.MENU_DOCUMENTOS_ADMINISTRADOR.Size = new System.Drawing.Size(237, 22);
+            this.MENU_DOCUMENTOS_ADMINISTRADOR.Size = new System.Drawing.Size(238, 22);
             this.MENU_DOCUMENTOS_ADMINISTRADOR.Text = "Administrador de Documentos";
             this.MENU_DOCUMENTOS_ADMINISTRADOR.Click += new System.EventHandler(this.MENU_DOCUMENTOS_ADMINISTRADOR_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(234, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(235, 6);
             // 
             // cxCToolStripMenuItem
             // 
@@ -1338,5 +1347,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem MENU_DOCUMENTOS_TRANS_NOTA_CREDITO;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM;
     }
 }

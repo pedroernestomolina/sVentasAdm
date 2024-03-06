@@ -27,6 +27,8 @@ namespace ModVentaAdm.Fabrica
             ClienteFiltrosOpciones_SaldoPend { get; }
 
         //DOCUMENTOS
+        SrcComun.Documento.NotaCreditoAdm.Generar.Vista.IVista
+            Documentos_Generar_NotaCredito();
         SrcComun.Documento.NotaCreditoAdm.Generar.Vista.IVista 
             Documentos_Generar_NotaCreditoAdm();
     }

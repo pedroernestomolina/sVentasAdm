@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibPos.Cliente.Entidad
 {
-    
     public class Ficha
     {
-
         public string id { get; set; }
         public string idGrupo { get; set; }
         public string idEstado { get; set; }
@@ -49,8 +47,8 @@ namespace DtoLibPos.Cliente.Entidad
         public string denFiscal { get; set; }
         public DateTime fechaAlta { get; set; }
         public DateTime fechaBaja { get; set; }
-
-
+        public string vendedorCodigo { get; set; }
+        //
         public Ficha()
         {
             id = "";
@@ -91,8 +89,7 @@ namespace DtoLibPos.Cliente.Entidad
             denFiscal = "";
             fechaAlta = DateTime.Now.Date;
             fechaBaja = DateTime.Now.Date;
+            vendedorCodigo = "";
         }
-
     }
-
 }

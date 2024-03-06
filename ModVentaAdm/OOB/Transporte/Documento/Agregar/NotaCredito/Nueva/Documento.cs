@@ -54,5 +54,6 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.NotaCredito.Nueva
         public string nota { get; set; }
         public string docSiglas { get; set; }
         public decimal subTotalMonDivisa { get; set; }
+        public DateTime  fechaEmision { get; set; }
     }
 }

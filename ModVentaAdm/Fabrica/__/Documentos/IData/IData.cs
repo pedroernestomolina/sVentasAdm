@@ -17,5 +17,7 @@ namespace ModVentaAdm.Fabrica.__.Documentos.IData
             Agregar_Nuevo_Documento_NotaCredito(OOB.Transporte.Documento.Agregar.NotaCredito.Nueva.Ficha ficha);
         OOB.Sistema.TipoDocumento.Entidad.Ficha
             ObtenerFicha_TipoDocumento_Venta(string idTipoDoc);
+        List<OOB.Maestro.Cliente.Lista.Ficha>
+            ObtenerListaCliente_Resumen_FiltradoPor(string filtro);
     }
 }

@@ -387,6 +387,19 @@ namespace ModVentaAdm.SrcTransporte.Principal
 
         private void MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_Click(object sender, EventArgs e)
         {
+            NotaCredito();
+        }
+        private void MENU_DOCUMENTOS_TRANS_NOTA_CREDITO_ADM_Click(object sender, EventArgs e)
+        {
+            NotaCreditoAdm();
+        }
+        //
+        private void NotaCredito()
+        {
+            _controlador.NotaCredito();
+        }
+        private void NotaCreditoAdm()
+        {
             _controlador.NotaCreditoAdm();
         }
     }

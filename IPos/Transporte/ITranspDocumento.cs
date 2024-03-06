@@ -84,5 +84,11 @@ namespace IPos.Transporte
         //AGREGAR NOTA DE CREDITO
         DtoLib.ResultadoEntidad<string>
             TransporteDocumento_Documento_NotaCredito_Agregar(DtoTransporte.Documento.Agregar.NotaCredito.Nueva.Ficha ficha);
+
+        //VERIFICAR AL AGREGAR FACTURA QUE EL DOCUMENTO A GENERAR EXISTA Y SE ENCUENTRE ANULADO
+        //ESTO ES EN CASO DE QUE SE QUIERA REUSAR ELMISMO NUMERO DE DOCUMENTO YA ANULADO
+        //PORQUE SE REQUIERE 
+        DtoLib.Resultado
+            TransporteDocumento_AgregarFactura_Verificar_DocGenerar(DtoTransporte.Documento.Agregar.FacturaFromHojaServ.Ficha ficha);
     }
 }

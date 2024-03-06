@@ -12,11 +12,8 @@ using System.Transactions;
 
 namespace ProvPos
 {
-
     public partial class Provider: IPos.IProvider
     {
-
-
         public DtoLib.ResultadoLista<DtoLibPos.Cliente.Lista.Ficha> 
             Cliente_GetLista(DtoLibPos.Cliente.Lista.Filtro filtro)
         {
@@ -107,7 +104,7 @@ namespace ProvPos
             Cliente_GetFichaById(string id)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Entidad.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
@@ -115,11 +112,8 @@ namespace ProvPos
                     var ent = cnn.clientes.Find(id);
                     if (ent == null)
                     {
-                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                        result.Mensaje = "[ ID ] CLIENTE NO ENCONTRADO";
-                        return result;
+                        throw new Exception("CLIENTE NO ENCONTRADO");
                     }
-
                     var nr = new DtoLibPos.Cliente.Entidad.Ficha()
                     {
                         ciRif = ent.ci_rif,
@@ -160,6 +154,7 @@ namespace ProvPos
                         vendedor = ent.vendedores.nombre,
                         webSite = ent.website,
                         zona = ent.clientes_zonas.nombre,
+                        vendedorCodigo = ent.vendedores.codigo,
                     };
                     result.Entidad = nr;
                 }
@@ -169,7 +164,7 @@ namespace ProvPos
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return result;
         }
         public DtoLib.ResultadoEntidad<DtoLibPos.Cliente.Entidad.Ficha> 
@@ -951,7 +946,47 @@ namespace ProvPos
             return rt;
         }
 
+        //
+        public DtoLib.ResultadoLista<DtoLibPos.Cliente.Lista.Ficha> 
+            Cliente_GetLista_Resumen(string filtro)
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibPos.Cliente.Lista.Ficha>();
+            //
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql_1 = @"select 
+                                        auto, 
+                                        codigo,
+                                        ci_rif as ciRif, 
+                                        razon_social as nombre, 
+                                        estatus ";
+                    var sql_2 = " from clientes ";
+                    var sql_3 = " where 1=1 ";
+                    var sql_4 = "";
 
+                    var p1 = new MySqlParameter();
+                    if (filtro!= "")
+                    {
+                        var cad = filtro.Trim().ToUpper();
+                        var valor = "%" + cad + "%";
+                        sql_3 += " and ci_rif like @p or razon_social like @p";
+                        p1.ParameterName = "@p";
+                        p1.Value = valor;
+                    }
+                    var sql = sql_1 + sql_2 + sql_3 + sql_4;
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.Cliente.Lista.Ficha>(sql, p1).ToList();
+                    result.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            //
+            return result;
+        }
     }
-
 }

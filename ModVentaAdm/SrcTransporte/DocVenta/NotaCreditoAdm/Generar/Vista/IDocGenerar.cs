@@ -17,7 +17,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Vista
         decimal Get_Subt_Imp { get; }
         decimal Get_Total { get; }
         string Get_Motivo { get; }
+        DateTime Get_FechaEmision { get; }
         //
+        void setFechaEmision(DateTime fecha);
         void setMotivo(string mot);
         void Inicializa();
         void ValidarDataIsOk();

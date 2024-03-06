@@ -18,5 +18,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.NotaCreditoAdm.Generar.Vista
         Vista.IFiscal MontoFisal_1 { get; set; }
         Vista.IFiscal MontoFisal_2 { get; set; }
         Vista.IFiscal MontoFisal_3 { get; set; }
+        DateTime FechaEmision { get; set; }
     }
 }

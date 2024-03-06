@@ -37,5 +37,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         void ActivarISLR();
         void DocumentoNumeroGenerar();
         bool DocumentoNumeroGenerarIsOk { get; }
+        void LimpiarTasa_ISLR();
+        void LimpiarTasa_IGTF();
     }
 }
