@@ -16,16 +16,16 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
         string DocNombre_Get { get; }
         string DocNumero_Get { get; }
         string DocFecha_Get { get; }
+        string Get_IdDocSeleccionado { get; }
+        //
         void setFichaId(string id);
         void setClienteBuscar(OOB.Maestro.Cliente.Entidad.Ficha ficha);
-
         void Inicializa();
         void CargarData();
         void Limpiar();
-
         bool RemisionIsOK { get; }
         void Buscar();
-
         void setHabilitarCargarDocRemision(bool hab);
+        void setDataCargar(List<Utils.dataFiltro> _lst);
     }
 }

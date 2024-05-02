@@ -7,20 +7,15 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.Resultado
 {
-
     public class Ficha
     {
-
         public Enumerados.EnumResult  Result { get; set; }
         public string Mensaje { get; set; }
-
 
         public Ficha()
         {
             Result = Enumerados.EnumResult.isOk ;
             Mensaje = "";
         }
-
     }
-
 }

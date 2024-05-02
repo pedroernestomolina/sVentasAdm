@@ -121,22 +121,26 @@ namespace ServicePos.MyService
             return ServiceProv.TransporteDocumento_GetLista(filtro);
         }
 
+        //
         public DtoLib.ResultadoLista<DtoTransporte.Documento.GetAliados.Presupuesto.Ficha> 
             TransporteDocumento_Presupuesto_GetAliados(string idDoc)
         {
             return ServiceProv.TransporteDocumento_Presupuesto_GetAliados(idDoc);
         }
-
         public DtoLib.ResultadoLista<DtoTransporte.Documento.GetServicios.Presupuesto.Ficha> 
             TransporteDocumento_Presupuesto_GetServicios(string idDoc)
         {
             return ServiceProv.TransporteDocumento_Presupuesto_GetServicios(idDoc);
         }
-
         public DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Presupuesto.Ficha>
             TransporteDocumento_Presupuesto_GetTurnos(string idDoc)
         {
             return ServiceProv.TransporteDocumento_Presupuesto_GetTurnos(idDoc);
+        }
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.GetDetalleTurnos.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_GetDetalleTurnos()
+        {
+            return ServiceProv.TransporteDocumento_Presupuesto_GetDetalleTurnos();
         }
 
         //

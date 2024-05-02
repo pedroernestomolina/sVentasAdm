@@ -1652,11 +1652,11 @@
             // 
             this.CB_REMISION.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_REMISION.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_REMISION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_REMISION.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_REMISION.FormattingEnabled = true;
             this.CB_REMISION.Location = new System.Drawing.Point(2, 2);
             this.CB_REMISION.Name = "CB_REMISION";
-            this.CB_REMISION.Size = new System.Drawing.Size(117, 24);
+            this.CB_REMISION.Size = new System.Drawing.Size(117, 21);
             this.CB_REMISION.TabIndex = 0;
             this.CB_REMISION.SelectedIndexChanged += new System.EventHandler(this.CB_REMISION_SelectedIndexChanged);
             // 

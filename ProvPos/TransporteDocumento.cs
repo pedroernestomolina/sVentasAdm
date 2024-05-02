@@ -197,6 +197,7 @@ namespace ProvPos
                 {
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
                     var _sql_1 = @"select 
                                         auto as docId, 
                                         documento as docNumero,
@@ -230,10 +231,23 @@ namespace ProvPos
                     }
                     if (filtro.esPorRemision)
                     {
-                        _sql_2 += " and estatus_anulado<>'1' and auto_remision='' ";
+                        if (filtro.incluirDocProcesado)
+                        {
+                            _sql_2 += " and estatus_anulado<>'1' ";
+                        }
+                        else 
+                        {
+                            _sql_2 += " and estatus_anulado<>'1' and auto_remision='' ";
+                        }
+                    }
+                    if (filtro.idDocumento != "")
+                    {
+                        p3.ParameterName = "@idDocumento";
+                        p3.Value = filtro.idDocumento;
+                        _sql_2 += " and auto = @idDocumento ";
                     }
                     var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoTransporte.Documento.Remision.Lista.Ficha>(_sql, p1, p2).ToList();
+                    var _lst = cnn.Database.SqlQuery<DtoTransporte.Documento.Remision.Lista.Ficha>(_sql, p1, p2, p3).ToList();
                     result.Lista = _lst;
                 }
             }
@@ -373,6 +387,7 @@ namespace ProvPos
                     var _lstTurno= cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.Turno>(_sql, xp1).ToList();
                     //
                     _sql = @"SELECT
+                                it.id_item as idItem,
                                 it.id_venta as idVenta,
                                 it.servicio_desc servDesc,
                                 it.cnt_dias as cntDias,
@@ -381,25 +396,52 @@ namespace ProvPos
                                 it.notas as notas,
                                 it.importe as importe,
                                 it.unidades_desc as descVehic,
+                                it.servicio_id as servId,
                                 it.servicio_codigo as servCod,
                                 it.servicio_detalle as servDet,
                                 it.turno_estatus as turnEstatus,
                                 it.turno_desc turnDesc,
                                 it.turno_cnt_dias as turnCntDias,
-                                det.doc_num_ref as docNroRef,
-                                det.tipo_procedencia_item as docTipoProcedencia
+                                it.doc_num_ref as docNroRef,
+                                it.id_doc_ref as idDocRef,
+                                '' as docTipoProcedencia
                             FROM ventas_transp_item as it
-                            join ventas_transp_detalle as det on det.id_doc_ref=it.id_venta 
-                            WHERE det.id_venta=@idDoc";
+                            WHERE it.id_venta=@idDoc";
                     xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
                     var _lstDetTurno = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.DetTurno>(_sql, xp1).ToList();
+                    //
+                    _sql = @"SELECT
+                                itFecha.id_item as idItem,
+                                itFecha.fecha as fecha,
+                                itFecha.hora as hora,
+                                itFecha.nota as nota
+                            FROM ventas_transp_item_fecha as itFecha
+                            WHERE itFecha.id_venta=@idDoc";
+                    xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var _lstFechas= cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.Fecha>(_sql, xp1).ToList();
+                    //
+                    _sql = @"SELECT
+                                itAliado.id_item as idItem,
+                                itAliado.id_aliado as idAliado,
+                                itAliado.cirif_aliado as ciRifAliado,
+                                itAliado.codigo_aliado as codigoAliado,
+                                itAliado.desc_alido as nombreAliado,
+                                itAliado.precio_unit_divisa as pNeto,
+                                itAliado.cnt_dias as cantDias,
+                                itAliado.importe as importe
+                            FROM ventas_transp_item_aliado as itAliado
+                            WHERE itAliado.id_venta=@idDoc";
+                    xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var _lstAliados= cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.Aliado>(_sql, xp1).ToList();
                     //
                     result.Entidad = new DtoTransporte.Documento.Entidad.Venta.Ficha()
                     {
                         encabezado = _ent,
                         detalles = _det,
                         turnos= _lstTurno,
-                        detTurno=_lstDetTurno 
+                        detTurno=_lstDetTurno,
+                        fechas = _lstFechas,
+                        aliados = _lstAliados,
                     };
                 }
             }
@@ -681,6 +723,59 @@ namespace ProvPos
             }
             return rt;
         }
+
+        public DtoLib.ResultadoLista<DtoTransporte.Documento.GetDetalleTurnos.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_GetDetalleTurnos()
+        {
+            var listaDoc = new List<string>() { "0000000219", "0000000221" };
+            string docs = "'" + string.Join("', '", listaDoc) + "'";
+            var rt = new DtoLib.ResultadoLista<DtoTransporte.Documento.GetDetalleTurnos.Presupuesto.Ficha>();
+            try
+            {
+                using (var cnn = new PosEntities(_cnPos.ConnectionString))
+                {
+                    var sql_1 = @"SELECT
+                                    it.servicio_desc,
+                                    it.cnt_dias,
+                                    it.cnt_unidades,
+                                    it.precio_neto_divisa,
+                                    it.dscto,
+                                    it.alicuota_id,
+                                    it.alicuota_tasa,
+                                    it.alicuota_desc,
+                                    it.notas,
+                                    it.fecha_doc,
+                                    it.hora_doc,
+                                    it.signo_doc,
+                                    it.tipo_doc,
+                                    it.estatus_anulado,
+                                    it.importe,
+                                    it.unidades_desc,
+                                    it.servicio_id,
+                                    it.servicio_codigo,
+                                    it.servicio_detalle,
+                                    it.turno_estatus,
+                                    it.turno_id,
+                                    it.turno_desc,
+                                    it.turno_cnt_dias,
+                                    vt.auto as id_doc_ref, 
+                                    vt.documento as doc_num_ref
+                                FROM ventas_transp_item as it
+                                join ventas as vt on vt.auto=it.id_venta
+                                WHERE it.id_venta in ("+docs+")";
+                    var sql = sql_1;
+                    var lst = cnn.Database.SqlQuery<DtoTransporte.Documento.GetDetalleTurnos.Presupuesto.Ficha>(sql).ToList();
+                    rt.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return rt;
+        }
+
 
         //
         public DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Documento.Ficha> 

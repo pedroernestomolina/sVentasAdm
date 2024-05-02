@@ -7,29 +7,22 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.Anular
 {
-    
     public class Gestion
     {
-
-
         private string _motivo;
         private bool _procesarIsOk;
         private bool _abandonarIsOk;
-
-
+        //
         public string Motivo { get { return _motivo; } }
         public bool ProcesarIsOK { get { return _procesarIsOk; } }
         public bool AbandonarIsOK { get { return _abandonarIsOk; } }
-
-
+        //
         public Gestion()
         {
             _motivo = "";
             _procesarIsOk = false;
             _abandonarIsOk = false;
         }
-
-
         AnularFrm frm;
         public void Inicia()
         {
@@ -43,7 +36,6 @@ namespace ModVentaAdm.Src.Anular
                 frm.ShowDialog();
             }
         }
-
         private bool CargarData()
         {
             return true;
@@ -56,25 +48,19 @@ namespace ModVentaAdm.Src.Anular
                 _procesarIsOk = true;
             }
         }
-
         public void Inicializa()
         {
             _motivo = "";
             _procesarIsOk = false;
             _abandonarIsOk = false;
         }
-
         public void setMotivo(string p)
         {
             _motivo = p;
         }
-
-
         public void Abandonar()
         {
             _abandonarIsOk = true;
         }
-
     }
-
 }

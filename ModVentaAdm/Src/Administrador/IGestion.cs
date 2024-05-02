@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.Administrador
 {
-    
     public interface IGestion
     {
-
         BindingSource ItemsSource { get; }
         string ItemsEncontrados { get; }
         BindingSource SucursalSource { get; }
@@ -37,7 +35,6 @@ namespace ModVentaAdm.Src.Administrador
         void CorrectorDocumento();
         void Filtros();
         void VerAnulacion();
-
+        void AliadosInvolucrados();
     }
-
 }

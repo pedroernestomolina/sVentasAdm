@@ -54,6 +54,8 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         public void setTasaDivisa(decimal tasa)
         {
             _tasaDivisaActual = tasa;
+            CalcularTotales();
+            ActualizarMontos();
         }
         public void setTasaFiscal(List<OOB.Sistema.Fiscal.Entidad.Ficha> list)
         {

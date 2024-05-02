@@ -620,7 +620,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>TURNO / Descripcion</Value>
+                  <Value>TURNO / Detalle</Value>
                   <Style>
                     <FontSize>8pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -656,7 +656,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Detalle</Value>
+                  <Value>DESCRIPCION</Value>
                   <Style>
                     <FontSize>8pt</FontSize>
                     <FontWeight>Bold</FontWeight>

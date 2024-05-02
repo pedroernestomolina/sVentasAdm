@@ -17,8 +17,7 @@ namespace ModVentaAdm.Src.Administrador.Documentos
         private Helpers.Imprimir.IDocumento _gVisualizarDoc;
         private Anular.Gestion _gAnular;
         private Auditoria.Visualizar.Gestion _gAuditoria;
-
-
+        //
         public BindingSource ItemsSource { get { return _gLista.ItemsSource; } }
         public string ItemsEncontrados { get { return _gLista.ItemsEncontrados; } }
         public BindingSource SucursalSource { get { return _gFiltro.SourceSucursal; } }
@@ -28,8 +27,7 @@ namespace ModVentaAdm.Src.Administrador.Documentos
         public DateTime GetHasta { get { return _gFiltro.GetHasta; } }
         public string GetIdSucursal { get { return _gFiltro.GetIdSucursal; } }
         public string GetIdTipoDoc { get { return _gFiltro.GetIdTipoDoc; } }
-
-
+        //
         public Gestion()
         {
             _filtrarPor = new filtro();
@@ -40,14 +38,11 @@ namespace ModVentaAdm.Src.Administrador.Documentos
             _gAnular = new Anular.Gestion();
             _gAuditoria = new Auditoria.Visualizar.Gestion();
         }
-
-
         public void Inicializa()
         {
             _gFiltro.Inicializa();
             _gLista.Inicializa();
         }
-
         AdmDocFrm frm;
         public void Inicia()
         {
@@ -58,12 +53,10 @@ namespace ModVentaAdm.Src.Administrador.Documentos
                 frm.Show();
             }
         }
-
         public void Buscar()
         {
             GenerarBusqueda();
         }
-
         private void GenerarBusqueda()
         {
             var filtro = new OOB.Documento.Lista.Filtro()
@@ -78,7 +71,6 @@ namespace ModVentaAdm.Src.Administrador.Documentos
                 estatus = _gFiltro.GetEstatus,
             };
             var rt1 = Sistema.Fabrica.DocumentosGetLista(filtro);
-            //var rt1 = Sistema.MyData.Documento_Get_Lista(filtro);
             if (rt1.Result == OOB.Resultado.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(rt1.Mensaje);
@@ -95,75 +87,62 @@ namespace ModVentaAdm.Src.Administrador.Documentos
             var _lst = rt1.ListaD.OrderByDescending(o => o.Id).ThenByDescending(o => o.DocNombre).ThenByDescending(o => o.DocNumero).ToList();
             _gLista.setLista(_lst.Take(_cntDocVisualizar).ToList());
         }
-
         public void AnularItem()
         {
             if  (Sistema.Fabrica.AnularDocumentoVenta(GetItemActual, _gAnular))
             {
-                _gLista.GetItemActual.SetAnulado();
+                _gLista.AnularItemActual();
                 Helpers.Msg.EliminarOk();
             }
         }
-
         public void LimpiarFiltros()
         {
             _gFiltro.LimpiarFiltros();
         }
-
         public void LimpiarData()
         {
             _gLista.LimpiarData();
         }
-
         public void VisualizarDocumento()
         {
             Sistema.Fabrica.VisualizarDocumento(GetItemActual);
         }
-
         public void Imprimir()
         {
             _gRepDoc.setFiltros(_gFiltro.GetFiltros());
             _gRepDoc.setListaDoc(_gLista.GetListaDoc);
             _gRepDoc.Generar();
         }
-
         private bool CargarData()
         {
             return _gFiltro.CargarData();
         }
-
         public void setFechaDesde(DateTime fecha)
         {
             _gFiltro.setFechaDesde(fecha);
         }
-
         public void setFechaHasta(DateTime fecha)
         {
             _gFiltro.setFechaHasta(fecha);
         }
-
         public void setSucursal(string autoId)
         {
             _gFiltro.setSucursal(autoId);
         }
-
         public void setTipoDoc(string id)
         {
             _gFiltro.setTipoDoc(id);
         }
-
         public void CorrectorDocumento()
         {
             var msg = "OPCION NO ACTIVADA";
             MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1);
         }
-
         public void Filtros()
         {
             _gFiltro.setFiltros(_filtrarPor);
             _gFiltro.Inicia();
         }
-
         public void VerAnulacion()
         {
             if (GetItemActual == null) { return; }
@@ -199,6 +178,14 @@ namespace ModVentaAdm.Src.Administrador.Documentos
             _gAuditoria.Inicializa();
             _gAuditoria.setData(r01.Entidad);
             _gAuditoria.Inicia();
+        }
+        public void AliadosInvolucrados()
+        {
+            if (GetItemActual == null)
+            {
+                return;
+            }
+            Sistema.Fabrica.AliadosInvolucradosDoc(GetItemActual.idDocumento);
         }
     }
 }

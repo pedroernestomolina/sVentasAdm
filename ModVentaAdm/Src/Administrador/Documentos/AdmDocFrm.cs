@@ -11,21 +11,15 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.Administrador.Documentos
 {
-
     public partial class AdmDocFrm : Form
     {
-
-
         private IGestion _controlador;
-
-
+        //
         public AdmDocFrm()
         {
             InitializeComponent();
             InicializarCombos();
         }
-
-
         public void setControlador(IGestion ctr)
         {
             _controlador = ctr;
@@ -405,12 +399,18 @@ namespace ModVentaAdm.Src.Administrador.Documentos
                 }
             }
         }
-
         private void VerAnulacion()
         {
             _controlador.VerAnulacion();
         }
 
+        private void BT_ALIADOS_INV_Click(object sender, EventArgs e)
+        {
+            AliadosInvolucrados();
+        }
+        private void AliadosInvolucrados()
+        {
+            _controlador.AliadosInvolucrados();
+        }
     }
-
 }

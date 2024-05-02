@@ -7,16 +7,12 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.Administrador
 {
-    
     public class data
     {
-
         public enum enumTipoDoc { SinDefinir = -1, Factura = 1, NotaDebito, NotaCredito, NotaEntrega, Presupuesto };
-
-
+        //
         private OOB.Documento.Lista.Ficha doc;
-
-
+        //
         public string idDocumento { get { return doc.Id; } }
         public string FechaHora { get { return doc.FechaEmision.ToShortDateString(); } }//+ ", " + doc.HoraEmision; } }
         public string Serie { get { return doc.Serie; } }
@@ -88,22 +84,18 @@ namespace ModVentaAdm.Src.Administrador
             }
         }
         public bool IsDocVentaAdministrativo { get { return doc.ClaveSistema.Trim().ToUpper() == "03"; } }
-
-
+        //
         public data()
         {
         }
-
         public data(OOB.Documento.Lista.Ficha doc)
         {
             this.doc = doc;
         }
-
         public void SetAnulado()
         {
             this.doc.Estatus = "1";
+            this.doc.DocSituacion = "";
         }
-
     }
-
 }

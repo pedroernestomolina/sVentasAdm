@@ -21,6 +21,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private List<IObservador> _observadores;
         private string _notasDelDoc;
         private bool _esPorRemisionLaCargaDocumento;
+        private decimal _tasaDivisa; 
 
 
         public int CntDocPendiente { get { return _cntPendiente; } }
@@ -51,6 +52,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _observadores.Add(_dataGen.Items);
             _notasDelDoc = "";
             _esPorRemisionLaCargaDocumento = true;
+            _tasaDivisa = 0m;
         }
 
 
@@ -120,6 +122,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 var r03 = Sistema.MyData.TransporteCnf_NotasPresupuesto_Get();
                 var r04 = Sistema.MyData.TransporteDocumento_Presupuesto_Pendiente_Cnt ();
                 //
+                _tasaDivisa = r01.Entidad;
                 _cntPendiente = r04.Entidad;
                 _notasDelDoc = r03.Entidad;
                 setNotas(r03.Entidad);
@@ -261,6 +264,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 _limpiarDocumentoIsOK = true;
                 setNotas(_notasDelDoc);
                 _esPorRemisionLaCargaDocumento = true;
+                _dataGen.setTasaDivisa(_tasaDivisa);
             }
         }
 
@@ -500,6 +504,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 _remision.Limpiar();
                 _notasObservaciones = "";
                 _limpiarDocumentoIsOK = true;
+                //
+                setNotas(_notasDelDoc);
+                _dataGen.setTasaDivisa(_tasaDivisa);
             }
             catch (Exception e)
             {
@@ -513,12 +520,6 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             _presup.setIdDocVisualizar(id);
             _presup.Generar();
         }
-
-        public void NotificarRemisionDocPresupuesto(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha)
-        {
-            setNotas(ficha.encabezado.notasObs);
-        }
-
 
         public void IniciarEnLimpio()
         {
@@ -760,6 +761,9 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 _remision.Limpiar();
                 _notasObservaciones = "";
                 _limpiarDocumentoIsOK = true;
+                //
+                setNotas(_notasDelDoc);
+                _dataGen.setTasaDivisa(_tasaDivisa);
             }
             catch (Exception e)
             {
@@ -812,6 +816,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 {
                     obs.NotificarDocPresupuesto(r01.Entidad);
                 }
+                _dataGen.setTasaDivisa(r01.Entidad.encabezado.factorCambio);
                 _dataGen.setDatosDoc(_datosDoc.Data);
                 setNotas(r01.Entidad.encabezado.notasObs);
                 var r02 = Sistema.MyData.TransporteDocumento_AnularPresupuesto_Pendiente(idDoc);
@@ -822,6 +827,30 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             {
                 Helpers.Msg.Error(e.Message);
             }
+        }
+
+        DocVenta.Generar.TasaDivisa.ITasa _gDivisa;
+        public void EditarFactorDivisa()
+        {
+            var _tasaDivisa = _dataGen.TasaDivisa_Get;
+            if (_gDivisa == null)
+            {
+                _gDivisa = new DocVenta.Generar.TasaDivisa.Imp();
+            }
+            _gDivisa.Inicializa();
+            _gDivisa.setTexto("Tasa Divisa Actual ?");
+            _gDivisa.setTasaDivisa(_tasaDivisa);
+            _gDivisa.Inicia();
+            if (_gDivisa.ProcesarIsOK)
+            {
+                _dataGen.setTasaDivisa(_gDivisa.TasaActual_Get);
+            }
+        }
+
+        public void NotificarRemisionDocPresupuesto(OOB.Transporte.Documento.Entidad.Presupuesto.Ficha ficha)
+        {
+            setNotas(ficha.encabezado.notasObs);
+            _dataGen.setTasaDivisa(ficha.encabezado.factorCambio );
         }
     }
 }

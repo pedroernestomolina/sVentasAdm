@@ -43,6 +43,8 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
             montoIGTFMonDiv = 0m;
             tasaIGTF = 0m;
             aplicaIGTF = false;
+            //
+            VerificarRemisionDoc = true;
         }
         //
         public decimal montoIGTFMonAct { get; set; }
@@ -53,5 +55,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.Factura
         public string notasPeriodoLapso { get; set; }
         //
         public string docNumeroGenerar { get; set; }
+        //
+        public bool VerificarRemisionDoc { get; set; }
     }
 }

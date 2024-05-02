@@ -9,16 +9,19 @@
               <Width>1.21992cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>12.9918cm</Width>
+              <Width>11.50188cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.71008cm</Width>
+              <Width>1.6cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.6cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.1631cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.32217cm</Width>
+              <Width>1.99303cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -160,6 +163,50 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="cnt_und">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!cnt_und.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>cnt_und</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="precio_unit">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -255,6 +302,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -268,7 +316,7 @@
         <Top>0.10583cm</Top>
         <Left>0.33514cm</Left>
         <Height>0.6cm</Height>
-        <Width>20.40707cm</Width>
+        <Width>20.07793cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -276,13 +324,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.42709in</Height>
+    <Height>0.35417in</Height>
     <Style />
   </Body>
-  <Width>8.29817in</Width>
+  <Width>8.19214in</Width>
   <Page>
     <PageHeader>
-      <Height>7.5777cm</Height>
+      <Height>7.5cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -345,7 +393,7 @@
           <Top>6.80132cm</Top>
           <Left>1.55507cm</Left>
           <Height>0.6cm</Height>
-          <Width>12.9918cm</Width>
+          <Width>11.50187cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -366,7 +414,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Cnt</Value>
+                  <Value>Cnt/Und</Value>
                   <Style>
                     <FontSize>8pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -456,7 +504,7 @@
           <Top>6.80132cm</Top>
           <Left>18.4023cm</Left>
           <Height>0.6cm</Height>
-          <Width>2.33991cm</Width>
+          <Width>2.01077cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -474,7 +522,7 @@
           <Top>7.4366cm</Top>
           <Left>0.33514cm</Left>
           <Height>0cm</Height>
-          <Width>20.40707cm</Width>
+          <Width>20.07793cm</Width>
           <ZIndex>5</ZIndex>
           <Style>
             <Border>
@@ -819,7 +867,7 @@
           <Top>3.3615cm</Top>
           <Left>16.52998cm</Left>
           <Height>0.62646cm</Height>
-          <Width>3.56013cm</Width>
+          <Width>3.88309cm</Width>
           <ZIndex>14</ZIndex>
           <Style>
             <Border>
@@ -940,7 +988,7 @@
           <Top>4.06734cm</Top>
           <Left>16.52998cm</Left>
           <Height>1.1027cm</Height>
-          <Width>3.56013cm</Width>
+          <Width>3.88309cm</Width>
           <ZIndex>17</ZIndex>
           <Style>
             <Border>
@@ -974,7 +1022,7 @@
           <Top>5.46079cm</Top>
           <Left>13.36205cm</Left>
           <Height>1.08506cm</Height>
-          <Width>7.38016cm</Width>
+          <Width>7.05102cm</Width>
           <ZIndex>18</ZIndex>
           <Style>
             <Border>
@@ -1022,6 +1070,43 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
+        <Textbox Name="Textbox10">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Cnt</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox3</rd:DefaultName>
+          <Top>6.80132cm</Top>
+          <Left>13.09222cm</Left>
+          <Height>0.56472cm</Height>
+          <Width>1.45464cm</Width>
+          <ZIndex>20</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BackgroundColor>Gainsboro</BackgroundColor>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
       </ReportItems>
       <Style>
         <Border>
@@ -1030,7 +1115,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>7.5cm</Height>
+      <Height>7cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1038,7 +1123,7 @@
           <Top>0.10583cm</Top>
           <Left>0.07056cm</Left>
           <Height>0cm</Height>
-          <Width>20.67165cm</Width>
+          <Width>20.34251cm</Width>
           <Style>
             <Border>
               <Style>Solid</Style>

@@ -36,5 +36,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         int CntDocPendiente { get;  }
         bool AbrirPedienteIsOK { get; }
         void BuscarPendiente();
+
+        void EditarFactorDivisa();
     }
 }

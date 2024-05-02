@@ -27,22 +27,34 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
             }
             var _cnt = Ficha.Items.GetItems.Count();
             var _cntHS = Ficha.Items.GetItems.Where(w => w.Item.IsItemHojaServ).Count();
-            if (_cntHS == _cnt)
+            var pr = Ficha.Items.GetItems.Where(w => w.Item.Get_ItemPresupuesto != null).Count();
+            var sr = Ficha.Items.GetItems.Where(w => w.Item.Get_ItemServicio != null).Count();
+            if (_cntHS >0)
             {
                 if (_cntHS > 1) 
                 {
                     Helpers.Msg.Alerta("SOLO SE PERMITE UNA HOJA DE SERVICIO POR FACTURA");
                     return;
                 }
+                if (pr > 0)
+                {
+                    Helpers.Msg.Alerta("NO PUEDE MEZCLAR ITEMS DE PRESUPUESTO CON HOJA DE SERVICIO");
+                    return;
+                }
+                if (sr > 0)
+                {
+                    Helpers.Msg.Alerta("NO PUEDE MEZCLAR ITEMS DE SERVICIO CON HOJA DE SERVICIO");
+                    return;
+                }
                 GuardarDocFacturaTipoHojaServ();
             }
             else 
             {
-                if (_cntHS > 0)
-                {
-                    Helpers.Msg.Alerta("NO PUEDEN HABER ITEMS TIPO HOJAS DE SERVCIO MEZCLADO CON OTROS TIPO DE ITEM");
-                    return;
-                }
+                //if (_cntHS > 0)
+                //{
+                //    Helpers.Msg.Alerta("NO PUEDEN HABER ITEMS TIPO HOJAS DE SERVCIO MEZCLADO CON OTROS TIPO DE ITEM");
+                //    return;
+                //}
                 GuardarDocFactura();
             }
         }
@@ -324,13 +336,24 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                 var _aplicaIGTF = false;
                 if (Ficha.Get_TasaIGTF > 0m)
                 {
-                    //CALCULO EL MONTO POR ISLR
-                    var _monto = _montoTotal;
-                    _monto -= (_montoTotal * Ficha.Get_TasaISLR / 100);
-                    //CALCULO IGTF, DESCONTANDO EL ISLR 
+                    ////CALCULO EL MONTO POR ISLR
+                    //var _monto = _montoTotal;
+                    //_monto -= (_montoTotal * Ficha.Get_TasaISLR / 100);
+                    ////CALCULO IGTF, DESCONTANDO EL ISLR 
+                    //_aplicaIGTF = true;
+                    //_tasaIGTF = Ficha.Get_TasaIGTF;
+                    //_montoIGTFMonAct = _monto * Ficha.Get_TasaIGTF / 100;
+                    //if (_factorCambio > 0m)
+                    //{
+                    //    _montoIGTFMonDiv = _montoIGTFMonAct / _factorCambio;
+                    //}
+
+                    //SIN NECESIDAD DE CALCULAR NADA, 
+                    //YA QUE EL USUARIO DEBE PROPORCIONAR EL MONTO YA CALCULADO PARA EL IGTF
+                    //DESCONTADO ISRL, SI PAGO UNA PARTE EN DIVISA Y LA OTRA NO, ETC...
                     _aplicaIGTF = true;
                     _tasaIGTF = Ficha.Get_TasaIGTF;
-                    _montoIGTFMonAct = _monto * Ficha.Get_TasaIGTF / 100;
+                    _montoIGTFMonAct = Ficha.Get_MontoAplicarIGTF;
                     if (_factorCambio > 0m)
                     {
                         _montoIGTFMonDiv = _montoIGTFMonAct / _factorCambio;
@@ -565,17 +588,39 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                         _montoDocRef = s.Item.Get_ItemHojaServ.Ficha.docMontoMonedaDiv;
                         _fecDocRef = s.Item.Get_ItemHojaServ.Ficha.docFechaEmision;
                         _tipoItemProcedencia = "H";
-                        var rhs = Sistema.MyData.TransporteDocumento_Documento_GetTurnos(s.Item.Get_ItemHojaServ.Ficha.docId);
-                        foreach (var rg in rhs.ListaD)
+
+                        var rhs = Sistema.MyData.TransporteDocumento_EntidadVenta_GetById(s.Item.Get_ItemHojaServ.Ficha.docId);
+                        foreach (var rg in rhs.Entidad.detalles.Where(w => w.tipoProcedenciaItem == ""))
                         {
                             var _turno = new OOB.Transporte.Documento.Agregar.FacturaFromHojaServ.Turno()
                             {
-                                detalle = rg.turnoDesc,
-                                importe = rg.importeMonDiv,
-                                ruta = rg.turnoRuta,
+                                detalle = "",
+                                importe = rg.importeNetoMonDivisa,
+                                ruta = rg.detalle,
                             };
                             _lstTurnos.Add(_turno);
                         }
+
+                        foreach (var rg in rhs.Entidad.detTurnos)
+                        {
+                            var _turno = new OOB.Transporte.Documento.Agregar.FacturaFromHojaServ.Turno()
+                            {
+                                detalle = rg.servDet,
+                                importe = rg.importe,
+                                ruta = rg.notas,
+                            };
+                            _lstTurnos.Add(_turno);
+                        }
+                    }
+                    else 
+                    {
+                        var _turno = new OOB.Transporte.Documento.Agregar.FacturaFromHojaServ.Turno()
+                        {
+                            detalle = s.Item.Get_Descripcion ,
+                            importe = s.Item.Get_Importe ,
+                            ruta = ""
+                        };
+                        _lstTurnos.Add(_turno);
                     }
                     var ni = new OOB.Transporte.Documento.Agregar.FacturaFromHojaServ.FichaItem()
                     {
@@ -720,6 +765,20 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
                     aplicaIGTF = _aplicaIGTF,
                     notasPeriodoLapso = _notasPeriodoLapso,
                 };
+                var _montoPorCobrar = fichaOOB.montoDivisa - Ficha.Items.GetItems.Where(w => w.Item.Get_ItemHojaServ != null).Sum(s => s.ImporteItemMostrar);
+                _montoPorCobrar = Math.Round(_montoPorCobrar, 2, MidpointRounding.AwayFromZero);
+                fichaOOB.MontoPorCobrarMonAct = Math.Round(_montoPorCobrar * _factorCambio, 2, MidpointRounding.AwayFromZero);
+                fichaOOB.MontoPorCobrarMonDiv =  _montoPorCobrar;
+                if (_montoPorCobrar > 0m) 
+                {
+                    var msg =@"Se Va Ha Generar Una Cuenta Pendiente Por Cobrar Al Cliente Por Un Monto De $ "+_montoPorCobrar.ToString("n2")+Environment.NewLine+"Estas De Acuerdo En Procesar El Documento ?";
+                    var pr = Helpers.Msg.ProcesarGuardar(msg);
+                    if (!pr)
+                    {
+                        _procesarIsOK = false;
+                        return;
+                    }
+                }
                 var r01 = Sistema.MyData.TransporteDocumento_AgregarFactura_From_HojaServ(fichaOOB);
                 _procesarIsOK = true;
                 visualizarDoc(r01.Entidad.autoDoc);
@@ -838,6 +897,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
             {
                 Ficha.DocNumeroGenerar = _numdocGen.Get_NumDocGenerar;
             }
+        }
+
+        public override void cargarDataRemision()
+        {
         }
     }
 }

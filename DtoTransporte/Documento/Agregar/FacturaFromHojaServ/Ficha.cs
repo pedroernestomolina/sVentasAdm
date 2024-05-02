@@ -48,5 +48,7 @@ namespace DtoTransporte.Documento.Agregar.FacturaFromHojaServ
         public bool aplicaIGTF { get; set; }
         public string notasPeriodoLapso { get; set; }
         public string docNumeroGenerar { get; set; }
+        public decimal montoPorCobrarMonDiv { get; set; }
+        public decimal montoPorCobrarMonAct { get; set; }
     }
 }

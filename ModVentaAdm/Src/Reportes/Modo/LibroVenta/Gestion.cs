@@ -63,7 +63,18 @@ namespace ModVentaAdm.Src.Reportes.Modo.LibroVenta
             var _factura = "";
             var _ncr = "";
             var _ndb = "";
-            foreach (var it in list.OrderBy(o=>o.fechaDoc).ThenBy(o=>o.numDoc).ToList())
+            foreach (var it in list.Where(w=>w.estatus=="1").OrderBy(o => o.numDoc).ToList())
+            {
+                var doc = it.numDoc;
+                var tip = it.codigoDoc;
+                var cnt = list.Where(w => w.numDoc == doc && w.codigoDoc == tip).Count();
+                if (cnt > 0)
+                {
+                    it.imprimir = "X";
+                }
+            }
+            
+            foreach (var it in list.Where(w=>w.imprimir!="X").OrderBy(o=>o.fechaDoc).ThenBy(o=>o.numDoc).ToList())
             {
                 switch (it.codigoDoc.Trim().ToUpper())
                 { 

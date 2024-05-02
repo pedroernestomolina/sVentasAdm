@@ -37,9 +37,17 @@ namespace ProvPos
                     {
                         var fechaSistema = cn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
                         var fechaNula = new DateTime(2000, 1, 1);
-
+                        //
+                        var sql = @"select count(*) as cnt from ventas_transp_doc where id_doc_ref=@idDoc and estatus_anulado='0'";
+                        var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", ficha.idDoc);
+                        var v0 = cn.Database.SqlQuery<int>(sql, p0).First<int>();
+                        if (v0 >0)
+                        {
+                            throw new Exception("HAY DOCUMENTOS ACTIVOS QUE HACEN REFERENCIA A ESTE");
+                        }
+                        //
                         //AUDITORIA
-                        var sql = @"INSERT INTO auditoria_documentos 
+                        sql = @"INSERT INTO auditoria_documentos 
                                         (
                                             `auto_documento`, 
                                             `auto_sistema_documentos`, 
@@ -85,9 +93,7 @@ namespace ProvPos
 
                         //DOCUMENTO
                         sql = @"update ventas set estatus_anulado='1' 
-                                    where auto=@p1 and 
-                                        estatus_anulado<>'1' and
-                                        auto_remision=''";
+                                    where auto=@p1 and estatus_anulado<>'1'";
                         var v2 = cn.Database.ExecuteSqlCommand(sql, p1);
                         if (v2 == 0)
                         {

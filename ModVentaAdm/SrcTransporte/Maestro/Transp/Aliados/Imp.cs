@@ -78,7 +78,8 @@ namespace ModVentaAdm.SrcTransporte.Maestro.Transp.Aliados
             {
                 var filtroOOB = new OOB.Transporte.Aliado.Busqueda.Filtro(); 
                 var r01 = Sistema.MyData.TransporteAliado_GetLista(filtroOOB);
-                _lista.setDataCargar(r01.ListaD);
+                var _lst = r01.ListaD.OrderBy(o => o.nombreRazonSocial).ToList();
+                _lista.setDataCargar(_lst);
                 return true;
             }
             catch (Exception e)

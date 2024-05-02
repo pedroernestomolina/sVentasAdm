@@ -97,6 +97,7 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.DGV = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.BT_ALIADOS_INV = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.panel45.SuspendLayout();
@@ -132,6 +133,7 @@
             this.panel31.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.panel13.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -808,6 +810,7 @@
             // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.BT_ALIADOS_INV);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel13.Location = new System.Drawing.Point(111, 37);
             this.panel13.Margin = new System.Windows.Forms.Padding(1);
@@ -1021,6 +1024,21 @@
             this.DGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGV_CellFormatting);
             this.DGV.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DGV_DataBindingComplete);
             // 
+            // BT_ALIADOS_INV
+            // 
+            this.BT_ALIADOS_INV.BackgroundImage = global::ModVentaAdm.Properties.Resources.involucrados_32;
+            this.BT_ALIADOS_INV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_ALIADOS_INV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ALIADOS_INV.FlatAppearance.BorderSize = 0;
+            this.BT_ALIADOS_INV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_ALIADOS_INV.Location = new System.Drawing.Point(2, 2);
+            this.BT_ALIADOS_INV.Name = "BT_ALIADOS_INV";
+            this.BT_ALIADOS_INV.Size = new System.Drawing.Size(51, 31);
+            this.BT_ALIADOS_INV.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.BT_ALIADOS_INV, "Aliados Involucrados");
+            this.BT_ALIADOS_INV.UseVisualStyleBackColor = true;
+            this.BT_ALIADOS_INV.Click += new System.EventHandler(this.BT_ALIADOS_INV_Click);
+            // 
             // AdmDocFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1069,6 +1087,7 @@
             this.panel31.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
@@ -1153,5 +1172,6 @@
         private System.Windows.Forms.ComboBox CB_TIPO_DOC;
         private System.Windows.Forms.ComboBox CB_SUCURSAL;
         private System.Windows.Forms.Label L_SUCURSAL;
+        private System.Windows.Forms.Button BT_ALIADOS_INV;
     }
 }

@@ -311,6 +311,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 ActualizarFicha();
                 ActualizarPendiente();
                 TB_NOTAS.Text = _controlador.NotasObserv_Get;
+                L_TASA_DIVISA.Text = _controlador.Ficha.TasaDivisa_Get.ToString("n2", _cult);
             }
         }
         private void NuevoDocumento()
@@ -361,6 +362,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
             L_MONTO_IVA.Text = _controlador.Ficha.Totales.MontoIva_MonedaActual_Get.ToString("n2", _cult);
             L_MONTO.Text = _controlador.Ficha.Totales.MontoTotal_MonedaActual_Get.ToString("n2", _cult);
             L_MONTO_DIVISA.Text = _controlador.Ficha.Totales.MontoTotal_MonedaDivisa_Get.ToString("n2", _cult);
+            L_TASA_DIVISA.Text = _controlador.Ficha.TasaDivisa_Get.ToString("n2", _cult);
         }
         private void ActualizarContadores()
         {
@@ -409,6 +411,16 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         private void Salir()
         {
             this.Close();
+        }
+
+        private void BT_FACTOR_DIVISA_Click(object sender, EventArgs e)
+        {
+            EditarFactorDivisa();
+        }
+        private void EditarFactorDivisa()
+        {
+            _controlador.EditarFactorDivisa();
+            ActualizarTotales();
         }
     }
 }

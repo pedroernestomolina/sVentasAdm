@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
 {
-    abstract public class ImpGenerar: IGenerar
+    abstract public class ImpGenerar : IGenerar
     {
         protected bool _procesarIsOK;
         private bool _abandonarIsOK;
@@ -16,7 +16,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         private List<OOB.Sistema.Fiscal.Entidad.Ficha> _tasasFiscal;
         private Remision.IRemision _remision;
         private decimal _factorDivisa;
-        private decimal _tasaDivisa;
         private string _notasDelDoc;
         protected bool _tipoDocIsFactura;
         private string _notasPeriodoLapso;
@@ -37,10 +36,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _abandonarIsOK = false;
             _dataGen = new data();
             _tasasFiscal = null;
-            _factorDivisa=0m;
-            _tasaDivisa = 0m;
+            _factorDivisa = 0m;
             _notasDelDoc = "";
-            _notasPeriodoLapso="";
+            _notasPeriodoLapso = "";
         }
 
 
@@ -54,15 +52,14 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _dataGen.Inicializa();
             _tasasFiscal = null;
             _remision.Inicializa();
-            _tasaDivisa = _factorDivisa;
-            _notasPeriodoLapso="";
+            _notasPeriodoLapso = "";
         }
         Frm frm;
         public void Inicia()
         {
-            if (CargarData()) 
+            if (CargarData())
             {
-                if (frm == null) 
+                if (frm == null)
                 {
                     frm = new Frm();
                     frm.setControlador(this);
@@ -71,7 +68,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             }
         }
         public bool ProcesarIsOK { get { return _procesarIsOK; } }
-        public void Procesar() 
+        public void Procesar()
         {
             _procesarIsOK = false;
             if (_dataGen.DataIsOk())
@@ -80,12 +77,15 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 if (r)
                 {
                     GuardarDoc();
-                    if (_procesarIsOK) 
+                    if (_procesarIsOK)
                     {
                         Ficha.LimpiarTodo();
                         _remision.Limpiar();
                         _notasObservaciones = "";
                         _limpiarDocumentoIsOK = true;
+                        //
+                        setNotas(_notasDelDoc);
+                        _dataGen.setTasaDivisa(_factorDivisa);
                     }
                 }
             }
@@ -111,19 +111,19 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 {
                     throw new Exception(r02.Mensaje);
                 }
-                var r03 = Sistema.MyData.TransporteCnf_NotasFactura_Get ();
+                var r03 = Sistema.MyData.TransporteCnf_NotasFactura_Get();
                 //
                 _notasDelDoc = r03.Entidad;
                 setNotas(r03.Entidad);
                 _tasasFiscal = r02.ListaD;
                 _dataGen.setTasaDivisa(r01.Entidad);
                 _factorDivisa = r01.Entidad;
-                _tasaDivisa = r01.Entidad;
                 _dataGen.Items.setTasaDivisa(r01.Entidad);
                 _dataGen.Totales.setTasaDivisa(r01.Entidad);
                 _dataGen.setTasaFiscal(r02.ListaD);
                 _dataGen.Totales.setTasaFiscal(r02.ListaD);
-                _remision.CargarData();
+                cargarDataRemision();
+                //_remision.CargarData();
                 return true;
             }
             catch (Exception e)
@@ -132,6 +132,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 return false;
             }
         }
+        abstract public void cargarDataRemision();
 
 
         public bool RemisionIsOK { get { return _remision.RemisionIsOK; } }
@@ -142,9 +143,165 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 Helpers.Msg.Alerta("DEBES PRIMERO CREAR UN NUEVO DOCUMENTO");
                 return;
             }
+            if (_dataGen.Items.Cnt_Get > 0) 
+            {
+                Helpers.Msg.Alerta("NO DEBEN HABER ITEMS CARGADOS");
+                return;
+            }
             _remision.setClienteBuscar(_dataGen.DatosDoc.Cliente);
             _remision.setHabilitarCargarDocRemision(_dataGen.Items.GetItems.Count == 0);
             _remision.Buscar();
+            if (_remision.RemisionIsOK)
+            {
+                try
+                {
+                    var idDoc = _remision.Get_IdDocSeleccionado;
+                    var r01 = Sistema.MyData.TransporteDocumento_EntidadVenta_GetById(idDoc);
+                    InyectarItemsLista(r01.Entidad);
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
+                }
+            }
+        }
+
+        private void InyectarItemsLista(OOB.Transporte.Documento.Entidad.Venta.Ficha ficha)
+        {
+            var tipoProcedencia = "";
+            foreach (var it in ficha.detalles)
+            {
+                tipoProcedencia = it.tipoProcedenciaItem;
+                _itemAgregar = new Item.Agregar.Agregar();
+                _itemAgregar.Inicializa();
+                _itemAgregar.setTasaFiscal(_tasasFiscal);
+                _itemAgregar.setCliente(_dataGen.DatosDoc.Cliente.id);
+                _itemAgregar.setSolicitadoPor(_dataGen.DatosDoc.SolicitadoPor_Get);
+                _itemAgregar.setModuloCargar(_dataGen.DatosDoc.ModuloCargar_Get);
+                _itemAgregar.setTipoDocumentoIsFactura(_tipoDocIsFactura);
+                //
+                _itemAgregar.Item.setDescripcion(it.detalle);
+                _itemAgregar.Item.setCnt(it.cntDias);
+                _itemAgregar.Item.setPrecioDivisa(it.precioNetoMonDivisa);
+                _itemAgregar.Item.setDscto(it.dsctoPorc);
+                _itemAgregar.AlicuotaSetFichaById(it.alicuotaId);
+                if (tipoProcedencia == "")
+                {
+                    _itemAgregar.Item.setItemPresupuesto(null);
+                    _itemAgregar.Item.setItemServicio(null);
+                    _itemAgregar.Item.setItemHojaServicio(null);
+                    _dataGen.Items.AgregarItem(_itemAgregar);
+                }
+                else if (tipoProcedencia == "P")
+                {
+                    _itemAgregar.Item.setItemServicio(null);
+                    _itemAgregar.Item.setItemHojaServicio(null);
+                    var filtro = new OOB.Transporte.Documento.Remision.Lista.Filtro()
+                    {
+                        codTipoDoc = "",
+                        esPorRemision = false,
+                        idCliente = "",
+                        idDocumento = it.idDocRef,
+                    };
+                    var r01 = Sistema.MyData.TransporteDocumento_Remision_ListaBy(filtro);
+                    if (r01.cntRegistro == 1)
+                    {
+                        var _doc = new Utils.DocLista.Remision.data(r01.ListaD[0]);
+                        var _docNumero = _doc.DocNumero;
+                        var _desc = "PRESUPUESTO #" + _docNumero + Environment.NewLine + _doc.SolicitadoPor + Environment.NewLine + _doc.ModuloCargar;
+                        var _precio = _doc.Monto;
+                        _itemAgregar.Item.setItemPresupuesto(_doc);
+                    }
+                    _dataGen.Items.AgregarItem(_itemAgregar);
+                }
+            }
+            foreach (var it in ficha.detalles)
+            {
+                if (it.tipoProcedenciaItem == "S")
+                {
+                    _itemAgregar = new Item.Agregar.Agregar();
+                    _itemAgregar.Inicializa();
+                    _itemAgregar.setTasaFiscal(_tasasFiscal);
+                    _itemAgregar.setCliente(_dataGen.DatosDoc.Cliente.id);
+                    _itemAgregar.setSolicitadoPor(_dataGen.DatosDoc.SolicitadoPor_Get);
+                    _itemAgregar.setModuloCargar(_dataGen.DatosDoc.ModuloCargar_Get);
+                    _itemAgregar.setTipoDocumentoIsFactura(_tipoDocIsFactura);
+                    //
+                    _itemAgregar.Item.setDescripcion(it.detalle);
+                    _itemAgregar.Item.setCnt(it.cntDias);
+                    _itemAgregar.Item.setPrecioDivisa(it.precioNetoMonDivisa);
+                    _itemAgregar.Item.setDscto(it.dsctoPorc);
+                    _itemAgregar.AlicuotaSetFichaById(it.alicuotaId);
+                    //
+                    var serv = ficha.detTurnos.FirstOrDefault(f => f.idItem == it.idItemServicio);
+                    if (serv != null)
+                    {
+                        var _itServ = new Presupuesto.Generar.Item.Agregar.Agregar();
+                        _itServ.Inicializa();
+                        _itServ.setTasaFiscal(_tasasFiscal);
+                        _itServ.setValidarDatosCompletos(false);
+                        //
+                        var _alicuota = new Presupuesto.Generar.alicuota()
+                        {
+                            codigo = "",
+                            desc = it.alicuotaDesc,
+                            id = it.alicuotaId,
+                            tasa = it.alicuotaTasa,
+                        };
+                        var _tipoServicio = new OOB.Transporte.ServPrest.Entidad.Ficha()
+                        {
+                            detalle = serv.servDet,
+                            descripcion = serv.servDesc,
+                            codigo = serv.servCod,
+                            id = serv.servId,
+                        };
+
+                        _itServ.Item.setSolicitadoPor(_dataGen.DatosDoc.SolicitadoPor_Get);
+                        _itServ.Item.setModuloaCargar(_dataGen.DatosDoc.ModuloCargar_Get);
+                        _itServ.Item.setCntDias(serv.cntDias);
+                        _itServ.Item.setCntUnidades(serv.cntVehic);
+                        _itServ.Item.setPrecioDivisa(serv.pnetoDiv);
+                        _itServ.Item.setDscto(it.dsctoPorc);
+                        _itServ.Item.setAlicuota(_alicuota);
+                        _itServ.Item.setUnidadesDetalle(serv.descVehic);
+                        _itServ.Item.setTipoServicio(_tipoServicio);
+                        _itServ.Item.setDescripcion(serv.servDet);
+                        _itServ.Item.setDescripcionFull(serv.notas);
+
+                        foreach (var xr in ficha.aliados)
+                        {
+                            if (serv.idItem == xr.idItem)
+                            {
+                                var _aliado = new OOB.Transporte.Aliado.Entidad.Ficha()
+                                {
+                                    id = xr.idAliado,
+                                    ciRif = xr.ciRifAliado,
+                                    codigo = xr.codigoAliado,
+                                    nombreRazonSocial = xr.nombreAliado,
+                                };
+                                _itServ.Item.setAliado(_aliado);
+                                _itServ.Item.setPrecioAliadoPautado(xr.pNeto);
+                                _itServ.Item.setCntAliadoPautado((int)xr.cantDias);
+                                _itServ.Item.GuardarAliado();
+                            }
+                        }
+
+                        foreach (var xr in ficha.fechas)
+                        {
+                            if (xr.idItem == serv.idItem)
+                            {
+                                _itServ.Item.setFecha(xr.fecha);
+                                _itServ.Item.setHora(xr.fecha);
+                                _itServ.Item.AgregarFecha();
+                            }
+                        }
+                        _itemAgregar.Item.setItemPresupuesto(null);
+                        _itemAgregar.Item.setItemServicio(_itServ);
+                        _itemAgregar.Item.setItemHojaServicio(null);
+                    }
+                    _dataGen.Items.AgregarItem(_itemAgregar);
+                }
+            }
         }
 
 
@@ -254,10 +411,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 _dataGen.LimpiarTodo();
                 _notasObservaciones = "";
                 _limpiarDocumentoIsOK = true;
-                _tasaDivisa = _factorDivisa;
-                _dataGen.setTasaDivisa(_tasaDivisa);
-                setNotas(_notasDelDoc);
                 _notasPeriodoLapso = "";
+                //
+                setNotas(_notasDelDoc);
+                _dataGen.setTasaDivisa(_factorDivisa);
             }
         }
 
@@ -289,8 +446,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _procesarIsOK = false;
             _limpiarDocumentoIsOK = false;
             _editarDocumentoIsOK = false;
-            _tasaDivisa = _factorDivisa;
-            _dataGen.setTasaDivisa(_tasaDivisa);
+            //
+            _dataGen.setTasaDivisa(_factorDivisa);
             setNotas(_notasDelDoc);
         }
 
@@ -298,7 +455,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         TasaDivisa.ITasa _gDivisa;
         public void EditarFactorDivisa()
         {
-            if (_gDivisa == null) 
+            var _tasaDivisa = _dataGen.TasaDivisa_Get;
+            if (_gDivisa == null)
             {
                 _gDivisa = new TasaDivisa.Imp();
             }
@@ -306,10 +464,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             _gDivisa.setTexto("Tasa Divisa Actual ?");
             _gDivisa.setTasaDivisa(_tasaDivisa);
             _gDivisa.Inicia();
-            if (_gDivisa.ProcesarIsOK) 
+            if (_gDivisa.ProcesarIsOK)
             {
                 _dataGen.setTasaDivisa(_gDivisa.TasaActual_Get);
-                _tasaDivisa=_gDivisa.TasaActual_Get;
             }
         }
 
@@ -329,14 +486,14 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
         public NotasPeriodo.Vista.INotas NotasPeriodo { get { return _notasPeriodo; } }
         public void PeriodoLapso()
         {
-            if (_notasPeriodo == null) 
+            if (_notasPeriodo == null)
             {
                 _notasPeriodo = new NotasPeriodo.Handler.Imp();
             }
             _notasPeriodo.Inicializa();
             _notasPeriodo.setNotas(_notasPeriodoLapso);
             _notasPeriodo.Inicia();
-            if (_notasPeriodo.ProcesarIsOK) 
+            if (_notasPeriodo.ProcesarIsOK)
             {
                 _notasPeriodoLapso = _notasPeriodo.Notas_Get;
             }

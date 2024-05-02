@@ -24,7 +24,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
         private Utils.DocLista.Remision.data _itemPresupuesto;
         private Utils.DocLista.Remision.data _itemHojaServ;
 
-
+        public decimal Get_ImporteAliadosLLamados { get { return aliadosImporte(); } }
         public string Get_Descripcion { get { return _desc; } }
         public int Get_Cnt { get { return _cnt; } }
         public decimal Get_PrecioDivisa { get { return _precioDivisa; } }
@@ -183,5 +183,16 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
         {
             _itemHojaServ = doc;
         }
+
+        private decimal aliadosImporte()
+        {
+            var rt = 0m;
+            if (_itemServicio != null)
+            {
+                rt = _itemServicio.AliadoMontoMostrar;
+            }
+            return rt;
+        }
+
     }
 }

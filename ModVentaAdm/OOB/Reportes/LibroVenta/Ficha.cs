@@ -58,6 +58,8 @@ namespace ModVentaAdm.OOB.Reportes.LibroVenta
             comprobanteRetencionIva = "";
             auto = "";
             estatus = "";
+            imprimir = "";
         }
+        public string imprimir { get; set; }
     }
 }

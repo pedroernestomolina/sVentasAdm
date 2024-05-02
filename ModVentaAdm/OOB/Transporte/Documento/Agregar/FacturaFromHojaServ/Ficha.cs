@@ -48,5 +48,8 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Agregar.FacturaFromHojaServ
         public bool aplicaIGTF { get; set; }
         public string notasPeriodoLapso { get; set; }
         public string docNumeroGenerar { get; set; }
+        //
+        public decimal MontoPorCobrarMonDiv { get; set; }
+        public decimal MontoPorCobrarMonAct { get; set; }
     }
 }

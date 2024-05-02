@@ -39,6 +39,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Entidad.Venta
         public string tipoProcedenciaItem { get; set; }
         public int idItemServicio { get; set; }
         public string mostrarItemDocFinal { get; set; }
+        public bool esItemBasico { get { return idDocRef == ""; } }
         public FichaDetalle()
         {
             detalle = "";

@@ -16,7 +16,7 @@ namespace ModVentaAdm.Data.Infra
         Transporte.ITransporteCaja,
         Transporte.ITransporteClienteAnticipo,
         Transporte.ITransporteCxcMovCobro,
-        Transporte.ITranspDocAliado
+        Transporte.ITransporteDocGestionAliado
     {
         OOB.Resultado.FichaEntidad<DateTime> 
             FechaServidor();

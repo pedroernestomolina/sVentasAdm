@@ -95,11 +95,44 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             c7.DefaultCellStyle.Font = f1;
             c7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            var CA = new DataGridViewTextBoxColumn();
+            CA.DataPropertyName = "TurnoMostrar";
+            CA.HeaderText = "Turno";
+            CA.Visible = true;
+            CA.Width = 100;
+            CA.HeaderCell.Style.Font = f;
+            CA.DefaultCellStyle.Font = f1;
+            CA.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            var CB = new DataGridViewTextBoxColumn();
+            CB.DataPropertyName = "TurnoDescMostrar";
+            CB.HeaderText = "Ruta/Detalle";
+            CB.Visible = true;
+            CB.HeaderCell.Style.Font = f;
+            CB.DefaultCellStyle.Font = f1;
+            CB.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            CB.DefaultCellStyle.Format = "n2";
+            CB.MinimumWidth = 120;
+            CB.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            var CC = new DataGridViewTextBoxColumn();
+            CC.DataPropertyName = "AliadoMontoMostrar";
+            CC.HeaderText = "Aliado/Monto($)";
+            CC.Visible = true;
+            CC.Width = 100;
+            CC.HeaderCell.Style.Font = f;
+            CC.DefaultCellStyle.Font = f1;
+            CC.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            CC.DefaultCellStyle.Format = "n2";
+
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c4);
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c6);
             DGV.Columns.Add(c7);
+            DGV.Columns.Add(CA);
+            DGV.Columns.Add(CB);
+            DGV.Columns.Add(CC);
         }
         private bool _modoInicializa;
         private void Frm_Load(object sender, EventArgs e)
@@ -204,7 +237,6 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
                 ActualizarContadores();
                 ActualizarTotales();
                 TB_NOTAS.Text = _controlador.NotasObserv_Get;
-                L_TASA_DIVISA.Text = _controlador.Ficha.Totales.TasaDivisaActual_Get.ToString("n2", _cult);
                 L_NUMERO_DOC_GENERAR.Text = _controlador.Ficha.DocNumeroGenerar;
             }
         }
@@ -291,6 +323,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar
             L_MONTO_DIVISA.Text = _controlador.Ficha.Totales.MontoTotal_MonedaDivisa_Get.ToString("n2", _cult);
             L_TASA_IGTF.Text = _controlador.Ficha.Get_TasaIGTF.ToString("n2", _cult);
             L_TASA_ISLR.Text = _controlador.Ficha.Get_TasaISLR.ToString("n2", _cult);
+            L_TASA_DIVISA.Text = _controlador.Ficha.Totales.TasaDivisaActual_Get.ToString("n2", _cult);
         }
         private void ActualizarContadores()
         {

@@ -18,7 +18,7 @@ namespace ModVentaAdm.Fabrica
         void VisualizarDocumento(Src.Administrador.data GetItemActual);
         OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> DocumentosGetLista(OOB.Documento.Lista.Filtro filtro);
         void ClienteAnticipos(object idCliente);
-
+        void AliadosInvolucradosDoc(string idDoc);
 
         //CLIENTES
         SrcComun.Clientes.Filtros.Comp.Vista.IVista 

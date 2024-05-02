@@ -193,6 +193,7 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.BT_MARGEN = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.BT_FACTOR_DIVISA = new System.Windows.Forms.Button();
             this.p_PIE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.panel24 = new System.Windows.Forms.Panel();
@@ -319,6 +320,7 @@
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
+            this.panel13.SuspendLayout();
             this.p_PIE.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.panel24.SuspendLayout();
@@ -2344,6 +2346,7 @@
             // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.BT_FACTOR_DIVISA);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel13.Location = new System.Drawing.Point(1, 142);
             this.panel13.Margin = new System.Windows.Forms.Padding(1);
@@ -2351,6 +2354,21 @@
             this.panel13.Padding = new System.Windows.Forms.Padding(4);
             this.panel13.Size = new System.Drawing.Size(55, 48);
             this.panel13.TabIndex = 3;
+            // 
+            // BT_FACTOR_DIVISA
+            // 
+            this.BT_FACTOR_DIVISA.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_dollar;
+            this.BT_FACTOR_DIVISA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_FACTOR_DIVISA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_FACTOR_DIVISA.FlatAppearance.BorderSize = 0;
+            this.BT_FACTOR_DIVISA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_FACTOR_DIVISA.Location = new System.Drawing.Point(4, 4);
+            this.BT_FACTOR_DIVISA.Name = "BT_FACTOR_DIVISA";
+            this.BT_FACTOR_DIVISA.Size = new System.Drawing.Size(47, 40);
+            this.BT_FACTOR_DIVISA.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.BT_FACTOR_DIVISA, "Cambiar / Editar Factor Divisa Del Documento Actual");
+            this.BT_FACTOR_DIVISA.UseVisualStyleBackColor = true;
+            this.BT_FACTOR_DIVISA.Click += new System.EventHandler(this.BT_FACTOR_DIVISA_Click);
             // 
             // p_PIE
             // 
@@ -2742,6 +2760,7 @@
             this.panel10.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
             this.p_PIE.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
@@ -2948,5 +2967,6 @@
         private System.Windows.Forms.Label L_DATOS_DOC_SOLICITADO_POR;
         private System.Windows.Forms.Label L_DATOS_DOC_MODULO_CARGAR;
         private System.Windows.Forms.CheckBox CHB_ES_POR_REMISION;
+        private System.Windows.Forms.Button BT_FACTOR_DIVISA;
     }
 }

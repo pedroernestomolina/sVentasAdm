@@ -89,7 +89,7 @@
     <Compile Include="Data\Infra\Transporte\IAliado.cs" />
     <Compile Include="Data\Infra\Transporte\ICnf.cs" />
     <Compile Include="Data\Infra\Transporte\IServicioPrest.cs" />
-    <Compile Include="Data\Infra\Transporte\ITransporteDocAliado.cs" />
+    <Compile Include="Data\Infra\Transporte\ITransporteDocGestionAliado.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteCaja.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteClienteAnticipo.cs" />
     <Compile Include="Data\Infra\Transporte\ITransporteCxcMovCobro.cs" />
@@ -115,7 +115,7 @@
     <Compile Include="Data\Prov\TransporteClienteAnticipo.cs" />
     <Compile Include="Data\Prov\TransporteCnf.cs" />
     <Compile Include="Data\Prov\TransporteCxcMovCobro.cs" />
-    <Compile Include="Data\Prov\TransporteDocAliado.cs" />
+    <Compile Include="Data\Prov\TransporteDocumento_GestionAliado.cs" />
     <Compile Include="Data\Prov\TransporteDocumento.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Anular.cs" />
     <Compile Include="Data\Prov\TransporteDocumento_Agregar_Factura.cs" />
@@ -332,14 +332,22 @@
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaFechaServ.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Aliado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\DetTurno.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Fecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaDetalle.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\FichaEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Turno.cs" />
+    <Compile Include="OOB\Transporte\Documento\GestionAliados\AnularAliado\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\GestionAliados\InsertarAliado\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\GestionAliados\ObtenerLista\Documento.cs" />
+    <Compile Include="OOB\Transporte\Documento\GestionAliados\ObtenerLista\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\GestionAliados\ObtenerLista\Item.cs" />
     <Compile Include="OOB\Transporte\Documento\GetAliados\Info\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\GetAliados\Info\Item.cs" />
     <Compile Include="OOB\Transporte\Documento\GetAliados\Presupuesto\Ficha.cs" />
+    <Compile Include="OOB\Transporte\Documento\GetDetalleTurnos\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\GetServicios\Presupuesto\Ficha.cs" />
     <Compile Include="OOB\Transporte\Documento\GetTurnos\baseFicha.cs" />
     <Compile Include="OOB\Transporte\Documento\GetTurnos\Documento\Ficha.cs" />
@@ -463,6 +471,31 @@
     <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\IDocGenerar.cs" />
     <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\IFiscal.cs" />
     <Compile Include="SrcTransporte\DocVenta\NotaCreditoAdm\Generar\Vista\IVista.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Agregar\Handler\dataExportar.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Agregar\Handler\ImpGestionData.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Agregar\Handler\ImpMain.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Agregar\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Agregar\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Agregar\Vistas\IMain.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Agregar\Vistas\IMainData.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Handler\Impdata.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Handler\ImpMainItems.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Handler\ImpItems.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Handler\ImpMain.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\Idata.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\ImainItems.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\Iitems.cs" />
+    <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\IMain.cs" />
     <Compile Include="Utils\Componente\Filtro\Handler\baseOpcionCB.cs" />
     <Compile Include="Utils\Componente\Filtro\Vista\IOpcionCB.cs" />
     <Compile Include="Utils\Componente\Filtro\Vista\IOpciones.cs" />
@@ -1324,6 +1357,8 @@
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Caja\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Cliente\data.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Cliente\Imp.cs" />
+    <Compile Include="Utils\FiltrosCB\ConBusqueda\Servicio\data.cs" />
+    <Compile Include="Utils\FiltrosCB\ConBusqueda\Servicio\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ICtrlConBusqueda.cs" />
     <Compile Include="Utils\FiltrosCB\ICtrlSinBusqueda.cs" />
     <Compile Include="Utils\FiltrosCB\Idata.cs" />
@@ -1406,6 +1441,12 @@
     <EmbeddedResource Include="SrcTransporte\Filtro\Reportes\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Agregar\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Presupuesto\Generar\Aliado\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1434,6 +1475,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Cxc_EdoCtaCliente.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Factura - Copy.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Factura.rdlc">
@@ -1801,6 +1845,9 @@
     <None Include="Resources\rivas.jpeg" />
     <None Include="Resources\rivas_2.png" />
     <None Include="Resources\bt_numero_documento_48.png" />
+    <None Include="Resources\involucrados_24.png" />
+    <None Include="Resources\involucrados_48.png" />
+    <None Include="Resources\involucrados_32.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -1908,6 +1955,9 @@
     <Content Include="Src\Imagenes\inicio_48.png" />
     <Content Include="Src\Imagenes\inventario.jpg" />
     <Content Include="Src\Imagenes\inventario_2.jpg" />
+    <Content Include="Src\Imagenes\involucrados_24.png" />
+    <Content Include="Src\Imagenes\involucrados_32.png" />
+    <Content Include="Src\Imagenes\involucrados_48.png" />
     <Content Include="Src\Imagenes\libro.png" />
     <Content Include="Src\Imagenes\localizacion_48.png" />
     <Content Include="Src\Imagenes\logo_presup_servc_color.jpeg">

@@ -439,8 +439,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
                         return nr;
                     }).ToList(),
                     docRef = _docRef,
-                    turnos = _lstTurnos
+                    turnos = _lstTurnos,
+                    VerificarRemisionDoc =false,
                 };
+                //
                 var r01 = Sistema.MyData.TransporteDocumento_AgregarFactura(fichaOOB);
                 _procesarIsOK = true;
                 visualizarDoc(r01.Entidad.autoDoc);
@@ -506,6 +508,13 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.ProForma
             {
                 Ficha.DocNumeroGenerar = _numdocGen.Get_NumDocGenerar;
             }
+        }
+
+        public override void cargarDataRemision()
+        {
+            var _lst = new List<Utils.dataFiltro>();
+            _lst.Add(new Utils.dataFiltro() { codigo = "", desc = "HOJAS SERVICIO", id = "2" });
+            Remision.setDataCargar(_lst);
         }
     }
 }

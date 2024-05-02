@@ -16,6 +16,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar.Item
         Aliado.IAliado MiAliado { get; }
         LibUtilitis.CtrlCB.ICtrl Alicuota { get; }
         LibUtilitis.CtrlCB.ICtrl TipoServ { get; }
+
         // PARA EL DGV CABECERA A MOSTRAR
         string ServItemMostrar { get; }
         string AliadoItemMostrar { get; }

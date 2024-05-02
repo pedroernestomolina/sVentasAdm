@@ -147,15 +147,15 @@ namespace ModVentaAdm.Fabrica.Transporte
         }
         private void CargarVenta(string idDoc)
         {
-            try
-            {
-                var r01 = Sistema.MyData.TransporteDocumento_EntidadVenta_GetById(idDoc);
-                Helpers.Msg.OK("VENTA");
-            }
-            catch (Exception e)
-            {
-                Helpers.Msg.Error(e.Message);
-            }
+            //try
+            //{
+            //    var r01 = Sistema.MyData.TransporteDocumento_EntidadVenta_GetById(idDoc);
+            //    Helpers.Msg.OK("VENTA");
+            //}
+            //catch (Exception e)
+            //{
+            //    Helpers.Msg.Error(e.Message);
+            //}
         }
         private void CargarPresupuesto(string idDoc)
         {
@@ -177,6 +177,17 @@ namespace ModVentaAdm.Fabrica.Transporte
             _anticipo.Inicializa();
             _anticipo.setClienteCargar((string)idCliente);
             _anticipo.Inicia();
+        }
+        private SrcTransporte.GestionAliadosDoc.AliadosDoc.Vistas.IMain _aliadosDoc;
+        public void AliadosInvolucradosDoc(string idDoc)
+        {
+            if (_aliadosDoc == null) 
+            {
+                _aliadosDoc = new SrcTransporte.GestionAliadosDoc.AliadosDoc.Handler.ImpMain();
+            }
+            _aliadosDoc.Inicializa();
+            _aliadosDoc.setIdDoc(idDoc);
+            _aliadosDoc.Inicia();
         }
     }
 }

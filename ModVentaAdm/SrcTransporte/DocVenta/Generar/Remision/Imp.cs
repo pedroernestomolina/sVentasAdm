@@ -14,8 +14,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
         private OOB.Maestro.Cliente.Entidad.Ficha _cliente;
         private bool _habilitarCargarDocRemision;
         private data _docRemision;
-
-
+        private string _idDocSeleccionado;
+        //
         public BindingSource SourceItems_Get { get { return _ctrl.GetSource; } }
         public string ItemId_Get { get { return _ctrl.GetId; } }
         //
@@ -23,8 +23,8 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
         public string DocNombre_Get { get { return _docRemision.docNombre; } }
         public string DocNumero_Get { get { return _docRemision.docNumero; } }
         public string DocFecha_Get { get { return _docRemision.docFecha; } }
-
-
+        public string Get_IdDocSeleccionado { get { return _idDocSeleccionado; } } 
+        //
         public Imp()
         {
             _remisionBusquedaIsOk = false;
@@ -32,6 +32,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
             _cliente = null;
             _docRemision = new data();
             _ctrl = new LibUtilitis.CtrlCB.ImpCB();
+            _idDocSeleccionado = "";
         }
 
 
@@ -51,15 +52,16 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
 
         public void Inicializa()
         {
+            _idDocSeleccionado = "";
             _cliente = null;
             _docRemision.Inicializa();
             _ctrl.Inicializa();
         }
         public void CargarData()
         {
-            var _lst = new List<Utils.dataFiltro>();
-            //_lst.Add(new Utils.dataFiltro() { codigo = "", desc = "PRESUPUESTO", id = "1" });
-            _ctrl.CargarData(_lst);
+            //var _lst = new List<Utils.dataFiltro>();
+            //_lst.Add(new Utils.dataFiltro() { codigo = "", desc = "HOJAS SERVICIO", id = "2" });
+            //_ctrl.CargarData(_lst);
         }
         public void Limpiar()
         {
@@ -71,6 +73,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
         public bool RemisionIsOK { get { return _remisionBusquedaIsOk; } }
         public void Buscar()
         {
+            _idDocSeleccionado = "";
             _remisionBusquedaIsOk = false;
             if (_ctrl.GetItem == null) 
             {
@@ -94,8 +97,11 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
             var _idSistemaDocumento = "";
             switch (_ctrl.GetId) 
             {
-                case "1": //PRESUPPUESTO
+                case "1": //PRESUPUESTO
                     _idSistemaDocumento = Sistema.Id_SistDocumento_Presupuesto;
+                    break;
+                case "2": //HOJAS SERVICIO
+                    _idSistemaDocumento = Sistema.Id_SistDocumento_NotaEntrega;
                     break;
             }
             try
@@ -109,9 +115,11 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
                 {
                     codTipoDoc = s01.Entidad.codigo,
                     idCliente = _cliente.id,
+                    esPorRemision = false,
                 };
                 var r01 =Sistema.MyData.TransporteDocumento_Remision_ListaBy(filtroOOB);
-                return r01.ListaD.Where(w=>!w.isAnulado).ToList();
+                return r01.ListaD.ToList();
+                //return r01.ListaD.Where(w=>!w.isAnulado).ToList();
             }
             catch (Exception e)
             {
@@ -128,12 +136,15 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
             _listDoc.Inicia();
             if (_listDoc.ItemSeleccionadoIsOk) 
             {
-                if (!_habilitarCargarDocRemision) 
-                {
-                    Helpers.Msg.Alerta("CARGA DE DOCUMENTO DE REMISION NO HABILITADA");
-                    return;
-                }
-                CargarDocumentoRemision(((Utils.DocLista.Remision.data)_listDoc.ItemSeleccionado).Ficha);
+                _remisionBusquedaIsOk = true;
+                _idDocSeleccionado = ((Utils.DocLista.Remision.data)_listDoc.ItemSeleccionado).DocId;
+            //{
+            //    if (!_habilitarCargarDocRemision) 
+            //    {
+            //        Helpers.Msg.Alerta("CARGA DE DOCUMENTO DE REMISION NO HABILITADA");
+            //        return;
+            //    }
+            //    CargarDocumentoRemision(((Utils.DocLista.Remision.data)_listDoc.ItemSeleccionado).Ficha);
             }
         }
 
@@ -144,6 +155,25 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
                 case "05": //PRESUPUESTO
                     CargarDocumentoPresupuesto(ficha.docId);
                     break;
+            }
+        }
+
+        private void CargarDocumentoParaRemision(string idDoc)
+        {
+            try
+            {
+                //var r01 = Sistema.MyData.TransporteDocumento_DocParaRemision(idDoc);
+                var r01 = Sistema.MyData.TransporteDocumento_EntidadPresupuesto_GetById(idDoc);
+                _docRemision.setId(r01.Entidad.encabezado.idDoc);
+                _docRemision.setNombre(r01.Entidad.encabezado.docNombre);
+                _docRemision.setNumero(r01.Entidad.encabezado.docNumero);
+                _docRemision.setFecha(r01.Entidad.encabezado.docFechaEmision);
+                _docRemision.setTipo(r01.Entidad.encabezado.docCodigoTipo);
+                _remisionBusquedaIsOk = true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
             }
         }
 
@@ -163,6 +193,10 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Remision
             {
                 Helpers.Msg.Error(e.Message);
             }
+        }
+        public void setDataCargar(List<Utils.dataFiltro> lst)
+        {
+            _ctrl.CargarData(lst);
         }
     }
 }

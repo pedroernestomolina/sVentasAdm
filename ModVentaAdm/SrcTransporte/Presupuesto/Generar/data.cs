@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
 {
-    public class data
+    public class data 
     {
         private decimal _tasaDivisa;
         private dataItem _items;
@@ -91,13 +91,13 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
                 Helpers.Msg.Alerta("PROBLEMA CON LOS MONTOS TOTALES DEL DOCUMENTO, VERIFIQUE POR FAVOR");
                 return false;
             }
-            var _cntTurnAct = _items.GetItems.Where(g => g.Item.Get_TurnoIsActivo).Count();
-            var _cntServ = _items.GetItems.Where(g => !g.Item.Get_TurnoIsActivo).Count();
-            if (_cntTurnAct >0 && _cntServ >0)
-            {
-                Helpers.Msg.Alerta("NO PUEDEN HABER ITEMS CON TURNO Y SIN TURNO");
-                return false;
-            }
+            //var _cntTurnAct = _items.GetItems.Where(g => g.Item.Get_TurnoIsActivo).Count();
+            //var _cntServ = _items.GetItems.Where(g => !g.Item.Get_TurnoIsActivo).Count();
+            //if (_cntTurnAct >0 && _cntServ >0)
+            //{
+            //    Helpers.Msg.Alerta("NO PUEDEN HABER ITEMS CON TURNO Y SIN TURNO");
+            //    return false;
+            //}
             return true;
         }
         public bool DataPendienteIsOK()
@@ -130,6 +130,7 @@ namespace ModVentaAdm.SrcTransporte.Presupuesto.Generar
         public void setTasaDivisa(decimal factor)
         {
             _tasaDivisa = factor;
+            _totales.setTasaDivisa(factor);
         }
         public void setTasaFiscal(List<OOB.Sistema.Fiscal.Entidad.Ficha> list)
         {

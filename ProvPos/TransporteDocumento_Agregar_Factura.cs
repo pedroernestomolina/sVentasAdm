@@ -1058,6 +1058,78 @@ namespace ProvPos
                             }
                         }
                         //
+                        if (ficha.docRef.Count > 0) 
+                        {
+                            var listaDoc = ficha.docRef.Select(s => s.idDoc).ToList();
+                            string docs = "'" + string.Join("', '", listaDoc) + "'";
+                            _sql = @"INSERT INTO ventas_transp_item (
+                                        id_item, 
+                                        id_venta, 
+                                        servicio_desc, 
+                                        cnt_dias, 
+                                        cnt_unidades, 
+                                        precio_neto_divisa,
+                                        dscto, 
+                                        alicuota_id, 
+                                        alicuota_tasa, 
+                                        alicuota_desc, 
+                                        notas, 
+                                        fecha_doc, 
+                                        hora_doc, 
+                                        signo_doc, 
+                                        tipo_doc, 
+                                        estatus_anulado,
+                                        importe, 
+                                        unidades_desc, 
+                                        servicio_id, 
+                                        servicio_codigo, 
+                                        servicio_detalle, 
+                                        turno_estatus, 
+                                        turno_id, 
+                                        turno_desc, 
+                                        turno_cnt_dias, 
+                                        id_doc_ref, 
+                                        doc_num_ref)
+                                    SELECT 
+                                        null, 
+                                        @idVenta,
+                                        it.servicio_desc,
+                                        it.cnt_dias,
+                                        it.cnt_unidades,
+                                        it.precio_neto_divisa,
+                                        it.dscto,
+                                        it.alicuota_id,
+                                        it.alicuota_tasa,
+                                        it.alicuota_desc,
+                                        it.notas,
+                                        it.fecha_doc,
+                                        it.hora_doc,
+                                        it.signo_doc,
+                                        it.tipo_doc,
+                                        '0',
+                                        it.importe,
+                                        it.unidades_desc,
+                                        it.servicio_id,
+                                        it.servicio_codigo,
+                                        it.servicio_detalle,
+                                        it.turno_estatus,
+                                        it.turno_id,
+                                        it.turno_desc,
+                                        it.turno_cnt_dias,
+                                        vt.auto as id_doc_ref, 
+                                        vt.documento as doc_num_ref
+                                    FROM ventas_transp_item as it
+                                    join ventas as vt on vt.auto=it.id_venta
+                                    WHERE it.id_venta in ("+docs+")";
+                            p1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
+                            var itDet = cn.Database.ExecuteSqlCommand(_sql, p1);
+                            if (itDet == 0)
+                            {
+                                throw new Exception("PROBLEMA AL INSERTAR DETALLES TURNOS");
+                            }
+                            cn.SaveChanges();
+                        }
+                        //
                         ts.Complete();
                         var ret = new DtoTransporte.Documento.Agregar.Resultado()
                         {
@@ -1173,11 +1245,14 @@ namespace ProvPos
                                 result.Result = DtoLib.Enumerados.EnumResult.isError;
                                 return result;
                             }
-                            if (_docV.autoRemision.Trim().ToUpper() != "")
+                            if (ficha.VerificarRemisionDoc)
                             {
-                                result.Mensaje = "DOCUMENTO [ REMISION ] INCORRECTO";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                if (_docV.autoRemision.Trim().ToUpper() != "")
+                                {
+                                    result.Mensaje = "DOCUMENTO [ REMISION ] INCORRECTO";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
                             }
                         }
 
@@ -1321,6 +1396,19 @@ namespace ProvPos
                         else
                         {
                             docNumero=ficha.docNumeroGenerar;
+                        }
+
+                        var autoCxC = "";
+                        if (ficha.montoPorCobrarMonDiv > 0m)
+                        {
+                            sql = "update sistema_contadores set a_cxc=a_cxc+1";
+                            var rCx = cn.Database.ExecuteSqlCommand(sql);
+                            if (rCx == 0)
+                            {
+                                throw new Exception("PROBLEMA AL ACTUALIZAR TABLA CONTADORES PARA CXC");
+                            }
+                            var aCxC = cn.Database.SqlQuery<int>("select a_cxc from sistema_contadores").FirstOrDefault();
+                            autoCxC = aCxC.ToString().Trim().PadLeft(10, '0');
                         }
 
                         var fechaVenc = fechaSistema.AddDays(ficha.diasCredito);
@@ -1639,7 +1727,7 @@ namespace ProvPos
                         var p62 = new MySql.Data.MySqlClient.MySqlParameter("@docSolicitadoPor", ficha.docSolicitadoPor);
                         var p63 = new MySql.Data.MySqlClient.MySqlParameter("@docModuloCargar", ficha.docModuloCargar);
                         var p64 = new MySql.Data.MySqlClient.MySqlParameter("@serieDoc", ficha.serieDocDesc);
-                        var p65 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCxC","");
+                        var p65 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCxC", autoCxC);
                         var p66 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_tasa", ficha.tasaIGTF);
                         var p67 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_monto_mon_act", ficha.montoIGTFMonAct);
                         var p68 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_monto_mon_div", ficha.montoIGTFMonDiv);
@@ -1658,6 +1746,137 @@ namespace ProvPos
                             throw new Exception("PROBLEMA AL INSERTAR DOCUMENTO DE VENTA");
                         }
                         cn.SaveChanges();
+                        
+                        //INSERTAR CXC
+                        if (ficha.montoPorCobrarMonDiv > 0m)
+                        {
+                            _sql = @"INSERT INTO cxc
+                                    (
+                                        auto ,
+                                        c_cobranza ,
+                                        c_cobranzap ,
+                                        fecha ,
+                                        tipo_documento ,
+                                        documento ,
+                                        fecha_vencimiento ,
+                                        nota ,
+                                        importe ,
+                                        acumulado ,
+                                        auto_cliente ,
+                                        cliente ,
+                                        ci_rif ,
+                                        codigo_cliente ,
+                                        estatus_cancelado ,
+                                        resta ,
+                                        estatus_anulado ,
+                                        auto_documento ,
+                                        numero ,
+                                        auto_agencia ,
+                                        agencia ,
+                                        signo ,
+                                        auto_vendedor ,
+                                        c_departamento ,
+                                        c_ventas ,
+                                        c_ventasp ,
+                                        serie ,
+                                        importe_neto ,
+                                        dias ,
+                                        castigop ,
+                                        cierre_ftp ,
+                                        monto_divisa ,
+                                        tasa_divisa ,
+                                        acumulado_divisa ,
+                                        codigo_sucursal ,
+                                        resta_divisa ,
+                                        importe_neto_divisa ,
+                                        estatus_doc_cxc
+                                    )
+                                VALUES 
+                                    (
+                                        @autoCxC,  
+                                        0, 
+                                        0, 
+                                        @fechaReg,
+                                        @tipoDocSiglas, 
+                                        @docNumero, 
+                                        @fechaVence,
+                                        '',
+                                        @importe,
+                                        0,
+                                        @idCliente,
+                                        @nombreCliente,
+                                        @cirifCliente,
+                                        @codigoCliente,
+                                        '0',
+                                        @resta,
+                                        '0',
+                                        @autoDoc,
+                                        '',
+                                        '0000000001',
+                                        '',
+                                        1,
+                                        @autoVendedor,
+                                        0,
+                                        0,
+                                        0,
+                                        @serieDocDesc,
+                                        @importeNeto,
+                                        @dias,
+                                        0,
+                                        '',
+                                        @montoDivisa,
+                                        @tasaDivisa,
+                                        0,
+                                        @codigoSuc,
+                                        @restaDivisa,
+                                        @importeNetoDivisa,
+                                        @estatusDocCxc
+                                    )";
+                            var t1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxC", autoCxC);
+                            var t2 = new MySql.Data.MySqlClient.MySqlParameter("@fechaReg", ficha.fechaEmision);
+                            var t3 = new MySql.Data.MySqlClient.MySqlParameter("@docNumero", docNumero);
+                            var t4 = new MySql.Data.MySqlClient.MySqlParameter("@fechaVence", ficha.fechaVencimiento);
+                            var t5 = new MySql.Data.MySqlClient.MySqlParameter("@importe", ficha.montoPorCobrarMonAct);
+                            var t6 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
+                            var t7 = new MySql.Data.MySqlClient.MySqlParameter("@nombreCliente", ficha.RazonSocial);
+                            var t8 = new MySql.Data.MySqlClient.MySqlParameter("@cirifCliente", ficha.CiRif);
+                            var t9 = new MySql.Data.MySqlClient.MySqlParameter("@codigoCliente", ficha.codCliente);
+                            var t10 = new MySql.Data.MySqlClient.MySqlParameter("@resta", ficha.montoPorCobrarMonAct);
+                            var t11 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
+                            var t12 = new MySql.Data.MySqlClient.MySqlParameter("@autoVendedor", ficha.idVendedor);
+                            var t13 = new MySql.Data.MySqlClient.MySqlParameter("@serieDocDesc", ficha.serieDocDesc);
+                            var t14 = new MySql.Data.MySqlClient.MySqlParameter("@importeNeto", ficha.subTotal);
+                            var t15 = new MySql.Data.MySqlClient.MySqlParameter("@dias", ficha.diasCredito);
+                            var t16 = new MySql.Data.MySqlClient.MySqlParameter("@montoDivisa", ficha.montoPorCobrarMonDiv);
+                            var t17 = new MySql.Data.MySqlClient.MySqlParameter("@tasaDivisa", ficha.factorCambio);
+                            var t19 = new MySql.Data.MySqlClient.MySqlParameter("@codigoSuc", ficha.codSucursal);
+                            var t20 = new MySql.Data.MySqlClient.MySqlParameter("@restaDivisa", ficha.montoPorCobrarMonDiv);
+                            var t21 = new MySql.Data.MySqlClient.MySqlParameter("@importeNetoDivisa", ficha.montoPorCobrarMonDiv);
+                            var t22 = new MySql.Data.MySqlClient.MySqlParameter("@estatusDocCxc", "0");
+                            var t23 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDocSiglas", ficha.tipoDocSiglas);
+                            r = cn.Database.ExecuteSqlCommand(_sql, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10,
+                                                            t11, t12, t13, t14, t15, t16, t17, t19, t20,
+                                                            t21, t22, t23);
+                            if (r == 0)
+                            {
+                                throw new Exception("PROBLEMA AL INSERTAR DOCUMENTO CXC");
+                            }
+                            cn.SaveChanges();
+                            //
+                            //SALDO DEL CLIENTE EN DIVISA
+                            var xcli_1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
+                            var xcli_2 = new MySql.Data.MySqlClient.MySqlParameter("@debito", ficha.montoPorCobrarMonDiv);
+                            var xsql_cli = @"update clientes set 
+                                                debitos=debitos+@debito,
+                                                saldo=saldo+@debito
+                                                where auto=@idCliente";
+                            var r_cli = cn.Database.ExecuteSqlCommand(xsql_cli, xcli_1, xcli_2);
+                            if (r_cli == 0)
+                            {
+                                throw new Exception("PROBLEMA AL ACTUALIZAR SALDO CLIENTE");
+                            }
+                            cn.SaveChanges();
+                        }
                         //
                         //INSERTAR DETALLES
                         var _sqlDetFct = @"INSERT INTO ventas_transp_detalle
@@ -1880,6 +2099,78 @@ namespace ProvPos
                                 }
                                 cn.SaveChanges();
                             }
+                        }
+                        //
+                        if (ficha.docRef.Count > 0)
+                        {
+                            var listaDoc = ficha.docRef.Select(s => s.idDoc).ToList();
+                            string docs = "'" + string.Join("', '", listaDoc) + "'";
+                            _sql = @"INSERT INTO ventas_transp_item (
+                                        id_item, 
+                                        id_venta, 
+                                        servicio_desc, 
+                                        cnt_dias, 
+                                        cnt_unidades, 
+                                        precio_neto_divisa,
+                                        dscto, 
+                                        alicuota_id, 
+                                        alicuota_tasa, 
+                                        alicuota_desc, 
+                                        notas, 
+                                        fecha_doc, 
+                                        hora_doc, 
+                                        signo_doc, 
+                                        tipo_doc, 
+                                        estatus_anulado,
+                                        importe, 
+                                        unidades_desc, 
+                                        servicio_id, 
+                                        servicio_codigo, 
+                                        servicio_detalle, 
+                                        turno_estatus, 
+                                        turno_id, 
+                                        turno_desc, 
+                                        turno_cnt_dias, 
+                                        id_doc_ref, 
+                                        doc_num_ref)
+                                    SELECT 
+                                        null, 
+                                        @idVenta,
+                                        it.servicio_desc,
+                                        it.cnt_dias,
+                                        it.cnt_unidades,
+                                        it.precio_neto_divisa,
+                                        it.dscto,
+                                        it.alicuota_id,
+                                        it.alicuota_tasa,
+                                        it.alicuota_desc,
+                                        it.notas,
+                                        it.fecha_doc,
+                                        it.hora_doc,
+                                        it.signo_doc,
+                                        it.tipo_doc,
+                                        '0',
+                                        it.importe,
+                                        it.unidades_desc,
+                                        it.servicio_id,
+                                        it.servicio_codigo,
+                                        it.servicio_detalle,
+                                        it.turno_estatus,
+                                        it.turno_id,
+                                        it.turno_desc,
+                                        it.turno_cnt_dias,
+                                        vt.auto as id_doc_ref, 
+                                        vt.documento as doc_num_ref
+                                    FROM ventas_transp_item as it
+                                    join ventas as vt on vt.auto=it.id_venta
+                                    WHERE it.id_venta in (" + docs + ")";
+                            p1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", autoDoc);
+                            var itDet = cn.Database.ExecuteSqlCommand(_sql, p1);
+                            if (itDet == 0)
+                            {
+                                throw new Exception("PROBLEMA AL INSERTAR DETALLES TURNOS");
+                            }
+                            cn.SaveChanges();
                         }
                         //
                         ts.Complete();

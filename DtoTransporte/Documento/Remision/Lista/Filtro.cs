@@ -12,11 +12,15 @@ namespace DtoTransporte.Documento.Remision.Lista
         public string idCliente { get; set; }
         public string codTipoDoc { get; set; }
         public bool esPorRemision { get; set; }
+        public bool incluirDocProcesado { get; set; }
+        public string idDocumento { get; set; }
         public Filtro()
         {
             idCliente = "";
             codTipoDoc = "";
             esPorRemision = true;
+            incluirDocProcesado = false;
+            idDocumento = "";
         }
     }
 }

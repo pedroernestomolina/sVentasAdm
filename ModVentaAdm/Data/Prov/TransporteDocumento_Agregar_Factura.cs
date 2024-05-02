@@ -16,6 +16,7 @@ namespace ModVentaAdm.Data.Prov
             var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Agregar.Resultado>();
             var fichaDTO = new DtoTransporte.Documento.Agregar.Factura.Ficha()
             {
+                VerificarRemisionDoc= ficha.VerificarRemisionDoc,
                 docNumeroGenerar= ficha.docNumeroGenerar,
                 cargos = ficha.cargos,
                 cargosp = ficha.cargosp,
@@ -243,6 +244,8 @@ namespace ModVentaAdm.Data.Prov
             var result = new OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Agregar.Resultado>();
             var fichaDTO = new DtoTransporte.Documento.Agregar.FacturaFromHojaServ.Ficha()
             {
+                montoPorCobrarMonAct=ficha.MontoPorCobrarMonAct,
+                montoPorCobrarMonDiv = ficha.MontoPorCobrarMonDiv,
                 docNumeroGenerar = ficha.docNumeroGenerar,
                 cargos = ficha.cargos,
                 cargosp = ficha.cargosp,

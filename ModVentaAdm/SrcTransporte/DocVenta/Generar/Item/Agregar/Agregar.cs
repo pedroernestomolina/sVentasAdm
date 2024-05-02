@@ -67,6 +67,7 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item.Agregar
                 {
                     codTipoDoc = s01.Entidad.codigo,
                     idCliente = _idCliente,
+                    incluirDocProcesado = false,
                 };
                 var r01 = Sistema.MyData.TransporteDocumento_Remision_ListaBy(filtroOOB);
                 var _lst = r01.ListaD.Where(w => !w.isAnulado).OrderByDescending(o => o.docId).ToList();

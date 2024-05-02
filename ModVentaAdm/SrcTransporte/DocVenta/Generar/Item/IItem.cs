@@ -20,6 +20,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
         int CantItemMostrar { get; }
         decimal ImporteItemMostrar { get; }
         string PresupuestoMostrar { get; }
+        string TurnoMostrar { get; }
+        string TurnoDescMostrar { get; }
+        decimal AliadoMontoMostrar { get; }
 
         void setId(int id);
         void AlicuotaSetFichaById(string id);

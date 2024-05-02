@@ -88,13 +88,22 @@ namespace ModVentaAdm.SrcTransporte.Reportes.ProForma
                 }
                 else 
                 {
-                    foreach (var dt in ficha.detTurnos.Where(w => w.idVenta == it.idDocRef).ToList())
+                    foreach (var dt in ficha.detTurnos.Where(w => w.idDocRef == it.idDocRef).ToList())
                     {
                         i++;
                         DataRow rt = ds.Tables["PresupItem"].NewRow();
-                        rt["descripcion"] = dt.servDesc;
-                        rt["detalle"] = dt.notas;
-                        rt["cnt_dias"] = it.cntDias*dt.turnCntDias *dt.cntVehic;
+                        rt["descripcion"] = dt.servDesc + Environment.NewLine + "PRESP # " + dt.docNroRef;
+                        if (dt.turnEstatus == "")
+                        {
+                            rt["cnt_dias"] = it.cntDias * dt.cntVehic;
+                            rt["detalle"] = dt.notas + Environment.NewLine + dt.servDet;
+                        }
+                        else 
+                        {
+                            rt["detalle"] = dt.notas;
+                            //rt["cnt_dias"] = it.cntDias * dt.turnCntDias * dt.cntVehic;
+                            rt["cnt_dias"] = dt.cntDias;
+                        }
                         rt["cnt_und"] = dt.cntVehic;
                         rt["precio_unit"] = dt.pnetoDiv;
                         rt["importe"] = dt.importe;

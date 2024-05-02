@@ -44,6 +44,8 @@ namespace DtoTransporte.Documento.Agregar.Factura
             tasaIGTF = 0m;
             aplicaIGTF = false;
             notasPeriodoLapso = "";
+            //
+            VerificarRemisionDoc = true;
         }
         public decimal montoIGTFMonAct { get; set; }
         public decimal montoIGTFMonDiv { get; set; }
@@ -53,5 +55,7 @@ namespace DtoTransporte.Documento.Agregar.Factura
         public string notasPeriodoLapso { get; set; }
 
         public string docNumeroGenerar { get; set; }
+        //
+        public bool VerificarRemisionDoc { get; set; }
     }
 }

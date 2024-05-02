@@ -64,12 +64,12 @@ namespace IPos.Transporte
         //
         DtoLib.ResultadoLista<DtoTransporte.Documento.GetAliados.Presupuesto.Ficha>
             TransporteDocumento_Presupuesto_GetAliados(string idDoc);
-
         DtoLib.ResultadoLista<DtoTransporte.Documento.GetServicios.Presupuesto.Ficha>
             TransporteDocumento_Presupuesto_GetServicios(string idDoc);
-
         DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Presupuesto.Ficha>
             TransporteDocumento_Presupuesto_GetTurnos(string idDoc);
+        DtoLib.ResultadoLista<DtoTransporte.Documento.GetDetalleTurnos.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_GetDetalleTurnos();
 
         //
         DtoLib.ResultadoLista<DtoTransporte.Documento.GetTurnos.Documento.Ficha>

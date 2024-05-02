@@ -31,7 +31,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BT_PROCESAR = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.panel45 = new System.Windows.Forms.Panel();
@@ -46,9 +48,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.TB_MOTIVO= new System.Windows.Forms.TextBox();
-            this.BT_SALIR = new System.Windows.Forms.Button();
-            this.BT_PROCESAR = new System.Windows.Forms.Button();
+            this.TB_MOTIVO = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -107,6 +107,22 @@
             this.panel9.Size = new System.Drawing.Size(138, 46);
             this.panel9.TabIndex = 1;
             // 
+            // BT_SALIR
+            // 
+            this.BT_SALIR.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BT_SALIR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_SALIR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_SALIR.Image = global::ModVentaAdm.Properties.Resources.bt_salida_2;
+            this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
+            this.BT_SALIR.Name = "BT_SALIR";
+            this.BT_SALIR.Size = new System.Drawing.Size(134, 42);
+            this.BT_SALIR.TabIndex = 1;
+            this.BT_SALIR.Text = "Salir";
+            this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.BT_SALIR.UseVisualStyleBackColor = true;
+            this.BT_SALIR.Click += new System.EventHandler(this.BT_SALIR_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.BT_PROCESAR);
@@ -117,6 +133,22 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(2);
             this.panel1.Size = new System.Drawing.Size(136, 46);
             this.panel1.TabIndex = 2;
+            // 
+            // BT_PROCESAR
+            // 
+            this.BT_PROCESAR.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BT_PROCESAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_PROCESAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_PROCESAR.Image = global::ModVentaAdm.Properties.Resources.bt_ok_3;
+            this.BT_PROCESAR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_PROCESAR.Location = new System.Drawing.Point(2, 2);
+            this.BT_PROCESAR.Name = "BT_PROCESAR";
+            this.BT_PROCESAR.Size = new System.Drawing.Size(132, 42);
+            this.BT_PROCESAR.TabIndex = 2;
+            this.BT_PROCESAR.Text = "Procesar";
+            this.BT_PROCESAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.BT_PROCESAR.UseVisualStyleBackColor = true;
+            this.BT_PROCESAR.Click += new System.EventHandler(this.BT_PROCESAR_Click);
             // 
             // panel3
             // 
@@ -316,38 +348,6 @@
             this.TB_MOTIVO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
             this.TB_MOTIVO.Leave += new System.EventHandler(this.TB_MOTIVO_Leave);
             // 
-            // BT_SALIR
-            // 
-            this.BT_SALIR.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BT_SALIR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_SALIR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_SALIR.Image = global::ModVentaAdm.Properties.Resources.bt_salida_2;
-            this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
-            this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(134, 42);
-            this.BT_SALIR.TabIndex = 1;
-            this.BT_SALIR.Text = "Salir";
-            this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.BT_SALIR.UseVisualStyleBackColor = true;
-            this.BT_SALIR.Click += new System.EventHandler(this.BT_SALIR_Click);
-            // 
-            // BT_PROCESAR
-            // 
-            this.BT_PROCESAR.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BT_PROCESAR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_PROCESAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_PROCESAR.Image = global::ModVentaAdm.Properties.Resources.bt_ok_3;
-            this.BT_PROCESAR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.BT_PROCESAR.Location = new System.Drawing.Point(2, 2);
-            this.BT_PROCESAR.Name = "BT_PROCESAR";
-            this.BT_PROCESAR.Size = new System.Drawing.Size(132, 42);
-            this.BT_PROCESAR.TabIndex = 2;
-            this.BT_PROCESAR.Text = "Procesar";
-            this.BT_PROCESAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.BT_PROCESAR.UseVisualStyleBackColor = true;
-            this.BT_PROCESAR.Click += new System.EventHandler(this.BT_PROCESAR_Click);
-            // 
             // AnularFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +360,7 @@
             this.KeyPreview = true;
             this.Name = "AnularFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnularFrm_FormClosing);
             this.Load += new System.EventHandler(this.AnularFrm_Load);
             this.panel2.ResumeLayout(false);

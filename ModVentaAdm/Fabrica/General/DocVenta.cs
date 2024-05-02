@@ -114,5 +114,8 @@ namespace ModVentaAdm.Fabrica.General
         public void ClienteAnticipos(object idCliente)
         {
         }
+        public void AliadosInvolucradosDoc(string idDoc)
+        {
+        }
     }
 }

@@ -1374,7 +1374,7 @@
             this.TB_DESC_BREVE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.TB_DESC_BREVE.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_DESC_BREVE.Location = new System.Drawing.Point(2, 2);
-            this.TB_DESC_BREVE.MaxLength = 250;
+            this.TB_DESC_BREVE.MaxLength = 200;
             this.TB_DESC_BREVE.Multiline = true;
             this.TB_DESC_BREVE.Name = "TB_DESC_BREVE";
             this.TB_DESC_BREVE.Size = new System.Drawing.Size(360, 37);

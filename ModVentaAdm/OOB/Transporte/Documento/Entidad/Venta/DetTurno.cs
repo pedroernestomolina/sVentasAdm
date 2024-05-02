@@ -9,6 +9,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Entidad.Venta
 {
     public class DetTurno
     {
+        public int idItem { get; set; }
         public string idVenta { get; set; }
         public string servDesc { get; set; }
         public int cntDias { get; set; }
@@ -17,6 +18,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Entidad.Venta
         public string notas { get; set; }
         public decimal importe { get; set; }
         public string descVehic { get; set; }
+        public int servId { get; set; }
         public string servCod { get; set; }
         public string servDet { get; set; }
         public string turnEstatus { get; set; }
@@ -24,5 +26,6 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Entidad.Venta
         public int turnCntDias { get; set; }
         public string docNroRef { get; set; }
         public string docTipoProcedencia { get; set; }
+        public string idDocRef { get; set; }
     }
 }

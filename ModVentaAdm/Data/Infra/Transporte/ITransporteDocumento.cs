@@ -46,12 +46,12 @@ namespace ModVentaAdm.Data.Infra.Transporte
         //
         OOB.Resultado.Lista<OOB.Transporte.Documento.GetAliados.Presupuesto.Ficha>
             TransporteDocumento_GetAliados_Presupuesto(string idDoc);
-
         OOB.Resultado.Lista<OOB.Transporte.Documento.GetServicios.Presupuesto.Ficha>
             TransporteDocumento_Presupuesto_GetServicios(string idDoc);
-        
         OOB.Resultado.Lista<OOB.Transporte.Documento.GetTurnos.Presupuesto.Ficha>
             TransporteDocumento_Presupuesto_GetTurnos(string idDoc);
+        OOB.Resultado.Lista<OOB.Transporte.Documento.GetDetalleTurnos.Presupuesto.Ficha>
+            TransporteDocumento_Presupuesto_GetFetalleTurnos();
 
         //
         OOB.Resultado.FichaEntidad<OOB.Transporte.Documento.Agregar.Resultado>

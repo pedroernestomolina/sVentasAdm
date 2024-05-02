@@ -24,6 +24,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Item
         public int CantItemMostrar { get { return _data.Get_Cnt; } }
         public decimal ImporteItemMostrar { get { return _data.Get_Importe; } }
         public string PresupuestoMostrar { get { return _data.Get_PresupuestoNumero; } }
+        public string TurnoMostrar { get { return ""; } }
+        public string TurnoDescMostrar { get { return _data.Get_Descripcion; } }
+        public decimal AliadoMontoMostrar { get { return _data.Get_ImporteAliadosLLamados; } }
 
 
         public ImpItem()

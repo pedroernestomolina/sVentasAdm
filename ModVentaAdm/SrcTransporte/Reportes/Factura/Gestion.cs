@@ -76,14 +76,15 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Factura
             var i = 0;
             foreach (var it in ficha.detalles)
             {
-                if (it.mostrarItemDocFinal.Trim().ToUpper() == "1")
+                if (it.esItemBasico)
+                //if (it.mostrarItemDocFinal.Trim().ToUpper() == "1")
                 {
                     i++;
                     DataRow rt = ds.Tables["PresupItem"].NewRow();
                     rt["descripcion"] = "";
                     rt["detalle"] = it.detalle;
                     rt["cnt_dias"] = 0;
-                    rt["cnt_und"] = 0;
+                    rt["cnt_und"] = 1;
                     rt["cnt"] = it.cntDias;
                     rt["item"] = i;
                     //rt["precio_unit"] = it.precioNetoMonDivisa;
@@ -93,23 +94,46 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Factura
                     rt["desc_und"] = "";
                     ds.Tables["PresupItem"].Rows.Add(rt);
                 }
+                else 
+                {
+                    foreach (var dt in ficha.detTurnos.Where(w => w.idDocRef == it.idDocRef).ToList())
+                    {
+                        var _pne = dt.pnetoDiv * ficha.encabezado.factorCambio;
+                        _pne = Math.Round(_pne, 2, MidpointRounding.AwayFromZero);
+                        var _importe = dt.importe * ficha.encabezado.factorCambio;
+                        _importe = Math.Round(_importe, 2, MidpointRounding.AwayFromZero);
+                        //
+                        i++;
+                        DataRow rt = ds.Tables["PresupItem"].NewRow();
+                        rt["descripcion"] = "";
+                        rt["detalle"] = dt.turnDesc+"/"+dt.servDesc+Environment.NewLine+dt.notas;
+                        rt["cnt_dias"] = 0;
+                        rt["cnt_und"] = dt.cntVehic;
+                        rt["cnt"] = dt.cntDias;
+                        rt["item"] = i;
+                        rt["precio_unit"] = _pne ;
+                        rt["importe"] = _importe;
+                        rt["desc_und"] = "";
+                        ds.Tables["PresupItem"].Rows.Add(rt);
+                    }
+                }
             }
             //
-            foreach (var it in ficha.turnos)
-            {
-                i++;
-                DataRow rt = ds.Tables["PresupItem"].NewRow();
-                rt["descripcion"] = "";
-                rt["detalle"] = it.detalle + Environment.NewLine + it.ruta;
-                rt["cnt_dias"] = 0;
-                rt["cnt_und"] = 0;
-                rt["cnt"] = 1;
-                rt["item"] = i;
-                rt["precio_unit"] = it.importe * ficha.encabezado.factorCambio;
-                rt["importe"] = it.importe * ficha.encabezado.factorCambio;
-                rt["desc_und"] = "";
-                ds.Tables["PresupItem"].Rows.Add(rt);
-            }
+            //foreach (var it in ficha.turnos)
+            //{
+            //    i++;
+            //    DataRow rt = ds.Tables["PresupItem"].NewRow();
+            //    rt["descripcion"] = "";
+            //    rt["detalle"] = it.detalle + Environment.NewLine + it.ruta;
+            //    rt["cnt_dias"] = 0;
+            //    rt["cnt_und"] = 0;
+            //    rt["cnt"] = 1;
+            //    rt["item"] = i;
+            //    rt["precio_unit"] = it.importe * ficha.encabezado.factorCambio;
+            //    rt["importe"] = it.importe * ficha.encabezado.factorCambio;
+            //    rt["desc_und"] = "";
+            //    ds.Tables["PresupItem"].Rows.Add(rt);
+            //}
             //
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
