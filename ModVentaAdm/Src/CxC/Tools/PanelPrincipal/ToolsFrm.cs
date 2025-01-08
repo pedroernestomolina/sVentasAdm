@@ -166,6 +166,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             DGV_1.DataSource = _controlador.CtasPendGetSource;
             ActualizarDataPanel();
             _modoInicializar = false;
+
+            BT_AGREGAR_ANTICIPO.Visible = Sistema.Fabrica.Cxc_AgregarAnticipos;
+            BT_ADM_DOC_ANTICIPO.Visible = Sistema.Fabrica.Cxc_AdmDocAnticipos;
         }
 
         private void BT_BUSCAR_Click(object sender, EventArgs e)

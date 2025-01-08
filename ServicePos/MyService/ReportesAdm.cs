@@ -76,5 +76,11 @@ namespace ServicePos.MyService
         {
             return ServiceProv.ReportesAdm_VentasPorVendedor_Detallado(filtro);
         }
+        //
+        public DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Ficha> 
+            Reporte_LibroVentas_Pos(DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Filtro filtro)
+        {
+            return ServiceProv.Reporte_LibroVentas_Pos(filtro);
+        }
     }
 }

@@ -381,6 +381,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
                 montoAnticipo = _gMedCobro.GetMontoPorAnticipo,
                 factorCambio=  _gMedCobro.Get_RetCaja.Retencion.Get_FactorCambio,
                 montoRecibido = _gMedCobro.GetListaMedCobro.Where(w=>w.item.GetAplicaMovCaja).Sum(s=>s.Importe),
+                fechaProceso = _gDetalleCobro.Get_FechaProceso,
             };
             if (_gMedCobro.Get_RetCaja.Retencion.Get_AplicaRet) 
             {
@@ -418,7 +419,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
                 _lstCaja.Add(nr);
             }
             fichaOOb.cajas = _lstCaja;
-
+            //
             var rt2 = Sistema.MyData.CxC_GestionCobro_Agregar(fichaOOb);
             if (rt2.Result == OOB.Resultado.Enumerados.EnumResult.isError)
             {

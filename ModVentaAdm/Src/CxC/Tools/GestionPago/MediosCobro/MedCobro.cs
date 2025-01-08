@@ -179,9 +179,35 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
             {
                 _retCaja = new SrcTransporte.CajaRetencion.Handler.Imp();
             }
+
+            var seguir = false;
+            if (Sistema.Fabrica.Cxc_PedirDatosCaja)
+            {
+                _retCaja.Inicializa();
+                _retCaja.setFactorCambio(_factorCambio);
+                _retCaja.setMontoCajaProcesarMonDiv(_saldoCaja);
+                _retCaja.Inicia();
+                if (_retCaja.ProcesarIsOK)
+                {
+                    seguir = true;
+                }
+            }
+            else
+            {
+                seguir = true;
+            }
+            if (seguir)
+            {
+                var msg = "Procesar y Guardar Los Cambios ?";
+                var r = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (r == DialogResult.Yes)
+                {
+                    _procesarIsOk = true;
+                }
+            }
+            /*
             _retCaja.Inicializa();
             _retCaja.setFactorCambio(_factorCambio);
-
             _retCaja.setMontoCajaProcesarMonDiv(_saldoCaja);
             _retCaja.Inicia();
             if (_retCaja.ProcesarIsOK)
@@ -193,6 +219,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.MediosCobro
                     _procesarIsOk = true;
                 }
             }
+             */
         }
         public void AbandonarFicha()
         {

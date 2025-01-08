@@ -248,6 +248,7 @@ namespace ModVentaAdm.Data.Prov
             var result = new OOB.Resultado.Ficha();
             var fichaDto = new DtoLibPos.CxC.GestionCobro.Ficha()
             {
+                fechaCobro= ficha.fechaProceso,
                 autoCliente = ficha.autoCliente,
                 montoAnticipo = ficha.montoAnticipo,
                 factorCambio = ficha.factorCambio,
@@ -382,6 +383,7 @@ namespace ModVentaAdm.Data.Prov
                 }
                 fichaDto.cajas = lt;
             }
+            //
             var r01 = MyData.CxC_GestionCobro_Agregar(fichaDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {

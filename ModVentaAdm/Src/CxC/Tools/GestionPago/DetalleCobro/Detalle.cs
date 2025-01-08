@@ -8,14 +8,15 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.GestionPago.DetalleCobro
 {
-    
+   
     public class Detalle: IDetalle, Gestion.IAbandonar, Gestion.IProcesar
     {
-
         private bool _procesarIsOk;
         private bool _abandonarIsOk;
         private string _notas;
         private Gestion.HndCombo.IOpcion _gCobrador;
+        private DateTime _fechaProceso;
+        private DateTime _fechaServidor;
 
 
         public bool ProcesarIsOK { get { return _procesarIsOk; } }
@@ -24,6 +25,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.DetalleCobro
         public string GetNotas { get { return _notas; } }
         public string GetIdCobrador { get { return _gCobrador.GetId; } }
         public BindingSource CobradorSource { get { return _gCobrador.Source; } }
+        public DateTime Get_FechaProceso { get { return _fechaProceso; } }
 
 
         public Detalle() 
@@ -32,11 +34,13 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.DetalleCobro
             _abandonarIsOk = false;
             _notas = "";
             _gCobrador= new Gestion.HndCombo.Opcion ();
+            _fechaServidor = DateTime.Now.Date;
         }
 
 
         public void Inicializa()
         {
+            _fechaProceso = DateTime.Now.Date;
             _procesarIsOk = false;
             _abandonarIsOk = false;
             _notas = "";
@@ -60,6 +64,15 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.DetalleCobro
         private bool CargarData()
         {
             var rt = true;
+
+            var rt0 = Sistema.MyData.FechaServidor();
+            if (rt0.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(rt0.Mensaje);
+                return false;
+            }
+            _fechaServidor= rt0.Entidad;
+            _fechaProceso = _fechaServidor;
 
             var rt1= Sistema.MyData.Sistema_Cobrador_GetLista();
             if (rt1.Result == OOB.Resultado.Enumerados.EnumResult.isError) 
@@ -117,7 +130,9 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.DetalleCobro
         {
             _gCobrador.setFicha(id);
         }
-
+        public void setFechaProceso(DateTime fechaProceso)
+        {
+            _fechaProceso= fechaProceso;
+        }
     }
-
 }

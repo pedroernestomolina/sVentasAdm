@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.CxC.GestionCobro
 {
-    
     public class FichaCobro
     {
-        
         public string Nota { get; set; }
         public string AutoCliente { get; set; }
         public string Cliente { get; set; }
@@ -20,8 +18,6 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
         public decimal MontoDivisa { get; set; }
         public decimal TasaDivisa { get; set; }
         public decimal Importe { get; set; }
-
-
         public FichaCobro()
         {
             Nota = "";
@@ -34,7 +30,5 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
             TasaDivisa = 0m;
             Importe = 0m;
         }
-
     }
-
 }

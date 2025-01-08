@@ -225,7 +225,7 @@ namespace ModVentaAdm.Src.Principal
         //REPORTE VENTAS
         private void Reporte_Ventas_LibroVenta()
         {
-            _controlador.Reporte_LibroVenta();
+            _controlador.Reporte_LibroVentaPos();
         }
         private void Reporte_Ventas_Consolidado()
         {

@@ -397,6 +397,15 @@ namespace ModVentaAdm.Data.Prov
                     };
                     return _aliado;
                 }).ToList(),
+                detDoc = r01.Entidad.detDoc.Select(s => 
+                {
+                    var _detDoc = new OOB.Transporte.Documento.Entidad.Venta.DetDoc()
+                    {
+                        detalle = s.detalle,
+                        importe = s.importe,
+                    };
+                    return _detDoc;
+                }).ToList(),
             };
             return result;
         }

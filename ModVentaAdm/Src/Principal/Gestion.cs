@@ -506,5 +506,9 @@ namespace ModVentaAdm.Src.Principal
             _notaCred.Inicializa();
             _notaCred.Inicia();
         }
+        public void Reporte_LibroVentaPos()
+        {
+            Reporte(new Reportes.Modo.LibroVenta.GestionPos());
+        }
     }
 }

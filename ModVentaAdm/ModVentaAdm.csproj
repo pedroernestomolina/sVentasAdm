@@ -108,6 +108,7 @@
     <Compile Include="Data\Prov\Producto.cs" />
     <Compile Include="Data\Prov\Reportes.cs" />
     <Compile Include="Data\Prov\ReportesCli.cs" />
+    <Compile Include="Data\Prov\Repor_LibroVentas_Pos.cs" />
     <Compile Include="Data\Prov\Sistema.cs" />
     <Compile Include="Data\Prov\Sucursal.cs" />
     <Compile Include="Data\Prov\TransporteAliado.cs" />
@@ -333,6 +334,7 @@
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaEncabezado.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Presupuesto\FichaFechaServ.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Aliado.cs" />
+    <Compile Include="OOB\Transporte\Documento\Entidad\Venta\DetDoc.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\DetTurno.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Fecha.cs" />
     <Compile Include="OOB\Transporte\Documento\Entidad\Venta\Ficha.cs" />
@@ -376,6 +378,29 @@
     <Compile Include="OOB\Transporte\ServPrest\Busqueda\Filtro.cs" />
     <Compile Include="OOB\Transporte\ServPrest\Editar\Ficha.cs" />
     <Compile Include="OOB\Transporte\ServPrest\Entidad\Ficha.cs" />
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\Editar\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\Editar\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\Editar\HndEditar.cs" />
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\Editar\IEditar.cs" />
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\HndGestion.cs" />
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\IHnd.cs" />
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\Items\data.cs" />
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\Items\HndLista.cs" />
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\Items\Idata.cs" />
+    <Compile Include="ReglasNegocio\EditarItemsAntesImprimir\Items\ILista.cs" />
+    <Compile Include="ReglasNegocio\IReglasNegocio.cs" />
+    <Compile Include="ReglasNegocio\ReglasGeneral.cs" />
+    <Compile Include="ReglasNegocio\ReglasTransporte.cs" />
     <Compile Include="SrcComun\Clientes\Filtros\Comp\Handler\Imp.cs" />
     <Compile Include="SrcComun\Clientes\Filtros\Comp\Vista\Frm.cs">
       <SubType>Form</SubType>
@@ -496,6 +521,7 @@
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\ImainItems.cs" />
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\Iitems.cs" />
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\IMain.cs" />
+    <Compile Include="Src\Reportes\Modo\LibroVenta\GestionPos.cs" />
     <Compile Include="Utils\Componente\Filtro\Handler\baseOpcionCB.cs" />
     <Compile Include="Utils\Componente\Filtro\Vista\IOpcionCB.cs" />
     <Compile Include="Utils\Componente\Filtro\Vista\IOpciones.cs" />
@@ -1243,7 +1269,6 @@
     <Compile Include="Src\Reportes\Modo\GeneralPorGrupo\Gestion.cs" />
     <Compile Include="Src\Reportes\Modo\GeneralPorProducto\Filtro.cs" />
     <Compile Include="Src\Reportes\Modo\GeneralPorProducto\Gestion.cs" />
-    <Compile Include="Src\Reportes\Modo\LibroVenta\data.cs" />
     <Compile Include="Src\Reportes\Modo\LibroVenta\Filtro.cs" />
     <Compile Include="Src\Reportes\Modo\LibroVenta\Gestion.cs" />
     <Compile Include="Src\Reportes\Modo\ListaDocumento\Filtro.cs" />
@@ -1373,6 +1398,12 @@
     <EmbeddedResource Include="Helpers\Imprimir\Grafico\ReporteFrm.resx">
       <DependentUpon>ReporteFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReglasNegocio\EditarItemsAntesImprimir\Editar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReglasNegocio\EditarItemsAntesImprimir\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcComun\Clientes\Filtros\Comp\Vista\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1475,6 +1506,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Cxc_EdoCtaCliente.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\ProForma\Transp_Factura.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Factura - Copy.rdlc">

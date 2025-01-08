@@ -46,10 +46,10 @@ namespace ProvPos
                                         where c.estatus_cancelado='0'
                                         and c.tipo_documento<>'PAG'
                                         and c.estatus_anulado='0'
-                                        and c.codigo_sucursal=@codigoSuc
                                         group by c.auto_cliente";
+                                        //and c.codigo_sucursal=@codigoSuc
                     var sql = sql_1;
-                    var lst = cnn.Database.SqlQuery<DtoLibPos.CxC.Tools.CtasPendiente.Lista.Ficha>(sql,p1).ToList();
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.CxC.Tools.CtasPendiente.Lista.Ficha>(sql).ToList();
                     result.Lista = lst;
                 }
             }
@@ -1029,7 +1029,7 @@ namespace ProvPos
                                 var p04 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_div", cjMov.montoMovMonDiv);
                                 var p05 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio_mov", cjMov.factorCambio);
                                 var p06 = new MySql.Data.MySqlClient.MySqlParameter("@mov_fue_divisa", cjMov.movFueDivisa ? "1" : "0");
-                                var pp07 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_emision", fechaSistema.Date);
+                                var pp07 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_emision", ficha.fechaCobro);
                                 var rp2 = cn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, pp07);
                                 if (rp2 == 0)
                                 {

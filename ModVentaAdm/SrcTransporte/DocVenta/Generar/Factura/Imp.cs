@@ -792,9 +792,9 @@ namespace ModVentaAdm.SrcTransporte.DocVenta.Generar.Factura
 
         private void visualizarDoc(string id)
         {
-            SrcTransporte.Reportes.Factura.IFactura _doc = new SrcTransporte.Reportes.Factura.Gestion();
-            _doc.setIdDocVisualizar(id);
-            _doc.Generar();
+            //SrcTransporte.Reportes.Factura.IFactura _doc = new SrcTransporte.Reportes.Factura.Gestion();
+            //_doc.setIdDocVisualizar(id);
+            //_doc.Generar();
         }
 
 

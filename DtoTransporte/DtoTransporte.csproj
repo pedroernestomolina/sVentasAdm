@@ -108,6 +108,7 @@
     <Compile Include="Documento\Entidad\Presupuesto\FichaEncabezado.cs" />
     <Compile Include="Documento\Entidad\Presupuesto\FichaFechaServ.cs" />
     <Compile Include="Documento\Entidad\Venta\Aliado.cs" />
+    <Compile Include="Documento\Entidad\Venta\DetDoc.cs" />
     <Compile Include="Documento\Entidad\Venta\DetTurno.cs" />
     <Compile Include="Documento\Entidad\Venta\Fecha.cs" />
     <Compile Include="Documento\Entidad\Venta\Ficha.cs" />

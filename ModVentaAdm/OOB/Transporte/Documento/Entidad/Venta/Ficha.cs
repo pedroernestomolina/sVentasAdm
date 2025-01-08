@@ -15,6 +15,7 @@ namespace ModVentaAdm.OOB.Transporte.Documento.Entidad.Venta
         public List<DetTurno> detTurnos { get; set; }
         public List<Fecha> fechas { get; set; }
         public List<Aliado> aliados { get; set; }
+        public List<DetDoc> detDoc { get; set; }
         public Ficha()
         {
             encabezado = new FichaEncabezado();

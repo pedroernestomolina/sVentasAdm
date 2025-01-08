@@ -80,6 +80,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.BT_ALIADOS_INV = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.BT_IMPRIMIR = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -97,7 +98,6 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.DGV = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.BT_ALIADOS_INV = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.panel45.SuspendLayout();
@@ -819,6 +819,21 @@
             this.panel13.Size = new System.Drawing.Size(55, 35);
             this.panel13.TabIndex = 5;
             // 
+            // BT_ALIADOS_INV
+            // 
+            this.BT_ALIADOS_INV.BackgroundImage = global::ModVentaAdm.Properties.Resources.involucrados_32;
+            this.BT_ALIADOS_INV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_ALIADOS_INV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ALIADOS_INV.FlatAppearance.BorderSize = 0;
+            this.BT_ALIADOS_INV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_ALIADOS_INV.Location = new System.Drawing.Point(2, 2);
+            this.BT_ALIADOS_INV.Name = "BT_ALIADOS_INV";
+            this.BT_ALIADOS_INV.Size = new System.Drawing.Size(51, 31);
+            this.BT_ALIADOS_INV.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.BT_ALIADOS_INV, "Aliados Involucrados");
+            this.BT_ALIADOS_INV.UseVisualStyleBackColor = true;
+            this.BT_ALIADOS_INV.Click += new System.EventHandler(this.BT_ALIADOS_INV_Click);
+            // 
             // panel12
             // 
             this.panel12.Controls.Add(this.BT_IMPRIMIR);
@@ -1023,21 +1038,6 @@
             this.DGV.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellContentDoubleClick);
             this.DGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGV_CellFormatting);
             this.DGV.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DGV_DataBindingComplete);
-            // 
-            // BT_ALIADOS_INV
-            // 
-            this.BT_ALIADOS_INV.BackgroundImage = global::ModVentaAdm.Properties.Resources.involucrados_32;
-            this.BT_ALIADOS_INV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BT_ALIADOS_INV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_ALIADOS_INV.FlatAppearance.BorderSize = 0;
-            this.BT_ALIADOS_INV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_ALIADOS_INV.Location = new System.Drawing.Point(2, 2);
-            this.BT_ALIADOS_INV.Name = "BT_ALIADOS_INV";
-            this.BT_ALIADOS_INV.Size = new System.Drawing.Size(51, 31);
-            this.BT_ALIADOS_INV.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.BT_ALIADOS_INV, "Aliados Involucrados");
-            this.BT_ALIADOS_INV.UseVisualStyleBackColor = true;
-            this.BT_ALIADOS_INV.Click += new System.EventHandler(this.BT_ALIADOS_INV_Click);
             // 
             // AdmDocFrm
             // 

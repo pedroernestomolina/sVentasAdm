@@ -485,7 +485,7 @@ namespace ProvPos
                                         v.control as numControlDoc, 
                                         v.tipo as codigoDoc, 
                                         v.aplica as numAplicaDoc, 
-                                        v.total as montoTotal, 
+                                        v.total-v.igtf_monto_mon_act as montoTotal, 
                                         v.exento as montoExento,
                                         v.base1 as montoBase1, 
                                         v.impuesto1 as montoImpuesto1, 

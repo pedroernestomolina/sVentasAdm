@@ -31,5 +31,14 @@ namespace ModVentaAdm.Fabrica
             Documentos_Generar_NotaCredito();
         SrcComun.Documento.NotaCreditoAdm.Generar.Vista.IVista 
             Documentos_Generar_NotaCreditoAdm();
+
+        //CXC
+        bool Cxc_PedirDatosCaja {get;}
+        bool Cxc_AgregarAnticipos {get;}
+        bool Cxc_AdmDocAnticipos {get;}
+
+        //
+        ReglasNegocio.IReglasNegocio ReglasNegocio { get; }
+        ReglasNegocio.EditarItemsAntesImprimir.IHnd EditarItemsAntesImprimir();
     }
 }

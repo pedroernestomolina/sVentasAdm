@@ -189,5 +189,27 @@ namespace ModVentaAdm.Fabrica.Transporte
             _aliadosDoc.setIdDoc(idDoc);
             _aliadosDoc.Inicia();
         }
+
+
+        public bool Cxc_PedirDatosCaja
+        {
+            get {return true;}
+        }
+        public bool Cxc_AgregarAnticipos
+        {
+            get { return true; }
+        }
+        public bool Cxc_AdmDocAnticipos
+        {
+            get { return true; }
+        }
+
+
+        //
+        public ReglasNegocio.IReglasNegocio ReglasNegocio { get { return new ReglasNegocio.ReglasTransporte(); } }
+        public ReglasNegocio.EditarItemsAntesImprimir.IHnd EditarItemsAntesImprimir()
+        {
+            return new ReglasNegocio.EditarItemsAntesImprimir.HndGestion();
+        }
     }
 }

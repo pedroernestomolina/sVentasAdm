@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.Gestion
 {
-
     public interface IAbandonar
     {
-
         bool AbandonarIsOK { get; }
         void AbandonarFicha();
-
     }
-
 }

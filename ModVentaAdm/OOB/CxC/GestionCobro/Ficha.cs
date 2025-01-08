@@ -21,6 +21,7 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
         public decimal montoAnticipo { get; set; }
         public decimal factorCambio { get; set; }
         public decimal montoRecibido { get; set; }
+        public DateTime fechaProceso { get; set; }
         public Ficha() 
         {
             SucPrefijo = "";
@@ -35,6 +36,7 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
             montoAnticipo = 0m;
             factorCambio = 0m;
             montoRecibido = 0m;
+            fechaProceso = DateTime.Now.Date;
         }
     }
 }

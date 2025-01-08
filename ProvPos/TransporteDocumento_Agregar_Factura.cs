@@ -2168,7 +2168,7 @@ namespace ProvPos
                             var itDet = cn.Database.ExecuteSqlCommand(_sql, p1);
                             if (itDet == 0)
                             {
-                                throw new Exception("PROBLEMA AL INSERTAR DETALLES TURNOS");
+                                //throw new Exception("PROBLEMA AL INSERTAR DETALLES TURNOS");
                             }
                             cn.SaveChanges();
                         }

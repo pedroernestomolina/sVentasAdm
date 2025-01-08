@@ -101,7 +101,7 @@ namespace ModVentaAdm.Src.Reportes.Modo.LibroVenta
                 rt["razonSocial"] = it.nombreRazonSocialDoc;
                 rt["numFactura"] = _factura;
                 rt["total"] = it.montoTotal * it.signoDoc;
-                rt["exento"] = it.montoTotal * it.signoDoc;
+                rt["exento"] = it.montoExento * it.signoDoc;
                 rt["base1"] = it.montoBase1 * it.signoDoc;
                 rt["tasa1"] = it.tasaIva1;
                 rt["iva1"] = it.montoImpuesto1 * it.signoDoc;

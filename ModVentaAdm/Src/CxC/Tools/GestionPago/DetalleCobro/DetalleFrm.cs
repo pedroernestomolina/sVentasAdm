@@ -11,10 +11,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.GestionPago.DetalleCobro
 {
-
     public partial class DetalleFrm : Form
     {
-
         private IDetalle _controlador;
 
 
@@ -29,59 +27,45 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.DetalleCobro
             CB_COBRADOR.DisplayMember = "desc";
         }
 
-        public void setControlador(IDetalle ctr)
-        {
-            _controlador = ctr;
-        }
-
         private bool _modoIncializar;
         private void DetalleFrm_Load(object sender, EventArgs e)
         {
             _modoIncializar = true;
+            DTP_FECHA_PROCESO.Value = _controlador.Get_FechaProceso;
             CB_COBRADOR.DataSource = _controlador.CobradorSource;
             CB_COBRADOR.SelectedValue = _controlador.GetIdCobrador;
             TB_NOTAS.Text = _controlador.GetNotas;
             _modoIncializar = false;
         }
-
-        private void BT_PROCESAR_Click(object sender, EventArgs e)
+        public void setControlador(IDetalle ctr)
         {
-            Procesar();
-        }
-        private void Procesar()
-        {
-            _controlador.Procesar();
-            if (_controlador.ProcesarIsOK) 
-            {
-                Salir();
-            }
-        }
-        private void BT_SALIR_Click(object sender, EventArgs e)
-        {
-            AbandonarFicha();
-        }
-        private void AbandonarFicha()
-        {
-            _controlador.AbandonarFicha();
-            if (_controlador.AbandonarIsOK) 
-            {
-                Salir();
-            }
-        }
-
-        private void Salir()
-        {
-            this.Close();
+            _controlador = ctr;
         }
         private void DetalleFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            if (_controlador.ProcesarIsOK || _controlador.AbandonarIsOK) 
+            if (_controlador.ProcesarIsOK || _controlador.AbandonarIsOK)
             {
                 e.Cancel = false;
             }
         }
+        private void TB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
 
+
+        private void DTP_FECHA_PROCESO_Leave(object sender, EventArgs e)
+        {
+            _controlador.setFechaProceso(DTP_FECHA_PROCESO.Value);
+        }
+        private void DTP_FECHA_PROCESO_ValueChanged(object sender, EventArgs e)
+        {
+            _controlador.setFechaProceso(DTP_FECHA_PROCESO.Value);
+        }
         private void TB_NOTAS_Leave(object sender, EventArgs e)
         {
             _controlador.setNotas(TB_NOTAS.Text.Trim());
@@ -95,14 +79,37 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago.DetalleCobro
                 _controlador.setCobrador(CB_COBRADOR.SelectedValue.ToString());
             }
         }
-        private void TB_KeyDown(object sender, KeyEventArgs e)
+
+
+        private void BT_PROCESAR_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                this.SelectNextControl((Control)sender, true, true, true, true);
-            }
+            Procesar();
+        }
+        private void BT_SALIR_Click(object sender, EventArgs e)
+        {
+            AbandonarFicha();
         }
 
-    }
 
+        private void Procesar()
+        {
+            _controlador.Procesar();
+            if (_controlador.ProcesarIsOK)
+            {
+                Salir();
+            }
+        }
+        private void AbandonarFicha()
+        {
+            _controlador.AbandonarFicha();
+            if (_controlador.AbandonarIsOK)
+            {
+                Salir();
+            }
+        }
+        private void Salir()
+        {
+            this.Close();
+        }
+    }
 }

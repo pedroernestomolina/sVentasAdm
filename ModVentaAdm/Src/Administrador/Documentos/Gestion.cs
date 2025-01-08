@@ -84,7 +84,8 @@ namespace ModVentaAdm.Src.Administrador.Documentos
             }
             var _cntDocVisualizar = rt2.Entidad;
             //var _lst = rt1.ListaD.OrderByDescending(o=>o.FechaEmision).ThenByDescending(o=>o.DocNombre).ThenByDescending(o=>o.DocNumero).ToList();
-            var _lst = rt1.ListaD.OrderByDescending(o => o.Id).ThenByDescending(o => o.DocNombre).ThenByDescending(o => o.DocNumero).ToList();
+            //var _lst = rt1.ListaD.OrderByDescending(o => o.Id).ThenByDescending(o => o.DocNombre).ThenByDescending(o => o.DocNumero).ToList();
+            var _lst = rt1.ListaD.OrderByDescending(o => o.DocNombre).ThenByDescending(o => o.DocNumero).ThenByDescending(o=>o.Id).ToList();
             _gLista.setLista(_lst.Take(_cntDocVisualizar).ToList());
         }
         public void AnularItem()

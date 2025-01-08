@@ -406,7 +406,7 @@ namespace ProvPos
                                 it.id_doc_ref as idDocRef,
                                 '' as docTipoProcedencia
                             FROM ventas_transp_item as it
-                            WHERE it.id_venta=@idDoc";
+                            WHERE it.id_venta=@idDoc and it.estatus_anulado='0'";
                     xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
                     var _lstDetTurno = cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.DetTurno>(_sql, xp1).ToList();
                     //
@@ -434,6 +434,15 @@ namespace ProvPos
                     xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
                     var _lstAliados= cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.Aliado>(_sql, xp1).ToList();
                     //
+                    _sql = @"SELECT 
+                                vtDet.detalle as detalle,
+                                vtDet.importe_total_mon_divisa as importe
+                            FROM ventas_transp_detalle as vtDet 
+                            join ventas_transp_doc as vtDoc on vtDoc.id_doc_ref=vtDet.id_venta
+                            where vtDoc.id_venta=@idDoc";
+                    xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var _lstDetDoc= cnn.Database.SqlQuery<DtoTransporte.Documento.Entidad.Venta.DetDoc>(_sql, xp1).ToList();
+                    //
                     result.Entidad = new DtoTransporte.Documento.Entidad.Venta.Ficha()
                     {
                         encabezado = _ent,
@@ -442,6 +451,7 @@ namespace ProvPos
                         detTurno=_lstDetTurno,
                         fechas = _lstFechas,
                         aliados = _lstAliados,
+                        detDoc=_lstDetDoc,
                     };
                 }
             }

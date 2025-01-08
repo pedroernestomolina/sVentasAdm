@@ -36,5 +36,8 @@ namespace ModVentaAdm.Data.Infra
             ReportesAdm_VentasPorVendedor_Resumen(OOB.Reportes.Vendedor.Filtro filtro);
         OOB.Resultado.Lista<OOB.Reportes.Vendedor.Detallado.Ficha>
             ReportesAdm_VentasPorVendedor_Detallado(OOB.Reportes.Vendedor.Filtro filtro);
+        //
+        OOB.Resultado.Lista<OOB.Reportes.LibroVenta.Ficha>
+            Reporte_LibroVenta_Pos(OOB.Reportes.LibroVenta.Filtro filtro);
     }
 }

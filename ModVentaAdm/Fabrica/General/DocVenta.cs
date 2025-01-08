@@ -117,5 +117,26 @@ namespace ModVentaAdm.Fabrica.General
         public void AliadosInvolucradosDoc(string idDoc)
         {
         }
+
+        public bool Cxc_PedirDatosCaja
+        {
+            get { return false; }
+        }
+        public bool Cxc_AgregarAnticipos
+        {
+            get { return false; }
+        }
+        public bool Cxc_AdmDocAnticipos
+        {
+            get { return false; }
+        }
+
+
+        //
+        public ReglasNegocio.IReglasNegocio ReglasNegocio { get { return new ReglasNegocio.ReglasGeneral(); } }
+        public ReglasNegocio.EditarItemsAntesImprimir.IHnd EditarItemsAntesImprimir()
+        {
+            return null;
+        }
     }
 }
