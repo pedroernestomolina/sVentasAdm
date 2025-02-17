@@ -16,6 +16,7 @@ namespace ModVentaAdm.Fabrica
         void Iniciar_FrmPrincipal(Src.Principal.Gestion ctr);
         bool AnularDocumentoVenta(Src.Administrador.data GetItemActual, Src.Anular.Gestion _gAnular);
         void VisualizarDocumento(Src.Administrador.data GetItemActual);
+        void VisualizarDocumento(object doc);
         OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> DocumentosGetLista(OOB.Documento.Lista.Filtro filtro);
         void ClienteAnticipos(object idCliente);
         void AliadosInvolucradosDoc(string idDoc);

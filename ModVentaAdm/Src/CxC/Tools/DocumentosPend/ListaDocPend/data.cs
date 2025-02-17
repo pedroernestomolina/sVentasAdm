@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
 {
-
     public class data
     {
-        
         public string autoDoc { get; set; }
         public DateTime fechaEmisionDoc { get; set; }
         public string tipoDoc { get; set; }
@@ -27,8 +25,8 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
         public decimal montoImporte { get { return importeDoc * signoDoc; } }
         public decimal montoAcumulado { get { return acumuladoDoc * signoDoc; } }
         public decimal montoResta { get { return montoImporte - montoAcumulado; } }
-
-
+        public string autoDocVenta { get; set; }
+        //
         public data()
         {
             autoDoc = "";
@@ -43,8 +41,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
             serieDoc = "";
             diasCreditoDoc = 0;
             tasaCambioDoc = 0m;
+            autoDocVenta = "";
         }
-
     }
-
 }

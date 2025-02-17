@@ -8,10 +8,9 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
 {
-    
+  
     public interface IDocPend: IGestion, Gestion.IAbandonar
     {
-
         string GetClienteData { get; }
         decimal GetMontoImporte { get; }
         decimal GetMontoAcumulado { get; }
@@ -19,12 +18,10 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
         int GetCantDoc { get; }
         BindingSource DocPendGetSource { get; }
         string GetNotas { get; }
-
-
+        //
         void setIdCliente(string id);
         void VerFichaCliente();
         void ReporteDocPend();
-
+        void VisualizarDocumento();
     }
-
 }

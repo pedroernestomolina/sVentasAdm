@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.CxC.DocumentosPend
 {
-    
     public class Ficha
     {
-
         public string autoDoc { get; set; }
         public DateTime fechaEmisionDoc { get; set; }
         public string tipoDoc { get; set; }
@@ -30,8 +28,8 @@ namespace ModVentaAdm.OOB.CxC.DocumentosPend
         public string codSucursal { get; set; }
         public string autoVendedor { get; set; }
         public string nombreVendedor { get; set; }
-
-
+        public string autoDocVenta { get; set; }
+        //
         public Ficha()
         {
             autoDoc = "";
@@ -53,8 +51,7 @@ namespace ModVentaAdm.OOB.CxC.DocumentosPend
             codSucursal = "";
             autoVendedor = "";
             nombreVendedor = "";
+            autoDocVenta = "";
         }
-
     }
-
 }

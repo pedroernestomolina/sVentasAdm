@@ -107,6 +107,23 @@ namespace ModVentaAdm.Fabrica.General
                 }
             }
         }
+        public void VisualizarDocumento(object doc)
+        {
+            if (doc != null)
+            {
+                var r01 = Helpers.Imprimir.Documento.CargarDataDocumento(doc.ToString());
+                if (r01 != null)
+                {
+                    if (_gVisualizarDoc == null)
+                    {
+                        _gVisualizarDoc = new Helpers.Imprimir.Grafico.Documento();
+                    }
+                    _gVisualizarDoc.setData(r01);
+                    _gVisualizarDoc.ImprimirDoc();
+                }
+            }
+        }
+
         public OOB.Resultado.Lista<OOB.Documento.Lista.Ficha> DocumentosGetLista(OOB.Documento.Lista.Filtro filtro)
         {
             return Sistema.MyData.Documento_Get_Lista(filtro);

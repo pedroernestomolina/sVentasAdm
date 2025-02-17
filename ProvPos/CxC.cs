@@ -375,7 +375,7 @@ namespace ProvPos
             CxC_DocumentosPend_GetLista(DtoLibPos.CxC.DocumentosPend.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.CxC.DocumentosPend.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
@@ -398,6 +398,7 @@ namespace ProvPos
                                     c.dias as diasCreditoDoc, 
                                     c.tasa_divisa as tasaCambioDoc,
                                     c.codigo_sucursal as codSucursal, 
+                                    c.auto_documento as autoDocVenta,
                                     v.auto as autoVendedor,
                                     v.nombre as nombreVendedor
                                     FROM cxc as c
@@ -423,7 +424,7 @@ namespace ProvPos
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return result;
         }
 

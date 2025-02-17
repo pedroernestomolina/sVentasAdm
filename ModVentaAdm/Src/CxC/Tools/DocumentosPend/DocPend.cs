@@ -8,18 +8,16 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
 {
-    
+   
     public class DocPend: IDocPend
     {
-
         private bool _abandonarIsOK;
         private string _idCliente;
         private OOB.Maestro.Cliente.Entidad.Ficha _cliente;
         private ListaDocPend.ILista _gListaDoc;
         private Cliente.Visualizar.IVisualizar _gVistaCliente;
         private Reportes.ListaDocPend.IRepDocPend _gRepDocPend;
-
-
+        //
         public BindingSource DocPendGetSource { get { return _gListaDoc.DocPendGetSource; } }
         public ListaDocPend.data ItemActual { get { return _gListaDoc.ItemActual; } }
         public bool AbandonarIsOK { get { return _abandonarIsOK; } }
@@ -90,7 +88,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
         private bool CargarData()
         {
             var rt = true;
-
+            //
             var filtroOOb = new OOB.CxC.DocumentosPend.Filtro()
             {
                 idCliente = _idCliente,
@@ -124,11 +122,12 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
                     signoDoc = s.signoDoc,
                     tasaCambioDoc = s.tasaCambioDoc,
                     tipoDoc = s.tipoDoc,
+                    autoDocVenta= s.autoDocVenta,
                 };
                 return nr;
             }).ToList();
             _gListaDoc.setListaDocPend(lst.OrderBy(o => o.fechaEmisionDoc).ToList());
-
+            //
             return rt;
         }
 
@@ -148,7 +147,12 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
             ((Reportes.ListaDocPend.RepDocPend)_gRepDocPend).setCliente(_cliente);
             _gRepDocPend.Generar();
         }
-
+        public void VisualizarDocumento()
+        {
+            if (ItemActual != null) 
+            {
+                Sistema.Fabrica.VisualizarDocumento(ItemActual.autoDocVenta);
+            }
+        }
     }
-
 }

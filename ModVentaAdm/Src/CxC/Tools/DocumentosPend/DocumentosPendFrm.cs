@@ -220,6 +220,9 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
             _controlador.ReporteDocPend();
         }
 
+        private void BT_VISUALIZAR_Click(object sender, EventArgs e)
+        {
+            _controlador.VisualizarDocumento();
+        }
     }
-
 }

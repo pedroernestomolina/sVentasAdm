@@ -157,7 +157,7 @@ namespace ModVentaAdm.Data.Prov
             CxC_DocumentosPend_GetLista(OOB.CxC.DocumentosPend.Filtro filtro)
         {
             var result = new OOB.Resultado.Lista<OOB.CxC.DocumentosPend.Ficha>();
-
+            //
             var filtroDTO = new DtoLibPos.CxC.DocumentosPend.Filtro()
             {
                 idCliente = filtro.idCliente,
@@ -197,13 +197,14 @@ namespace ModVentaAdm.Data.Prov
                             signoDoc = s.signoDoc,
                             tasaCambioDoc = s.tasaCambioDoc,
                             tipoDoc = s.tipoDoc,
+                            autoDocVenta= s.autoDocVenta,
                         };
                         return nr;
                     }).ToList();
                 }
             }
             result.ListaD = lst;
-
+            //
             return result;
         }
 

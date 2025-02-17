@@ -132,6 +132,9 @@ namespace ModVentaAdm.Fabrica.Transporte
                     break;
             }
         }
+        public void VisualizarDocumento(object doc)
+        {
+        }
 
         private void CargarFactura(string idDoc)
         {
