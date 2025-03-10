@@ -521,7 +521,67 @@
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\ImainItems.cs" />
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\Iitems.cs" />
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\IMain.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\Class1.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\itemCtaPend.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\HndCtasPend.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\HndPanelCtas.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\listaCtasPend.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\MontoAbonar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\baseMetPagoGestionAgregarEditar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\HndListMetPago.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\HndMetPagoGestionEditar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\itemMetPago.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\itemMetPagoAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\HndMetPagoGestionAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\HndPanelMetPago.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\HndPago.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\listaMetPago.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\Class1.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IItemCtaPend.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\ICtasPend.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IItemMetPagoAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IListaMetPago.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMetodoPagoGestionEditar.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMontoAbonar.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelCtas.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMontoAbonar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMontoAbonar.designer.cs">
+      <DependentUpon>vMontoAbonar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vCtasPend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vCtasPend.Designer.cs">
+      <DependentUpon>vCtasPend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMetPagoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMetPagoLista.designer.cs">
+      <DependentUpon>vMetPagoLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMetPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMetPago.Designer.cs">
+      <DependentUpon>vMetPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vPago.Designer.cs">
+      <DependentUpon>vPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IItemMetPago.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMetodoPagoGestion.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMetodoPagoGestionAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelMetPago.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPago.cs" />
     <Compile Include="Src\Reportes\Modo\LibroVenta\GestionPos.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\MetodosPago\data.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\MetodosPago\Imp.cs" />
     <Compile Include="Utils\Componente\Filtro\Handler\baseOpcionCB.cs" />
     <Compile Include="Utils\Componente\Filtro\Vista\IOpcionCB.cs" />
     <Compile Include="Utils\Componente\Filtro\Vista\IOpciones.cs" />
@@ -1591,6 +1651,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Src\CxC\Tools\DocumentosPend\DocumentosPendFrm.resx">
       <DependentUpon>DocumentosPendFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMontoAbonar.resx">
+      <DependentUpon>vMontoAbonar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vCtasPend.resx">
+      <DependentUpon>vCtasPend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMetPagoLista.resx">
+      <DependentUpon>vMetPagoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMetPago.resx">
+      <DependentUpon>vMetPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vPago.resx">
+      <DependentUpon>vPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\CxC\Tools\GestionPago\DetalleCobro\DetalleFrm.resx">
       <DependentUpon>DetalleFrm.cs</DependentUpon>

@@ -29,6 +29,7 @@ namespace ModVentaAdm.OOB.CxC.DocumentosPend
         public string autoVendedor { get; set; }
         public string nombreVendedor { get; set; }
         public string autoDocVenta { get; set; }
+        public decimal montoPend { get { return importeDoc - acumuladoDoc; } }
         //
         public Ficha()
         {

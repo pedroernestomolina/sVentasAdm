@@ -11,8 +11,6 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
 
     public interface IGestionPago : IGestion, Gestion.IAbandonar
     {
-
-
         string GetClienteData { get; }
         decimal GetMontoResta { get; }
         decimal GetMontoAbonar { get; }
@@ -30,7 +28,5 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
         void LimpiarAbonoMarcado();
         void AplicarPagos();
         bool ProcesarPagoIsOk { get; }
-
     }
-
 }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.CxC.GestionCobro
 {
-
     public class FichaMetodoPago
     {
-
         public string AutoMedioPago { get; set; }
         public string Medio { get; set; }
         public string Codigo { get; set; }
@@ -29,8 +27,6 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
         public decimal OpMonto { get; set; }
         public decimal OpTasa { get; set; }
         public string OpAplicaConversion { get; set; }
-
-
         public FichaMetodoPago()
         {
             AutoMedioPago = "";
@@ -52,7 +48,5 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
             OpTasa = 0m;
             OpAplicaConversion = "";
         }
-
     }
-
 }

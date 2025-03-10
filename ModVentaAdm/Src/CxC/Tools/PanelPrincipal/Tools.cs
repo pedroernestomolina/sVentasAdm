@@ -213,6 +213,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             }
         }
 
+        private PanelPrincipal.Pago.IPago _gPago;
         public void GestionPago()
         {
             if (_gListaCtasPend.ItemActual != null)
@@ -225,10 +226,14 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 }
                 if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
                 {
-                    var _item = _gListaCtasPend.ItemActual;
-                    _gGestionPago.Inicializa();
-                    _gGestionPago.setIdCliente(_item.idCliente);
-                    _gGestionPago.Inicia();
+                    var _entidadPagar= _gListaCtasPend.ItemActual;
+                    if (_gPago == null) 
+                    {
+                        _gPago = new GestionPagoZufu.handler.HndPago();
+                    }
+                    _gPago.Inicializa();
+                    _gPago.setIdEntidadPagar(_entidadPagar.idCliente);
+                    _gPago.Inicia();
                 }
             }
         }
