@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Ctas
+namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
 {
     public class MontoAbonar: PanelPrincipal.Pago.IMontoAbonar
     {

@@ -5,19 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Ctas
+namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.NtCred
 {
-    public class itemCtaPend: baseItemCtaPend, PanelPrincipal.Pago.IItemCtaPend
+    public class itemCtaPend: baseItemCtaPend,  PanelPrincipal.Pago.IItemCtaPend
     {
         public itemCtaPend(OOB.CxC.DocumentosPend.Ficha s)
         {
             Ficha = s;
-            var d= DateTime.Now.Date.Subtract(s.fechaVencDoc).Days; 
             fechaEmisionDoc = s.fechaEmisionDoc;
             tipoDoc = s.tipoDoc;
             numeroDoc = s.numeroDoc;
             fechaVencDoc = s.fechaVencDoc;
-            diasVencida = d <= 0 ? "Por Vencer": d.ToString()+"Dia(s)"; 
+            diasVencida = ""; 
             montoImporte = s.importeDoc;
             montoAcumulado = s.acumuladoDoc;
             montoResta = s.montoPend;

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Ctas
+namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.NtCred
 {
     public class listaCtasPend: baseListaCtasPend, PanelPrincipal.Pago.IListaCtaPend
     {
-        public listaCtasPend() :base()
+        public listaCtasPend(): base()
         {
         }
         public override void ItemActualSetMontoAbonar(decimal monto)

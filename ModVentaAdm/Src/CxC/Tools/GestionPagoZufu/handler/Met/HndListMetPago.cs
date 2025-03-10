@@ -17,7 +17,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Met
         public object Source { get { return _listMetPag.Source; } }
         public itemMetPago ItemActual { get { return _listMetPag.ItemActual; } }
         public string GetCntMetRecibido { get { return strToInt(_listMetPag.GetCntMetRecibido) ; } }
-        public string GetMontoRecibido { get { return strToDec(_listMetPag.GetMontoRecibido); } }
+        public decimal GetMontoRecibido { get { return _listMetPag.GetMontoRecibido; } }
         public string GetMetodoPagoOp { get { return _listMetPag.GetMetodoPagoOp; } }
         public decimal GetMontoOp { get { return _listMetPag.GetMontoOp; } }
         public DateTime GetFechaOp { get { return _listMetPag.GetFechaOp; } }

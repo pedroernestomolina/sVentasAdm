@@ -11,7 +11,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
     {
         object Source { get; }
         string GetCntMetRecibido { get; }
-        string GetMontoRecibido { get; }
+        decimal GetMontoRecibido { get; }
         string GetMetodoPagoOp { get; }
         decimal GetMontoOp { get; }
         DateTime GetFechaOp { get; }

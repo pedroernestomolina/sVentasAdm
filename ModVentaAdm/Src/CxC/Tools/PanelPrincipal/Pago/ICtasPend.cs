@@ -10,6 +10,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
 {
     public interface ICtasPend: IGestion
     {
+        object GetIdEntidad { get; }
+        PanelPrincipal.Pago.IListaCtaPend ListaCtas { get; }
+        //
         decimal GetMontoPagar { get; }
         int GetCntCtasPagar { get; }
         //

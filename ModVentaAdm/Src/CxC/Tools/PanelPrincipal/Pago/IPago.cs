@@ -16,14 +16,33 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         void ProcesarPago();
 
         //PANEL: MET PAGO
-        string GetMontoRecibido { get; }
+        decimal GetMontoRecibido { get; }
         string GetCntMetRecibido { get; }
         void AgregarMetPago();
         void ListarMetPago();
 
         //PANEL: CTAS 
         string GetCntCtasPagar { get; }
-        string GetMontoCtasPagar { get; }
+        decimal GetMontoCtasPagar { get; }
         void ListarCtasPagar();
+
+        //PANEL: NOTAS/CREDITO
+        string GetCntNtCred { get; }
+        decimal GetMontoNtCred { get; }
+        void ListarNtCred();
+
+        //PANEL: RESUMEN
+        decimal GetResumenMontoAnticipo { get; }
+        decimal GetResumenMontoMetPago { get; }
+        decimal GetResumenMontoNtCredito { get; }
+        decimal GetResumenMontoAbono { get; }
+        decimal GetResumenMontoCtasPend { get; }
+        decimal GetResumenSaldo { get; }
+        string GetResumenSaldoDesc { get; }
+
+        //PANEL:ANTICIPO
+        decimal GetMontoAnticipo { get; }
+
+        void AgregarAnticipo();
     }
 }

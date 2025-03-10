@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Ctas
+namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.NtCred
 {
-    public class HndCtasPend : baseHndCtas, PanelPrincipal.Pago.ICtasPend
+    public class HndCtasPend: baseHndCtas, PanelPrincipal.Pago.ICtasPend
     {
+        //
         public HndCtasPend()
             : base(new listaCtasPend())
         {
@@ -32,7 +33,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Ctas
                 {
                     var nr = new itemCtaPend(s);
                     return nr;
-                }).ToList().Where(w=>w.SignoDoc==1).OrderBy(o=> o.fechaEmisionDoc).ToList();
+                }).ToList().Where(w=>w.SignoDoc==-1).OrderBy(o=> o.fechaEmisionDoc).ToList();
                 ListaCtas.setData(lst);
                 return true;
             }

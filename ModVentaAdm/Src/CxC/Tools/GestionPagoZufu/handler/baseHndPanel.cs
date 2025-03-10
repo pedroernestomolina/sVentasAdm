@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
+{
+    public class baseHndPanel: PanelPrincipal.Pago.IPanelCtas
+    {
+        private object _idCliente;
+        private DateTime _fechaServidor;
+        private PanelPrincipal.Pago.ICtasPend _ctasPend;
+        //
+        public decimal GetMontoPagar { get { return _ctasPend.GetMontoPagar; } }
+        public string GetCntCtasPagar { get { return intToStr(_ctasPend.GetCntCtasPagar); } }
+        //
+        public baseHndPanel(PanelPrincipal.Pago.ICtasPend hndCtasPend)
+        {
+            _idCliente = "";
+            _fechaServidor = DateTime.Now.Date;
+            _ctasPend = hndCtasPend;
+        }
+        public void Inicializa()
+        {
+            _ctasPend.Inicializa();
+        }
+        public void setIdEntidad(object id)
+        {
+            _idCliente = id;
+        }
+        public void setFechaServidor(DateTime fecha)
+        {
+            _fechaServidor = fecha;
+        }
+        public void ListarCtasPagar()
+        {
+            _ctasPend.setIdEntidad(_idCliente);
+            _ctasPend.setFechaServidor(_fechaServidor);
+            _ctasPend.Inicia();
+        }
+        //
+        private string intToStr(int p)
+        {
+            return p.ToString();
+        }
+    }
+}

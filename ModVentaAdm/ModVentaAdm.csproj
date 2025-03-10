@@ -521,12 +521,15 @@
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\ImainItems.cs" />
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\Iitems.cs" />
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\IMain.cs" />
-    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\Class1.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\itemCtaPend.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\HndCtasPend.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\HndPanelCtas.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\listaCtasPend.cs" />
-    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\MontoAbonar.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\baseListaCtasPend.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\baseItemCtaPend.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\baseHndPanel.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\baseHndCtas.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\MontoAbonar.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\baseMetPagoGestionAgregarEditar.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\HndListMetPago.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\HndMetPagoGestionEditar.cs" />
@@ -536,14 +539,20 @@
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\HndPanelMetPago.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\HndPago.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\listaMetPago.cs" />
-    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\Class1.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\NtCred\HndCtasPend.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\NtCred\HndPanelNtCred.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\NtCred\itemCtaPend.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\NtCred\listaCtasPend.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Resumen\HndPanelResumen.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IItemCtaPend.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\ICtasPend.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IItemMetPagoAgregar.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IListaCtaPend.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IListaMetPago.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMetodoPagoGestionEditar.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMontoAbonar.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelCtas.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelResumen.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMontoAbonar.cs">
       <SubType>Form</SubType>
     </Compile>

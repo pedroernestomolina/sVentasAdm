@@ -5,12 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Ctas
+namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.NtCred
 {
-    public class HndPanelCtas: baseHndPanel, PanelPrincipal.Pago.IPanelCtas
+    public class HndPanelNtCred: baseHndPanel, PanelPrincipal.Pago.IPanelCtas
     {
-        //
-        public HndPanelCtas()
+        public HndPanelNtCred()
             : base(new HndCtasPend())
         {
         }

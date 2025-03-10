@@ -17,6 +17,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         private Utils.Control.Boton.Procesar.IProcesar _procesar;
         private PanelPrincipal.Pago.IPanelMetPago _panMetPago;
         private PanelPrincipal.Pago.IPanelCtas _panCtas;
+        private PanelPrincipal.Pago.IPanelCtas _panNtCred;
+        private PanelPrincipal.Pago.IPanelResumen _panResumen;
         //
         public HndPago() 
         {
@@ -24,6 +26,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             _procesar = new Utils.Control.Boton.Procesar.Imp();
             _panMetPago = new Met.HndPanelMetPago();
             _panCtas= new Ctas.HndPanelCtas();
+            _panNtCred = new NtCred.HndPanelNtCred();
+            _panResumen = new Resumen.HndPanelResumen();
         }
         public void Inicializa()
         {
@@ -34,6 +38,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             _procesar.Inicializa();
             _panMetPago.Inicializa();
             _panCtas.Inicializa();
+            _panNtCred.Inicializa();
+            _panResumen.Inicializa();
         }
         private PanelPrincipal.Pago.vistas.vPago frm;
         public void Inicia()
@@ -52,6 +58,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         {
             _idClientePagar = (string)id;
             _panCtas.setIdEntidad(id);
+            _panNtCred.setIdEntidad(id);
         }
         //
         private bool cargarData()
@@ -73,6 +80,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                 //
                 _panMetPago.setFactorDivisa(r01.Entidad);
                 _panCtas.setFechaServidor(r02.Entidad);
+                _panNtCred.setFechaServidor(r02.Entidad);
                 //
                 return true;
             }
@@ -135,30 +143,52 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             };
             return oob;
         }
-        private string decToStr(decimal p)
-        {
-            return p.ToString("n2");
-        }
-
 
         //PANEL: MET
         public string GetCntMetRecibido { get { return _panMetPago.GetCntMetRecibido; } }
-        public string GetMontoRecibido { get { return _panMetPago.GetMontoRecibido; } }
+        public decimal GetMontoRecibido { get { return _panMetPago.GetMontoRecibido; } }
         public void AgregarMetPago()
         {
             _panMetPago.AgregarMetPago();
+            _panResumen.setMontoMetPago(_panMetPago.GetMontoRecibido);
         }
         public void ListarMetPago()
         {
             _panMetPago.ListarMetPago();
+            _panResumen.setMontoMetPago(_panMetPago.GetMontoRecibido);
         }
 
         //PANEL: CTAS
         public string GetCntCtasPagar { get { return _panCtas.GetCntCtasPagar; } }
-        public string GetMontoCtasPagar { get { return _panCtas.GetMontoPagar; } }
+        public decimal GetMontoCtasPagar { get { return _panCtas.GetMontoPagar; } }
         public void ListarCtasPagar()
         {
             _panCtas.ListarCtasPagar();
+            _panResumen.setMontoCtasPend(_panCtas.GetMontoPagar);
+        }
+
+        //PANEL: NOTAS_CREDITO
+        public string GetCntNtCred { get { return _panNtCred.GetCntCtasPagar; } }
+        public decimal GetMontoNtCred { get { return _panNtCred.GetMontoPagar; } }
+        public void ListarNtCred()
+        {
+            _panNtCred.ListarCtasPagar();
+            _panResumen.setMontoNtCredito(_panNtCred.GetMontoPagar);
+        }
+
+        //PANEL: RESUMEN
+        public decimal GetResumenMontoAnticipo { get { return _panResumen.GetResumenMontoAnticipo; } }
+        public decimal GetResumenMontoMetPago { get { return _panResumen.GetResumenMontoMetPago; } }
+        public decimal GetResumenMontoNtCredito { get { return _panResumen.GetResumenMontoNtCredito; } }
+        public decimal GetResumenMontoAbono { get { return _panResumen.GetResumenMontoAbono; } }
+        public decimal GetResumenMontoCtasPend { get { return _panResumen.GetResumenMontoCtasPend; } }
+        public decimal GetResumenSaldo { get { return _panResumen.GetResumenSaldo; } }
+        public string GetResumenSaldoDesc { get { return _panResumen.GetResumenSaldoDesc ; } }
+
+        //PANEL: ANTICIPO
+        public decimal GetMontoAnticipo { get { return 0m; } }
+        public void AgregarAnticipo()        
+        {            
         }
     }
 }

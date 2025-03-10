@@ -9,7 +9,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
 {
     public interface IPanelMetPago
     {
-        string GetMontoRecibido { get; }
+        decimal  GetMontoRecibido { get; }
         string GetCntMetRecibido { get; }
         //
         void Inicializa();

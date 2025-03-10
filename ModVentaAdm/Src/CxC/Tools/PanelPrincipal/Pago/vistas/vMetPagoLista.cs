@@ -136,7 +136,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
         }
         private void ActualizarTotal()
         {
-            L_MONTO_RECIBIDO.Text = _controlador.GetMontoRecibido;
+            L_MONTO_RECIBIDO.Text = _controlador.GetMontoRecibido.ToString("n2");
         }
         private void ActualizarFicha()
         {
