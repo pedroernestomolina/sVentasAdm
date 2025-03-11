@@ -11,6 +11,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
     {
         decimal  GetMontoRecibido { get; }
         string GetCntMetRecibido { get; }
+        IEnumerable<PanelPrincipal.Pago.IItemMetPago> GetListaMetPago {get;}
         //
         void Inicializa();
         void AgregarMetPago();

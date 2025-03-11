@@ -22,6 +22,14 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         //
         public object Source { get { return _bs; } }
         public PanelPrincipal.Pago.IItemCtaPend ItemActual { get { return (PanelPrincipal.Pago.IItemCtaPend)_bs.Current; } }
+        public IEnumerable<PanelPrincipal.Pago.IItemCtaPend> GetListaDocPagar 
+        { 
+            get 
+            { 
+                var rt = (IEnumerable<PanelPrincipal.Pago.IItemCtaPend>)_bl.Where(w => w.montoAbonar > 0).ToList();
+                return rt;
+            } 
+        }
         //
         public baseListaCtasPend()
         {

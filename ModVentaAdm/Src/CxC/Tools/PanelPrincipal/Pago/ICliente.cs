@@ -24,5 +24,6 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         decimal GetMontoAnticipo { get; }
         decimal GetMontoAbonar { get; }
         void setMontoAbonar(decimal monto);
+        object GetEntidadPagar { get; }
     }
 }

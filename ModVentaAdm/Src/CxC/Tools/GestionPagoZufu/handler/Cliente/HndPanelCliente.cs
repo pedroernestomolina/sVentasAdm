@@ -14,6 +14,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
         private PanelPrincipal.Pago.ICliente _hndCliente;
         private decimal _montoAbonar;
         //
+        public object GetEntidadPagar { get { return _hndCliente.GetEntidadPagar; } }
         public decimal GetMontoPagar { get { return _montoAbonar; } }
         public HndPanelCliente()
         {

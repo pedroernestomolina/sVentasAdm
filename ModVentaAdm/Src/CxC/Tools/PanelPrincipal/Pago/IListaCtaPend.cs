@@ -16,6 +16,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         int GetCntDocPend { get; }
         object Source { get;}
         PanelPrincipal.Pago.IItemCtaPend ItemActual { get;}
+        IEnumerable<IItemCtaPend> GetListaDocPagar { get; }
         //
         void Inicializa();
         void setData(IEnumerable<IItemCtaPend> lst);

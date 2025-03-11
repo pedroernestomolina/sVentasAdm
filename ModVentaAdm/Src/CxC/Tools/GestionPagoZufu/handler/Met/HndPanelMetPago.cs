@@ -13,6 +13,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Met
         private PanelPrincipal.Pago.IMetodoPagoGestionAgregar _agregarMet;
         private PanelPrincipal.Pago.IListaMetPago _listMetPago;
         //
+        public IEnumerable<PanelPrincipal.Pago.IItemMetPago> GetListaMetPago { get { return _listMetPago.GetListaMetPago; } }
         public decimal GetMontoRecibido { get { return _listMetPago.GetMontoRecibido; } }
         public string GetCntMetRecibido { get { return _listMetPago.GetCntMetRecibido; } }
         //

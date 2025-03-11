@@ -80,6 +80,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
 
 
         //
+        public object GetEntidadPagar { get { return _clientFicha; } }
         public string GetCliente { get { return _client; } }
         public decimal GetMontoAnticipo { get { return _montoAnticipo; } }
         public decimal GetMontoAbonar { get { return _montoAbonar; } }

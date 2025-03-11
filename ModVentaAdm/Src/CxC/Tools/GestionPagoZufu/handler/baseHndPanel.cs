@@ -13,6 +13,14 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         private DateTime _fechaServidor;
         private PanelPrincipal.Pago.ICtasPend _ctasPend;
         //
+        public IEnumerable<PanelPrincipal.Pago.IItemCtaPend> GetListaDocPagar 
+        { 
+            get 
+            { 
+                var rt =_ctasPend.GetListaDocPagar;
+                return rt;
+            } 
+        }
         public decimal GetMontoPagar { get { return _ctasPend.GetMontoPagar; } }
         public string GetCntCtasPagar { get { return intToStr(_ctasPend.GetCntCtasPagar); } }
         //

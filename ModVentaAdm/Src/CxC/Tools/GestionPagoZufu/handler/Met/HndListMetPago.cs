@@ -14,6 +14,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Met
         private listaMetPago _listMetPag;
         private PanelPrincipal.Pago.IMetodoPagoGestionEditar _editarMetPag;
         //
+        public IEnumerable<PanelPrincipal.Pago.IItemMetPago> GetListaMetPago { get { return _listMetPag.GetListaMetPago; } }
         public object Source { get { return _listMetPag.Source; } }
         public itemMetPago ItemActual { get { return _listMetPag.ItemActual; } }
         public string GetCntMetRecibido { get { return strToInt(_listMetPag.GetCntMetRecibido) ; } }

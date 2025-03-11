@@ -16,6 +16,14 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         //
         public object GetIdEntidad { get { return _idCliente; } }
         public PanelPrincipal.Pago.IListaCtaPend ListaCtas { get { return _listaCtasPend; } }
+        public IEnumerable<PanelPrincipal.Pago.IItemCtaPend> GetListaDocPagar 
+        { 
+            get 
+            { 
+                var rt =_listaCtasPend.GetListaDocPagar;
+                return rt;
+            } 
+        }
         //
         public object ItemActual { get { return _listaCtasPend.ItemActual; } }
         public decimal GetMontoPagar { get { return _listaCtasPend.GetTotalMontoAbon; } }

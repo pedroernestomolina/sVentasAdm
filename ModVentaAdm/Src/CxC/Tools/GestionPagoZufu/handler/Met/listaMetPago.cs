@@ -14,6 +14,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Met
         private BindingList<PanelPrincipal.Pago.IItemMetPago> _bl;
         private BindingSource _bs;
         //
+        public IEnumerable<PanelPrincipal.Pago.IItemMetPago> GetListaMetPago { get { return (IEnumerable<PanelPrincipal.Pago.IItemMetPago>)_bs.List; } }
         public BindingSource Source { get { return _bs; } }
         public itemMetPago ItemActual { get { return (itemMetPago)_bs.Current; } }
         public int GetCntMetRecibido { get { return _bs.Count; } } 

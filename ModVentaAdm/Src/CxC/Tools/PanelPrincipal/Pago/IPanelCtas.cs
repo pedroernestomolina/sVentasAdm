@@ -11,6 +11,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
     {
         decimal GetMontoPagar { get; }
         string GetCntCtasPagar { get; }
+        IEnumerable<PanelPrincipal.Pago.IItemCtaPend> GetListaDocPagar { get; }
         //
         void Inicializa();
         void ListarCtasPagar();

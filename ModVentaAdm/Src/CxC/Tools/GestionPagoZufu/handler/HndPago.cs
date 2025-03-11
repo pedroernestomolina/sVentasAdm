@@ -21,6 +21,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         private PanelPrincipal.Pago.IPanelResumen _panResumen;
         private PanelPrincipal.Pago.IPanelCliente _panCliente;
         //
+        public Object GetEntidadPagar { get { return _panCliente.GetEntidadPagar; } }
+        //
         public HndPago() 
         {
             _clientPag = "";
@@ -141,15 +143,6 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             }
             return;
         }
-        //
-        private object FichaCobro()
-        {
-            var oob = new OOB.CxC.GestionCobro.Ficha()
-            {
-                 MetodosPago = null,
-            };
-            return oob;
-        }
 
         //PANEL: MET
         public string GetCntMetRecibido { get { return _panMetPago.GetCntMetRecibido; } }
@@ -210,6 +203,74 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             _clientPag = dat;
             _panCtas.setClientePagar(dat);
             _panNtCred.setClientePagar(dat);
+        }
+
+        //
+        private object FichaCobro()
+        {
+            var _sucPrefijo = Sistema.Sucursal.codigo;
+            var _entidadPagar = (OOB.CxC.CargarData.Cliente.Ficha)GetEntidadPagar;
+            var _idCob = _entidadPagar.idCobrador;
+            var _idUsu = Sistema.Usuario.id;
+            var _metPag = _panMetPago.GetListaMetPago.Select(s =>
+            {
+                var _met = new OOB.CxC.GestionCobro.FichaMetodoPago()
+                {
+                    AutoCobrador = _idCob,
+                    AutoMedioPago = s.MetCobro.id,
+                    AutoUsuario = _idUsu,
+                    Cierre = "",
+                    Codigo = s.MetCobro.codigo,
+                    Lote = s.Lote,
+                    Medio = s.MetCobro.desc,
+                    MontoRecibido = s.Monto,
+                    OpAplicaConversion = s.AplicaFactor ? "1" : "0",
+                    OpBanco = s.Banco,
+                    OpDetalle = s.DetalleOp,
+                    OpFecha = s.FechaOp,
+                    OpMonto = s.ImporteMonDiv,
+                    OpNroCta = s.NroCta,
+                    OpNroRef = s.CheqRefTranf,
+                    OpTasa = s.FactorCambio,
+                    Referencia = s.Referencia,
+                };
+                return _met;
+            }).ToList();
+            var _docPend = _panCtas.GetListaDocPagar.Select(s =>
+            {
+                var _doc = new OOB.CxC.GestionCobro.FichaDocumento()
+                {
+                    /*
+                     AutoCxC=,
+                      DocumentoNro=,
+                       EstatusDocCancelado=,
+                        Id=,
+                         Importe=,
+                          ImporteDivisa=,
+                           Notas=,
+                            TipoDocumento=,
+                     * */
+                };
+                return _doc;
+            }).ToList();
+
+            var oob = new OOB.CxC.GestionCobro.Ficha()
+            {
+                SucPrefijo = _sucPrefijo,
+                //Cobro = new FichaCobro(),
+                //Recibo = new FichaRecibo(),
+                Documentos = _docPend,
+                MetodosPago = _metPag,
+                notaAdm = null,
+                retencion = null,
+                cajas = null,
+                autoCliente = _idClientePagar,
+                montoAnticipo = _panResumen.GetResumenMontoAnticipo,
+                factorCambio = _factorDivActual,
+                montoRecibido = _panResumen.GetResumenMontoAbono,
+                fechaProceso = _fechaServidor,
+            };
+            return oob;
         }
     }
 }

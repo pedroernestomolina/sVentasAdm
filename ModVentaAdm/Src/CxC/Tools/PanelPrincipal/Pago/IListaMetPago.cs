@@ -21,6 +21,8 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         string GetBancoOp { get; }
         string GetAplicaFactorOp { get; }
         //
+        IEnumerable<IItemMetPago> GetListaMetPago { get; }
+        //
         void EliminarMetodoPago();
         void EditarMetodoPago();
         //
