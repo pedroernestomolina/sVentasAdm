@@ -19,6 +19,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         private PanelPrincipal.Pago.IPanelCtas _panCtas;
         private PanelPrincipal.Pago.IPanelCtas _panNtCred;
         private PanelPrincipal.Pago.IPanelResumen _panResumen;
+        private PanelPrincipal.Pago.IPanelCliente _panCliente;
         //
         public HndPago() 
         {
@@ -28,6 +29,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             _panCtas= new Ctas.HndPanelCtas();
             _panNtCred = new NtCred.HndPanelNtCred();
             _panResumen = new Resumen.HndPanelResumen();
+            _panCliente = new Cliente.HndPanelCliente();
         }
         public void Inicializa()
         {
@@ -40,6 +42,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             _panCtas.Inicializa();
             _panNtCred.Inicializa();
             _panResumen.Inicializa();
+            _panCliente.Inicializa();
         }
         private PanelPrincipal.Pago.vistas.vPago frm;
         public void Inicia()
@@ -59,6 +62,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             _idClientePagar = (string)id;
             _panCtas.setIdEntidad(id);
             _panNtCred.setIdEntidad(id);
+            _panCliente.setIdEntidad(id);
         }
         //
         private bool cargarData()
@@ -81,6 +85,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                 _panMetPago.setFactorDivisa(r01.Entidad);
                 _panCtas.setFechaServidor(r02.Entidad);
                 _panNtCred.setFechaServidor(r02.Entidad);
+                _panCliente.setFechaServidor(r02.Entidad);
                 //
                 return true;
             }
@@ -186,9 +191,11 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         public string GetResumenSaldoDesc { get { return _panResumen.GetResumenSaldoDesc ; } }
 
         //PANEL: ANTICIPO
-        public decimal GetMontoAnticipo { get { return 0m; } }
+        public decimal GetMontoAnticipo { get { return _panCliente.GetMontoPagar; } }
         public void AgregarAnticipo()        
-        {            
+        {
+            _panCliente.AgregarAnticipo();
+            _panResumen.setMontoAnticipo(_panCliente.GetMontoPagar);
         }
     }
 }

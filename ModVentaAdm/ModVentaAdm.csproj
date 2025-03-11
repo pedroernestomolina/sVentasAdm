@@ -76,6 +76,7 @@
     <Compile Include="Data\Infra\IClienteZona.cs" />
     <Compile Include="Data\Infra\IConfiguracion.cs" />
     <Compile Include="Data\Infra\ICxC.cs" />
+    <Compile Include="Data\Infra\ICxC_CargarData.cs" />
     <Compile Include="Data\Infra\IData.cs" />
     <Compile Include="Data\Infra\IDocumento.cs" />
     <Compile Include="Data\Infra\IPermiso.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Data\Prov\ClienteZona.cs" />
     <Compile Include="Data\Prov\Configuracion.cs" />
     <Compile Include="Data\Prov\CxC.cs" />
+    <Compile Include="Data\Prov\CxC_CargarData.cs" />
     <Compile Include="Data\Prov\DataPrv.cs" />
     <Compile Include="Data\Prov\Documento.cs" />
     <Compile Include="Data\Prov\Helpers.cs" />
@@ -164,6 +166,7 @@
     <Compile Include="OOB\Configuracion\BusquedaProducto\Enumerado.cs" />
     <Compile Include="OOB\CxC\AgregarNotaAdm\Ficha.cs" />
     <Compile Include="OOB\CxC\AgreggarCta\Ficha.cs" />
+    <Compile Include="OOB\CxC\CargarData\Cliente\Ficha.cs" />
     <Compile Include="OOB\CxC\DocumentosPend\Ficha.cs" />
     <Compile Include="OOB\CxC\DocumentosPend\Filtro.cs" />
     <Compile Include="OOB\CxC\GestionCobro\Caja.cs" />
@@ -521,6 +524,8 @@
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\ImainItems.cs" />
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\Iitems.cs" />
     <Compile Include="SrcTransporte\GestionAliadosDoc\AliadosDoc\Vistas\IMain.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Cliente\HndCliente.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Cliente\HndPanelCliente.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\itemCtaPend.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\HndCtasPend.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Ctas\HndPanelCtas.cs" />
@@ -544,6 +549,7 @@
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\NtCred\itemCtaPend.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\NtCred\listaCtasPend.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Resumen\HndPanelResumen.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\ICliente.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IItemCtaPend.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\ICtasPend.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IItemMetPagoAgregar.cs" />
@@ -551,8 +557,15 @@
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IListaMetPago.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMetodoPagoGestionEditar.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMontoAbonar.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelCliente.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelCtas.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelResumen.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vCliente.Designer.cs">
+      <DependentUpon>vCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMontoAbonar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1660,6 +1673,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Src\CxC\Tools\DocumentosPend\DocumentosPendFrm.resx">
       <DependentUpon>DocumentosPendFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vCliente.resx">
+      <DependentUpon>vCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vMontoAbonar.resx">
       <DependentUpon>vMontoAbonar.cs</DependentUpon>

@@ -20,7 +20,8 @@ namespace IPos
         Transporte.ITranspClienteAnticipo,
         Transporte.ITranspCxCMovCobro,
         Transporte.ITranspDocAliado,
-        Transporte.ITranspDoc_GestionAliado
+        Transporte.ITranspDoc_GestionAliado,
+        ICxC_CapturarData
     {
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();
         DtoLib.Resultado Test();

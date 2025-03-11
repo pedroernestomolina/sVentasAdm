@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace ServicePos.MyService
 {
-
     public partial class Service : IService
     {
-
-
         public DtoLib.ResultadoLista<DtoLibPos.CxC.Tools.CtasPendiente.Lista.Ficha> 
             CxC_Tool_CtasPendiente_GetLista(DtoLibPos.CxC.Tools.CtasPendiente.Lista.Filtro filtro)
         {

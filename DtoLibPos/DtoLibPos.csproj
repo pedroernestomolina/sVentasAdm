@@ -80,6 +80,7 @@
     <Compile Include="Configuracion\Entidad\Ficha.cs" />
     <Compile Include="CxC\AgregarNotaAdm\Ficha.cs" />
     <Compile Include="CxC\Agregar\Ficha.cs" />
+    <Compile Include="CxC\CapturarData\Cliente\Ficha.cs" />
     <Compile Include="CxC\DocumentosPend\Ficha.cs" />
     <Compile Include="CxC\DocumentosPend\Filtro.cs" />
     <Compile Include="CxC\GestionCobro\Caja.cs" />
