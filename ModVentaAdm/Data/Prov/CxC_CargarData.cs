@@ -28,6 +28,7 @@ namespace ModVentaAdm.Data.Prov
             var nr = new OOB.CxC.CargarData.Cliente.Ficha()
             {
                 aliasClient = s.aliasClient,
+                ciRifClient = s.ciRifClient,
                 codigoClient = s.codigoClient,
                 diasCreditoClient = s.diasCreditoClient,
                 dirFiscalClient = s.dirFiscalClient,

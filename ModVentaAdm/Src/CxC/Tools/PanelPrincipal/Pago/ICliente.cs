@@ -18,5 +18,11 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         void Inicializa();
         void Inicia();
         void setIdEntidad(object id);
+
+        //
+        string GetCliente { get; }
+        decimal GetMontoAnticipo { get; }
+        decimal GetMontoAbonar { get; }
+        void setMontoAbonar(decimal monto);
     }
 }

@@ -43,5 +43,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         //PANEL:ANTICIPO
         decimal GetMontoAnticipo { get; }
         void AgregarAnticipo();
+
+        //
+        string GetCliente { get; }
+        void setClientePagar(string dat);
     }
 }

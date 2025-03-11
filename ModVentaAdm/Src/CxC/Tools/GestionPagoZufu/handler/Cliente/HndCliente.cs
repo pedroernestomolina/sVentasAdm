@@ -9,16 +9,22 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
 {
     public class HndCliente: PanelPrincipal.Pago.ICliente
     {
-        private OOB.CxC.CargarData.Cliente.Ficha _client;
+        private OOB.CxC.CargarData.Cliente.Ficha _clientFicha;
+        private string _client;
         private Utils.Control.Boton.Abandonar.IAbandonar _abandonar;
         private Utils.Control.Boton.Procesar.IProcesar _procesar;
         private bool _procesarIsok;
         private string _idCliente;
+        private decimal _montoAnticipo;
+        private decimal _montoAbonar;
         //
         public HndCliente()
         {
             _idCliente = "";
-            _client = null;
+            _clientFicha = null;
+            _client = "";
+            _montoAnticipo = 0m;
+            _montoAbonar = 0m;
             _procesarIsok = false;
             _abandonar = new Utils.Control.Boton.Abandonar.Imp();
             _procesar = new Utils.Control.Boton.Procesar.Imp();
@@ -26,7 +32,10 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
 
         public void Inicializa()
         {
-            _client = null;
+            _clientFicha = null;
+            _client = "";
+            _montoAnticipo = 0m;
+            _montoAbonar = 0m;
             _procesarIsok = false;
             _abandonar.Inicializa();
             _procesar.Inicializa();
@@ -59,8 +68,24 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
         public bool ProcesarFichaIsOk { get { return _procesarIsok; } }
         public void ProcesarFicha()
         {
+            _procesarIsok = false;
+            if (_montoAbonar > _montoAnticipo) 
+            {
+                Helpers.Msg.Error("MONTO ANTICIPO A ABONAR INCORRECTO");
+                return;
+            }
             _procesar.Opcion();
             _procesarIsok = _procesar.OpcionIsOK;
+        }
+
+
+        //
+        public string GetCliente { get { return _client; } }
+        public decimal GetMontoAnticipo { get { return _montoAnticipo; } }
+        public decimal GetMontoAbonar { get { return _montoAbonar; } }
+        public void setMontoAbonar(decimal monto)
+        {
+            _montoAbonar = monto;
         }
 
         //
@@ -70,7 +95,9 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
             {
                 if (_idCliente == "") throw new Exception("CLIENTE NO SELECCIONADO");
                 var r01 = Sistema.MyData.CxC_CapturarData_Cliente_ById(_idCliente);
-                _client = r01.Entidad;
+                _clientFicha = r01.Entidad;
+                _client = r01.Entidad.ciRifClient+ System.Environment.NewLine + r01.Entidad.nombreRazonSocialClient + System.Environment.NewLine + r01.Entidad.dirFiscalClient;
+                _montoAnticipo = r01.Entidad.montoAnticiposClient;
                 return true;
             }
             catch (Exception e)

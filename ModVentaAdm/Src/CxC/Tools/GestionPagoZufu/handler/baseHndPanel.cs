@@ -40,10 +40,19 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             _ctasPend.setFechaServidor(_fechaServidor);
             _ctasPend.Inicia();
         }
+        public void setMontoAbonadoASaldar(decimal monto)
+        {
+            _ctasPend.setMontoAbonadoASaldar(monto);
+        }
         //
         private string intToStr(int p)
         {
             return p.ToString();
+        }
+        //
+        public void setClientePagar(string dat)
+        {
+            _ctasPend.setClientePagar(dat);
         }
     }
 }

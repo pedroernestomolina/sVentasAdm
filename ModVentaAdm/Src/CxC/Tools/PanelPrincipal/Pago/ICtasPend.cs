@@ -28,5 +28,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         //
         void LimpiarAbonos();
         void AbonarCta();
+        void setMontoAbonadoASaldar(decimal monto);
+        //
+        string GetCliente { get; }
+        void setClientePagar(string dat);
     }
 }

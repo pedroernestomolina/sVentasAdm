@@ -21,6 +21,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
         }
         private void vPago_Load(object sender, EventArgs e)
         {
+            L_CLIENTE.Text = _controlador.GetCliente;
             ActualizarPanelAnticipo();
             ActualizarPanelMet();
             ActualizarPanelCtas();

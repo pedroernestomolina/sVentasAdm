@@ -25,6 +25,10 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
         }
         private void vCliente_Load(object sender, EventArgs e)
         {
+            L_CLIENTE.Text = _controlador.GetCliente;
+            L_MONTO_ANTICIPO.Text = _controlador.GetMontoAnticipo.ToString("n2");
+            TB_MONTO_ABONAR.Text = _controlador.GetMontoAbonar.ToString("n2");
+
         }
         private void vCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -32,6 +36,18 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
             if (_controlador.AbandonarFichaIsOk || _controlador.ProcesarFichaIsOk)
             {
                 e.Cancel = false;
+            }
+        }
+        private void TB_MONTO_ABONAR_Leave(object sender, EventArgs e)
+        {
+            var monto = decimal.Parse(TB_MONTO_ABONAR.Text);
+            _controlador.setMontoAbonar(monto);
+        }
+        private void TB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl((Control)sender, true, true, true, true);
             }
         }
         private void BT_PROCESAR_Click(object sender, EventArgs e)

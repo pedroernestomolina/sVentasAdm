@@ -22,6 +22,7 @@ namespace ProvPos
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", id);
                     var sql_1 = @"SELECT 
                                     client.auto as idClient,
+                                    client.ci_rif as ciRifClient,
                                     client.codigo as codigoClient,
                                     client.nombre as aliasClient,
                                     client.razon_social as nombreRazonSocialClient,

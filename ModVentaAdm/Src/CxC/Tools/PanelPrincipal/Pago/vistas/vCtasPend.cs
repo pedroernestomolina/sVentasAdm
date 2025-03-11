@@ -161,6 +161,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
             bs.CurrentChanged += bs_CurrentChanged;
             _modoInicializar = true;
             DGV.DataSource = bs;
+            L_CLIENTE.Text = _controlador.GetCliente;
             ActualizarTotal();
             ActualizarItem();
             _modoInicializar = false;

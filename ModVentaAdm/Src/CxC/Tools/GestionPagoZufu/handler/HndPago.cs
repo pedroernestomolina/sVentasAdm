@@ -23,6 +23,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         //
         public HndPago() 
         {
+            _clientPag = "";
             _abandonar = new Utils.Control.Boton.Abandonar.Imp();
             _procesar = new Utils.Control.Boton.Procesar.Imp();
             _panMetPago = new Met.HndPanelMetPago();
@@ -33,6 +34,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         }
         public void Inicializa()
         {
+            _clientPag = "";
             _pagoExitoso = false;
             _fechaServidor = DateTime.Now.Date;
             _factorDivActual = 0m;
@@ -168,6 +170,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         public decimal GetMontoCtasPagar { get { return _panCtas.GetMontoPagar; } }
         public void ListarCtasPagar()
         {
+            _panCtas.setMontoAbonadoASaldar(_panResumen.GetResumenMontoAbono);
             _panCtas.ListarCtasPagar();
             _panResumen.setMontoCtasPend(_panCtas.GetMontoPagar);
         }
@@ -196,6 +199,17 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         {
             _panCliente.AgregarAnticipo();
             _panResumen.setMontoAnticipo(_panCliente.GetMontoPagar);
+        }
+
+
+        //
+        private string _clientPag;
+        public string GetCliente { get { return _clientPag; } }
+        public void setClientePagar(string dat)
+        {
+            _clientPag = dat;
+            _panCtas.setClientePagar(dat);
+            _panNtCred.setClientePagar(dat);
         }
     }
 }

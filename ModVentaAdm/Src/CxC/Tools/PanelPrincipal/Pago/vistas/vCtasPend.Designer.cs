@@ -44,7 +44,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.L_CNT_DOC = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -77,8 +79,7 @@
             this.archiivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.L_CNT_DOC = new System.Windows.Forms.Label();
+            this.L_CLIENTE = new System.Windows.Forms.Label();
             this.P_PRINCIPAL.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.P_TITULO.SuspendLayout();
@@ -90,6 +91,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.P_DATA_CLIENTE.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -272,12 +274,13 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.L_CLIENTE);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(1);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(2);
-            this.panel1.Size = new System.Drawing.Size(437, 56);
+            this.panel1.Size = new System.Drawing.Size(438, 56);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel9
@@ -290,13 +293,13 @@
             this.tableLayoutPanel9.Controls.Add(this.panel12, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.panel13, 1, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(439, 0);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(440, 0);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(223, 58);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(222, 58);
             this.tableLayoutPanel9.TabIndex = 1;
             // 
             // panel2
@@ -310,6 +313,17 @@
             this.panel2.Size = new System.Drawing.Size(109, 27);
             this.panel2.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(2, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Cant / Doc:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.L_CNT_DOC);
@@ -318,8 +332,19 @@
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(2);
-            this.panel6.Size = new System.Drawing.Size(110, 27);
+            this.panel6.Size = new System.Drawing.Size(109, 27);
             this.panel6.TabIndex = 1;
+            // 
+            // L_CNT_DOC
+            // 
+            this.L_CNT_DOC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_CNT_DOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_CNT_DOC.Location = new System.Drawing.Point(2, 2);
+            this.L_CNT_DOC.Name = "L_CNT_DOC";
+            this.L_CNT_DOC.Size = new System.Drawing.Size(105, 23);
+            this.L_CNT_DOC.TabIndex = 4;
+            this.L_CNT_DOC.Text = "999999";
+            this.L_CNT_DOC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel12
             // 
@@ -351,7 +376,7 @@
             this.panel13.Margin = new System.Windows.Forms.Padding(1);
             this.panel13.Name = "panel13";
             this.panel13.Padding = new System.Windows.Forms.Padding(2);
-            this.panel13.Size = new System.Drawing.Size(110, 27);
+            this.panel13.Size = new System.Drawing.Size(109, 27);
             this.panel13.TabIndex = 3;
             // 
             // L_PEND
@@ -360,7 +385,7 @@
             this.L_PEND.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_PEND.Location = new System.Drawing.Point(2, 2);
             this.L_PEND.Name = "L_PEND";
-            this.L_PEND.Size = new System.Drawing.Size(106, 23);
+            this.L_PEND.Size = new System.Drawing.Size(105, 23);
             this.L_PEND.TabIndex = 1;
             this.L_PEND.Text = "999,999.99";
             this.L_PEND.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -685,27 +710,17 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
-            // label2
+            // L_CLIENTE
             // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(2, 2);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Cant / Doc:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // L_CNT_DOC
-            // 
-            this.L_CNT_DOC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_CNT_DOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_CNT_DOC.Location = new System.Drawing.Point(2, 2);
-            this.L_CNT_DOC.Name = "L_CNT_DOC";
-            this.L_CNT_DOC.Size = new System.Drawing.Size(106, 23);
-            this.L_CNT_DOC.TabIndex = 4;
-            this.L_CNT_DOC.Text = "999999";
-            this.L_CNT_DOC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_CLIENTE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_CLIENTE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_CLIENTE.ForeColor = System.Drawing.Color.Black;
+            this.L_CLIENTE.Location = new System.Drawing.Point(2, 2);
+            this.L_CLIENTE.Name = "L_CLIENTE";
+            this.L_CLIENTE.Size = new System.Drawing.Size(434, 52);
+            this.L_CLIENTE.TabIndex = 1;
+            this.L_CLIENTE.Text = "label15";
+            this.L_CLIENTE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // vCtasPend
             // 
@@ -733,6 +748,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.P_DATA_CLIENTE.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -810,6 +826,7 @@
         private System.Windows.Forms.Button BT_LIMPIAR_ABONO;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label L_CNT_DOC;
+        private System.Windows.Forms.Label L_CLIENTE;
 
     }
 }

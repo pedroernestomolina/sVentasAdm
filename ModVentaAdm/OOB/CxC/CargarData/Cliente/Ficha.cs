@@ -10,6 +10,7 @@ namespace ModVentaAdm.OOB.CxC.CargarData.Cliente
     public class Ficha
     {
         public string idClient { get; set; }
+        public string ciRifClient { get; set; }
         public string codigoClient { get; set; }
         public string aliasClient { get; set; }
         public string nombreRazonSocialClient { get; set; }

@@ -233,6 +233,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                     }
                     _gPago.Inicializa();
                     _gPago.setIdEntidadPagar(_entidadPagar.idCliente);
+                    _gPago.setClientePagar(_entidadPagar.ciRif + System.Environment.NewLine + _entidadPagar.nombreRazonSocial);
                     _gPago.Inicia();
                 }
             }

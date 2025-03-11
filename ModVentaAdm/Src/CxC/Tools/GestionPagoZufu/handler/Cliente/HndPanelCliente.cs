@@ -12,17 +12,21 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
         private string _idCliente;
         private DateTime _fechaServ;
         private PanelPrincipal.Pago.ICliente _hndCliente;
+        private decimal _montoAbonar;
         //
-        public decimal GetMontoPagar { get { return 0m; } }
+        public decimal GetMontoPagar { get { return _montoAbonar; } }
         public HndPanelCliente()
         {
+            _montoAbonar = 0m;
             _idCliente = "";
+            _montoAbonar = 0m;
             _fechaServ = DateTime.Now.Date;
             _hndCliente = new HndCliente();
         }
         public void Inicializa()
         {
             _idCliente = "";
+            _montoAbonar = 0m;
             _fechaServ = DateTime.Now.Date;
         }
         public void setIdEntidad(object id)
@@ -37,7 +41,12 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
         public void AgregarAnticipo()
         {
             _hndCliente.Inicializa();
+            _hndCliente.setMontoAbonar(_montoAbonar);
             _hndCliente.Inicia();
+            if (_hndCliente.ProcesarFichaIsOk) 
+            {
+                _montoAbonar = _hndCliente.GetMontoAbonar;
+            }
         }
     }
 }

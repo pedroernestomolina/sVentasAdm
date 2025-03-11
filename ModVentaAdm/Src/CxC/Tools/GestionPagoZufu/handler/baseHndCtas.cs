@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
 {
-    public abstract class baseHndCtas: PanelPrincipal.Pago.ICtasPend
+    public abstract class baseHndCtas : PanelPrincipal.Pago.ICtasPend
     {
         private string _idCliente;
         private DateTime _fechaServ;
         private PanelPrincipal.Pago.IListaCtaPend _listaCtasPend;
+        private decimal _montoSaldar;
         //
         public object GetIdEntidad { get { return _idCliente; } }
         public PanelPrincipal.Pago.IListaCtaPend ListaCtas { get { return _listaCtasPend; } }
@@ -32,19 +33,23 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             _idCliente = "";
             _fechaServ = DateTime.Now.Date;
             _listaCtasPend = listaCtasPend;
+            _montoSaldar = 0m;
+            _clientDat = "";
         }
         public void Inicializa()
         {
             _idCliente = "";
             _fechaServ = DateTime.Now.Date;
             _listaCtasPend.Inicializa();
+            _montoSaldar = 0m;
+            _clientDat = "";
         }
         PanelPrincipal.Pago.vistas.vCtasPend frm;
         public void Inicia()
         {
-            if (CargarData()) 
+            if (CargarData())
             {
-                if (frm == null) 
+                if (frm == null)
                 {
                     frm = new PanelPrincipal.Pago.vistas.vCtasPend();
                     frm.setControlador(this);
@@ -57,32 +62,47 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         private PanelPrincipal.Pago.IMontoAbonar _montAbonar;
         public void AbonarCta()
         {
-            if (ItemActual != null) 
+            if (ItemActual != null)
             {
+                var montoCtaSaldar = _montoSaldar - _listaCtasPend.GetTotalMontoAbon;
                 var it = (PanelPrincipal.Pago.IItemCtaPend)ItemActual;
-                if (_montAbonar == null) 
+                if (_montAbonar == null)
                 {
                     _montAbonar = new MontoAbonar();
                 }
                 _montAbonar.Inicializa();
                 _montAbonar.setMontoPend(it.montoResta);
                 _montAbonar.setDetalle(it.detalleAbono);
-                if (it.montoAbonar>0)
+                if (it.montoAbonar > 0)
                     _montAbonar.setMontoAbonar(it.montoAbonar);
                 else
-                    _montAbonar.setMontoAbonar(it.montoResta);
+                    if (_montoSaldar == 0m)
+                    {
+                        _montAbonar.setMontoAbonar(it.montoResta);
+                    }
+                    else
+                    {
+                        if (montoCtaSaldar > it.montoResta)
+                        {
+                            _montAbonar.setMontoAbonar(it.montoResta);
+                        }
+                        else
+                        {
+                            _montAbonar.setMontoAbonar(montoCtaSaldar);
+                        }
+                    }
                 _montAbonar.Inicia();
-                if (_montAbonar.ProcesarIsOK) 
+                if (_montAbonar.ProcesarIsOK)
                 {
-                   _listaCtasPend.ItemActualSetMontoAbonar(_montAbonar.MontoAbonado);
-                   _listaCtasPend.ItemActualSetDetalleAbono(_montAbonar.GetDetalle);
+                    _listaCtasPend.ItemActualSetMontoAbonar(_montAbonar.MontoAbonado);
+                    _listaCtasPend.ItemActualSetDetalleAbono(_montAbonar.GetDetalle);
                 }
             }
         }
         public void LimpiarAbonos()
         {
             var rt = Helpers.Msg.ProcesarGuardar("Estas Seguro de Eliminar/Limpiar Abono ?");
-            if (rt) 
+            if (rt)
             {
                 _listaCtasPend.LimpiarAbonos();
             }
@@ -114,6 +134,18 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         {
             if (ItemActual == null) return "";
             return ((PanelPrincipal.Pago.IItemCtaPend)ItemActual).detalleAbono;
+        }
+        public void setMontoAbonadoASaldar(decimal monto)
+        {
+            _montoSaldar = monto;
+        }
+
+        //
+        private string _clientDat;
+        public string GetCliente { get { return _clientDat; } }
+        public void setClientePagar(string dat)
+        {
+            _clientDat = dat;
         }
     }
 }
