@@ -778,6 +778,8 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes {
             
             private global::System.Data.DataColumn columnisAnulado;
             
+            private global::System.Data.DataColumn columnobservaciones;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CxcRecDocDataTable() {
@@ -869,6 +871,14 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn observacionesColumn {
+                get {
+                    return this.columnobservaciones;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -904,7 +914,7 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CxcRecDocRow AddCxcRecDocRow(string reciboNro, System.DateTime fecha, decimal montoPago, decimal tasaCambio, string notas, string proveedor, string isAnulado) {
+            public CxcRecDocRow AddCxcRecDocRow(string reciboNro, System.DateTime fecha, decimal montoPago, decimal tasaCambio, string notas, string proveedor, string isAnulado, string observaciones) {
                 CxcRecDocRow rowCxcRecDocRow = ((CxcRecDocRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         reciboNro,
@@ -913,7 +923,8 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes {
                         tasaCambio,
                         notas,
                         proveedor,
-                        isAnulado};
+                        isAnulado,
+                        observaciones};
                 rowCxcRecDocRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCxcRecDocRow);
                 return rowCxcRecDocRow;
@@ -943,6 +954,7 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes {
                 this.columnnotas = base.Columns["notas"];
                 this.columnproveedor = base.Columns["proveedor"];
                 this.columnisAnulado = base.Columns["isAnulado"];
+                this.columnobservaciones = base.Columns["observaciones"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -962,6 +974,8 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes {
                 base.Columns.Add(this.columnproveedor);
                 this.columnisAnulado = new global::System.Data.DataColumn("isAnulado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnisAnulado);
+                this.columnobservaciones = new global::System.Data.DataColumn("observaciones", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnobservaciones);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2322,6 +2336,22 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string observaciones {
+                get {
+                    try {
+                        return ((string)(this[this.tableCxcRecDoc.observacionesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'observaciones\' in table \'CxcRecDoc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcRecDoc.observacionesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsreciboNroNull() {
                 return this.IsNull(this.tableCxcRecDoc.reciboNroColumn);
             }
@@ -2402,6 +2432,18 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetisAnuladoNull() {
                 this[this.tableCxcRecDoc.isAnuladoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsobservacionesNull() {
+                return this.IsNull(this.tableCxcRecDoc.observacionesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetobservacionesNull() {
+                this[this.tableCxcRecDoc.observacionesColumn] = global::System.Convert.DBNull;
             }
         }
         

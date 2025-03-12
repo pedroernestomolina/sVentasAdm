@@ -20,6 +20,7 @@ namespace DtoTransporte.Reporte.Cxc.PlanillaCobro
         public string dirProv { get; set; }
         public string estatusMov { get; set; }
         public decimal montoPorAnticipo { get; set; }
+        public decimal montoPorAnticipoCargar { get; set; }
         //
         public List<Documento> doc { get; set; }
         public List<MetodoPago> metPago { get; set; }

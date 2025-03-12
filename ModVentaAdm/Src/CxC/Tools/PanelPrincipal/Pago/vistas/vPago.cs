@@ -33,6 +33,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
             e.Cancel = true;
             if (_controlador.AbandonarFichaIsOk || _controlador.IsPagoExitoso) 
             {
+                _controlador.LimpiarData();
                 e.Cancel = false;
             }
         }
@@ -134,13 +135,13 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
         }
         private void ActualizarPanelCtas()
         {
-            L_CNT_CTAS_PAGAR.Text = _controlador.GetCntCtasPagar;
+            L_CNT_CTAS_PAGAR.Text = _controlador.GetCntCtasPagar.ToString();
             L_MONTO_PAGAR.Text = _controlador.GetMontoCtasPagar.ToString("n2");
             ActualizarPanelResumen();
         }
         private void ActualizarPanelNtCred()
         {
-            L_CNT_NT_CRED.Text = _controlador.GetCntNtCred;
+            L_CNT_NT_CRED.Text = _controlador.GetCntNtCred.ToString();
             L_MONTO_NT_CRED.Text = _controlador.GetMontoNtCred.ToString("n2");
             ActualizarPanelResumen();
         }
@@ -151,7 +152,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
             L_RESUMEN_NT_CRED.Text = _controlador.GetResumenMontoNtCredito.ToString("n2");
             L_RESUMEN_ABONO.Text = _controlador.GetResumenMontoAbono.ToString("n2");
             L_RESUMEN_CTAS.Text = _controlador.GetResumenMontoCtasPend.ToString("n2");
-            L_RESUMEN_SALDO.Text = _controlador.GetResumenSaldo.ToString("n2");
+            L_RESUMEN_SALDO.Text = Math.Abs(_controlador.GetResumenSaldo).ToString("n2");
             L_RESUMEN_DES_SALDO.Text = _controlador.GetResumenSaldoDesc;
         }
     }

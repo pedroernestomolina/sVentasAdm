@@ -688,12 +688,13 @@ namespace ProvPos
                                             cambio_divisa,
                                             estatus_doc_cxc, 
                                             codigo_sucursal,
-                                            tasa_cambio)
+                                            tasa_cambio, 
+                                            anticipo_cargar)
                                         VALUES ( 
                                             {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10},
                                             {11}, {12}, {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20},
                                             {21}, {22}, {23}, {24}, {25}, {26}, {27}, {28}, {29}, {30},
-                                            {31})";
+                                            {31}, {32})";
                             var rt2 = cn.Database.ExecuteSqlCommand(sql_2,
                                 autoRecibo,
                                 reciboNumero,
@@ -711,7 +712,7 @@ namespace ProvPos
                                 ficha.Recibo.Direccion,
                                 ficha.Recibo.Telefono,
                                 ficha.Recibo.AutoCobrador,
-                                ficha.montoAnticipo,
+                                ficha.montoAnticipoDescargar,
                                 ficha.Recibo.Cambio,
                                 ficha.Recibo.Nota,
                                 ficha.Recibo.CodigoCobrador,
@@ -726,7 +727,8 @@ namespace ProvPos
                                 ficha.Recibo.CambioDivisa,
                                 "1", 
                                 ficha.SucPrefijo,
-                                ficha.factorCambio);
+                                ficha.factorCambio,
+                                ficha.montoAnticipoCargar);
                             cn.SaveChanges();
 
                             //LISTA DE DOCUMENTOS INCLUIDOS EN RECIBO DE COBRO
@@ -931,14 +933,32 @@ namespace ProvPos
                                 cn.SaveChanges();
                             }
                             //
-                            if (ficha.montoAnticipo > 0m) 
+                            if (ficha.montoAnticipoDescargar > 0m) 
                             {
                                 // ACTUALIZAR CLIENTE
                                 sql = @"update clientes set
                                     anticipos= anticipos-@montoAnticipo
                                 where auto=@autoCliente";
                                 var t00 = new MySql.Data.MySqlClient.MySqlParameter("@autoCliente", ficha.autoCliente);
-                                var t01 = new MySql.Data.MySqlClient.MySqlParameter("@montoAnticipo", ficha.montoAnticipo);
+                                var t01 = new MySql.Data.MySqlClient.MySqlParameter("@montoAnticipo", ficha.montoAnticipoDescargar);
+                                var rp0 = cn.Database.ExecuteSqlCommand(sql, t00, t01);
+                                if (rp0 == 0)
+                                {
+                                    result.Mensaje = "ERROR AL ACTUALIZAR ANTICPO-CLIENTE";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
+                                cn.SaveChanges();
+                            }
+                            //
+                            if (ficha.montoAnticipoCargar > 0m)
+                            {
+                                // ACTUALIZAR CLIENTE
+                                sql = @"update clientes set
+                                    anticipos= anticipos+@montoAnticipo
+                                where auto=@autoCliente";
+                                var t00 = new MySql.Data.MySqlClient.MySqlParameter("@autoCliente", ficha.autoCliente);
+                                var t01 = new MySql.Data.MySqlClient.MySqlParameter("@montoAnticipo", ficha.montoAnticipoCargar);
                                 var rp0 = cn.Database.ExecuteSqlCommand(sql, t00, t01);
                                 if (rp0 == 0)
                                 {

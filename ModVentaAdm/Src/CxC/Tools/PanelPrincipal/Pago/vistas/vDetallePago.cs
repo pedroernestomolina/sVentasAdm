@@ -1,0 +1,108 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
+{
+    public partial class vDetallePago : Form
+    {
+        private PanelPrincipal.Pago.IDetallePago _controlador;
+        //
+        public vDetallePago()
+        {
+            InitializeComponent();
+            InicializaCombo();
+        }
+        private void InicializaCombo()
+        {
+            CB_COBRADOR.ValueMember="id";
+            CB_COBRADOR.DisplayMember = "desc";
+        }
+        private bool _modoIncializar;
+        private void DetalleFrm_Load(object sender, EventArgs e)
+        {
+            _modoIncializar = true;
+            DTP_FECHA_PROCESO.Value = _controlador.GetFechaProceso;
+            CB_COBRADOR.DataSource = _controlador.CobradorSource;
+            CB_COBRADOR.SelectedValue = _controlador.GetIdCobrador;
+            TB_NOTAS.Text = _controlador.GetNotas;
+            _modoIncializar = false;
+        }
+        public void setControlador(PanelPrincipal.Pago.IDetallePago ctr)
+        {
+            _controlador = ctr;
+        }
+        private void DetalleFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            if (_controlador.ProcesarIsOK || _controlador.AbandonarIsOK)
+            {
+                e.Cancel = false;
+            }
+        }
+        private void TB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
+        private void DTP_FECHA_PROCESO_Leave(object sender, EventArgs e)
+        {
+            _controlador.setFechaProceso(DTP_FECHA_PROCESO.Value);
+        }
+        private void DTP_FECHA_PROCESO_ValueChanged(object sender, EventArgs e)
+        {
+            _controlador.setFechaProceso(DTP_FECHA_PROCESO.Value);
+        }
+        private void TB_NOTAS_Leave(object sender, EventArgs e)
+        {
+            _controlador.setNotas(TB_NOTAS.Text.Trim());
+        }
+        private void CB_COBRADOR_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoIncializar) { return; }
+            _controlador.setCobrador("");
+            if (CB_COBRADOR.SelectedIndex != -1) 
+            {
+                _controlador.setCobrador(CB_COBRADOR.SelectedValue.ToString());
+            }
+        }
+        private void BT_PROCESAR_Click(object sender, EventArgs e)
+        {
+            Procesar();
+        }
+        private void BT_SALIR_Click(object sender, EventArgs e)
+        {
+            AbandonarFicha();
+        }
+        //
+        private void Procesar()
+        {
+            _controlador.Procesar();
+            if (_controlador.ProcesarIsOK)
+            {
+                Salir();
+            }
+        }
+        private void AbandonarFicha()
+        {
+            _controlador.AbandonarFicha();
+            if (_controlador.AbandonarIsOK)
+            {
+                Salir();
+            }
+        }
+        private void Salir()
+        {
+            this.Close();
+        }
+    }
+}

@@ -29,5 +29,7 @@ namespace DtoLibPos.CxC.CapturarData.Cliente
         public string estatusClient { get; set; }
         public string nombreVend { get; set; }
         public string nombreCobrad { get; set; }
+        public string codigoCobrad { get; set; }
+        public string codigoVend { get; set; }
     }
 }

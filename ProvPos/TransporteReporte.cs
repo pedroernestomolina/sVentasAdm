@@ -258,7 +258,8 @@ namespace ProvPos
                                     rec.ci_rif as ciRifProv,
                                     rec.direccion as dirProv,
                                     rec.estatus_anulado as estatusMov,
-                                    rec.anticipos as montoPorAnticipo 
+                                    rec.anticipos as montoPorAnticipo,
+                                    rec.anticipo_cargar as montoPorAnticipoCargar
                                 FROM cxc_recibos as rec
                                 where auto=@idMov";
                     var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idRec);
@@ -273,8 +274,10 @@ namespace ProvPos
                                 doc.fecha as fechaEmisionDoc,
                                 doc.documento as numeroDoc,
                                 doc.importe_divisa as montoDiv,
-                                doc.notas as notas
+                                doc.notas as notas,
+                                cta.signo as signoDoc
                             FROM cxc_documentos as doc
+                            join cxc as cta on cta.auto=doc.auto_cxc
                             WHERE auto_cxc_recibo=@idMov";
                     p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idRec);
                     var _doc = cnn.Database.SqlQuery<DtoTransporte.Reporte.Cxc.PlanillaCobro.Documento>(sql, p0).ToList();

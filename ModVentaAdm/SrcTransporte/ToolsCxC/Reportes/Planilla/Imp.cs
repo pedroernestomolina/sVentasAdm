@@ -47,6 +47,7 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes.Planilla
             rt["notas"] = ficha.notasMov;
             rt["proveedor"] = ficha.ciRifProv + Environment.NewLine + ficha.nombreProv;
             rt["isAnulado"] = ficha.estatusMov.Trim().ToUpper() == "1" ? "ANULADO" : "";
+            rt["observaciones"] = ficha.montoPorAnticipoCargar > 0m ? "Observaciones: Se Cargo Al Cliente un Anticipo Por $" + ficha.montoPorAnticipoCargar.ToString("n2"): "";
             ds.Tables["CxcRecDoc"].Rows.Add(rt);
             //
             var _montoDiv = 0m;
@@ -64,7 +65,7 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes.Planilla
                 rtCja["montoDiv"] = _montoDiv;
                 ds.Tables["CxcRecDoc_Caja"].Rows.Add(rtCja);
             }
-            foreach (var sv in ficha.doc)
+            foreach (var sv in ficha.doc.Where(w=>w.signoDoc==1).ToList())
             {
                 DataRow rtDoc = ds.Tables["CxcRecDoc_Doc"].NewRow();
                 rtDoc["documento"] = sv.numeroDoc;
@@ -84,12 +85,24 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes.Planilla
                     sv.opNroTransf.Trim();
                 ds.Tables["CxcRecDoc_MetPag"].Rows.Add(rtDoc);
             }
-            DataRow rtDoc2 = ds.Tables["CxcRecDoc_MetPag"].NewRow();
-            rtDoc2["metodo"] = "ANTICIPO";
-            rtDoc2["monto"] = ficha.montoPorAnticipo;
-            rtDoc2["fecha"] = ficha.fechaMov;
-            rtDoc2["referencia"] = "ANTICIPO RECIBIDO";
-            ds.Tables["CxcRecDoc_MetPag"].Rows.Add(rtDoc2);
+            foreach (var sv in ficha.doc.Where(w => w.signoDoc == -1).ToList())
+            {
+                DataRow rtDoc = ds.Tables["CxcRecDoc_MetPag"].NewRow();
+                rtDoc["metodo"] = sv.siglasDoc;
+                rtDoc["monto"] = sv.montoDiv;
+                rtDoc["fecha"] = sv.fechaEmisionDoc;
+                rtDoc["referencia"] = "Doumento Nro: " + sv.numeroDoc + ", de Fecha: " + sv.fechaEmisionDoc.ToShortDateString();
+                ds.Tables["CxcRecDoc_MetPag"].Rows.Add(rtDoc);
+            }
+            if (ficha.montoPorAnticipo > 0m) 
+            {
+                DataRow rtDoc2 = ds.Tables["CxcRecDoc_MetPag"].NewRow();
+                rtDoc2["metodo"] = "ANTICIPO";
+                rtDoc2["monto"] = ficha.montoPorAnticipo;
+                rtDoc2["fecha"] = ficha.fechaMov;
+                rtDoc2["referencia"] = "ANTICIPO RECIBIDO";
+                ds.Tables["CxcRecDoc_MetPag"].Rows.Add(rtDoc2);
+            }
             //
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();

@@ -10,7 +10,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
     public interface IPanelCtas
     {
         decimal GetMontoPagar { get; }
-        string GetCntCtasPagar { get; }
+        int GetCntCtasPagar { get; }
         IEnumerable<PanelPrincipal.Pago.IItemCtaPend> GetListaDocPagar { get; }
         //
         void Inicializa();
@@ -20,5 +20,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         void setMontoAbonadoASaldar(decimal monto);
         //
         void setClientePagar(string dat);
+        //
+        void LimpiarData();
     }
 }

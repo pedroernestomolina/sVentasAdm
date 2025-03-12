@@ -372,7 +372,6 @@
     <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Ficha.cs" />
     <Compile Include="OOB\Transporte\Reporte\Cxc\EdoCta\Movimiento.cs" />
     <Compile Include="OOB\Transporte\Reporte\Cxc\PlanillaCobro\Caja.cs" />
-    <Compile Include="OOB\Transporte\Reporte\Cxc\PlanillaCobro\Class1.cs" />
     <Compile Include="OOB\Transporte\Reporte\Cxc\PlanillaCobro\Documento.cs" />
     <Compile Include="OOB\Transporte\Reporte\Cxc\PlanillaCobro\Ficha.cs" />
     <Compile Include="OOB\Transporte\Reporte\Cxc\PlanillaCobro\MetodoPago.cs" />
@@ -534,6 +533,8 @@
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\baseItemCtaPend.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\baseHndPanel.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\baseHndCtas.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\DetallePago\data.cs" />
+    <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\DetallePago\HndDetallePago.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\MontoAbonar.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\baseMetPagoGestionAgregarEditar.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Met\HndListMetPago.cs" />
@@ -560,6 +561,13 @@
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelCliente.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelCtas.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelResumen.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vDetallePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vDetallePago.Designer.cs">
+      <DependentUpon>vDetallePago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IDetallePago.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -602,6 +610,8 @@
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelMetPago.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPago.cs" />
     <Compile Include="Src\Reportes\Modo\LibroVenta\GestionPos.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\Cobradores\data.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\Cobradores\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\MetodosPago\data.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\MetodosPago\Imp.cs" />
     <Compile Include="Utils\Componente\Filtro\Handler\baseOpcionCB.cs" />
@@ -1673,6 +1683,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Src\CxC\Tools\DocumentosPend\DocumentosPendFrm.resx">
       <DependentUpon>DocumentosPendFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vDetallePago.resx">
+      <DependentUpon>vDetallePago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\CxC\Tools\PanelPrincipal\Pago\vistas\vCliente.resx">
       <DependentUpon>vCliente.cs</DependentUpon>

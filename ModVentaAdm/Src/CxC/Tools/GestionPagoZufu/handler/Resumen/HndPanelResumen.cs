@@ -19,7 +19,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Resumen
         public decimal GetResumenMontoNtCredito { get { return _montoNtCredito; } }
         public decimal GetResumenMontoAbono { get { return _montoAnticipo + _montoMetPago + _montoNtCredito; } }
         public decimal GetResumenMontoCtasPend { get { return _montoCtasPend; } }
-        public decimal GetResumenSaldo { get { return Math.Abs((_montoAnticipo + _montoMetPago + _montoNtCredito) - _montoCtasPend); } }
+        public decimal GetResumenSaldo { get { return (_montoAnticipo + _montoMetPago + _montoNtCredito) - _montoCtasPend; } }
         public string GetResumenSaldoDesc
         {
             get 

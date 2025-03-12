@@ -378,7 +378,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPago
                 MetodosPago = _metodosCobOOb,
                 notaAdm = _notaCrAdm,
                 autoCliente = _cliente.id,
-                montoAnticipo = _gMedCobro.GetMontoPorAnticipo,
+                montoAnticipoDescargar = _gMedCobro.GetMontoPorAnticipo,
                 factorCambio=  _gMedCobro.Get_RetCaja.Retencion.Get_FactorCambio,
                 montoRecibido = _gMedCobro.GetListaMedCobro.Where(w=>w.item.GetAplicaMovCaja).Sum(s=>s.Importe),
                 fechaProceso = _gDetalleCobro.Get_FechaProceso,

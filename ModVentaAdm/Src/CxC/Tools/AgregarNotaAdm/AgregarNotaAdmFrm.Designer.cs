@@ -39,9 +39,11 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.L_DOCUMENTO_NRO_CONSECUTIVO = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.L_FECHA_EMISION = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -76,8 +78,6 @@
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.BT_PROCESAR = new System.Windows.Forms.Button();
-            this.L_DOCUMENTO_NRO_CONSECUTIVO = new System.Windows.Forms.Label();
-            this.L_FECHA_EMISION = new System.Windows.Forms.Label();
             this.P_PRINCIPAL.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.P_TITULO.SuspendLayout();
@@ -275,6 +275,17 @@
             this.panel9.Size = new System.Drawing.Size(337, 26);
             this.panel9.TabIndex = 5;
             // 
+            // L_DOCUMENTO_NRO_CONSECUTIVO
+            // 
+            this.L_DOCUMENTO_NRO_CONSECUTIVO.Dock = System.Windows.Forms.DockStyle.Left;
+            this.L_DOCUMENTO_NRO_CONSECUTIVO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_DOCUMENTO_NRO_CONSECUTIVO.Location = new System.Drawing.Point(2, 2);
+            this.L_DOCUMENTO_NRO_CONSECUTIVO.Name = "L_DOCUMENTO_NRO_CONSECUTIVO";
+            this.L_DOCUMENTO_NRO_CONSECUTIVO.Size = new System.Drawing.Size(101, 22);
+            this.L_DOCUMENTO_NRO_CONSECUTIVO.TabIndex = 0;
+            this.L_DOCUMENTO_NRO_CONSECUTIVO.Text = "label1";
+            this.L_DOCUMENTO_NRO_CONSECUTIVO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.label4);
@@ -307,6 +318,17 @@
             this.panel11.Padding = new System.Windows.Forms.Padding(2);
             this.panel11.Size = new System.Drawing.Size(337, 28);
             this.panel11.TabIndex = 7;
+            // 
+            // L_FECHA_EMISION
+            // 
+            this.L_FECHA_EMISION.Dock = System.Windows.Forms.DockStyle.Left;
+            this.L_FECHA_EMISION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_FECHA_EMISION.Location = new System.Drawing.Point(2, 2);
+            this.L_FECHA_EMISION.Name = "L_FECHA_EMISION";
+            this.L_FECHA_EMISION.Size = new System.Drawing.Size(101, 24);
+            this.L_FECHA_EMISION.TabIndex = 0;
+            this.L_FECHA_EMISION.Text = "label2";
+            this.L_FECHA_EMISION.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel16
             // 
@@ -730,28 +752,6 @@
             this.BT_PROCESAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_PROCESAR.UseVisualStyleBackColor = true;
             this.BT_PROCESAR.Click += new System.EventHandler(this.BT_PROCESAR_Click);
-            // 
-            // L_DOCUMENTO_NRO_CONSECUTIVO
-            // 
-            this.L_DOCUMENTO_NRO_CONSECUTIVO.Dock = System.Windows.Forms.DockStyle.Left;
-            this.L_DOCUMENTO_NRO_CONSECUTIVO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_DOCUMENTO_NRO_CONSECUTIVO.Location = new System.Drawing.Point(2, 2);
-            this.L_DOCUMENTO_NRO_CONSECUTIVO.Name = "L_DOCUMENTO_NRO_CONSECUTIVO";
-            this.L_DOCUMENTO_NRO_CONSECUTIVO.Size = new System.Drawing.Size(101, 22);
-            this.L_DOCUMENTO_NRO_CONSECUTIVO.TabIndex = 0;
-            this.L_DOCUMENTO_NRO_CONSECUTIVO.Text = "label1";
-            this.L_DOCUMENTO_NRO_CONSECUTIVO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // L_FECHA_EMISION
-            // 
-            this.L_FECHA_EMISION.Dock = System.Windows.Forms.DockStyle.Left;
-            this.L_FECHA_EMISION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_FECHA_EMISION.Location = new System.Drawing.Point(2, 2);
-            this.L_FECHA_EMISION.Name = "L_FECHA_EMISION";
-            this.L_FECHA_EMISION.Size = new System.Drawing.Size(101, 24);
-            this.L_FECHA_EMISION.TabIndex = 0;
-            this.L_FECHA_EMISION.Text = "label2";
-            this.L_FECHA_EMISION.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // AgregarNotaAdmFrm
             // 

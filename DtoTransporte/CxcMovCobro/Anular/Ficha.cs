@@ -14,6 +14,7 @@ namespace DtoTransporte.CxcMovCobro.Anular
         public string idCliente { get; set; }
         public decimal importe { get; set; }
         public decimal anticipoRecibido { get; set; }
+        public decimal anticipoCargar { get; set; }
         public List<Documento> docCobrado { get; set; }
         public List<Caja> cajas { get; set; }
     }

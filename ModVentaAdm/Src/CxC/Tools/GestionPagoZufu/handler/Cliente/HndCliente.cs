@@ -32,7 +32,6 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
 
         public void Inicializa()
         {
-            _clientFicha = null;
             _client = "";
             _montoAnticipo = 0m;
             _montoAbonar = 0m;
@@ -56,6 +55,10 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
         public void setIdEntidad(object id)
         {
             _idCliente = (string)id;
+        }
+        public void setFichaEntidadPagar(object ficha)
+        {
+            _clientFicha = (OOB.CxC.CargarData.Cliente.Ficha)ficha;
         }
         //
         public bool AbandonarFichaIsOk { get { return _abandonar.OpcionIsOK; } }
@@ -94,11 +97,12 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
         {
             try
             {
-                if (_idCliente == "") throw new Exception("CLIENTE NO SELECCIONADO");
-                var r01 = Sistema.MyData.CxC_CapturarData_Cliente_ById(_idCliente);
-                _clientFicha = r01.Entidad;
-                _client = r01.Entidad.ciRifClient+ System.Environment.NewLine + r01.Entidad.nombreRazonSocialClient + System.Environment.NewLine + r01.Entidad.dirFiscalClient;
-                _montoAnticipo = r01.Entidad.montoAnticiposClient;
+                if (_idCliente == "") throw new Exception("CLIENTE [ ID ] NO SELECCIONADO");
+                if (_clientFicha == null) throw new Exception("CLIENTE [ ENTIDAD ] NO SELECCIONADO");
+                //var r01 = Sistema.MyData.CxC_CapturarData_Cliente_ById(_idCliente);
+                //_clientFicha = r01.Entidad;
+                _client = _clientFicha.ciRifClient + System.Environment.NewLine + _clientFicha.nombreRazonSocialClient + System.Environment.NewLine + _clientFicha.dirFiscalClient;
+                _montoAnticipo = _clientFicha.montoAnticiposClient;
                 return true;
             }
             catch (Exception e)

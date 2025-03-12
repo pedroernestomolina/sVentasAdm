@@ -40,7 +40,9 @@ namespace ProvPos
                                     client.anticipos as montoAnticiposClient,
                                     client.estatus as estatusClient,
                                     vend.nombre as nombreVend,
-                                    cob.nombre as nombreCobrad
+                                    vend.codigo as codigoVend,
+                                    cob.nombre as nombreCobrad,
+                                    cob.codigo as codigoCobrad
                                 FROM clientes as client
                                 join vendedores as vend on vend.auto=client.auto_vendedor
                                 join empresa_cobradores as cob on cob.auto=client.auto_cobrador

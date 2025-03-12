@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModVentaAdm.Utils.FiltrosCB.SinBusqueda.MetodosPago
+namespace ModVentaAdm.Utils.FiltrosCB.SinBusqueda.Cobradores
 {
     public class Imp : LibUtilitis.CtrlCB.ImpCB, ICtrlSinBusqueda
     {
@@ -16,12 +16,12 @@ namespace ModVentaAdm.Utils.FiltrosCB.SinBusqueda.MetodosPago
         public void ObtenerData()
         {
             var _lst = new List<Idata>();
-            var r01 = Sistema.MyData.Sistema_MedioCobro_GetLista();
-            if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            var rt1 = Sistema.MyData.Sistema_Cobrador_GetLista();
+            if (rt1.Result == OOB.Resultado.Enumerados.EnumResult.isError)
             {
-                throw new Exception(r01.Mensaje);
+                throw new Exception(rt1.Mensaje);
             }
-            foreach (var rg in r01.ListaD.OrderBy(o => o.nombre).ToList())
+            foreach (var rg in rt1.ListaD.OrderBy(o => o.nombre).ToList())
             {
                 _lst.Add(new data(rg));
             }

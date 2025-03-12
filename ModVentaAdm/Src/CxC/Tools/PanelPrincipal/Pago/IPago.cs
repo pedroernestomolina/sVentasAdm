@@ -22,12 +22,12 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         void ListarMetPago();
 
         //PANEL: CTAS 
-        string GetCntCtasPagar { get; }
+        int GetCntCtasPagar { get; }
         decimal GetMontoCtasPagar { get; }
         void ListarCtasPagar();
 
         //PANEL: NOTAS/CREDITO
-        string GetCntNtCred { get; }
+        int GetCntNtCred { get; }
         decimal GetMontoNtCred { get; }
         void ListarNtCred();
 
@@ -47,5 +47,8 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         //
         string GetCliente { get; }
         void setClientePagar(string dat);
+
+        //
+        void LimpiarData();
     }
 }

@@ -18,6 +18,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         void Inicializa();
         void Inicia();
         void setIdEntidad(object id);
+        void setFichaEntidadPagar(object ficha);
 
         //
         string GetCliente { get; }

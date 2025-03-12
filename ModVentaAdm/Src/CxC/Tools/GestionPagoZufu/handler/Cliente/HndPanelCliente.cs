@@ -49,5 +49,9 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Cliente
                 _montoAbonar = _hndCliente.GetMontoAbonar;
             }
         }
+        public void setFichaEntidadPagar(object ficha)
+        {
+            _hndCliente.setFichaEntidadPagar(ficha);
+        }
     }
 }

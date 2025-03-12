@@ -209,6 +209,7 @@ namespace ModVentaAdm.Data.Prov
                 reciboNro = s.reciboNro,
                 tasaCambio = s.tasaCambio,
                 montoPorAnticipo = s.montoPorAnticipo,
+                montoPorAnticipoCargar =s.montoPorAnticipoCargar,
                 doc = s.doc.Select(xd =>
                 {
                     var tr = new OOB.Transporte.Reporte.Cxc.PlanillaCobro.Documento()
@@ -218,6 +219,7 @@ namespace ModVentaAdm.Data.Prov
                         siglasDoc = xd.siglasDoc,
                         montoDiv = xd.montoDiv,
                         notas = xd.notas,
+                        signoDoc = xd.signoDoc,
                     };
                     return tr;
                 }).ToList(),

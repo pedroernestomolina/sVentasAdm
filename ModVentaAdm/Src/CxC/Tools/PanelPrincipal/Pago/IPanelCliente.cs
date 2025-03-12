@@ -16,5 +16,6 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         void setIdEntidad(object id);
         void setFechaServidor(DateTime fecha);
         void AgregarAnticipo();
+        void setFichaEntidadPagar(object ficha);
     }
 }

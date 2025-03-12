@@ -14,5 +14,6 @@ namespace ModVentaAdm.OOB.Transporte.Reporte.Cxc.PlanillaCobro
         public string numeroDoc { get; set; }
         public decimal montoDiv { get; set; }
         public string notas { get; set; }
+        public int signoDoc { get; set; }
     }
 }

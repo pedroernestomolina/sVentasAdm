@@ -22,7 +22,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             } 
         }
         public decimal GetMontoPagar { get { return _ctasPend.GetMontoPagar; } }
-        public string GetCntCtasPagar { get { return intToStr(_ctasPend.GetCntCtasPagar); } }
+        public int GetCntCtasPagar { get { return _ctasPend.GetCntCtasPagar; } }
         //
         public baseHndPanel(PanelPrincipal.Pago.ICtasPend hndCtasPend)
         {
@@ -61,6 +61,11 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         public void setClientePagar(string dat)
         {
             _ctasPend.setClientePagar(dat);
+        }
+        //
+        public void LimpiarData()
+        {
+            _idCliente = "";
         }
     }
 }
