@@ -8,8 +8,8 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
 {
-   
-    public class DocPend: IDocPend
+
+    public class DocPend : IDocPend
     {
         private bool _abandonarIsOK;
         private string _idCliente;
@@ -22,16 +22,16 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
         public ListaDocPend.data ItemActual { get { return _gListaDoc.ItemActual; } }
         public bool AbandonarIsOK { get { return _abandonarIsOK; } }
         public decimal GetMontoImporte { get { return _gListaDoc.MontoImporte; } }
-        public decimal GetMontoAcumulado { get { return _gListaDoc.MontoAcumulado ;} }
+        public decimal GetMontoAcumulado { get { return _gListaDoc.MontoAcumulado; } }
         public decimal GetMontoResta { get { return _gListaDoc.MontoPendientePorCobrar; } }
         public int GetCantDoc { get { return _gListaDoc.CntItems; } }
         public string GetNotas { get { return ItemActual != null ? ItemActual.notasDoc : ""; } }
         public string GetClienteData
         {
-            get 
+            get
             {
                 var rt = "";
-                if (_cliente != null) 
+                if (_cliente != null)
                 {
                     rt += _cliente.ciRif + Environment.NewLine;
                     rt += _cliente.razonSocial + Environment.NewLine;
@@ -40,12 +40,12 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
                 return rt;
             }
         }
-        public DocPend() 
+        public DocPend()
         {
             _abandonarIsOK = false;
-            _idCliente="";
+            _idCliente = "";
             _cliente = null;
-            _gListaDoc= new ListaDocPend.Lista();
+            _gListaDoc = new ListaDocPend.Lista();
             _gVistaCliente = new Cliente.Visualizar.Gestion();
             _gRepDocPend = new Reportes.ListaDocPend.RepDocPend();
         }
@@ -59,9 +59,9 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
         DocumentosPendFrm frm;
         public void Inicia()
         {
-            if (CargarData()) 
+            if (CargarData())
             {
-                if (frm == null) 
+                if (frm == null)
                 {
                     frm = new DocumentosPendFrm();
                     frm.setControlador(this);
@@ -94,13 +94,40 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
         }
         public void VisualizarDocumento()
         {
-            if (ItemActual != null) 
+            if (ItemActual != null)
             {
                 Sistema.Fabrica.VisualizarDocumento(ItemActual.autoDocVenta);
             }
         }
         public void AnularDocumento()
         {
+            if (ItemActual != null)
+            {
+                if (Helpers.Msg.ProcesarGuardar("ESTAS SEGURO DE ANULAR ESTE DOCUMENTO ?"))
+                {
+                    try
+                    {
+                        if (!ItemActual.IsDocGeneradoPorModuloCxc)
+                        {
+                            throw new Exception("DOCUMENTO NO PUEDE SER ANULADO POR ESTE MODULO");
+                        }
+                        if (ItemActual.acumuladoDoc > 0m)
+                        {
+                            throw new Exception("DOCUMENTO POSEE UN ABONO");
+                        }
+                        var ficha = new OOB.CxC.Anular.CxcAdm.Ficha()
+                        {
+                            idCxcAdm = ItemActual.autoDoc,
+                        };
+                        var rt = Sistema.MyData.CxC_AnularCxcAdm(ficha);
+                        _gListaDoc.setAnularItemActual();
+                    }
+                    catch (Exception e)
+                    {
+                        Helpers.Msg.Alerta(e.Message);
+                    }
+                }
+            }
         }
         //
         private bool CargarData()
@@ -139,6 +166,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
                         tasaCambioDoc = s.tasaCambioDoc,
                         tipoDoc = s.tipoDoc,
                         autoDocVenta = s.autoDocVenta,
+                        IsDocGeneradoPorModuloCxc = s.IsDocGeneradoPorModCxC,
                     };
                     return nr;
                 }).ToList();

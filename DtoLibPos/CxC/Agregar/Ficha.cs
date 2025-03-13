@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibPos.CxC.Agregar
 {
-    
     public class Ficha
     {
-
         public string codSucursal { get; set; }
         public DateTime fechaEmisionDoc { get; set; }
         public string tipoDoc { get; set; }
@@ -28,8 +26,6 @@ namespace DtoLibPos.CxC.Agregar
         public string autoVendedor { get; set; }
         public decimal montoDoc { get; set; }
         public DateTime fechaVencDoc { get; set; }
-
-        
         public Ficha() 
         {
             codSucursal = "";
@@ -50,7 +46,5 @@ namespace DtoLibPos.CxC.Agregar
             montoDoc = 0m;
             fechaVencDoc = DateTime.Now.Date;
         }
-
     }
-
 }

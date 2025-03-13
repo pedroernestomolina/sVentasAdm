@@ -29,6 +29,7 @@ namespace DtoLibPos.CxC.DocumentosPend
         public string autoVendedor { get; set; }
         public string nombreVendedor { get; set; }
         public string autoDocVenta { get; set; }
+        public string estatusDocGeneradoPorModCxC { get; set; }
         //
         public Ficha()
         {
@@ -52,6 +53,7 @@ namespace DtoLibPos.CxC.DocumentosPend
             autoVendedor = "";
             nombreVendedor = "";
             autoDocVenta = "";
+            estatusDocGeneradoPorModCxC = "";
         }
     }
 }

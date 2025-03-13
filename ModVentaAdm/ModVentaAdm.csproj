@@ -76,6 +76,7 @@
     <Compile Include="Data\Infra\IClienteZona.cs" />
     <Compile Include="Data\Infra\IConfiguracion.cs" />
     <Compile Include="Data\Infra\ICxC.cs" />
+    <Compile Include="Data\Infra\ICxC_Anular.cs" />
     <Compile Include="Data\Infra\ICxC_CargarData.cs" />
     <Compile Include="Data\Infra\IData.cs" />
     <Compile Include="Data\Infra\IDocumento.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Data\Prov\ClienteZona.cs" />
     <Compile Include="Data\Prov\Configuracion.cs" />
     <Compile Include="Data\Prov\CxC.cs" />
+    <Compile Include="Data\Prov\CxC_Anular.cs" />
     <Compile Include="Data\Prov\CxC_CargarData.cs" />
     <Compile Include="Data\Prov\DataPrv.cs" />
     <Compile Include="Data\Prov\Documento.cs" />
@@ -166,6 +168,7 @@
     <Compile Include="OOB\Configuracion\BusquedaProducto\Enumerado.cs" />
     <Compile Include="OOB\CxC\AgregarNotaAdm\Ficha.cs" />
     <Compile Include="OOB\CxC\AgreggarCta\Ficha.cs" />
+    <Compile Include="OOB\CxC\Anular\CxcAdm\Ficha.cs" />
     <Compile Include="OOB\CxC\CargarData\Cliente\Ficha.cs" />
     <Compile Include="OOB\CxC\DocumentosPend\Ficha.cs" />
     <Compile Include="OOB\CxC\DocumentosPend\Filtro.cs" />

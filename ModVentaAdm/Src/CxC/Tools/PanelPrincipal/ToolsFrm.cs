@@ -189,6 +189,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         private void BT_VER_DETALLES_CTA_Click(object sender, EventArgs e)
         {
             DocDetallesPend();
+            BuscarCtasPendientes();
         }
         private void DocDetallesPend()
         {

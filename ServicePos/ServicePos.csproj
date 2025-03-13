@@ -48,6 +48,7 @@
     <Compile Include="Interfaces\IConfiguracion.cs" />
     <Compile Include="Interfaces\IConfiguracionAdm.cs" />
     <Compile Include="Interfaces\ICxC.cs" />
+    <Compile Include="Interfaces\ICxC_Anular.cs" />
     <Compile Include="Interfaces\ICxC_CapturarData.cs" />
     <Compile Include="Interfaces\IDeposito.cs" />
     <Compile Include="Interfaces\IDocumento.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="MyService\Configuracion.cs" />
     <Compile Include="MyService\ConfiguracionAdm.cs" />
     <Compile Include="MyService\CxC.cs" />
+    <Compile Include="MyService\CxC_Anular.cs" />
     <Compile Include="MyService\CxC_CapturarData.cs" />
     <Compile Include="MyService\Deposito.cs" />
     <Compile Include="MyService\Documento.cs" />

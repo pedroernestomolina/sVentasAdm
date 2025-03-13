@@ -9,15 +9,12 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
 {
-    
     public class Lista: ILista
     {
-
         private List<data> _lst;
         private BindingList<data> _bl;
         private BindingSource _bs;
-
-
+        //
         public BindingSource DocPendGetSource { get { return _bs; } }
         public List<data> ListaItems { get { return _bl.ToList(); } }
         public data ItemActual { get { return (data)_bs.Current; } }
@@ -25,8 +22,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
         public decimal MontoImporte { get { return _bl.Sum(s => s.montoImporte); } }
         public decimal MontoAcumulado { get { return _bl.Sum(s => s.montoAcumulado); } }
         public int CntItems { get { return _bl.Count; } }
-
-
+        //
         public Lista() 
         {
             _lst= new List<data>();
@@ -34,8 +30,6 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
             _bs= new BindingSource();
             _bs.DataSource = _bl;
         }
-
-
         public void Inicializa()
         {
             _bl.Clear();
@@ -50,7 +44,10 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
             }
             _bs.CurrencyManager.Refresh();
         }
-     
+        public void setAnularItemActual()
+        {
+            _bl.Remove(ItemActual);
+            _bs.CurrencyManager.Refresh();
+        }
     }
-
 }

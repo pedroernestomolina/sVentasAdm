@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibPos.CxC.AgregarNotaAdm
 {
-    
     public class Ficha
     {
-
         public string codSucursal { get; set; }
         public string tipoDoc { get; set; }
         public int signoDoc { get; set; }
@@ -23,8 +21,6 @@ namespace DtoLibPos.CxC.AgregarNotaAdm
         public string ciRifCliente { get; set; }
         public string autoVendedor { get; set; }
         public decimal montoDoc { get; set; }
-
-        
         public Ficha() 
         {
             codSucursal = "";
@@ -40,7 +36,5 @@ namespace DtoLibPos.CxC.AgregarNotaAdm
             autoVendedor = "";
             montoDoc = 0m;
         }
-
     }
-
 }

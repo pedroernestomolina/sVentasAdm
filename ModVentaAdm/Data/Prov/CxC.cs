@@ -198,6 +198,7 @@ namespace ModVentaAdm.Data.Prov
                             tasaCambioDoc = s.tasaCambioDoc,
                             tipoDoc = s.tipoDoc,
                             autoDocVenta= s.autoDocVenta,
+                            estatusDocGeneradoPorModCxC=s.estatusDocGeneradoPorModCxC,
                         };
                         return nr;
                     }).ToList();

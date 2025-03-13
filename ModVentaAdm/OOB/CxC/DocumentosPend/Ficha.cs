@@ -30,6 +30,9 @@ namespace ModVentaAdm.OOB.CxC.DocumentosPend
         public string nombreVendedor { get; set; }
         public string autoDocVenta { get; set; }
         public decimal montoPend { get { return importeDoc - acumuladoDoc; } }
+        public string estatusDocGeneradoPorModCxC { get; set; }
+        //
+        public bool IsDocGeneradoPorModCxC { get { return estatusDocGeneradoPorModCxC.Trim().ToUpper() == "1"; } }
         //
         public Ficha()
         {
@@ -53,6 +56,7 @@ namespace ModVentaAdm.OOB.CxC.DocumentosPend
             autoVendedor = "";
             nombreVendedor = "";
             autoDocVenta = "";
+            estatusDocGeneradoPorModCxC = ""; 
         }
     }
 }

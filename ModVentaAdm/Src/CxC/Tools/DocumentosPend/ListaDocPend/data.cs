@@ -26,6 +26,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
         public decimal montoAcumulado { get { return acumuladoDoc * signoDoc; } }
         public decimal montoResta { get { return montoImporte - montoAcumulado; } }
         public string autoDocVenta { get; set; }
+        public bool IsDocGeneradoPorModuloCxc { get; set; }
         //
         public data()
         {
@@ -42,6 +43,10 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
             diasCreditoDoc = 0;
             tasaCambioDoc = 0m;
             autoDocVenta = "";
+            IsDocGeneradoPorModuloCxc = false;
+        }
+        public void setAnularItem()
+        {
         }
     }
 }
