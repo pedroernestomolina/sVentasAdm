@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
 {
-  
     public interface IDocPend: IGestion, Gestion.IAbandonar
     {
         string GetClienteData { get; }
@@ -23,5 +22,6 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
         void VerFichaCliente();
         void ReporteDocPend();
         void VisualizarDocumento();
+        void AnularDocumento();
     }
 }

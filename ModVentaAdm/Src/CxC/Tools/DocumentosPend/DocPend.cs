@@ -40,8 +40,6 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
                 return rt;
             }
         }
-
-
         public DocPend() 
         {
             _abandonarIsOK = false;
@@ -51,8 +49,6 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
             _gVistaCliente = new Cliente.Visualizar.Gestion();
             _gRepDocPend = new Reportes.ListaDocPend.RepDocPend();
         }
-
-
         public void Inicializa()
         {
             _abandonarIsOK = false;
@@ -73,7 +69,6 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
                 frm.ShowDialog();
             }
         }
-
         public void AbandonarFicha()
         {
             _abandonarIsOK = true;
@@ -82,55 +77,6 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
         {
             _idCliente = id;
         }
-
-
-
-        private bool CargarData()
-        {
-            var rt = true;
-            //
-            var filtroOOb = new OOB.CxC.DocumentosPend.Filtro()
-            {
-                idCliente = _idCliente,
-            };
-            var r00 = Sistema.MyData.Cliente_GetFicha(_idCliente);
-            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return false;
-            }
-            _cliente = r00.Entidad;
-            var r01 = Sistema.MyData.CxC_DocumentosPend_GetLista(filtroOOb);
-            if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r01.Mensaje);
-                return false;
-            }
-            var lst= r01.ListaD.Select(s =>
-            {
-                var nr = new ListaDocPend.data()
-                {
-                    acumuladoDoc = s.acumuladoDoc,
-                    autoDoc = s.autoDoc,
-                    diasCreditoDoc = s.diasCreditoDoc,
-                    fechaEmisionDoc = s.fechaEmisionDoc,
-                    fechaVencDoc = s.fechaVencDoc,
-                    importeDoc = s.importeDoc,
-                    notasDoc = s.notasDoc,
-                    numeroDoc = s.numeroDoc,
-                    serieDoc = s.serieDoc,
-                    signoDoc = s.signoDoc,
-                    tasaCambioDoc = s.tasaCambioDoc,
-                    tipoDoc = s.tipoDoc,
-                    autoDocVenta= s.autoDocVenta,
-                };
-                return nr;
-            }).ToList();
-            _gListaDoc.setListaDocPend(lst.OrderBy(o => o.fechaEmisionDoc).ToList());
-            //
-            return rt;
-        }
-
         public void VerFichaCliente()
         {
             if (_cliente != null)
@@ -140,7 +86,6 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
                 _gVistaCliente.Inicia();
             }
         }
-
         public void ReporteDocPend()
         {
             _gRepDocPend.setListaDoc(_gListaDoc.ListaItems);
@@ -152,6 +97,58 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
             if (ItemActual != null) 
             {
                 Sistema.Fabrica.VisualizarDocumento(ItemActual.autoDocVenta);
+            }
+        }
+        public void AnularDocumento()
+        {
+        }
+        //
+        private bool CargarData()
+        {
+            try
+            {
+                var filtroOOb = new OOB.CxC.DocumentosPend.Filtro()
+                {
+                    idCliente = _idCliente,
+                };
+                var r00 = Sistema.MyData.Cliente_GetFicha(_idCliente);
+                if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r00.Mensaje);
+                }
+                _cliente = r00.Entidad;
+                var r01 = Sistema.MyData.CxC_DocumentosPend_GetLista(filtroOOb);
+                if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                var lst = r01.ListaD.Select(s =>
+                {
+                    var nr = new ListaDocPend.data()
+                    {
+                        acumuladoDoc = s.acumuladoDoc,
+                        autoDoc = s.autoDoc,
+                        diasCreditoDoc = s.diasCreditoDoc,
+                        fechaEmisionDoc = s.fechaEmisionDoc,
+                        fechaVencDoc = s.fechaVencDoc,
+                        importeDoc = s.importeDoc,
+                        notasDoc = s.notasDoc,
+                        numeroDoc = s.numeroDoc,
+                        serieDoc = s.serieDoc,
+                        signoDoc = s.signoDoc,
+                        tasaCambioDoc = s.tasaCambioDoc,
+                        tipoDoc = s.tipoDoc,
+                        autoDocVenta = s.autoDocVenta,
+                    };
+                    return nr;
+                }).ToList();
+                _gListaDoc.setListaDocPend(lst.OrderBy(o => o.fechaEmisionDoc).ToList());
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return false;
             }
         }
     }

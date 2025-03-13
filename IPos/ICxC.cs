@@ -27,7 +27,7 @@ namespace IPos
         DtoLib.ResultadoEntidad<int>
             CxC_Get_ContadorNotaDebitoAdm();
         //
-        DtoLib.Resultado
+        DtoLib.ResultadoEntidad<string>
             CxC_GestionCobro_Agregar(DtoLibPos.CxC.GestionCobro.Ficha ficha);
         DtoLib.Resultado
             CxC_GestionCobro_Verificar_Agregar(DtoLibPos.CxC.GestionCobro.Ficha ficha);

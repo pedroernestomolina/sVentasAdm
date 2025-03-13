@@ -29,7 +29,7 @@ namespace ModVentaAdm.Data.Infra
             CxC_Get_ContadorNotaDebitoAdm();
 
 
-        OOB.Resultado.Ficha
+        OOB.Resultado.FichaEntidad<string>
             CxC_GestionCobro_Agregar(OOB.CxC.GestionCobro.Ficha ficha);
 
     }

@@ -29,7 +29,7 @@ namespace ServicePos.Interfaces
             CxC_Get_ContadorNotaDebitoAdm();
 
 
-        DtoLib.Resultado
+        DtoLib.ResultadoEntidad<string>
             CxC_GestionCobro_Agregar(DtoLibPos.CxC.GestionCobro.Ficha ficha);
 
     }

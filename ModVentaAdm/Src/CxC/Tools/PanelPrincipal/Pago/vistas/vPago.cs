@@ -106,6 +106,8 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
             _controlador.ProcesarPago();
             if (_controlador.IsPagoExitoso) 
             {
+                var _autoRecibo =_controlador.GetAutoReciboGenerar;
+                _controlador.GenerarRecibo(_autoRecibo);
                 salir();
             }
         }

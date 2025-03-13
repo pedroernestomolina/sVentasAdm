@@ -243,10 +243,11 @@ namespace ModVentaAdm.Data.Prov
         }
 
 
-        public OOB.Resultado.Ficha 
+        public OOB.Resultado.FichaEntidad<string>
             CxC_GestionCobro_Agregar(OOB.CxC.GestionCobro.Ficha ficha)
         {
-            var result = new OOB.Resultado.Ficha();
+            var result = new OOB.Resultado.FichaEntidad<string>();
+            //
             var fichaDto = new DtoLibPos.CxC.GestionCobro.Ficha()
             {
                 fechaCobro= ficha.fechaProceso,
@@ -385,7 +386,6 @@ namespace ModVentaAdm.Data.Prov
                 }
                 fichaDto.cajas = lt;
             }
-            //
             var r01 = MyData.CxC_GestionCobro_Agregar(fichaDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -393,6 +393,8 @@ namespace ModVentaAdm.Data.Prov
                 result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
                 return result;
             }
+            result.Entidad = r01.Entidad;
+            //
             return result;
         }
     }

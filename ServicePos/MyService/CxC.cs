@@ -82,16 +82,18 @@ namespace ServicePos.MyService
         }
 
 
-        public DtoLib.Resultado 
+        public DtoLib.ResultadoEntidad<string> 
             CxC_GestionCobro_Agregar(DtoLibPos.CxC.GestionCobro.Ficha ficha)
         {
-            var r01 = ServiceProv.CxC_GestionCobro_Verificar_Agregar(ficha);  
+            var rt = new DtoLib.ResultadoEntidad<string>();
+            //
+            var r01 = ServiceProv.CxC_GestionCobro_Verificar_Agregar(ficha);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-                return r01;
-
+            {
+                rt.Mensaje = r01.Mensaje;
+                return rt;
+            }
             return ServiceProv.CxC_GestionCobro_Agregar(ficha);
         }
-
     }
-
 }

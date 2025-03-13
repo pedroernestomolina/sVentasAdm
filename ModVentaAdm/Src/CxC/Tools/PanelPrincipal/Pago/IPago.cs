@@ -50,5 +50,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
 
         //
         void LimpiarData();
+
+        //
+        string GetAutoReciboGenerar { get; }
+        void GenerarRecibo(string autoRecibo);
     }
 }

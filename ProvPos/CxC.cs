@@ -537,11 +537,11 @@ namespace ProvPos
         }
 
 
-        public DtoLib.Resultado 
+        public DtoLib.ResultadoEntidad<string>
             CxC_GestionCobro_Agregar(DtoLibPos.CxC.GestionCobro.Ficha ficha)
         {
-            var result = new DtoLib.Resultado();
-
+            var result = new DtoLib.ResultadoEntidad<string>();
+            //
             try
             {
                 using (var cn = new PosEntities(_cnPos.ConnectionString))
@@ -1122,6 +1122,7 @@ namespace ProvPos
                                 cn.SaveChanges();
                             }
                         }
+                        result.Entidad = autoRecibo;
                         ts.Complete();
                     }
                 };

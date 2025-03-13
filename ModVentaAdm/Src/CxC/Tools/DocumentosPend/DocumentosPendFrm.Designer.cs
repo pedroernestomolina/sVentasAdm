@@ -55,6 +55,7 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.BT_VISUALIZAR = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.BT_REPORTE_DOC = new System.Windows.Forms.Button();
             this.P_DATA_DATA = new System.Windows.Forms.Panel();
@@ -78,7 +79,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archiivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BT_VISUALIZAR = new System.Windows.Forms.Button();
+            this.BT_ANULAR_DOC = new System.Windows.Forms.Button();
             this.P_PRINCIPAL.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.P_TITULO.SuspendLayout();
@@ -98,6 +99,7 @@
             this.panel13.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.P_DATA_DATA.SuspendLayout();
@@ -434,6 +436,7 @@
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.BT_ANULAR_DOC);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(1, 1);
             this.panel9.Margin = new System.Windows.Forms.Padding(1);
@@ -452,6 +455,20 @@
             this.panel10.Padding = new System.Windows.Forms.Padding(2);
             this.panel10.Size = new System.Drawing.Size(52, 56);
             this.panel10.TabIndex = 1;
+            // 
+            // BT_VISUALIZAR
+            // 
+            this.BT_VISUALIZAR.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_documento;
+            this.BT_VISUALIZAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_VISUALIZAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_VISUALIZAR.FlatAppearance.BorderSize = 0;
+            this.BT_VISUALIZAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_VISUALIZAR.Location = new System.Drawing.Point(2, 2);
+            this.BT_VISUALIZAR.Name = "BT_VISUALIZAR";
+            this.BT_VISUALIZAR.Size = new System.Drawing.Size(48, 52);
+            this.BT_VISUALIZAR.TabIndex = 2;
+            this.BT_VISUALIZAR.UseVisualStyleBackColor = true;
+            this.BT_VISUALIZAR.Click += new System.EventHandler(this.BT_VISUALIZAR_Click);
             // 
             // panel11
             // 
@@ -722,19 +739,19 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
-            // BT_VISUALIZAR
+            // BT_ANULAR_DOC
             // 
-            this.BT_VISUALIZAR.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_documento;
-            this.BT_VISUALIZAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BT_VISUALIZAR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_VISUALIZAR.FlatAppearance.BorderSize = 0;
-            this.BT_VISUALIZAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_VISUALIZAR.Location = new System.Drawing.Point(2, 2);
-            this.BT_VISUALIZAR.Name = "BT_VISUALIZAR";
-            this.BT_VISUALIZAR.Size = new System.Drawing.Size(48, 52);
-            this.BT_VISUALIZAR.TabIndex = 2;
-            this.BT_VISUALIZAR.UseVisualStyleBackColor = true;
-            this.BT_VISUALIZAR.Click += new System.EventHandler(this.BT_VISUALIZAR_Click);
+            this.BT_ANULAR_DOC.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_eliminar;
+            this.BT_ANULAR_DOC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_ANULAR_DOC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ANULAR_DOC.FlatAppearance.BorderSize = 0;
+            this.BT_ANULAR_DOC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_ANULAR_DOC.Location = new System.Drawing.Point(2, 2);
+            this.BT_ANULAR_DOC.Name = "BT_ANULAR_DOC";
+            this.BT_ANULAR_DOC.Size = new System.Drawing.Size(48, 52);
+            this.BT_ANULAR_DOC.TabIndex = 3;
+            this.BT_ANULAR_DOC.UseVisualStyleBackColor = true;
+            this.BT_ANULAR_DOC.Click += new System.EventHandler(this.BT_ANULAR_DOC_Click);
             // 
             // DocumentosPendFrm
             // 
@@ -770,6 +787,7 @@
             this.panel13.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.P_DATA_DATA.ResumeLayout(false);
@@ -842,6 +860,7 @@
         private System.Windows.Forms.Label L_RESTA;
         private System.Windows.Forms.Label L_NOTAS;
         private System.Windows.Forms.Button BT_VISUALIZAR;
+        private System.Windows.Forms.Button BT_ANULAR_DOC;
 
     }
 }

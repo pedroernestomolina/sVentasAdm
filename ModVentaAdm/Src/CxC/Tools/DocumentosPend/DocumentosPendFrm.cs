@@ -11,36 +11,14 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
 {
-
     public partial class DocumentosPendFrm : Form
     {
-
         private IDocPend _controlador;
-
-
-        public DocumentosPendFrm()
-        {
-            InitializeComponent();
-            InicializaGrid();
-        }
+        //
         private void InicializaGrid()
         {
             var f = new Font("Serif", 8, FontStyle.Bold);
             var f1 = new Font("Serif", 8, FontStyle.Regular);
-
-
-            //autoDoc = "";
-            //fechaEmisionDoc = DateTime.Now.Date;
-            //tipoDoc = "";
-            //numeroDoc = "";
-            //fechaVencDoc = DateTime.Now.Date;
-            //notasDoc = "";
-            //importeDoc = 0m;
-            //acumuladoDoc = 0m;
-            //signoDoc = 1;
-            //serieDoc = "";
-            //diasCreditoDoc = 0;
-            //tasaCambioDoc = 0m;
 
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
@@ -67,7 +45,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
             c2.Width = 80;
             c2.HeaderCell.Style.Font = f;
             c2.DefaultCellStyle.Font = f1;
-            c2.DefaultCellStyle.Alignment= DataGridViewContentAlignment.MiddleCenter;
+            c2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             var c3 = new DataGridViewTextBoxColumn();
             c3.DataPropertyName = "numeroDoc";
@@ -148,50 +126,58 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
             DGV.Columns.Add(c7);
             DGV.Columns.Add(c8);
         }
-
+        public DocumentosPendFrm()
+        {
+            InitializeComponent();
+            InicializaGrid();
+        }
         public void setControlador(IDocPend ctr)
         {
             _controlador = ctr;
         }
-
-        private void BT_SALIDA_Click(object sender, EventArgs e)
-        {
-            _controlador.AbandonarFicha();
-            if (_controlador.AbandonarIsOK)
-            {
-                Salir();
-            }
-        }
-        private void Salir()
-        {
-            this.Close();
-        }
-        private void DocumentosPendFrm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            if (_controlador.AbandonarIsOK) 
-            {
-                e.Cancel = false;
-            }
-        }
-
         private bool _modoInicializar;
-        private BindingSource _bs;
         private void DocumentosPendFrm_Load(object sender, EventArgs e)
         {
-            _bs = _controlador.DocPendGetSource;
+            var _bs = (BindingSource)_controlador.DocPendGetSource;
             _bs.CurrentChanged += _bs_CurrentChanged;
             _modoInicializar = true;
             DGV.DataSource = _bs;
             ActualizarDataPanel();
             _modoInicializar = false;
         }
-
+        private void DocumentosPendFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            if (_controlador.AbandonarIsOK)
+            {
+                e.Cancel = false;
+            }
+        }
         private void _bs_CurrentChanged(object sender, EventArgs e)
         {
             L_NOTAS.Text = _controlador.GetNotas;
         }
-
+        private void L_CLIENTE_DATA_DoubleClick(object sender, EventArgs e)
+        {
+            VerFichaCliente();
+        }
+        private void BT_REPORTE_DOC_Click(object sender, EventArgs e)
+        {
+            ReporteDocPend();
+        }
+        private void BT_VISUALIZAR_Click(object sender, EventArgs e)
+        {
+            VisualizarDocumento();
+        }
+        private void BT_ANULAR_DOC_Click(object sender, EventArgs e)
+        {
+            AnularDocumento();
+        }
+        private void BT_SALIDA_Click(object sender, EventArgs e)
+        {
+            AbandonarFicha();
+        }
+        //
         private void ActualizarDataPanel()
         {
             L_CLIENTE_DATA.Text = _controlador.GetClienteData;
@@ -201,28 +187,33 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
             L_CNT_DOC.Text = _controlador.GetCantDoc.ToString();
             L_NOTAS.Text = _controlador.GetNotas;
         }
-
-        private void L_CLIENTE_DATA_DoubleClick(object sender, EventArgs e)
-        {
-            VerFichaCliente();
-        }
         private void VerFichaCliente()
         {
             _controlador.VerFichaCliente();
-        }
-
-        private void BT_REPORTE_DOC_Click(object sender, EventArgs e)
-        {
-            ReporteDocPend();
         }
         private void ReporteDocPend()
         {
             _controlador.ReporteDocPend();
         }
-
-        private void BT_VISUALIZAR_Click(object sender, EventArgs e)
+        private void VisualizarDocumento()
         {
             _controlador.VisualizarDocumento();
+        }
+        private void AnularDocumento()
+        {
+            _controlador.AnularDocumento();
+        }
+        private void AbandonarFicha()
+        {
+            _controlador.AbandonarFicha();
+            if (_controlador.AbandonarIsOK)
+            {
+                salir();
+            }
+        }
+        private void salir()
+        {
+            this.Close();
         }
     }
 }

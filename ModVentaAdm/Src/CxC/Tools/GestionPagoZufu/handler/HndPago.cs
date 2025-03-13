@@ -22,11 +22,14 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         private PanelPrincipal.Pago.IPanelCliente _panCliente;
         private OOB.CxC.CargarData.Cliente.Ficha _entidadFichaPagar;
         private PanelPrincipal.Pago.IDetallePago _detallePago;
+        private string _autoReciboGenerar;
         //
+        public string GetAutoReciboGenerar { get { return _autoReciboGenerar; } }
         public Object GetEntidadPagar { get { return _panCliente.GetEntidadPagar; } }
         //
         public HndPago()
         {
+            _autoReciboGenerar="";
             _clientPag = "";
             _entidadFichaPagar = null;
             _abandonar = new Utils.Control.Boton.Abandonar.Imp();
@@ -40,6 +43,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         }
         public void Inicializa()
         {
+            _autoReciboGenerar = "";
             _clientPag = "";
             _entidadFichaPagar = null;
             _pagoExitoso = false;
@@ -166,6 +170,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         {
             try
             {
+                _autoReciboGenerar = "";
                 var fichaOOB = (OOB.CxC.GestionCobro.Ficha)FichaCobro();
                 var rt1 = Sistema.MyData.CxC_GestionCobro_Agregar(fichaOOB);
                 if (rt1.Result == OOB.Resultado.Enumerados.EnumResult.isError)
@@ -173,6 +178,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                     throw new Exception(rt1.Mensaje);
                 }
                 _pagoExitoso = true;
+                _autoReciboGenerar = rt1.Entidad;
             }
             catch (Exception e)
             {
@@ -373,10 +379,19 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         //
         public void LimpiarData()
         {
+            _autoReciboGenerar = "";
             _idClientePagar = "";
             _panCtas.LimpiarData();
             _panNtCred.LimpiarData();
             _detallePago.LimpiarData();
+        }
+
+        //
+        public void GenerarRecibo(string autoRecibo)
+        {
+            ModVentaAdm.SrcTransporte.ToolsCxC.IRepPlanilla _rep = new ModVentaAdm.SrcTransporte.ToolsCxC.Reportes.Planilla.Imp();
+            _rep.setItemCargar(autoRecibo);
+            _rep.Generar();
         }
     }
 }
