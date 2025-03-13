@@ -669,16 +669,181 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>cliente</rd:DefaultName>
-          <Top>1.54023cm</Top>
+          <Top>1.64606cm</Top>
           <Left>10.03181cm</Left>
-          <Height>1.66122cm</Height>
+          <Height>1.55539cm</Height>
           <Width>10.43152cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
             </Border>
+            <BackgroundColor>LightGrey</BackgroundColor>
             <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="ExecutionTime">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!ExecutionTime</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>ExecutionTime</rd:DefaultName>
+          <Top>0.09328cm</Top>
+          <Left>15.28694cm</Left>
+          <Height>0.49417cm</Height>
+          <Width>5.17639cm</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="PageNumber">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!PageNumber</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>PageNumber</rd:DefaultName>
+          <Top>0.76384cm</Top>
+          <Left>19.78895cm</Left>
+          <Height>0.6cm</Height>
+          <Width>0.67438cm</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="TotalPages">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!TotalPages</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>TotalPages</rd:DefaultName>
+          <Top>0.76384cm</Top>
+          <Left>17.76222cm</Left>
+          <Height>0.6cm</Height>
+          <Width>0.62146cm</Width>
+          <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox55">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Total Pag:</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox50</rd:DefaultName>
+          <Top>0.76384cm</Top>
+          <Left>16.23944cm</Left>
+          <Height>0.6cm</Height>
+          <Width>1.41521cm</Width>
+          <ZIndex>6</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox58">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value> Pag:</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox50</rd:DefaultName>
+          <Top>0.76384cm</Top>
+          <Left>18.72509cm</Left>
+          <Height>0.6cm</Height>
+          <Width>0.92275cm</Width>
+          <ZIndex>7</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>

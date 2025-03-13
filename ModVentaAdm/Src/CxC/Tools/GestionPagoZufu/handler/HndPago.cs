@@ -133,11 +133,11 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         public bool IsPagoExitoso { get { return _pagoExitoso; } }
         public void ProcesarPago()
         {
-            //if (_panCtas.GetCntCtasPagar == 0) 
-            //{
-            //    Helpers.Msg.Alerta("NO HAY CUENTAS SELECCIONADAS POR COBRAR/PAGAR");
-            //    return;
-            //}
+            if (_panResumen.GetResumenMontoAbono == 0m) 
+            {
+                Helpers.Msg.Alerta("NO HAY MOVIMIENTOS QUE REGISTRAR");
+                return;
+            }
             if (_panResumen.GetResumenSaldo < 0)
             {
                 Helpers.Msg.Alerta("MONTO DE PAGO INSUFICIENTE");
@@ -158,11 +158,6 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                 {
                     guardarPago();
                 }
-                /*
-                _procesar.Opcion();
-                if (_procesar.OpcionIsOK)
-                {
-                }*/
             }
 
         }

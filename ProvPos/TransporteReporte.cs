@@ -198,11 +198,19 @@ namespace ProvPos
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
                 {
                     var _sql = @"SELECT 
-                                    codigo as codigoCli,
+                                    codigo as codCli,
                                     razon_social as nombreCli,
                                     ci_rif as ciRifCli,
                                     dir_fiscal as dirCli,
-                                    telefono as telCli
+                                    telefono as telCli,
+                                    anticipos as montoAnticipos,
+                                    (select 
+                                        sum(resta_divisa) 
+                                    from cxc 
+                                    where auto_cliente=@idCliente and 
+                                            resta_divisa>0 and 
+                                            tipo_documento='NCR' and  
+                                            estatus_anulado='0') as montoNtCredito
                                 FROM clientes
                                 where auto=@idCliente";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", idCliente);

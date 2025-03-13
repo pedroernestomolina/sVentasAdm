@@ -14,5 +14,7 @@ namespace DtoTransporte.Reporte.Cxc.EdoCta
         public string ciRifCli { get; set; }
         public string dirCli { get; set; }
         public string telCli { get; set; }
+        public decimal montoAnticipos { get; set; }
+        public decimal? montoNtCredito { get; set; }
     }
 }

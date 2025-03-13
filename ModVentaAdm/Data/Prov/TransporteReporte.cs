@@ -156,6 +156,8 @@ namespace ModVentaAdm.Data.Prov
                 dirCli = r01.Entidad.entidad.dirCli,
                 nombreCli = r01.Entidad.entidad.nombreCli,
                 telCli = r01.Entidad.entidad.telCli,
+                montoAnticipos = r01.Entidad.entidad.montoAnticipos,
+                montoNtCredito =  r01.Entidad.entidad.montoNtCredito.HasValue?r01.Entidad.entidad.montoNtCredito.Value:0m,
             };
             var _lst = new List<OOB.Transporte.Reporte.Cxc.EdoCta.Movimiento>();
             if (r01.Entidad.movimientos != null)

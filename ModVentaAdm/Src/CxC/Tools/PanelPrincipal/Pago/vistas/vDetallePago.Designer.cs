@@ -318,6 +318,7 @@
             // DTP_FECHA_PROCESO
             // 
             this.DTP_FECHA_PROCESO.Dock = System.Windows.Forms.DockStyle.Left;
+            this.DTP_FECHA_PROCESO.Enabled = false;
             this.DTP_FECHA_PROCESO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DTP_FECHA_PROCESO.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTP_FECHA_PROCESO.Location = new System.Drawing.Point(2, 2);

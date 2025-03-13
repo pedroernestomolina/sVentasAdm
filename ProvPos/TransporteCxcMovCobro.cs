@@ -269,33 +269,33 @@ namespace ProvPos
                                     throw new Exception("ERROR AL ACTUALIZAR CAJA - SALDO");
                                 }
                                 cn.SaveChanges();
-                                //
-                                //ACTUALIZAR ANTICIPO CARGAR 
-                                if (ficha.anticipoCargar > 0m)
-                                {
-                                    p1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
-                                    p2 = new MySql.Data.MySqlClient.MySqlParameter("@montoAnticipoCargar", ficha.anticipoCargar);
-                                    sql = @"update clientes set 
+                            }
+                            //
+                            //ACTUALIZAR ANTICIPO CARGAR 
+                            if (ficha.anticipoCargar > 0m)
+                            {
+                                p1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
+                                p2 = new MySql.Data.MySqlClient.MySqlParameter("@montoAnticipoCargar", ficha.anticipoCargar);
+                                sql = @"update clientes set 
                                                 anticipos=anticipos-@montoAnticipoCargar
                                                 where auto=@idCliente";
-                                    var rpA = cn.Database.ExecuteSqlCommand(sql, p1, p2);
-                                    if (rpA == 0)
-                                    {
-                                        throw new Exception("PROBLEMA AL ACTUALIZAR ANTICIPO CARGADO AL CLIENTE");
-                                    }
-                                    cn.SaveChanges();
-                                    //
-                                    p1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
-                                    sql = @"select anticipos 
-                                                from cliente 
-                                                where auto=@idCliente";
-                                    var _anticipo = cn.Database.SqlQuery<decimal>(sql, p1).FirstOrDefault();
-                                    if (_anticipo < 0m)
-                                    {
-                                        throw new Exception("PROBLEMA AL ACTUALIZAR ANTICIPO CARGADO AL CLIENTE");
-                                    }
-                                    cn.SaveChanges();
+                                var rpA = cn.Database.ExecuteSqlCommand(sql, p1, p2);
+                                if (rpA == 0)
+                                {
+                                    throw new Exception("PROBLEMA AL ACTUALIZAR ANTICIPO CARGADO AL CLIENTE");
                                 }
+                                cn.SaveChanges();
+                                //
+                                p1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", ficha.idCliente);
+                                sql = @"select anticipos 
+                                                from clientes
+                                                where auto=@idCliente";
+                                var _anticipo = cn.Database.SqlQuery<decimal>(sql, p1).FirstOrDefault();
+                                if (_anticipo < 0m)
+                                {
+                                    throw new Exception("PROBLEMA AL ACTUALIZAR ANTICIPO CARGADO AL CLIENTE");
+                                }
+                                cn.SaveChanges();
                             }
                         }
                         ts.Complete();
@@ -333,7 +333,7 @@ namespace ProvPos
                                     auto_cxc as idCxcPago,
                                     auto_cliente as idCliente,
                                     importe_divisa as importe,
-                                    anticipos as anticipoRecibido
+                                    anticipos as anticipoRecibido,
                                     anticipo_cargar as anticipoCargar
                                 FROM cxc_recibos
                                 where auto=@idRecibo";

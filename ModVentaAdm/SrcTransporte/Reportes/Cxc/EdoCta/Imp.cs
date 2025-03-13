@@ -41,21 +41,34 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
             var ds = new DS_TRANSP();
 
             DataRow rt_enc = ds.Tables["EdoCta_Enc"].NewRow();
-            rt_enc["cliente"] = ficha.entidad.ciRifCli + Environment.NewLine + ficha.entidad.nombreCli + Environment.NewLine + ficha.entidad.dirCli;
+            rt_enc["cliente"] = ficha.entidad.ciRifCli + Environment.NewLine + ficha.entidad.nombreCli + Environment.NewLine + ficha.entidad.dirCli+
+                Environment.NewLine+" Monto Por Anticipos A Favor: "+ficha.entidad.montoAnticipos.ToString("n2")+
+                Environment.NewLine+" Monto Por Notas De Credito A Favor: "+ficha.entidad.montoNtCredito.ToString("n2");
             ds.Tables["EdoCta_Enc"].Rows.Add(rt_enc);
             //
             var _importe = 0m;
             var _signo = "";
             var _saldo = 0m;
-            foreach (var it in ficha.movimientos)
+            foreach (var it in ficha.movimientos.OrderBy(o=>o.fechaDoc).ThenBy(o=>o.tipoDoc).ToList())
             {
                 _importe = it.importeDiv * it.signoDoc;
                 _signo = "+";
                 if (it.signoDoc < 0)
                 {
                     _signo = "-";
+                    if (it.tipoDoc.Trim().ToUpper() == "PAG")
+                    {
+                        _saldo += _importe;
+                    }
+                    else 
+                    {
+                        _signo = "";
+                    }
                 }
-                _saldo += _importe;
+                else 
+                {
+                    _saldo += _importe;
+                }
                 DataRow rt = ds.Tables["EdoCta"].NewRow();
                 rt["fechaDoc"] = it.fechaDoc ;
                 rt["nroDoc"] = it.nroDoc;
