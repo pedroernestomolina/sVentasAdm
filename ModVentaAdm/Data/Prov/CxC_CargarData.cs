@@ -49,6 +49,7 @@ namespace ModVentaAdm.Data.Prov
                 telefonoClient = s.telefonoClient,
                 codigoCobrad= s.codigoCobrad,
                 codigoVend=s.codigoVend,
+                montoNtCreditoDisponible=s.montoNtCreditoDisponible,
             };
             rt.Entidad = nr;
             //

@@ -21,6 +21,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                 return rt;
             } 
         }
+        public decimal GetTotalMontoCtasPendientes { get { return _ctasPend.GetTotalMontoPend; } }
         public decimal GetMontoPagar { get { return _ctasPend.GetMontoPagar; } }
         public int GetCntCtasPagar { get { return _ctasPend.GetCntCtasPagar; } }
         //

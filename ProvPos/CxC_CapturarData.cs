@@ -42,7 +42,14 @@ namespace ProvPos
                                     vend.nombre as nombreVend,
                                     vend.codigo as codigoVend,
                                     cob.nombre as nombreCobrad,
-                                    cob.codigo as codigoCobrad
+                                    cob.codigo as codigoCobrad,
+                                    (select 
+                                        sum(resta_divisa) 
+                                     from cxc 
+                                     where auto_cliente=@idCliente and 
+                                         resta_divisa>0 and 
+                                         tipo_documento='NCR' and  
+                                         estatus_anulado='0') as montoNtCreditoDisponible
                                 FROM clientes as client
                                 join vendedores as vend on vend.auto=client.auto_vendedor
                                 join empresa_cobradores as cob on cob.auto=client.auto_cobrador

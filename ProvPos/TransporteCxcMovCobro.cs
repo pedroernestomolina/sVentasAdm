@@ -32,7 +32,7 @@ namespace ProvPos
                                         anticipos as montoAnticipoDiv,
                                         estatus_anulado as estatusAnulado
                                     FROM cxc_recibos ";
-                    var _sql_2 = @" WHERE 1=1 ";
+                    var _sql_2 = @" WHERE 1=1 and estatus_doc_cxc='1' ";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();

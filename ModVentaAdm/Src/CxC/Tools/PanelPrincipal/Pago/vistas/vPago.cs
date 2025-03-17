@@ -127,6 +127,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
         private void ActualizarPanelAnticipo() 
         {
             L_MONTO_ANTICIPO.Text = _controlador.GetMontoAnticipo.ToString("n2");
+            L_ANTICIPO_DISPONIBLE.Text = _controlador.GetMontoAnticipoDisponible.ToString("n2");
             ActualizarPanelResumen();
         }
         private void ActualizarPanelMet()
@@ -145,6 +146,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
         {
             L_CNT_NT_CRED.Text = _controlador.GetCntNtCred.ToString();
             L_MONTO_NT_CRED.Text = _controlador.GetMontoNtCred.ToString("n2");
+            L_NTCRED_DISPONIBLE.Text = _controlador.GetMontoNtCredDisponible.ToString("n2");
             ActualizarPanelResumen();
         }
         private void ActualizarPanelResumen()

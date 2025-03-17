@@ -31,6 +31,7 @@ namespace ModVentaAdm.OOB.CxC.CargarData.Cliente
         public string nombreCobrad { get; set; }
         public string codigoCobrad { get; set; }
         public string codigoVend { get; set; }
+        public decimal montoNtCreditoDisponible { get; set; }
         //
         public bool IsCreditoActivo { get { return estatusCreditoClient.Trim().ToUpper() == "1"; } }
         public bool IsActivo { get { return estatusClient.Trim().ToUpper() == "1"; } }

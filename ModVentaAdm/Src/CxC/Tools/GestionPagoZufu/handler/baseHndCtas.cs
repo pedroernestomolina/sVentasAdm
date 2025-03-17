@@ -30,7 +30,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         public int GetCntCtasPagar { get { return _listaCtasPend.GetCntDocAbon; } }
         //
         public Object DataSource { get { return _listaCtasPend.Source; } }
-        public string GetTotalMontoPend { get { return decToStr(_listaCtasPend.GetTotalMontoPend); } }
+        public decimal GetTotalMontoPend { get { return _listaCtasPend.GetTotalMontoPend; } }
         public string GetCntDocPend { get { return intToStr(_listaCtasPend.GetCntDocPend); } }
         public string GetCntDocAbon { get { return intToStr(_listaCtasPend.GetCntDocAbon); } }
         public string GetTotalMontoAbon { get { return decToStr(_listaCtasPend.GetTotalMontoAbon); } }

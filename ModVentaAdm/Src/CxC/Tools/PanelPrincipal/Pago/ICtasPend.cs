@@ -18,7 +18,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         int GetCntCtasPagar { get; }
         //
         Object DataSource { get; }
-        string GetTotalMontoPend { get; }
+        decimal GetTotalMontoPend { get; }
         string GetCntDocPend { get; }
         string GetCntDocAbon { get; }
         string GetTotalMontoAbon { get; }

@@ -29,6 +29,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         //PANEL: NOTAS/CREDITO
         int GetCntNtCred { get; }
         decimal GetMontoNtCred { get; }
+        decimal GetMontoNtCredDisponible { get; }
         void ListarNtCred();
 
         //PANEL: RESUMEN
@@ -42,6 +43,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
 
         //PANEL:ANTICIPO
         decimal GetMontoAnticipo { get; }
+        decimal GetMontoAnticipoDisponible { get; }
         void AgregarAnticipo();
 
         //

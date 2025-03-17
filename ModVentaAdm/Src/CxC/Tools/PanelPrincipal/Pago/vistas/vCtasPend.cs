@@ -196,7 +196,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
         }
         private void ActualizarTotal()
         {
-            L_PEND.Text = _controlador.GetTotalMontoPend;
+            L_PEND.Text = _controlador.GetTotalMontoPend.ToString("n2");
             L_CNT_DOC.Text = _controlador.GetCntDocPend;
             L_CNT_DOC_ABON.Text = _controlador.GetCntDocAbon;
             L_MONTO_ABON.Text = _controlador.GetTotalMontoAbon;

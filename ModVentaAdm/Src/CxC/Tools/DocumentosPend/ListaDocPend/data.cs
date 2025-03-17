@@ -27,6 +27,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
         public decimal montoResta { get { return montoImporte - montoAcumulado; } }
         public string autoDocVenta { get; set; }
         public bool IsDocGeneradoPorModuloCxc { get; set; }
+        public string DiasVencidaDesc { get { return diasVencida <= 0 ? "Por Vencer" : diasVencida.ToString() + " Dias"; } }
         //
         public data()
         {
@@ -44,9 +45,6 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
             tasaCambioDoc = 0m;
             autoDocVenta = "";
             IsDocGeneradoPorModuloCxc = false;
-        }
-        public void setAnularItem()
-        {
         }
     }
 }

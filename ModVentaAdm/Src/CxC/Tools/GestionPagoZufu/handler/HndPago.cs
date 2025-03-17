@@ -17,7 +17,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         private Utils.Control.Boton.Procesar.IProcesar _procesar;
         private PanelPrincipal.Pago.IPanelMetPago _panMetPago;
         private PanelPrincipal.Pago.IPanelCtas _panCtas;
-        private PanelPrincipal.Pago.IPanelCtas _panNtCred;
+        private PanelPrincipal.Pago.IPanelCtasNtCred _panNtCred;
         private PanelPrincipal.Pago.IPanelResumen _panResumen;
         private PanelPrincipal.Pago.IPanelCliente _panCliente;
         private OOB.CxC.CargarData.Cliente.Ficha _entidadFichaPagar;
@@ -108,6 +108,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                 _panNtCred.setFechaServidor(r02.Entidad);
                 _panCliente.setFechaServidor(r02.Entidad);
                 _panCliente.setFichaEntidadPagar(r03.Entidad);
+                _panNtCred.setMontoNtCredDisponible(r03.Entidad.montoNtCreditoDisponible);
+                _panCliente.setMontoAnticiposDisponible(r03.Entidad.montoAnticiposClient);
                 //
                 setClientePagar(_entidadFichaPagar.ciRifClient + System.Environment.NewLine + _entidadFichaPagar.nombreRazonSocialClient);
                 //
@@ -145,6 +147,11 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
             if (_panResumen.GetResumenSaldo < 0)
             {
                 Helpers.Msg.Alerta("MONTO DE PAGO INSUFICIENTE");
+                return;
+            }
+            if (((_panResumen.GetResumenMontoAnticipo+_panResumen.GetResumenMontoNtCredito)>0m) && (_panResumen.GetResumenMontoCtasPend==0m))
+            {
+                Helpers.Msg.Alerta("ANTICIPOS Y/O NOTAS DE CREDITO SOLO SE USAN COMO METODOS DE PAGO");
                 return;
             }
             _pagoExitoso = false;
@@ -214,6 +221,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         //PANEL: NOTAS_CREDITO
         public int GetCntNtCred { get { return _panNtCred.GetCntCtasPagar; } }
         public decimal GetMontoNtCred { get { return _panNtCred.GetMontoPagar; } }
+        public decimal GetMontoNtCredDisponible { get { return _panNtCred.GetMontoNtCredDisponible; } }
         public void ListarNtCred()
         {
             _panNtCred.ListarCtasPagar();
@@ -231,6 +239,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
 
         //PANEL: ANTICIPO
         public decimal GetMontoAnticipo { get { return _panCliente.GetMontoPagar; } }
+        public decimal GetMontoAnticipoDisponible { get { return _panCliente.GetMontoAnticipoDisponible; } }
         public void AgregarAnticipo()
         {
             _panCliente.AgregarAnticipo();

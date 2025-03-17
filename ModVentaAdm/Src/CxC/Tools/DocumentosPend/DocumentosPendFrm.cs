@@ -67,7 +67,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
             c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             var c5 = new DataGridViewTextBoxColumn();
-            c5.DataPropertyName = "diasVencida";
+            c5.DataPropertyName = "diasVencidaDesc";
             c5.HeaderText = "Dias/Venc";
             c5.Visible = true;
             c5.Width = 80;
