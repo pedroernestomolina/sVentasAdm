@@ -26,7 +26,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
         private void DetalleMontoFrm_Load(object sender, EventArgs e)
         {
             L_MONTO_PENDIENTE.Text = _controlador.GetMontoPendiente;
-            TB_MONTO_ABONAR.Text = _controlador.GetMontoAbonar;
+            TB_MONTO_ABONAR.Text = _controlador.GetMontoAbonar.ToString();
             TB_DETALLE.Text = _controlador.GetDetalle;
         }
         private void DetalleMontoFrm_FormClosing(object sender, FormClosingEventArgs e)

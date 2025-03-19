@@ -24,6 +24,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         //PANEL: CTAS 
         int GetCntCtasPagar { get; }
         decimal GetMontoCtasPagar { get; }
+        decimal GetSaldoPendPagar { get; }
         void ListarCtasPagar();
 
         //PANEL: NOTAS/CREDITO

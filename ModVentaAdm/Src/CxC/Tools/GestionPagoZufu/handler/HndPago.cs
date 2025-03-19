@@ -16,7 +16,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         private Utils.Control.Boton.Abandonar.IAbandonar _abandonar;
         private Utils.Control.Boton.Procesar.IProcesar _procesar;
         private PanelPrincipal.Pago.IPanelMetPago _panMetPago;
-        private PanelPrincipal.Pago.IPanelCtas _panCtas;
+        private PanelPrincipal.Pago.IPanelCtasDocPend _panCtas;
         private PanelPrincipal.Pago.IPanelCtasNtCred _panNtCred;
         private PanelPrincipal.Pago.IPanelResumen _panResumen;
         private PanelPrincipal.Pago.IPanelCliente _panCliente;
@@ -109,6 +109,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                 _panCliente.setFechaServidor(r02.Entidad);
                 _panCliente.setFichaEntidadPagar(r03.Entidad);
                 _panNtCred.setMontoNtCredDisponible(r03.Entidad.montoNtCreditoDisponible);
+                _panCtas.setSaldoDocPendPagar(r03.Entidad.montoPendPorPagar);
                 _panCliente.setMontoAnticiposDisponible(r03.Entidad.montoAnticiposClient);
                 //
                 setClientePagar(_entidadFichaPagar.ciRifClient + System.Environment.NewLine + _entidadFichaPagar.nombreRazonSocialClient);
@@ -211,6 +212,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         //PANEL: CTAS
         public int GetCntCtasPagar { get { return _panCtas.GetCntCtasPagar; } }
         public decimal GetMontoCtasPagar { get { return _panCtas.GetMontoPagar; } }
+        public decimal GetSaldoPendPagar { get { return _panCtas.GetSaldoDocPendPagar; } }
         public void ListarCtasPagar()
         {
             _panCtas.setMontoAbonadoASaldar(_panResumen.GetResumenMontoAbono);
@@ -353,6 +355,27 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                 Usuario = Sistema.Usuario.nombre,
                 MontoRetencionDiv = 0m,
             };
+            var _importeCobro = Math.Round(_panResumen.GetResumenMontoAbono * _factorDivActual, 2, MidpointRounding.AwayFromZero);
+            var _montoDivisaCobro = _panResumen.GetResumenMontoAbono;
+            var _notaCobro = "";
+            if (_docPend.Count == 0)
+            {
+                _importeCobro = 0m;
+                _montoDivisaCobro = 0m;
+                _notaCobro = "ESTO FUE UN ANTICIPO POR "+_panResumen.GetResumenMontoAbono.ToString("n2");
+            }
+            else 
+            {
+                _notaCobro = "PAGO DEUDA POR: " + _panResumen.GetResumenMontoCtasPend.ToString("n2");
+                if (_panResumen.GetResumenMontoAnticipo > 0)
+                {
+                    _notaCobro += ", USA ANTICIPO DE: " + _panResumen.GetResumenMontoAnticipo.ToString("n2");
+                }
+                if (_panResumen.GetResumenSaldo > 0) 
+                {
+                    _notaCobro += ", SE CARGA ANTICIPO DE: " + _panResumen.GetResumenSaldo.ToString("n2");
+                }
+            }
             var _cobro = new OOB.CxC.GestionCobro.FichaCobro()
             {
                 AutoCliente = _entidadFichaPagar.idClient,
@@ -360,9 +383,9 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                 CiRif = _entidadFichaPagar.ciRifClient,
                 Cliente = _entidadFichaPagar.nombreRazonSocialClient,
                 CodigoCliente = _entidadFichaPagar.codigoClient,
-                Importe = Math.Round(_panResumen.GetResumenMontoAbono * _factorDivActual, 2, MidpointRounding.AwayFromZero),
-                MontoDivisa = _panResumen.GetResumenMontoAbono,
-                Nota = "",
+                Importe = _importeCobro ,
+                MontoDivisa = _montoDivisaCobro,
+                Nota = _notaCobro,
                 TasaDivisa = _factorDivActual,
             };
             var oob = new OOB.CxC.GestionCobro.Ficha()

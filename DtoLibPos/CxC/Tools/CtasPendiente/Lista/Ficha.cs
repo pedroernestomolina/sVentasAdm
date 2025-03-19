@@ -7,21 +7,17 @@ using System.Threading.Tasks;
 
 namespace DtoLibPos.CxC.Tools.CtasPendiente.Lista
 {
-    
     public class Ficha
     {
-
         public string idCliente { get; set; }
         public string ciRif { get; set; }
         public string nombreRazonSocial { get; set; }
-        public decimal importe { get; set; }
-        public decimal acumulado { get; set; }
+        public decimal? importe { get; set; }
+        public decimal? acumulado { get; set; }
         public int cntDocPend { get; set; }
         public int limiteFactPend { get; set; }
         public decimal limiteMontoCredito { get; set; }
         public int? cntFactPend { get; set; }
-
-
         public Ficha() 
         {
             idCliente = "";
@@ -34,7 +30,5 @@ namespace DtoLibPos.CxC.Tools.CtasPendiente.Lista
             limiteMontoCredito = 0m;
             cntFactPend = 0;
         }
-
     }
-
 }

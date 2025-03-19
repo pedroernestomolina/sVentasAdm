@@ -12,7 +12,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         decimal MontoAbonado { get; }
         //
         string GetMontoPendiente { get; }
-        string GetMontoAbonar { get; }
+        decimal GetMontoAbonar { get; }
         string GetDetalle { get; }
         //
         void setDetalle(string p);

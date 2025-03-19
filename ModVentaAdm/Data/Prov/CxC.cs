@@ -41,11 +41,11 @@ namespace ModVentaAdm.Data.Prov
                         var nr = new OOB.CxC.Tools.CtasPendiente.Lista.Ficha()
                         {
                             idCliente = s.idCliente,
-                            acumulado = s.acumulado,
+                            acumulado = s.acumulado.HasValue ? s.acumulado.Value: 0m,
                             ciRif = s.ciRif,
                             cntDocPend = s.cntDocPend,
                             cntFactPend = _cntFactPend,
-                            importe = s.importe,
+                            importe = s.importe.HasValue ? s.importe.Value: 0m,
                             limiteFactPend = s.limiteFactPend,
                             limiteMontoCredito = s.limiteMontoCredito,
                             nombreRazonSocial = s.nombreRazonSocial,

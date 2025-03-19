@@ -220,6 +220,7 @@ namespace ProvPos
                         throw new Exception("FICHA CLENTE NO ENCONTRADA");
                     }
                     _sql = @"SELECT 
+                                    auto as idDoc,
                                     fecha as fechaDoc,
                                     documento as nroDoc,
                                     tipo_documento as tipoDoc,

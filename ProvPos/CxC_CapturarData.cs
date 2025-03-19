@@ -49,7 +49,16 @@ namespace ProvPos
                                      where auto_cliente=@idCliente and 
                                          resta_divisa>0 and 
                                          tipo_documento='NCR' and  
-                                         estatus_anulado='0') as montoNtCreditoDisponible
+                                         estatus_anulado='0') as montoNtCreditoDisponible,
+                                    (SELECT
+                                        sum(c.resta_divisa) 
+                                     FROM cxc as c
+                                     where c.estatus_cancelado='0'
+                                        and c.tipo_documento<>'PAG'
+                                        and c.estatus_anulado='0'
+                                        and c.signo=1
+                                        and c.auto_cliente=@idCliente 
+                                    ) as montoPendPorPagar
                                 FROM clientes as client
                                 join vendedores as vend on vend.auto=client.auto_vendedor
                                 join empresa_cobradores as cob on cob.auto=client.auto_cobrador

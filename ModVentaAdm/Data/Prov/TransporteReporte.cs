@@ -168,6 +168,7 @@ namespace ModVentaAdm.Data.Prov
                     {
                         var nr = new OOB.Transporte.Reporte.Cxc.EdoCta.Movimiento()
                         {
+                            idDoc = s.idDoc,
                             fechaDoc = s.fechaDoc,
                             fechaVencDoc = s.fechaVencDoc,
                             importeDiv = s.importeDiv,

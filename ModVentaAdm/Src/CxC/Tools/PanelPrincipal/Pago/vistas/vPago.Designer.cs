@@ -61,7 +61,9 @@
             this.panel67 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
             this.panel69 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel70 = new System.Windows.Forms.Panel();
+            this.L_ANTICIPO_DISPONIBLE = new System.Windows.Forms.Label();
             this.pMetPago = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -106,6 +108,11 @@
             this.panel39 = new System.Windows.Forms.Panel();
             this.BT_LISTAR_NT_CRED = new System.Windows.Forms.Button();
             this.panel68 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel71 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel72 = new System.Windows.Forms.Panel();
+            this.L_NTCRED_DISPONIBLE = new System.Windows.Forms.Label();
             this.pCtasPag = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -168,13 +175,12 @@
             this.BT_PROCESAR = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.BT_SALIDA = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.L_ANTICIPO_DISPONIBLE = new System.Windows.Forms.Label();
-            this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel71 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.panel72 = new System.Windows.Forms.Panel();
-            this.L_NTCRED_DISPONIBLE = new System.Windows.Forms.Label();
+            this.panel73 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel74 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.panel75 = new System.Windows.Forms.Panel();
+            this.L_SALDO_PEND_PAGAR = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pTitulo.SuspendLayout();
@@ -227,6 +233,9 @@
             this.tableLayoutPanel15.SuspendLayout();
             this.panel39.SuspendLayout();
             this.panel68.SuspendLayout();
+            this.tableLayoutPanel26.SuspendLayout();
+            this.panel71.SuspendLayout();
+            this.panel72.SuspendLayout();
             this.pCtasPag.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -265,9 +274,10 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.tableLayoutPanel26.SuspendLayout();
-            this.panel71.SuspendLayout();
-            this.panel72.SuspendLayout();
+            this.panel73.SuspendLayout();
+            this.tableLayoutPanel27.SuspendLayout();
+            this.panel74.SuspendLayout();
+            this.panel75.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -692,6 +702,18 @@
             this.panel69.Size = new System.Drawing.Size(156, 20);
             this.panel69.TabIndex = 0;
             // 
+            // label15
+            // 
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(2, 2);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(152, 16);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Disponible:";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // panel70
             // 
             this.panel70.Controls.Add(this.L_ANTICIPO_DISPONIBLE);
@@ -702,6 +724,18 @@
             this.panel70.Padding = new System.Windows.Forms.Padding(2);
             this.panel70.Size = new System.Drawing.Size(156, 20);
             this.panel70.TabIndex = 1;
+            // 
+            // L_ANTICIPO_DISPONIBLE
+            // 
+            this.L_ANTICIPO_DISPONIBLE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_ANTICIPO_DISPONIBLE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_ANTICIPO_DISPONIBLE.ForeColor = System.Drawing.Color.Black;
+            this.L_ANTICIPO_DISPONIBLE.Location = new System.Drawing.Point(2, 2);
+            this.L_ANTICIPO_DISPONIBLE.Name = "L_ANTICIPO_DISPONIBLE";
+            this.L_ANTICIPO_DISPONIBLE.Size = new System.Drawing.Size(152, 16);
+            this.L_ANTICIPO_DISPONIBLE.TabIndex = 3;
+            this.L_ANTICIPO_DISPONIBLE.Text = "Disponible:";
+            this.L_ANTICIPO_DISPONIBLE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pMetPago
             // 
@@ -1256,6 +1290,69 @@
             this.panel68.Size = new System.Drawing.Size(158, 44);
             this.panel68.TabIndex = 4;
             // 
+            // tableLayoutPanel26
+            // 
+            this.tableLayoutPanel26.ColumnCount = 1;
+            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel26.Controls.Add(this.panel71, 0, 0);
+            this.tableLayoutPanel26.Controls.Add(this.panel72, 0, 1);
+            this.tableLayoutPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel26.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel26.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel26.Name = "tableLayoutPanel26";
+            this.tableLayoutPanel26.RowCount = 2;
+            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel26.Size = new System.Drawing.Size(158, 44);
+            this.tableLayoutPanel26.TabIndex = 1;
+            // 
+            // panel71
+            // 
+            this.panel71.Controls.Add(this.label17);
+            this.panel71.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel71.Location = new System.Drawing.Point(1, 1);
+            this.panel71.Margin = new System.Windows.Forms.Padding(1);
+            this.panel71.Name = "panel71";
+            this.panel71.Padding = new System.Windows.Forms.Padding(2);
+            this.panel71.Size = new System.Drawing.Size(156, 20);
+            this.panel71.TabIndex = 0;
+            // 
+            // label17
+            // 
+            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(2, 2);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(152, 16);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Disponible:";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel72
+            // 
+            this.panel72.Controls.Add(this.L_NTCRED_DISPONIBLE);
+            this.panel72.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel72.Location = new System.Drawing.Point(1, 23);
+            this.panel72.Margin = new System.Windows.Forms.Padding(1);
+            this.panel72.Name = "panel72";
+            this.panel72.Padding = new System.Windows.Forms.Padding(2);
+            this.panel72.Size = new System.Drawing.Size(156, 20);
+            this.panel72.TabIndex = 1;
+            // 
+            // L_NTCRED_DISPONIBLE
+            // 
+            this.L_NTCRED_DISPONIBLE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_NTCRED_DISPONIBLE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_NTCRED_DISPONIBLE.ForeColor = System.Drawing.Color.Black;
+            this.L_NTCRED_DISPONIBLE.Location = new System.Drawing.Point(2, 2);
+            this.L_NTCRED_DISPONIBLE.Name = "L_NTCRED_DISPONIBLE";
+            this.L_NTCRED_DISPONIBLE.Size = new System.Drawing.Size(152, 16);
+            this.L_NTCRED_DISPONIBLE.TabIndex = 3;
+            this.L_NTCRED_DISPONIBLE.Text = "Disponible:";
+            this.L_NTCRED_DISPONIBLE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // pCtasPag
             // 
             this.pCtasPag.BackColor = System.Drawing.Color.YellowGreen;
@@ -1455,6 +1552,7 @@
             this.tableLayoutPanel11.Controls.Add(this.panel26, 2, 0);
             this.tableLayoutPanel11.Controls.Add(this.panel27, 3, 0);
             this.tableLayoutPanel11.Controls.Add(this.panel28, 4, 0);
+            this.tableLayoutPanel11.Controls.Add(this.panel73, 0, 0);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
@@ -2038,92 +2136,78 @@
             this.BT_SALIDA.UseVisualStyleBackColor = true;
             this.BT_SALIDA.Click += new System.EventHandler(this.BT_SALIDA_Click);
             // 
-            // label15
+            // panel73
             // 
-            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(2, 2);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(152, 16);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Disponible:";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.panel73.Controls.Add(this.tableLayoutPanel27);
+            this.panel73.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel73.Location = new System.Drawing.Point(1, 1);
+            this.panel73.Margin = new System.Windows.Forms.Padding(1);
+            this.panel73.Name = "panel73";
+            this.panel73.Size = new System.Drawing.Size(158, 44);
+            this.panel73.TabIndex = 4;
             // 
-            // L_ANTICIPO_DISPONIBLE
+            // tableLayoutPanel27
             // 
-            this.L_ANTICIPO_DISPONIBLE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_ANTICIPO_DISPONIBLE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_ANTICIPO_DISPONIBLE.ForeColor = System.Drawing.Color.White;
-            this.L_ANTICIPO_DISPONIBLE.Location = new System.Drawing.Point(2, 2);
-            this.L_ANTICIPO_DISPONIBLE.Name = "L_ANTICIPO_DISPONIBLE";
-            this.L_ANTICIPO_DISPONIBLE.Size = new System.Drawing.Size(152, 16);
-            this.L_ANTICIPO_DISPONIBLE.TabIndex = 3;
-            this.L_ANTICIPO_DISPONIBLE.Text = "Disponible:";
-            this.L_ANTICIPO_DISPONIBLE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tableLayoutPanel27.ColumnCount = 1;
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel27.Controls.Add(this.panel74, 0, 0);
+            this.tableLayoutPanel27.Controls.Add(this.panel75, 0, 1);
+            this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel27.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel27.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel27.Name = "tableLayoutPanel27";
+            this.tableLayoutPanel27.RowCount = 2;
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel27.Size = new System.Drawing.Size(158, 44);
+            this.tableLayoutPanel27.TabIndex = 2;
             // 
-            // tableLayoutPanel26
+            // panel74
             // 
-            this.tableLayoutPanel26.ColumnCount = 1;
-            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel26.Controls.Add(this.panel71, 0, 0);
-            this.tableLayoutPanel26.Controls.Add(this.panel72, 0, 1);
-            this.tableLayoutPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel26.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel26.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel26.Name = "tableLayoutPanel26";
-            this.tableLayoutPanel26.RowCount = 2;
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel26.Size = new System.Drawing.Size(158, 44);
-            this.tableLayoutPanel26.TabIndex = 1;
+            this.panel74.Controls.Add(this.label18);
+            this.panel74.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel74.Location = new System.Drawing.Point(1, 1);
+            this.panel74.Margin = new System.Windows.Forms.Padding(1);
+            this.panel74.Name = "panel74";
+            this.panel74.Padding = new System.Windows.Forms.Padding(2);
+            this.panel74.Size = new System.Drawing.Size(156, 20);
+            this.panel74.TabIndex = 0;
             // 
-            // panel71
+            // label18
             // 
-            this.panel71.Controls.Add(this.label17);
-            this.panel71.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel71.Location = new System.Drawing.Point(1, 1);
-            this.panel71.Margin = new System.Windows.Forms.Padding(1);
-            this.panel71.Name = "panel71";
-            this.panel71.Padding = new System.Windows.Forms.Padding(2);
-            this.panel71.Size = new System.Drawing.Size(156, 20);
-            this.panel71.TabIndex = 0;
+            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(2, 2);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(152, 16);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Pend/Pagar:";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label17
+            // panel75
             // 
-            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(2, 2);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(152, 16);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Disponible:";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.panel75.Controls.Add(this.L_SALDO_PEND_PAGAR);
+            this.panel75.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel75.Location = new System.Drawing.Point(1, 23);
+            this.panel75.Margin = new System.Windows.Forms.Padding(1);
+            this.panel75.Name = "panel75";
+            this.panel75.Padding = new System.Windows.Forms.Padding(2);
+            this.panel75.Size = new System.Drawing.Size(156, 20);
+            this.panel75.TabIndex = 1;
             // 
-            // panel72
+            // L_SALDO_PEND_PAGAR
             // 
-            this.panel72.Controls.Add(this.L_NTCRED_DISPONIBLE);
-            this.panel72.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel72.Location = new System.Drawing.Point(1, 23);
-            this.panel72.Margin = new System.Windows.Forms.Padding(1);
-            this.panel72.Name = "panel72";
-            this.panel72.Padding = new System.Windows.Forms.Padding(2);
-            this.panel72.Size = new System.Drawing.Size(156, 20);
-            this.panel72.TabIndex = 1;
-            // 
-            // L_NTCRED_DISPONIBLE
-            // 
-            this.L_NTCRED_DISPONIBLE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_NTCRED_DISPONIBLE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_NTCRED_DISPONIBLE.ForeColor = System.Drawing.Color.White;
-            this.L_NTCRED_DISPONIBLE.Location = new System.Drawing.Point(2, 2);
-            this.L_NTCRED_DISPONIBLE.Name = "L_NTCRED_DISPONIBLE";
-            this.L_NTCRED_DISPONIBLE.Size = new System.Drawing.Size(152, 16);
-            this.L_NTCRED_DISPONIBLE.TabIndex = 3;
-            this.L_NTCRED_DISPONIBLE.Text = "Disponible:";
-            this.L_NTCRED_DISPONIBLE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_SALDO_PEND_PAGAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_SALDO_PEND_PAGAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_SALDO_PEND_PAGAR.ForeColor = System.Drawing.Color.Black;
+            this.L_SALDO_PEND_PAGAR.Location = new System.Drawing.Point(2, 2);
+            this.L_SALDO_PEND_PAGAR.Name = "L_SALDO_PEND_PAGAR";
+            this.L_SALDO_PEND_PAGAR.Size = new System.Drawing.Size(152, 16);
+            this.L_SALDO_PEND_PAGAR.TabIndex = 3;
+            this.L_SALDO_PEND_PAGAR.Text = "Disponible:";
+            this.L_SALDO_PEND_PAGAR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // vPago
             // 
@@ -2189,6 +2273,9 @@
             this.tableLayoutPanel15.ResumeLayout(false);
             this.panel39.ResumeLayout(false);
             this.panel68.ResumeLayout(false);
+            this.tableLayoutPanel26.ResumeLayout(false);
+            this.panel71.ResumeLayout(false);
+            this.panel72.ResumeLayout(false);
             this.pCtasPag.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -2227,9 +2314,10 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            this.tableLayoutPanel26.ResumeLayout(false);
-            this.panel71.ResumeLayout(false);
-            this.panel72.ResumeLayout(false);
+            this.panel73.ResumeLayout(false);
+            this.tableLayoutPanel27.ResumeLayout(false);
+            this.panel74.ResumeLayout(false);
+            this.panel75.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2383,5 +2471,11 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel72;
         private System.Windows.Forms.Label L_NTCRED_DISPONIBLE;
+        private System.Windows.Forms.Panel panel73;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel27;
+        private System.Windows.Forms.Panel panel74;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Panel panel75;
+        private System.Windows.Forms.Label L_SALDO_PEND_PAGAR;
     }
 }

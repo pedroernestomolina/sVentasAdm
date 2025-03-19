@@ -49,7 +49,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
             var _importe = 0m;
             var _signo = "";
             var _saldo = 0m;
-            foreach (var it in ficha.movimientos.OrderBy(o=>o.fechaDoc).ThenBy(o=>o.tipoDoc).ToList())
+            foreach (var it in ficha.movimientos.OrderBy(o=>o.idDoc).ThenBy(o=>o.fechaDoc).ToList()) 
             {
                 _importe = it.importeDiv * it.signoDoc;
                 _signo = "+";
@@ -68,6 +68,10 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
                 else 
                 {
                     _saldo += _importe;
+                }
+                if (_saldo < 0m)
+                {
+                    _saldo = 0m;
                 }
                 DataRow rt = ds.Tables["EdoCta"].NewRow();
                 rt["fechaDoc"] = it.fechaDoc ;

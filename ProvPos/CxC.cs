@@ -39,13 +39,13 @@ namespace ProvPos
                                             and estatus_anulado='0'
                                             GROUP BY  c.auto_cliente
                                         ) as cntFactPend
-                                        FROM cxc as c
-                                        join clientes as cl on c.auto_cliente=cl.auto
-                                        where c.estatus_cancelado='0'
-                                        and c.tipo_documento<>'PAG'
-                                        and c.estatus_anulado='0'
-                                        group by c.auto_cliente";
-                                        //and c.codigo_sucursal=@codigoSuc
+                                        FROM clientes as cl  
+                                        left join cxc as c on c.auto_cliente=cl.auto
+                                            and c.estatus_cancelado='0'
+                                            and c.tipo_documento<>'PAG'
+                                            and c.estatus_anulado='0'
+                                        where cl.estatus_credito='1'
+                                        GROUP BY cl.auto, cl.ci_rif, cl.razon_social, cl.doc_pendientes, cl.limite_credito";
                     var sql = sql_1;
                     var lst = cnn.Database.SqlQuery<DtoLibPos.CxC.Tools.CtasPendiente.Lista.Ficha>(sql).ToList();
                     result.Lista = lst;

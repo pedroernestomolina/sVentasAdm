@@ -140,6 +140,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
         {
             L_CNT_CTAS_PAGAR.Text = _controlador.GetCntCtasPagar.ToString();
             L_MONTO_PAGAR.Text = _controlador.GetMontoCtasPagar.ToString("n2");
+            L_SALDO_PEND_PAGAR.Text = _controlador.GetSaldoPendPagar.ToString("n2");
             ActualizarPanelResumen();
         }
         private void ActualizarPanelNtCred()

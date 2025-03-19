@@ -31,6 +31,7 @@ namespace DtoLibPos.CxC.CapturarData.Cliente
         public string nombreCobrad { get; set; }
         public string codigoCobrad { get; set; }
         public string codigoVend { get; set; }
-        public decimal montoNtCreditoDisponible { get; set; }
+        public decimal? montoNtCreditoDisponible { get; set; }
+        public decimal? montoPendPorPagar { get; set; }
     }
 }

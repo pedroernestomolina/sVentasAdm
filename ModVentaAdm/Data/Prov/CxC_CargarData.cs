@@ -47,9 +47,10 @@ namespace ModVentaAdm.Data.Prov
                 nombreVend = s.nombreVend,
                 telefono2Client = s.telefono2Client,
                 telefonoClient = s.telefonoClient,
-                codigoCobrad= s.codigoCobrad,
-                codigoVend=s.codigoVend,
-                montoNtCreditoDisponible=s.montoNtCreditoDisponible,
+                codigoCobrad = s.codigoCobrad,
+                codigoVend = s.codigoVend,
+                montoNtCreditoDisponible = s.montoNtCreditoDisponible.HasValue ? s.montoNtCreditoDisponible.Value : 0m,
+                montoPendPorPagar = s.montoPendPorPagar.HasValue ? s.montoPendPorPagar.Value : 0m,
             };
             rt.Entidad = nr;
             //

@@ -20,7 +20,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         public decimal MontoAbonado { get { return _monto; } }
         //
         public string GetMontoPendiente { get { return decToStr(_montoPendiente); } }
-        public string GetMontoAbonar { get { return decToStr(_monto); } }
+        public decimal GetMontoAbonar { get { return _monto; } }
         public string GetDetalle { get { return _detalle; } }
         public bool AbandonarIsOK { get { return _abandonar.OpcionIsOK; } }
         public bool ProcesarIsOK { get { return _aceptartIsOk; } }

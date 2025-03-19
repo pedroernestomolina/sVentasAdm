@@ -562,6 +562,7 @@
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMetodoPagoGestionEditar.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMontoAbonar.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelCliente.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelCtasDocPend.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelCtasNtCred.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelCtas.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelResumen.cs" />

@@ -120,7 +120,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             DGV_1.Columns.Add(c3);
             DGV_1.Columns.Add(c4);
             DGV_1.Columns.Add(c8);
-            DGV_1.Columns.Add(c5);
+            //DGV_1.Columns.Add(c5);
             DGV_1.Columns.Add(c6);
         }
 

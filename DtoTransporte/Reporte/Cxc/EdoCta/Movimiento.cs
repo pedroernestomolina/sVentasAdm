@@ -9,6 +9,7 @@ namespace DtoTransporte.Reporte.Cxc.EdoCta
 {
     public class Movimiento
     {
+        public string idDoc { get; set; }
         public DateTime fechaDoc { get; set; }
         public string nroDoc { get; set; }
         public string tipoDoc { get; set; }
