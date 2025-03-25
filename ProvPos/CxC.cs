@@ -193,7 +193,6 @@ namespace ProvPos
                         var autoCxCPago = ficha.SucPrefijo + aCxC.ToString().Trim().PadLeft(largo, '0');
                         var autoRecibo = ficha.SucPrefijo + aCxCRecibo.ToString().Trim().PadLeft(largo, '0');
                         var reciboNumero = ficha.SucPrefijo + aCxCReciboNumero.ToString().Trim().PadLeft(largo, '0');
-
                         
                         if (1==1)
                         {
@@ -317,12 +316,13 @@ namespace ProvPos
                                             estatus_doc_cxc, 
                                             codigo_sucursal,
                                             tasa_cambio, 
-                                            anticipo_cargar)
+                                            anticipo_cargar,
+                                            monto_ntcredito)
                                         VALUES ( 
-                                            {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10},
-                                            {11}, {12}, {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20},
-                                            {21}, {22}, {23}, {24}, {25}, {26}, {27}, {28}, {29}, {30},
-                                            {31}, {32})";
+                                            {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, 
+                                            {10}, {11}, {12}, {13}, {14}, {15}, {16}, {17}, {18}, {19}, 
+                                            {20}, {21}, {22}, {23}, {24}, {25}, {26}, {27}, {28}, {29}, 
+                                            {30}, {31}, {32}, {33})";
                             var rt2 = cn.Database.ExecuteSqlCommand(sql_2,
                                 autoRecibo,
                                 reciboNumero,
@@ -356,7 +356,8 @@ namespace ProvPos
                                 "1", 
                                 ficha.SucPrefijo,
                                 ficha.factorCambio,
-                                ficha.montoAnticipoCargar);
+                                ficha.montoAnticipoCargar,
+                                ficha.montoNtCredito);
                             cn.SaveChanges();
 
                             //LISTA DE DOCUMENTOS INCLUIDOS EN RECIBO DE COBRO

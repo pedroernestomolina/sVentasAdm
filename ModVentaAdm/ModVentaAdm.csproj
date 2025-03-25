@@ -84,6 +84,7 @@
     <Compile Include="Data\Infra\IProducto.cs" />
     <Compile Include="Data\Infra\IReportes.cs" />
     <Compile Include="Data\Infra\IReportesCli.cs" />
+    <Compile Include="Data\Infra\IReportesCxc.cs" />
     <Compile Include="Data\Infra\ISistema.cs" />
     <Compile Include="Data\Infra\ISucursal.cs" />
     <Compile Include="Data\Infra\IUsuario.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Data\Prov\Producto.cs" />
     <Compile Include="Data\Prov\Reportes.cs" />
     <Compile Include="Data\Prov\ReportesCli.cs" />
+    <Compile Include="Data\Prov\ReportesCxc.cs" />
     <Compile Include="Data\Prov\Repor_LibroVentas_Pos.cs" />
     <Compile Include="Data\Prov\Sistema.cs" />
     <Compile Include="Data\Prov\Sucursal.cs" />
@@ -237,8 +239,16 @@
     <Compile Include="OOB\Producto\Lista\Filtro.cs" />
     <Compile Include="OOB\ReporteCli\Maestro\Ficha.cs" />
     <Compile Include="OOB\ReporteCli\Maestro\Filtro.cs" />
+    <Compile Include="OOB\ReportesCxc\DetallePorDoc\Ficha.cs" />
+    <Compile Include="OOB\ReportesCxc\DetallePorDoc\Filtro.cs" />
+    <Compile Include="OOB\ReportesCxc\DetallePorMedioPago\Ficha.cs" />
+    <Compile Include="OOB\ReportesCxc\DetallePorMedioPago\Filtro.cs" />
+    <Compile Include="OOB\ReportesCxc\Resumen\Ficha.cs" />
+    <Compile Include="OOB\ReportesCxc\Resumen\Filtro.cs" />
     <Compile Include="OOB\Reportes\Consolidado\Ficha.cs" />
     <Compile Include="OOB\Reportes\Consolidado\Filtro.cs" />
+    <Compile Include="OOB\Reportes\DocCredito\Ficha.cs" />
+    <Compile Include="OOB\Reportes\DocCredito\Filtro.cs" />
     <Compile Include="OOB\Reportes\GeneralDocumentoDetalle\Ficha.cs" />
     <Compile Include="OOB\Reportes\GeneralDocumentoDetalle\Filtro.cs" />
     <Compile Include="OOB\Reportes\GeneralDocumento\Ficha.cs" />
@@ -614,6 +624,18 @@
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMetodoPagoGestionAgregar.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelMetPago.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPago.cs" />
+    <Compile Include="Src\Reportes\DS.cs">
+      <DependentUpon>DS.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Src\Reportes\Modo\Cxc\CobranzaDetallePorDocumento\Filtro.cs" />
+    <Compile Include="Src\Reportes\Modo\Cxc\CobranzaDetallePorDocumento\Gestion.cs" />
+    <Compile Include="Src\Reportes\Modo\Cxc\CobranzaDetallePorMedioPago\Filtro.cs" />
+    <Compile Include="Src\Reportes\Modo\Cxc\CobranzaDetallePorMedioPago\Gestion.cs" />
+    <Compile Include="Src\Reportes\Modo\Cxc\CobranzaResumen\Filtro.cs" />
+    <Compile Include="Src\Reportes\Modo\Cxc\CobranzaResumen\Gestion.cs" />
+    <Compile Include="Src\Reportes\Modo\DocCredito\Filtro.cs" />
+    <Compile Include="Src\Reportes\Modo\DocCredito\Gestion.cs" />
     <Compile Include="Src\Reportes\Modo\LibroVenta\GestionPos.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\Cobradores\data.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\Cobradores\Imp.cs" />
@@ -1791,6 +1813,9 @@
     <EmbeddedResource Include="Src\Reportes\Consolidado.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Src\Reportes\CxcCobranzaResumen.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Src\Reportes\Filtro\FiltroFrm.resx">
       <DependentUpon>FiltroFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1815,6 +1840,9 @@
     <EmbeddedResource Include="Src\Reportes\ListaDoc.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Src\Reportes\CxcCobranzaDetPorDocumento.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Src\Reportes\Report1.rdlc" />
     <EmbeddedResource Include="Src\Reportes\ReporteFrm.resx">
       <DependentUpon>ReporteFrm.cs</DependentUpon>
@@ -1829,6 +1857,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Reportes\UtilidadVenta.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\Reportes\VentasDocCredito.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Reportes\VentasPorVendedor_Detalle.rdlc">

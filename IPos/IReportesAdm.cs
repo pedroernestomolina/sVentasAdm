@@ -39,5 +39,8 @@ namespace IPos
         //
         DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Ficha> 
             Reporte_LibroVentas_Pos(DtoLibPos.Reportes.VentaAdministrativa.LibroVenta.Filtro filtro);
+        //
+        DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.DocCredito.Ficha> 
+            ReportesAdm_Ventas_DocCredito(DtoLibPos.Reportes.VentaAdministrativa.DocCredito.Filtro filtro);
     }
 }

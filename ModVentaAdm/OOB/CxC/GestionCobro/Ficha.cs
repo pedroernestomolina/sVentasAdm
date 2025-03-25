@@ -23,6 +23,7 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
         public decimal montoRecibido { get; set; }
         public DateTime fechaProceso { get; set; }
         public decimal montoAnticipoCargar { get; set; }
+        public decimal montoNtCredito { get; set; }
         public Ficha() 
         {
             SucPrefijo = "";
@@ -39,6 +40,7 @@ namespace ModVentaAdm.OOB.CxC.GestionCobro
             montoRecibido = 0m;
             fechaProceso = DateTime.Now.Date;
             montoAnticipoCargar = 0m;
+            montoNtCredito = 0m;
         }
     }
 }

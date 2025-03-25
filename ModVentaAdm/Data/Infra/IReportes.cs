@@ -39,5 +39,8 @@ namespace ModVentaAdm.Data.Infra
         //
         OOB.Resultado.Lista<OOB.Reportes.LibroVenta.Ficha>
             Reporte_LibroVenta_Pos(OOB.Reportes.LibroVenta.Filtro filtro);
+        //
+        OOB.Resultado.Lista<OOB.Reportes.DocCredito.Ficha>
+            ReportesAdm_Ventas_DocCredito(OOB.Reportes.DocCredito.Filtro filtro);
     }
 }

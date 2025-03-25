@@ -255,6 +255,7 @@ namespace ModVentaAdm.Data.Prov
                 autoCliente = ficha.autoCliente,
                 montoAnticipoDescargar = ficha.montoAnticipoDescargar,
                 montoAnticipoCargar = ficha.montoAnticipoCargar,
+                montoNtCredito = ficha.montoNtCredito, 
                 factorCambio = ficha.factorCambio,
                 montoRecibido = ficha.montoRecibido,
                 SucPrefijo = ficha.SucPrefijo,

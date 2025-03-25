@@ -636,5 +636,52 @@ namespace ModVentaAdm.Data.Prov
             rt.ListaD = list;
             return rt;
         }
+        //
+        public OOB.Resultado.Lista<OOB.Reportes.DocCredito.Ficha> 
+            ReportesAdm_Ventas_DocCredito(OOB.Reportes.DocCredito.Filtro filtro)
+        {
+            var rt = new OOB.Resultado.Lista<OOB.Reportes.DocCredito.Ficha>();
+            //
+            var filtroDTO = new DtoLibPos.Reportes.VentaAdministrativa.DocCredito.Filtro()
+            {
+                codSucursal = filtro.codSucursal,
+                desde = filtro.desde,
+                hasta = filtro.hasta,
+            };
+            var r01 = MyData.ReportesAdm_Ventas_DocCredito(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var list = new List<OOB.Reportes.DocCredito.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    list = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.Reportes.DocCredito.Ficha()
+                        {
+                            ciRifEntidad = s.ciRifEntidad,
+                            codigoDoc = s.codigoDoc,
+                            codigoSuc = s.codigoSuc,
+                            dirFiscalEntidad = s.dirFiscalEntidad,
+                            fechaEmiDoc = s.fechaEmiDoc,
+                            idDoc = s.idDoc,
+                            moduloDoc = s.moduloDoc,
+                            montoDivisa = s.montoDivisa,
+                            nombreDoc = s.nombreDoc,
+                            numeroDoc = s.numeroDoc,
+                            razonSocialEntidad = s.razonSocialEntidad,
+                            tasaCambio = s.tasaCambio,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            rt.ListaD = list;
+            //
+            return rt;
+        }
     }
 }

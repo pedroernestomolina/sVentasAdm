@@ -807,8 +807,9 @@ namespace ProvPos
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return rt;
         }
+        //
     }
 }

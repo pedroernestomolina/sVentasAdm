@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.Reportes.Modo.GeneralPorProducto
 {
-
-
     public class Filtro : Reportes.Filtro.IFiltro
     {
-
         public bool ActivarSucursal { get { return true; } }
         public bool ActivarDesdeHasta { get { return true; } }
         public bool ActivarEstatus { get { return false; } }
@@ -21,7 +18,5 @@ namespace ModVentaAdm.Src.Reportes.Modo.GeneralPorProducto
         public bool ValidarTipoDocumento { get { return false; } }
         public bool ActivarProducto { get { return false; } }
         public bool ActivarPalabreClave { get { return false; } }
-
     }
-
 }

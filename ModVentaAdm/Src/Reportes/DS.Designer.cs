@@ -52,6 +52,12 @@ namespace ModVentaAdm.Src.Reportes {
         
         private LibroVentaEncDataTable tableLibroVentaEnc;
         
+        private CxcCobranzaResumenDataTable tableCxcCobranzaResumen;
+        
+        private VentasDocCreditoDataTable tableVentasDocCredito;
+        
+        private CxcCobranzaDetPorDocumentoDataTable tableCxcCobranzaDetPorDocumento;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -121,6 +127,15 @@ namespace ModVentaAdm.Src.Reportes {
                 }
                 if ((ds.Tables["LibroVentaEnc"] != null)) {
                     base.Tables.Add(new LibroVentaEncDataTable(ds.Tables["LibroVentaEnc"]));
+                }
+                if ((ds.Tables["CxcCobranzaResumen"] != null)) {
+                    base.Tables.Add(new CxcCobranzaResumenDataTable(ds.Tables["CxcCobranzaResumen"]));
+                }
+                if ((ds.Tables["VentasDocCredito"] != null)) {
+                    base.Tables.Add(new VentasDocCreditoDataTable(ds.Tables["VentasDocCredito"]));
+                }
+                if ((ds.Tables["CxcCobranzaDetPorDocumento"] != null)) {
+                    base.Tables.Add(new CxcCobranzaDetPorDocumentoDataTable(ds.Tables["CxcCobranzaDetPorDocumento"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -282,6 +297,36 @@ namespace ModVentaAdm.Src.Reportes {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public CxcCobranzaResumenDataTable CxcCobranzaResumen {
+            get {
+                return this.tableCxcCobranzaResumen;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public VentasDocCreditoDataTable VentasDocCredito {
+            get {
+                return this.tableVentasDocCredito;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public CxcCobranzaDetPorDocumentoDataTable CxcCobranzaDetPorDocumento {
+            get {
+                return this.tableCxcCobranzaDetPorDocumento;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -388,6 +433,15 @@ namespace ModVentaAdm.Src.Reportes {
                 }
                 if ((ds.Tables["LibroVentaEnc"] != null)) {
                     base.Tables.Add(new LibroVentaEncDataTable(ds.Tables["LibroVentaEnc"]));
+                }
+                if ((ds.Tables["CxcCobranzaResumen"] != null)) {
+                    base.Tables.Add(new CxcCobranzaResumenDataTable(ds.Tables["CxcCobranzaResumen"]));
+                }
+                if ((ds.Tables["VentasDocCredito"] != null)) {
+                    base.Tables.Add(new VentasDocCreditoDataTable(ds.Tables["VentasDocCredito"]));
+                }
+                if ((ds.Tables["CxcCobranzaDetPorDocumento"] != null)) {
+                    base.Tables.Add(new CxcCobranzaDetPorDocumentoDataTable(ds.Tables["CxcCobranzaDetPorDocumento"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -506,6 +560,24 @@ namespace ModVentaAdm.Src.Reportes {
                     this.tableLibroVentaEnc.InitVars();
                 }
             }
+            this.tableCxcCobranzaResumen = ((CxcCobranzaResumenDataTable)(base.Tables["CxcCobranzaResumen"]));
+            if ((initTable == true)) {
+                if ((this.tableCxcCobranzaResumen != null)) {
+                    this.tableCxcCobranzaResumen.InitVars();
+                }
+            }
+            this.tableVentasDocCredito = ((VentasDocCreditoDataTable)(base.Tables["VentasDocCredito"]));
+            if ((initTable == true)) {
+                if ((this.tableVentasDocCredito != null)) {
+                    this.tableVentasDocCredito.InitVars();
+                }
+            }
+            this.tableCxcCobranzaDetPorDocumento = ((CxcCobranzaDetPorDocumentoDataTable)(base.Tables["CxcCobranzaDetPorDocumento"]));
+            if ((initTable == true)) {
+                if ((this.tableCxcCobranzaDetPorDocumento != null)) {
+                    this.tableCxcCobranzaDetPorDocumento.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -544,6 +616,12 @@ namespace ModVentaAdm.Src.Reportes {
             base.Tables.Add(this.tableVentaxPorVendedorDetalle);
             this.tableLibroVentaEnc = new LibroVentaEncDataTable();
             base.Tables.Add(this.tableLibroVentaEnc);
+            this.tableCxcCobranzaResumen = new CxcCobranzaResumenDataTable();
+            base.Tables.Add(this.tableCxcCobranzaResumen);
+            this.tableVentasDocCredito = new VentasDocCreditoDataTable();
+            base.Tables.Add(this.tableVentasDocCredito);
+            this.tableCxcCobranzaDetPorDocumento = new CxcCobranzaDetPorDocumentoDataTable();
+            base.Tables.Add(this.tableCxcCobranzaDetPorDocumento);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -627,6 +705,24 @@ namespace ModVentaAdm.Src.Reportes {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeLibroVentaEnc() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeCxcCobranzaResumen() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeVentasDocCredito() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeCxcCobranzaDetPorDocumento() {
             return false;
         }
         
@@ -726,6 +822,15 @@ namespace ModVentaAdm.Src.Reportes {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void LibroVentaEncRowChangeEventHandler(object sender, LibroVentaEncRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void CxcCobranzaResumenRowChangeEventHandler(object sender, CxcCobranzaResumenRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void VentasDocCreditoRowChangeEventHandler(object sender, VentasDocCreditoRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void CxcCobranzaDetPorDocumentoRowChangeEventHandler(object sender, CxcCobranzaDetPorDocumentoRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -5803,6 +5908,1027 @@ namespace ModVentaAdm.Src.Reportes {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class CxcCobranzaResumenDataTable : global::System.Data.TypedTableBase<CxcCobranzaResumenRow> {
+            
+            private global::System.Data.DataColumn columndocumento;
+            
+            private global::System.Data.DataColumn columnfechaHora;
+            
+            private global::System.Data.DataColumn columncliente;
+            
+            private global::System.Data.DataColumn columnmontoRecibido;
+            
+            private global::System.Data.DataColumn columnmontoDocPagado;
+            
+            private global::System.Data.DataColumn columnanticiposCargado;
+            
+            private global::System.Data.DataColumn columnanticiposUsado;
+            
+            private global::System.Data.DataColumn columnntCreditoUsado;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaResumenDataTable() {
+                this.TableName = "CxcCobranzaResumen";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal CxcCobranzaResumenDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected CxcCobranzaResumenDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn documentoColumn {
+                get {
+                    return this.columndocumento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fechaHoraColumn {
+                get {
+                    return this.columnfechaHora;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn clienteColumn {
+                get {
+                    return this.columncliente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoRecibidoColumn {
+                get {
+                    return this.columnmontoRecibido;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoDocPagadoColumn {
+                get {
+                    return this.columnmontoDocPagado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn anticiposCargadoColumn {
+                get {
+                    return this.columnanticiposCargado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn anticiposUsadoColumn {
+                get {
+                    return this.columnanticiposUsado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ntCreditoUsadoColumn {
+                get {
+                    return this.columnntCreditoUsado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaResumenRow this[int index] {
+                get {
+                    return ((CxcCobranzaResumenRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CxcCobranzaResumenRowChangeEventHandler CxcCobranzaResumenRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CxcCobranzaResumenRowChangeEventHandler CxcCobranzaResumenRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CxcCobranzaResumenRowChangeEventHandler CxcCobranzaResumenRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CxcCobranzaResumenRowChangeEventHandler CxcCobranzaResumenRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddCxcCobranzaResumenRow(CxcCobranzaResumenRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaResumenRow AddCxcCobranzaResumenRow(string documento, System.DateTime fechaHora, string cliente, decimal montoRecibido, decimal montoDocPagado, decimal anticiposCargado, decimal anticiposUsado, decimal ntCreditoUsado) {
+                CxcCobranzaResumenRow rowCxcCobranzaResumenRow = ((CxcCobranzaResumenRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        documento,
+                        fechaHora,
+                        cliente,
+                        montoRecibido,
+                        montoDocPagado,
+                        anticiposCargado,
+                        anticiposUsado,
+                        ntCreditoUsado};
+                rowCxcCobranzaResumenRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCxcCobranzaResumenRow);
+                return rowCxcCobranzaResumenRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                CxcCobranzaResumenDataTable cln = ((CxcCobranzaResumenDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new CxcCobranzaResumenDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columndocumento = base.Columns["documento"];
+                this.columnfechaHora = base.Columns["fechaHora"];
+                this.columncliente = base.Columns["cliente"];
+                this.columnmontoRecibido = base.Columns["montoRecibido"];
+                this.columnmontoDocPagado = base.Columns["montoDocPagado"];
+                this.columnanticiposCargado = base.Columns["anticiposCargado"];
+                this.columnanticiposUsado = base.Columns["anticiposUsado"];
+                this.columnntCreditoUsado = base.Columns["ntCreditoUsado"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columndocumento = new global::System.Data.DataColumn("documento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndocumento);
+                this.columnfechaHora = new global::System.Data.DataColumn("fechaHora", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfechaHora);
+                this.columncliente = new global::System.Data.DataColumn("cliente", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncliente);
+                this.columnmontoRecibido = new global::System.Data.DataColumn("montoRecibido", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoRecibido);
+                this.columnmontoDocPagado = new global::System.Data.DataColumn("montoDocPagado", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoDocPagado);
+                this.columnanticiposCargado = new global::System.Data.DataColumn("anticiposCargado", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnanticiposCargado);
+                this.columnanticiposUsado = new global::System.Data.DataColumn("anticiposUsado", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnanticiposUsado);
+                this.columnntCreditoUsado = new global::System.Data.DataColumn("ntCreditoUsado", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnntCreditoUsado);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaResumenRow NewCxcCobranzaResumenRow() {
+                return ((CxcCobranzaResumenRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new CxcCobranzaResumenRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(CxcCobranzaResumenRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.CxcCobranzaResumenRowChanged != null)) {
+                    this.CxcCobranzaResumenRowChanged(this, new CxcCobranzaResumenRowChangeEvent(((CxcCobranzaResumenRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.CxcCobranzaResumenRowChanging != null)) {
+                    this.CxcCobranzaResumenRowChanging(this, new CxcCobranzaResumenRowChangeEvent(((CxcCobranzaResumenRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.CxcCobranzaResumenRowDeleted != null)) {
+                    this.CxcCobranzaResumenRowDeleted(this, new CxcCobranzaResumenRowChangeEvent(((CxcCobranzaResumenRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.CxcCobranzaResumenRowDeleting != null)) {
+                    this.CxcCobranzaResumenRowDeleting(this, new CxcCobranzaResumenRowChangeEvent(((CxcCobranzaResumenRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveCxcCobranzaResumenRow(CxcCobranzaResumenRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DS ds = new DS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "CxcCobranzaResumenDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class VentasDocCreditoDataTable : global::System.Data.TypedTableBase<VentasDocCreditoRow> {
+            
+            private global::System.Data.DataColumn columnfechaHora;
+            
+            private global::System.Data.DataColumn columnnumeroDoc;
+            
+            private global::System.Data.DataColumn columndescDoc;
+            
+            private global::System.Data.DataColumn columnentidad;
+            
+            private global::System.Data.DataColumn columnmontoDivisa;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public VentasDocCreditoDataTable() {
+                this.TableName = "VentasDocCredito";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal VentasDocCreditoDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected VentasDocCreditoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fechaHoraColumn {
+                get {
+                    return this.columnfechaHora;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn numeroDocColumn {
+                get {
+                    return this.columnnumeroDoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn descDocColumn {
+                get {
+                    return this.columndescDoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn entidadColumn {
+                get {
+                    return this.columnentidad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoDivisaColumn {
+                get {
+                    return this.columnmontoDivisa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public VentasDocCreditoRow this[int index] {
+                get {
+                    return ((VentasDocCreditoRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event VentasDocCreditoRowChangeEventHandler VentasDocCreditoRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event VentasDocCreditoRowChangeEventHandler VentasDocCreditoRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event VentasDocCreditoRowChangeEventHandler VentasDocCreditoRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event VentasDocCreditoRowChangeEventHandler VentasDocCreditoRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddVentasDocCreditoRow(VentasDocCreditoRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public VentasDocCreditoRow AddVentasDocCreditoRow(System.DateTime fechaHora, string numeroDoc, string descDoc, string entidad, decimal montoDivisa) {
+                VentasDocCreditoRow rowVentasDocCreditoRow = ((VentasDocCreditoRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        fechaHora,
+                        numeroDoc,
+                        descDoc,
+                        entidad,
+                        montoDivisa};
+                rowVentasDocCreditoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowVentasDocCreditoRow);
+                return rowVentasDocCreditoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                VentasDocCreditoDataTable cln = ((VentasDocCreditoDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new VentasDocCreditoDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnfechaHora = base.Columns["fechaHora"];
+                this.columnnumeroDoc = base.Columns["numeroDoc"];
+                this.columndescDoc = base.Columns["descDoc"];
+                this.columnentidad = base.Columns["entidad"];
+                this.columnmontoDivisa = base.Columns["montoDivisa"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnfechaHora = new global::System.Data.DataColumn("fechaHora", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfechaHora);
+                this.columnnumeroDoc = new global::System.Data.DataColumn("numeroDoc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumeroDoc);
+                this.columndescDoc = new global::System.Data.DataColumn("descDoc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndescDoc);
+                this.columnentidad = new global::System.Data.DataColumn("entidad", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnentidad);
+                this.columnmontoDivisa = new global::System.Data.DataColumn("montoDivisa", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoDivisa);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public VentasDocCreditoRow NewVentasDocCreditoRow() {
+                return ((VentasDocCreditoRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new VentasDocCreditoRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(VentasDocCreditoRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.VentasDocCreditoRowChanged != null)) {
+                    this.VentasDocCreditoRowChanged(this, new VentasDocCreditoRowChangeEvent(((VentasDocCreditoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.VentasDocCreditoRowChanging != null)) {
+                    this.VentasDocCreditoRowChanging(this, new VentasDocCreditoRowChangeEvent(((VentasDocCreditoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.VentasDocCreditoRowDeleted != null)) {
+                    this.VentasDocCreditoRowDeleted(this, new VentasDocCreditoRowChangeEvent(((VentasDocCreditoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.VentasDocCreditoRowDeleting != null)) {
+                    this.VentasDocCreditoRowDeleting(this, new VentasDocCreditoRowChangeEvent(((VentasDocCreditoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveVentasDocCreditoRow(VentasDocCreditoRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DS ds = new DS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "VentasDocCreditoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class CxcCobranzaDetPorDocumentoDataTable : global::System.Data.TypedTableBase<CxcCobranzaDetPorDocumentoRow> {
+            
+            private global::System.Data.DataColumn columnnumeroRec;
+            
+            private global::System.Data.DataColumn columnfechaRec;
+            
+            private global::System.Data.DataColumn columnentidad;
+            
+            private global::System.Data.DataColumn columnimporteRec;
+            
+            private global::System.Data.DataColumn columnnumeroDoc;
+            
+            private global::System.Data.DataColumn columndescDoc;
+            
+            private global::System.Data.DataColumn columnfechaDoc;
+            
+            private global::System.Data.DataColumn columnimporteDoc;
+            
+            private global::System.Data.DataColumn columnnotasDoc;
+            
+            private global::System.Data.DataColumn columnxref;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaDetPorDocumentoDataTable() {
+                this.TableName = "CxcCobranzaDetPorDocumento";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal CxcCobranzaDetPorDocumentoDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected CxcCobranzaDetPorDocumentoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn numeroRecColumn {
+                get {
+                    return this.columnnumeroRec;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fechaRecColumn {
+                get {
+                    return this.columnfechaRec;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn entidadColumn {
+                get {
+                    return this.columnentidad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn importeRecColumn {
+                get {
+                    return this.columnimporteRec;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn numeroDocColumn {
+                get {
+                    return this.columnnumeroDoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn descDocColumn {
+                get {
+                    return this.columndescDoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fechaDocColumn {
+                get {
+                    return this.columnfechaDoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn importeDocColumn {
+                get {
+                    return this.columnimporteDoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn notasDocColumn {
+                get {
+                    return this.columnnotasDoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn xrefColumn {
+                get {
+                    return this.columnxref;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaDetPorDocumentoRow this[int index] {
+                get {
+                    return ((CxcCobranzaDetPorDocumentoRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CxcCobranzaDetPorDocumentoRowChangeEventHandler CxcCobranzaDetPorDocumentoRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CxcCobranzaDetPorDocumentoRowChangeEventHandler CxcCobranzaDetPorDocumentoRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CxcCobranzaDetPorDocumentoRowChangeEventHandler CxcCobranzaDetPorDocumentoRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event CxcCobranzaDetPorDocumentoRowChangeEventHandler CxcCobranzaDetPorDocumentoRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddCxcCobranzaDetPorDocumentoRow(CxcCobranzaDetPorDocumentoRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaDetPorDocumentoRow AddCxcCobranzaDetPorDocumentoRow(string numeroRec, System.DateTime fechaRec, string entidad, decimal importeRec, string numeroDoc, string descDoc, System.DateTime fechaDoc, decimal importeDoc, string notasDoc, string xref) {
+                CxcCobranzaDetPorDocumentoRow rowCxcCobranzaDetPorDocumentoRow = ((CxcCobranzaDetPorDocumentoRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        numeroRec,
+                        fechaRec,
+                        entidad,
+                        importeRec,
+                        numeroDoc,
+                        descDoc,
+                        fechaDoc,
+                        importeDoc,
+                        notasDoc,
+                        xref};
+                rowCxcCobranzaDetPorDocumentoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCxcCobranzaDetPorDocumentoRow);
+                return rowCxcCobranzaDetPorDocumentoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                CxcCobranzaDetPorDocumentoDataTable cln = ((CxcCobranzaDetPorDocumentoDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new CxcCobranzaDetPorDocumentoDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnnumeroRec = base.Columns["numeroRec"];
+                this.columnfechaRec = base.Columns["fechaRec"];
+                this.columnentidad = base.Columns["entidad"];
+                this.columnimporteRec = base.Columns["importeRec"];
+                this.columnnumeroDoc = base.Columns["numeroDoc"];
+                this.columndescDoc = base.Columns["descDoc"];
+                this.columnfechaDoc = base.Columns["fechaDoc"];
+                this.columnimporteDoc = base.Columns["importeDoc"];
+                this.columnnotasDoc = base.Columns["notasDoc"];
+                this.columnxref = base.Columns["xref"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnnumeroRec = new global::System.Data.DataColumn("numeroRec", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumeroRec);
+                this.columnfechaRec = new global::System.Data.DataColumn("fechaRec", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfechaRec);
+                this.columnentidad = new global::System.Data.DataColumn("entidad", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnentidad);
+                this.columnimporteRec = new global::System.Data.DataColumn("importeRec", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimporteRec);
+                this.columnnumeroDoc = new global::System.Data.DataColumn("numeroDoc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumeroDoc);
+                this.columndescDoc = new global::System.Data.DataColumn("descDoc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndescDoc);
+                this.columnfechaDoc = new global::System.Data.DataColumn("fechaDoc", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfechaDoc);
+                this.columnimporteDoc = new global::System.Data.DataColumn("importeDoc", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimporteDoc);
+                this.columnnotasDoc = new global::System.Data.DataColumn("notasDoc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnotasDoc);
+                this.columnxref = new global::System.Data.DataColumn("xref", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnxref);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaDetPorDocumentoRow NewCxcCobranzaDetPorDocumentoRow() {
+                return ((CxcCobranzaDetPorDocumentoRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new CxcCobranzaDetPorDocumentoRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(CxcCobranzaDetPorDocumentoRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.CxcCobranzaDetPorDocumentoRowChanged != null)) {
+                    this.CxcCobranzaDetPorDocumentoRowChanged(this, new CxcCobranzaDetPorDocumentoRowChangeEvent(((CxcCobranzaDetPorDocumentoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.CxcCobranzaDetPorDocumentoRowChanging != null)) {
+                    this.CxcCobranzaDetPorDocumentoRowChanging(this, new CxcCobranzaDetPorDocumentoRowChangeEvent(((CxcCobranzaDetPorDocumentoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.CxcCobranzaDetPorDocumentoRowDeleted != null)) {
+                    this.CxcCobranzaDetPorDocumentoRowDeleted(this, new CxcCobranzaDetPorDocumentoRowChangeEvent(((CxcCobranzaDetPorDocumentoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.CxcCobranzaDetPorDocumentoRowDeleting != null)) {
+                    this.CxcCobranzaDetPorDocumentoRowDeleting(this, new CxcCobranzaDetPorDocumentoRowChangeEvent(((CxcCobranzaDetPorDocumentoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveCxcCobranzaDetPorDocumentoRow(CxcCobranzaDetPorDocumentoRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DS ds = new DS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "CxcCobranzaDetPorDocumentoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class GeneralDocumentoRow : global::System.Data.DataRow {
@@ -9575,6 +10701,699 @@ namespace ModVentaAdm.Src.Reportes {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class CxcCobranzaResumenRow : global::System.Data.DataRow {
+            
+            private CxcCobranzaResumenDataTable tableCxcCobranzaResumen;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal CxcCobranzaResumenRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableCxcCobranzaResumen = ((CxcCobranzaResumenDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string documento {
+                get {
+                    try {
+                        return ((string)(this[this.tableCxcCobranzaResumen.documentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'documento\' in table \'CxcCobranzaResumen\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaResumen.documentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fechaHora {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableCxcCobranzaResumen.fechaHoraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fechaHora\' in table \'CxcCobranzaResumen\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaResumen.fechaHoraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cliente {
+                get {
+                    try {
+                        return ((string)(this[this.tableCxcCobranzaResumen.clienteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cliente\' in table \'CxcCobranzaResumen\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaResumen.clienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoRecibido {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCxcCobranzaResumen.montoRecibidoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoRecibido\' in table \'CxcCobranzaResumen\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaResumen.montoRecibidoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoDocPagado {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCxcCobranzaResumen.montoDocPagadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoDocPagado\' in table \'CxcCobranzaResumen\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaResumen.montoDocPagadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal anticiposCargado {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCxcCobranzaResumen.anticiposCargadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'anticiposCargado\' in table \'CxcCobranzaResumen\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaResumen.anticiposCargadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal anticiposUsado {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCxcCobranzaResumen.anticiposUsadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'anticiposUsado\' in table \'CxcCobranzaResumen\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaResumen.anticiposUsadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal ntCreditoUsado {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCxcCobranzaResumen.ntCreditoUsadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ntCreditoUsado\' in table \'CxcCobranzaResumen\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaResumen.ntCreditoUsadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdocumentoNull() {
+                return this.IsNull(this.tableCxcCobranzaResumen.documentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdocumentoNull() {
+                this[this.tableCxcCobranzaResumen.documentoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfechaHoraNull() {
+                return this.IsNull(this.tableCxcCobranzaResumen.fechaHoraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfechaHoraNull() {
+                this[this.tableCxcCobranzaResumen.fechaHoraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsclienteNull() {
+                return this.IsNull(this.tableCxcCobranzaResumen.clienteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetclienteNull() {
+                this[this.tableCxcCobranzaResumen.clienteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoRecibidoNull() {
+                return this.IsNull(this.tableCxcCobranzaResumen.montoRecibidoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoRecibidoNull() {
+                this[this.tableCxcCobranzaResumen.montoRecibidoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoDocPagadoNull() {
+                return this.IsNull(this.tableCxcCobranzaResumen.montoDocPagadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoDocPagadoNull() {
+                this[this.tableCxcCobranzaResumen.montoDocPagadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsanticiposCargadoNull() {
+                return this.IsNull(this.tableCxcCobranzaResumen.anticiposCargadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetanticiposCargadoNull() {
+                this[this.tableCxcCobranzaResumen.anticiposCargadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsanticiposUsadoNull() {
+                return this.IsNull(this.tableCxcCobranzaResumen.anticiposUsadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetanticiposUsadoNull() {
+                this[this.tableCxcCobranzaResumen.anticiposUsadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsntCreditoUsadoNull() {
+                return this.IsNull(this.tableCxcCobranzaResumen.ntCreditoUsadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetntCreditoUsadoNull() {
+                this[this.tableCxcCobranzaResumen.ntCreditoUsadoColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class VentasDocCreditoRow : global::System.Data.DataRow {
+            
+            private VentasDocCreditoDataTable tableVentasDocCredito;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal VentasDocCreditoRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableVentasDocCredito = ((VentasDocCreditoDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fechaHora {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableVentasDocCredito.fechaHoraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fechaHora\' in table \'VentasDocCredito\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVentasDocCredito.fechaHoraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string numeroDoc {
+                get {
+                    try {
+                        return ((string)(this[this.tableVentasDocCredito.numeroDocColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'numeroDoc\' in table \'VentasDocCredito\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVentasDocCredito.numeroDocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string descDoc {
+                get {
+                    try {
+                        return ((string)(this[this.tableVentasDocCredito.descDocColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'descDoc\' in table \'VentasDocCredito\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVentasDocCredito.descDocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string entidad {
+                get {
+                    try {
+                        return ((string)(this[this.tableVentasDocCredito.entidadColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'entidad\' in table \'VentasDocCredito\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVentasDocCredito.entidadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoDivisa {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableVentasDocCredito.montoDivisaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoDivisa\' in table \'VentasDocCredito\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVentasDocCredito.montoDivisaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfechaHoraNull() {
+                return this.IsNull(this.tableVentasDocCredito.fechaHoraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfechaHoraNull() {
+                this[this.tableVentasDocCredito.fechaHoraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnumeroDocNull() {
+                return this.IsNull(this.tableVentasDocCredito.numeroDocColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnumeroDocNull() {
+                this[this.tableVentasDocCredito.numeroDocColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdescDocNull() {
+                return this.IsNull(this.tableVentasDocCredito.descDocColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdescDocNull() {
+                this[this.tableVentasDocCredito.descDocColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsentidadNull() {
+                return this.IsNull(this.tableVentasDocCredito.entidadColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetentidadNull() {
+                this[this.tableVentasDocCredito.entidadColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoDivisaNull() {
+                return this.IsNull(this.tableVentasDocCredito.montoDivisaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoDivisaNull() {
+                this[this.tableVentasDocCredito.montoDivisaColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class CxcCobranzaDetPorDocumentoRow : global::System.Data.DataRow {
+            
+            private CxcCobranzaDetPorDocumentoDataTable tableCxcCobranzaDetPorDocumento;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal CxcCobranzaDetPorDocumentoRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableCxcCobranzaDetPorDocumento = ((CxcCobranzaDetPorDocumentoDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string numeroRec {
+                get {
+                    try {
+                        return ((string)(this[this.tableCxcCobranzaDetPorDocumento.numeroRecColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'numeroRec\' in table \'CxcCobranzaDetPorDocumento\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorDocumento.numeroRecColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fechaRec {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableCxcCobranzaDetPorDocumento.fechaRecColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fechaRec\' in table \'CxcCobranzaDetPorDocumento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorDocumento.fechaRecColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string entidad {
+                get {
+                    try {
+                        return ((string)(this[this.tableCxcCobranzaDetPorDocumento.entidadColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'entidad\' in table \'CxcCobranzaDetPorDocumento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorDocumento.entidadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal importeRec {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCxcCobranzaDetPorDocumento.importeRecColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'importeRec\' in table \'CxcCobranzaDetPorDocumento\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorDocumento.importeRecColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string numeroDoc {
+                get {
+                    try {
+                        return ((string)(this[this.tableCxcCobranzaDetPorDocumento.numeroDocColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'numeroDoc\' in table \'CxcCobranzaDetPorDocumento\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorDocumento.numeroDocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string descDoc {
+                get {
+                    try {
+                        return ((string)(this[this.tableCxcCobranzaDetPorDocumento.descDocColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'descDoc\' in table \'CxcCobranzaDetPorDocumento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorDocumento.descDocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fechaDoc {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableCxcCobranzaDetPorDocumento.fechaDocColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fechaDoc\' in table \'CxcCobranzaDetPorDocumento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorDocumento.fechaDocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal importeDoc {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCxcCobranzaDetPorDocumento.importeDocColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'importeDoc\' in table \'CxcCobranzaDetPorDocumento\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorDocumento.importeDocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string notasDoc {
+                get {
+                    try {
+                        return ((string)(this[this.tableCxcCobranzaDetPorDocumento.notasDocColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'notasDoc\' in table \'CxcCobranzaDetPorDocumento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorDocumento.notasDocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string xref {
+                get {
+                    try {
+                        return ((string)(this[this.tableCxcCobranzaDetPorDocumento.xrefColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'xref\' in table \'CxcCobranzaDetPorDocumento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorDocumento.xrefColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnumeroRecNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorDocumento.numeroRecColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnumeroRecNull() {
+                this[this.tableCxcCobranzaDetPorDocumento.numeroRecColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfechaRecNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorDocumento.fechaRecColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfechaRecNull() {
+                this[this.tableCxcCobranzaDetPorDocumento.fechaRecColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsentidadNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorDocumento.entidadColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetentidadNull() {
+                this[this.tableCxcCobranzaDetPorDocumento.entidadColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsimporteRecNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorDocumento.importeRecColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetimporteRecNull() {
+                this[this.tableCxcCobranzaDetPorDocumento.importeRecColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnumeroDocNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorDocumento.numeroDocColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnumeroDocNull() {
+                this[this.tableCxcCobranzaDetPorDocumento.numeroDocColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdescDocNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorDocumento.descDocColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdescDocNull() {
+                this[this.tableCxcCobranzaDetPorDocumento.descDocColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfechaDocNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorDocumento.fechaDocColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfechaDocNull() {
+                this[this.tableCxcCobranzaDetPorDocumento.fechaDocColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsimporteDocNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorDocumento.importeDocColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetimporteDocNull() {
+                this[this.tableCxcCobranzaDetPorDocumento.importeDocColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnotasDocNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorDocumento.notasDocColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnotasDocNull() {
+                this[this.tableCxcCobranzaDetPorDocumento.notasDocColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsxrefNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorDocumento.xrefColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetxrefNull() {
+                this[this.tableCxcCobranzaDetPorDocumento.xrefColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -10036,6 +11855,108 @@ namespace ModVentaAdm.Src.Reportes {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public LibroVentaEncRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class CxcCobranzaResumenRowChangeEvent : global::System.EventArgs {
+            
+            private CxcCobranzaResumenRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaResumenRowChangeEvent(CxcCobranzaResumenRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaResumenRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class VentasDocCreditoRowChangeEvent : global::System.EventArgs {
+            
+            private VentasDocCreditoRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public VentasDocCreditoRowChangeEvent(VentasDocCreditoRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public VentasDocCreditoRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class CxcCobranzaDetPorDocumentoRowChangeEvent : global::System.EventArgs {
+            
+            private CxcCobranzaDetPorDocumentoRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaDetPorDocumentoRowChangeEvent(CxcCobranzaDetPorDocumentoRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CxcCobranzaDetPorDocumentoRow Row {
                 get {
                     return this.eventRow;
                 }

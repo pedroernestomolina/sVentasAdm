@@ -404,6 +404,7 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                 montoRecibido = _panResumen.GetResumenMontoAbono,
                 fechaProceso = _fechaRecibo,
                 montoAnticipoCargar = _panResumen.GetResumenSaldo,
+                montoNtCredito = _panResumen.GetResumenMontoNtCredito,
             };
             return oob;
         }

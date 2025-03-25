@@ -86,6 +86,8 @@
     <Compile Include="ReportePos.cs" />
     <Compile Include="ReportesAdm.cs" />
     <Compile Include="ReportesCli.cs" />
+    <Compile Include="ReportesCxc.cs" />
+    <Compile Include="ReporteVentaAdm_DocCredito.cs" />
     <Compile Include="Reporte_LibroVentas_Pos.cs" />
     <Compile Include="Sistema.cs" />
     <Compile Include="Sucursal.cs" />

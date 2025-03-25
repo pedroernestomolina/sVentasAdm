@@ -23,6 +23,7 @@ namespace DtoLibPos.CxC.GestionCobro
         public decimal montoRecibido { get; set; }
         public DateTime fechaCobro { get; set; }
         public decimal montoAnticipoCargar { get; set; }
+        public decimal montoNtCredito { get; set; }
         public Ficha() 
         {
             autoCliente = "";
@@ -38,7 +39,8 @@ namespace DtoLibPos.CxC.GestionCobro
             retencion = null;
             cajas = null;
             fechaCobro = DateTime.Now.Date;
-            montoAnticipoCargar = 0m; 
+            montoAnticipoCargar = 0m;
+            montoNtCredito = 0m;
         }
     }
 }

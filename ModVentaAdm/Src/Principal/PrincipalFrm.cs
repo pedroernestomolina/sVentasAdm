@@ -191,6 +191,20 @@ namespace ModVentaAdm.Src.Principal
             Reporte_Ventas_PorVendedorDetallado();
         }
 
+        //CXC
+        private void MENU_REPORTES_CXC_COBRANZA_DETALLE_POR_DOCUMENTOS_Click(object sender, EventArgs e)
+        {
+            RepCxc_CobranzaDetallePorDocumento();
+        }
+        private void MENU_REPORTES_CXC_COBRANZA_RESUMEN_Click(object sender, EventArgs e)
+        {
+            RepCxc_CobranzaResumen();
+        }
+        private void MENU_REPORTES_CXC_COBRANZA_DETALLE_POR_MEDIOPAGO_Click(object sender, EventArgs e)
+        {
+            RepCxc_CobranzaDetallePorMedioPago();
+        }
+
 
         //CLIENTES
         private void MaestroClientes()
@@ -275,7 +289,10 @@ namespace ModVentaAdm.Src.Principal
         {
             _controlador.Reporte_Vendedor_Detallado();
         }
-
+        private void MENU_REPORTES_VENTAS_CREDITO_Click(object sender, EventArgs e)
+        {
+            _controlador.Reporte_Ventas_Credito();
+        }
 
         private void REP_CLIENTE_MAESTRO_Click(object sender, EventArgs e)
         {
@@ -292,6 +309,20 @@ namespace ModVentaAdm.Src.Principal
         private void RepCliente_SaldoPend()
         {
             _controlador.RepCliente_SaldoPend();
+        }
+
+        //CXC
+        private void RepCxc_CobranzaDetallePorDocumento()
+        {
+            _controlador.RepCxc_CobranzaDetallePorDocumento();
+        }
+        private void RepCxc_CobranzaResumen()
+        {
+            _controlador.RepCxc_CobranzaResumen();
+        }
+        private void RepCxc_CobranzaDetallePorMedioPago()
+        {
+            _controlador.RepCxc_CobranzaDetallePorMedioPago();
         }
     }
 }

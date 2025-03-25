@@ -62,6 +62,7 @@
     <Compile Include="IProducto.cs" />
     <Compile Include="IProductoAdm.cs" />
     <Compile Include="IProvider.cs" />
+    <Compile Include="IReportesCxc.cs" />
     <Compile Include="IReportesAdm.cs" />
     <Compile Include="IReportesCli.cs" />
     <Compile Include="IReportesPos.cs" />

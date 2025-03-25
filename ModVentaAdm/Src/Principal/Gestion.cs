@@ -130,18 +130,23 @@ namespace ModVentaAdm.Src.Principal
 
         private void Reporte(Reportes.IGestion gestion)
         {
-            var r00 = Sistema.MyData.Permiso_Reportes(Sistema.Usuario.idGrupo);
-            if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
+                var r00 = Sistema.MyData.Permiso_Reportes(Sistema.Usuario.idGrupo);
+                if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r00.Mensaje);
+                }
+                if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+                {
+                    _gestionRep.setGestion(gestion);
+                    _gestionRep.Inicializa();
+                    _gestionRep.Inicia();
+                }
             }
-
-            if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+            catch (Exception e)
             {
-                _gestionRep.setGestion(gestion);
-                _gestionRep.Inicializa();
-                _gestionRep.Inicia();
+                Helpers.Msg.Error(e.Message);
             }
         }
 
@@ -509,6 +514,26 @@ namespace ModVentaAdm.Src.Principal
         public void Reporte_LibroVentaPos()
         {
             Reporte(new Reportes.Modo.LibroVenta.GestionPos());
+        }
+
+        //
+        public void Reporte_Ventas_Credito()
+        {
+            Reporte(new Reportes.Modo.DocCredito.Gestion());
+        }
+
+        //
+        public void RepCxc_CobranzaDetallePorDocumento()
+        {
+            Reporte(new Reportes.Modo.Cxc.CobranzaDetallePorDocumento.Gestion());
+        }
+        public void RepCxc_CobranzaResumen()
+        {
+            Reporte(new Reportes.Modo.Cxc.CobranzaResumen.Gestion());
+        }
+        public void RepCxc_CobranzaDetallePorMedioPago()
+        {
+            Reporte(new Reportes.Modo.Cxc.CobranzaDetallePorMedioPago.Gestion());
         }
     }
 }

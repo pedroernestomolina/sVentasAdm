@@ -63,6 +63,7 @@
     <Compile Include="Interfaces\IReportePos.cs" />
     <Compile Include="Interfaces\IReportesAdm.cs" />
     <Compile Include="Interfaces\IReportesCli.cs" />
+    <Compile Include="Interfaces\IReportesCxc.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Interfaces\ISistema.cs" />
     <Compile Include="Interfaces\ISucursal.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="MyService\ReportePos.cs" />
     <Compile Include="MyService\ReportesAdm.cs" />
     <Compile Include="MyService\ReportesCli.cs" />
+    <Compile Include="MyService\ReportesCxc.cs" />
     <Compile Include="MyService\Service.cs" />
     <Compile Include="MyService\Sistema.cs" />
     <Compile Include="MyService\Sucursal.cs" />

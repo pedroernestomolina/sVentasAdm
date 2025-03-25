@@ -22,7 +22,8 @@ namespace ServicePos.Interfaces
         Transporte.ITranspDocAliado,
         Transporte.ITranspDoc_GestionAliado,
         ICxC_CapturarData,
-        ICxC_Anular
+        ICxC_Anular,
+        IReportesCxc
     {
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();
         DtoLib.Resultado Test();
