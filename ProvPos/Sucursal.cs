@@ -16,16 +16,20 @@ namespace ProvPos
             Sucursal_GetLista(DtoLibPos.Sucursal.Lista.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.Sucursal.Lista.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
                 {
-                    var sql_1 = " select auto as id, codigo, nombre ";
-                    var sql_2 = " from empresa_sucursal ";
+                    var sql_1 = @"select 
+                                    suc.auto as id, 
+                                    suc.codigo, 
+                                    suc.nombre,
+                                    sucExt.es_activo as estatus ";
+                    var sql_2 = @" from empresa_sucursal as suc 
+                                   join empresa_sucursal_ext as sucExt on sucExt.auto_sucursal=suc.auto ";
                     var sql_3 = " where 1=1 ";
                     var sql_4 = "";
-
                     var sql = sql_1 + sql_2 + sql_3 + sql_4;
                     var list = cnn.Database.SqlQuery<DtoLibPos.Sucursal.Lista.Ficha>(sql).ToList();
                     result.Lista = list;
@@ -36,7 +40,7 @@ namespace ProvPos
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return result;
         }
         public DtoLib.ResultadoEntidad<DtoLibPos.Sucursal.Entidad.Ficha> 
@@ -160,7 +164,5 @@ namespace ProvPos
 
             return result;
         }
-
     }
-
 }

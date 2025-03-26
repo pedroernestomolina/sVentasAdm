@@ -45,7 +45,7 @@ namespace ProvPos
                     {
                         p3.ParameterName = "@suc";
                         p3.Value = filtro.codSucursal;
-                        sql_3 += " and vent.codigo_sucursal=@suc ";
+                        sql_3 += " and v.codigo_sucursal=@suc ";
                     }
                     var sql = sql_1 + sql_2 + sql_3 + sql_4;
                     var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.DocCredito.Ficha>(sql, p1, p2, p3).ToList();

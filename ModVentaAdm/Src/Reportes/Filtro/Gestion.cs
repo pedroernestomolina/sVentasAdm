@@ -8,18 +8,15 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.Reportes.Filtro
 {
-    
     public class Gestion
     {
-
         private IFiltro _filtro;
         private data _data;
         private bool _isOk;
         private bool _procesarIsOk;
         private List<general> _lTipoDoc;
-        private List<general> _lSucursal;
         private List<general> _lEstatus;
-        private BindingSource _bsSucursal;
+        private Utils.FiltrosCB.ICtrlSinBusqueda _sucursal;
         private BindingSource _bsEstatus;
         private BindingSource _bsTipoDoc;
         private Cliente.Lista.Gestion _gestionClienteLista;
@@ -28,7 +25,7 @@ namespace ModVentaAdm.Src.Reportes.Filtro
 
         public bool ActivarPalabraClave { get { return _filtro.ActivarPalabreClave; } }
         public string PalabraClave { get { return _data.PalabraClave; } }
-        public BindingSource SourceSucursal { get { return _bsSucursal; } }
+        public BindingSource SourceSucursal { get { return _sucursal.GetSource; } }
         public BindingSource SourceEstatus { get { return _bsEstatus; } }
         public BindingSource SourceTipoDoc { get { return _bsTipoDoc; } }
         public bool ActivarEstatus { get { return _filtro.ActivarEstatus; } }
@@ -67,17 +64,15 @@ namespace ModVentaAdm.Src.Reportes.Filtro
         public Gestion()
         {
             _data = new data();
-            _lSucursal = new List<general>();
             _lEstatus = new List<general>();
             _lTipoDoc= new List<general>();
-            _bsSucursal = new BindingSource();
-            _bsSucursal.DataSource = _lSucursal;
             _bsEstatus = new BindingSource();
             _bsEstatus.DataSource = _lEstatus;
             _bsTipoDoc= new BindingSource();
             _bsTipoDoc.DataSource = _lTipoDoc;
             _gestionClienteLista = new Cliente.Lista.Gestion();
             _gProductoLista = new Producto.Lista.Gestion();
+            _sucursal = new Utils.FiltrosCB.SinBusqueda.Sucursal.Imp();
         }
         
 
@@ -86,41 +81,36 @@ namespace ModVentaAdm.Src.Reportes.Filtro
             _isOk = false;
             _procesarIsOk = false;
             _data.Inicializa();
+            _sucursal.Inicializa();
         }
 
         public bool CargarData()
         {
-            var rt = true;
-
-            var rt1 = Sistema.MyData.Sucursal_GetLista();
-            if (rt1.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(rt1.Mensaje);
+                _sucursal.ObtenerData();
+                //
+                _lEstatus.Clear();
+                _lEstatus.Add(new general("1", "Activo"));
+                _lEstatus.Add(new general("2", "Anulado"));
+                _bsEstatus.CurrencyManager.Refresh();
+                //
+                _lTipoDoc.Clear();
+                _lTipoDoc.Add(new general("1", "Factura", "01"));
+                _lTipoDoc.Add(new general("2", "Nota Débito", "02"));
+                _lTipoDoc.Add(new general("3", "Nota Crédito", "03"));
+                _lTipoDoc.Add(new general("4", "Nota Entrega", "04"));
+                _lTipoDoc.Add(new general("5", "Presupuesto", "05"));
+                _lTipoDoc.Add(new general("6", "Pedido", "06"));
+                _bsTipoDoc.CurrencyManager.Refresh();
+                //
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            _lSucursal.Clear();
-            foreach (var r in rt1.ListaD.OrderBy(o => o.nombre).ToList())
-            {
-                var nr = new general(r.auto, r.nombre, r.codigo);
-                _lSucursal.Add(nr);
-            }
-            _bsSucursal.CurrencyManager.Refresh();
-
-            _lEstatus.Clear();
-            _lEstatus.Add(new general("1", "Activo"));
-            _lEstatus.Add(new general("2", "Anulado"));
-            _bsEstatus.CurrencyManager.Refresh();
-
-            _lTipoDoc.Clear();
-            _lTipoDoc.Add(new general("1", "Factura", "01"));
-            _lTipoDoc.Add(new general("2", "Nota Débito", "02"));
-            _lTipoDoc.Add(new general("3", "Nota Crédito", "03"));
-            _lTipoDoc.Add(new general("4", "Nota Entrega", "04"));
-            _lTipoDoc.Add(new general("5", "Presupuesto", "05"));
-            _lTipoDoc.Add(new general("6", "Pedido", "06"));
-            _bsTipoDoc.CurrencyManager.Refresh();
-
-            return rt;
         }
 
         FiltroFrm frm;
@@ -141,7 +131,14 @@ namespace ModVentaAdm.Src.Reportes.Filtro
 
         public void setSucursal(string p)
         {
-            _data.setSucursal(_lSucursal.FirstOrDefault(f => f.auto == p));
+            _sucursal.setFichaById(p);
+            _data.setSucursal(null);
+            var it = (Utils.FiltrosCB.SinBusqueda.Sucursal.data)_sucursal.GetItem;
+            if (it != null)
+            {
+                var item = (OOB.Sucursal.Entidad.Ficha)it.Ficha;
+                _data.setSucursal(new general(item.auto, item.nombre, item.codigo));
+            }
         }
 
         public void setEstatus(string p)
@@ -279,7 +276,5 @@ namespace ModVentaAdm.Src.Reportes.Filtro
         {
             _data.setPalabraClave(p);
         }
-
     }
-
 }

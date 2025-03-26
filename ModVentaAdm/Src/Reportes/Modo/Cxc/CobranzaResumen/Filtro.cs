@@ -9,7 +9,7 @@ namespace ModVentaAdm.Src.Reportes.Modo.Cxc.CobranzaResumen
 {
     public class Filtro: Reportes.Filtro.IFiltro
     {
-        public bool ActivarSucursal { get { return true; } }
+        public bool ActivarSucursal { get { return false; } }
         public bool ActivarDesdeHasta { get { return true; } }
         public bool ActivarEstatus { get { return false; } }
         public bool ActivarMesAnoRelacion { get { return false; } }

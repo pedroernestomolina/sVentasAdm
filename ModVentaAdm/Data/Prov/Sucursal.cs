@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Data.Prov 
 {
-    
     public partial class DataPrv: IData
     {
-
-
         public OOB.Resultado.FichaEntidad<OOB.Sucursal.Entidad.Ficha> 
             Sucursal_GetFichaById(string id)
         {
@@ -46,7 +43,7 @@ namespace ModVentaAdm.Data.Prov
             Sucursal_GetLista()
         {
             var result = new OOB.Resultado.Lista<OOB.Sucursal.Entidad.Ficha>();
-
+            //
             var filtroDTO = new DtoLibPos.Sucursal.Lista.Filtro();
             var r01 = MyData.Sucursal_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -55,7 +52,6 @@ namespace ModVentaAdm.Data.Prov
                 result.Result = OOB.Resultado.Enumerados.EnumResult.isError;
                 return result;
             }
-
             var lst = new List<OOB.Sucursal.Entidad.Ficha>();
             if (r01.Lista != null)
             {
@@ -68,13 +64,14 @@ namespace ModVentaAdm.Data.Prov
                             auto = s.id,
                             codigo = s.codigo,
                             nombre = s.nombre,
+                            estatus= s.estatus,
                         };
                         return nr;
                     }).ToList();
                 }
             }
             result.ListaD = lst;
-
+            //
             return result;
         }
         public OOB.Resultado.FichaEntidad<string> 
@@ -93,8 +90,5 @@ namespace ModVentaAdm.Data.Prov
 
             return result;
         }
-
-
     }
-
 }

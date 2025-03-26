@@ -37,23 +37,6 @@ namespace ModVentaAdm.Src.Reportes.Modo.DocCredito
         }
         private void Imprimir(List<OOB.Reportes.DocCredito.Ficha> list)
         {
-
-            /*
-                     public string idDoc { get; set; }
-        public string numeroDoc { get; set; }
-        public DateTime fechaEmiDoc { get; set; }
-        public string moduloDoc { get; set; }
-        public string nombreDoc { get; set; }
-        public string codigoDoc { get; set; }
-        public string ciRifEntidad { get; set; }
-        public string razonSocialEntidad { get; set; }
-        public string dirFiscalEntidad { get; set; }
-        public decimal montoDivisa { get; set; }
-        public decimal tasaCambio { get; set; }
-        public string codigoSuc { get; set; }
-             */
-
-
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"Reportes\VentasDocCredito.rdlc";
             var ds = new DS();
             foreach (var it in list.ToList())

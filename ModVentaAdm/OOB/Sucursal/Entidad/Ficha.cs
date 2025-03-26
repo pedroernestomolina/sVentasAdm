@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.Sucursal.Entidad 
 {
-    
     public class Ficha
     {
-
-
         public string auto { get; set; }
         public string autoDepositoPrincipal { get; set; }
         public string autoEmpresaGrupo { get; set; }
@@ -20,14 +17,13 @@ namespace ModVentaAdm.OOB.Sucursal.Entidad
         public string codigoDepositoPrincipal { get; set; }
         public string nombreDepositoPrincipal { get; set; }
         public string nombreEmpresaGrupo { get; set; }
-
-
+        public string estatus { get; set; }
+        public bool isActivo { get { return estatus.Trim().ToUpper() == "1"; } }
+        //
         public Ficha()
         {
             Limpiar();
         }
-
-
         public Ficha(Ficha it)
             : this()
         {
@@ -40,7 +36,6 @@ namespace ModVentaAdm.OOB.Sucursal.Entidad
             nombreDepositoPrincipal = it.nombreDepositoPrincipal;
             nombreEmpresaGrupo = it.nombreEmpresaGrupo;
         }
-
         private void Limpiar()
         {
             auto = "";
@@ -51,8 +46,7 @@ namespace ModVentaAdm.OOB.Sucursal.Entidad
             codigoDepositoPrincipal = "";
             nombreDepositoPrincipal = "";
             nombreEmpresaGrupo = "";
+            estatus = "";
         }
-
     }
-
 }

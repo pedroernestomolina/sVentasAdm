@@ -1509,6 +1509,8 @@
     <Compile Include="Utils\FiltrosCB\ITextoBuscar.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\EstatusDoc\data.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\EstatusDoc\Imp.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\Sucursal\data.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\Sucursal\Imp.cs" />
     <Compile Include="Utils\Maestro\ILista.cs" />
     <Compile Include="Utils\Maestro\IMaestro.cs" />
     <EmbeddedResource Include="Helpers\Imprimir\Grafico\Documento.rdlc">
@@ -1811,6 +1813,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Reportes\Consolidado.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Src\Reportes\CxcCobranzaDetPorMedioPago.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Src\Reportes\CxcCobranzaResumen.rdlc">

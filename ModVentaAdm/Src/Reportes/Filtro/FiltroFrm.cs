@@ -33,8 +33,8 @@ namespace ModVentaAdm.Src.Reportes.Filtro
 
         private void InicializaControles()
         {
-            CB_SUCURSAL.DisplayMember = "descripcion";
-            CB_SUCURSAL.ValueMember = "auto";
+            CB_SUCURSAL.DisplayMember = "desc";
+            CB_SUCURSAL.ValueMember = "id";
             CB_ESTATUS.DisplayMember = "descripcion";
             CB_ESTATUS.ValueMember = "auto";
         }
