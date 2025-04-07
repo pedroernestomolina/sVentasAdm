@@ -34,7 +34,11 @@ namespace ProvPos
                                     v.dir_fiscal as dirFiscalEntidad,
                                     v.monto_divisa as montoDivisa,
                                     v.factor_cambio as tasaCambio,
-                                    v.codigo_sucursal as codigoSuc";
+                                    v.codigo_sucursal as codigoSuc,
+                                    v.total as docImporteMonAct,
+                                    v.saldo_pendiente as docSaldoPendMonDiv,
+                                    v.monto_bono_en_divisa_por_pago_divisa as montoBonoDiv,
+                                    v.porct_bono_por_pago_divisa as porctBonoDiv ";
                     var sql_2 = @" from ventas as v ";
                     var sql_3 = @" where v.fecha>=@desde and 
                                         v.fecha <= @hasta and 

@@ -6304,6 +6304,12 @@ namespace ModVentaAdm.Src.Reportes {
             
             private global::System.Data.DataColumn columnmontoDivisa;
             
+            private global::System.Data.DataColumn columnmontoMonAct;
+            
+            private global::System.Data.DataColumn columnporctMontoBonoDiv;
+            
+            private global::System.Data.DataColumn columnsaldoPendMonDiv;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public VentasDocCreditoDataTable() {
@@ -6379,6 +6385,30 @@ namespace ModVentaAdm.Src.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoMonActColumn {
+                get {
+                    return this.columnmontoMonAct;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn porctMontoBonoDivColumn {
+                get {
+                    return this.columnporctMontoBonoDiv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn saldoPendMonDivColumn {
+                get {
+                    return this.columnsaldoPendMonDiv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6414,14 +6444,17 @@ namespace ModVentaAdm.Src.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VentasDocCreditoRow AddVentasDocCreditoRow(System.DateTime fechaHora, string numeroDoc, string descDoc, string entidad, decimal montoDivisa) {
+            public VentasDocCreditoRow AddVentasDocCreditoRow(System.DateTime fechaHora, string numeroDoc, string descDoc, string entidad, decimal montoDivisa, decimal montoMonAct, string porctMontoBonoDiv, decimal saldoPendMonDiv) {
                 VentasDocCreditoRow rowVentasDocCreditoRow = ((VentasDocCreditoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         fechaHora,
                         numeroDoc,
                         descDoc,
                         entidad,
-                        montoDivisa};
+                        montoDivisa,
+                        montoMonAct,
+                        porctMontoBonoDiv,
+                        saldoPendMonDiv};
                 rowVentasDocCreditoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowVentasDocCreditoRow);
                 return rowVentasDocCreditoRow;
@@ -6449,6 +6482,9 @@ namespace ModVentaAdm.Src.Reportes {
                 this.columndescDoc = base.Columns["descDoc"];
                 this.columnentidad = base.Columns["entidad"];
                 this.columnmontoDivisa = base.Columns["montoDivisa"];
+                this.columnmontoMonAct = base.Columns["montoMonAct"];
+                this.columnporctMontoBonoDiv = base.Columns["porctMontoBonoDiv"];
+                this.columnsaldoPendMonDiv = base.Columns["saldoPendMonDiv"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6464,6 +6500,12 @@ namespace ModVentaAdm.Src.Reportes {
                 base.Columns.Add(this.columnentidad);
                 this.columnmontoDivisa = new global::System.Data.DataColumn("montoDivisa", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmontoDivisa);
+                this.columnmontoMonAct = new global::System.Data.DataColumn("montoMonAct", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoMonAct);
+                this.columnporctMontoBonoDiv = new global::System.Data.DataColumn("porctMontoBonoDiv", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnporctMontoBonoDiv);
+                this.columnsaldoPendMonDiv = new global::System.Data.DataColumn("saldoPendMonDiv", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsaldoPendMonDiv);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11415,6 +11457,54 @@ namespace ModVentaAdm.Src.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoMonAct {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableVentasDocCredito.montoMonActColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoMonAct\' in table \'VentasDocCredito\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVentasDocCredito.montoMonActColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string porctMontoBonoDiv {
+                get {
+                    try {
+                        return ((string)(this[this.tableVentasDocCredito.porctMontoBonoDivColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'porctMontoBonoDiv\' in table \'VentasDocCredito\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVentasDocCredito.porctMontoBonoDivColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal saldoPendMonDiv {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableVentasDocCredito.saldoPendMonDivColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'saldoPendMonDiv\' in table \'VentasDocCredito\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVentasDocCredito.saldoPendMonDivColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsfechaHoraNull() {
                 return this.IsNull(this.tableVentasDocCredito.fechaHoraColumn);
             }
@@ -11471,6 +11561,42 @@ namespace ModVentaAdm.Src.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetmontoDivisaNull() {
                 this[this.tableVentasDocCredito.montoDivisaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoMonActNull() {
+                return this.IsNull(this.tableVentasDocCredito.montoMonActColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoMonActNull() {
+                this[this.tableVentasDocCredito.montoMonActColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsporctMontoBonoDivNull() {
+                return this.IsNull(this.tableVentasDocCredito.porctMontoBonoDivColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetporctMontoBonoDivNull() {
+                this[this.tableVentasDocCredito.porctMontoBonoDivColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssaldoPendMonDivNull() {
+                return this.IsNull(this.tableVentasDocCredito.saldoPendMonDivColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsaldoPendMonDivNull() {
+                this[this.tableVentasDocCredito.saldoPendMonDivColumn] = global::System.Convert.DBNull;
             }
         }
         

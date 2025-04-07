@@ -280,5 +280,10 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 _rep.Generar();
             }
         }
+
+        public void FiltrarPor(string txt)
+        {
+            _gListaCtasPend.FiltrarPor(txt);
+        }
     }
 }

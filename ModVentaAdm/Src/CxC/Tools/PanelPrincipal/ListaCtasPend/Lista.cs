@@ -9,30 +9,26 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.ListaCtasPend
 {
-    
     public class Lista: ILista
     {
-
+        private List<data> _src;
         private List<data> _lst;
         private BindingList<data> _bl;
         private BindingSource _bs;
-
-
+        //
         public BindingSource CtasPendGetSource { get { return _bs; } }
         public List<data> ListaItems { get { return _bl.ToList(); } }
         public data ItemActual { get { return (data)_bs.Current; } }
         public decimal MontoPendientePorCobrar { get { return _bl.Sum(s => s.montoResta); } }
-
-
+        //
         public Lista() 
         {
+            _src = new List<data>();
             _lst= new List<data>();
             _bl= new BindingList<data>(_lst);
             _bs= new BindingSource();
             _bs.DataSource = _bl;
         }
-
-
         public void Inicializa()
         {
             _bl.Clear();
@@ -40,14 +36,26 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.ListaCtasPend
         }
         public void setListaCtasPend(List<data> lst)
         {
+            _src.Clear();
+            foreach (var rg in lst)
+            {
+                _src.Add(rg);
+            }
+            agregarLista(lst);
+        }
+        public void FiltrarPor(string txt)
+        {
+            var _lst = _src.Where(w => w.nombreRazonSocial.Contains(txt)).ToList();
+            agregarLista(_lst);
+        }
+        private void agregarLista(List<data> lst)
+        {
             _bl.Clear();
-            foreach (var rg in lst) 
+            foreach (var rg in lst)
             {
                 _bl.Add(rg);
             }
             _bs.CurrencyManager.Refresh();
         }
-
     }
-
 }

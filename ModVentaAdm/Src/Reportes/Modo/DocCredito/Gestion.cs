@@ -46,7 +46,10 @@ namespace ModVentaAdm.Src.Reportes.Modo.DocCredito
                 rt["numeroDoc"] = it.numeroDoc;
                 rt["descDoc"] = it.codigoDoc+Environment.NewLine+it.nombreDoc;
                 rt["entidad"] = it.razonSocialEntidad+Environment.NewLine+it.ciRifEntidad;
+                rt["montoMonAct"] = it.docImporteMonAct;
                 rt["montoDivisa"] = it.montoDivisa;
+                rt["porctMontoBonoDiv"] = it.porctBonoDiv.ToString("n2").Trim() + "%" + Environment.NewLine + it.montoBonoDiv.ToString("n2");
+                rt["saldoPendMonDiv"] = it.docSaldoPendMonDiv;
                 ds.Tables["VentasDocCredito"].Rows.Add(rt);
             }
             var Rds = new List<ReportDataSource>();

@@ -674,6 +674,10 @@ namespace ModVentaAdm.Data.Prov
                             numeroDoc = s.numeroDoc,
                             razonSocialEntidad = s.razonSocialEntidad,
                             tasaCambio = s.tasaCambio,
+                            docImporteMonAct = s.docImporteMonAct,
+                            docSaldoPendMonDiv = s.docSaldoPendMonDiv,
+                            montoBonoDiv = s.montoBonoDiv,
+                            porctBonoDiv = s.porctBonoDiv,
                         };
                         return nr;
                     }).ToList();

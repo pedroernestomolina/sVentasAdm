@@ -11,24 +11,16 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
 {
-
     public partial class ToolsFrm : Form
     {
-
         private ITools _controlador;
-
-
-        public ToolsFrm()
-        {
-            InitializeComponent();
-            InicializaDGV_1();
-        }
-
+        private bool _modoInicializar;
+        //
         private void InicializaDGV_1()
         {
             var f = new Font("Serif", 8, FontStyle.Bold);
             var f1 = new Font("Serif", 8, FontStyle.Regular);
-
+            //
             DGV_1.RowHeadersVisible = false;
             DGV_1.AllowUserToAddRows = false;
             DGV_1.AllowUserToDeleteRows = false;
@@ -39,7 +31,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             DGV_1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_1.MultiSelect = false;
             DGV_1.ReadOnly = true;
-
+            //
             var c1 = new DataGridViewTextBoxColumn();
             c1.DataPropertyName = "CiRif";
             c1.HeaderText = "CI/RIF";
@@ -47,7 +39,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c1.HeaderCell.Style.Font = f;
             c1.DefaultCellStyle.Font = f1;
             c1.Width = 100;
-
+            //
             var c2 = new DataGridViewTextBoxColumn();
             c2.DataPropertyName = "NombreRazonSocial";
             c2.HeaderText = "Nombre/Razón Social";
@@ -56,7 +48,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c2.HeaderCell.Style.Font = f;
             c2.DefaultCellStyle.Font = f1;
             c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+            //
             var c3 = new DataGridViewTextBoxColumn();
             c3.DataPropertyName = "MontoImporte";
             c3.HeaderText = "Importe";
@@ -66,7 +58,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c3.DefaultCellStyle.Font = f;
             c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c3.DefaultCellStyle.Format = "n2";
-
+            //
             var c4 = new DataGridViewTextBoxColumn();
             c4.DataPropertyName = "MontoAcumulado";
             c4.HeaderText = "Acumulado";
@@ -76,7 +68,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c4.DefaultCellStyle.Font = f;
             c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c4.DefaultCellStyle.Format = "n2";
-
+            //
             var c8 = new DataGridViewTextBoxColumn();
             c8.DataPropertyName = "MontoResta";
             c8.HeaderText = "Resta";
@@ -86,7 +78,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c8.DefaultCellStyle.Font = f;
             c8.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c8.DefaultCellStyle.Format = "n2";
-
+            //
             var c5 = new DataGridViewTextBoxColumn();
             c5.DataPropertyName = "CntDocPend";
             c5.HeaderText = "Doc/Pend";
@@ -95,7 +87,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c5.HeaderCell.Style.Font = f;
             c5.DefaultCellStyle.Font = f;
             c5.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+            //
             var c6 = new DataGridViewTextBoxColumn();
             c6.DataPropertyName = "CntFactPend";
             c6.HeaderText = "Fact/Pend";
@@ -104,7 +96,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c6.HeaderCell.Style.Font = f;
             c6.DefaultCellStyle.Font = f;
             c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+            //
             var c7 = new DataGridViewTextBoxColumn();
             c7.DataPropertyName = "MontoLimiteCredito";
             c7.HeaderText = "Lim/Monto";
@@ -114,7 +106,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c7.HeaderCell.Style.Font = f;
             c7.DefaultCellStyle.Font = f;
             c7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+            //
             DGV_1.Columns.Add(c1);
             DGV_1.Columns.Add(c2);
             DGV_1.Columns.Add(c3);
@@ -123,13 +115,40 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             //DGV_1.Columns.Add(c5);
             DGV_1.Columns.Add(c6);
         }
-
-
+        public ToolsFrm()
+        {
+            InitializeComponent();
+            InicializaDGV_1();
+        }
         public void setControlador(ITools ctr)
         {
             _controlador = ctr;
         }
+        private void ToolsFrm_Load(object sender, EventArgs e)
+        {
+            _modoInicializar = true;
+            DGV_1.DataSource = _controlador.CtasPendGetSource;
+            ActualizarDataPanel();
+            _modoInicializar = false;
 
+            BT_AGREGAR_ANTICIPO.Visible = Sistema.Fabrica.Cxc_AgregarAnticipos;
+            BT_ADM_DOC_ANTICIPO.Visible = Sistema.Fabrica.Cxc_AdmDocAnticipos;
+        }
+        private void ToolsFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            if (_controlador.AbandonarIsOk)
+            {
+                e.Cancel = false;
+            }
+        }
+        private void CTRL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
         private void TSM_ARCHIVO_SALIR_Click(object sender, EventArgs e)
         {
             AbandonarFicha();
@@ -150,27 +169,11 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         {
             this.Close();
         }
-        private void ToolsFrm_FormClosing(object sender, FormClosingEventArgs e)
+        private void TB_BUSCAR_NOMBRE_Leave(object sender, EventArgs e)
         {
-            e.Cancel = true;
-            if (_controlador.AbandonarIsOk) 
-            {
-                e.Cancel = false;
-            }
+            var txt = TB_BUSCAR_NOMBRE.Text.Trim().ToUpper();
+            _controlador.FiltrarPor(txt);
         }
-
-        private bool _modoInicializar;
-        private void ToolsFrm_Load(object sender, EventArgs e)
-        {
-            _modoInicializar = true;
-            DGV_1.DataSource = _controlador.CtasPendGetSource;
-            ActualizarDataPanel();
-            _modoInicializar = false;
-
-            BT_AGREGAR_ANTICIPO.Visible = Sistema.Fabrica.Cxc_AgregarAnticipos;
-            BT_ADM_DOC_ANTICIPO.Visible = Sistema.Fabrica.Cxc_AdmDocAnticipos;
-        }
-
         private void BT_BUSCAR_Click(object sender, EventArgs e)
         {
             BuscarCtasPendientes();

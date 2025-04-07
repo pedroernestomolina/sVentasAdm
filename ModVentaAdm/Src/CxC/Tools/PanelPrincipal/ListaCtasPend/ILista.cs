@@ -8,21 +8,15 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.ListaCtasPend
 {
-
     public interface ILista
     {
-
-
         BindingSource CtasPendGetSource { get;  }
         decimal MontoPendientePorCobrar { get; }
-
-
+        //
         void Inicializa();
         void setListaCtasPend(List<data> lst);
         List<data> ListaItems { get; }
         data ItemActual { get; }
-
-
+        void FiltrarPor(string txt);
     }
-
 }

@@ -21,5 +21,9 @@ namespace DtoLibPos.Reportes.VentaAdministrativa.DocCredito
         public decimal montoDivisa { get; set; }
         public decimal tasaCambio { get; set; }
         public string codigoSuc { get; set; }
+        public decimal docImporteMonAct { get; set; }
+        public decimal docSaldoPendMonDiv { get; set; }
+        public decimal montoBonoDiv { get; set; }
+        public decimal porctBonoDiv { get; set; }
     }
 }
