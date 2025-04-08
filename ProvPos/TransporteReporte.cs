@@ -230,7 +230,7 @@ namespace ProvPos
                                     nota as notasDoc
                                 FROM cxc 
                                 where auto_cliente=@idCliente
-                                    and estatus_anulado='0'";
+                                    and estatus_anulado='0' ";
                     p1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", idCliente);
                     var _lst = cnn.Database.SqlQuery<DtoTransporte.Reporte.Cxc.EdoCta.Movimiento>(_sql, p1).ToList();
                     result.Entidad = new DtoTransporte.Reporte.Cxc.EdoCta.Ficha()

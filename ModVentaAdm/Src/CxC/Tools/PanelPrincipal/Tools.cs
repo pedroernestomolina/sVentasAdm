@@ -267,6 +267,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             _transpAdmDocCxC.Inicializa();
             _transpAdmDocCxC.Inicia();
         }
+        Utils.DialogoFecha.IDialogoFecha _dialogoFecha;
         public void EdoCta()
         {
             if (_gListaCtasPend.ItemActual != null)
@@ -275,9 +276,19 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 SrcTransporte.Reportes.Filtro.Vista.IFiltro _filtro = new SrcTransporte.Reportes.Filtro.Handler.Filtro();
                 _filtro.idCliente = item.idCliente;
                 //
-                SrcTransporte.Reportes.IReporteConFiltro _rep = new SrcTransporte.Reportes.Cxc.EdoCta.Imp();
-                _rep.setFiltros(_filtro);
-                _rep.Generar();
+                if (_dialogoFecha == null) 
+                {
+                    _dialogoFecha = new Utils.DialogoFecha.Imp();
+                }
+                _dialogoFecha.Inicializa();
+                _dialogoFecha.Inicia();
+                if (_dialogoFecha.IsOk) 
+                {
+                    SrcTransporte.Reportes.IReporteConFiltroMasFecha _rep = new SrcTransporte.Reportes.Cxc.EdoCta.Imp();
+                    _rep.setDesde(_dialogoFecha.GetFecha);
+                    _rep.setFiltros(_filtro);
+                    _rep.Generar();
+                }
             }
         }
 

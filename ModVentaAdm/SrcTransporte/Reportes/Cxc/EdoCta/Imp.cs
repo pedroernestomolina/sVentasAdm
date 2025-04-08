@@ -10,17 +10,27 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
 {
-    public class Imp : IReporteConFiltro
+    public class Imp : IReporteConFiltroMasFecha
     {
         private Filtro.Vista.IFiltro _filtros;
-
-
+        private DateTime _fechaInicio;
+        //
+        public DateTime Desde { get { return _fechaInicio; } }
+        //
         public Imp()
         {
+            _fechaInicio = DateTime.Now.Date;
         }
         public void setFiltros(Filtro.Vista.IFiltro filtros)
         {
             _filtros = filtros;
+        }
+        public void setDesde(DateTime fecha)
+        {
+            _fechaInicio = fecha;
+        }
+        public void setFiltros(SrcTransporte.Filtro.Vistas.IdataFiltrar dataFiltrar)
+        {
         }
         public void Generar()
         {
@@ -34,7 +44,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
                 Helpers.Msg.Error(e.Message);
             }
         }
-
+        //
         private void Imprimir(OOB.Transporte.Reporte.Cxc.EdoCta.Ficha ficha)
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"\SrcTransporte\Reportes\Cxc_EdoCtaCliente.rdlc";
@@ -49,7 +59,48 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
             var _importe = 0m;
             var _signo = "";
             var _saldo = 0m;
-            foreach (var it in ficha.movimientos.OrderBy(o=>o.idDoc).ThenBy(o=>o.fechaDoc).ToList()) 
+            var _lst2 = ficha.movimientos.OrderBy(o => o.idDoc).ThenBy(o => o.fechaDoc).ToList();
+
+            var _lst = ficha.movimientos.ToList();
+            _lst = _lst.OrderBy(o => o.fechaDoc).ToList();
+
+            foreach (var it in _lst.Where(w=>w.fechaDoc<_fechaInicio).ToList())
+            {
+                _importe = it.importeDiv * it.signoDoc;
+                _signo = "+";
+                if (it.signoDoc < 0)
+                {
+                    _signo = "-";
+                    if (it.tipoDoc.Trim().ToUpper() == "PAG")
+                    {
+                        _saldo += _importe;
+                    }
+                    else
+                    {
+                        _signo = "";
+                    }
+                }
+                else
+                {
+                    _saldo += _importe;
+                }
+                if (_saldo < 0m)
+                {
+                    _saldo = 0m;
+                }
+            }
+            DataRow rt = ds.Tables["EdoCta"].NewRow();
+            rt["fechaDoc"] = _fechaInicio.AddDays(-1);
+            rt["nroDoc"] = "";
+            rt["tipoDoc"] = "";
+            rt["importe"] = 0m;
+            rt["signo"] = _signo;
+            rt["notas"] = "";
+            rt["saldo"] = _saldo;
+            ds.Tables["EdoCta"].Rows.Add(rt);
+
+            //
+            foreach (var it in _lst.Where(w=>w.fechaDoc>=_fechaInicio).ToList()) 
             {
                 _importe = it.importeDiv * it.signoDoc;
                 _signo = "+";
@@ -73,15 +124,15 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
                 {
                     _saldo = 0m;
                 }
-                DataRow rt = ds.Tables["EdoCta"].NewRow();
-                rt["fechaDoc"] = it.fechaDoc ;
-                rt["nroDoc"] = it.nroDoc;
-                rt["tipoDoc"] = it.tipoDoc;
-                rt["importe"] = it.importeDiv;
-                rt["signo"] = _signo;
-                rt["notas"] = it.notasDoc;
-                rt["saldo"] = _saldo;
-                ds.Tables["EdoCta"].Rows.Add(rt);
+                DataRow rt2 = ds.Tables["EdoCta"].NewRow();
+                rt2["fechaDoc"] = it.fechaDoc ;
+                rt2["nroDoc"] = it.nroDoc;
+                rt2["tipoDoc"] = it.tipoDoc;
+                rt2["importe"] = it.importeDiv;
+                rt2["signo"] = _signo;
+                rt2["notas"] = it.notasDoc;
+                rt2["saldo"] = _saldo;
+                ds.Tables["EdoCta"].Rows.Add(rt2);
             }
 
             var Rds = new List<ReportDataSource>();
@@ -99,11 +150,6 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
             frp.prmts = pmt;
             frp.Path = pt;
             frp.ShowDialog();
-        }
-
-
-        public void setFiltros(SrcTransporte.Filtro.Vistas.IdataFiltrar dataFiltrar)
-        {
         }
     }
 }
