@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.OOB.CxC.Tools.CtasPendiente.Lista
 {
-    
     public class Ficha
     {
-
         public string idCliente { get; set; }
         public string ciRif { get; set; }
         public string nombreRazonSocial { get; set; }
@@ -20,8 +18,9 @@ namespace ModVentaAdm.OOB.CxC.Tools.CtasPendiente.Lista
         public int limiteFactPend { get; set; }
         public decimal limiteMontoCredito { get; set; }
         public int cntFactPend { get; set; }
-
-
+        public decimal anticiposCliente { get; set; }
+        public decimal importePorNtCreditoPendPorSaldarMonDiv { get; set; }
+        //
         public Ficha() 
         {
             idCliente = "";
@@ -33,8 +32,8 @@ namespace ModVentaAdm.OOB.CxC.Tools.CtasPendiente.Lista
             limiteFactPend = 0;
             limiteMontoCredito = 0m;
             cntFactPend = 0;
+            anticiposCliente = 0m;
+            importePorNtCreditoPendPorSaldarMonDiv = 0m;
         }
-
     }
-
 }

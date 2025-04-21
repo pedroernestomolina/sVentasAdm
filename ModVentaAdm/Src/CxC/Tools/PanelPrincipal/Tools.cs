@@ -92,24 +92,8 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 Helpers.Msg.Alerta("NO HAY CUENTAS PENDIENTES");
                 return;
             }
-            var lst = new List<ListaCtasPend.data>();
-            foreach (var rg in r01.ListaD.OrderBy(o => o.nombreRazonSocial).ToList())
-            {
-                var nr = new ListaCtasPend.data()
-                {
-                    ciRif = rg.ciRif,
-                    cntDocPend = rg.cntDocPend,
-                    cntFactPend = rg.cntFactPend,
-                    idCliente = rg.idCliente,
-                    limiteFactPend = rg.limiteFactPend,
-                    montoAcumulado = rg.acumulado,
-                    montoImporte = rg.importe,
-                    montoLimiteCredito = rg.limiteMontoCredito,
-                    nombreRazonSocial = rg.nombreRazonSocial,
-                };
-                lst.Add(nr);
-            }
-            _gListaCtasPend.setListaCtasPend(lst);
+            var lst = r01.ListaD.OrderBy(o => o.nombreRazonSocial).ToList();
+            _gListaCtasPend.setData(lst);
         }
 
 
@@ -161,9 +145,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 }
                 if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
                 {
-                    var _item = _gListaCtasPend.ItemActual;
+                    var _item = (ListaCtasPend.data)_gListaCtasPend.ItemActual;
                     _gDocPend.Inicializa();
-                    _gDocPend.setIdCliente(_item.idCliente);
+                    _gDocPend.setIdCliente(_item.Ficha.idCliente);
                     _gDocPend.Inicia();
                 }
             }
@@ -226,13 +210,13 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 }
                 if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
                 {
-                    var _entidadPagar= _gListaCtasPend.ItemActual;
-                    if (_gPago == null) 
+                    var _entidadPagar = (ListaCtasPend.data)_gListaCtasPend.ItemActual;
+                    if (_gPago == null)
                     {
                         _gPago = new GestionPagoZufu.handler.HndPago();
                     }
                     _gPago.Inicializa();
-                    _gPago.setIdEntidadPagar(_entidadPagar.idCliente);
+                    _gPago.setIdEntidadPagar(_entidadPagar.Ficha.idCliente);
                     _gPago.Inicia();
                 }
             }
@@ -242,8 +226,8 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         {
             if (_gListaCtasPend.ItemActual != null)
             {
-                var item = _gListaCtasPend.ItemActual;
-                Sistema.Fabrica.ClienteAnticipos(item.idCliente);
+                //var item = _gListaCtasPend.ItemActual;
+                //Sistema.Fabrica.ClienteAnticipos(item.idCliente);
             }
         }
         //
@@ -272,17 +256,17 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         {
             if (_gListaCtasPend.ItemActual != null)
             {
-                var item = _gListaCtasPend.ItemActual;
+                var item = (ListaCtasPend.data)_gListaCtasPend.ItemActual;
                 SrcTransporte.Reportes.Filtro.Vista.IFiltro _filtro = new SrcTransporte.Reportes.Filtro.Handler.Filtro();
-                _filtro.idCliente = item.idCliente;
+                _filtro.idCliente = item.Ficha.idCliente;
                 //
-                if (_dialogoFecha == null) 
+                if (_dialogoFecha == null)
                 {
                     _dialogoFecha = new Utils.DialogoFecha.Imp();
                 }
                 _dialogoFecha.Inicializa();
                 _dialogoFecha.Inicia();
-                if (_dialogoFecha.IsOk) 
+                if (_dialogoFecha.IsOk)
                 {
                     SrcTransporte.Reportes.IReporteConFiltroMasFecha _rep = new SrcTransporte.Reportes.Cxc.EdoCta.Imp();
                     _rep.setDesde(_dialogoFecha.GetFecha);

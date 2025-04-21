@@ -14,9 +14,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.ListaCtasPend
         decimal MontoPendientePorCobrar { get; }
         //
         void Inicializa();
-        void setListaCtasPend(List<data> lst);
-        List<data> ListaItems { get; }
-        data ItemActual { get; }
+        List<Idata> ListaItems { get; }
+        Idata ItemActual { get; }
         void FiltrarPor(string txt);
+        void setData(IEnumerable<object> lst);
     }
 }

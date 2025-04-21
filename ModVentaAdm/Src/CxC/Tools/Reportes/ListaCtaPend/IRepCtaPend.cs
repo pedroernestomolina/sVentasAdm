@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModVentaAdm.Src.CxC.Tools.Reportes.ListaCtaPend
 {
-    
     public interface IRepCtaPend: IReporte
     {
-
-        void setListaDoc(List<PanelPrincipal.ListaCtasPend.data> list);
-
+        void setListaDoc(List<PanelPrincipal.ListaCtasPend.Idata> list);
     }
-
 }

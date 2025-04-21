@@ -149,7 +149,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
                 {
                     throw new Exception(r01.Mensaje);
                 }
-                var lst = r01.ListaD.Select(s =>
+                var lst = r01.ListaD.Where(w=>w.signoDoc==1).Select(s =>
                 {
                     var nr = new ListaDocPend.data()
                     {

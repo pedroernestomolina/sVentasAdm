@@ -564,6 +564,8 @@
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\NtCred\itemCtaPend.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\NtCred\listaCtasPend.cs" />
     <Compile Include="Src\CxC\Tools\GestionPagoZufu\handler\Resumen\HndPanelResumen.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\Idata.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\Lista.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\ICliente.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IItemCtaPend.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\ICtasPend.cs" />
@@ -1178,10 +1180,9 @@
     </Compile>
     <Compile Include="Src\CxC\Tools\GestionPago\MontoAbonar\MontoAbonar.cs" />
     <Compile Include="Src\CxC\Tools\GestionPago\MontoAbonar\IMontoAbonar.cs" />
-    <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\dataPanel.cs" />
+    <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\data.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\ITools.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\ILista.cs" />
-    <Compile Include="Src\CxC\Tools\PanelPrincipal\ListaCtasPend\Lista.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Tools.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\ToolsFrm.cs">
       <SubType>Form</SubType>

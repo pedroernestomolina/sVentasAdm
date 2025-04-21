@@ -18,7 +18,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         //
         private void InicializaDGV_1()
         {
-            var f = new Font("Serif", 8, FontStyle.Bold);
+            var f = new Font("Serif", 7, FontStyle.Bold);
             var f1 = new Font("Serif", 8, FontStyle.Regular);
             //
             DGV_1.RowHeadersVisible = false;
@@ -44,7 +44,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c2.DataPropertyName = "NombreRazonSocial";
             c2.HeaderText = "Nombre/Razón Social";
             c2.Visible = true;
-            c2.Width = 180;
+            c2.MinimumWidth = 200;
             c2.HeaderCell.Style.Font = f;
             c2.DefaultCellStyle.Font = f1;
             c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -53,9 +53,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c3.DataPropertyName = "MontoImporte";
             c3.HeaderText = "Importe";
             c3.Visible = true;
-            c3.MinimumWidth = 100;
+            c3.Width = 75;
             c3.HeaderCell.Style.Font = f;
-            c3.DefaultCellStyle.Font = f;
+            c3.DefaultCellStyle.Font = f1;
             c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c3.DefaultCellStyle.Format = "n2";
             //
@@ -63,9 +63,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c4.DataPropertyName = "MontoAcumulado";
             c4.HeaderText = "Acumulado";
             c4.Visible = true;
-            c4.Width = 100;
+            c4.Width = 75;
             c4.HeaderCell.Style.Font = f;
-            c4.DefaultCellStyle.Font = f;
+            c4.DefaultCellStyle.Font = f1;
             c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c4.DefaultCellStyle.Format = "n2";
             //
@@ -73,9 +73,9 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c8.DataPropertyName = "MontoResta";
             c8.HeaderText = "Resta";
             c8.Visible = true;
-            c8.Width = 100;
+            c8.Width = 75;
             c8.HeaderCell.Style.Font = f;
-            c8.DefaultCellStyle.Font = f;
+            c8.DefaultCellStyle.Font = f1;
             c8.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c8.DefaultCellStyle.Format = "n2";
             //
@@ -90,11 +90,11 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             //
             var c6 = new DataGridViewTextBoxColumn();
             c6.DataPropertyName = "CntFactPend";
-            c6.HeaderText = "Fact/Pend";
+            c6.HeaderText = "F/Pend";
             c6.Visible = true;
-            c6.Width = 80;
+            c6.Width = 60;
             c6.HeaderCell.Style.Font = f;
-            c6.DefaultCellStyle.Font = f;
+            c6.DefaultCellStyle.Font = f1;
             c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //
             var c7 = new DataGridViewTextBoxColumn();
@@ -107,9 +107,29 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             c7.DefaultCellStyle.Font = f;
             c7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //
+            var c9 = new DataGridViewTextBoxColumn();
+            c9.DataPropertyName = "MontoPorAnticipo";
+            c9.HeaderText = "Anticipo";
+            c9.Visible = true;
+            c9.Width = 75;
+            c9.HeaderCell.Style.Font = f;
+            c9.DefaultCellStyle.Font = f1;
+            c9.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //
+            var cA = new DataGridViewTextBoxColumn();
+            cA.DataPropertyName = "MontoPorCreditos";
+            cA.HeaderText = "Credito";
+            cA.Visible = true;
+            cA.Width = 75;
+            cA.HeaderCell.Style.Font = f;
+            cA.DefaultCellStyle.Font = f1;
+            cA.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //
             DGV_1.Columns.Add(c1);
             DGV_1.Columns.Add(c2);
             DGV_1.Columns.Add(c3);
+            DGV_1.Columns.Add(c9);
+            DGV_1.Columns.Add(cA);
             DGV_1.Columns.Add(c4);
             DGV_1.Columns.Add(c8);
             //DGV_1.Columns.Add(c5);
@@ -173,6 +193,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         {
             var txt = TB_BUSCAR_NOMBRE.Text.Trim().ToUpper();
             _controlador.FiltrarPor(txt);
+            ActualizarDataPanel();
         }
         private void BT_BUSCAR_Click(object sender, EventArgs e)
         {

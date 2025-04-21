@@ -16,7 +16,7 @@ namespace ProvPos
             CxC_Tool_CtasPendiente_GetLista(DtoLibPos.CxC.Tools.CtasPendiente.Lista.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibPos.CxC.Tools.CtasPendiente.Lista.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
@@ -31,6 +31,7 @@ namespace ProvPos
                                         count(*) as cntDocPend, 
                                         cl.doc_pendientes as limiteFacPend, 
                                         cl.limite_credito as limiteMontoCredito,
+                                        cl.anticipos as anticiposCliente,
                                         (SELECT count(*)  
                                             FROM cxc 
                                             where auto_cliente=cl.auto 
@@ -38,12 +39,21 @@ namespace ProvPos
                                             and tipo_documento='FAC'
                                             and estatus_anulado='0'
                                             GROUP BY  c.auto_cliente
-                                        ) as cntFactPend
+                                        ) as cntFactPend,
+                                        (SELECT sum(resta_divisa)  
+                                            FROM cxc 
+                                            where auto_cliente=cl.auto 
+                                            and estatus_cancelado='0'
+                                            and tipo_documento='NCR'
+                                            and estatus_anulado='0'
+                                            GROUP BY  c.auto_cliente
+                                        ) as importePorNtCreditoPendPorSaldarMonDiv
                                         FROM clientes as cl  
                                         left join cxc as c on c.auto_cliente=cl.auto
                                             and c.estatus_cancelado='0'
                                             and c.tipo_documento<>'PAG'
                                             and c.estatus_anulado='0'
+                                            and c.signo=1
                                         where cl.estatus_credito='1'
                                         GROUP BY cl.auto, cl.ci_rif, cl.razon_social, cl.doc_pendientes, cl.limite_credito";
                     var sql = sql_1;
@@ -56,7 +66,7 @@ namespace ProvPos
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return result;
         }
         public DtoLib.ResultadoLista<DtoLibPos.CxC.DocumentosPend.Ficha>

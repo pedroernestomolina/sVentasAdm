@@ -11,21 +11,19 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.ListaCtasPend
 {
     public class Lista: ILista
     {
-        private List<data> _src;
-        private List<data> _lst;
-        private BindingList<data> _bl;
+        private List<Idata> _src;
+        private BindingList<Idata> _bl;
         private BindingSource _bs;
         //
         public BindingSource CtasPendGetSource { get { return _bs; } }
-        public List<data> ListaItems { get { return _bl.ToList(); } }
-        public data ItemActual { get { return (data)_bs.Current; } }
+        public List<Idata> ListaItems { get { return _bl.ToList(); } }
+        public Idata ItemActual { get { return (Idata)_bs.Current; } }
         public decimal MontoPendientePorCobrar { get { return _bl.Sum(s => s.montoResta); } }
         //
         public Lista() 
         {
-            _src = new List<data>();
-            _lst= new List<data>();
-            _bl= new BindingList<data>(_lst);
+            _src = new List<Idata>();
+            _bl= new BindingList<Idata>();
             _bs= new BindingSource();
             _bs.DataSource = _bl;
         }
@@ -34,26 +32,28 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.ListaCtasPend
             _bl.Clear();
             _bs.CurrencyManager.Refresh();
         }
-        public void setListaCtasPend(List<data> lst)
+        public void FiltrarPor(string txt)
+        {
+            var _lst = _src.Where(w => w.nombreRazonSocial.Contains(txt)).ToList();
+            agregarData(_lst);
+        }
+        public void setData(IEnumerable<object> lst)
         {
             _src.Clear();
             foreach (var rg in lst)
             {
-                _src.Add(rg);
+                var nr = new ListaCtasPend.data(rg);
+                _src.Add(nr);
             }
-            agregarLista(lst);
+            agregarData(_src);
         }
-        public void FiltrarPor(string txt)
-        {
-            var _lst = _src.Where(w => w.nombreRazonSocial.Contains(txt)).ToList();
-            agregarLista(_lst);
-        }
-        private void agregarLista(List<data> lst)
+        private void agregarData(IEnumerable<Idata> lst)
         {
             _bl.Clear();
             foreach (var rg in lst)
             {
                 _bl.Add(rg);
+
             }
             _bs.CurrencyManager.Refresh();
         }

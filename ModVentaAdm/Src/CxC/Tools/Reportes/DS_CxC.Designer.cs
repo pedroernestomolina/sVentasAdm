@@ -367,6 +367,10 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             
             private global::System.Data.DataColumn columnmontoLimiteCredito;
             
+            private global::System.Data.DataColumn columnmontoPorAnticipos;
+            
+            private global::System.Data.DataColumn columnmontoPorCreditos;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ListaCtaPendDataTable() {
@@ -474,6 +478,22 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoPorAnticiposColumn {
+                get {
+                    return this.columnmontoPorAnticipos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoPorCreditosColumn {
+                get {
+                    return this.columnmontoPorCreditos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -509,7 +529,7 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ListaCtaPendRow AddListaCtaPendRow(string cirif, string nombre, decimal importe, decimal acumulado, decimal resta, decimal cntDocPend, decimal cntFactPend, decimal limiteFactPend, decimal montoLimiteCredito) {
+            public ListaCtaPendRow AddListaCtaPendRow(string cirif, string nombre, decimal importe, decimal acumulado, decimal resta, decimal cntDocPend, decimal cntFactPend, decimal limiteFactPend, decimal montoLimiteCredito, decimal montoPorAnticipos, decimal montoPorCreditos) {
                 ListaCtaPendRow rowListaCtaPendRow = ((ListaCtaPendRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         cirif,
@@ -520,7 +540,9 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
                         cntDocPend,
                         cntFactPend,
                         limiteFactPend,
-                        montoLimiteCredito};
+                        montoLimiteCredito,
+                        montoPorAnticipos,
+                        montoPorCreditos};
                 rowListaCtaPendRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowListaCtaPendRow);
                 return rowListaCtaPendRow;
@@ -552,6 +574,8 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
                 this.columncntFactPend = base.Columns["cntFactPend"];
                 this.columnlimiteFactPend = base.Columns["limiteFactPend"];
                 this.columnmontoLimiteCredito = base.Columns["montoLimiteCredito"];
+                this.columnmontoPorAnticipos = base.Columns["montoPorAnticipos"];
+                this.columnmontoPorCreditos = base.Columns["montoPorCreditos"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -575,6 +599,10 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
                 base.Columns.Add(this.columnlimiteFactPend);
                 this.columnmontoLimiteCredito = new global::System.Data.DataColumn("montoLimiteCredito", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmontoLimiteCredito);
+                this.columnmontoPorAnticipos = new global::System.Data.DataColumn("montoPorAnticipos", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoPorAnticipos);
+                this.columnmontoPorCreditos = new global::System.Data.DataColumn("montoPorCreditos", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoPorCreditos);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1495,6 +1523,38 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoPorAnticipos {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableListaCtaPend.montoPorAnticiposColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoPorAnticipos\' in table \'ListaCtaPend\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaCtaPend.montoPorAnticiposColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoPorCreditos {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableListaCtaPend.montoPorCreditosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoPorCreditos\' in table \'ListaCtaPend\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableListaCtaPend.montoPorCreditosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IscirifNull() {
                 return this.IsNull(this.tableListaCtaPend.cirifColumn);
             }
@@ -1599,6 +1659,30 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetmontoLimiteCreditoNull() {
                 this[this.tableListaCtaPend.montoLimiteCreditoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoPorAnticiposNull() {
+                return this.IsNull(this.tableListaCtaPend.montoPorAnticiposColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoPorAnticiposNull() {
+                this[this.tableListaCtaPend.montoPorAnticiposColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoPorCreditosNull() {
+                return this.IsNull(this.tableListaCtaPend.montoPorCreditosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoPorCreditosNull() {
+                this[this.tableListaCtaPend.montoPorCreditosColumn] = global::System.Convert.DBNull;
             }
         }
         

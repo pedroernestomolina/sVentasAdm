@@ -14,7 +14,7 @@ namespace ModVentaAdm.Data.Prov
             CxC_Tool_CtasPendiente_GetLista(OOB.CxC.Tools.CtasPendiente.Lista.Filtro filtro)
         {
             var result = new OOB.Resultado.Lista<OOB.CxC.Tools.CtasPendiente.Lista.Ficha>();
-
+            //
             var filtroDTO = new DtoLibPos.CxC.Tools.CtasPendiente.Lista.Filtro()
             {
                 codSucursal=filtro.codSucursal,
@@ -41,21 +41,25 @@ namespace ModVentaAdm.Data.Prov
                         var nr = new OOB.CxC.Tools.CtasPendiente.Lista.Ficha()
                         {
                             idCliente = s.idCliente,
-                            acumulado = s.acumulado.HasValue ? s.acumulado.Value: 0m,
+                            acumulado = s.acumulado.HasValue ? s.acumulado.Value : 0m,
                             ciRif = s.ciRif,
                             cntDocPend = s.cntDocPend,
                             cntFactPend = _cntFactPend,
-                            importe = s.importe.HasValue ? s.importe.Value: 0m,
+                            importe = s.importe.HasValue ? s.importe.Value : 0m,
                             limiteFactPend = s.limiteFactPend,
                             limiteMontoCredito = s.limiteMontoCredito,
                             nombreRazonSocial = s.nombreRazonSocial,
+                            anticiposCliente = s.anticiposCliente,
+                            importePorNtCreditoPendPorSaldarMonDiv = s.importePorNtCreditoPendPorSaldarMonDiv.HasValue ? 
+                                                                    s.importePorNtCreditoPendPorSaldarMonDiv.Value:
+                                                                    0m,
                         };
                         return nr;
                     }).ToList();
                 }
             }
             result.ListaD = lst;
-
+            //
             return result;
         }
         public OOB.Resultado.Ficha 
