@@ -291,6 +291,8 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         private void AdmPagosRecibidos()
         {
             _controlador.AdmPagosRecibidos();
+            _controlador.BuscarCtasPendientes();
+            ActualizarDataPanel();
         }
     }
 }

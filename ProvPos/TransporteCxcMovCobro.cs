@@ -92,11 +92,25 @@ namespace ProvPos
                         //
                         if (1 == 1)
                         {
+                            //verificar si el movimiento pertenece a un cobro or gestio de anticipo
+                            var sql = @"select 
+                                            1 
+                                        from g_cobro_anticipo_recibos 
+                                        where id_cxc_recibo=@idCxcRecibo and 
+                                            estatus='0'";
+                            var p1 = new MySql.Data.MySqlClient.MySqlParameter("idCxcRecibo", ficha.idCxcRecibo);
+                            var existe = cn.Database.SqlQuery<int?>(sql, p1).FirstOrDefault();
+                            if (existe != null) 
+                            {
+                                throw new Exception("DOCUMENTO NO PUEDE SER ANULADO [ MOVIMIENTO TIPO ANTICIPO ]");
+                            }
+
+
                             //SE ACTUALIZA ESTATUS ANULADO DOCUMENTO CXC PAGO 
-                            var sql = @"update cxc set 
+                            sql = @"update cxc set 
                                             estatus_anulado='1'
                                         where auto=@idCxcPago";
-                            var p1 = new MySql.Data.MySqlClient.MySqlParameter("idCxcPago", ficha.idCxcPago);
+                            p1 = new MySql.Data.MySqlClient.MySqlParameter("idCxcPago", ficha.idCxcPago);
                             var rp1 = cn.Database.ExecuteSqlCommand(sql,p1);
                             if (rp1 == 0)
                             {
