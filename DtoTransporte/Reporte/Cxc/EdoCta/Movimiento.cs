@@ -17,5 +17,6 @@ namespace DtoTransporte.Reporte.Cxc.EdoCta
         public decimal importeDiv { get; set; }
         public int signoDoc { get; set; }
         public string notasDoc { get; set; }
+        public string estatusDocAdm { get; set; }
     }
 }

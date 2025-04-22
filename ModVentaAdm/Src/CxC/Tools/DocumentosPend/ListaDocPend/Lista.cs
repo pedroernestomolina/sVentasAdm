@@ -18,7 +18,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend.ListaDocPend
         public BindingSource DocPendGetSource { get { return _bs; } }
         public List<data> ListaItems { get { return _bl.ToList(); } }
         public data ItemActual { get { return (data)_bs.Current; } }
-        public decimal MontoPendientePorCobrar { get { return _bl.Sum(s => s.montoResta); } }
+        public decimal MontoPendientePorCobrar { get { return _bl.Where(w=>w.signoDoc==1).Sum(s => s.montoResta); } }
         public decimal MontoImporte { get { return _bl.Sum(s => s.montoImporte); } }
         public decimal MontoAcumulado { get { return _bl.Sum(s => s.montoAcumulado); } }
         public int CntItems { get { return _bl.Count; } }

@@ -13,17 +13,18 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes.ListaDocPend
     
     public class RepDocPend: IRepDocPend
     {
-
-
+        private decimal _montoCredito;
         private List<DocumentosPend.ListaDocPend.data> _lst;
         private OOB.Maestro.Cliente.Entidad.Ficha _cliente;
-
-
+        //
         public RepDocPend()
         {
+            _montoCredito = 0m;
         }
-
-
+        public void setMontoCredito(decimal monto)
+        {
+            _montoCredito = monto;
+        }
         public void setCliente(OOB.Maestro.Cliente.Entidad.Ficha ficha )
         {
             _cliente = ficha;
@@ -32,12 +33,10 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes.ListaDocPend
         {
             _lst = lst;
         }
-
         public void Generar()
         {
             Imprimir();
         }
-
         private void Imprimir()
         {
             if (_lst == null)
@@ -50,7 +49,8 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes.ListaDocPend
             {
                 _cli = "Cliente: "+_cliente.ciRif.Trim() + Environment.NewLine;
                 _cli += _cliente.razonSocial.Trim()+Environment.NewLine;
-                _cli += _cliente.dirFiscal.Trim();
+                _cli += _cliente.dirFiscal.Trim()+Environment.NewLine;
+                _cli += "Monto Por Notas de Credito a Favor: " + Math.Abs(_montoCredito).ToString("n2");
             }
             DataRow rt0 = ds.Tables["ListaDocPendEnc"].NewRow();
             rt0["cl_nombre"] = _cli;
@@ -87,7 +87,5 @@ namespace ModVentaAdm.Src.CxC.Tools.Reportes.ListaDocPend
             frp.Path = pt;
             frp.ShowDialog();
         }
-
     }
-
 }

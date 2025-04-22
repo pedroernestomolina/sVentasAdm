@@ -77,7 +77,12 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
                     }
                     else
                     {
-                        _signo = "";
+                        if (it.esDocAdministrativo)
+                            _signo = "";
+                        else
+                        {
+                            _saldo += _importe;
+                        }
                     }
                 }
                 else
@@ -113,7 +118,12 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
                     }
                     else 
                     {
-                        _signo = "";
+                        if (it.esDocAdministrativo)
+                            _signo = "";
+                        else 
+                        {
+                            _saldo += _importe;
+                        }
                     }
                 }
                 else 
@@ -124,10 +134,15 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
                 {
                     _saldo = 0m;
                 }
+                var tipoDocumento = it.tipoDoc;
+                if (it.esDocAdministrativo) 
+                {
+                    tipoDocumento += "/ADM";
+                }
                 DataRow rt2 = ds.Tables["EdoCta"].NewRow();
                 rt2["fechaDoc"] = it.fechaDoc ;
                 rt2["nroDoc"] = it.nroDoc;
-                rt2["tipoDoc"] = it.tipoDoc;
+                rt2["tipoDoc"] = tipoDocumento;
                 rt2["importe"] = it.importeDiv;
                 rt2["signo"] = _signo;
                 rt2["notas"] = it.notasDoc;

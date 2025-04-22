@@ -72,8 +72,9 @@ namespace ModVentaAdm.Src.Reportes.Modo.Cxc.CobranzaDetallePorMedioPago
                 rt["reciboFecha"] = it.numeroRec+", "+it.fechaRec.ToShortDateString();
                 rt["entidad"] = it.nombreEntidad+ Environment.NewLine+it.ciRifEntidad;
                 rt["opBanco"] = it.opBanco;
-                rt["opNroCta"] = it.opNroCta;
+                rt["opNroCta"] = it.opNroCta+", "+it.opNroRef+", "+it.notasRec;
                 rt["opNroRef"] = it.opNroRef;
+                rt["nota"] = it.notasRec;
                 ds.Tables["CxcCobranzaDetPorMedioPago"].Rows.Add(rt);
             }
             var Rds = new List<ReportDataSource>();

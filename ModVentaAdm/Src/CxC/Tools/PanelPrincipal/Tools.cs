@@ -19,14 +19,19 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         private AgregarNotaAdm.IAgregarTipoNotaAdm _gAgregarNotaCreditoAdm;
         private AgregarNotaAdm.IAgregarTipoNotaAdm _gAgregarNotaDebitoAdm;
         private GestionPago.IGestionPago _gGestionPago;
-
-
+        private string _textoFiltrar;
+        private bool _mostratCtasEnCero;
+        private ModVentaAdm.Utils.DialogoFecha.IDialogoFecha _dialogoFecha;
+        //
+        public string TextoFiltrar { get { return _textoFiltrar; } }
+        public bool MostrarCtasEnCero { get { return _mostratCtasEnCero; } }
         public decimal GetMontoPendientePorCobrar { get { return _gListaCtasPend.MontoPendientePorCobrar; } }
         public BindingSource CtasPendGetSource { get { return _gListaCtasPend.CtasPendGetSource; } }
-
-
+        //
         public Tools()
         {
+            _textoFiltrar = "";
+            _mostratCtasEnCero = true;
             _gListaCtasPend = new ListaCtasPend.Lista();
             _gAgregar = new AgregarCta.Agregar();
             _gRepCtaPend = new Reportes.ListaCtaPend.RepCtaPend();
@@ -36,10 +41,11 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             _gAgregarNotaDebitoAdm = new AgregarNotaAdm.Debito.AgregarNotaDebitoAdm();
             _gGestionPago = new GestionPago.GestionPago();
         }
-
         ToolsFrm frm;
         public void Inicializa()
         {
+            _textoFiltrar = "";
+            _mostratCtasEnCero = true;
             _abandonarIsOk = false;
             _gListaCtasPend.Inicializa();
         }
@@ -55,12 +61,6 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 frm.ShowDialog();
             }
         }
-
-        private bool CargarData()
-        {
-            return true;
-        }
-
 
         private bool _abandonarIsOk;
         public bool AbandonarIsOk { get { return _abandonarIsOk; } }
@@ -93,6 +93,8 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 return;
             }
             var lst = r01.ListaD.OrderBy(o => o.nombreRazonSocial).ToList();
+            _gListaCtasPend.setFiltrarPor(_textoFiltrar);
+            _gListaCtasPend.setFiltrarMostrarCtasEnCero(_mostratCtasEnCero);
             _gListaCtasPend.setData(lst);
         }
 
@@ -251,34 +253,32 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             _transpAdmDocCxC.Inicializa();
             _transpAdmDocCxC.Inicia();
         }
-        Utils.DialogoFecha.IDialogoFecha _dialogoFecha;
         public void EdoCta()
         {
+            if (_dialogoFecha == null)
+            {
+                _dialogoFecha = new ModVentaAdm.Utils.DialogoFecha.Imp();
+            }
             if (_gListaCtasPend.ItemActual != null)
             {
                 var item = (ListaCtasPend.data)_gListaCtasPend.ItemActual;
                 SrcTransporte.Reportes.Filtro.Vista.IFiltro _filtro = new SrcTransporte.Reportes.Filtro.Handler.Filtro();
                 _filtro.idCliente = item.Ficha.idCliente;
-                //
-                if (_dialogoFecha == null)
-                {
-                    _dialogoFecha = new Utils.DialogoFecha.Imp();
-                }
-                _dialogoFecha.Inicializa();
-                _dialogoFecha.Inicia();
-                if (_dialogoFecha.IsOk)
-                {
-                    SrcTransporte.Reportes.IReporteConFiltroMasFecha _rep = new SrcTransporte.Reportes.Cxc.EdoCta.Imp();
-                    _rep.setDesde(_dialogoFecha.GetFecha);
-                    _rep.setFiltros(_filtro);
-                    _rep.Generar();
-                }
+                HelperCxc.Util.EstadoCuenta(_dialogoFecha, _filtro);
             }
         }
-
         public void FiltrarPor(string txt)
         {
-            _gListaCtasPend.FiltrarPor(txt);
+            _textoFiltrar = txt;
+        }
+        //
+        private bool CargarData()
+        {
+            return true;
+        }
+        public void setMostrarCtasCero()
+        {
+            _mostratCtasEnCero = !_mostratCtasEnCero;
         }
     }
 }

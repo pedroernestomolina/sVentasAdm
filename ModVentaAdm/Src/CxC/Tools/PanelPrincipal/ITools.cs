@@ -29,10 +29,16 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         void DocDetallesPend();
         void GestionPago();
         void EdoCta();
-        //
+
+
         void AgregarAnticipo();
         void AdmDocAnticipos();
         void AdmPagosRecibidos();
+
+
+        bool MostrarCtasEnCero { get; }
+        void setMostrarCtasCero();
+        string TextoFiltrar { get; }
         void FiltrarPor(string txt);
     }
 }

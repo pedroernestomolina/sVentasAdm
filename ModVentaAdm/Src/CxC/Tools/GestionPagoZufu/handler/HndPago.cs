@@ -171,7 +171,6 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                     guardarPago();
                 }
             }
-
         }
         //
         private void guardarPago()
@@ -385,9 +384,10 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
                 CodigoCliente = _entidadFichaPagar.codigoClient,
                 Importe = _importeCobro ,
                 MontoDivisa = _montoDivisaCobro,
-                Nota = _notaCobro,
+                Nota = (_notaCobro + ", " + _notaRecibo).Trim(),
                 TasaDivisa = _factorDivActual,
             };
+            _cobro.Nota=(_cobro.Nota.Length>200?_cobro.Nota.Substring(200):_cobro.Nota);
             var oob = new OOB.CxC.GestionCobro.Ficha()
             {
                 SucPrefijo = _sucPrefijo,

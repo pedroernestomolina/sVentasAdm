@@ -627,6 +627,7 @@
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IMetodoPagoGestionAgregar.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPanelMetPago.cs" />
     <Compile Include="Src\CxC\Tools\PanelPrincipal\Pago\IPago.cs" />
+    <Compile Include="Src\CxC\HelperCxc\Util.cs" />
     <Compile Include="Src\Reportes\DS.cs">
       <DependentUpon>DS.xsd</DependentUpon>
       <SubType>Component</SubType>

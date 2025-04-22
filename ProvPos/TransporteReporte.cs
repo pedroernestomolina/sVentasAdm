@@ -227,7 +227,8 @@ namespace ProvPos
                                     fecha_vencimiento as fechaVencDoc,
                                     monto_divisa as importeDiv,
                                     signo as signoDoc,
-                                    nota as notasDoc
+                                    nota as notasDoc,
+                                    estatus_doc_cxc as estatusDocAdm
                                 FROM cxc 
                                 where auto_cliente=@idCliente
                                     and estatus_anulado='0' ";

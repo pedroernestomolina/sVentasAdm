@@ -176,6 +176,7 @@ namespace ModVentaAdm.Data.Prov
                             nroDoc = s.nroDoc,
                             signoDoc = s.signoDoc,
                             tipoDoc = s.tipoDoc,
+                            estatusDocAdm= s.estatusDocAdm
                         };
                         return nr;
                     }).ToList();

@@ -149,8 +149,10 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             _modoInicializar = true;
             DGV_1.DataSource = _controlador.CtasPendGetSource;
             ActualizarDataPanel();
+            TB_BUSCAR_NOMBRE.Text = _controlador.TextoFiltrar;
+            CHB_MOSTRAR_CTAS_CERO.Checked = _controlador.MostrarCtasEnCero;
             _modoInicializar = false;
-
+            //
             BT_AGREGAR_ANTICIPO.Visible = Sistema.Fabrica.Cxc_AgregarAnticipos;
             BT_ADM_DOC_ANTICIPO.Visible = Sistema.Fabrica.Cxc_AdmDocAnticipos;
         }
@@ -169,126 +171,38 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 this.SelectNextControl((Control)sender, true, true, true, true);
             }
         }
-        private void TSM_ARCHIVO_SALIR_Click(object sender, EventArgs e)
-        {
-            AbandonarFicha();
-        }
-        private void BT_SALIDA_Click(object sender, EventArgs e)
-        {
-            AbandonarFicha();
-        }
-        private void AbandonarFicha()
-        {
-            _controlador.AbandonarFicha();
-            if (_controlador.AbandonarIsOk)
-            {
-                Salir();
-            }
-        }
-        private void Salir()
-        {
-            this.Close();
-        }
         private void TB_BUSCAR_NOMBRE_Leave(object sender, EventArgs e)
         {
             var txt = TB_BUSCAR_NOMBRE.Text.Trim().ToUpper();
             _controlador.FiltrarPor(txt);
-            ActualizarDataPanel();
         }
+        private void CHB_MOSTRAR_CTAS_CERO_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) return;
+            _controlador.setMostrarCtasCero();
+        }
+        //
+        //
         private void BT_BUSCAR_Click(object sender, EventArgs e)
         {
             BuscarCtasPendientes();
         }
-        private void BuscarCtasPendientes()
-        {
-            _controlador.BuscarCtasPendientes();
-            ActualizarDataPanel();
-        }
-
-        private void ActualizarDataPanel()
-        {
-            L_MONTO_PENDIENTE.Text = _controlador.GetMontoPendientePorCobrar.ToString("n2");
-        }
-
-        private void BT_VER_DETALLES_CTA_Click(object sender, EventArgs e)
-        {
-            DocDetallesPend();
-            BuscarCtasPendientes();
-        }
-        private void DocDetallesPend()
-        {
-            _controlador.DocDetallesPend();
-        }
-
-        private void BT_REPORTE_CTAS_Click(object sender, EventArgs e)
-        {
-            ListadoCtasPend();
-        }
-        private void ListadoCtasPend()
-        {
-            _controlador.ListadoCtasPend();
-        }
-
-        private void BT_EDO_CTA_Click(object sender, EventArgs e)
-        {
-            EdoCta();
-        }
-        private void EdoCta()
-        {
-            _controlador.EdoCta();
-        }
-
         private void BT_AGREGAR_CTA_Click(object sender, EventArgs e)
         {
             AgregarCta();
         }
-        private void AgregarCta()
-        {
-            _controlador.AgregarCta();
-            if (_controlador.AgregarCtaIsOk) 
-            {
-                ActualizarDataPanel();
-            }
-        }
-
         private void BT_AGREGAR_NCR_ADM_Click(object sender, EventArgs e)
         {
             AgregarNCrAdm();
         }
-        private void AgregarNCrAdm()
-        {
-            _controlador.AgregarNCrAdm();
-            if (_controlador.AgregarNCrAdmIsOk)
-            {
-                ActualizarDataPanel();
-            }
-        }
-
         private void BT_AGREGAR_NDB_ADM_Click(object sender, EventArgs e)
         {
             AgregarNDbAdm();
         }
-        private void AgregarNDbAdm()
-        {
-            _controlador.AgregarNDbAdm();
-            if (_controlador.AgregarNDbAdmIsOk)
-            {
-                ActualizarDataPanel();
-            }
-        }
-
         private void BT_GESTION_PAGO_Click(object sender, EventArgs e)
         {
             GestionPago();
         }
-        private void GestionPago()
-        {
-            _controlador.GestionPago();
-            BuscarCtasPendientes();
-        }
-
-        //
-        //
         private void BT_AGREGAR_ANTICIPO_Click(object sender, EventArgs e)
         {
             AgregarAnticipo();
@@ -301,6 +215,67 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         {
             AdmPagosRecibidos();
         }
+        private void BT_REPORTE_CTAS_Click(object sender, EventArgs e)
+        {
+            ListadoCtasPend();
+        }
+        private void BT_EDO_CTA_Click(object sender, EventArgs e)
+        {
+            EdoCta();
+        }
+        private void BT_VER_DETALLES_CTA_Click(object sender, EventArgs e)
+        {
+            DocDetallesPend();
+        }
+        private void TSM_ARCHIVO_SALIR_Click(object sender, EventArgs e)
+        {
+            AbandonarFicha();
+        }
+        private void BT_SALIDA_Click(object sender, EventArgs e)
+        {
+            AbandonarFicha();
+        }
+        //
+        //
+        private void BuscarCtasPendientes()
+        {
+            _modoInicializar = true;
+            _controlador.BuscarCtasPendientes();
+            ActualizarDataPanel();
+            _modoInicializar = false;
+        }
+        private void ActualizarDataPanel()
+        {
+            L_MONTO_PENDIENTE.Text = _controlador.GetMontoPendientePorCobrar.ToString("n2");
+        }
+        private void AgregarCta()
+        {
+            _controlador.AgregarCta();
+            if (_controlador.AgregarCtaIsOk)
+            {
+                ActualizarDataPanel();
+            }
+        }
+        private void AgregarNCrAdm()
+        {
+            _controlador.AgregarNCrAdm();
+            if (_controlador.AgregarNCrAdmIsOk)
+            {
+                ActualizarDataPanel();
+            }
+        }
+        private void AgregarNDbAdm()
+        {
+            _controlador.AgregarNDbAdm();
+            if (_controlador.AgregarNDbAdmIsOk)
+            {
+                ActualizarDataPanel();
+            }
+        }
+        private void GestionPago()
+        {
+            _controlador.GestionPago();
+        }
         private void AgregarAnticipo()
         {
             _controlador.AgregarAnticipo();
@@ -312,8 +287,32 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         private void AdmPagosRecibidos()
         {
             _controlador.AdmPagosRecibidos();
-            _controlador.BuscarCtasPendientes();
-            ActualizarDataPanel();
+        }
+        private void EdoCta()
+        {
+            _controlador.EdoCta();
+        }
+        private void ListadoCtasPend()
+        {
+            _controlador.ListadoCtasPend();
+        }
+        private void DocDetallesPend()
+        {
+            _controlador.DocDetallesPend();
+        }
+        //
+        //
+        private void AbandonarFicha()
+        {
+            _controlador.AbandonarFicha();
+            if (_controlador.AbandonarIsOk)
+            {
+                Salir();
+            }
+        }
+       private void Salir()
+        {
+            this.Close();
         }
     }
 }

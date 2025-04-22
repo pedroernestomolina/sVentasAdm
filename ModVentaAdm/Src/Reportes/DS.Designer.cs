@@ -7028,6 +7028,8 @@ namespace ModVentaAdm.Src.Reportes {
             
             private global::System.Data.DataColumn columnopNroRef;
             
+            private global::System.Data.DataColumn columnnota;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CxcCobranzaDetPorMedioPagoDataTable() {
@@ -7127,6 +7129,14 @@ namespace ModVentaAdm.Src.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn notaColumn {
+                get {
+                    return this.columnnota;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7162,7 +7172,7 @@ namespace ModVentaAdm.Src.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CxcCobranzaDetPorMedioPagoRow AddCxcCobranzaDetPorMedioPagoRow(string medio, decimal montoRecibido, decimal opMonto, string reciboFecha, string entidad, string opBanco, string opNroCta, string opNroRef) {
+            public CxcCobranzaDetPorMedioPagoRow AddCxcCobranzaDetPorMedioPagoRow(string medio, decimal montoRecibido, decimal opMonto, string reciboFecha, string entidad, string opBanco, string opNroCta, string opNroRef, string nota) {
                 CxcCobranzaDetPorMedioPagoRow rowCxcCobranzaDetPorMedioPagoRow = ((CxcCobranzaDetPorMedioPagoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         medio,
@@ -7172,7 +7182,8 @@ namespace ModVentaAdm.Src.Reportes {
                         entidad,
                         opBanco,
                         opNroCta,
-                        opNroRef};
+                        opNroRef,
+                        nota};
                 rowCxcCobranzaDetPorMedioPagoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCxcCobranzaDetPorMedioPagoRow);
                 return rowCxcCobranzaDetPorMedioPagoRow;
@@ -7203,6 +7214,7 @@ namespace ModVentaAdm.Src.Reportes {
                 this.columnopBanco = base.Columns["opBanco"];
                 this.columnopNroCta = base.Columns["opNroCta"];
                 this.columnopNroRef = base.Columns["opNroRef"];
+                this.columnnota = base.Columns["nota"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7224,6 +7236,8 @@ namespace ModVentaAdm.Src.Reportes {
                 base.Columns.Add(this.columnopNroCta);
                 this.columnopNroRef = new global::System.Data.DataColumn("opNroRef", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnopNroRef);
+                this.columnnota = new global::System.Data.DataColumn("nota", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnota);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12045,6 +12059,22 @@ namespace ModVentaAdm.Src.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nota {
+                get {
+                    try {
+                        return ((string)(this[this.tableCxcCobranzaDetPorMedioPago.notaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nota\' in table \'CxcCobranzaDetPorMedioPago\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxcCobranzaDetPorMedioPago.notaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsmedioNull() {
                 return this.IsNull(this.tableCxcCobranzaDetPorMedioPago.medioColumn);
             }
@@ -12137,6 +12167,18 @@ namespace ModVentaAdm.Src.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetopNroRefNull() {
                 this[this.tableCxcCobranzaDetPorMedioPago.opNroRefColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnotaNull() {
+                return this.IsNull(this.tableCxcCobranzaDetPorMedioPago.notaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnotaNull() {
+                this[this.tableCxcCobranzaDetPorMedioPago.notaColumn] = global::System.Convert.DBNull;
             }
         }
         

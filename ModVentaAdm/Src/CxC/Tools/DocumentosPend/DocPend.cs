@@ -88,7 +88,8 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
         }
         public void ReporteDocPend()
         {
-            _gRepDocPend.setListaDoc(_gListaDoc.ListaItems);
+            _gRepDocPend.setListaDoc(_gListaDoc.ListaItems.Where(w=>w.signoDoc==1).ToList());
+            _gRepDocPend.setMontoCredito(_gListaDoc.ListaItems.Where(w => w.signoDoc == -1).Sum(s=>s.montoResta));
             ((Reportes.ListaDocPend.RepDocPend)_gRepDocPend).setCliente(_cliente);
             _gRepDocPend.Generar();
         }
@@ -149,7 +150,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
                 {
                     throw new Exception(r01.Mensaje);
                 }
-                var lst = r01.ListaD.Where(w=>w.signoDoc==1).Select(s =>
+                var lst = r01.ListaD.Select(s =>
                 {
                     var nr = new ListaDocPend.data()
                     {
@@ -164,7 +165,7 @@ namespace ModVentaAdm.Src.CxC.Tools.DocumentosPend
                         serieDoc = s.serieDoc,
                         signoDoc = s.signoDoc,
                         tasaCambioDoc = s.tasaCambioDoc,
-                        tipoDoc = s.tipoDoc,
+                        tipoDoc = s.tipoDoc + (s.IsDocGeneradoPorModCxC?"/ADM":""),
                         autoDocVenta = s.autoDocVenta,
                         IsDocGeneradoPorModuloCxc = s.IsDocGeneradoPorModCxC,
                     };

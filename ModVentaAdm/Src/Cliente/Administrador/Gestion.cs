@@ -267,17 +267,18 @@ namespace ModVentaAdm.Src.Cliente.Administrador
                 _gestionVisualizar.Inicia();
             }
         }
+        ModVentaAdm.Utils.DialogoFecha.IDialogoFecha _dialogoFecha;
         public void EdoCta()
         {
             if (Item != null)
             {
+                if (_dialogoFecha == null)
+                {
+                    _dialogoFecha = new ModVentaAdm.Utils.DialogoFecha.Imp();
+                }
                 SrcTransporte.Reportes.Filtro.Vista.IFiltro _filtro = new SrcTransporte.Reportes.Filtro.Handler.Filtro();
                 _filtro.idCliente = Item.Id;
-                //
-                SrcTransporte.Reportes.IReporteConFiltroMasFecha _rep = new SrcTransporte.Reportes.Cxc.EdoCta.Imp();
-                _rep.setDesde(new DateTime(2025, 03, 01));
-                _rep.setFiltros(_filtro);
-                _rep.Generar();
+                ModVentaAdm.Src.CxC.HelperCxc.Util.EstadoCuenta(_dialogoFecha, _filtro);
             }
         }
         public void Anticipo()

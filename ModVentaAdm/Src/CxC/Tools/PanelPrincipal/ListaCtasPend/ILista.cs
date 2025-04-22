@@ -16,7 +16,8 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.ListaCtasPend
         void Inicializa();
         List<Idata> ListaItems { get; }
         Idata ItemActual { get; }
-        void FiltrarPor(string txt);
         void setData(IEnumerable<object> lst);
+        void setFiltrarPor(string textoFiltrar);
+        void setFiltrarMostrarCtasEnCero(bool mostratCtasEnCero);
     }
 }
