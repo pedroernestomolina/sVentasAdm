@@ -42,6 +42,7 @@
             this.P_DATA_CLIENTE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.L_CLIENTE = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,7 +80,7 @@
             this.archiivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.L_CLIENTE = new System.Windows.Forms.Label();
+            this.BT_VISUALIZAR = new System.Windows.Forms.Button();
             this.P_PRINCIPAL.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.P_TITULO.SuspendLayout();
@@ -99,6 +100,7 @@
             this.panel13.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.P_DATA_DATA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
@@ -283,6 +285,18 @@
             this.panel1.Size = new System.Drawing.Size(438, 56);
             this.panel1.TabIndex = 0;
             // 
+            // L_CLIENTE
+            // 
+            this.L_CLIENTE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_CLIENTE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_CLIENTE.ForeColor = System.Drawing.Color.Black;
+            this.L_CLIENTE.Location = new System.Drawing.Point(2, 2);
+            this.L_CLIENTE.Name = "L_CLIENTE";
+            this.L_CLIENTE.Size = new System.Drawing.Size(434, 52);
+            this.L_CLIENTE.TabIndex = 1;
+            this.L_CLIENTE.Text = "label15";
+            this.L_CLIENTE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tableLayoutPanel9
             // 
             this.tableLayoutPanel9.ColumnCount = 2;
@@ -431,6 +445,7 @@
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.BT_VISUALIZAR);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(55, 1);
             this.panel10.Margin = new System.Windows.Forms.Padding(1);
@@ -710,17 +725,19 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
-            // L_CLIENTE
+            // BT_VISUALIZAR
             // 
-            this.L_CLIENTE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_CLIENTE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_CLIENTE.ForeColor = System.Drawing.Color.Black;
-            this.L_CLIENTE.Location = new System.Drawing.Point(2, 2);
-            this.L_CLIENTE.Name = "L_CLIENTE";
-            this.L_CLIENTE.Size = new System.Drawing.Size(434, 52);
-            this.L_CLIENTE.TabIndex = 1;
-            this.L_CLIENTE.Text = "label15";
-            this.L_CLIENTE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BT_VISUALIZAR.BackgroundImage = global::ModVentaAdm.Properties.Resources.bt_documento;
+            this.BT_VISUALIZAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_VISUALIZAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_VISUALIZAR.FlatAppearance.BorderSize = 0;
+            this.BT_VISUALIZAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_VISUALIZAR.Location = new System.Drawing.Point(2, 2);
+            this.BT_VISUALIZAR.Name = "BT_VISUALIZAR";
+            this.BT_VISUALIZAR.Size = new System.Drawing.Size(48, 52);
+            this.BT_VISUALIZAR.TabIndex = 3;
+            this.BT_VISUALIZAR.UseVisualStyleBackColor = true;
+            this.BT_VISUALIZAR.Click += new System.EventHandler(this.BT_VISUALIZAR_Click);
             // 
             // vCtasPend
             // 
@@ -756,6 +773,7 @@
             this.panel13.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.P_DATA_DATA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
@@ -827,6 +845,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label L_CNT_DOC;
         private System.Windows.Forms.Label L_CLIENTE;
+        private System.Windows.Forms.Button BT_VISUALIZAR;
 
     }
 }

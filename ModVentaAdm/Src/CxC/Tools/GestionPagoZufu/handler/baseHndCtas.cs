@@ -155,5 +155,8 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler
         {
             _clientDat = dat;
         }
+
+        //
+        abstract public void VisualizarDocumento();
     }
 }

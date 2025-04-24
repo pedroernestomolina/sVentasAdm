@@ -42,5 +42,17 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.Ctas
                 return false;
             }
         }
+        public override void VisualizarDocumento()
+        {
+            if (ItemActual != null) 
+            {
+                var it = (itemCtaPend)ItemActual;
+                var ent = (OOB.CxC.DocumentosPend.Ficha)it.Ficha;
+                if (ent.estatusDocGeneradoPorModCxC.Trim().ToUpper()!="1") 
+                {
+                    Sistema.Fabrica.VisualizarDocumento(ent.autoDocVenta);
+                }
+            }
+        }
     }
 }

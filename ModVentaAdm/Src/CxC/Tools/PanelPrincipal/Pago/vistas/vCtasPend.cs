@@ -180,6 +180,10 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
                 AbonarCta();
             }
         }
+        private void BT_VISUALIZAR_Click(object sender, EventArgs e)
+        {
+            _controlador.VisualizarDocumento();
+        }
         private void BT_LIMPIAR_ABONO_Click(object sender, EventArgs e)
         {
             _controlador.LimpiarAbonos();
@@ -214,5 +218,6 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago.vistas
         {
             this.Close();
         }
+
     }
 }

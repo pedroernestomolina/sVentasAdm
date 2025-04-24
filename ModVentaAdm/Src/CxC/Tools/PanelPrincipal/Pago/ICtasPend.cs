@@ -33,5 +33,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal.Pago
         //
         string GetCliente { get; }
         void setClientePagar(string dat);
+        //
+        void VisualizarDocumento();
     }
 }

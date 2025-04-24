@@ -43,5 +43,11 @@ namespace ModVentaAdm.Src.CxC.Tools.GestionPagoZufu.handler.NtCred
                 return false;
             }
         }
+        public override void VisualizarDocumento()
+        {
+            if (ItemActual != null) 
+            {
+            }
+        }
     }
 }
