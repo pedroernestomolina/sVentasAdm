@@ -96,6 +96,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             _gListaCtasPend.setFiltrarPor(_textoFiltrar);
             _gListaCtasPend.setFiltrarMostrarCtasEnCero(_mostratCtasEnCero);
             _gListaCtasPend.setData(lst);
+            FiltrarPor("");
         }
 
 

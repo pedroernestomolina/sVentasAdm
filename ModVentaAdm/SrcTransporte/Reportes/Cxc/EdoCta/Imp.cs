@@ -59,12 +59,13 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
             var _importe = 0m;
             var _signo = "";
             var _saldo = 0m;
-            var _lst2 = ficha.movimientos.OrderBy(o => o.idDoc).ThenBy(o => o.fechaDoc).ToList();
+            //var _lst2 = ficha.movimientos.OrderBy(o => o.idDoc).ThenBy(o => o.fechaDoc).ToList();
+            var _lst2 = ficha.movimientos.OrderBy(o => o.fechaDoc).ThenBy(o => o.tipoDocumento).ToList();
 
             var _lst = ficha.movimientos.ToList();
-            _lst = _lst.OrderBy(o => o.fechaDoc).ToList();
+            //_lst = _lst.OrderBy(o => o.fechaDoc).ToList();
 
-            foreach (var it in _lst.Where(w=>w.fechaDoc<_fechaInicio).ToList())
+            foreach (var it in _lst2.Where(w=>w.fechaDoc<_fechaInicio).ToList())
             {
                 _importe = it.importeDiv * it.signoDoc;
                 _signo = "+";
@@ -105,7 +106,7 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
             ds.Tables["EdoCta"].Rows.Add(rt);
 
             //
-            foreach (var it in _lst.Where(w=>w.fechaDoc>=_fechaInicio).ToList()) 
+            foreach (var it in _lst2.Where(w=>w.fechaDoc>=_fechaInicio).ToList()) 
             {
                 _importe = it.importeDiv * it.signoDoc;
                 _signo = "+";

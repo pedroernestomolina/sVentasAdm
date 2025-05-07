@@ -647,6 +647,7 @@ namespace ModVentaAdm.Data.Prov
                 codSucursal = filtro.codSucursal,
                 desde = filtro.desde,
                 hasta = filtro.hasta,
+                idCliente= filtro.idCliente,
             };
             var r01 = MyData.ReportesAdm_Ventas_DocCredito(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

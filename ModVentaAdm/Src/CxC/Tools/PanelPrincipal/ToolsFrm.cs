@@ -149,7 +149,7 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
             _modoInicializar = true;
             DGV_1.DataSource = _controlador.CtasPendGetSource;
             ActualizarDataPanel();
-            TB_BUSCAR_NOMBRE.Text = _controlador.TextoFiltrar;
+            FocoPrincipal();
             CHB_MOSTRAR_CTAS_CERO.Checked = _controlador.MostrarCtasEnCero;
             _modoInicializar = false;
             //
@@ -186,6 +186,13 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         private void BT_BUSCAR_Click(object sender, EventArgs e)
         {
             BuscarCtasPendientes();
+            TB_BUSCAR_NOMBRE.Text = _controlador.TextoFiltrar;
+            FocoPrincipal();
+        }
+        private void FocoPrincipal()
+        {
+            TB_BUSCAR_NOMBRE.Text = _controlador.TextoFiltrar;
+            TB_BUSCAR_NOMBRE.Focus();
         }
         private void BT_AGREGAR_CTA_Click(object sender, EventArgs e)
         {

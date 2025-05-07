@@ -22,11 +22,17 @@ namespace ModVentaAdm.Src.Reportes.Modo.DocCredito
         }
         public void Generar(Reportes.Filtro.data data)
         {
+            var _idCliente = "";
+            if (data.Cliente != null) 
+            {
+                _idCliente = data.ClienteId;
+            }
             var filtro = new OOB.Reportes.DocCredito.Filtro()
             {
                 desde = data.GetDesde,
                 hasta = data.GetHasta,
                 codSucursal = data.GetCodigoSucursal,
+                idCliente = _idCliente,
             };
             var r01 = Sistema.MyData.ReportesAdm_Ventas_DocCredito(filtro);
             if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError) 

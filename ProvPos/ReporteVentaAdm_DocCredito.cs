@@ -22,6 +22,7 @@ namespace ProvPos
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("@desde", filtro.desde);
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter("@hasta", filtro.hasta);
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
                     var sql_1 = @"SELECT 
                                     v.auto as idDoc,
                                     v.documento as numeroDoc,
@@ -51,8 +52,14 @@ namespace ProvPos
                         p3.Value = filtro.codSucursal;
                         sql_3 += " and v.codigo_sucursal=@suc ";
                     }
+                    if (filtro.idCliente != "")
+                    {
+                        p4.ParameterName = "@idCliente";
+                        p4.Value = filtro.idCliente;
+                        sql_3 += " and v.auto_cliente=@idCliente ";
+                    }
                     var sql = sql_1 + sql_2 + sql_3 + sql_4;
-                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.DocCredito.Ficha>(sql, p1, p2, p3).ToList();
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.DocCredito.Ficha>(sql, p1, p2, p3, p4).ToList();
                     rt.Lista = lst;
                 }
             }

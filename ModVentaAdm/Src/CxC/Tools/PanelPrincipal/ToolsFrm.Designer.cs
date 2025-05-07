@@ -395,6 +395,7 @@
             this.toolTip1.SetToolTip(this.CHB_MOSTRAR_CTAS_CERO, "Mostrar Cuentas En Cero (0)");
             this.CHB_MOSTRAR_CTAS_CERO.UseVisualStyleBackColor = true;
             this.CHB_MOSTRAR_CTAS_CERO.CheckedChanged += new System.EventHandler(this.CHB_MOSTRAR_CTAS_CERO_CheckedChanged);
+            this.CHB_MOSTRAR_CTAS_CERO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KeyDown);
             // 
             // panel10
             // 
