@@ -43,7 +43,8 @@ namespace ModVentaAdm.SrcTransporte.ToolsCxC.Reportes.Planilla
             rt["reciboNro"] = ficha.reciboNro;
             rt["fecha"] = ficha.fechaMov;
             rt["tasaCambio"] = ficha.tasaCambio;
-            rt["montoPago"] = ficha.importeDiv;
+            //rt["montoPago"] = ficha.importeDiv;
+            rt["montoPago"] = ficha.importeDiv + ficha.montoPorAnticipoCargar;
             rt["notas"] = ficha.notasMov;
             rt["proveedor"] = ficha.ciRifProv + Environment.NewLine + ficha.nombreProv;
             rt["isAnulado"] = ficha.estatusMov.Trim().ToUpper() == "1" ? "ANULADO" : "";

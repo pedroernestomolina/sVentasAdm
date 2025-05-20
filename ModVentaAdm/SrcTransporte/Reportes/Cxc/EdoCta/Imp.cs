@@ -67,14 +67,24 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
 
             foreach (var it in _lst2.Where(w=>w.fechaDoc<_fechaInicio).ToList())
             {
-                _importe = it.importeDiv * it.signoDoc;
+                var _esUnAnticipoPuro = (it.importeDiv == 0m && it.anticipoCargado > 0m);
+                //_importe = it.importeDiv * it.signoDoc;
+                _importe = ((it.importeDiv - it.anticipoCargado) * it.signoDoc);
                 _signo = "+";
                 if (it.signoDoc < 0)
                 {
                     _signo = "-";
                     if (it.tipoDoc.Trim().ToUpper() == "PAG")
                     {
-                        _saldo += _importe;
+                        if (_esUnAnticipoPuro) // ES UN PAGO DONDE SE RECIBE UN ANTICIPO PURO
+                        {
+                            _saldo += 0m;
+                            _signo = "";
+                        }
+                        else 
+                        {
+                            _saldo += _importe;
+                        }
                     }
                     else
                     {
@@ -108,14 +118,24 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
             //
             foreach (var it in _lst2.Where(w=>w.fechaDoc>=_fechaInicio).ToList()) 
             {
-                _importe = it.importeDiv * it.signoDoc;
+                var _esUnAnticipoPuro = (it.importeDiv == 0m && it.anticipoCargado > 0m);
+                //_importe = it.importeDiv * it.signoDoc;
+                _importe = ((it.importeDiv - it.anticipoCargado) * it.signoDoc);
                 _signo = "+";
                 if (it.signoDoc < 0)
                 {
                     _signo = "-";
                     if (it.tipoDoc.Trim().ToUpper() == "PAG")
                     {
-                        _saldo += _importe;
+                        if (_esUnAnticipoPuro) // ES UN PAGO DONDE SE RECIBE UN ANTICIPO PURO
+                        {
+                            _saldo += 0m;
+                            _signo = "";
+                        }
+                        else // ES UN PAGO DEUDA
+                        {
+                            _saldo += _importe;
+                        }
                     }
                     else 
                     {
@@ -144,7 +164,8 @@ namespace ModVentaAdm.SrcTransporte.Reportes.Cxc.EdoCta
                 rt2["fechaDoc"] = it.fechaDoc ;
                 rt2["nroDoc"] = it.nroDoc;
                 rt2["tipoDoc"] = tipoDocumento;
-                rt2["importe"] = it.importeDiv;
+                //rt2["importe"] = it.importeDiv; 
+                rt2["importe"] = (_esUnAnticipoPuro) ? it.anticipoCargado : (it.importeDiv - it.anticipoCargado);
                 rt2["signo"] = _signo;
                 rt2["notas"] = it.notasDoc;
                 rt2["saldo"] = _saldo;

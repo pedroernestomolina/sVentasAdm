@@ -219,7 +219,7 @@ namespace ProvPos
                     {
                         throw new Exception("FICHA CLENTE NO ENCONTRADA");
                     }
-                    _sql = @"SELECT 
+                    /*_sql = @"SELECT 
                                     auto as idDoc,
                                     fecha as fechaDoc,
                                     documento as nroDoc,
@@ -231,7 +231,22 @@ namespace ProvPos
                                     estatus_doc_cxc as estatusDocAdm
                                 FROM cxc 
                                 where auto_cliente=@idCliente
-                                    and estatus_anulado='0' ";
+                                    and estatus_anulado='0' ";*/
+                    _sql = @"SELECT 
+                                    c.auto as idDoc,
+                                    c.fecha as fechaDoc,
+                                    c.documento as nroDoc,
+                                    c.tipo_documento as tipoDoc,
+                                    c.fecha_vencimiento as fechaVencDoc,
+                                    c.monto_divisa as importeDiv,
+                                    c.signo as signoDoc,
+                                    c.nota as notasDoc,
+                                    c.estatus_doc_cxc as estatusDocAdm,
+                                    rec.anticipo_cargar as anticipoCargado
+                                FROM cxc as c
+                                left join cxc_recibos as rec on rec.auto_cxc=c.auto and c.tipo_documento='PAG'
+                                where c.auto_cliente=@idCliente
+                                    and c.estatus_anulado='0' ";
                     p1 = new MySql.Data.MySqlClient.MySqlParameter("@idCliente", idCliente);
                     var _lst = cnn.Database.SqlQuery<DtoTransporte.Reporte.Cxc.EdoCta.Movimiento>(_sql, p1).ToList();
                     result.Entidad = new DtoTransporte.Reporte.Cxc.EdoCta.Ficha()

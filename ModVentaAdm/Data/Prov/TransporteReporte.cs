@@ -176,7 +176,8 @@ namespace ModVentaAdm.Data.Prov
                             nroDoc = s.nroDoc,
                             signoDoc = s.signoDoc,
                             tipoDoc = s.tipoDoc,
-                            estatusDocAdm= s.estatusDocAdm
+                            estatusDocAdm= s.estatusDocAdm,
+                            anticipoCargado= s.anticipoCargado.HasValue?s.anticipoCargado.Value:0,
                         };
                         return nr;
                     }).ToList();

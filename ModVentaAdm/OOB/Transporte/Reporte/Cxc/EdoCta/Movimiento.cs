@@ -20,6 +20,8 @@ namespace ModVentaAdm.OOB.Transporte.Reporte.Cxc.EdoCta
         public string notasDoc { get; set; }
         public string estatusDocAdm { get; set; }
         //
+        public decimal anticipoCargado { get; set; }
+        //
         public bool esDocAdministrativo { get { return estatusDocAdm.Trim().ToUpper() == "1"; } }
         public tipoDocumentoEnum tipoDocumento {get {return tipoDocumentoFunc();}}
         //
