@@ -25,6 +25,7 @@ namespace ModVentaAdm
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
+                Sistema.NombreHerramienta = "Tools Ventas Adm.";
                 Src.Identificacion.ILogin _gLogin = new Src.Identificacion.Login();
                 _gLogin.Inicializa();
                 _gLogin.Inicia();
