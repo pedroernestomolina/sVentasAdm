@@ -14,60 +14,66 @@ namespace ModVentaAdm.Data.Prov
             Reportes_GeneralDocumento(OOB.Reportes.GeneralDocumento.Filtro filtro)
         {
             var rt = new OOB.Resultado.Lista<OOB.Reportes.GeneralDocumento.Ficha>();
-
-            var filtroDTO = new DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Filtro()
+            //
+            try
             {
-                codSucursal = filtro.idSucursal,
-                desde = filtro.desde,
-                hasta = filtro.hasta,
-                tipoDocFactura = filtro.tipoDocFactura,
-                tipoDocNtDebito = filtro.tipoDocNtDebito,
-                tipoDocNtCredito = filtro.tipoDocNtCredito,
-                tipoDocNtEntrega = filtro.tipoDocNtEntrega,
-            };
-            var r01 = MyData.ReportesAdm_GeneralDocumento(filtroDTO);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            var list= new List<OOB.Reportes.GeneralDocumento.Ficha>();
-            if (r01.Lista != null) 
-            {
-                if (r01.Lista.Count > 0) 
+                var filtroDTO = new DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Filtro()
                 {
-                    list = r01.Lista.Select(s =>
-                    {
-                        var nr = new OOB.Reportes.GeneralDocumento.Ficha()
-                        {
-                            clienteCiRif = s.clienteCiRif,
-                            clienteNombre = s.clienteNombre,
-                            control = s.control,
-                            documento = s.documento,
-                            estatusDoc = s.estatusDoc,
-                            factorDoc = s.factorDoc,
-                            fecha = s.fecha,
-                            montoCargo = s.montoCargo,
-                            montoDscto = s.montoDscto,
-                            nombreDoc = s.nombreDoc,
-                            renglones = s.renglones,
-                            serie = s.serie,
-                            signoDoc = s.signoDoc,
-                            tipoDoc = s.tipoDoc,
-                            total = s.total,
-                            totalDivisa = s.totalDivisa,
-                            sucCodigo=s.sucCodigo,
-                            sucNombre=s.sucNombre,
-                            estacion=s.estacion,
-                        };
-                        return nr;
-                    }).ToList();
+                    idCliente = filtro.idCliente,
+                    codSucursal = filtro.idSucursal,
+                    desde = filtro.desde,
+                    hasta = filtro.hasta,
+                    tipoDocFactura = filtro.tipoDocFactura,
+                    tipoDocNtDebito = filtro.tipoDocNtDebito,
+                    tipoDocNtCredito = filtro.tipoDocNtCredito,
+                    tipoDocNtEntrega = filtro.tipoDocNtEntrega,
+                };
+                var r01 = MyData.ReportesAdm_GeneralDocumento(filtroDTO);
+                if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
                 }
+                var list = new List<OOB.Reportes.GeneralDocumento.Ficha>();
+                if (r01.Lista != null)
+                {
+                    if (r01.Lista.Count > 0)
+                    {
+                        list = r01.Lista.Select(s =>
+                        {
+                            var nr = new OOB.Reportes.GeneralDocumento.Ficha()
+                            {
+                                clienteCiRif = s.clienteCiRif,
+                                clienteNombre = s.clienteNombre,
+                                control = s.control,
+                                documento = s.documento,
+                                estatusDoc = s.estatusDoc,
+                                factorDoc = s.factorDoc,
+                                fecha = s.fecha,
+                                montoCargo = s.montoCargo,
+                                montoDscto = s.montoDscto,
+                                nombreDoc = s.nombreDoc,
+                                renglones = s.renglones,
+                                serie = s.serie,
+                                signoDoc = s.signoDoc,
+                                tipoDoc = s.tipoDoc,
+                                total = s.total,
+                                totalDivisa = s.totalDivisa,
+                                sucCodigo = s.sucCodigo,
+                                sucNombre = s.sucNombre,
+                                estacion = s.estacion,
+                            };
+                            return nr;
+                        }).ToList();
+                    }
+                }
+                rt.ListaD = list;
             }
-            rt.ListaD=list;
-
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+            }
+            //
             return rt;
         }
         public OOB.Resultado.Lista<OOB.Reportes.GeneralPorDepartamento.Ficha>
@@ -248,61 +254,67 @@ namespace ModVentaAdm.Data.Prov
             Reportes_GeneralDocumentoDetalle(OOB.Reportes.GeneralDocumentoDetalle.Filtro filtro)
         {
             var rt = new OOB.Resultado.Lista<OOB.Reportes.GeneralDocumentoDetalle.Ficha>();
-
-            var filtroDTO = new DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumentoDetalle.Filtro()
+            //
+            try
             {
-                palabraClave=filtro.palabraClave,
-                codigoSucursal = filtro.codigoSucursal,
-                desdeFecha = filtro.desdeFecha,
-                hastaFecha = filtro.hastaFecha,
-                tipoDocFactura = filtro.tipoDocFactura,
-                tipoDocNtDebito = filtro.tipoDocNtDebito,
-                tipoDocNtCredito = filtro.tipoDocNtCredito,
-                tipoDocNtEntrega = filtro.tipoDocNtEntrega,
-            };
-            var r01 = MyData.ReportesAdm_GeneralDocumentoDetalle(filtroDTO);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            var list = new List<OOB.Reportes.GeneralDocumentoDetalle.Ficha>();
-            if (r01.Lista != null)
-            {
-                if (r01.Lista.Count > 0)
+                var filtroDTO = new DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumentoDetalle.Filtro()
                 {
-                    list = r01.Lista.Select(s =>
-                    {
-                        var nr = new OOB.Reportes.GeneralDocumentoDetalle.Ficha()
-                        {
-                            auto = s.auto,
-                            cantidadUnd = s.cantidadUnd,
-                            documento = s.documento,
-                            fecha = s.fecha,
-                            hora = s.hora,
-                            nombreProducto = s.nombreProducto,
-                            precioUnd = s.precioUnd,
-                            renglones = s.renglones,
-                            total = s.total,
-                            totalRenglon = s.totalRenglon,
-                            usuarioCodigo = s.usuarioCodigo,
-                            usuarioNombre = s.usuarioNombre,
-                            signo = s.signo,
-                            documentoNombre = s.documentoNombre,
-                            estacion = s.estacion,
-                            sucCodigo = s.sucCodigo,
-                            sucNombre = s.sucNombre,
-                            ciRif = s.ciRif,
-                            razonSocial = s.razonSocial,
-                        };
-                        return nr;
-                    }).ToList();
+                    idCliente = filtro.idCliente,
+                    palabraClave = filtro.palabraClave,
+                    codigoSucursal = filtro.codigoSucursal,
+                    desdeFecha = filtro.desdeFecha,
+                    hastaFecha = filtro.hastaFecha,
+                    tipoDocFactura = filtro.tipoDocFactura,
+                    tipoDocNtDebito = filtro.tipoDocNtDebito,
+                    tipoDocNtCredito = filtro.tipoDocNtCredito,
+                    tipoDocNtEntrega = filtro.tipoDocNtEntrega,
+                };
+                var r01 = MyData.ReportesAdm_GeneralDocumentoDetalle(filtroDTO);
+                if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
                 }
+                var list = new List<OOB.Reportes.GeneralDocumentoDetalle.Ficha>();
+                if (r01.Lista != null)
+                {
+                    if (r01.Lista.Count > 0)
+                    {
+                        list = r01.Lista.Select(s =>
+                        {
+                            var nr = new OOB.Reportes.GeneralDocumentoDetalle.Ficha()
+                            {
+                                auto = s.auto,
+                                cantidadUnd = s.cantidadUnd,
+                                documento = s.documento,
+                                fecha = s.fecha,
+                                hora = s.hora,
+                                nombreProducto = s.nombreProducto,
+                                precioUnd = s.precioUnd,
+                                renglones = s.renglones,
+                                total = s.total,
+                                totalRenglon = s.totalRenglon,
+                                usuarioCodigo = s.usuarioCodigo,
+                                usuarioNombre = s.usuarioNombre,
+                                signo = s.signo,
+                                documentoNombre = s.documentoNombre,
+                                estacion = s.estacion,
+                                sucCodigo = s.sucCodigo,
+                                sucNombre = s.sucNombre,
+                                ciRif = s.ciRif,
+                                razonSocial = s.razonSocial,
+                            };
+                            return nr;
+                        }).ToList();
+                    }
+                }
+                rt.ListaD = list;
             }
-            rt.ListaD = list;
-
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = OOB.Resultado.Enumerados.EnumResult.isError;
+            }
+            //
             return rt;
         }
         public OOB.Resultado.Lista<OOB.Reportes.Consolidado.Ficha> 

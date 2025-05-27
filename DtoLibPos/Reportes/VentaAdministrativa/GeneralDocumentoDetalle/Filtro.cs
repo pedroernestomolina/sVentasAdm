@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumentoDetalle
 {
-    
     public class Filtro
     {
-
         public string palabraClave { get; set; }
         public string codigoSucursal { get; set; }
         public DateTime desdeFecha { get; set; }
@@ -19,7 +17,8 @@ namespace DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumentoDetalle
         public bool tipoDocNtDebito { get; set; }
         public bool tipoDocNtCredito { get; set; }
         public bool tipoDocNtEntrega { get; set; }
-
+        //
+        public string idCliente { get; set; }
 
         public Filtro()
         {
@@ -31,8 +30,8 @@ namespace DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumentoDetalle
             tipoDocNtCredito = false;
             tipoDocNtDebito = false;
             tipoDocNtEntrega = false;
+            //
+            idCliente = "";
         }
-
     }
-
 }

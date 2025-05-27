@@ -82,6 +82,7 @@ namespace ModVentaAdm.Src.Reportes.Filtro
             _procesarIsOk = false;
             _data.Inicializa();
             _sucursal.Inicializa();
+            _gestionClienteLista.Inicializa();
         }
 
         public bool CargarData()

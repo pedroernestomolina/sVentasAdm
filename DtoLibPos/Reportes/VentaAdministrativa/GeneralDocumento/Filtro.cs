@@ -17,8 +17,11 @@ namespace DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento
         public bool tipoDocNtCredito { get; set; }
         public bool tipoDocNtEntrega { get; set; }
         //
+        public string idCliente { get; set; }
+        //
         public Filtro()
         {
+            idCliente = "";
             codSucursal = "";
             desde = DateTime.Now.Date;
             hasta = DateTime.Now.Date;

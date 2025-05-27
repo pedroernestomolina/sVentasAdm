@@ -62,6 +62,7 @@ namespace ModVentaAdm.Src.Reportes.Filtro
             DTP_DESDE.Enabled= _controlador.ActivarDesdeHasta;
             DTP_HASTA.Enabled = _controlador.ActivarDesdeHasta;
 
+            TB_CLIENTE.Text = "";
             L_CLIENTE.Enabled = _controlador.ActivarCliente;
             TB_CLIENTE.Enabled = _controlador.ActivarCliente;
             BT_CLIENTE_BUSCAR.Enabled = _controlador.ActivarCliente;

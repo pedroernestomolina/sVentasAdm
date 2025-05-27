@@ -10,22 +10,15 @@ using System.Windows.Forms;
 
 namespace ModVentaAdm.Src.Reportes.Modo.GeneralDocumento
 {
-    
     public class Gestion: IGestion
     {
-
         private Reportes.Filtro.IFiltro _filtro;
-
-
+        //
         public Reportes.Filtro.IFiltro Filtros { get { return _filtro; } }
-
-
         public Gestion()
         {
             _filtro = new Filtro();
         }
-
-
         public void Generar(Reportes.Filtro.data data)
         {
             var filtro = new OOB.Reportes.GeneralDocumento.Filtro()
@@ -33,6 +26,7 @@ namespace ModVentaAdm.Src.Reportes.Modo.GeneralDocumento
                 desde = data.GetDesde,
                 hasta = data.GetHasta,
                 idSucursal = data.GetCodigoSucursal,
+                idCliente= data.ClienteId,
                 tipoDocFactura = data.GetTipoDocFactura,
                 tipoDocNtCredito = data.GetTipoDocNtCredito,
                 tipoDocNtDebito = data.GetTipoDocNtDebito,
@@ -46,12 +40,12 @@ namespace ModVentaAdm.Src.Reportes.Modo.GeneralDocumento
             }
             Imprimir(r01.ListaD);
         }
-
+        //
         private void Imprimir(List<OOB.Reportes.GeneralDocumento.Ficha> list)
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"Reportes\GeneralDocumento.rdlc";
             var ds = new DS();
-
+            //
             foreach (var it in list.ToList())
             {
                 DataRow rt = ds.Tables["GeneralDocumento"].NewRow();
@@ -70,7 +64,6 @@ namespace ModVentaAdm.Src.Reportes.Modo.GeneralDocumento
                 rt["Estacion"] = it.estacion;
                 ds.Tables["GeneralDocumento"].Rows.Add(rt);
             }
-
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
             //pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
@@ -78,14 +71,11 @@ namespace ModVentaAdm.Src.Reportes.Modo.GeneralDocumento
             //pmt.Add(new ReportParameter("EMPRESA_DIRECCION", Sistema.Negocio.DireccionFiscal));
             //pmt.Add(new ReportParameter("DOCUMENTO", ficha.documentoModo));
             Rds.Add(new ReportDataSource("GeneralDocumento", ds.Tables["GeneralDocumento"]));
-
             var frp = new ReporteFrm();
             frp.rds = Rds;
             frp.prmts = pmt;
             frp.Path = pt;
             frp.ShowDialog();
         }
-
     }
-
 }

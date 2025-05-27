@@ -14,7 +14,7 @@ namespace ProvPos
             ReportesAdm_GeneralDocumento(DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Filtro filtro)
         {
             var rt = new DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
@@ -23,7 +23,7 @@ namespace ProvPos
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p4 = new MySql.Data.MySqlClient.MySqlParameter();
-
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
                     var sql_1 = @"SELECT 
                         v.auto,
                         v.fecha, 
@@ -43,22 +43,16 @@ namespace ProvPos
                         (v.descuento1+v.descuento2) as montoDscto, 
                         v.cargos as montoCargo,
                         s.codigo as sucCodigo, s.nombre as sucNombre ";
-
                     var sql_2 = @" FROM ventas as v 
                                     join empresa_sucursal as s on s.codigo=v.codigo_sucursal ";
-
                     var sql_3 = "where 1=1 ";
-
                     var sql_4 = "";
-
                     sql_3 += " and v.fecha>=@desde ";
                     p1.ParameterName = "@desde";
                     p1.Value = filtro.desde;
-
                     sql_3 += " and v.fecha<=@hasta ";
                     p2.ParameterName = "@hasta";
                     p2.Value = filtro.hasta;
-
                     if (filtro.codSucursal != "")
                     {
                         sql_3 += " and v.codigo_sucursal=@suc ";
@@ -101,9 +95,14 @@ namespace ProvPos
                         tipodoc += ")";
                         sql_3 += tipodoc;
                     }
-
+                    if (filtro.idCliente != "")
+                    {
+                        sql_3 += " and v.auto_cliente=@idCliente ";
+                        p5.ParameterName = "@idCliente";
+                        p5.Value = filtro.idCliente;
+                    }
                     var sql = sql_1 + sql_2 + sql_3 + sql_4;
-                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Ficha>(sql, p1, p2, p3, p4).ToList();
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumento.Ficha>(sql, p1, p2, p3, p4,p5).ToList();
                     rt.Lista = lst;
                 }
             }
@@ -112,7 +111,7 @@ namespace ProvPos
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return rt;
         }
         public DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.GeneralPorDepartamento.Ficha> 
@@ -333,7 +332,7 @@ namespace ProvPos
             ReportesAdm_GeneralDocumentoDetalle(DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumentoDetalle.Filtro filtro)
         {
             var rt = new DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumentoDetalle.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new PosEntities(_cnPos.ConnectionString))
@@ -342,12 +341,12 @@ namespace ProvPos
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p4 = new MySql.Data.MySqlClient.MySqlParameter();
-
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+                    //
                     p1.ParameterName = "@desde";
                     p1.Value = filtro.desdeFecha;
                     p2.ParameterName = "@hasta";
                     p2.Value = filtro.hastaFecha;
-
                     var sql_1 = @"select v.auto, v.documento, v.fecha, v.usuario as usuarioNombre, v.signo, 
                         v.documento_nombre as documentoNombre, v.codigo_usuario as usuarioCodigo, v.total, v.renglones, 
                         vd.nombre as nombreProducto, vd.cantidad_und as cantidadUnd, vd.precio_und as precioUnd, 
@@ -406,9 +405,14 @@ namespace ProvPos
                         tipodoc += ")";
                         sql_3 += tipodoc;
                     }
-
+                    if (filtro.idCliente != "")
+                    {
+                        sql_3 += " and v.auto_cliente=@idCliente ";
+                        p5.ParameterName = "@idCliente";
+                        p5.Value = filtro.idCliente;
+                    }
                     var sql = sql_1 + sql_2 + sql_3;
-                    var list = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumentoDetalle.Ficha>(sql, p1, p2, p3, p4).ToList();
+                    var list = cnn.Database.SqlQuery<DtoLibPos.Reportes.VentaAdministrativa.GeneralDocumentoDetalle.Ficha>(sql, p1, p2, p3, p4,p5).ToList();
                     rt.Lista = list;
                 }
             }
@@ -417,7 +421,7 @@ namespace ProvPos
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return rt;
         }
         public DtoLib.ResultadoLista<DtoLibPos.Reportes.VentaAdministrativa.Consolidado.Ficha>
