@@ -12,5 +12,6 @@ namespace ModVentaAdm.OOB.ReportesCxc.DetallePorDoc
         public string codSucursal { get; set; }
         public DateTime desde { get; set; }
         public DateTime hasta { get; set; }
+        public string idCliente { get; set; }
     }
 }

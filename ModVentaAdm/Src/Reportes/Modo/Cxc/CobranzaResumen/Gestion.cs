@@ -26,6 +26,7 @@ namespace ModVentaAdm.Src.Reportes.Modo.Cxc.CobranzaResumen
                 desde = data.GetDesde,
                 hasta = data.GetHasta,
                 codSucursal = data.GetCodigoSucursal,
+                idCliente =data.ClienteId,
             };
             var r01 = Sistema.MyData.ReportesCxc_ResumenCobranza(filtro);
             if (r01.Result == OOB.Resultado.Enumerados.EnumResult.isError)

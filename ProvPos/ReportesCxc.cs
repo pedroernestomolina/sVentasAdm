@@ -22,6 +22,7 @@ namespace ProvPos
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("@desde", filtro.desde);
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter("@hasta", filtro.hasta);
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
                     var sql_1 = @"select 
                                     doc.documento as numeroDoc, 
                                     doc.tipo_documento as tipoDoc,
@@ -52,8 +53,14 @@ namespace ProvPos
                         p3.Value = filtro.codSucursal;
                         sql_3 += " and doc.codigo_sucursal=@suc ";
                     }
+                    if (filtro.idCliente != "")
+                    {
+                        p4.ParameterName = "@idCliente";
+                        p4.Value = filtro.idCliente;
+                        sql_3 += " and rec.auto_cliente=@idCliente ";
+                    }
                     var sql = sql_1 + sql_2 + sql_3 + sql_4;
-                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.Cxc.DetallePorDoc.Ficha>(sql, p1, p2, p3).ToList();
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.Cxc.DetallePorDoc.Ficha>(sql, p1, p2, p3, p4).ToList();
                     rt.Lista = lst;
                 }
             }
@@ -78,6 +85,7 @@ namespace ProvPos
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("@desde", filtro.desde);
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter("@hasta", filtro.hasta);
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
                     var sql_1 = @"select 
                                     documento as numeroRec,
                                     fecha as fechaRec,
@@ -101,8 +109,14 @@ namespace ProvPos
                         p3.Value = filtro.codSucursal;
                         sql_3 += " and codigo_sucursal=@suc ";
                     }
+                    if (filtro.idCliente != "")
+                    {
+                        p4.ParameterName = "@idCliente";
+                        p4.Value = filtro.idCliente;
+                        sql_3 += " and auto_cliente=@idCliente ";
+                    }
                     var sql = sql_1 + sql_2 + sql_3 + sql_4;
-                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.Cxc.Resumen.Ficha>(sql, p1, p2, p3).ToList();
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.Cxc.Resumen.Ficha>(sql, p1, p2, p3, p4).ToList();
                     rt.Lista = lst;
                 }
             }
@@ -127,6 +141,7 @@ namespace ProvPos
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("@desde", filtro.desde);
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter("@hasta", filtro.hasta);
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
                     var sql_1 = @"select 
                                     rec.documento as numeroRec,
                                     rec.fecha as fechaRec,
@@ -162,8 +177,14 @@ namespace ProvPos
                         p3.Value = filtro.codSucursal;
                         sql_3 += " and rec.codigo_sucursal=@suc ";
                     }
+                    if (filtro.idCliente != "")
+                    {
+                        p4.ParameterName = "@idCliente";
+                        p4.Value = filtro.idCliente;
+                        sql_3 += " and rec.auto_cliente=@idCliente ";
+                    }
                     var sql = sql_1 + sql_2 + sql_3 + sql_4;
-                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.Cxc.DetallePorMedioPago.Ficha>(sql, p1, p2, p3).ToList();
+                    var lst = cnn.Database.SqlQuery<DtoLibPos.Reportes.Cxc.DetallePorMedioPago.Ficha>(sql, p1, p2, p3, p4).ToList();
                     rt.Lista = lst;
                 }
             }

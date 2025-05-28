@@ -13,7 +13,7 @@ namespace ModVentaAdm.Src.Reportes.Modo.Cxc.CobranzaDetallePorMedioPago
         public bool ActivarDesdeHasta { get { return true; } }
         public bool ActivarEstatus { get { return false; } }
         public bool ActivarMesAnoRelacion { get { return false; } }
-        public bool ActivarCliente { get { return false; } }
+        public bool ActivarCliente { get { return true; } }
         public bool ActivarTipoDocumento { get { return false; } }
         public bool ValidarTipoDocumento { get { return false; } }
         public bool ActivarProducto { get { return false; } }
