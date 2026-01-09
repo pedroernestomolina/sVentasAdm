@@ -1640,6 +1640,7 @@
     <EmbeddedResource Include="SrcTransporte\Reportes\Cxc_EdoCtaCliente.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\ProForma\Report1.rdlc" />
     <EmbeddedResource Include="SrcTransporte\Reportes\ProForma\Transp_Factura.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1649,7 +1650,13 @@
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Factura.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Presupuesto - Copy %282%29.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Presupuesto - Copy.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_PresupuestoPorTurno - Copy %282%29.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_PresupuestoPorTurno - Copy.rdlc">
@@ -1659,6 +1666,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_Presupuesto.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SrcTransporte\Reportes\Transp_ProForma2 - Copy %282%29.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SrcTransporte\Reportes\Transp_ProForma2 - Copy.rdlc">
@@ -2050,6 +2060,7 @@
     <None Include="Resources\involucrados_24.png" />
     <None Include="Resources\involucrados_48.png" />
     <None Include="Resources\involucrados_32.png" />
+    <None Include="Resources\logo_transp_rivas_nuevo.png" />
     <Content Include="Src\Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Src\Imagenes\administrador.png" />
     <Content Include="Src\Imagenes\automatizacion.jpg" />
@@ -2175,6 +2186,7 @@
     <Content Include="Src\Imagenes\logo_transp_doc.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_presup.jpeg" />
     <Content Include="Src\Imagenes\logo_transp_presup_2.jpeg" />
+    <EmbeddedResource Include="Src\Imagenes\logo_transp_rivas_nuevo.png" />
     <Content Include="Src\Imagenes\Machine-learning-1024x682.jpg" />
     <Content Include="Src\Imagenes\manager_doc_48.png" />
     <Content Include="Src\Imagenes\mobile.ico" />

@@ -203,6 +203,12 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
         private PanelPrincipal.Pago.IPago _gPago;
         public void GestionPago()
         {
+            if (Sistema.Fabrica is Fabrica.Transporte.ModoTransporte)
+            {
+                GestionPagoTransporte();
+                return;
+            }
+
             if (_gListaCtasPend.ItemActual != null)
             {
                 var r00 = Sistema.MyData.Permiso_CxC_Tools_GestionCobro(Sistema.Usuario.idGrupo);
@@ -224,13 +230,39 @@ namespace ModVentaAdm.Src.CxC.Tools.PanelPrincipal
                 }
             }
         }
+
+        private GestionPago.IGestionPago _gPagoTransporte;
+        public void GestionPagoTransporte()
+        {
+            if (_gListaCtasPend.ItemActual != null)
+            {
+                var r00 = Sistema.MyData.Permiso_CxC_Tools_GestionCobro(Sistema.Usuario.idGrupo);
+                if (r00.Result == OOB.Resultado.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r00.Mensaje);
+                    return;
+                }
+                if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+                {
+                    var _entidadPagar = (ListaCtasPend.data)_gListaCtasPend.ItemActual;
+                    if (_gPagoTransporte == null)
+                    {
+                        _gPagoTransporte = new GestionPago.GestionPago();
+                    }
+                    _gPagoTransporte.Inicializa();
+                    _gPagoTransporte.setIdCliente(_entidadPagar.Ficha.idCliente);
+                    _gPagoTransporte.Inicia();
+                }
+            }
+        }
+ 
         //
         public void AgregarAnticipo()
         {
             if (_gListaCtasPend.ItemActual != null)
             {
-                //var item = _gListaCtasPend.ItemActual;
-                //Sistema.Fabrica.ClienteAnticipos(item.idCliente);
+                var item = (ListaCtasPend.data)_gListaCtasPend.ItemActual;
+                Sistema.Fabrica.ClienteAnticipos(item.Ficha.idCliente);
             }
         }
         //

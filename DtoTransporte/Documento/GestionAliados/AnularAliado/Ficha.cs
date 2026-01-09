@@ -9,6 +9,7 @@ namespace DtoTransporte.Documento.GestionAliados.AnularAliado
 {
     public class Ficha
     {
+        public string idDocumento { get; set; }
         public int idAliado { get; set; }
         public decimal montoAnular { get; set; }
         public int idRefAliadoDoc { get; set; }

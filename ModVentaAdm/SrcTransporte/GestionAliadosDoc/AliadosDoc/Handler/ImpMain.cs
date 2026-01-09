@@ -174,6 +174,7 @@ namespace ModVentaAdm.SrcTransporte.GestionAliadosDoc.AliadosDoc.Handler
                     {
                         var fichaOOB = new OOB.Transporte.Documento.GestionAliados.AnularAliado.Ficha()
                         {
+                            idDocumento = _idDocCargar,
                             idAliado = it.aliadoId,
                             idRefAliadoDoc = it.idRef,
                             idUsuario = Sistema.Usuario.id,

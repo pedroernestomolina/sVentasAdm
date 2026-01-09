@@ -15,5 +15,6 @@ namespace ModVentaAdm.OOB.Transporte.Documento.GestionAliados.AnularAliado
         public string idUsuario { get; set; }
         public string nombreUsuario { get; set; }
         public string motivo { get; set; }
+        public string idDocumento { get; set; }
     }
 }

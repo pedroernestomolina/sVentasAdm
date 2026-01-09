@@ -81,6 +81,7 @@ namespace ModVentaAdm.Data.Prov
             //
             var fichaDTO = new DtoTransporte.Documento.GestionAliados.AnularAliado.Ficha()
             {
+                idDocumento = ficha.idDocumento,
                 idAliado = ficha.idAliado,
                 idRefAliadoDoc = ficha.idRefAliadoDoc,
                 idUsuario = ficha.idUsuario,

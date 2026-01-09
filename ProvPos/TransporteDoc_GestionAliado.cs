@@ -86,6 +86,34 @@ namespace ProvPos
                     {
                         var fechaSistema = cn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
                         //
+                        var _ssql = @"select 1 
+                                        from 
+                                            ventas_transp_aliado 
+                                        where 
+                                            id_venta=@idVenta and id_aliado=@idAliado and estatus_anulado='0'";
+                        var _tp1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", ficha.idDocumento);
+                        var _tp2 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", ficha.idAliado);
+                        var _rtp = cn.Database.SqlQuery<int>(_ssql, _tp1, _tp2).FirstOrDefault();
+                        if (_rtp != null) 
+                        {
+                            if (_rtp == 1) 
+                            {
+                                _ssql = @"update ventas_transp_aliado 
+                                            set estatus_anulado='1'
+                                        where 
+                                            id_venta=@idVenta and id_aliado=@idAliado and estatus_anulado='0'";
+                                _tp1 = new MySql.Data.MySqlClient.MySqlParameter("@idVenta", ficha.idDocumento);
+                                _tp2 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", ficha.idAliado);
+                                var _rtp_2 = cn.Database.ExecuteSqlCommand(_ssql, _tp1, _tp2);
+                                if (_rtp_2 == 0) 
+                                {
+                                    throw new Exception("PROBLEMA AL ACTUALIZAR ESTATUS ALIADO EN EL DOCUMENTO");
+                                }
+                            }
+                        }
+
+
+                        //
                         //ALIADOS 
                         var _sql = @"update transp_aliado set 
                                         monto_debitos_mon_divisa=monto_debitos_mon_divisa+@monto

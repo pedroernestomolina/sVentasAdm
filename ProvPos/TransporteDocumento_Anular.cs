@@ -313,16 +313,22 @@ namespace ProvPos
 
                         if (ficha.aliadosInv.Count > 0)
                         {
-                            sql = "update ventas_transp_aliado set estatus_anulado='1' where id_venta=@p1";
-                            p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", ficha.idDocVenta);
-                            var v3c = cn.Database.ExecuteSqlCommand(sql, p1);
-                            if (v3c == 0)
+                            foreach (var tt in ficha.aliadosInv) 
                             {
-                                result.Mensaje = "PROBLEMA AL ACTUALIZAR ESTATUS [ ANULADO ] ALIADOS INVOLUCRADOS";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                sql = @"update ventas_transp_aliado 
+                                            set estatus_anulado='1' 
+                                        where id_venta=@p1 and id_aliado=@idAliado and estatus_anulado='0'";
+                                p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", ficha.idDocVenta);
+                                var tp1 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", tt.idAliado);
+                                var v3c = cn.Database.ExecuteSqlCommand(sql, p1, tp1);
+                                if (v3c == 0)
+                                {
+                                    result.Mensaje = "PROBLEMA AL ACTUALIZAR ESTATUS [ ANULADO ] ALIADOS INVOLUCRADOS";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
+                                cn.SaveChanges();
                             }
-                            cn.SaveChanges();
                         }
 
                         //
@@ -478,13 +484,13 @@ namespace ProvPos
                     _sql = @"select 
                                 id_aliado as idAliado,
                                 importe_divisa as montoDivisa
-                            FROM ventas_transp_aliado where id_venta=@idDoc";
+                            FROM ventas_transp_aliado where id_venta=@idDoc and estatus_anulado='0'";
                     var xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
                     var _aliados = cnn.Database.SqlQuery<DtoTransporte.Documento.Anular.NotaEntrega.FichaAliado>(_sql, xp1).ToList();
 
                     _sql = @"select 
                                 id as idReg
-                            FROM transp_aliado_doc where id_doc_ref=@idDoc";
+                            FROM transp_aliado_doc where id_doc_ref=@idDoc and estatus_anulado='0'";
                     xp1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
                     var _aliadosDoc = cnn.Database.SqlQuery<DtoTransporte.Documento.Anular.NotaEntrega.FichaAliadoDoc>(_sql, xp1).ToList();
 
